@@ -624,82 +624,64 @@ function PlasmicHomepage__RenderFunc(props: {
               role={"img"}
             />
 
-            {(
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? true
-                : (() => {
-                    try {
-                      return true;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })()
-            ) ? (
-              <AntdTooltip
-                data-plasmic-name={"tooltip"}
-                data-plasmic-override={overrides.tooltip}
-                className={classNames("__wab_instance", sty.tooltip)}
-                color={true ? "var(--antd-colorBgMask)" : undefined}
-                placement={"bottom"}
-                titleText={
-                  "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
-                }
+            <AntdTooltip
+              data-plasmic-name={"tooltip"}
+              data-plasmic-override={overrides.tooltip}
+              className={classNames("__wab_instance", sty.tooltip)}
+              color={true ? "var(--antd-colorBgMask)" : undefined}
+              placement={"bottom"}
+              titleText={
+                "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
+              }
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox__z7W8B)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateModal2Open"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["modal2", "open"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal2Open"] != null &&
+                    typeof $steps["updateModal2Open"] === "object" &&
+                    typeof $steps["updateModal2Open"].then === "function"
+                  ) {
+                    $steps["updateModal2Open"] = await $steps[
+                      "updateModal2Open"
+                    ];
+                  }
+                }}
               >
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__z7W8B)}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateModal2Open"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["modal2", "open"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateModal2Open"] != null &&
-                      typeof $steps["updateModal2Open"] === "object" &&
-                      typeof $steps["updateModal2Open"].then === "function"
-                    ) {
-                      $steps["updateModal2Open"] = await $steps[
-                        "updateModal2Open"
-                      ];
-                    }
-                  }}
-                >
-                  <Icon12Icon
-                    className={classNames(projectcss.all, sty.svg__sMir1)}
-                    role={"img"}
-                  />
-                </div>
-              </AntdTooltip>
-            ) : null}
+                <Icon12Icon
+                  className={classNames(projectcss.all, sty.svg__sMir1)}
+                  role={"img"}
+                />
+              </div>
+            </AntdTooltip>
           </Stack__>
           <div
             data-plasmic-name={"footer"}
@@ -1699,6 +1681,11 @@ function PlasmicHomepage__RenderFunc(props: {
                 plasmic_plasmic_rich_components_css.plasmic_tokens
               )}
               hideFooter={true}
+              maskClosable={
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? false
+                  : undefined
+              }
               modalContentClassName={classNames({
                 [sty["pcls_JlWdSX3ww4RX"]]: hasVariant(
                   globalVariants,
