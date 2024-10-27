@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -45,7 +45,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -103,7 +104,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -137,7 +139,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "a3pmZtcpA5asHkNtN3SGoF",
@@ -152,7 +155,8 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -218,7 +222,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "58GpZjZCWTaJ8AUhpCwt2K",
@@ -240,7 +245,8 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -268,7 +274,8 @@
           "componentImportPath": "@plasmicpkgs/lottie-react"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "mqxdhm5p6WHAt7hW1mdcCX",
@@ -283,7 +290,8 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -305,7 +313,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "28Ba3BDvRe7EiWdfFNnLB6",
@@ -515,7 +524,8 @@
           "componentImportPath": "@plasmicpkgs/antd/skinny/registerTable"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -543,7 +553,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "9Vr5YWkf3w7jj6SsTcCEta",
@@ -565,7 +576,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -619,7 +631,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1019,7 +1032,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -1643,6 +1657,26 @@
           "id": "o5fEPeaAf9nA",
           "name": "Group7SvgIcon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Group7Svg.tsx"
+        },
+        {
+          "id": "C6JXzIwoE8dX",
+          "name": "Icon20Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon20.tsx"
+        },
+        {
+          "id": "Wld47LicVqDV",
+          "name": "Icon21Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon21.tsx"
+        },
+        {
+          "id": "FrIpHYscyQGN",
+          "name": "Icon22Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon22.tsx"
+        },
+        {
+          "id": "BzJvQ-Ivkti9",
+          "name": "Icon23Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon23.tsx"
         }
       ],
       "images": [
@@ -1755,6 +1789,16 @@
           "id": "6N19HLypFWjw",
           "name": "image 13",
           "filePath": "../public/plasmic/babarkat/images/image13.svg"
+        },
+        {
+          "id": "MGFUpk6fVkzN",
+          "name": "image 14",
+          "filePath": "../public/plasmic/babarkat/images/image14.png"
+        },
+        {
+          "id": "0No9WMWjAylF",
+          "name": "image 15",
+          "filePath": "../public/plasmic/babarkat/images/image15.png"
         }
       ],
       "indirect": false,
@@ -1852,6 +1896,21 @@
           "componentImportPath": "@/fragment/splunk"
         }
       ],
+      "customFunctions": []
+    },
+    {
+      "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
+      "projectApiToken": "whnW133t80zLKU3zunlnszewVOEyVOxXKzwV7BG0moXtgGeWc7ggKBeDRLZRWBfP5J3nqMN96EsKaTRQYp2aw",
+      "projectName": "copy-to-clipboard",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/copy_to_clipboard/plasmic.module.css",
+      "components": [],
+      "icons": [],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [],
       "customFunctions": []
     }
   ],

@@ -93,6 +93,11 @@ import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fh
 import Vector5Icon from "./icons/PlasmicIcon__Vector5"; // plasmic-import: OQAWETC3rCV5/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
+import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
+import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
+import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -135,6 +140,7 @@ export type PlasmicHomepage__OverridesType = {
   input?: Flex__<typeof Input>;
   operators4?: Flex__<"div">;
   boxselect4?: Flex__<typeof Boxselect3>;
+  button?: Flex__<typeof Button>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
   input2?: Flex__<typeof Input>;
@@ -142,7 +148,9 @@ export type PlasmicHomepage__OverridesType = {
 
 export interface DefaultHomepageProps {}
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -267,6 +275,19 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "shaba",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          "IR880570025680011868728101"
+      },
+      {
+        path: "card",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "5022291068506748"
       }
     ],
     [$props, $ctx, $refs]
@@ -1390,7 +1411,9 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
                   <Button
-                    className={classNames("__wab_instance", sty.button__dLo8Z)}
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button)}
                     color={"softGreen"}
                     isDisabled={(() => {
                       try {
@@ -1647,105 +1670,337 @@ function PlasmicHomepage__RenderFunc(props: {
 
                   <div
                     className={classNames(projectcss.all, sty.freeBox__bfJ7G)}
-                  />
-
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xUpdV)}
                   >
-                    <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__i2Cbu
-                      )}
-                      color={"softGreen"}
-                      isDisabled={(() => {
-                        try {
-                          return $state.input2.value.length < 5;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()}
-                      onClick={async event => {
-                        const $steps = {};
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__jsAv)}
+                    >
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__vmxAw)}
+                        displayHeight={"50px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"50px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/babarkat/images/image14.png",
+                          fullWidth: 500,
+                          fullHeight: 500,
+                          aspectRatio: undefined
+                        }}
+                      />
 
-                        $steps["updateAmount"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["amount"]
-                                },
-                                operation: 0,
-                                value: parseInt($state.input2.value)
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                      <PlasmicImg__
+                        alt={""}
+                        className={classNames(sty.img__zruyv)}
+                        displayHeight={"50px"}
+                        displayMaxHeight={"none"}
+                        displayMaxWidth={"100%"}
+                        displayMinHeight={"0"}
+                        displayMinWidth={"0"}
+                        displayWidth={"50px"}
+                        loading={"lazy"}
+                        src={{
+                          src: "/plasmic/babarkat/images/image15.png",
+                          fullWidth: 813,
+                          fullHeight: 900,
+                          aspectRatio: undefined
+                        }}
+                      />
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateAmount"] != null &&
-                          typeof $steps["updateAmount"] === "object" &&
-                          typeof $steps["updateAmount"].then === "function"
-                        ) {
-                          $steps["updateAmount"] = await $steps["updateAmount"];
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__l3Z6E
+                        )}
+                      >
+                        {
+                          "\u0628\u0627\u0646\u06a9 \u067e\u0627\u0633\u0627\u0631\u06af\u0627\u062f"
                         }
-
-                        $steps["invokeGlobalAction"] =
-                          $state.amount < 10000
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "error",
-                                    "\u0645\u0628\u0644\u063a \u0646\u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u06a9\u0645\u062a\u0631 \u0627\u0632 10000 \u062a\u0648\u0645\u0627\u0646 \u0628\u0627\u0634\u062f.",
-                                    "top-left"
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.showToast"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
-                        }
-                      }}
+                      </div>
+                    </div>
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__t0OWz)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__v5Tbb
+                          sty.text__yH9Ym
                         )}
                       >
-                        {"\u067e\u06cc\u06af\u06cc\u0631\u06cc "}
+                        {
+                          "\u0631\u0627\u0634\u062f \u0627\u0645\u06cc\u0646\u06cc "
+                        }
                       </div>
-                    </Button>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__bm2OU
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $$.copyToClipboard($state.shaba);
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["invokeGlobalAction"] =
+                            $steps.runCode == true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 \u06a9\u067e\u06cc \u0634\u062f.",
+                                      "top-left"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                      >
+                        <Icon20Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___4Dyr3
+                          )}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lMiZj
+                          )}
+                        >
+                          {"IR88  0570  0256  8001  1868  7281  01"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__p83N
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $$.copyToClipboard($state.card);
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["invokeGlobalAction"] =
+                            $steps.runCode == true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u06a9\u067e\u06cc \u0634\u062f.",
+                                      "top-left"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                      >
+                        <Icon20Icon
+                          className={classNames(projectcss.all, sty.svg__wh1O)}
+                          role={"img"}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__pSsGi
+                          )}
+                        >
+                          {"6748  0685  2910  5022"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__jbUa6
+                        )}
+                      >
+                        {"5022291068506748"}
+                      </div>
+                    </Stack__>
                   </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__lGa66
+                    )}
+                  >
+                    {
+                      "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
+                    }
+                  </div>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__xUpdV)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__t8Kj7
+                      )}
+                    >
+                      {
+                        "\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"
+                      }
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__gIanf)}
+                    >
+                      <Icon22Icon
+                        className={classNames(projectcss.all, sty.svg__h8J57)}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["goToHttpsWaMe989202116750"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  destination: "https://wa.me/989202116750"
+                                };
+                                return (({ destination }) => {
+                                  if (
+                                    typeof destination === "string" &&
+                                    destination.startsWith("#")
+                                  ) {
+                                    document
+                                      .getElementById(destination.substr(1))
+                                      .scrollIntoView({ behavior: "smooth" });
+                                  } else {
+                                    __nextRouter?.push(destination);
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["goToHttpsWaMe989202116750"] != null &&
+                            typeof $steps["goToHttpsWaMe989202116750"] ===
+                              "object" &&
+                            typeof $steps["goToHttpsWaMe989202116750"].then ===
+                              "function"
+                          ) {
+                            $steps["goToHttpsWaMe989202116750"] = await $steps[
+                              "goToHttpsWaMe989202116750"
+                            ];
+                          }
+                        }}
+                        role={"img"}
+                      />
+
+                      <Icon23Icon
+                        className={classNames(projectcss.all, sty.svg__vagE)}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["goToHttpsTMeRashedAmini"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  destination: "https://t.me/Rashed_amini"
+                                };
+                                return (({ destination }) => {
+                                  if (
+                                    typeof destination === "string" &&
+                                    destination.startsWith("#")
+                                  ) {
+                                    document
+                                      .getElementById(destination.substr(1))
+                                      .scrollIntoView({ behavior: "smooth" });
+                                  } else {
+                                    __nextRouter?.push(destination);
+                                  }
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["goToHttpsTMeRashedAmini"] != null &&
+                            typeof $steps["goToHttpsTMeRashedAmini"] ===
+                              "object" &&
+                            typeof $steps["goToHttpsTMeRashedAmini"].then ===
+                              "function"
+                          ) {
+                            $steps["goToHttpsTMeRashedAmini"] = await $steps[
+                              "goToHttpsTMeRashedAmini"
+                            ];
+                          }
+                        }}
+                        role={"img"}
+                      />
+                    </div>
+                  </Stack__>
                 </div>
               </div>
             </AntdModal>
@@ -1787,6 +2042,7 @@ const PlasmicDescendants = {
     "input",
     "operators4",
     "boxselect4",
+    "button",
     "modal2",
     "wallet3",
     "input2"
@@ -1832,11 +2088,12 @@ const PlasmicDescendants = {
   frame2: ["frame2"],
   profile: ["profile"],
   embedHtml: ["embedHtml"],
-  modal: ["modal", "wallet2", "input", "operators4", "boxselect4"],
+  modal: ["modal", "wallet2", "input", "operators4", "boxselect4", "button"],
   wallet2: ["wallet2", "input"],
   input: ["input"],
   operators4: ["operators4", "boxselect4"],
   boxselect4: ["boxselect4"],
+  button: ["button"],
   modal2: ["modal2", "wallet3", "input2"],
   wallet3: ["wallet3", "input2"],
   input2: ["input2"]
@@ -1874,6 +2131,7 @@ type NodeDefaultElementType = {
   input: typeof Input;
   operators4: "div";
   boxselect4: typeof Boxselect3;
+  button: typeof Button;
   modal2: typeof AntdModal;
   wallet3: "div";
   input2: typeof Input;
@@ -1992,6 +2250,7 @@ export const PlasmicHomepage = Object.assign(
     input: makeNodeComponent("input"),
     operators4: makeNodeComponent("operators4"),
     boxselect4: makeNodeComponent("boxselect4"),
+    button: makeNodeComponent("button"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
     input2: makeNodeComponent("input2"),
