@@ -653,11 +653,10 @@ function PlasmicTransaction__RenderFunc(props: {
                           {(() => {
                             try {
                               return (() => {
-                                currentItem.createdAt;
-                                birthDate = JSON.parse(birthDate);
-                                let gy = birthDate.year;
-                                let gm = birthDate.month;
-                                let gd = birthDate.day;
+                                birthDate = "2002-5-6";
+                                let gy = birthDate.split("-")[0];
+                                let gm = birthDate.split("-")[1];
+                                let gd = birthDate.split("-")[2];
                                 let shamsiMonthDays = [
                                   31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29
                                 ];
@@ -710,11 +709,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                     jd -= shamsiMonthDays[i];
                                   }
                                 }
-                                return {
-                                  day: jd,
-                                  month: jm,
-                                  year: jy
-                                };
+                                return jy + "/" + jm + "/" + jd;
                               })();
                             } catch (e) {
                               if (

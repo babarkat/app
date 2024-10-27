@@ -61,13 +61,13 @@ import {
 import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
+import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
-import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -85,13 +85,14 @@ import sty from "./PlasmicHomepage.module.css"; // plasmic-import: CKHzBo8fkmuJ/
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
 import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 import Vector5Icon from "./icons/PlasmicIcon__Vector5"; // plasmic-import: OQAWETC3rCV5/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
@@ -140,7 +141,6 @@ export type PlasmicHomepage__OverridesType = {
   input?: Flex__<typeof Input>;
   operators4?: Flex__<"div">;
   boxselect4?: Flex__<typeof Boxselect3>;
-  button?: Flex__<typeof Button>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
   input2?: Flex__<typeof Input>;
@@ -288,6 +288,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "5022291068506748"
+      },
+      {
+        path: "logout",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -338,6 +344,9 @@ function PlasmicHomepage__RenderFunc(props: {
                 )
             }
           )}
+          onClick={async event => {
+            const $steps = {};
+          }}
           onLoad={async event => {
             const $steps = {};
 
@@ -378,11 +387,132 @@ function PlasmicHomepage__RenderFunc(props: {
               role={"img"}
             />
 
-            <GroupSvgIcon
-              className={classNames(projectcss.all, sty.svg__bgff6)}
-              role={"img"}
-            />
+            <div className={classNames(projectcss.all, sty.freeBox__cpweg)}>
+              <GroupSvgIcon
+                className={classNames(projectcss.all, sty.svg__bgff6)}
+                onClick={async event => {
+                  const $steps = {};
 
+                  $steps["updateLogout"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["logout"]
+                          },
+                          operation: 4,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateLogout"] != null &&
+                    typeof $steps["updateLogout"] === "object" &&
+                    typeof $steps["updateLogout"].then === "function"
+                  ) {
+                    $steps["updateLogout"] = await $steps["updateLogout"];
+                  }
+                }}
+                role={"img"}
+              />
+
+              {(() => {
+                try {
+                  return $state.logout;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <Button
+                  className={classNames("__wab_instance", sty.button__jcRls)}
+                  color={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "sand"
+                      : "softRed"
+                  }
+                  endIcon={
+                    <Icon24Icon
+                      className={classNames(projectcss.all, sty.svg__z6PMw)}
+                      role={"img"}
+                    />
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return localStorage.removeItem("userbabarcat");
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+
+                    $steps["goToLogIn"] = true
+                      ? (() => {
+                          const actionArgs = { destination: `/login` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["goToLogIn"] != null &&
+                      typeof $steps["goToLogIn"] === "object" &&
+                      typeof $steps["goToLogIn"].then === "function"
+                    ) {
+                      $steps["goToLogIn"] = await $steps["goToLogIn"];
+                    }
+                  }}
+                  showEndIcon={true}
+                >
+                  {
+                    "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628"
+                  }
+                </Button>
+              ) : null}
+            </div>
             <Icon4Icon
               className={classNames(projectcss.all, sty.svg__tnUMf)}
               role={"img"}
@@ -1458,9 +1588,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
                   <Button
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
-                    className={classNames("__wab_instance", sty.button)}
+                    className={classNames("__wab_instance", sty.button__dLo8Z)}
                     color={"softGreen"}
                     isDisabled={(() => {
                       try {
@@ -2089,7 +2217,6 @@ const PlasmicDescendants = {
     "input",
     "operators4",
     "boxselect4",
-    "button",
     "modal2",
     "wallet3",
     "input2"
@@ -2135,12 +2262,11 @@ const PlasmicDescendants = {
   frame2: ["frame2"],
   profile: ["profile"],
   embedHtml: ["embedHtml"],
-  modal: ["modal", "wallet2", "input", "operators4", "boxselect4", "button"],
+  modal: ["modal", "wallet2", "input", "operators4", "boxselect4"],
   wallet2: ["wallet2", "input"],
   input: ["input"],
   operators4: ["operators4", "boxselect4"],
   boxselect4: ["boxselect4"],
-  button: ["button"],
   modal2: ["modal2", "wallet3", "input2"],
   wallet3: ["wallet3", "input2"],
   input2: ["input2"]
@@ -2178,7 +2304,6 @@ type NodeDefaultElementType = {
   input: typeof Input;
   operators4: "div";
   boxselect4: typeof Boxselect3;
-  button: typeof Button;
   modal2: typeof AntdModal;
   wallet3: "div";
   input2: typeof Input;
@@ -2297,7 +2422,6 @@ export const PlasmicHomepage = Object.assign(
     input: makeNodeComponent("input"),
     operators4: makeNodeComponent("operators4"),
     boxselect4: makeNodeComponent("boxselect4"),
-    button: makeNodeComponent("button"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
     input2: makeNodeComponent("input2"),

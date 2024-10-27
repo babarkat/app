@@ -238,7 +238,7 @@ function PlasmicLogIn__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return 600;
+              return 60;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1010,7 +1010,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                 return (
                                   "ارسال مجدد پیامک  (" +
                                   "<b style='color: #2DC57B;'>" +
-                                  Math.floor($state.time / 10) +
+                                  $state.time +
                                   "</b>" +
                                   ")"
                                 );
@@ -1119,7 +1119,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             const actionArgs = {
                               args: [
                                 "GET",
-                                "https://n8n.staas.ir/webhook/Babarkat/login",
+                                "https://n8n.babarkat.com/webhook/Babarkat/login",
                                 (() => {
                                   try {
                                     return { mobile: $state.number };
@@ -1161,7 +1161,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                 variablePath: ["time"]
                               },
                               operation: 0,
-                              value: 600
+                              value: 60
                             };
                             return (({
                               variable,
