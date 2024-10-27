@@ -1168,7 +1168,7 @@
           "projectId": "sZQMbqXz9utLNaTnNb3uss",
           "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/new-page.tsx"
+            "modulePath": "../src/pages/login.tsx"
           },
           "cssFilePath": "plasmic/babarkat/PlasmicLogIn.module.css",
           "scheme": "blackbox",
@@ -1911,7 +1911,8 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {
