@@ -18,20 +18,16 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
   >;
@@ -106,12 +102,12 @@ export default function GlobalContextsProvider(
       loadingText={
         antdConfigProviderProps && "loadingText" in antdConfigProviderProps
           ? antdConfigProviderProps.loadingText!
-          : undefined
+          : "\u062f\u0631\u062d\u0627\u0644 \u062f\u0631\u06cc\u0627\u0641\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
       }
       removeLoading={
         antdConfigProviderProps && "removeLoading" in antdConfigProviderProps
           ? antdConfigProviderProps.removeLoading!
-          : undefined
+          : true
       }
       sizeStep={
         antdConfigProviderProps && "sizeStep" in antdConfigProviderProps
