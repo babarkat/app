@@ -253,7 +253,160 @@ function PlasmicTransaction__RenderFunc(props: {
         path: "radioGroup2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "all"
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "list",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            type: "irancell_charge",
+            mobile: "09037415754",
+            createdAt: "2024-10-16 22:58:44",
+            price: 1500,
+            originId: "6565"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415755",
+            createdAt: "2024-10-16 22:59:44",
+            price: 1510,
+            originId: "6566"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415756",
+            createdAt: "2024-9-16 23:00:44",
+            price: 1520,
+            originId: "6567"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415757",
+            createdAt: "2024-10-16 23:01:44",
+            price: 1530,
+            originId: "6568"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415758",
+            createdAt: "2024-10-16 23:02:44",
+            price: 1540,
+            originId: "6569"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415759",
+            createdAt: "2024-10-16 23:03:44",
+            price: 1550,
+            originId: "6570"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415760",
+            createdAt: "2024-5-16 23:04:44",
+            price: 1560,
+            originId: "6571"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415761",
+            createdAt: "2024-10-16 23:05:44",
+            price: 1570,
+            originId: "6572"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415762",
+            createdAt: "2024-10-16 23:06:44",
+            price: 1580,
+            originId: "6573"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415763",
+            createdAt: "2024-10-16 23:07:44",
+            price: 1590,
+            originId: "6574"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415764",
+            createdAt: "2024-9-16 23:08:44",
+            price: 1600,
+            originId: "6575"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415765",
+            createdAt: "2024-10-16 23:09:44",
+            price: 1610,
+            originId: "6576"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415766",
+            createdAt: "2024-04-16 23:10:44",
+            price: 1620,
+            originId: "6577"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415767",
+            createdAt: "2024-10-16 23:11:44",
+            price: 1630,
+            originId: "6578"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415768",
+            createdAt: "2024-10-16 23:12:44",
+            price: 1640,
+            originId: "6579"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415769",
+            createdAt: "2024-10-16 23:13:44",
+            price: 1650,
+            originId: "6580"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415770",
+            createdAt: "2024-10-16 23:14:44",
+            price: 1660,
+            originId: "6581"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415771",
+            createdAt: "2024-10-16 23:15:44",
+            price: 1670,
+            originId: "6582"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415772",
+            createdAt: "2024-10-16 23:16:44",
+            price: 1680,
+            originId: "6583"
+          },
+          {
+            type: "irancell_charge",
+            mobile: "09037415773",
+            createdAt: "2024-11-16 23:17:44",
+            price: 1690,
+            originId: "6584"
+          }
+        ]
+      },
+      {
+        path: "fiterlist",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -551,7 +704,7 @@ function PlasmicTransaction__RenderFunc(props: {
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
-                    return $state.apiRequest.data[0].list;
+                    return $state.fiterlist;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -578,7 +731,26 @@ function PlasmicTransaction__RenderFunc(props: {
                     unnamedGroupOfVariants={
                       hasVariant(globalVariants, "screen", "mobileOnly")
                         ? "sim"
-                        : "panel"
+                        : (() => {
+                            try {
+                              return (() => {
+                                switch (true) {
+                                  case currentItem.type.includes("charge"):
+                                    return "sim";
+                                  default:
+                                    return "";
+                                }
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "intenet";
+                              }
+                              throw e;
+                            }
+                          })()
                     }
                   >
                     <div
@@ -595,9 +767,11 @@ function PlasmicTransaction__RenderFunc(props: {
                           {(() => {
                             try {
                               return (() => {
-                                switch (currentItem.type) {
-                                  case "irancel_charge":
+                                switch (true) {
+                                  case currentItem.type.includes("charge"):
                                     return "شارژ سیم کارت";
+                                  default:
+                                    return "نوع ناشناخته";
                                 }
                               })();
                             } catch (e) {
@@ -653,10 +827,11 @@ function PlasmicTransaction__RenderFunc(props: {
                           {(() => {
                             try {
                               return (() => {
-                                birthDate = "2002-5-6";
-                                let gy = birthDate.split("-")[0];
-                                let gm = birthDate.split("-")[1];
-                                let gd = birthDate.split("-")[2];
+                                let date = currentItem.createdAt.split(" ")[0];
+                                let time = currentItem.createdAt.split(" ")[1];
+                                let gy = parseInt(date.split("-")[0]);
+                                let gm = parseInt(date.split("-")[1]);
+                                let gd = parseInt(date.split("-")[2]);
                                 let shamsiMonthDays = [
                                   31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29
                                 ];
@@ -675,24 +850,19 @@ function PlasmicTransaction__RenderFunc(props: {
                                 for (let i = 0; i < gm - 1; i++) {
                                   daysPassedMiladi += miladiDaysInMonth[i];
                                 }
-                                let shamsiNewYearDay = new Date(gy, 2, 21);
-                                let shamsiStartDayInMiladi =
-                                  (shamsiNewYearDay - new Date(gy, 0, 1)) /
-                                  (1000 * 60 * 60 * 24);
+                                let shamsiNewYearDayInMiladi = isLeapYear
+                                  ? 80
+                                  : 79;
                                 let daysPassedInShamsiYear =
-                                  daysPassedMiladi - shamsiStartDayInMiladi;
+                                  daysPassedMiladi - shamsiNewYearDayInMiladi;
                                 if (daysPassedInShamsiYear < 0) {
                                   gy--;
-                                  shamsiNewYearDay = new Date(gy, 2, 21);
-                                  shamsiStartDayInMiladi =
-                                    (shamsiNewYearDay - new Date(gy, 0, 1)) /
-                                    (1000 * 60 * 60 * 24);
-                                  daysPassedInShamsiYear =
-                                    daysPassedMiladi +
-                                    (365 - shamsiStartDayInMiladi);
-                                  if (isLeapYear) {
-                                    daysPassedInShamsiYear++;
-                                  }
+                                  isLeapYear =
+                                    gy % 4 === 0 &&
+                                    (gy % 100 !== 0 || gy % 400 === 0);
+                                  daysPassedInShamsiYear += isLeapYear
+                                    ? 366
+                                    : 365;
                                 }
                                 let jy = gy - 621;
                                 let jm = 0;
@@ -702,14 +872,15 @@ function PlasmicTransaction__RenderFunc(props: {
                                   i < shamsiMonthDays.length;
                                   i++
                                 ) {
-                                  if (jd <= shamsiMonthDays[i]) {
+                                  if (jd < shamsiMonthDays[i]) {
                                     jm = i + 1;
+                                    jd++;
                                     break;
                                   } else {
                                     jd -= shamsiMonthDays[i];
                                   }
                                 }
-                                return jy + "/" + jm + "/" + jd;
+                                return time + "   " + jy + "/" + jm + "/" + jd;
                               })();
                             } catch (e) {
                               if (
@@ -931,7 +1102,6 @@ function PlasmicTransaction__RenderFunc(props: {
                   data-plasmic-name={"radioGroup2"}
                   data-plasmic-override={overrides.radioGroup2}
                   className={classNames("__wab_instance", sty.radioGroup2)}
-                  defaultValue={"all"}
                   onChange={generateStateOnChangeProp($state, [
                     "radioGroup2",
                     "value"
@@ -1218,6 +1388,111 @@ function PlasmicTransaction__RenderFunc(props: {
                     $steps["updateModal2Open"] = await $steps[
                       "updateModal2Open"
                     ];
+                  }
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              switch ($state.radioGroup2.value) {
+                                case "month":
+                                  let currentMonth = new Date()
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(item =>
+                                    item.createdAt.startsWith(currentMonth)
+                                  );
+                                  break;
+                                case "1month":
+                                  const today = new Date();
+                                  const currentMonth1 = today
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  const previousMonthDate = new Date(
+                                    today.setMonth(today.getMonth() - 1)
+                                  );
+                                  const previousMonth = previousMonthDate
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(
+                                    item =>
+                                      item.createdAt.startsWith(
+                                        currentMonth1
+                                      ) ||
+                                      item.createdAt.startsWith(previousMonth)
+                                  );
+                                  break;
+                                case "2month":
+                                  const date2Months = new Date();
+                                  const twoMonthsAgo = new Date(
+                                    date2Months.setMonth(
+                                      date2Months.getMonth() - 2
+                                    )
+                                  )
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(
+                                    item => item.createdAt >= twoMonthsAgo
+                                  );
+                                  break;
+                                case "3month":
+                                  const date3Months = new Date();
+                                  const threeMonthsAgo = new Date(
+                                    date3Months.setMonth(
+                                      date3Months.getMonth() - 3
+                                    )
+                                  )
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(
+                                    item => item.createdAt >= threeMonthsAgo
+                                  );
+                                  break;
+                                case "6month":
+                                  const date6Months = new Date();
+                                  const sixMonthsAgo = new Date(
+                                    date6Months.setMonth(
+                                      date6Months.getMonth() - 6
+                                    )
+                                  )
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(
+                                    item => item.createdAt >= sixMonthsAgo
+                                  );
+                                  break;
+                                case "year":
+                                  const date1Year = new Date();
+                                  const oneYearAgo = new Date(
+                                    date1Year.setFullYear(
+                                      date1Year.getFullYear() - 1
+                                    )
+                                  )
+                                    .toISOString()
+                                    .slice(0, 7);
+                                  $state.filterlist = $state.list.filter(
+                                    item => item.createdAt >= oneYearAgo
+                                  );
+                                  break;
+                                default:
+                                  $state.filterlist = $state.list;
+                                  break;
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
               >

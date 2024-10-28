@@ -449,7 +449,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   color={
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "sand"
-                      : "softRed"
+                      : "sand"
                   }
                   endIcon={
                     <Icon24Icon
