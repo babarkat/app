@@ -69,16 +69,19 @@ import sty from "./PlasmicTransaction2.module.css"; // plasmic-import: KdLckjkHA
 import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; // plasmic-import: aoPueH94YLGd/icon
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
 import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
+import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3UQ7U7/icon
 
 createPlasmicElementProxy;
 
 export type PlasmicTransaction2__VariantMembers = {
   filed: "filed";
-  unnamedGroupOfVariants: "intenet" | "walet" | "sim";
+  unnamedGroupOfVariants: "intenet" | "walet" | "sim" | "panel";
 };
 export type PlasmicTransaction2__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
-  unnamedGroupOfVariants?: SingleChoiceArg<"intenet" | "walet" | "sim">;
+  unnamedGroupOfVariants?: SingleChoiceArg<
+    "intenet" | "walet" | "sim" | "panel"
+  >;
 };
 type VariantPropType = keyof PlasmicTransaction2__VariantsArgs;
 export const PlasmicTransaction2__VariantProps = new Array<VariantPropType>(
@@ -100,7 +103,9 @@ export type PlasmicTransaction2__OverridesType = {
 export interface DefaultTransaction2Props {
   children?: React.ReactNode;
   filed?: SingleBooleanChoiceArg<"filed">;
-  unnamedGroupOfVariants?: SingleChoiceArg<"intenet" | "walet" | "sim">;
+  unnamedGroupOfVariants?: SingleChoiceArg<
+    "intenet" | "walet" | "sim" | "panel"
+  >;
   className?: string;
 }
 
@@ -196,6 +201,11 @@ function PlasmicTransaction2__RenderFunc(props: {
           [sty.rootunnamedGroupOfVariants_intenet_filed]:
             hasVariant($state, "filed", "filed") &&
             hasVariant($state, "unnamedGroupOfVariants", "intenet"),
+          [sty.rootunnamedGroupOfVariants_panel]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "panel"
+          ),
           [sty.rootunnamedGroupOfVariants_sim]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
@@ -228,7 +238,9 @@ function PlasmicTransaction2__RenderFunc(props: {
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
           PlasmicIconType={
-            hasVariant($state, "unnamedGroupOfVariants", "walet")
+            hasVariant($state, "unnamedGroupOfVariants", "panel")
+              ? Icon14Icon
+              : hasVariant($state, "unnamedGroupOfVariants", "walet")
               ? SvgRepoIconCarrier4Icon
               : hasVariant($state, "unnamedGroupOfVariants", "intenet")
               ? SvgRepoIconCarrier3Icon
@@ -240,6 +252,11 @@ function PlasmicTransaction2__RenderFunc(props: {
               $state,
               "unnamedGroupOfVariants",
               "intenet"
+            ),
+            [sty.svgunnamedGroupOfVariants_panel]: hasVariant(
+              $state,
+              "unnamedGroupOfVariants",
+              "panel"
             ),
             [sty.svgunnamedGroupOfVariants_walet]: hasVariant(
               $state,
@@ -262,6 +279,11 @@ function PlasmicTransaction2__RenderFunc(props: {
               "unnamedGroupOfVariants",
               "intenet"
             ),
+            [sty.textunnamedGroupOfVariants_panel__aAt6Ul1Qs]: hasVariant(
+              $state,
+              "unnamedGroupOfVariants",
+              "panel"
+            ),
             [sty.textunnamedGroupOfVariants_walet__aAt6A16YY]: hasVariant(
               $state,
               "unnamedGroupOfVariants",
@@ -270,8 +292,10 @@ function PlasmicTransaction2__RenderFunc(props: {
           }
         )}
       >
-        {hasVariant($state, "unnamedGroupOfVariants", "walet")
-          ? "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
+        {hasVariant($state, "unnamedGroupOfVariants", "panel")
+          ? "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647"
+          : hasVariant($state, "unnamedGroupOfVariants", "walet")
+          ? "\u062d\u0648\u0627\u0644\u0647 \u0647\u0627"
           : hasVariant($state, "unnamedGroupOfVariants", "intenet")
           ? "\u062e\u0631\u06cc\u062f \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
           : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"}

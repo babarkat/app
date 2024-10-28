@@ -99,7 +99,9 @@ import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Setting5Icon from "./icons/PlasmicIcon__Setting5"; // plasmic-import: L7zh2uJLRuwn/icon
+import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: DDtlhnj6MIF5/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
+import Icon26Icon from "./icons/PlasmicIcon__Icon26"; // plasmic-import: bISqj4Aubh8D/icon
 
 createPlasmicElementProxy;
 
@@ -1381,7 +1383,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                   e?.plasmicType ===
                                                     "PlasmicUndefinedDataError"
                                                 ) {
-                                                  return "intenet";
+                                                  return "unnamedVariant";
                                                 }
                                                 throw e;
                                               }
@@ -1805,16 +1807,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                           <React.Fragment>
                                             {(() => {
                                               try {
-                                                return (() => {
-                                                  switch (true) {
-                                                    case currentItem.type.includes(
-                                                      "charge"
-                                                    ):
-                                                      return "شارژ سیم کارت";
-                                                    default:
-                                                      return "نوع ناشناخته";
-                                                  }
-                                                })();
+                                                return "حواله";
                                               } catch (e) {
                                                 if (
                                                   e instanceof TypeError ||
@@ -2206,16 +2199,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                           <React.Fragment>
                                             {(() => {
                                               try {
-                                                return (() => {
-                                                  switch (true) {
-                                                    case currentItem.type.includes(
-                                                      "charge"
-                                                    ):
-                                                      return "شارژ سیم کارت";
-                                                    default:
-                                                      return "نوع ناشناخته";
-                                                  }
-                                                })();
+                                                return "انتقال وجه";
                                               } catch (e) {
                                                 if (
                                                   e instanceof TypeError ||
@@ -2419,6 +2403,168 @@ function PlasmicTransaction__RenderFunc(props: {
                   )}
                 </DataCtxReader__>
               </TabsContainer>
+              <div className={classNames(projectcss.all, sty.freeBox___5MnOu)}>
+                <Button
+                  className={classNames("__wab_instance", sty.button__otIeN)}
+                  color={"sand"}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updatePage"] =
+                      $state.page > 0
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["page"]
+                              },
+                              operation: 0,
+                              value: $state.page - 1
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updatePage"] != null &&
+                      typeof $steps["updatePage"] === "object" &&
+                      typeof $steps["updatePage"].then === "function"
+                    ) {
+                      $steps["updatePage"] = await $steps["updatePage"];
+                    }
+
+                    $steps["refreshData"] =
+                      $state.page > 0
+                        ? (() => {
+                            const actionArgs = {
+                              queryInvalidation: ["plasmic_refresh_all"]
+                            };
+                            return (async ({ queryInvalidation }) => {
+                              if (!queryInvalidation) {
+                                return;
+                              }
+                              await plasmicInvalidate(queryInvalidation);
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["refreshData"] != null &&
+                      typeof $steps["refreshData"] === "object" &&
+                      typeof $steps["refreshData"].then === "function"
+                    ) {
+                      $steps["refreshData"] = await $steps["refreshData"];
+                    }
+                  }}
+                  shape={"rounded"}
+                  showStartIcon={true}
+                  size={"compact"}
+                  startIcon={
+                    <Icon25Icon
+                      className={classNames(projectcss.all, sty.svg___1Ywet)}
+                      role={"img"}
+                    />
+                  }
+                >
+                  {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
+                </Button>
+                <Button
+                  className={classNames("__wab_instance", sty.button___3XA3J)}
+                  color={"sand"}
+                  endIcon={
+                    <Icon26Icon
+                      className={classNames(projectcss.all, sty.svg__lmrGr)}
+                      role={"img"}
+                    />
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updatePage"] = (() => {
+                      if ($state.apiRequest.data != null)
+                        return $state.apiRequest.data[0].list != [];
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["page"]
+                            },
+                            operation: 0,
+                            value: $state.page + 1
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updatePage"] != null &&
+                      typeof $steps["updatePage"] === "object" &&
+                      typeof $steps["updatePage"].then === "function"
+                    ) {
+                      $steps["updatePage"] = await $steps["updatePage"];
+                    }
+
+                    $steps["refreshData"] = (() => {
+                      if ($state.apiRequest.data != null)
+                        return $state.apiRequest.data[0].list != [];
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            queryInvalidation: ["plasmic_refresh_all"]
+                          };
+                          return (async ({ queryInvalidation }) => {
+                            if (!queryInvalidation) {
+                              return;
+                            }
+                            await plasmicInvalidate(queryInvalidation);
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["refreshData"] != null &&
+                      typeof $steps["refreshData"] === "object" &&
+                      typeof $steps["refreshData"].then === "function"
+                    ) {
+                      $steps["refreshData"] = await $steps["refreshData"];
+                    }
+                  }}
+                  shape={"rounded"}
+                  showEndIcon={true}
+                  size={"compact"}
+                  startIcon={
+                    <Icon25Icon
+                      className={classNames(projectcss.all, sty.svg__od3Qo)}
+                      role={"img"}
+                    />
+                  }
+                >
+                  {"\u0635\u0641\u062d\u0647 \u0628\u0639\u062f"}
+                </Button>
+              </div>
             </Stack__>
             <div
               className={classNames(projectcss.all, sty.freeBox__z3HRp, {
@@ -2509,6 +2655,10 @@ function PlasmicTransaction__RenderFunc(props: {
                             return "sim";
                           case $state.transaction2.type.includes("inte"):
                             return "intenet";
+                          case $state.transaction == "remittance":
+                            return "walet";
+                          case $state.transaction == "transaction":
+                            return "panel";
                           default:
                             return "";
                         }
@@ -2518,7 +2668,7 @@ function PlasmicTransaction__RenderFunc(props: {
                         e instanceof TypeError ||
                         e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        return "intenet";
+                        return [];
                       }
                       throw e;
                     }
@@ -2639,7 +2789,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                   jd -= shamsiMonthDays[i];
                                 }
                               }
-                              return time + "  " + jy + "/" + jm + "/" + jd;
+                              return jy + "/" + jm + "/" + jd + "  " + time;
                             })();
                           } catch (e) {
                             if (
@@ -2658,104 +2808,135 @@ function PlasmicTransaction__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__lMMc)}
                   />
 
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xMdUs)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__c1Cp
-                      )}
-                    >
-                      {
-                        "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                  {(() => {
+                    try {
+                      return $state.transaction == "charge";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
                       }
-                    </div>
+                      throw e;
+                    }
+                  })() ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rhtLj
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__xMdUs)}
                     >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return $state.transaction2.mobile;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "09258944568784";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___2Aole)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__z9F8F
-                      )}
-                    >
-                      {"\u0627\u067e\u0631\u0627\u062a\u0648\u0631"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wcBN
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return (() => {
-                              switch (true) {
-                                case $state.transaction2.type.startsWith(
-                                  "irance"
-                                ):
-                                  return "ایرانسل";
-                                case $state.transaction2.type.startsWith(
-                                  "mci"
-                                ) ||
-                                  $state.transaction2.type.startsWith(
-                                    "hamrahaval"
-                                  ):
-                                  return "همراه اول";
-                                case $state.transaction2.type.startsWith(
-                                  "rightel"
-                                ):
-                                  return "رایتل";
-                                case $state.transaction2.type.startsWith(
-                                  "shatel"
-                                ):
-                                  return "شاتل";
-                                default:
-                                  return "نامشخص";
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__c1Cp
+                        )}
+                      >
+                        {
+                          "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rhtLj
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.transaction2.mobile;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "09258944568784";
                               }
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0631\u0627\u06cc\u062a\u0644";
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
+                          })()}
+                        </React.Fragment>
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.transaction == "charge";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___2Aole
+                      )}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__z9F8F
+                        )}
+                      >
+                        {"\u0627\u067e\u0631\u0627\u062a\u0648\u0631"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wcBN
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return (() => {
+                                switch (true) {
+                                  case $state.transaction2.type.startsWith(
+                                    "irance"
+                                  ):
+                                    return "ایرانسل";
+                                  case $state.transaction2.type.startsWith(
+                                    "mci"
+                                  ) ||
+                                    $state.transaction2.type.startsWith(
+                                      "hamrahaval"
+                                    ):
+                                    return "همراه اول";
+                                  case $state.transaction2.type.startsWith(
+                                    "rightel"
+                                  ):
+                                    return "رایتل";
+                                  case $state.transaction2.type.startsWith(
+                                    "shatel"
+                                  ):
+                                    return "شاتل";
+                                  default:
+                                    return "نامشخص";
+                                }
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u0631\u0627\u06cc\u062a\u0644";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    </div>
+                  ) : null}
                   <div
                     className={classNames(projectcss.all, sty.freeBox__atx4)}
                   >
@@ -2892,7 +3073,10 @@ function PlasmicTransaction__RenderFunc(props: {
                           variablePath: ["list"]
                         },
                         operation: 0,
-                        value: $state.apiRequest.data[0].list
+                        value: (() => {
+                          if ($state.apiRequest.data != null)
+                            return $state.apiRequest.data[0].list;
+                        })()
                       };
                       return (({
                         variable,
