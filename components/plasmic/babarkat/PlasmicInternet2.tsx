@@ -592,7 +592,13 @@ function PlasmicInternet2__RenderFunc(props: {
                   ? Icon10Icon
                   : Icon3Icon
               }
-              className={classNames(projectcss.all, sty.svg__fwxpg)}
+              className={classNames(projectcss.all, sty.svg__fwxpg, {
+                [sty.svgsteps2_step2__fwxpGoGK8]: hasVariant(
+                  $state,
+                  "steps2",
+                  "step2"
+                )
+              })}
               onClick={async event => {
                 const $steps = {};
 
@@ -642,6 +648,11 @@ function PlasmicInternet2__RenderFunc(props: {
                   : Icon9Icon
               }
               className={classNames(projectcss.all, sty.svg__yCFp8, {
+                [sty.svgsteps2_step2__yCFp8OGK8]: hasVariant(
+                  $state,
+                  "steps2",
+                  "step2"
+                ),
                 [sty.svgsteps2_step3__yCFp8Yl49R]: hasVariant(
                   $state,
                   "steps2",
