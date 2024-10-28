@@ -98,10 +98,12 @@ export const PlasmicTransactionBox__VariantProps = new Array<VariantPropType>(
 
 export type PlasmicTransactionBox__ArgsType = {
   children?: React.ReactNode;
+  onClick?: (event: any) => void;
 };
 type ArgPropType = keyof PlasmicTransactionBox__ArgsType;
 export const PlasmicTransactionBox__ArgProps = new Array<ArgPropType>(
-  "children"
+  "children",
+  "onClick"
 );
 
 export type PlasmicTransactionBox__OverridesType = {
@@ -112,6 +114,7 @@ export type PlasmicTransactionBox__OverridesType = {
 
 export interface DefaultTransactionBoxProps {
   children?: React.ReactNode;
+  onClick?: (event: any) => void;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
     "intenet" | "walet" | "sim" | "panel" | "unnamedVariant"
@@ -244,6 +247,7 @@ function PlasmicTransactionBox__RenderFunc(props: {
           )
         }
       )}
+      onClick={args.onClick}
     >
       <div
         data-plasmic-name={"frame"}

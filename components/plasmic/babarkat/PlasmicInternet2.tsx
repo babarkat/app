@@ -2282,7 +2282,15 @@ function PlasmicInternet2__RenderFunc(props: {
                                     <div
                                       className={classNames(
                                         projectcss.all,
-                                        sty.freeBox__karPa
+                                        sty.freeBox__karPa,
+                                        {
+                                          [sty.freeBoxsteps2_step2__karPaoGK8]:
+                                            hasVariant(
+                                              $state,
+                                              "steps2",
+                                              "step2"
+                                            )
+                                        }
                                       )}
                                       key={currentIndex}
                                     >
