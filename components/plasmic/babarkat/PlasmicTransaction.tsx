@@ -2479,6 +2479,29 @@ function PlasmicTransaction__RenderFunc(props: {
                 >
                   {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
                 </Button>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gKy0S
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return "صفحه " + ($state.page + 1);
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
                 <Button
                   className={classNames("__wab_instance", sty.button___3XA3J)}
                   color={"sand"}
