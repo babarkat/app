@@ -381,162 +381,1027 @@ function PlasmicHomepage__RenderFunc(props: {
         }
       `}</style>
 
-      <div
-        data-plasmic-name={"root"}
-        data-plasmic-override={overrides.root}
-        data-plasmic-root={true}
-        data-plasmic-for-node={forNode}
-        className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
-          projectcss.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens,
-          plasmic_plasmic_rich_components_css.plasmic_tokens,
-          sty.root,
-          {
-            [sty.rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant]:
-              hasVariant(
-                globalVariants,
-                "unnamedGlobalGroupOfVariants",
-                "unnamedVariant"
-              )
-          }
-        )}
-        onLoad={async event => {
-          const $steps = {};
-
-          $steps["goToHomepage"] =
-            localStorage.getItem("userbabarcat") == null
-              ? (() => {
-                  const actionArgs = { destination: `/` };
-                  return (({ destination }) => {
-                    if (
-                      typeof destination === "string" &&
-                      destination.startsWith("#")
-                    ) {
-                      document
-                        .getElementById(destination.substr(1))
-                        .scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      __nextRouter?.push(destination);
-                    }
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["goToHomepage"] != null &&
-            typeof $steps["goToHomepage"] === "object" &&
-            typeof $steps["goToHomepage"].then === "function"
-          ) {
-            $steps["goToHomepage"] = await $steps["goToHomepage"];
-          }
-        }}
-      >
+      <div className={projectcss.plasmic_page_wrapper}>
         <div
-          data-plasmic-name={"header"}
-          data-plasmic-override={overrides.header}
-          className={classNames(projectcss.all, sty.header)}
+          data-plasmic-name={"root"}
+          data-plasmic-override={overrides.root}
+          data-plasmic-root={true}
+          data-plasmic-for-node={forNode}
+          className={classNames(
+            projectcss.all,
+            projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
+            plasmic_plasmic_rich_components_css.plasmic_tokens,
+            sty.root,
+            {
+              [sty.rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant]:
+                hasVariant(
+                  globalVariants,
+                  "unnamedGlobalGroupOfVariants",
+                  "unnamedVariant"
+                )
+            }
+          )}
         >
-          <BabarkatlogoCopy2SvgIcon
-            className={classNames(projectcss.all, sty.svg__tu4I6)}
-            role={"img"}
-          />
-
-          <div className={classNames(projectcss.all, sty.freeBox__cpweg)}>
-            <GroupSvgIcon
-              className={classNames(projectcss.all, sty.svg__bgff6)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateDrawerOpen"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["drawer", "open"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateDrawerOpen"] != null &&
-                  typeof $steps["updateDrawerOpen"] === "object" &&
-                  typeof $steps["updateDrawerOpen"].then === "function"
-                ) {
-                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-                }
-              }}
+          <div
+            data-plasmic-name={"header"}
+            data-plasmic-override={overrides.header}
+            className={classNames(projectcss.all, sty.header)}
+          >
+            <BabarkatlogoCopy2SvgIcon
+              className={classNames(projectcss.all, sty.svg__tu4I6)}
               role={"img"}
             />
 
-            {(() => {
-              try {
-                return $state.logout;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })() ? (
-              <Button
-                className={classNames("__wab_instance", sty.button__jcRls)}
-                color={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "sand"
-                    : "sand"
-                }
-                endIcon={
-                  <Icon24Icon
-                    className={classNames(projectcss.all, sty.svg__z6PMw)}
-                    role={"img"}
-                  />
-                }
+            <div className={classNames(projectcss.all, sty.freeBox__cpweg)}>
+              <GroupSvgIcon
+                className={classNames(projectcss.all, sty.svg__bgff6)}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["runCode"] = true
+                  $steps["updateDrawerOpen"] = true
                     ? (() => {
                         const actionArgs = {
-                          customFunction: async () => {
-                            return localStorage.removeItem("userbabarcat");
-                          }
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drawer", "open"]
+                          },
+                          operation: 0,
+                          value: true
                         };
-                        return (({ customFunction }) => {
-                          return customFunction();
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
+                    $steps["updateDrawerOpen"] != null &&
+                    typeof $steps["updateDrawerOpen"] === "object" &&
+                    typeof $steps["updateDrawerOpen"].then === "function"
                   ) {
-                    $steps["runCode"] = await $steps["runCode"];
+                    $steps["updateDrawerOpen"] = await $steps[
+                      "updateDrawerOpen"
+                    ];
                   }
+                }}
+                role={"img"}
+              />
 
-                  $steps["goToLogIn"] = true
+              {(() => {
+                try {
+                  return $state.logout;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <Button
+                  className={classNames("__wab_instance", sty.button__jcRls)}
+                  color={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "sand"
+                      : "sand"
+                  }
+                  endIcon={
+                    <Icon24Icon
+                      className={classNames(projectcss.all, sty.svg__z6PMw)}
+                      role={"img"}
+                    />
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return localStorage.removeItem("userbabarcat");
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+
+                    $steps["goToLogIn"] = true
+                      ? (() => {
+                          const actionArgs = { destination: `/login` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["goToLogIn"] != null &&
+                      typeof $steps["goToLogIn"] === "object" &&
+                      typeof $steps["goToLogIn"].then === "function"
+                    ) {
+                      $steps["goToLogIn"] = await $steps["goToLogIn"];
+                    }
+                  }}
+                  showEndIcon={true}
+                >
+                  {
+                    "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628"
+                  }
+                </Button>
+              ) : null}
+            </div>
+            <Icon4Icon
+              className={classNames(projectcss.all, sty.svg__tnUMf)}
+              role={"img"}
+            />
+          </div>
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"wallet"}
+            data-plasmic-override={overrides.wallet}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.wallet)}
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__i7Hyk)}
+            >
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__e2Zg)}
+              >
+                <Icon19Icon
+                  className={classNames(projectcss.all, sty.svg__zxpZu)}
+                  role={"img"}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tq0Hf
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $state.userbabarcat.last_name;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </Stack__>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ldM2P
+                )}
+              >
+                {hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                  : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
+              </div>
+            </Stack__>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__vdEzP
+              )}
+            >
+              {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (() => {
+                        return $state.userbabarcat.toman.toLocaleString();
+                      })();
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "0";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $state.userbabarcat.toman;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "0";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              )}
+            </div>
+            <BabarkatlogoCopy2SvgIcon
+              className={classNames(projectcss.all, sty.svg___7Xbq)}
+              role={"img"}
+            />
+
+            <AntdTooltip
+              data-plasmic-name={"tooltip"}
+              data-plasmic-override={overrides.tooltip}
+              className={classNames("__wab_instance", sty.tooltip)}
+              color={true ? "var(--antd-colorBgMask)" : undefined}
+              placement={"bottom"}
+              titleText={
+                "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
+              }
+            >
+              <div
+                className={classNames(projectcss.all, sty.freeBox__z7W8B)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateModal2Open"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["modal2", "open"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal2Open"] != null &&
+                    typeof $steps["updateModal2Open"] === "object" &&
+                    typeof $steps["updateModal2Open"].then === "function"
+                  ) {
+                    $steps["updateModal2Open"] = await $steps[
+                      "updateModal2Open"
+                    ];
+                  }
+                }}
+              >
+                <Icon12Icon
+                  className={classNames(projectcss.all, sty.svg__sMir1)}
+                  role={"img"}
+                />
+              </div>
+            </AntdTooltip>
+          </Stack__>
+          <div
+            data-plasmic-name={"footer"}
+            data-plasmic-override={overrides.footer}
+            className={classNames(projectcss.all, sty.footer)}
+          >
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"snapp2"}
+              data-plasmic-override={overrides.snapp2}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.snapp2)}
+            >
+              <div
+                data-plasmic-name={"vuesaxBoldHome"}
+                data-plasmic-override={overrides.vuesaxBoldHome}
+                className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+              >
+                <HomeIcon
+                  className={classNames(projectcss.all, sty.svg__fbf4J)}
+                  role={"img"}
+                />
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ruTXz
+                )}
+              >
+                {"\u062e\u0627\u0646\u0647"}
+              </div>
+            </Stack__>
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"charge2"}
+              data-plasmic-override={overrides.charge2}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.charge2)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["goToChargeStep1"] = true
+                  ? (() => {
+                      const actionArgs = { destination: `/transaction` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["goToChargeStep1"] != null &&
+                  typeof $steps["goToChargeStep1"] === "object" &&
+                  typeof $steps["goToChargeStep1"].then === "function"
+                ) {
+                  $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
+                }
+              }}
+            >
+              <div
+                data-plasmic-name={"vuesaxBoldReceipt"}
+                data-plasmic-override={overrides.vuesaxBoldReceipt}
+                className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
+              >
+                <ReceiptIcon
+                  className={classNames(projectcss.all, sty.svg__yjKw)}
+                  role={"img"}
+                />
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___4P0Rx
+                )}
+              >
+                {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+              </div>
+            </Stack__>
+          </div>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__vPrSd)}
+          >
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"services"}
+              data-plasmic-override={overrides.services}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.services)}
+            >
+              <div
+                data-plasmic-name={"internet"}
+                data-plasmic-override={overrides.internet}
+                className={classNames(projectcss.all, sty.internet)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToIntenet"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/intenet` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToIntenet"] != null &&
+                    typeof $steps["goToIntenet"] === "object" &&
+                    typeof $steps["goToIntenet"].then === "function"
+                  ) {
+                    $steps["goToIntenet"] = await $steps["goToIntenet"];
+                  }
+                }}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__bBBrJ)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image.svg",
+                    fullWidth: 24,
+                    fullHeight: 24,
+                    aspectRatio: 1
+                  }}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zh6Pr
+                  )}
+                >
+                  {
+                    "\u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
+                  }
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"internet3"}
+                data-plasmic-override={overrides.internet3}
+                className={classNames(projectcss.all, sty.internet3)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToCharge2"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/charging` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToCharge2"] != null &&
+                    typeof $steps["goToCharge2"] === "object" &&
+                    typeof $steps["goToCharge2"].then === "function"
+                  ) {
+                    $steps["goToCharge2"] = await $steps["goToCharge2"];
+                  }
+                }}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__yvAdp)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image11.svg",
+                    fullWidth: 22,
+                    fullHeight: 22,
+                    aspectRatio: 1
+                  }}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__lcYoQ
+                  )}
+                >
+                  {"\u0634\u0627\u0631\u0632"}
+                </div>
+              </div>
+            </Stack__>
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"services2"}
+              data-plasmic-override={overrides.services2}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.services2)}
+            >
+              <div
+                data-plasmic-name={"comingSoon"}
+                data-plasmic-override={overrides.comingSoon}
+                className={classNames(projectcss.all, sty.comingSoon)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jwDh
+                  )}
+                >
+                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                </div>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__plw8V)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image3.png",
+                    fullWidth: 128,
+                    fullHeight: 128,
+                    aspectRatio: undefined
+                  }}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jivU
+                  )}
+                >
+                  {
+                    "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+                  }
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"comingSoon2"}
+                data-plasmic-override={overrides.comingSoon2}
+                className={classNames(projectcss.all, sty.comingSoon2)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__fkQ6C
+                  )}
+                >
+                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                </div>
+                <AntdModal
+                  data-plasmic-name={"modal3"}
+                  data-plasmic-override={overrides.modal3}
+                  className={classNames("__wab_instance", sty.modal3)}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  )}
+                  hideFooter={true}
+                  maskClosable={true}
+                  modalContentClassName={classNames({
+                    [sty["pcls_AxXZI_1rmT4o"]]: true
+                  })}
+                  modalScopeClassName={sty["modal3__modal"]}
+                  onOpenChange={generateStateOnChangeProp($state, [
+                    "modal3",
+                    "open"
+                  ])}
+                  open={generateStateValueProp($state, ["modal3", "open"])}
+                  title={null}
+                  trigger={null}
+                  width={"520"}
+                >
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__nVlDi)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__o47Hv
+                      )}
+                    >
+                      {
+                        "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
+                      }
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___9Smum
+                      )}
+                    >
+                      {
+                        "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
+                      }
+                    </div>
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox___4HfvK)}
+                  >
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__zg2TY
+                      )}
+                      color={"red"}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return localStorage.removeItem(
+                                    "userbabarcat"
+                                  );
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["goToLogIn"] = true
+                          ? (() => {
+                              const actionArgs = { destination: `/login` };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToLogIn"] != null &&
+                          typeof $steps["goToLogIn"] === "object" &&
+                          typeof $steps["goToLogIn"].then === "function"
+                        ) {
+                          $steps["goToLogIn"] = await $steps["goToLogIn"];
+                        }
+
+                        $steps["updateModal3Open"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["modal3", "open"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateModal3Open"] != null &&
+                          typeof $steps["updateModal3Open"] === "object" &&
+                          typeof $steps["updateModal3Open"].then === "function"
+                        ) {
+                          $steps["updateModal3Open"] = await $steps[
+                            "updateModal3Open"
+                          ];
+                        }
+                      }}
+                    >
+                      {"\u0628\u0644\u0647"}
+                    </Button>
+                    <Button
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__jgicn
+                      )}
+                      color={"sand"}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateModal3Open"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["modal3", "open"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateModal3Open"] != null &&
+                          typeof $steps["updateModal3Open"] === "object" &&
+                          typeof $steps["updateModal3Open"].then === "function"
+                        ) {
+                          $steps["updateModal3Open"] = await $steps[
+                            "updateModal3Open"
+                          ];
+                        }
+                      }}
+                    >
+                      {"\u0627\u0646\u0635\u0631\u0627\u0641"}
+                    </Button>
+                  </Stack__>
+                </AntdModal>
+                <div
+                  data-plasmic-name={"vuesaxLinearStrongbox23"}
+                  data-plasmic-override={overrides.vuesaxLinearStrongbox23}
+                  className={classNames(
+                    projectcss.all,
+                    sty.vuesaxLinearStrongbox23
+                  )}
+                >
+                  <Vector5Icon
+                    className={classNames(projectcss.all, sty.svg__foTqj)}
+                    role={"img"}
+                  />
+
+                  <div
+                    data-plasmic-name={"imagePsd2"}
+                    data-plasmic-override={overrides.imagePsd2}
+                    className={classNames(projectcss.all, sty.imagePsd2)}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__yjJhg
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"
+                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                </div>
+              </div>
+            </Stack__>
+            <Stack__
+              as={"div"}
+              data-plasmic-name={"services3"}
+              data-plasmic-override={overrides.services3}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.services3)}
+            >
+              <div
+                data-plasmic-name={"comingSoon3"}
+                data-plasmic-override={overrides.comingSoon3}
+                className={classNames(projectcss.all, sty.comingSoon3)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__e0B1Y
+                  )}
+                >
+                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                </div>
+                <Vector5Icon
+                  className={classNames(projectcss.all, sty.svg__l4GIb)}
+                  role={"img"}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___84D5U
+                  )}
+                >
+                  {"UC"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__fjyMb
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
+                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"comingSoon4"}
+                data-plasmic-override={overrides.comingSoon4}
+                className={classNames(projectcss.all, sty.comingSoon4)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wAq6O
+                  )}
+                >
+                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                </div>
+                <div
+                  data-plasmic-name={"vuesaxLinearStrongbox22"}
+                  data-plasmic-override={overrides.vuesaxLinearStrongbox22}
+                  className={classNames(
+                    projectcss.all,
+                    sty.vuesaxLinearStrongbox22
+                  )}
+                >
+                  <Vector5Icon
+                    className={classNames(projectcss.all, sty.svg___96VBd)}
+                    role={"img"}
+                  />
+
+                  <div
+                    data-plasmic-name={"frame2"}
+                    data-plasmic-override={overrides.frame2}
+                    className={classNames(projectcss.all, sty.frame2)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__iKcxI)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "35px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "35px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/babarkat/images/svgRepoIconCarrier.svg",
+                        fullWidth: 20,
+                        fullHeight: 20,
+                        aspectRatio: 1
+                      }}
+                    />
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__sqfe1
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
+                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                </div>
+              </div>
+            </Stack__>
+          </Stack__>
+          <ApiRequest
+            data-plasmic-name={"profile"}
+            data-plasmic-override={overrides.profile}
+            className={classNames("__wab_instance", sty.profile)}
+            errorDisplay={null}
+            loadingDisplay={null}
+            method={"GET"}
+            onError={generateStateOnChangeProp($state, ["profile", "error"])}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["profile", "loading"]).apply(
+                null,
+                eventArgs
+              );
+              (async loading => {
+                const $steps = {};
+
+                $steps["goToLogIn"] =
+                  localStorage.getItem("userbabarcat") == null
                     ? (() => {
                         const actionArgs = { destination: `/login` };
                         return (({ destination }) => {
@@ -553,1113 +1418,420 @@ function PlasmicHomepage__RenderFunc(props: {
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
-                  if (
-                    $steps["goToLogIn"] != null &&
-                    typeof $steps["goToLogIn"] === "object" &&
-                    typeof $steps["goToLogIn"].then === "function"
-                  ) {
-                    $steps["goToLogIn"] = await $steps["goToLogIn"];
-                  }
-                }}
-                showEndIcon={true}
-              >
-                {
-                  "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628"
+                if (
+                  $steps["goToLogIn"] != null &&
+                  typeof $steps["goToLogIn"] === "object" &&
+                  typeof $steps["goToLogIn"].then === "function"
+                ) {
+                  $steps["goToLogIn"] = await $steps["goToLogIn"];
                 }
-              </Button>
-            ) : null}
-          </div>
-          <Icon4Icon
-            className={classNames(projectcss.all, sty.svg__tnUMf)}
-            role={"img"}
-          />
-        </div>
-        <Stack__
-          as={"div"}
-          data-plasmic-name={"wallet"}
-          data-plasmic-override={overrides.wallet}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.wallet)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__i7Hyk)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__e2Zg)}
-            >
-              <Icon19Icon
-                className={classNames(projectcss.all, sty.svg__zxpZu)}
-                role={"img"}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__tq0Hf
-                )}
-              >
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return $state.userbabarcat.last_name;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "";
-                      }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
-              </div>
-            </Stack__>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__ldM2P
-              )}
-            >
-              {hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
-            </div>
-          </Stack__>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__vdEzP
-            )}
-          >
-            {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return (() => {
-                      return $state.userbabarcat.toman.toLocaleString();
-                    })();
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "0";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $state.userbabarcat.toman;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "0";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            )}
-          </div>
-          <BabarkatlogoCopy2SvgIcon
-            className={classNames(projectcss.all, sty.svg___7Xbq)}
-            role={"img"}
-          />
-
-          <AntdTooltip
-            data-plasmic-name={"tooltip"}
-            data-plasmic-override={overrides.tooltip}
-            className={classNames("__wab_instance", sty.tooltip)}
-            color={true ? "var(--antd-colorBgMask)" : undefined}
-            placement={"bottom"}
-            titleText={
-              "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
-            }
-          >
-            <div
-              className={classNames(projectcss.all, sty.freeBox__z7W8B)}
-              onClick={async event => {
+              }).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["profile", "data"]).apply(
+                null,
+                eventArgs
+              );
+              (async data => {
                 const $steps = {};
 
-                $steps["updateModal2Open"] = true
+                $steps["runCode"] = (() => {
+                  if ($state.profile.data) {
+                    return $state.profile.data[0].success == true;
+                  } else return false;
+                })()
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["modal2", "open"]
-                        },
-                        operation: 0,
-                        value: true
+                        customFunction: async () => {
+                          return (() => {
+                            $state.userbabarcat.toman =
+                              $state.profile.data[0].user.toman * 1000;
+                            return localStorage.setItem(
+                              "userbabarcat",
+                              JSON.stringify($state.userbabarcat)
+                            );
+                          })();
+                        }
                       };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["updateModal2Open"] != null &&
-                  typeof $steps["updateModal2Open"] === "object" &&
-                  typeof $steps["updateModal2Open"].then === "function"
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
                 ) {
-                  $steps["updateModal2Open"] = await $steps["updateModal2Open"];
+                  $steps["runCode"] = await $steps["runCode"];
                 }
-              }}
-            >
-              <Icon12Icon
-                className={classNames(projectcss.all, sty.svg__sMir1)}
-                role={"img"}
-              />
-            </div>
-          </AntdTooltip>
-        </Stack__>
-        <div
-          data-plasmic-name={"footer"}
-          data-plasmic-override={overrides.footer}
-          className={classNames(projectcss.all, sty.footer)}
-        >
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"snapp2"}
-            data-plasmic-override={overrides.snapp2}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.snapp2)}
-          >
-            <div
-              data-plasmic-name={"vuesaxBoldHome"}
-              data-plasmic-override={overrides.vuesaxBoldHome}
-              className={classNames(projectcss.all, sty.vuesaxBoldHome)}
-            >
-              <HomeIcon
-                className={classNames(projectcss.all, sty.svg__fbf4J)}
-                role={"img"}
-              />
-            </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__ruTXz
-              )}
-            >
-              {"\u062e\u0627\u0646\u0647"}
-            </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"charge2"}
-            data-plasmic-override={overrides.charge2}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.charge2)}
-            onClick={async event => {
-              const $steps = {};
 
-              $steps["goToChargeStep1"] = true
-                ? (() => {
-                    const actionArgs = { destination: `/transaction` };
-                    return (({ destination }) => {
-                      if (
-                        typeof destination === "string" &&
-                        destination.startsWith("#")
-                      ) {
-                        document
-                          .getElementById(destination.substr(1))
-                          .scrollIntoView({ behavior: "smooth" });
-                      } else {
-                        __nextRouter?.push(destination);
-                      }
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["goToChargeStep1"] != null &&
-                typeof $steps["goToChargeStep1"] === "object" &&
-                typeof $steps["goToChargeStep1"].then === "function"
-              ) {
-                $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-              }
+                $steps["runCode2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return undefined;
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
+                ) {
+                  $steps["runCode2"] = await $steps["runCode2"];
+                }
+              }).apply(null, eventArgs);
             }}
-          >
-            <div
-              data-plasmic-name={"vuesaxBoldReceipt"}
-              data-plasmic-override={overrides.vuesaxBoldReceipt}
-              className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
-            >
-              <ReceiptIcon
-                className={classNames(projectcss.all, sty.svg__yjKw)}
-                role={"img"}
-              />
-            </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___4P0Rx
-              )}
-            >
-              {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-            </div>
-          </Stack__>
-        </div>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__vPrSd)}
-        >
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"services"}
-            data-plasmic-override={overrides.services}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.services)}
-          >
-            <div
-              data-plasmic-name={"internet"}
-              data-plasmic-override={overrides.internet}
-              className={classNames(projectcss.all, sty.internet)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToIntenet"] = true
-                  ? (() => {
-                      const actionArgs = { destination: `/intenet` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+            params={(() => {
+              try {
+                return { userToken: $state.userbabarcat.token };
+              } catch (e) {
                 if (
-                  $steps["goToIntenet"] != null &&
-                  typeof $steps["goToIntenet"] === "object" &&
-                  typeof $steps["goToIntenet"].then === "function"
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
                 ) {
-                  $steps["goToIntenet"] = await $steps["goToIntenet"];
+                  return undefined;
                 }
-              }}
-            >
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__bBBrJ)}
-                displayHeight={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                displayMaxHeight={"none"}
-                displayMaxWidth={"100%"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/babarkat/images/image.svg",
-                  fullWidth: 24,
-                  fullHeight: 24,
-                  aspectRatio: 1
-                }}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zh6Pr
-                )}
-              >
-                {
-                  "\u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
-                }
-              </div>
-            </div>
-            <div
-              data-plasmic-name={"internet3"}
-              data-plasmic-override={overrides.internet3}
-              className={classNames(projectcss.all, sty.internet3)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToCharge2"] = true
-                  ? (() => {
-                      const actionArgs = { destination: `/charging` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToCharge2"] != null &&
-                  typeof $steps["goToCharge2"] === "object" &&
-                  typeof $steps["goToCharge2"].then === "function"
-                ) {
-                  $steps["goToCharge2"] = await $steps["goToCharge2"];
-                }
-              }}
-            >
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__yvAdp)}
-                displayHeight={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                displayMaxHeight={"none"}
-                displayMaxWidth={"100%"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/babarkat/images/image11.svg",
-                  fullWidth: 22,
-                  fullHeight: 22,
-                  aspectRatio: 1
-                }}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__lcYoQ
-                )}
-              >
-                {"\u0634\u0627\u0631\u0632"}
-              </div>
-            </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"services2"}
-            data-plasmic-override={overrides.services2}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.services2)}
-          >
-            <div
-              data-plasmic-name={"comingSoon"}
-              data-plasmic-override={overrides.comingSoon}
-              className={classNames(projectcss.all, sty.comingSoon)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__jwDh
-                )}
-              >
-                {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-              </div>
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__plw8V)}
-                displayHeight={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                displayMaxHeight={"none"}
-                displayMaxWidth={"100%"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "50px"
-                    : "80px"
-                }
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/babarkat/images/image3.png",
-                  fullWidth: 128,
-                  fullHeight: 128,
-                  aspectRatio: undefined
-                }}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__jivU
-                )}
-              >
-                {
-                  "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
-                }
-              </div>
-            </div>
-            <div
-              data-plasmic-name={"comingSoon2"}
-              data-plasmic-override={overrides.comingSoon2}
-              className={classNames(projectcss.all, sty.comingSoon2)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__fkQ6C
-                )}
-              >
-                {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-              </div>
-              <AntdModal
-                data-plasmic-name={"modal3"}
-                data-plasmic-override={overrides.modal3}
-                className={classNames("__wab_instance", sty.modal3)}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  projectcss.plasmic_tokens,
-                  plasmic_antd_5_hostless_css.plasmic_tokens,
-                  plasmic_plasmic_rich_components_css.plasmic_tokens
-                )}
-                hideFooter={true}
-                maskClosable={true}
-                modalContentClassName={classNames({
-                  [sty["pcls_AxXZI_1rmT4o"]]: true
-                })}
-                modalScopeClassName={sty["modal3__modal"]}
-                onOpenChange={generateStateOnChangeProp($state, [
-                  "modal3",
-                  "open"
-                ])}
-                open={generateStateValueProp($state, ["modal3", "open"])}
-                title={null}
-                trigger={null}
-                width={"520"}
-              >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__nVlDi)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__o47Hv
-                    )}
-                  >
-                    {
-                      "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
-                    }
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9Smum
-                    )}
-                  >
-                    {
-                      "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
-                    }
-                  </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox___4HfvK)}
-                >
-                  <Button
-                    className={classNames("__wab_instance", sty.button__zg2TY)}
-                    color={"red"}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["runCode"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return localStorage.removeItem("userbabarcat");
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
-                      }
-
-                      $steps["goToLogIn"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/login` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToLogIn"] != null &&
-                        typeof $steps["goToLogIn"] === "object" &&
-                        typeof $steps["goToLogIn"].then === "function"
-                      ) {
-                        $steps["goToLogIn"] = await $steps["goToLogIn"];
-                      }
-
-                      $steps["updateModal3Open"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["modal3", "open"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateModal3Open"] != null &&
-                        typeof $steps["updateModal3Open"] === "object" &&
-                        typeof $steps["updateModal3Open"].then === "function"
-                      ) {
-                        $steps["updateModal3Open"] = await $steps[
-                          "updateModal3Open"
-                        ];
-                      }
-                    }}
-                  >
-                    {"\u0628\u0644\u0647"}
-                  </Button>
-                  <Button
-                    className={classNames("__wab_instance", sty.button__jgicn)}
-                    color={"sand"}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["updateModal3Open"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["modal3", "open"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateModal3Open"] != null &&
-                        typeof $steps["updateModal3Open"] === "object" &&
-                        typeof $steps["updateModal3Open"].then === "function"
-                      ) {
-                        $steps["updateModal3Open"] = await $steps[
-                          "updateModal3Open"
-                        ];
-                      }
-                    }}
-                  >
-                    {"\u0627\u0646\u0635\u0631\u0627\u0641"}
-                  </Button>
-                </Stack__>
-              </AntdModal>
-              <div
-                data-plasmic-name={"vuesaxLinearStrongbox23"}
-                data-plasmic-override={overrides.vuesaxLinearStrongbox23}
-                className={classNames(
-                  projectcss.all,
-                  sty.vuesaxLinearStrongbox23
-                )}
-              >
-                <Vector5Icon
-                  className={classNames(projectcss.all, sty.svg__foTqj)}
-                  role={"img"}
-                />
-
-                <div
-                  data-plasmic-name={"imagePsd2"}
-                  data-plasmic-override={overrides.imagePsd2}
-                  className={classNames(projectcss.all, sty.imagePsd2)}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__yjJhg
-                )}
-              >
-                {hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"
-                  : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
-              </div>
-            </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"services3"}
-            data-plasmic-override={overrides.services3}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.services3)}
-          >
-            <div
-              data-plasmic-name={"comingSoon3"}
-              data-plasmic-override={overrides.comingSoon3}
-              className={classNames(projectcss.all, sty.comingSoon3)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__e0B1Y
-                )}
-              >
-                {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-              </div>
-              <Vector5Icon
-                className={classNames(projectcss.all, sty.svg__l4GIb)}
-                role={"img"}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___84D5U
-                )}
-              >
-                {"UC"}
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__fjyMb
-                )}
-              >
-                {hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
-                  : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
-              </div>
-            </div>
-            <div
-              data-plasmic-name={"comingSoon4"}
-              data-plasmic-override={overrides.comingSoon4}
-              className={classNames(projectcss.all, sty.comingSoon4)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__wAq6O
-                )}
-              >
-                {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-              </div>
-              <div
-                data-plasmic-name={"vuesaxLinearStrongbox22"}
-                data-plasmic-override={overrides.vuesaxLinearStrongbox22}
-                className={classNames(
-                  projectcss.all,
-                  sty.vuesaxLinearStrongbox22
-                )}
-              >
-                <Vector5Icon
-                  className={classNames(projectcss.all, sty.svg___96VBd)}
-                  role={"img"}
-                />
-
-                <div
-                  data-plasmic-name={"frame2"}
-                  data-plasmic-override={overrides.frame2}
-                  className={classNames(projectcss.all, sty.frame2)}
-                >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__iKcxI)}
-                    displayHeight={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "35px"
-                        : "60px"
-                    }
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "35px"
-                        : "60px"
-                    }
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/babarkat/images/svgRepoIconCarrier.svg",
-                      fullWidth: 20,
-                      fullHeight: 20,
-                      aspectRatio: 1
-                    }}
-                  />
-                </div>
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__sqfe1
-                )}
-              >
-                {hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
-                  : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
-              </div>
-            </div>
-          </Stack__>
-        </Stack__>
-        <ApiRequest
-          data-plasmic-name={"profile"}
-          data-plasmic-override={overrides.profile}
-          className={classNames("__wab_instance", sty.profile)}
-          errorDisplay={null}
-          loadingDisplay={null}
-          method={"GET"}
-          onError={generateStateOnChangeProp($state, ["profile", "error"])}
-          onLoading={generateStateOnChangeProp($state, ["profile", "loading"])}
-          onSuccess={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["profile", "data"]).apply(
-              null,
-              eventArgs
-            );
-            (async data => {
-              const $steps = {};
-
-              $steps["runCode"] = (() => {
-                if ($state.profile.data) {
-                  return $state.profile.data[0].success == true;
-                } else return false;
-              })()
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          $state.userbabarcat.toman =
-                            $state.profile.data[0].user.toman;
-                          return localStorage.setItem(
-                            "userbabarcat",
-                            JSON.stringify($state.userbabarcat)
-                          );
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
+                throw e;
               }
+            })()}
+            url={"https://n8n.babarkat.com/webhook/Babarkat/login"}
+          />
 
-              $steps["runCode2"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return undefined;
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode2"] != null &&
-                typeof $steps["runCode2"] === "object" &&
-                typeof $steps["runCode2"].then === "function"
-              ) {
-                $steps["runCode2"] = await $steps["runCode2"];
-              }
-            }).apply(null, eventArgs);
-          }}
-          params={(() => {
-            try {
-              return { userToken: $state.userbabarcat.token };
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
+          <AntdModal
+            data-plasmic-name={"modal"}
+            data-plasmic-override={overrides.modal}
+            className={classNames("__wab_instance", sty.modal)}
+            closeButtonClassName={classNames({
+              [sty["pcls_z34Fuqvn-8Cw"]]: true
+            })}
+            defaultStylesClassName={classNames(
+              projectcss.root_reset,
+              projectcss.plasmic_default_styles,
+              projectcss.plasmic_mixins,
+              projectcss.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens
+            )}
+            hideFooter={true}
+            modalContentClassName={classNames({
+              [sty["pcls_ocemMThPI0sc"]]: hasVariant(
+                globalVariants,
+                "screen",
+                "mobileOnly"
+              ),
+              [sty["pcls_sCrz8NBk1ScS"]]: true
+            })}
+            modalScopeClassName={sty["modal__modal"]}
+            onOpenChange={generateStateOnChangeProp($state, ["modal", "open"])}
+            open={generateStateValueProp($state, ["modal", "open"])}
+            title={null}
+            trigger={null}
+            width={
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? "100vw"
+                : "100vw"
             }
-          })()}
-          url={"https://n8n.babarkat.com/webhook/Babarkat/login"}
-        />
-
-        <AntdModal
-          data-plasmic-name={"modal"}
-          data-plasmic-override={overrides.modal}
-          className={classNames("__wab_instance", sty.modal)}
-          closeButtonClassName={classNames({
-            [sty["pcls_z34Fuqvn-8Cw"]]: true
-          })}
-          defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens
-          )}
-          hideFooter={true}
-          modalContentClassName={classNames({
-            [sty["pcls_ocemMThPI0sc"]]: hasVariant(
-              globalVariants,
-              "screen",
-              "mobileOnly"
-            ),
-            [sty["pcls_sCrz8NBk1ScS"]]: true
-          })}
-          modalScopeClassName={sty["modal__modal"]}
-          onOpenChange={generateStateOnChangeProp($state, ["modal", "open"])}
-          open={generateStateValueProp($state, ["modal", "open"])}
-          title={null}
-          trigger={null}
-          width={
-            hasVariant(globalVariants, "screen", "mobileOnly")
-              ? "100vw"
-              : "100vw"
-          }
-          wrapClassName={classNames({ [sty["pcls_oMduPsUVEWfB"]]: true })}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__gnhN4)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__y59MI
-              )}
-            >
-              {
-                "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
-              }
-            </div>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"wallet2"}
-              data-plasmic-override={overrides.wallet2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.wallet2)}
-            >
-              <BabarkatlogoCopy2SvgIcon
-                className={classNames(projectcss.all, sty.svg__dylAb)}
-                role={"img"}
-              />
-
+            wrapClassName={classNames({ [sty["pcls_oMduPsUVEWfB"]]: true })}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__gnhN4)}>
               <div
                 className={classNames(
                   projectcss.all,
                   projectcss.__wab_text,
-                  sty.text___7Srba
+                  sty.text__y59MI
                 )}
               >
-                {hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                  : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zoPlq
-                )}
-              >
-                {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return (() => {
-                          return $state.userbabarcat.toman.toLocaleString();
-                        })();
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "0";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                ) : (
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $state.userbabarcat.toman;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "0";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                )}
+                {
+                  "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
+                }
               </div>
               <Stack__
                 as={"div"}
+                data-plasmic-name={"wallet2"}
+                data-plasmic-override={overrides.wallet2}
                 hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__aLGe)}
+                className={classNames(projectcss.all, sty.wallet2)}
               >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__werQh
-                  )}
-                >
-                  {
-                    "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 (\u062a\u0648\u0645\u0627\u0646)"
-                  }
-                </div>
-                <Input
-                  data-plasmic-name={"input"}
-                  data-plasmic-override={overrides.input}
-                  className={classNames("__wab_instance", sty.input)}
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, ["input", "value"]).apply(
-                      null,
-                      eventArgs
-                    );
-                    (async value => {
-                      const $steps = {};
-                    }).apply(null, eventArgs);
-                  }}
-                  placeholder={"\u062a\u0648\u0645\u0627\u0646"}
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input", "value"])}
+                <BabarkatlogoCopy2SvgIcon
+                  className={classNames(projectcss.all, sty.svg__dylAb)}
+                  role={"img"}
                 />
-              </Stack__>
-            </Stack__>
-            <div className={classNames(projectcss.all, sty.freeBox___8W95F)}>
-              <div className={classNames(projectcss.all, sty.freeBox__xtpi)} />
 
-              <div className={classNames(projectcss.all, sty.freeBox__km6Os)}>
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__zGjZk
+                    sty.text___7Srba
                   )}
                 >
-                  {
-                    "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                  }
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                    : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zoPlq
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (() => {
+                            return $state.userbabarcat.toman.toLocaleString();
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "0";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.userbabarcat.toman;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "0";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  )}
                 </div>
                 <Stack__
                   as={"div"}
-                  data-plasmic-name={"operators4"}
-                  data-plasmic-override={overrides.operators4}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.operators4)}
+                  className={classNames(projectcss.all, sty.freeBox__aLGe)}
                 >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__werQh
+                    )}
+                  >
+                    {
+                      "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 (\u062a\u0648\u0645\u0627\u0646)"
+                    }
+                  </div>
+                  <Input
+                    data-plasmic-name={"input"}
+                    data-plasmic-override={overrides.input}
+                    className={classNames("__wab_instance", sty.input)}
+                    onChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "input",
+                        "value"
+                      ]).apply(null, eventArgs);
+                      (async value => {
+                        const $steps = {};
+                      }).apply(null, eventArgs);
+                    }}
+                    placeholder={"\u062a\u0648\u0645\u0627\u0646"}
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input", "value"])}
+                  />
+                </Stack__>
+              </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox___8W95F)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__xtpi)}
+                />
+
+                <div className={classNames(projectcss.all, sty.freeBox__km6Os)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zGjZk
+                    )}
+                  >
+                    {
+                      "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                    }
+                  </div>
+                  <Stack__
+                    as={"div"}
+                    data-plasmic-name={"operators4"}
+                    data-plasmic-override={overrides.operators4}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.operators4)}
+                  >
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
+                        try {
+                          return [10000, 20000, 50000, 100000, 300000, 500000];
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const amonttem = __plasmic_item_0;
+                      const amontIndex = __plasmic_idx_0;
+                      return (() => {
+                        const child$Props = {
+                          className: classNames(
+                            "__wab_instance",
+                            sty.boxselect4
+                          ),
+                          disable2: generateStateValueProp($state, [
+                            "boxselect4",
+                            __plasmic_idx_0,
+                            "disable2"
+                          ]),
+                          key: amontIndex,
+                          onClick: async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        for (
+                                          let i = 0;
+                                          i < $state.boxselect4.length;
+                                          i++
+                                        ) {
+                                          $state.boxselect4[i].select = false;
+                                        }
+                                        $state.boxselect4[amontIndex].select =
+                                          true;
+                                        $state.amount = amonttem;
+                                        return ($state.input.value = amonttem);
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+                          },
+                          onDisable2Change: generateStateOnChangeProp($state, [
+                            "boxselect4",
+                            __plasmic_idx_0,
+                            "disable2"
+                          ]),
+                          onSelectChange: generateStateOnChangeProp($state, [
+                            "boxselect4",
+                            __plasmic_idx_0,
+                            "select"
+                          ]),
+                          select: generateStateValueProp($state, [
+                            "boxselect4",
+                            __plasmic_idx_0,
+                            "select"
+                          ])
+                        };
+
+                        initializePlasmicStates(
+                          $state,
+                          [
+                            {
+                              name: "boxselect4[].select",
+                              initFunc: ({ $props, $state, $queries }) =>
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? false
+                                  : false
+                            },
+                            {
+                              name: "boxselect4[].disable2",
+                              initFunc: ({ $props, $state, $queries }) => false
+                            }
+                          ],
+                          [__plasmic_idx_0]
+                        );
+                        return (
+                          <Boxselect3
+                            data-plasmic-name={"boxselect4"}
+                            data-plasmic-override={overrides.boxselect4}
+                            {...child$Props}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__s1SI
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__x5YCy
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        amonttem.toLocaleString("en-US") +
+                                        " تومان"
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                            </div>
+                          </Boxselect3>
+                        );
+                      })();
+                    })}
+                  </Stack__>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
+                  <Button
+                    className={classNames("__wab_instance", sty.button__dLo8Z)}
+                    color={"softGreen"}
+                    isDisabled={(() => {
                       try {
-                        return [10000, 20000, 50000, 100000, 300000, 500000];
+                        return $state.input.value.length < 5;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1669,422 +1841,276 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
                         throw e;
                       }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const amonttem = __plasmic_item_0;
-                    const amontIndex = __plasmic_idx_0;
-                    return (() => {
-                      const child$Props = {
-                        className: classNames("__wab_instance", sty.boxselect4),
-                        disable2: generateStateValueProp($state, [
-                          "boxselect4",
-                          __plasmic_idx_0,
-                          "disable2"
-                        ]),
-                        key: amontIndex,
-                        onClick: async event => {
-                          const $steps = {};
+                    })()}
+                    onClick={async event => {
+                      const $steps = {};
 
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      for (
-                                        let i = 0;
-                                        i < $state.boxselect4.length;
-                                        i++
-                                      ) {
-                                        $state.boxselect4[i].select = false;
-                                      }
-                                      $state.boxselect4[amontIndex].select =
-                                        true;
-                                      $state.amount = amonttem;
-                                      return ($state.input.value = amonttem);
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-                        },
-                        onDisable2Change: generateStateOnChangeProp($state, [
-                          "boxselect4",
-                          __plasmic_idx_0,
-                          "disable2"
-                        ]),
-                        onSelectChange: generateStateOnChangeProp($state, [
-                          "boxselect4",
-                          __plasmic_idx_0,
-                          "select"
-                        ]),
-                        select: generateStateValueProp($state, [
-                          "boxselect4",
-                          __plasmic_idx_0,
-                          "select"
-                        ])
-                      };
-
-                      initializePlasmicStates(
-                        $state,
-                        [
-                          {
-                            name: "boxselect4[].select",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? false
-                                : false
-                          },
-                          {
-                            name: "boxselect4[].disable2",
-                            initFunc: ({ $props, $state, $queries }) => false
-                          }
-                        ],
-                        [__plasmic_idx_0]
-                      );
-                      return (
-                        <Boxselect3
-                          data-plasmic-name={"boxselect4"}
-                          data-plasmic-override={overrides.boxselect4}
-                          {...child$Props}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__s1SI
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__x5YCy
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (
-                                      amonttem.toLocaleString("en-US") +
-                                      " تومان"
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                          </div>
-                        </Boxselect3>
-                      );
-                    })();
-                  })}
-                </Stack__>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
-                <Button
-                  className={classNames("__wab_instance", sty.button__dLo8Z)}
-                  color={"softGreen"}
-                  isDisabled={(() => {
-                    try {
-                      return $state.input.value.length < 5;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateAmount"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["amount"]
-                            },
-                            operation: 0,
-                            value: parseInt($state.input.value)
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateAmount"] != null &&
-                      typeof $steps["updateAmount"] === "object" &&
-                      typeof $steps["updateAmount"].then === "function"
-                    ) {
-                      $steps["updateAmount"] = await $steps["updateAmount"];
-                    }
-
-                    $steps["invokeGlobalAction"] =
-                      $state.amount < 10000
+                      $steps["updateAmount"] = true
                         ? (() => {
                             const actionArgs = {
-                              args: [
-                                "error",
-                                "\u0645\u0628\u0644\u063a \u0646\u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u06a9\u0645\u062a\u0631 \u0627\u0632 10000 \u062a\u0648\u0645\u0627\u0646 \u0628\u0627\u0634\u062f.",
-                                "top-left"
-                              ]
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["amount"]
+                              },
+                              operation: 0,
+                              value: parseInt($state.input.value)
                             };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
-                    }
-                  }}
+                      if (
+                        $steps["updateAmount"] != null &&
+                        typeof $steps["updateAmount"] === "object" &&
+                        typeof $steps["updateAmount"].then === "function"
+                      ) {
+                        $steps["updateAmount"] = await $steps["updateAmount"];
+                      }
+
+                      $steps["invokeGlobalAction"] =
+                        $state.amount < 10000
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u0645\u0628\u0644\u063a \u0646\u0645\u06cc \u062a\u0648\u0627\u0646\u062f \u06a9\u0645\u062a\u0631 \u0627\u0632 10000 \u062a\u0648\u0645\u0627\u0646 \u0628\u0627\u0634\u062f.",
+                                  "top-left"
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__bAnCr
+                      )}
+                    >
+                      {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                    </div>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </AntdModal>
+          <AntdModal
+            data-plasmic-name={"modal4"}
+            data-plasmic-override={overrides.modal4}
+            className={classNames("__wab_instance", sty.modal4)}
+            closeButtonClassName={classNames({
+              [sty["pcls_ggHesJfKsv5Q"]]: true
+            })}
+            defaultStylesClassName={classNames(
+              projectcss.root_reset,
+              projectcss.plasmic_default_styles,
+              projectcss.plasmic_mixins,
+              projectcss.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens
+            )}
+            hideFooter={true}
+            modalContentClassName={classNames({
+              [sty["pcls_J3G6wpZoWVJz"]]: hasVariant(
+                globalVariants,
+                "screen",
+                "mobileOnly"
+              ),
+              [sty["pcls_TE5Rr0ilKhIV"]]: true
+            })}
+            modalScopeClassName={sty["modal4__modal"]}
+            onOpenChange={generateStateOnChangeProp($state, ["modal4", "open"])}
+            open={generateStateValueProp($state, ["modal4", "open"])}
+            title={null}
+            trigger={null}
+            width={
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? "100vw"
+                : "100vw"
+            }
+            wrapClassName={classNames({ [sty["pcls_Asi2IHjdY8QC"]]: true })}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__pbRP)}>
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"wallet4"}
+                data-plasmic-override={overrides.wallet4}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.wallet4)}
+              >
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox___1RvqA)}
                 >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__bAnCr
+                      sty.text__d5Frl
                     )}
                   >
-                    {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                    {
+                      "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
+                    }
                   </div>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </AntdModal>
-        <AntdModal
-          data-plasmic-name={"modal4"}
-          data-plasmic-override={overrides.modal4}
-          className={classNames("__wab_instance", sty.modal4)}
-          closeButtonClassName={classNames({
-            [sty["pcls_ggHesJfKsv5Q"]]: true
-          })}
-          defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens
-          )}
-          hideFooter={true}
-          modalContentClassName={classNames({
-            [sty["pcls_J3G6wpZoWVJz"]]: hasVariant(
-              globalVariants,
-              "screen",
-              "mobileOnly"
-            ),
-            [sty["pcls_TE5Rr0ilKhIV"]]: true
-          })}
-          modalScopeClassName={sty["modal4__modal"]}
-          onOpenChange={generateStateOnChangeProp($state, ["modal4", "open"])}
-          open={generateStateValueProp($state, ["modal4", "open"])}
-          title={null}
-          trigger={null}
-          width={
-            hasVariant(globalVariants, "screen", "mobileOnly")
-              ? "100vw"
-              : "100vw"
-          }
-          wrapClassName={classNames({ [sty["pcls_Asi2IHjdY8QC"]]: true })}
-        >
-          <div className={classNames(projectcss.all, sty.freeBox__pbRP)}>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"wallet4"}
-              data-plasmic-override={overrides.wallet4}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.wallet4)}
-            >
+                </Stack__>
+              </Stack__>
               <Stack__
                 as={"div"}
                 hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___1RvqA)}
+                className={classNames(projectcss.all, sty.freeBox___0PStK)}
               >
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__d5Frl
+                    sty.text__eqTw7
                   )}
                 >
                   {
-                    "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
+                    "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0627\u0631\u0628\u0631\u06cc"
                   }
                 </div>
+                <div className={classNames(projectcss.all, sty.freeBox__jg6Xi)}>
+                  <Icon30Icon
+                    className={classNames(projectcss.all, sty.svg__obH5Q)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"input3"}
+                    data-plasmic-override={overrides.input3}
+                    className={classNames("__wab_instance", sty.input3)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "input3",
+                      "value"
+                    ])}
+                    placeholder={"\u0646\u0627\u0645"}
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input3", "value"])}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__juC9Q)}>
+                  <Icon30Icon
+                    className={classNames(projectcss.all, sty.svg__is7Qi)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"input4"}
+                    data-plasmic-override={overrides.input4}
+                    className={classNames("__wab_instance", sty.input4)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "input4",
+                      "value"
+                    ])}
+                    placeholder={
+                      "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
+                    }
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input4", "value"])}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__k4Ut)}>
+                  <Icon30Icon
+                    className={classNames(projectcss.all, sty.svg___9VV6)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"input7"}
+                    data-plasmic-override={overrides.input7}
+                    className={classNames("__wab_instance", sty.input7)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "input7",
+                      "value"
+                    ])}
+                    placeholder={"\u0646\u0627\u0645 \u067e\u062f\u0631"}
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input7", "value"])}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__zbVyW)}>
+                  <Icon28Icon
+                    className={classNames(projectcss.all, sty.svg__wCJu8)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"input5"}
+                    data-plasmic-override={overrides.input5}
+                    className={classNames("__wab_instance", sty.input5)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "input5",
+                      "value"
+                    ])}
+                    placeholder={
+                      "\u0634\u0647\u0631 \u0645\u062d\u0644 \u062a\u0648\u0644\u062f"
+                    }
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input5", "value"])}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__moe5N)}>
+                  <Icon29Icon
+                    className={classNames(projectcss.all, sty.svg__dCBJ)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"input6"}
+                    data-plasmic-override={overrides.input6}
+                    className={classNames("__wab_instance", sty.input6)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "input6",
+                      "value"
+                    ])}
+                    placeholder={" \u0622\u062f\u0631\u0633"}
+                    type={"text"}
+                    value={generateStateValueProp($state, ["input6", "value"])}
+                  />
+                </div>
+                <Button
+                  className={classNames("__wab_instance", sty.button___6Bmc1)}
+                  color={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "green"
+                      : "green"
+                  }
+                >
+                  {
+                    "\u062b\u0628\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
+                  }
+                </Button>
               </Stack__>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___0PStK)}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__eqTw7
-                )}
-              >
-                {
-                  "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0627\u0631\u0628\u0631\u06cc"
-                }
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__jg6Xi)}>
-                <Icon30Icon
-                  className={classNames(projectcss.all, sty.svg__obH5Q)}
-                  role={"img"}
-                />
-
-                <Input
-                  data-plasmic-name={"input3"}
-                  data-plasmic-override={overrides.input3}
-                  className={classNames("__wab_instance", sty.input3)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "input3",
-                    "value"
-                  ])}
-                  placeholder={"\u0646\u0627\u0645"}
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input3", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__juC9Q)}>
-                <Icon30Icon
-                  className={classNames(projectcss.all, sty.svg__is7Qi)}
-                  role={"img"}
-                />
-
-                <Input
-                  data-plasmic-name={"input4"}
-                  data-plasmic-override={overrides.input4}
-                  className={classNames("__wab_instance", sty.input4)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "input4",
-                    "value"
-                  ])}
-                  placeholder={
-                    "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
-                  }
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input4", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__k4Ut)}>
-                <Icon30Icon
-                  className={classNames(projectcss.all, sty.svg___9VV6)}
-                  role={"img"}
-                />
-
-                <Input
-                  data-plasmic-name={"input7"}
-                  data-plasmic-override={overrides.input7}
-                  className={classNames("__wab_instance", sty.input7)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "input7",
-                    "value"
-                  ])}
-                  placeholder={"\u0646\u0627\u0645 \u067e\u062f\u0631"}
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input7", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__zbVyW)}>
-                <Icon28Icon
-                  className={classNames(projectcss.all, sty.svg__wCJu8)}
-                  role={"img"}
-                />
-
-                <Input
-                  data-plasmic-name={"input5"}
-                  data-plasmic-override={overrides.input5}
-                  className={classNames("__wab_instance", sty.input5)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "input5",
-                    "value"
-                  ])}
-                  placeholder={
-                    "\u0634\u0647\u0631 \u0645\u062d\u0644 \u062a\u0648\u0644\u062f"
-                  }
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input5", "value"])}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__moe5N)}>
-                <Icon29Icon
-                  className={classNames(projectcss.all, sty.svg__dCBJ)}
-                  role={"img"}
-                />
-
-                <Input
-                  data-plasmic-name={"input6"}
-                  data-plasmic-override={overrides.input6}
-                  className={classNames("__wab_instance", sty.input6)}
-                  onChange={generateStateOnChangeProp($state, [
-                    "input6",
-                    "value"
-                  ])}
-                  placeholder={" \u0622\u062f\u0631\u0633"}
-                  type={"text"}
-                  value={generateStateValueProp($state, ["input6", "value"])}
-                />
-              </div>
-              <Button
-                className={classNames("__wab_instance", sty.button___6Bmc1)}
-                color={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "softGreen"
-                    : "green"
-                }
-              >
-                {
-                  "\u062b\u0628\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
-                }
-              </Button>
-            </Stack__>
-          </div>
-        </AntdModal>
-        {(hasVariant(globalVariants, "screen", "mobileOnly") ? true : false) ? (
+            </div>
+          </AntdModal>
           <AntdModal
             data-plasmic-name={"modal2"}
             data-plasmic-override={overrides.modal2}
@@ -2565,43 +2591,192 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </div>
           </AntdModal>
-        ) : null}
-        <AntdDrawer
-          data-plasmic-name={"drawer"}
-          data-plasmic-override={overrides.drawer}
-          className={classNames("__wab_instance", sty.drawer)}
-          defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
-            projectcss.plasmic_tokens,
-            plasmic_antd_5_hostless_css.plasmic_tokens,
-            plasmic_plasmic_rich_components_css.plasmic_tokens
-          )}
-          drawerBodyClassName={classNames({ [sty["pcls_3zSGqMOZZ2gT"]]: true })}
-          drawerFooterClassName={classNames({
-            [sty["pcls_DRqlhUfXqvFX"]]: true
-          })}
-          drawerHeaderClassName={classNames({
-            [sty["pcls_TO365Mb6nbPX"]]: true
-          })}
-          drawerScopeClassName={sty["drawer__drawer"]}
-          drawerTitleClassName={classNames({
-            [sty["pcls_XeVhhLgs-RMu"]]: true
-          })}
-          onOpenChange={generateStateOnChangeProp($state, ["drawer", "open"])}
-          open={generateStateValueProp($state, ["drawer", "open"])}
-          title={
-            <React.Fragment>
-              <BabarkatlogoCopy2SvgIcon
-                className={classNames(projectcss.all, sty.svg__mbRct)}
-                role={"img"}
-              />
+          <AntdDrawer
+            data-plasmic-name={"drawer"}
+            data-plasmic-override={overrides.drawer}
+            className={classNames("__wab_instance", sty.drawer)}
+            defaultStylesClassName={classNames(
+              projectcss.root_reset,
+              projectcss.plasmic_default_styles,
+              projectcss.plasmic_mixins,
+              projectcss.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens
+            )}
+            drawerBodyClassName={classNames({
+              [sty["pcls_3zSGqMOZZ2gT"]]: true
+            })}
+            drawerFooterClassName={classNames({
+              [sty["pcls_DRqlhUfXqvFX"]]: true
+            })}
+            drawerHeaderClassName={classNames({
+              [sty["pcls_TO365Mb6nbPX"]]: true
+            })}
+            drawerScopeClassName={sty["drawer__drawer"]}
+            drawerTitleClassName={classNames({
+              [sty["pcls_XeVhhLgs-RMu"]]: true
+            })}
+            onOpenChange={generateStateOnChangeProp($state, ["drawer", "open"])}
+            open={generateStateValueProp($state, ["drawer", "open"])}
+            title={
+              <React.Fragment>
+                <BabarkatlogoCopy2SvgIcon
+                  className={classNames(projectcss.all, sty.svg__mbRct)}
+                  role={"img"}
+                />
 
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox___64PnC)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateDrawerOpen"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["drawer", "open"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateDrawerOpen"] != null &&
+                      typeof $steps["updateDrawerOpen"] === "object" &&
+                      typeof $steps["updateDrawerOpen"].then === "function"
+                    ) {
+                      $steps["updateDrawerOpen"] = await $steps[
+                        "updateDrawerOpen"
+                      ];
+                    }
+
+                    $steps["updateModal4Open"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal4", "open"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateModal4Open"] != null &&
+                      typeof $steps["updateModal4Open"] === "object" &&
+                      typeof $steps["updateModal4Open"].then === "function"
+                    ) {
+                      $steps["updateModal4Open"] = await $steps[
+                        "updateModal4Open"
+                      ];
+                    }
+                  }}
+                >
+                  <GroupSvgIcon
+                    className={classNames(projectcss.all, sty.svg__ac4Pg)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__nPbo)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__u12L5
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.userbabarcat.last_name;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "kkkkkk";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gTdve
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.userbabarcat.mobile;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "09228951264";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </div>
+                  <Icon10Icon
+                    className={classNames(projectcss.all, sty.svg__geqy4)}
+                    role={"img"}
+                  />
+                </Stack__>
+              </React.Fragment>
+            }
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__ldQwx)}
+            >
               <Stack__
                 as={"div"}
                 hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___64PnC)}
+                className={classNames(projectcss.all, sty.freeBox__blzH)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2641,12 +2816,12 @@ function PlasmicHomepage__RenderFunc(props: {
                     ];
                   }
 
-                  $steps["updateModal4Open"] = true
+                  $steps["updateModal3Open"] = true
                     ? (() => {
                         const actionArgs = {
                           variable: {
                             objRoot: $state,
-                            variablePath: ["modal4", "open"]
+                            variablePath: ["modal3", "open"]
                           },
                           operation: 0,
                           value: true
@@ -2668,183 +2843,42 @@ function PlasmicHomepage__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["updateModal4Open"] != null &&
-                    typeof $steps["updateModal4Open"] === "object" &&
-                    typeof $steps["updateModal4Open"].then === "function"
+                    $steps["updateModal3Open"] != null &&
+                    typeof $steps["updateModal3Open"] === "object" &&
+                    typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal4Open"] = await $steps[
-                      "updateModal4Open"
+                    $steps["updateModal3Open"] = await $steps[
+                      "updateModal3Open"
                     ];
                   }
                 }}
               >
-                <GroupSvgIcon
-                  className={classNames(projectcss.all, sty.svg__ac4Pg)}
+                <Icon24Icon
+                  className={classNames(projectcss.all, sty.svg__nc4Db)}
                   role={"img"}
                 />
 
-                <div className={classNames(projectcss.all, sty.freeBox__nPbo)}>
+                <div className={classNames(projectcss.all, sty.freeBox__pqr0C)}>
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__u12L5
+                      sty.text__xiEty
                     )}
                   >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.userbabarcat.last_name;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "kkkkkk";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gTdve
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.userbabarcat.mobile;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "09228951264";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
+                    {
+                      "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
+                    }
                   </div>
                 </div>
                 <Icon10Icon
-                  className={classNames(projectcss.all, sty.svg__geqy4)}
+                  className={classNames(projectcss.all, sty.svg__ushXm)}
                   role={"img"}
                 />
               </Stack__>
-            </React.Fragment>
-          }
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__ldQwx)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__blzH)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateDrawerOpen"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["drawer", "open"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateDrawerOpen"] != null &&
-                  typeof $steps["updateDrawerOpen"] === "object" &&
-                  typeof $steps["updateDrawerOpen"].then === "function"
-                ) {
-                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-                }
-
-                $steps["updateModal3Open"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["modal3", "open"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateModal3Open"] != null &&
-                  typeof $steps["updateModal3Open"] === "object" &&
-                  typeof $steps["updateModal3Open"].then === "function"
-                ) {
-                  $steps["updateModal3Open"] = await $steps["updateModal3Open"];
-                }
-              }}
-            >
-              <Icon24Icon
-                className={classNames(projectcss.all, sty.svg__nc4Db)}
-                role={"img"}
-              />
-
-              <div className={classNames(projectcss.all, sty.freeBox__pqr0C)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__xiEty
-                  )}
-                >
-                  {
-                    "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
-                  }
-                </div>
-              </div>
-              <Icon10Icon
-                className={classNames(projectcss.all, sty.svg__ushXm)}
-                role={"img"}
-              />
             </Stack__>
-          </Stack__>
-        </AntdDrawer>
+          </AntdDrawer>
+        </div>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;

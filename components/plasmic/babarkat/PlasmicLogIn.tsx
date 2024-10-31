@@ -1817,6 +1817,30 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["runCode"] = await $steps["runCode"];
                       }
 
+                      $steps["invokeGlobalAction3"] =
+                        $steps.invokeGlobalAction2.data[0].success != true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f."
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction3"] != null &&
+                        typeof $steps["invokeGlobalAction3"] === "object" &&
+                        typeof $steps["invokeGlobalAction3"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction3"] = await $steps[
+                          "invokeGlobalAction3"
+                        ];
+                      }
+
                       $steps["goToHomepage"] =
                         $steps.invokeGlobalAction2.data[0].success == true
                           ? (() => {
