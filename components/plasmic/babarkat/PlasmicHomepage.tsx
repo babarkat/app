@@ -2602,6 +2602,81 @@ function PlasmicHomepage__RenderFunc(props: {
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___64PnC)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateDrawerOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drawer", "open"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateDrawerOpen"] != null &&
+                    typeof $steps["updateDrawerOpen"] === "object" &&
+                    typeof $steps["updateDrawerOpen"].then === "function"
+                  ) {
+                    $steps["updateDrawerOpen"] = await $steps[
+                      "updateDrawerOpen"
+                    ];
+                  }
+
+                  $steps["updateModal4Open"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["modal4", "open"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal4Open"] != null &&
+                    typeof $steps["updateModal4Open"] === "object" &&
+                    typeof $steps["updateModal4Open"].then === "function"
+                  ) {
+                    $steps["updateModal4Open"] = await $steps[
+                      "updateModal4Open"
+                    ];
+                  }
+                }}
               >
                 <GroupSvgIcon
                   className={classNames(projectcss.all, sty.svg__ac4Pg)}
