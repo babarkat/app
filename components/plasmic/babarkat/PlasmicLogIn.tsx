@@ -1303,7 +1303,7 @@ function PlasmicLogIn__RenderFunc(props: {
                               objRoot: $state,
                               variablePath: ["loadedbtn"]
                             },
-                            operation: 0,
+                            operation: 4,
                             value: true
                           };
                           return (({
@@ -1317,8 +1317,9 @@ function PlasmicLogIn__RenderFunc(props: {
                             }
                             const { objRoot, variablePath } = variable;
 
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
+                            const oldValue = $stateGet(objRoot, variablePath);
+                            $stateSet(objRoot, variablePath, !oldValue);
+                            return !oldValue;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
@@ -1462,42 +1463,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateLoadedbtn2"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["loadedbtn"]
-                            },
-                            operation: 0,
-                            value: false
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoadedbtn2"] != null &&
-                      typeof $steps["updateLoadedbtn2"] === "object" &&
-                      typeof $steps["updateLoadedbtn2"].then === "function"
-                    ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
-                    }
-
                     $steps["updateSlids"] =
                       $steps.invokeGlobalAction2.data[0].success == true
                         ? (() => {
@@ -1522,6 +1487,43 @@ function PlasmicLogIn__RenderFunc(props: {
                       typeof $steps["updateSlids"].then === "function"
                     ) {
                       $steps["updateSlids"] = await $steps["updateSlids"];
+                    }
+
+                    $steps["updateLoadedbtn2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 4,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            const oldValue = $stateGet(objRoot, variablePath);
+                            $stateSet(objRoot, variablePath, !oldValue);
+                            return !oldValue;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn2"] != null &&
+                      typeof $steps["updateLoadedbtn2"] === "object" &&
+                      typeof $steps["updateLoadedbtn2"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn2"] = await $steps[
+                        "updateLoadedbtn2"
+                      ];
                     }
                   }}
                   showEndIcon={(() => {

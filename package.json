@@ -24,6 +24,7 @@
     "@plasmicpkgs/plasmic-query": "^0.0.225",
     "@plasmicpkgs/plasmic-rich-components": "^1.0.197",
     "@plasmicpkgs/plasmic-tabs": "^0.0.48",
+    "@plasmicpkgs/radix-ui": "^0.0.64",
     "@plasmicpkgs/react-awesome-reveal": "^3.8.209",
     "@plasmicpkgs/react-slick": "^0.0.228",
     "@radix-ui/react-popover": "^1.0.7",

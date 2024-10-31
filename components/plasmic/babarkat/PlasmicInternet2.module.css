@@ -57,6 +57,7 @@
   z-index: 1;
   right: 0;
   bottom: auto;
+  justify-self: flex-start;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 10px 24px;

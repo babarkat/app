@@ -2962,7 +2962,8 @@ function PlasmicCharging__RenderFunc(props: {
                     }
 
                     $steps["invokeGlobalAction3"] =
-                      $state.infopardakt.code != 1
+                      $state.infopardakt.code != 1 &&
+                      $state.infopardakt.code != undefined
                         ? (() => {
                             const actionArgs = {
                               args: [
