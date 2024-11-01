@@ -929,7 +929,7 @@
   display: none;
 }
 .img__q0Kz3 {
-  object-fit: cover;
+  object-fit: contain;
   max-width: 100%;
   position: absolute;
   left: auto;
@@ -940,7 +940,7 @@
   flex-shrink: 0;
 }
 .img__q0Kz3 > picture > img {
-  object-fit: cover;
+  object-fit: contain;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;
@@ -1841,32 +1841,4 @@
   object-fit: cover;
   width: auto;
   height: 1em;
-}
-.img__qoPj0 {
-  object-fit: cover;
-  max-width: 100%;
-}
-.img__qoPj0 > picture > img {
-  object-fit: cover;
-}
-.img___9Z8Gj {
-  object-fit: cover;
-  max-width: 100%;
-}
-.img___9Z8Gj > picture > img {
-  object-fit: cover;
-}
-.img__fCthX {
-  object-fit: cover;
-  max-width: 100%;
-}
-.img__fCthX > picture > img {
-  object-fit: cover;
-}
-.img___0PpwH {
-  object-fit: cover;
-  max-width: 100%;
-}
-.img___0PpwH > picture > img {
-  object-fit: cover;
 }

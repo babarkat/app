@@ -207,7 +207,8 @@ function PlasmicCharging__RenderFunc(props: {
             nameop: "Irancell",
             description:
               "\u0634\u0627\u0631\u0698 \u0627\u06cc\u0631\u0627\u0646\u0633\u0644",
-            logoUrl: "/9f96bfd06fa8ac2ff5b2b43ae1a6b8ee.svg",
+            logoUrl:
+              "https://app.babarkat.com/plasmic/babarkat/images/image19.svg",
             codes: [
               "0900",
               "0901",
@@ -243,7 +244,7 @@ function PlasmicCharging__RenderFunc(props: {
             description:
               "\u0634\u0627\u0631\u0698 \u0647\u0645\u0631\u0627\u0647 \u0627\u0648\u0644",
             logoUrl:
-              "https://cdn.worldvectorlogo.com/logos/mci-hamrahe-aval-.svg",
+              "https://app.babarkat.com/plasmic/babarkat/images/image20.svg",
             codes: [
               "0910",
               "0911",
@@ -278,7 +279,8 @@ function PlasmicCharging__RenderFunc(props: {
             nameop: "RighTel ",
             description:
               "\u0634\u0627\u0631\u0698 \u0631\u0627\u06cc\u062a\u0644",
-            logoUrl: "https://static.cdnlogo.com/logos/r/66/rightel.svg",
+            logoUrl:
+              "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
             codes: ["0920", "0921", "0922"],
             chargeRange: { min: 1000, max: 150000, customAmounts: true },
             services: [
@@ -300,7 +302,7 @@ function PlasmicCharging__RenderFunc(props: {
             description:
               "\u0634\u0627\u0631\u0698 \u0634\u0627\u062a\u0644 \u0645\u0648\u0628\u0627\u06cc\u0644",
             logoUrl:
-              "https://upload.wikimedia.org/wikipedia/commons/b/b9/Shatel_Logo.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/image21.svg",
             codes: ["0998", "0999"],
             services: [
               {
@@ -4251,77 +4253,6 @@ function PlasmicCharging__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
-          <PlasmicImg__
-            alt={""}
-            className={classNames(sty.img__qoPj0)}
-            displayHeight={"auto"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"100%"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"auto"}
-            loading={"lazy"}
-            src={{
-              src: "/plasmic/babarkat/images/image19.svg",
-              fullWidth: 781.31,
-              fullHeight: 336.87,
-              aspectRatio: 2.319322
-            }}
-          />
-
-          <PlasmicImg__
-            alt={""}
-            className={classNames(sty.img___9Z8Gj)}
-            displayHeight={"auto"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"100%"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"auto"}
-            loading={"lazy"}
-            src={{
-              src: "/plasmic/babarkat/images/image20.svg",
-              fullWidth: 715.83,
-              fullHeight: 758.36,
-              aspectRatio: 0.943918
-            }}
-          />
-
-          <PlasmicImg__
-            alt={""}
-            className={classNames(sty.img__fCthX)}
-            displayHeight={"auto"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"100%"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"auto"}
-            loading={"lazy"}
-            src={{
-              src: "/plasmic/babarkat/images/image21.svg",
-              fullWidth: 649.38,
-              fullHeight: 747.42,
-              aspectRatio: 0.868829
-            }}
-          />
-
-          <PlasmicImg__
-            alt={""}
-            className={classNames(sty.img___0PpwH)}
-            displayHeight={"auto"}
-            displayMaxHeight={"none"}
-            displayMaxWidth={"100%"}
-            displayMinHeight={"0"}
-            displayMinWidth={"0"}
-            displayWidth={"auto"}
-            loading={"lazy"}
-            src={{
-              src: "/plasmic/babarkat/images/image23.svg",
-              fullWidth: 523.91,
-              fullHeight: 731.43,
-              aspectRatio: 0.716282
-            }}
-          />
         </div>
       </div>
     </React.Fragment>
