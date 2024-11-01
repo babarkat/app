@@ -151,7 +151,7 @@
   flex-direction: column;
   position: relative;
   width: 100%;
-  height: 90vh;
+  height: 100%;
   max-width: 100%;
   background: none;
   margin-top: 0px;
@@ -159,13 +159,15 @@
   margin-bottom: 0px;
   justify-self: flex-start;
   min-width: 0;
-  padding: 5px 0px 0px;
+  min-height: 0;
+  padding: 0px;
 }
 .wallet > :global(.__wab_flex-container) {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   min-width: 0;
+  min-height: 0;
   margin-left: calc(0px - 0px);
   width: calc(100% + 0px);
   margin-top: calc(0px - 30px);
@@ -307,7 +309,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px 8px 8px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___7P6N7 {
@@ -323,7 +325,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px 8px 8px;
 }
 .freeBox__dI8Fs > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -464,6 +466,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  overflow: auto;
   min-width: 0;
   padding: 8px;
 }

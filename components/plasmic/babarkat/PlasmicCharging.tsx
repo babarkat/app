@@ -1864,7 +1864,7 @@ function PlasmicCharging__RenderFunc(props: {
                           try {
                             return (() => {
                               if ($state.operatorselect == -1)
-                                return "https://www.svgrepo.com/show/394286/mobile-alt.svg";
+                                return "https://www.svgrepo.com/show/474990/sim-card.svg";
                               else
                                 return $state.operators2[$state.operatorselect]
                                   .logoUrl;

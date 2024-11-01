@@ -1892,6 +1892,11 @@
           "id": "Sq_8w1lGXAA1",
           "name": "image 23",
           "filePath": "../public/plasmic/babarkat/images/image23.svg"
+        },
+        {
+          "id": "TyefqlqJVNPU",
+          "name": "mobile-alt-svgrepo-com.svg",
+          "filePath": "../public/plasmic/babarkat/images/mobileAltSvgrepoComSvg.svg"
         }
       ],
       "indirect": false,
