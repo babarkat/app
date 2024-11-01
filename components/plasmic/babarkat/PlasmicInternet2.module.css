@@ -65,6 +65,12 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .header {
     height: 50px;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
   }
 }
 .svg__fwxpg {
@@ -127,12 +133,18 @@
   right: 0;
   z-index: 1;
   min-width: 0;
-  padding: 8px;
+  padding: 24px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ahFCl {
     background: #1e2c39;
-    padding: 24px;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
+    padding: 20px;
   }
 }
 .freeBoxsteps2_step2__ahFCloGK8 {
@@ -1034,28 +1046,39 @@
     font-weight: 700;
   }
 }
+.freeBox__totPe {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 10px;
+  min-width: 0;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__totPe {
+    z-index: 5;
+  }
+}
 .fragmentInput:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
   object-fit: cover;
   background: #ffffff;
   text-align: right;
-  color: var(--token-RvPI6LyeIPmd);
+  color: var(--token-WxvvgatuPYoJ);
   font-family: "Vazirmatn", sans-serif;
-  padding-right: 10px;
+  padding-right: 50px;
   padding-left: 50px;
-  margin-top: 10px;
   font-size: 16px;
   height: 50px;
   min-width: 0;
-  flex-shrink: 0;
   border-radius: 7px;
   border: 1px solid var(--token-jgohepLVeKvh);
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .fragmentInput:global(.__wab_instance) {
-    z-index: 5;
-  }
 }
 .fragmentInputsteps2_step2:global(.__wab_instance) {
   display: none;
@@ -1063,8 +1086,21 @@
 .fragmentInputsteps2_step3:global(.__wab_instance) {
   display: none;
 }
+.img__bk4Np {
+  object-fit: contain;
+  max-width: 100%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  left: auto;
+  top: 8px;
+  right: 8px;
+  flex-shrink: 0;
+}
+.img__bk4Np > picture > img {
+  object-fit: contain;
+}
 .freeBox___3FOjd {
-  display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
@@ -1074,6 +1110,7 @@
   max-width: 100%;
   margin-top: 0px;
   min-width: 0;
+  display: none;
   padding: 8px;
 }
 .freeBoxsteps2_step2___3FOjdoGK8 {

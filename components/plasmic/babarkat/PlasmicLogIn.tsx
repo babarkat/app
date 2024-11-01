@@ -2368,27 +2368,6 @@ function PlasmicLogIn__RenderFunc(props: {
               )
             })}
           >
-            <BabarkatlogoCopy2SvgIcon
-              className={classNames(projectcss.all, sty.svg__dbC0R, {
-                [sty.svgslids_unnamedVariant3__dbC0RI1KiV]: hasVariant(
-                  $state,
-                  "slids",
-                  "unnamedVariant3"
-                ),
-                [sty.svgslids_unnamedVariant__dbC0RMe9Ia]: hasVariant(
-                  $state,
-                  "slids",
-                  "unnamedVariant"
-                ),
-                [sty.svgunnamedVariant__dbC0RDv9B5]: hasVariant(
-                  $state,
-                  "unnamedVariant",
-                  "unnamedVariant"
-                )
-              })}
-              role={"img"}
-            />
-
             <div className={classNames(projectcss.all, sty.freeBox__dO1PX)}>
               <PlasmicImg__
                 alt={""}

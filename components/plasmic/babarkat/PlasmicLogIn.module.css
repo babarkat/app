@@ -1114,33 +1114,6 @@
     height: 100vh;
   }
 }
-.svg__dbC0R {
-  object-fit: cover;
-  max-width: 100%;
-  width: 30%;
-  height: 100%;
-  max-height: 100%;
-  min-height: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__dbC0R {
-    width: auto;
-    height: 250px;
-    flex-shrink: 0;
-  }
-}
-.svgslids_unnamedVariant__dbC0RMe9Ia {
-  height: 400px;
-  width: 400px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svgslids_unnamedVariant__dbC0RMe9Ia {
-    width: 250px;
-    height: 250px;
-    flex-shrink: 0;
-  }
-}
 .freeBox__dO1PX {
   display: flex;
   flex-direction: column;

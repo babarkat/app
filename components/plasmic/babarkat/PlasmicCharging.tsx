@@ -88,7 +88,6 @@ import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; 
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
-import Icon31Icon from "./icons/PlasmicIcon__Icon31"; // plasmic-import: ruzJ-DuAxbGs/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -1859,25 +1858,47 @@ function PlasmicCharging__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={"35px"}
                   loading={"lazy"}
-                  src={(() => {
-                    try {
-                      return (() => {
-                        if ($state.operatorselect == -1)
-                          return "https://www.svgrepo.com/show/226306/mobile-phone-touch-screen.svg";
-                        else
-                          return $state.operators2[$state.operatorselect]
-                            .logoUrl;
-                      })();
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return undefined;
-                      }
-                      throw e;
-                    }
-                  })()}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return (() => {
+                              if ($state.operatorselect == -1)
+                                return "https://www.svgrepo.com/show/394286/mobile-alt.svg";
+                              else
+                                return $state.operators2[$state.operatorselect]
+                                  .logoUrl;
+                            })();
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return (() => {
+                              if ($state.operatorselect == -1)
+                                return "https://www.svgrepo.com/show/474990/sim-card.svg";
+                              else
+                                return $state.operators2[$state.operatorselect]
+                                  .logoUrl;
+                            })();
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
                 />
               </div>
               {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
@@ -4254,10 +4275,6 @@ function PlasmicCharging__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
-          <Icon31Icon
-            className={classNames(projectcss.all, sty.svg__a465X)}
-            role={"img"}
-          />
         </div>
       </div>
     </React.Fragment>
