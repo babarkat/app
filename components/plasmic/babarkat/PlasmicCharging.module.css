@@ -73,9 +73,9 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__aEevq {
     background: #1e2c39;
-    right: 0px;
+    right: auto;
     bottom: 0;
-    left: auto;
+    left: 0px;
     width: 100%;
     grid-column-start: 1 !important;
     grid-column-end: -1 !important;
@@ -315,8 +315,8 @@
   .header {
     height: 50px;
     top: 0;
-    right: 0;
-    left: auto;
+    right: auto;
+    left: 0px;
     width: 100%;
     grid-column-start: 1 !important;
     grid-column-end: -1 !important;
