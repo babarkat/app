@@ -88,6 +88,7 @@ import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; 
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon31Icon from "./icons/PlasmicIcon__Icon31"; // plasmic-import: ruzJ-DuAxbGs/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -4253,6 +4254,10 @@ function PlasmicCharging__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
+          <Icon31Icon
+            className={classNames(projectcss.all, sty.svg__a465X)}
+            role={"img"}
+          />
         </div>
       </div>
     </React.Fragment>

@@ -1842,3 +1842,10 @@
   width: auto;
   height: 1em;
 }
+.svg__a465X {
+  object-fit: cover;
+  max-width: 100%;
+  color: #2dc57b;
+  margin-right: 22px;
+  height: 1em;
+}
