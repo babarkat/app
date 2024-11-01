@@ -583,7 +583,8 @@ function PlasmicInternet2__RenderFunc(props: {
             data-plasmic-name={"header"}
             data-plasmic-override={overrides.header}
             className={classNames(projectcss.all, sty.header, {
-              [sty.headersteps2_step2]: hasVariant($state, "steps2", "step2")
+              [sty.headersteps2_step2]: hasVariant($state, "steps2", "step2"),
+              [sty.headersteps2_step3]: hasVariant($state, "steps2", "step3")
             })}
           >
             <PlasmicIcon__
@@ -1606,7 +1607,18 @@ function PlasmicInternet2__RenderFunc(props: {
 
                 <PlasmicImg__
                   alt={""}
-                  className={classNames(sty.img__bk4Np)}
+                  className={classNames(sty.img__bk4Np, {
+                    [sty.imgsteps2_step2__bk4NPoGK8]: hasVariant(
+                      $state,
+                      "steps2",
+                      "step2"
+                    ),
+                    [sty.imgsteps2_step3__bk4NpYl49R]: hasVariant(
+                      $state,
+                      "steps2",
+                      "step3"
+                    )
+                  })}
                   displayHeight={"35px"}
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -1792,7 +1804,13 @@ function PlasmicInternet2__RenderFunc(props: {
                       >
                         <PlasmicImg__
                           alt={""}
-                          className={classNames(sty.img__glec8)}
+                          className={classNames(sty.img__glec8, {
+                            [sty.imgsteps2_step2__glec8OGK8]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step2"
+                            )
+                          })}
                           displayHeight={
                             hasVariant(globalVariants, "screen", "mobileOnly")
                               ? "50px"
@@ -2340,7 +2358,14 @@ function PlasmicInternet2__RenderFunc(props: {
                                     >
                                       <PlasmicImg__
                                         alt={""}
-                                        className={classNames(sty.img__c8Rvt)}
+                                        className={classNames(sty.img__c8Rvt, {
+                                          [sty.imgsteps2_step2__c8RvtoGK8]:
+                                            hasVariant(
+                                              $state,
+                                              "steps2",
+                                              "step2"
+                                            )
+                                        })}
                                         displayHeight={"auto"}
                                         displayMaxHeight={"none"}
                                         displayMaxWidth={"100%"}

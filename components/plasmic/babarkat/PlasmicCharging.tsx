@@ -1211,6 +1211,11 @@ function PlasmicCharging__RenderFunc(props: {
             >
               <BabarkatlogoCopy2SvgIcon
                 className={classNames(projectcss.all, sty.svg__gsqLs, {
+                  [sty.svgstepscharg_step2__gsqLsTtIk]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step2"
+                  ),
                   [sty.svgstepscharg_step3__gsqLsWug5H]: hasVariant(
                     $state,
                     "stepscharg",
@@ -1850,7 +1855,18 @@ function PlasmicCharging__RenderFunc(props: {
 
                 <PlasmicImg__
                   alt={""}
-                  className={classNames(sty.img__q0Kz3)}
+                  className={classNames(sty.img__q0Kz3, {
+                    [sty.imgstepscharg_step2__q0Kz3TtIk]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
+                    [sty.imgstepscharg_step3__q0Kz3Wug5H]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                   displayHeight={"35px"}
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}

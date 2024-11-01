@@ -72,11 +72,13 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__aEevq {
-    background: none;
-    right: -8px;
+    background: #1e2c39;
+    right: 0;
     bottom: 0;
-    left: 0px;
-    width: auto;
+    left: 0;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
     padding: 20px;
     margin: 0px;
   }
@@ -312,9 +314,11 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .header {
     top: 0;
-    left: 0px;
-    right: -8px;
-    width: auto;
+    left: 0;
+    right: 0;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
   }
 }
 .svg___8DOmH {
@@ -951,6 +955,12 @@
 }
 .img__q0Kz3 > picture > img {
   object-fit: contain;
+}
+.imgstepscharg_step2__q0Kz3TtIk {
+  display: none !important;
+}
+.imgstepscharg_step3__q0Kz3Wug5H {
+  display: none !important;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;

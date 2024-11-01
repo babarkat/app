@@ -66,8 +66,8 @@
   .header {
     height: 50px;
     top: 0;
-    right: -8px;
-    left: 0px;
+    right: 0;
+    left: 0;
     width: 100%;
     grid-column-start: 1 !important;
     grid-column-end: -1 !important;
@@ -137,11 +137,13 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ahFCl {
-    background: none;
-    right: -8px;
+    background: #1e2c39;
+    right: 0;
     bottom: 0;
-    left: 0px;
-    width: auto;
+    left: 0;
+    width: 100%;
+    grid-column-start: 1 !important;
+    grid-column-end: -1 !important;
     padding: 20px;
   }
 }
@@ -1097,6 +1099,12 @@
 }
 .img__bk4Np > picture > img {
   object-fit: contain;
+}
+.imgsteps2_step2__bk4NPoGK8 {
+  display: none !important;
+}
+.imgsteps2_step3__bk4NpYl49R {
+  display: none !important;
 }
 .freeBox___3FOjd {
   flex-direction: column;

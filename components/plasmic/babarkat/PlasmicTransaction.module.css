@@ -203,7 +203,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .wallet > :global(.__wab_flex-container) {
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     margin-left: calc(0px - 0px);
     width: calc(100% + 0px);
     margin-top: calc(0px - 20px);
