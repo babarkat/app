@@ -888,6 +888,24 @@
     font-weight: 700;
   }
 }
+.freeBox__w3CZq {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 10px;
+  min-width: 0;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__w3CZq {
+    z-index: 5;
+  }
+}
 .fragmentInput:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
@@ -896,26 +914,33 @@
   text-align: right;
   color: var(--token-WxvvgatuPYoJ);
   font-family: "Vazirmatn", sans-serif;
-  padding-right: 10px;
+  padding-right: 50px;
   padding-left: 50px;
-  margin-top: 10px;
   font-size: 16px;
   height: 50px;
   min-width: 0;
-  flex-shrink: 0;
   border-radius: 7px;
   border: 1px solid var(--token-jgohepLVeKvh);
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .fragmentInput:global(.__wab_instance) {
-    z-index: 5;
-  }
 }
 .fragmentInputstepscharg_step2:global(.__wab_instance) {
   display: none;
 }
 .fragmentInputstepscharg_step3:global(.__wab_instance) {
   display: none;
+}
+.img__q0Kz3 {
+  object-fit: cover;
+  max-width: 100%;
+  position: absolute;
+  left: auto;
+  top: 8px;
+  width: 35px;
+  height: 35px;
+  right: 8px;
+  flex-shrink: 0;
+}
+.img__q0Kz3 > picture > img {
+  object-fit: cover;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;
@@ -941,7 +966,6 @@
   }
 }
 .freeBox__wxlSq {
-  display: flex;
   flex-direction: column;
   position: relative;
   align-items: center;
@@ -951,6 +975,7 @@
   max-width: 100%;
   margin-top: 0px;
   min-width: 0;
+  display: none;
   padding: 8px;
 }
 .freeBoxstepscharg_step2__wxlSqTtIk {
@@ -1816,4 +1841,32 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.img__qoPj0 {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img__qoPj0 > picture > img {
+  object-fit: cover;
+}
+.img___9Z8Gj {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img___9Z8Gj > picture > img {
+  object-fit: cover;
+}
+.img__fCthX {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img__fCthX > picture > img {
+  object-fit: cover;
+}
+.img___0PpwH {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img___0PpwH > picture > img {
+  object-fit: cover;
 }

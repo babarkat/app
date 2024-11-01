@@ -95,13 +95,13 @@ import sty from "./PlasmicTransaction.module.css"; // plasmic-import: Ic-wT0cLUq
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
-import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
-import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Setting5Icon from "./icons/PlasmicIcon__Setting5"; // plasmic-import: L7zh2uJLRuwn/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: DDtlhnj6MIF5/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon26Icon from "./icons/PlasmicIcon__Icon26"; // plasmic-import: bISqj4Aubh8D/icon
+import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
+import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 
 createPlasmicElementProxy;
 
@@ -123,11 +123,6 @@ export const PlasmicTransaction__ArgProps = new Array<ArgPropType>();
 export type PlasmicTransaction__OverridesType = {
   root?: Flex__<"div">;
   header?: Flex__<"div">;
-  footer?: Flex__<"div">;
-  snapp2?: Flex__<"div">;
-  vuesaxBoldHome?: Flex__<"div">;
-  charge2?: Flex__<"div">;
-  vuesaxBoldReceipt2?: Flex__<"div">;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
   tabsContainer?: Flex__<typeof TabsContainer>;
@@ -138,6 +133,11 @@ export type PlasmicTransaction__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   radioGroup2?: Flex__<typeof AntdRadioGroup>;
   radioGroup?: Flex__<typeof AntdRadioGroup>;
+  footer2?: Flex__<"div">;
+  snapp3?: Flex__<"div">;
+  vuesaxBoldHome2?: Flex__<"div">;
+  charge3?: Flex__<"div">;
+  vuesaxBoldReceipt3?: Flex__<"div">;
 };
 
 export interface DefaultTransactionProps {}
@@ -420,122 +420,6 @@ function PlasmicTransaction__RenderFunc(props: {
               className={classNames(projectcss.all, sty.svg__tugfH)}
               role={"img"}
             />
-          </div>
-          <div
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames(projectcss.all, sty.footer)}
-          >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"snapp2"}
-              data-plasmic-override={overrides.snapp2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.snapp2)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToHomepage"] = true
-                  ? (() => {
-                      const actionArgs = { destination: `/` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToHomepage"] != null &&
-                  typeof $steps["goToHomepage"] === "object" &&
-                  typeof $steps["goToHomepage"].then === "function"
-                ) {
-                  $steps["goToHomepage"] = await $steps["goToHomepage"];
-                }
-              }}
-            >
-              <div
-                data-plasmic-name={"vuesaxBoldHome"}
-                data-plasmic-override={overrides.vuesaxBoldHome}
-                className={classNames(projectcss.all, sty.vuesaxBoldHome)}
-              >
-                <HomeIcon
-                  className={classNames(projectcss.all, sty.svg__brF2)}
-                  role={"img"}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__mwKyd
-                )}
-              >
-                {"\u062e\u0627\u0646\u0647"}
-              </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"charge2"}
-              data-plasmic-override={overrides.charge2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.charge2)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["goToChargeStep1"] = true
-                  ? (() => {
-                      const actionArgs = { destination: `/charging` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToChargeStep1"] != null &&
-                  typeof $steps["goToChargeStep1"] === "object" &&
-                  typeof $steps["goToChargeStep1"].then === "function"
-                ) {
-                  $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-                }
-              }}
-            >
-              <div
-                data-plasmic-name={"vuesaxBoldReceipt2"}
-                data-plasmic-override={overrides.vuesaxBoldReceipt2}
-                className={classNames(projectcss.all, sty.vuesaxBoldReceipt2)}
-              >
-                <ReceiptIcon
-                  className={classNames(projectcss.all, sty.svg__nociW)}
-                  role={"img"}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__x5X3G
-                )}
-              >
-                {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-              </div>
-            </Stack__>
           </div>
           <Reveal
             data-plasmic-name={"reveal"}
@@ -3613,6 +3497,96 @@ function PlasmicTransaction__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
+          <div className={classNames(projectcss.all, sty.freeBox__goJzD)}>
+            <div
+              data-plasmic-name={"footer2"}
+              data-plasmic-override={overrides.footer2}
+              className={classNames(projectcss.all, sty.footer2)}
+            >
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"snapp3"}
+                data-plasmic-override={overrides.snapp3}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.snapp3)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToHomepage"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToHomepage"] != null &&
+                    typeof $steps["goToHomepage"] === "object" &&
+                    typeof $steps["goToHomepage"].then === "function"
+                  ) {
+                    $steps["goToHomepage"] = await $steps["goToHomepage"];
+                  }
+                }}
+              >
+                <div
+                  data-plasmic-name={"vuesaxBoldHome2"}
+                  data-plasmic-override={overrides.vuesaxBoldHome2}
+                  className={classNames(projectcss.all, sty.vuesaxBoldHome2)}
+                >
+                  <HomeIcon
+                    className={classNames(projectcss.all, sty.svg__uWyC)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8Ouys
+                  )}
+                >
+                  {"\u062e\u0627\u0646\u0647"}
+                </div>
+              </Stack__>
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"charge3"}
+                data-plasmic-override={overrides.charge3}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.charge3)}
+              >
+                <div
+                  data-plasmic-name={"vuesaxBoldReceipt3"}
+                  data-plasmic-override={overrides.vuesaxBoldReceipt3}
+                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt3)}
+                >
+                  <ReceiptIcon
+                    className={classNames(projectcss.all, sty.svg__tKvxl)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__h11E1
+                  )}
+                >
+                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+                </div>
+              </Stack__>
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
@@ -3623,11 +3597,6 @@ const PlasmicDescendants = {
   root: [
     "root",
     "header",
-    "footer",
-    "snapp2",
-    "vuesaxBoldHome",
-    "charge2",
-    "vuesaxBoldReceipt2",
     "reveal",
     "wallet",
     "tabsContainer",
@@ -3637,20 +3606,14 @@ const PlasmicDescendants = {
     "apiRequest",
     "modal2",
     "radioGroup2",
-    "radioGroup"
+    "radioGroup",
+    "footer2",
+    "snapp3",
+    "vuesaxBoldHome2",
+    "charge3",
+    "vuesaxBoldReceipt3"
   ],
   header: ["header"],
-  footer: [
-    "footer",
-    "snapp2",
-    "vuesaxBoldHome",
-    "charge2",
-    "vuesaxBoldReceipt2"
-  ],
-  snapp2: ["snapp2", "vuesaxBoldHome"],
-  vuesaxBoldHome: ["vuesaxBoldHome"],
-  charge2: ["charge2", "vuesaxBoldReceipt2"],
-  vuesaxBoldReceipt2: ["vuesaxBoldReceipt2"],
   reveal: ["reveal", "wallet", "tabsContainer", "tabUnderline"],
   wallet: ["wallet", "tabsContainer", "tabUnderline"],
   tabsContainer: ["tabsContainer", "tabUnderline"],
@@ -3660,7 +3623,18 @@ const PlasmicDescendants = {
   apiRequest: ["apiRequest"],
   modal2: ["modal2", "radioGroup2", "radioGroup"],
   radioGroup2: ["radioGroup2"],
-  radioGroup: ["radioGroup"]
+  radioGroup: ["radioGroup"],
+  footer2: [
+    "footer2",
+    "snapp3",
+    "vuesaxBoldHome2",
+    "charge3",
+    "vuesaxBoldReceipt3"
+  ],
+  snapp3: ["snapp3", "vuesaxBoldHome2"],
+  vuesaxBoldHome2: ["vuesaxBoldHome2"],
+  charge3: ["charge3", "vuesaxBoldReceipt3"],
+  vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3668,11 +3642,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   header: "div";
-  footer: "div";
-  snapp2: "div";
-  vuesaxBoldHome: "div";
-  charge2: "div";
-  vuesaxBoldReceipt2: "div";
   reveal: typeof Reveal;
   wallet: "div";
   tabsContainer: typeof TabsContainer;
@@ -3683,6 +3652,11 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   radioGroup2: typeof AntdRadioGroup;
   radioGroup: typeof AntdRadioGroup;
+  footer2: "div";
+  snapp3: "div";
+  vuesaxBoldHome2: "div";
+  charge3: "div";
+  vuesaxBoldReceipt3: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -3771,11 +3745,6 @@ export const PlasmicTransaction = Object.assign(
   {
     // Helper components rendering sub-elements
     header: makeNodeComponent("header"),
-    footer: makeNodeComponent("footer"),
-    snapp2: makeNodeComponent("snapp2"),
-    vuesaxBoldHome: makeNodeComponent("vuesaxBoldHome"),
-    charge2: makeNodeComponent("charge2"),
-    vuesaxBoldReceipt2: makeNodeComponent("vuesaxBoldReceipt2"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
     tabsContainer: makeNodeComponent("tabsContainer"),
@@ -3786,6 +3755,11 @@ export const PlasmicTransaction = Object.assign(
     modal2: makeNodeComponent("modal2"),
     radioGroup2: makeNodeComponent("radioGroup2"),
     radioGroup: makeNodeComponent("radioGroup"),
+    footer2: makeNodeComponent("footer2"),
+    snapp3: makeNodeComponent("snapp3"),
+    vuesaxBoldHome2: makeNodeComponent("vuesaxBoldHome2"),
+    charge3: makeNodeComponent("charge3"),
+    vuesaxBoldReceipt3: makeNodeComponent("vuesaxBoldReceipt3"),
 
     // Metadata about props expected for PlasmicTransaction
     internalVariantProps: PlasmicTransaction__VariantProps,

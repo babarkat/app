@@ -207,8 +207,7 @@ function PlasmicCharging__RenderFunc(props: {
             nameop: "Irancell",
             description:
               "\u0634\u0627\u0631\u0698 \u0627\u06cc\u0631\u0627\u0646\u0633\u0644",
-            logoUrl:
-              "https://logoyab.com/wp-content/uploads/2023/12/%D9%84%D9%88%DA%AF%D9%88-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%D8%B3%D9%84-1030x1030.png",
+            logoUrl: "/9f96bfd06fa8ac2ff5b2b43ae1a6b8ee.svg",
             codes: [
               "0900",
               "0901",
@@ -244,7 +243,7 @@ function PlasmicCharging__RenderFunc(props: {
             description:
               "\u0634\u0627\u0631\u0698 \u0647\u0645\u0631\u0627\u0647 \u0627\u0648\u0644",
             logoUrl:
-              "https://www.datistranslate.ir/wp-content/uploads/2015/11/oonternet-4878458011110.png",
+              "https://cdn.worldvectorlogo.com/logos/mci-hamrahe-aval-.svg",
             codes: [
               "0910",
               "0911",
@@ -279,8 +278,7 @@ function PlasmicCharging__RenderFunc(props: {
             nameop: "RighTel ",
             description:
               "\u0634\u0627\u0631\u0698 \u0631\u0627\u06cc\u062a\u0644",
-            logoUrl:
-              "https://karinosteel.com/wp-content/uploads/2024/09/Rightel_logo.png",
+            logoUrl: "https://static.cdnlogo.com/logos/r/66/rightel.svg",
             codes: ["0920", "0921", "0922"],
             chargeRange: { min: 1000, max: 150000, customAmounts: true },
             services: [
@@ -302,7 +300,7 @@ function PlasmicCharging__RenderFunc(props: {
             description:
               "\u0634\u0627\u0631\u0698 \u0634\u0627\u062a\u0644 \u0645\u0648\u0628\u0627\u06cc\u0644",
             logoUrl:
-              "https://shatelmobile.ir/assets/media/2018/04/logo-tr-fa.png",
+              "https://upload.wikimedia.org/wikipedia/commons/b/b9/Shatel_Logo.png",
             codes: ["0998", "0999"],
             services: [
               {
@@ -1717,136 +1715,168 @@ function PlasmicCharging__RenderFunc(props: {
                   ) : null}
                 </div>
               </Stack__>
-              <Input
-                data-plasmic-name={"fragmentInput"}
-                data-plasmic-override={overrides.fragmentInput}
-                className={classNames("__wab_instance", sty.fragmentInput, {
-                  [sty.fragmentInputstepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.fragmentInputstepscharg_step3]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "fragmentInput",
-                    "value"
-                  ]).apply(null, eventArgs);
-                  (async value => {
-                    const $steps = {};
+              <div className={classNames(projectcss.all, sty.freeBox__w3CZq)}>
+                <Input
+                  data-plasmic-name={"fragmentInput"}
+                  data-plasmic-override={overrides.fragmentInput}
+                  className={classNames("__wab_instance", sty.fragmentInput, {
+                    [sty.fragmentInputstepscharg_step2]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
+                    [sty.fragmentInputstepscharg_step3]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentInput",
+                      "value"
+                    ]).apply(null, eventArgs);
+                    (async value => {
+                      const $steps = {};
 
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {
-                                let __plasmic_ret = undefined;
-                                for (
-                                  let operatorIndex = 0;
-                                  operatorIndex < $state.operators2.length;
-                                  operatorIndex++
-                                ) {
-                                  const operator =
-                                    $state.operators2[operatorIndex];
-                                  for (let code of operator.codes) {
-                                    if (
-                                      $state.fragmentInput.value.startsWith(
-                                        code
-                                      )
-                                    ) {
-                                      for (
-                                        let i = 0;
-                                        i < $state.boxselect.length;
-                                        i++
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  let __plasmic_ret = undefined;
+                                  for (
+                                    let operatorIndex = 0;
+                                    operatorIndex < $state.operators2.length;
+                                    operatorIndex++
+                                  ) {
+                                    const operator =
+                                      $state.operators2[operatorIndex];
+                                    for (let code of operator.codes) {
+                                      if (
+                                        $state.fragmentInput.value.startsWith(
+                                          code
+                                        )
                                       ) {
-                                        $state.boxselect[i].select = false;
+                                        for (
+                                          let i = 0;
+                                          i < $state.boxselect.length;
+                                          i++
+                                        ) {
+                                          $state.boxselect[i].select = false;
+                                        }
+                                        for (
+                                          let i = 0;
+                                          i < $state.boxselect2.length;
+                                          i++
+                                        ) {
+                                          $state.boxselect2[i].select = false;
+                                        }
+                                        $state.boxselect[operatorIndex].select =
+                                          true;
+                                        $state.boxselect2[0].select = true;
+                                        $state.operatorselect = operatorIndex;
+                                        __plasmic_ret = $state.typecharge = 0;
                                       }
-                                      for (
-                                        let i = 0;
-                                        i < $state.boxselect2.length;
-                                        i++
-                                      ) {
-                                        $state.boxselect2[i].select = false;
-                                      }
-                                      $state.boxselect[operatorIndex].select =
-                                        true;
-                                      $state.boxselect2[0].select = true;
-                                      $state.operatorselect = operatorIndex;
-                                      __plasmic_ret = $state.typecharge = 0;
                                     }
                                   }
-                                }
-                                return __plasmic_ret;
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
+                                  return __plasmic_ret;
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
 
-                    $steps["runCode2"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {
-                                if ($state.fragmentInput.value.length < 4) {
-                                  for (
-                                    let i = 0;
-                                    i < $state.boxselect.length;
-                                    i++
-                                  ) {
-                                    $state.boxselect[i].select = false;
+                      $steps["runCode2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  if ($state.fragmentInput.value.length < 4) {
+                                    for (
+                                      let i = 0;
+                                      i < $state.boxselect.length;
+                                      i++
+                                    ) {
+                                      $state.boxselect[i].select = false;
+                                    }
+                                    for (
+                                      let i = 0;
+                                      i < $state.boxselect2.length;
+                                      i++
+                                    ) {
+                                      $state.boxselect2[i].select = false;
+                                    }
+                                    return ($state.operatorselect = -1);
                                   }
-                                  for (
-                                    let i = 0;
-                                    i < $state.boxselect2.length;
-                                    i++
-                                  ) {
-                                    $state.boxselect2[i].select = false;
-                                  }
-                                  return ($state.operatorselect = -1);
-                                }
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode2"] != null &&
-                      typeof $steps["runCode2"] === "object" &&
-                      typeof $steps["runCode2"].then === "function"
-                    ) {
-                      $steps["runCode2"] = await $steps["runCode2"];
-                    }
-                  }).apply(null, eventArgs);
-                }}
-                placeholder={
-                  "\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u0645\u0642\u0635\u062f"
-                }
-                type={"tel"}
-                value={generateStateValueProp($state, [
-                  "fragmentInput",
-                  "value"
-                ])}
-              />
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode2"] != null &&
+                        typeof $steps["runCode2"] === "object" &&
+                        typeof $steps["runCode2"].then === "function"
+                      ) {
+                        $steps["runCode2"] = await $steps["runCode2"];
+                      }
+                    }).apply(null, eventArgs);
+                  }}
+                  placeholder={
+                    "\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u0645\u0642\u0635\u062f"
+                  }
+                  type={"tel"}
+                  value={generateStateValueProp($state, [
+                    "fragmentInput",
+                    "value"
+                  ])}
+                />
 
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__q0Kz3)}
+                  displayHeight={"35px"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"35px"}
+                  loading={"lazy"}
+                  src={(() => {
+                    try {
+                      return (() => {
+                        if ($state.operatorselect == -1)
+                          return "https://www.svgrepo.com/show/226306/mobile-phone-touch-screen.svg";
+                        else
+                          return $state.operators2[$state.operatorselect]
+                            .logoUrl;
+                      })();
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+              </div>
               {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
                 <Input
                   data-plasmic-name={"fragmentInput2"}
@@ -4221,6 +4251,77 @@ function PlasmicCharging__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img__qoPj0)}
+            displayHeight={"auto"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"auto"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/babarkat/images/image19.svg",
+              fullWidth: 781.31,
+              fullHeight: 336.87,
+              aspectRatio: 2.319322
+            }}
+          />
+
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img___9Z8Gj)}
+            displayHeight={"auto"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"auto"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/babarkat/images/image20.svg",
+              fullWidth: 715.83,
+              fullHeight: 758.36,
+              aspectRatio: 0.943918
+            }}
+          />
+
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img__fCthX)}
+            displayHeight={"auto"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"auto"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/babarkat/images/image21.svg",
+              fullWidth: 649.38,
+              fullHeight: 747.42,
+              aspectRatio: 0.868829
+            }}
+          />
+
+          <PlasmicImg__
+            alt={""}
+            className={classNames(sty.img___0PpwH)}
+            displayHeight={"auto"}
+            displayMaxHeight={"none"}
+            displayMaxWidth={"100%"}
+            displayMinHeight={"0"}
+            displayMinWidth={"0"}
+            displayWidth={"auto"}
+            loading={"lazy"}
+            src={{
+              src: "/plasmic/babarkat/images/image23.svg",
+              fullWidth: 523.91,
+              fullHeight: 731.43,
+              aspectRatio: 0.716282
+            }}
+          />
         </div>
       </div>
     </React.Fragment>

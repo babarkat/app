@@ -12,28 +12,28 @@ import { GrowthBook } from "@/fragment/growthbook"; // plasmic-import: 6gZuti1Vk
 import { Splunk } from "@/fragment/splunk"; // plasmic-import: uSFrkS0vtSdL/codeComponent
 import { EmbedCss } from "@plasmicpkgs/plasmic-embed-css";
 import { ContentfulCredentialsProvider } from "@plasmicpkgs/plasmic-contentful";
+import { CmsCredentialsProvider } from "@plasmicpkgs/plasmic-cms";
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
+  >;
+  cmsCredentialsProviderProps?: Partial<
+    Omit<React.ComponentProps<typeof CmsCredentialsProvider>, "children">
   >;
 }
 
@@ -47,7 +47,8 @@ export default function GlobalContextsProvider(
     growthBookProps,
     splunkProps,
     embedCssProps,
-    contentfulCredentialsProviderProps
+    contentfulCredentialsProviderProps,
+    cmsCredentialsProviderProps
   } = props;
 
   return (
@@ -226,7 +227,35 @@ export default function GlobalContextsProvider(
                     : "lmfbwqzbh93n"
                 }
               >
-                {children}
+                <CmsCredentialsProvider
+                  {...cmsCredentialsProviderProps}
+                  databaseId={
+                    cmsCredentialsProviderProps &&
+                    "databaseId" in cmsCredentialsProviderProps
+                      ? cmsCredentialsProviderProps.databaseId!
+                      : undefined
+                  }
+                  databaseToken={
+                    cmsCredentialsProviderProps &&
+                    "databaseToken" in cmsCredentialsProviderProps
+                      ? cmsCredentialsProviderProps.databaseToken!
+                      : undefined
+                  }
+                  host={
+                    cmsCredentialsProviderProps &&
+                    "host" in cmsCredentialsProviderProps
+                      ? cmsCredentialsProviderProps.host!
+                      : "https://data.plasmic.app"
+                  }
+                  locale={
+                    cmsCredentialsProviderProps &&
+                    "locale" in cmsCredentialsProviderProps
+                      ? cmsCredentialsProviderProps.locale!
+                      : undefined
+                  }
+                >
+                  {children}
+                </CmsCredentialsProvider>
               </ContentfulCredentialsProvider>
             </EmbedCss>
           </Splunk>

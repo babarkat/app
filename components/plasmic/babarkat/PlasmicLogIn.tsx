@@ -1303,7 +1303,7 @@ function PlasmicLogIn__RenderFunc(props: {
                               objRoot: $state,
                               variablePath: ["loadedbtn"]
                             },
-                            operation: 4,
+                            operation: 0,
                             value: true
                           };
                           return (({
@@ -1317,9 +1317,8 @@ function PlasmicLogIn__RenderFunc(props: {
                             }
                             const { objRoot, variablePath } = variable;
 
-                            const oldValue = $stateGet(objRoot, variablePath);
-                            $stateSet(objRoot, variablePath, !oldValue);
-                            return !oldValue;
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
@@ -1395,6 +1394,46 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
+                    $steps["updateFragmentInputValue"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                      return !phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["fragmentInput", "value"]
+                            },
+                            operation: 0,
+                            value: ""
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue"] != null &&
+                      typeof $steps["updateFragmentInputValue"] === "object" &&
+                      typeof $steps["updateFragmentInputValue"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue"] = await $steps[
+                        "updateFragmentInputValue"
+                      ];
+                    }
+
                     $steps["invokeGlobalAction2"] = (() => {
                       const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
                       return phoneRegex.test($state.number);
@@ -1437,22 +1476,25 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["invokeGlobalAction3"] =
-                      $steps.invokeGlobalAction2.data[0].success == false
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "error",
-                                "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                                "top-left"
-                              ]
-                            };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                    $steps["invokeGlobalAction3"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === false
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
                     if (
                       $steps["invokeGlobalAction3"] != null &&
                       typeof $steps["invokeGlobalAction3"] === "object" &&
@@ -1463,30 +1505,34 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateSlids"] =
-                      $steps.invokeGlobalAction2.data[0].success == true
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "slids",
-                              operation: 0,
-                              value: "unnamedVariant3"
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
+                    $steps["updateUnnamedVariant"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "unnamedVariant",
+                            operation: 4
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
 
-                              $stateSet($state, vgroup, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                            $stateSet($state, vgroup, true);
+                            return true;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
-                      $steps["updateSlids"] != null &&
-                      typeof $steps["updateSlids"] === "object" &&
-                      typeof $steps["updateSlids"].then === "function"
+                      $steps["updateUnnamedVariant"] != null &&
+                      typeof $steps["updateUnnamedVariant"] === "object" &&
+                      typeof $steps["updateUnnamedVariant"].then === "function"
                     ) {
-                      $steps["updateSlids"] = await $steps["updateSlids"];
+                      $steps["updateUnnamedVariant"] = await $steps[
+                        "updateUnnamedVariant"
+                      ];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -1496,7 +1542,7 @@ function PlasmicLogIn__RenderFunc(props: {
                               objRoot: $state,
                               variablePath: ["loadedbtn"]
                             },
-                            operation: 4,
+                            operation: 0,
                             value: false
                           };
                           return (({
@@ -1510,9 +1556,8 @@ function PlasmicLogIn__RenderFunc(props: {
                             }
                             const { objRoot, variablePath } = variable;
 
-                            const oldValue = $stateGet(objRoot, variablePath);
-                            $stateSet(objRoot, variablePath, !oldValue);
-                            return !oldValue;
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
@@ -1575,6 +1620,23 @@ function PlasmicLogIn__RenderFunc(props: {
                       )
                     })}
                     color={"green"}
+                    endIcon={
+                      <PlasmicIcon__
+                        PlasmicIconType={
+                          hasVariant($state, "unnamedVariant", "unnamedVariant")
+                            ? IconIcon
+                            : Icon3Icon
+                        }
+                        className={classNames(projectcss.all, sty.svg__r6GXo, {
+                          [sty.svgunnamedVariant__r6GXoDv9B5]: hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          )
+                        })}
+                        role={"img"}
+                      />
+                    }
                     isDisabled={
                       hasVariant($state, "slids", "unnamedVariant3") &&
                       hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1767,20 +1829,26 @@ function PlasmicLogIn__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction"] =
-                        $steps.invokeGlobalAction2.data[0].success == false
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f."
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                      $steps["invokeGlobalAction"] = (
+                        $state.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            false
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction"] != null &&
                         typeof $steps["invokeGlobalAction"] === "object" &&
@@ -1791,24 +1859,28 @@ function PlasmicLogIn__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["runCode"] =
-                        $steps.invokeGlobalAction2.data[0].success == true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return localStorage.setItem(
-                                    "userbabarcat",
-                                    JSON.stringify(
-                                      $steps.invokeGlobalAction2.data[0].data
-                                    )
-                                  );
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                      $steps["runCode"] = (
+                        $state.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            true
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return localStorage.setItem(
+                                  "userbabarcat",
+                                  JSON.stringify(
+                                    $steps.invokeGlobalAction2.data[0].data
+                                  )
+                                );
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
                         $steps["runCode"] != null &&
                         typeof $steps["runCode"] === "object" &&
@@ -1817,20 +1889,26 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["runCode"] = await $steps["runCode"];
                       }
 
-                      $steps["invokeGlobalAction3"] =
-                        $steps.invokeGlobalAction2.data[0].success != true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f."
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                      $steps["invokeGlobalAction3"] = (
+                        $state.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            false
+                          : true
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction3"] != null &&
                         typeof $steps["invokeGlobalAction3"] === "object" &&
@@ -1841,24 +1919,28 @@ function PlasmicLogIn__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["goToHomepage"] =
-                        $steps.invokeGlobalAction2.data[0].success == true
-                          ? (() => {
-                              const actionArgs = { destination: `/` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                      $steps["goToHomepage"] = (
+                        $state.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            true
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = { destination: `/` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
                         $steps["goToHomepage"] != null &&
                         typeof $steps["goToHomepage"] === "object" &&
@@ -1921,7 +2003,14 @@ function PlasmicLogIn__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__sE8Bl
+                        sty.text__sE8Bl,
+                        {
+                          [sty.textunnamedVariant__sE8BlDv9B5]: hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          )
+                        }
                       )}
                     >
                       {"\u062a\u0627\u06cc\u06cc\u062f"}
@@ -2170,29 +2259,30 @@ function PlasmicLogIn__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateSlids"] = true
+                  $steps["updateUnnamedVariant"] = true
                     ? (() => {
                         const actionArgs = {
-                          vgroup: "slids",
-                          operation: 0,
-                          value: "unnamedVariant2"
+                          vgroup: "unnamedVariant",
+                          operation: 6
                         };
                         return (({ vgroup, value }) => {
                           if (typeof value === "string") {
                             value = [value];
                           }
 
-                          $stateSet($state, vgroup, value);
-                          return value;
+                          $stateSet($state, vgroup, false);
+                          return false;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updateSlids"] != null &&
-                    typeof $steps["updateSlids"] === "object" &&
-                    typeof $steps["updateSlids"].then === "function"
+                    $steps["updateUnnamedVariant"] != null &&
+                    typeof $steps["updateUnnamedVariant"] === "object" &&
+                    typeof $steps["updateUnnamedVariant"].then === "function"
                   ) {
-                    $steps["updateSlids"] = await $steps["updateSlids"];
+                    $steps["updateUnnamedVariant"] = await $steps[
+                      "updateUnnamedVariant"
+                    ];
                   }
                 }}
               >

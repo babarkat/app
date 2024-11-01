@@ -280,7 +280,7 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : true
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "input2.value",
@@ -713,93 +713,95 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </AntdTooltip>
           </Stack__>
-          <div
-            data-plasmic-name={"footer"}
-            data-plasmic-override={overrides.footer}
-            className={classNames(projectcss.all, sty.footer)}
-          >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"snapp2"}
-              data-plasmic-override={overrides.snapp2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.snapp2)}
+          <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
+            <div
+              data-plasmic-name={"footer"}
+              data-plasmic-override={overrides.footer}
+              className={classNames(projectcss.all, sty.footer)}
             >
-              <div
-                data-plasmic-name={"vuesaxBoldHome"}
-                data-plasmic-override={overrides.vuesaxBoldHome}
-                className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"snapp2"}
+                data-plasmic-override={overrides.snapp2}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.snapp2)}
               >
-                <HomeIcon
-                  className={classNames(projectcss.all, sty.svg__fbf4J)}
-                  role={"img"}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ruTXz
-                )}
-              >
-                {"\u062e\u0627\u0646\u0647"}
-              </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"charge2"}
-              data-plasmic-override={overrides.charge2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.charge2)}
-              onClick={async event => {
-                const $steps = {};
+                <div
+                  data-plasmic-name={"vuesaxBoldHome"}
+                  data-plasmic-override={overrides.vuesaxBoldHome}
+                  className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+                >
+                  <HomeIcon
+                    className={classNames(projectcss.all, sty.svg__fbf4J)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ruTXz
+                  )}
+                >
+                  {"\u062e\u0627\u0646\u0647"}
+                </div>
+              </Stack__>
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"charge2"}
+                data-plasmic-override={overrides.charge2}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.charge2)}
+                onClick={async event => {
+                  const $steps = {};
 
-                $steps["goToChargeStep1"] = true
-                  ? (() => {
-                      const actionArgs = { destination: `/transaction` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["goToChargeStep1"] != null &&
-                  typeof $steps["goToChargeStep1"] === "object" &&
-                  typeof $steps["goToChargeStep1"].then === "function"
-                ) {
-                  $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-                }
-              }}
-            >
-              <div
-                data-plasmic-name={"vuesaxBoldReceipt"}
-                data-plasmic-override={overrides.vuesaxBoldReceipt}
-                className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
+                  $steps["goToChargeStep1"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/transaction` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToChargeStep1"] != null &&
+                    typeof $steps["goToChargeStep1"] === "object" &&
+                    typeof $steps["goToChargeStep1"].then === "function"
+                  ) {
+                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
+                  }
+                }}
               >
-                <ReceiptIcon
-                  className={classNames(projectcss.all, sty.svg__yjKw)}
-                  role={"img"}
-                />
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___4P0Rx
-                )}
-              >
-                {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-              </div>
-            </Stack__>
+                <div
+                  data-plasmic-name={"vuesaxBoldReceipt"}
+                  data-plasmic-override={overrides.vuesaxBoldReceipt}
+                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
+                >
+                  <ReceiptIcon
+                    className={classNames(projectcss.all, sty.svg__yjKw)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4P0Rx
+                  )}
+                >
+                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+                </div>
+              </Stack__>
+            </div>
           </div>
           <Stack__
             as={"div"}
