@@ -2623,6 +2623,12 @@ function PlasmicInternet2__RenderFunc(props: {
                             </TabContent>
                           );
                         })}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__bAlLj
+                          )}
+                        />
                       </div>
                     </div>
                   )}

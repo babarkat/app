@@ -108,8 +108,7 @@ import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zX
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
-import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon32Icon from "./icons/PlasmicIcon__Icon32"; // plasmic-import: m7NcUd1l4JZ_/icon
+import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu9gyKG/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
@@ -2886,8 +2885,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   <PlasmicIcon__
                     PlasmicIconType={
                       hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? Icon32Icon
-                        : Icon10Icon
+                        ? Icon36Icon
+                        : Icon36Icon
                     }
                     className={classNames(
                       projectcss.all,
@@ -3008,8 +3007,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 <PlasmicIcon__
                   PlasmicIconType={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon32Icon
-                      : Icon10Icon
+                      ? Icon36Icon
+                      : Icon36Icon
                   }
                   className={classNames(projectcss.all, sty.svg__ushXm)}
                   role={"img"}

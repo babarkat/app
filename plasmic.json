@@ -1735,6 +1735,26 @@
           "id": "m7NcUd1l4JZ_",
           "name": "Icon32Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon32.tsx"
+        },
+        {
+          "id": "s8lYkLzhuTKQ",
+          "name": "Icon33Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon33.tsx"
+        },
+        {
+          "id": "8LsgFoT4INDz",
+          "name": "Icon34Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon34.tsx"
+        },
+        {
+          "id": "1I8HdQaO9jIK",
+          "name": "Icon35Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon35.tsx"
+        },
+        {
+          "id": "Zi-CDKu9gyKG",
+          "name": "Icon36Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon36.tsx"
         }
       ],
       "images": [
