@@ -63,6 +63,7 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
+import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 
@@ -88,6 +89,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicLogIn.module.css"; // plasmic-import: -3JBPQCG-aXv/css
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
+import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
@@ -98,17 +100,20 @@ createPlasmicElementProxy;
 export type PlasmicLogIn__VariantMembers = {
   unnamedVariant: "unnamedVariant";
   slids: "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3";
+  unnamedVariant2: "unnamedVariant2";
 };
 export type PlasmicLogIn__VariantsArgs = {
   unnamedVariant?: SingleBooleanChoiceArg<"unnamedVariant">;
   slids?: SingleChoiceArg<
     "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3"
   >;
+  unnamedVariant2?: SingleBooleanChoiceArg<"unnamedVariant2">;
 };
 type VariantPropType = keyof PlasmicLogIn__VariantsArgs;
 export const PlasmicLogIn__VariantProps = new Array<VariantPropType>(
   "unnamedVariant",
-  "slids"
+  "slids",
+  "unnamedVariant2"
 );
 
 export type PlasmicLogIn__ArgsType = {
@@ -122,7 +127,7 @@ export type PlasmicLogIn__OverridesType = {
   reveal?: Flex__<typeof Reveal>;
   fragmentInput?: Flex__<typeof Input>;
   fragmentInput2?: Flex__<typeof Input>;
-  button?: Flex__<typeof Button>;
+  select?: Flex__<typeof AntdSelect>;
   sendcode?: Flex__<typeof Button>;
   figmaPaste?: Flex__<"div">;
   group?: Flex__<"div">;
@@ -285,6 +290,48 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "saraf",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { label: "sjsjd1n", value: 101 },
+          { label: "sjs2jdn", value: 102 },
+          { label: "sjsj3dn", value: 103 },
+          { label: "sjs4jdn", value: 104 }
+        ]
+      },
+      {
+        path: "unnamedVariant2",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.unnamedVariant2
+      },
+      {
+        path: "select.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.saraf[0];
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 100;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "selectsaraf",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -365,6 +412,11 @@ function PlasmicLogIn__RenderFunc(props: {
               "slids",
               "unnamedVariant"
             ),
+            [sty.rootunnamedVariant2]: hasVariant(
+              $state,
+              "unnamedVariant2",
+              "unnamedVariant2"
+            ),
             [sty.rootunnamedVariant]: hasVariant(
               $state,
               "unnamedVariant",
@@ -378,7 +430,10 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "slids", "unnamedVariant3"),
             [sty.rootunnamedVariant_slids_unnamedVariant]:
               hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant")
+              hasVariant($state, "slids", "unnamedVariant"),
+            [sty.rootunnamedVariant_unnamedVariant2]:
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
           }
         )}
       >
@@ -518,6 +573,11 @@ function PlasmicLogIn__RenderFunc(props: {
                     "slids",
                     "unnamedVariant"
                   ),
+                  [sty.freeBoxunnamedVariant2__oDeZcJmKha]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
                   [sty.freeBoxunnamedVariant__oDeZcDv9B5]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -602,6 +662,11 @@ function PlasmicLogIn__RenderFunc(props: {
                     "slids",
                     "unnamedVariant"
                   ),
+                  [sty.freeBoxunnamedVariant2__mauViJmKha]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
                   [sty.freeBoxunnamedVariant__mauViDv9B5]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -620,6 +685,11 @@ function PlasmicLogIn__RenderFunc(props: {
                         "slids",
                         "unnamedVariant3"
                       ),
+                      [sty.textunnamedVariant2__r99ZrJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
                       [sty.textunnamedVariant__r99ZrDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -628,7 +698,9 @@ function PlasmicLogIn__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "slids", "unnamedVariant3")
+                  {hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                    : hasVariant($state, "slids", "unnamedVariant3")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
@@ -645,6 +717,11 @@ function PlasmicLogIn__RenderFunc(props: {
                         "slids",
                         "unnamedVariant3"
                       ),
+                      [sty.textunnamedVariant2__wdrTsJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
                       [sty.textunnamedVariant__wdrTsDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -653,7 +730,9 @@ function PlasmicLogIn__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "slids", "unnamedVariant3") ? (
+                  {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
+                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
+                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
                       dangerouslySetInnerHTML={{
@@ -711,6 +790,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "slids",
                       "unnamedVariant3"
+                    ),
+                    [sty.fragmentInputunnamedVariant2]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
                     ),
                     [sty.fragmentInputunnamedVariant]: hasVariant(
                       $state,
@@ -1230,6 +1314,77 @@ function PlasmicLogIn__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
+                <AntdSelect
+                  data-plasmic-name={"select"}
+                  data-plasmic-override={overrides.select}
+                  className={classNames("__wab_instance", sty.select, {
+                    [sty.selectunnamedVariant2]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.selectunnamedVariant]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.selectunnamedVariant_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  )}
+                  defaultValue={(() => {
+                    try {
+                      return $state.saraf[0];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return 100;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  onChange={generateStateOnChangeProp($state, [
+                    "select",
+                    "value"
+                  ])}
+                  options={(() => {
+                    try {
+                      return $state.saraf;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [{ type: "option" }];
+                      }
+                      throw e;
+                    }
+                  })()}
+                  placeholder={null}
+                  popupScopeClassName={sty["select__popup"]}
+                  size={"large"}
+                  suffixIcon={
+                    <Icon10Icon
+                      className={classNames(projectcss.all, sty.svg__bIJr)}
+                      role={"img"}
+                    />
+                  }
+                  value={generateStateValueProp($state, ["select", "value"])}
+                />
               </Stack__>
               <div
                 className={classNames(projectcss.all, sty.freeBox__rr6S, {
@@ -1243,6 +1398,11 @@ function PlasmicLogIn__RenderFunc(props: {
                     "slids",
                     "unnamedVariant"
                   ),
+                  [sty.freeBoxunnamedVariant2__rr6SJmKha]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
                   [sty.freeBoxunnamedVariant__rr6SDv9B5]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -1251,20 +1411,23 @@ function PlasmicLogIn__RenderFunc(props: {
                 })}
               >
                 <Button
-                  data-plasmic-name={"button"}
-                  data-plasmic-override={overrides.button}
-                  className={classNames("__wab_instance", sty.button, {
-                    [sty.buttonslids_unnamedVariant3]: hasVariant(
+                  className={classNames("__wab_instance", sty.button___9BCa8, {
+                    [sty.buttonslids_unnamedVariant3___9BCa8I1KiV]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant3"
                     ),
-                    [sty.buttonslids_unnamedVariant]: hasVariant(
+                    [sty.buttonslids_unnamedVariant___9BCa8Me9Ia]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant]: hasVariant(
+                    [sty.buttonunnamedVariant2___9BCa8JmKha]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.buttonunnamedVariant___9BCa8Dv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
@@ -1505,9 +1668,61 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
+                    $steps["updateFragmentInputValue2"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.saraf != null
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["saraf"]
+                            },
+                            operation: 0,
+                            value: (() => {
+                              const transformedArray =
+                                steps.invokeGlobalAction2.data[0].saraf.map(
+                                  item => ({
+                                    label: item.name,
+                                    value: item.id
+                                  })
+                                );
+                              return transformedArray;
+                            })()
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue2"] != null &&
+                      typeof $steps["updateFragmentInputValue2"] === "object" &&
+                      typeof $steps["updateFragmentInputValue2"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue2"] = await $steps[
+                        "updateFragmentInputValue2"
+                      ];
+                    }
+
                     $steps["updateUnnamedVariant"] = (
                       $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            true &&
+                          $steps.invokeGlobalAction2?.data[0]?.saraf == null
                         : false
                     )
                       ? (() => {
@@ -1570,6 +1785,39 @@ function PlasmicLogIn__RenderFunc(props: {
                         "updateLoadedbtn2"
                       ];
                     }
+
+                    $steps["updateFragmentInputValue3"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                            true &&
+                          $steps.invokeGlobalAction2?.data[0]?.saraf != null
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "unnamedVariant2",
+                            operation: 4
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+
+                            $stateSet($state, vgroup, true);
+                            return true;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue3"] != null &&
+                      typeof $steps["updateFragmentInputValue3"] === "object" &&
+                      typeof $steps["updateFragmentInputValue3"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue3"] = await $steps[
+                        "updateFragmentInputValue3"
+                      ];
+                    }
                   }}
                   showEndIcon={(() => {
                     try {
@@ -1595,6 +1843,215 @@ function PlasmicLogIn__RenderFunc(props: {
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
                     }
+                  </div>
+                </Button>
+                <Button
+                  className={classNames("__wab_instance", sty.button__qK3, {
+                    [sty.buttonslids_unnamedVariant3__qK3I1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.buttonslids_unnamedVariant__qK3Me9Ia]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant"
+                    ),
+                    [sty.buttonunnamedVariant2__qK3JmKha]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.buttonunnamedVariant__qK3Dv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.buttonunnamedVariant_unnamedVariant2__qK3Dv9B5JmKha]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
+                  color={"green"}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg__pEfNe)}
+                      role={"img"}
+                    />
+                  }
+                  isDisabled={
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? (() => {
+                          try {
+                            return false;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return (
+                              $state.fragmentInput.value.length != 11 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateSelectsaraf"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["selectsaraf"]
+                            },
+                            operation: 0,
+                            value: $state.select.value.value
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateSelectsaraf"] != null &&
+                      typeof $steps["updateSelectsaraf"] === "object" &&
+                      typeof $steps["updateSelectsaraf"].then === "function"
+                    ) {
+                      $steps["updateSelectsaraf"] = await $steps[
+                        "updateSelectsaraf"
+                      ];
+                    }
+
+                    $steps["updateUnnamedVariant2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "unnamedVariant2",
+                            operation: 6
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+
+                            $stateSet($state, vgroup, false);
+                            return false;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateUnnamedVariant2"] != null &&
+                      typeof $steps["updateUnnamedVariant2"] === "object" &&
+                      typeof $steps["updateUnnamedVariant2"].then === "function"
+                    ) {
+                      $steps["updateUnnamedVariant2"] = await $steps[
+                        "updateUnnamedVariant2"
+                      ];
+                    }
+
+                    $steps["updateUnnamedVariant"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "unnamedVariant",
+                            operation: 4
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+
+                            $stateSet($state, vgroup, true);
+                            return true;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateUnnamedVariant"] != null &&
+                      typeof $steps["updateUnnamedVariant"] === "object" &&
+                      typeof $steps["updateUnnamedVariant"].then === "function"
+                    ) {
+                      $steps["updateUnnamedVariant"] = await $steps[
+                        "updateUnnamedVariant"
+                      ];
+                    }
+                  }}
+                  showEndIcon={
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? (() => {
+                          try {
+                            return false;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return $state.loadedbtn;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__uxobw,
+                      {
+                        [sty.textunnamedVariant2__uxobwJmKha]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? "\u062a\u0627\u06cc\u06cc\u062f"
+                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
                 </Button>
                 {(
@@ -1798,7 +2255,8 @@ function PlasmicLogIn__RenderFunc(props: {
                                   try {
                                     return {
                                       mobile: $state.number,
-                                      code: $state.code
+                                      code: $state.code,
+                                      _saraf: $state.selectsaraf
                                     };
                                   } catch (e) {
                                     if (
@@ -2500,7 +2958,7 @@ const PlasmicDescendants = {
     "reveal",
     "fragmentInput",
     "fragmentInput2",
-    "button",
+    "select",
     "sendcode",
     "figmaPaste",
     "group",
@@ -2523,7 +2981,7 @@ const PlasmicDescendants = {
     "reveal",
     "fragmentInput",
     "fragmentInput2",
-    "button",
+    "select",
     "sendcode",
     "figmaPaste",
     "group",
@@ -2543,7 +3001,7 @@ const PlasmicDescendants = {
   ],
   fragmentInput: ["fragmentInput"],
   fragmentInput2: ["fragmentInput2"],
-  button: ["button"],
+  select: ["select"],
   sendcode: ["sendcode"],
   figmaPaste: [
     "figmaPaste",
@@ -2608,7 +3066,7 @@ type NodeDefaultElementType = {
   reveal: typeof Reveal;
   fragmentInput: typeof Input;
   fragmentInput2: typeof Input;
-  button: typeof Button;
+  select: typeof AntdSelect;
   sendcode: typeof Button;
   figmaPaste: "div";
   group: "div";
@@ -2716,7 +3174,7 @@ export const PlasmicLogIn = Object.assign(
     reveal: makeNodeComponent("reveal"),
     fragmentInput: makeNodeComponent("fragmentInput"),
     fragmentInput2: makeNodeComponent("fragmentInput2"),
-    button: makeNodeComponent("button"),
+    select: makeNodeComponent("select"),
     sendcode: makeNodeComponent("sendcode"),
     figmaPaste: makeNodeComponent("figmaPaste"),
     group: makeNodeComponent("group"),

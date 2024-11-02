@@ -147,11 +147,11 @@ export type PlasmicHomepage__OverridesType = {
   boxselect4?: Flex__<typeof Boxselect3>;
   modal4?: Flex__<typeof AntdModal>;
   wallet4?: Flex__<"div">;
-  input3?: Flex__<typeof Input>;
-  input4?: Flex__<typeof Input>;
-  input7?: Flex__<typeof Input>;
-  input5?: Flex__<typeof Input>;
-  input6?: Flex__<typeof Input>;
+  name?: Flex__<typeof Input>;
+  lastname?: Flex__<typeof Input>;
+  fathername?: Flex__<typeof Input>;
+  city?: Flex__<typeof Input>;
+  location?: Flex__<typeof Input>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
   input2?: Flex__<typeof Input>;
@@ -327,31 +327,31 @@ function PlasmicHomepage__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
-        path: "input3.value",
+        path: "name.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "input4.value",
+        path: "lastname.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "input5.value",
+        path: "city.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "input6.value",
+        path: "location.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "input7.value",
+        path: "fathername.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -1394,41 +1394,10 @@ function PlasmicHomepage__RenderFunc(props: {
             loadingDisplay={null}
             method={"GET"}
             onError={generateStateOnChangeProp($state, ["profile", "error"])}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["profile", "loading"]).apply(
-                null,
-                eventArgs
-              );
-              (async loading => {
-                const $steps = {};
-
-                $steps["goToLogIn"] =
-                  localStorage.getItem("userbabarcat") == null
-                    ? (() => {
-                        const actionArgs = { destination: `/login` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                if (
-                  $steps["goToLogIn"] != null &&
-                  typeof $steps["goToLogIn"] === "object" &&
-                  typeof $steps["goToLogIn"].then === "function"
-                ) {
-                  $steps["goToLogIn"] = await $steps["goToLogIn"];
-                }
-              }).apply(null, eventArgs);
-            }}
+            onLoading={generateStateOnChangeProp($state, [
+              "profile",
+              "loading"
+            ])}
             onSuccess={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["profile", "data"]).apply(
                 null,
@@ -1446,8 +1415,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
-                            $state.userbabarcat.toman =
-                              $state.profile.data[0].user.toman * 1000;
+                            $state.userbabarcat = {
+                              name: state.profile.data[0].user.name,
+                              last_name: state.profile.data[0].user.last_name,
+                              toman: $state.profile.data[0].user.toman * 1000
+                            };
                             return localStorage.setItem(
                               "userbabarcat",
                               JSON.stringify($state.userbabarcat)
@@ -1466,26 +1438,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   typeof $steps["runCode"].then === "function"
                 ) {
                   $steps["runCode"] = await $steps["runCode"];
-                }
-
-                $steps["runCode2"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return undefined;
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode2"] != null &&
-                  typeof $steps["runCode2"] === "object" &&
-                  typeof $steps["runCode2"].then === "function"
-                ) {
-                  $steps["runCode2"] = await $steps["runCode2"];
                 }
               }).apply(null, eventArgs);
             }}
@@ -2006,16 +1958,16 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <Input
-                    data-plasmic-name={"input3"}
-                    data-plasmic-override={overrides.input3}
-                    className={classNames("__wab_instance", sty.input3)}
+                    data-plasmic-name={"name"}
+                    data-plasmic-override={overrides.name}
+                    className={classNames("__wab_instance", sty.name)}
                     onChange={generateStateOnChangeProp($state, [
-                      "input3",
+                      "name",
                       "value"
                     ])}
                     placeholder={"\u0646\u0627\u0645"}
                     type={"text"}
-                    value={generateStateValueProp($state, ["input3", "value"])}
+                    value={generateStateValueProp($state, ["name", "value"])}
                   />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__juC9Q)}>
@@ -2025,18 +1977,21 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <Input
-                    data-plasmic-name={"input4"}
-                    data-plasmic-override={overrides.input4}
-                    className={classNames("__wab_instance", sty.input4)}
+                    data-plasmic-name={"lastname"}
+                    data-plasmic-override={overrides.lastname}
+                    className={classNames("__wab_instance", sty.lastname)}
                     onChange={generateStateOnChangeProp($state, [
-                      "input4",
+                      "lastname",
                       "value"
                     ])}
                     placeholder={
                       "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
                     }
                     type={"text"}
-                    value={generateStateValueProp($state, ["input4", "value"])}
+                    value={generateStateValueProp($state, [
+                      "lastname",
+                      "value"
+                    ])}
                   />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__k4Ut)}>
@@ -2046,16 +2001,19 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <Input
-                    data-plasmic-name={"input7"}
-                    data-plasmic-override={overrides.input7}
-                    className={classNames("__wab_instance", sty.input7)}
+                    data-plasmic-name={"fathername"}
+                    data-plasmic-override={overrides.fathername}
+                    className={classNames("__wab_instance", sty.fathername)}
                     onChange={generateStateOnChangeProp($state, [
-                      "input7",
+                      "fathername",
                       "value"
                     ])}
                     placeholder={"\u0646\u0627\u0645 \u067e\u062f\u0631"}
                     type={"text"}
-                    value={generateStateValueProp($state, ["input7", "value"])}
+                    value={generateStateValueProp($state, [
+                      "fathername",
+                      "value"
+                    ])}
                   />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__zbVyW)}>
@@ -2065,18 +2023,18 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <Input
-                    data-plasmic-name={"input5"}
-                    data-plasmic-override={overrides.input5}
-                    className={classNames("__wab_instance", sty.input5)}
+                    data-plasmic-name={"city"}
+                    data-plasmic-override={overrides.city}
+                    className={classNames("__wab_instance", sty.city)}
                     onChange={generateStateOnChangeProp($state, [
-                      "input5",
+                      "city",
                       "value"
                     ])}
                     placeholder={
                       "\u0634\u0647\u0631 \u0645\u062d\u0644 \u062a\u0648\u0644\u062f"
                     }
                     type={"text"}
-                    value={generateStateValueProp($state, ["input5", "value"])}
+                    value={generateStateValueProp($state, ["city", "value"])}
                   />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__moe5N)}>
@@ -2086,16 +2044,19 @@ function PlasmicHomepage__RenderFunc(props: {
                   />
 
                   <Input
-                    data-plasmic-name={"input6"}
-                    data-plasmic-override={overrides.input6}
-                    className={classNames("__wab_instance", sty.input6)}
+                    data-plasmic-name={"location"}
+                    data-plasmic-override={overrides.location}
+                    className={classNames("__wab_instance", sty.location)}
                     onChange={generateStateOnChangeProp($state, [
-                      "input6",
+                      "location",
                       "value"
                     ])}
                     placeholder={" \u0622\u062f\u0631\u0633"}
                     type={"text"}
-                    value={generateStateValueProp($state, ["input6", "value"])}
+                    value={generateStateValueProp($state, [
+                      "location",
+                      "value"
+                    ])}
                   />
                 </div>
                 <Button
@@ -2105,10 +2066,130 @@ function PlasmicHomepage__RenderFunc(props: {
                       ? "green"
                       : "green"
                   }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "PUT",
+                              "https://n8n.babarkat.com/webhook/Babarkat/login",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    name: $state.name.value,
+                                    last_name: $state.lastname.value,
+                                    birthplace: $state.city.value,
+                                    location: $state.location.value,
+                                    fatherName: $state.fathername.value,
+                                    userToken: $state.userbabarcat.token
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "success",
+                              "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0628\u0631\u0648\u0632 \u0634\u062f."
+                            ]
+                          };
+                          return $globalActions[
+                            "plasmic-antd5-config-provider.showNotification"
+                          ]?.apply(null, [...actionArgs.args]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["updateModal4Open"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal4", "open"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateModal4Open"] != null &&
+                      typeof $steps["updateModal4Open"] === "object" &&
+                      typeof $steps["updateModal4Open"].then === "function"
+                    ) {
+                      $steps["updateModal4Open"] = await $steps[
+                        "updateModal4Open"
+                      ];
+                    }
+                  }}
                 >
-                  {
-                    "\u062b\u0628\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
-                  }
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___8Ewj0
+                    )}
+                  >
+                    {
+                      "\u062b\u0628\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
+                    }
+                  </div>
                 </Button>
               </Stack__>
             </div>
@@ -2634,7 +2715,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["updateDrawerOpen"] = true
+                    $steps["updateDrawerOpen"] = $state.profile.data[0].user
+                      .canEdit
                       ? (() => {
                           const actionArgs = {
                             variable: {
@@ -2670,7 +2752,8 @@ function PlasmicHomepage__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateModal4Open"] = true
+                    $steps["updateModal4Open"] = $state.profile.data[0].user
+                      .canEdit
                       ? (() => {
                           const actionArgs = {
                             variable: {
@@ -2919,11 +3002,11 @@ const PlasmicDescendants = {
     "boxselect4",
     "modal4",
     "wallet4",
-    "input3",
-    "input4",
-    "input7",
-    "input5",
-    "input6",
+    "name",
+    "lastname",
+    "fathername",
+    "city",
+    "location",
     "modal2",
     "wallet3",
     "input2",
@@ -2984,18 +3067,18 @@ const PlasmicDescendants = {
   modal4: [
     "modal4",
     "wallet4",
-    "input3",
-    "input4",
-    "input7",
-    "input5",
-    "input6"
+    "name",
+    "lastname",
+    "fathername",
+    "city",
+    "location"
   ],
   wallet4: ["wallet4"],
-  input3: ["input3"],
-  input4: ["input4"],
-  input7: ["input7"],
-  input5: ["input5"],
-  input6: ["input6"],
+  name: ["name"],
+  lastname: ["lastname"],
+  fathername: ["fathername"],
+  city: ["city"],
+  location: ["location"],
   modal2: ["modal2", "wallet3", "input2"],
   wallet3: ["wallet3", "input2"],
   input2: ["input2"],
@@ -3036,11 +3119,11 @@ type NodeDefaultElementType = {
   boxselect4: typeof Boxselect3;
   modal4: typeof AntdModal;
   wallet4: "div";
-  input3: typeof Input;
-  input4: typeof Input;
-  input7: typeof Input;
-  input5: typeof Input;
-  input6: typeof Input;
+  name: typeof Input;
+  lastname: typeof Input;
+  fathername: typeof Input;
+  city: typeof Input;
+  location: typeof Input;
   modal2: typeof AntdModal;
   wallet3: "div";
   input2: typeof Input;
@@ -3162,11 +3245,11 @@ export const PlasmicHomepage = Object.assign(
     boxselect4: makeNodeComponent("boxselect4"),
     modal4: makeNodeComponent("modal4"),
     wallet4: makeNodeComponent("wallet4"),
-    input3: makeNodeComponent("input3"),
-    input4: makeNodeComponent("input4"),
-    input7: makeNodeComponent("input7"),
-    input5: makeNodeComponent("input5"),
-    input6: makeNodeComponent("input6"),
+    _name: makeNodeComponent("name"),
+    lastname: makeNodeComponent("lastname"),
+    fathername: makeNodeComponent("fathername"),
+    city: makeNodeComponent("city"),
+    location: makeNodeComponent("location"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
     input2: makeNodeComponent("input2"),
