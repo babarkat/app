@@ -1355,10 +1355,41 @@ function PlasmicHomepage__RenderFunc(props: {
             loadingDisplay={null}
             method={"GET"}
             onError={generateStateOnChangeProp($state, ["profile", "error"])}
-            onLoading={generateStateOnChangeProp($state, [
-              "profile",
-              "loading"
-            ])}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["profile", "loading"]).apply(
+                null,
+                eventArgs
+              );
+              (async loading => {
+                const $steps = {};
+
+                $steps["goToLogIn"] =
+                  localStorage.getItem("userbabarcat") == null
+                    ? (() => {
+                        const actionArgs = { destination: `/login` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["goToLogIn"] != null &&
+                  typeof $steps["goToLogIn"] === "object" &&
+                  typeof $steps["goToLogIn"].then === "function"
+                ) {
+                  $steps["goToLogIn"] = await $steps["goToLogIn"];
+                }
+              }).apply(null, eventArgs);
+            }}
             onSuccess={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["profile", "data"]).apply(
                 null,

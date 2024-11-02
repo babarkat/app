@@ -2861,9 +2861,10 @@
     justify-content: flex-start;
     height: 100%;
     margin-top: 30px;
+    overflow: auto;
     min-width: 0;
     min-height: 0;
-    padding: 0px;
+    padding: 5px;
   }
 }
 .freeBox__ppXNm {
@@ -2916,6 +2917,8 @@
     background: #000000;
     filter: none;
     box-shadow: 0px 0px 2px 5px #ecff00bd;
+    width: 100%;
+    min-width: 0;
     flex-shrink: 0;
     border-radius: 20px;
     padding: 15px;
