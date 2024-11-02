@@ -827,6 +827,12 @@
   flex-shrink: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___1CjQh {
+    height: 150px;
+    flex-shrink: 0;
+  }
+}
 .freeBox___5MnOu {
   display: flex;
   flex-direction: row;

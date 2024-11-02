@@ -1120,6 +1120,14 @@
   background: #1e2c39;
   outline: none;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .modal3:global(.__wab_instance) {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    left: 0;
+  }
+}
 .freeBox__nVlDi {
   display: flex;
   flex-direction: column;
