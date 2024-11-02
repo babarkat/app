@@ -579,6 +579,9 @@ function PlasmicInternet2__RenderFunc(props: {
             plasmic_antd_5_hostless_css.plasmic_tokens,
             plasmic_plasmic_rich_components_css.plasmic_tokens,
             sty.root,
+            hasVariant(globalVariants, "screen", "mobileOnly")
+              ? "page"
+              : undefined,
             {
               [sty.rootsteps2_step2]: hasVariant($state, "steps2", "step2"),
               [sty.rootsteps2_step3]: hasVariant($state, "steps2", "step3")

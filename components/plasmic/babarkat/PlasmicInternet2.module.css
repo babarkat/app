@@ -23,6 +23,11 @@
   grid-column: 4;
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .root {
+    background: #1e2c39;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
   .root > * {
     grid-column: 4;
   }
