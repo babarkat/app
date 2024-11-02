@@ -1682,7 +1682,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             operation: 0,
                             value: (() => {
                               const transformedArray =
-                                steps.invokeGlobalAction2.data[0].saraf.map(
+                                $steps.invokeGlobalAction2.data[0].saraf.map(
                                   item => ({
                                     label: item.name,
                                     value: item.id
