@@ -581,7 +581,7 @@ function PlasmicInternet2__RenderFunc(props: {
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
               ? "page"
-              : undefined,
+              : "page",
             {
               [sty.rootsteps2_step2]: hasVariant($state, "steps2", "step2"),
               [sty.rootsteps2_step3]: hasVariant($state, "steps2", "step3")

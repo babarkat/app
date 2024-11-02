@@ -1679,6 +1679,14 @@
   background: #1b272a;
   outline: none;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .modal:global(.__wab_instance) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
 .freeBox__vKydl {
   display: flex;
   flex-direction: column;

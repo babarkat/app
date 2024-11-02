@@ -503,6 +503,12 @@ function PlasmicCharging__RenderFunc(props: {
             plasmic_antd_5_hostless_css.plasmic_tokens,
             plasmic_plasmic_rich_components_css.plasmic_tokens,
             sty.chargeStep1,
+            hasVariant($state, "stepscharg", "step3") &&
+              hasVariant(globalVariants, "screen", "mobileOnly")
+              ? "page"
+              : hasVariant($state, "stepscharg", "step3")
+              ? "page"
+              : undefined,
             {
               [sty.chargeStep1stepscharg_step2]: hasVariant(
                 $state,
