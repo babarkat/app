@@ -843,18 +843,20 @@
   height: auto;
   max-width: 100%;
   left: 0;
-  top: 799px;
+  top: auto;
   z-index: 1;
   right: 0;
-  bottom: auto;
+  bottom: 140px;
   padding: 8px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___5MnOu {
-    top: 871px;
+    top: auto;
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    height: auto;
+    bottom: 90px;
     min-width: 0;
   }
 }
