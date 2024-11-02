@@ -1333,6 +1333,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicDrawer.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "AT_jYggIUMxZ",
+          "name": "Home",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicHome.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/home.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicHome.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/home"
         }
       ],
       "icons": [

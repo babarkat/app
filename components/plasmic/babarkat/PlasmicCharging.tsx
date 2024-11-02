@@ -61,10 +61,10 @@ import {
 import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
-import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/component
+import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 
@@ -77,7 +77,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicCharging.module.css"; // plasmic-import: 9ozBjyq1SCcU/css
 
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
@@ -88,6 +87,7 @@ import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; 
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -110,10 +110,6 @@ export const PlasmicCharging__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCharging__OverridesType = {
   chargeStep1?: Flex__<"div">;
-  backstep2?: Flex__<typeof Button>;
-  backstep3?: Flex__<typeof Button>;
-  step1Next?: Flex__<typeof Button>;
-  step2Next?: Flex__<typeof Button>;
   header?: Flex__<"div">;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
@@ -132,6 +128,10 @@ export type PlasmicCharging__OverridesType = {
   boxselect3?: Flex__<typeof Boxselect>;
   chargeType?: Flex__<"div">;
   boxselect2?: Flex__<typeof Boxselect>;
+  backstep2?: Flex__<typeof Button>;
+  backstep3?: Flex__<typeof Button>;
+  step1Next?: Flex__<typeof Button>;
+  step2Next?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
   ul?: Flex__<"ul">;
   اپراتور?: Flex__<"div">;
@@ -529,538 +529,6 @@ function PlasmicCharging__RenderFunc(props: {
             }
           )}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__aEevq, {
-              [sty.freeBoxstepscharg_step2__aEevqTtIk]: hasVariant(
-                $state,
-                "stepscharg",
-                "step2"
-              ),
-              [sty.freeBoxstepscharg_step3__aEevqWug5H]: hasVariant(
-                $state,
-                "stepscharg",
-                "step3"
-              )
-            })}
-          >
-            {(
-              hasVariant($state, "stepscharg", "step2")
-                ? true
-                : hasVariant(globalVariants, "screen", "mobileOnly")
-                ? true
-                : false
-            ) ? (
-              <Button
-                data-plasmic-name={"backstep2"}
-                data-plasmic-override={overrides.backstep2}
-                className={classNames("__wab_instance", sty.backstep2, {
-                  [sty.backstep2stepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.backstep2stepscharg_step3]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                color={
-                  hasVariant($state, "stepscharg", "step2")
-                    ? "softGreen"
-                    : "green"
-                }
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateUnnamedVariant"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "stepscharg",
-                          operation: 1
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, undefined);
-                          return undefined;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateUnnamedVariant"] != null &&
-                    typeof $steps["updateUnnamedVariant"] === "object" &&
-                    typeof $steps["updateUnnamedVariant"].then === "function"
-                  ) {
-                    $steps["updateUnnamedVariant"] = await $steps[
-                      "updateUnnamedVariant"
-                    ];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__r0DVd,
-                    {
-                      [sty.textstepscharg_step2__r0DVdTtIk]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      )
-                    }
-                  )}
-                >
-                  {hasVariant($state, "stepscharg", "step2")
-                    ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                    : "\u0627\u062f\u0627\u0645\u0647"}
-                </div>
-              </Button>
-            ) : null}
-            {(
-              hasVariant($state, "stepscharg", "step3")
-                ? true
-                : hasVariant($state, "stepscharg", "step2")
-                ? true
-                : hasVariant(globalVariants, "screen", "mobileOnly")
-                ? true
-                : false
-            ) ? (
-              <Button
-                data-plasmic-name={"backstep3"}
-                data-plasmic-override={overrides.backstep3}
-                className={classNames("__wab_instance", sty.backstep3, {
-                  [sty.backstep3stepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.backstep3stepscharg_step3]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                color={
-                  hasVariant($state, "stepscharg", "step2")
-                    ? "softGreen"
-                    : "softGreen"
-                }
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateUnnamedVariant2"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "stepscharg",
-                          operation: 0,
-                          value: "step2"
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateUnnamedVariant2"] != null &&
-                    typeof $steps["updateUnnamedVariant2"] === "object" &&
-                    typeof $steps["updateUnnamedVariant2"].then === "function"
-                  ) {
-                    $steps["updateUnnamedVariant2"] = await $steps[
-                      "updateUnnamedVariant2"
-                    ];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__mVuY,
-                    {
-                      [sty.textstepscharg_step2__mVuYTtIk]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      )
-                    }
-                  )}
-                >
-                  {hasVariant($state, "stepscharg", "step2")
-                    ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                    : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
-                </div>
-              </Button>
-            ) : null}
-            <Button
-              data-plasmic-name={"step1Next"}
-              data-plasmic-override={overrides.step1Next}
-              className={classNames("__wab_instance", sty.step1Next, {
-                [sty.step1Nextstepscharg_step2]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step2"
-                ),
-                [sty.step1Nextstepscharg_step3]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step3"
-                )
-              })}
-              color={"green"}
-              isDisabled={(() => {
-                try {
-                  return $state.fragmentInput.value.length != 11;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return [];
-                  }
-                  throw e;
-                }
-              })()}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateNumber"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["number"]
-                        },
-                        operation: 0,
-                        value: $state.fragmentInput.value
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateNumber"] != null &&
-                  typeof $steps["updateNumber"] === "object" &&
-                  typeof $steps["updateNumber"].then === "function"
-                ) {
-                  $steps["updateNumber"] = await $steps["updateNumber"];
-                }
-
-                $steps["updateUnnamedVariant"] = (() => {
-                  const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                  return phoneRegex.test($state.number);
-                })()
-                  ? (() => {
-                      const actionArgs = {
-                        vgroup: "stepscharg",
-                        operation: 0,
-                        value: "step2"
-                      };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
-                        }
-
-                        $stateSet($state, vgroup, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateUnnamedVariant"] != null &&
-                  typeof $steps["updateUnnamedVariant"] === "object" &&
-                  typeof $steps["updateUnnamedVariant"].then === "function"
-                ) {
-                  $steps["updateUnnamedVariant"] = await $steps[
-                    "updateUnnamedVariant"
-                  ];
-                }
-
-                $steps["invokeGlobalAction"] = (() => {
-                  const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                  return !phoneRegex.test($state.number);
-                })()
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "error",
-                          "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                          "top-left"
-                        ]
-                      };
-                      return $globalActions["Fragment.showToast"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
-                }
-              }}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__gAtSi
-                )}
-              >
-                {"\u0627\u062f\u0627\u0645\u0647"}
-              </div>
-            </Button>
-            {(
-              hasVariant($state, "stepscharg", "step2")
-                ? true
-                : hasVariant(globalVariants, "screen", "mobileOnly")
-                ? true
-                : false
-            ) ? (
-              <Button
-                data-plasmic-name={"step2Next"}
-                data-plasmic-override={overrides.step2Next}
-                className={classNames("__wab_instance", sty.step2Next, {
-                  [sty.step2Nextstepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.step2Nextstepscharg_step3]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                color={"green"}
-                isDisabled={(() => {
-                  try {
-                    return $state.fragmentInput2.value.length <= 3;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return [];
-                    }
-                    throw e;
-                  }
-                })()}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateUnnamedVariant2"] = (() => {
-                    if ($state.operators2[$state.operatorselect].chargeRange) {
-                      if ($state.operatorselect == 1) {
-                        return $state.amont % 1000 === 0;
-                      }
-                      if (
-                        $state.amont >=
-                          $state.operators2[$state.operatorselect].chargeRange
-                            .min &&
-                        $state.amont <=
-                          $state.operators2[$state.operatorselect].chargeRange
-                            .max
-                      ) {
-                        return true;
-                      } else {
-                        return false;
-                      }
-                    } else return true;
-                  })()
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "stepscharg",
-                          operation: 0,
-                          value: "step3"
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateUnnamedVariant2"] != null &&
-                    typeof $steps["updateUnnamedVariant2"] === "object" &&
-                    typeof $steps["updateUnnamedVariant2"].then === "function"
-                  ) {
-                    $steps["updateUnnamedVariant2"] = await $steps[
-                      "updateUnnamedVariant2"
-                    ];
-                  }
-
-                  $steps["invokeGlobalAction"] = (() => {
-                    if ($state.operators2[$state.operatorselect].chargeRange) {
-                      if ($state.operatorselect == 1) {
-                        return $state.amont % 1000 != 0;
-                      }
-                      if (
-                        $state.amont >=
-                          $state.operators2[$state.operatorselect].chargeRange
-                            .min &&
-                        $state.amont <=
-                          $state.operators2[$state.operatorselect].chargeRange
-                            .max
-                      ) {
-                        return false;
-                      } else {
-                        return true;
-                      }
-                    } else return false;
-                  })()
-                    ? (() => {
-                        const actionArgs = {
-                          args: [
-                            "error",
-                            (() => {
-                              try {
-                                return (() => {
-                                  if ($state.operatorselect == 1) {
-                                    if ($state.amont % 1000 != 0)
-                                      return "مبلغ باید ضریبی از 1000 باشد.";
-                                  }
-                                  return (
-                                    "مبلغ باید بین " +
-                                    $state.operators2[
-                                      $state.operatorselect
-                                    ].chargeRange.min.toLocaleString("en") +
-                                    " تومان تا " +
-                                    $state.operators2[
-                                      $state.operatorselect
-                                    ].chargeRange.max.toLocaleString("en") +
-                                    " تومان باشد."
-                                  );
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })(),
-                            "top-left"
-                          ]
-                        };
-                        return $globalActions["Fragment.showToast"]?.apply(
-                          null,
-                          [...actionArgs.args]
-                        );
-                      })()
-                    : undefined;
-                  if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
-                  ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__gYUz
-                  )}
-                >
-                  {"\u0627\u062f\u0627\u0645\u0647"}
-                </div>
-              </Button>
-            ) : null}
-            {(
-              hasVariant($state, "stepscharg", "step3")
-                ? true
-                : hasVariant($state, "stepscharg", "step2")
-                ? true
-                : false
-            ) ? (
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zA7Y3,
-                  {
-                    [sty.textstepscharg_step2__zA7Y3TtIk]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
-                    [sty.textstepscharg_step3__zA7Y3Wug5H]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step3"
-                    )
-                  }
-                )}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToChargeStep1"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/charging` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToChargeStep1"] != null &&
-                    typeof $steps["goToChargeStep1"] === "object" &&
-                    typeof $steps["goToChargeStep1"].then === "function"
-                  ) {
-                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-                  }
-                }}
-              >
-                {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
-              </div>
-            ) : null}
-          </Stack__>
           <div
             data-plasmic-name={"header"}
             data-plasmic-override={overrides.header}
@@ -3479,6 +2947,538 @@ function PlasmicCharging__RenderFunc(props: {
               ) : null}
             </Stack__>
           </Reveal>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__aEevq, {
+              [sty.freeBoxstepscharg_step2__aEevqTtIk]: hasVariant(
+                $state,
+                "stepscharg",
+                "step2"
+              ),
+              [sty.freeBoxstepscharg_step3__aEevqWug5H]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+          >
+            {(
+              hasVariant($state, "stepscharg", "step2")
+                ? true
+                : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? true
+                : false
+            ) ? (
+              <Button
+                data-plasmic-name={"backstep2"}
+                data-plasmic-override={overrides.backstep2}
+                className={classNames("__wab_instance", sty.backstep2, {
+                  [sty.backstep2stepscharg_step2]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step2"
+                  ),
+                  [sty.backstep2stepscharg_step3]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+                color={
+                  hasVariant($state, "stepscharg", "step2")
+                    ? "softGreen"
+                    : "green"
+                }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateUnnamedVariant"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "stepscharg",
+                          operation: 1
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, undefined);
+                          return undefined;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateUnnamedVariant"] != null &&
+                    typeof $steps["updateUnnamedVariant"] === "object" &&
+                    typeof $steps["updateUnnamedVariant"].then === "function"
+                  ) {
+                    $steps["updateUnnamedVariant"] = await $steps[
+                      "updateUnnamedVariant"
+                    ];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__r0DVd,
+                    {
+                      [sty.textstepscharg_step2__r0DVdTtIk]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step2"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "stepscharg", "step2")
+                    ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                    : "\u0627\u062f\u0627\u0645\u0647"}
+                </div>
+              </Button>
+            ) : null}
+            {(
+              hasVariant($state, "stepscharg", "step3")
+                ? true
+                : hasVariant($state, "stepscharg", "step2")
+                ? true
+                : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? true
+                : false
+            ) ? (
+              <Button
+                data-plasmic-name={"backstep3"}
+                data-plasmic-override={overrides.backstep3}
+                className={classNames("__wab_instance", sty.backstep3, {
+                  [sty.backstep3stepscharg_step2]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step2"
+                  ),
+                  [sty.backstep3stepscharg_step3]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+                color={
+                  hasVariant($state, "stepscharg", "step2")
+                    ? "softGreen"
+                    : "softGreen"
+                }
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateUnnamedVariant2"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "stepscharg",
+                          operation: 0,
+                          value: "step2"
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateUnnamedVariant2"] != null &&
+                    typeof $steps["updateUnnamedVariant2"] === "object" &&
+                    typeof $steps["updateUnnamedVariant2"].then === "function"
+                  ) {
+                    $steps["updateUnnamedVariant2"] = await $steps[
+                      "updateUnnamedVariant2"
+                    ];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mVuY,
+                    {
+                      [sty.textstepscharg_step2__mVuYTtIk]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step2"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "stepscharg", "step2")
+                    ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                    : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+                </div>
+              </Button>
+            ) : null}
+            <Button
+              data-plasmic-name={"step1Next"}
+              data-plasmic-override={overrides.step1Next}
+              className={classNames("__wab_instance", sty.step1Next, {
+                [sty.step1Nextstepscharg_step2]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step2"
+                ),
+                [sty.step1Nextstepscharg_step3]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step3"
+                )
+              })}
+              color={"green"}
+              isDisabled={(() => {
+                try {
+                  return $state.fragmentInput.value.length != 11;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return [];
+                  }
+                  throw e;
+                }
+              })()}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateNumber"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["number"]
+                        },
+                        operation: 0,
+                        value: $state.fragmentInput.value
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateNumber"] != null &&
+                  typeof $steps["updateNumber"] === "object" &&
+                  typeof $steps["updateNumber"].then === "function"
+                ) {
+                  $steps["updateNumber"] = await $steps["updateNumber"];
+                }
+
+                $steps["updateUnnamedVariant"] = (() => {
+                  const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                  return phoneRegex.test($state.number);
+                })()
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "stepscharg",
+                        operation: 0,
+                        value: "step2"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateUnnamedVariant"] != null &&
+                  typeof $steps["updateUnnamedVariant"] === "object" &&
+                  typeof $steps["updateUnnamedVariant"].then === "function"
+                ) {
+                  $steps["updateUnnamedVariant"] = await $steps[
+                    "updateUnnamedVariant"
+                  ];
+                }
+
+                $steps["invokeGlobalAction"] = (() => {
+                  const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                  return !phoneRegex.test($state.number);
+                })()
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          "error",
+                          "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                          "top-left"
+                        ]
+                      };
+                      return $globalActions["Fragment.showToast"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
+                ) {
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
+                  ];
+                }
+              }}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__gAtSi
+                )}
+              >
+                {"\u0627\u062f\u0627\u0645\u0647"}
+              </div>
+            </Button>
+            {(
+              hasVariant($state, "stepscharg", "step2")
+                ? true
+                : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? true
+                : false
+            ) ? (
+              <Button
+                data-plasmic-name={"step2Next"}
+                data-plasmic-override={overrides.step2Next}
+                className={classNames("__wab_instance", sty.step2Next, {
+                  [sty.step2Nextstepscharg_step2]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step2"
+                  ),
+                  [sty.step2Nextstepscharg_step3]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+                color={"green"}
+                isDisabled={(() => {
+                  try {
+                    return $state.fragmentInput2.value.length <= 3;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateUnnamedVariant2"] = (() => {
+                    if ($state.operators2[$state.operatorselect].chargeRange) {
+                      if ($state.operatorselect == 1) {
+                        return $state.amont % 1000 === 0;
+                      }
+                      if (
+                        $state.amont >=
+                          $state.operators2[$state.operatorselect].chargeRange
+                            .min &&
+                        $state.amont <=
+                          $state.operators2[$state.operatorselect].chargeRange
+                            .max
+                      ) {
+                        return true;
+                      } else {
+                        return false;
+                      }
+                    } else return true;
+                  })()
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "stepscharg",
+                          operation: 0,
+                          value: "step3"
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateUnnamedVariant2"] != null &&
+                    typeof $steps["updateUnnamedVariant2"] === "object" &&
+                    typeof $steps["updateUnnamedVariant2"].then === "function"
+                  ) {
+                    $steps["updateUnnamedVariant2"] = await $steps[
+                      "updateUnnamedVariant2"
+                    ];
+                  }
+
+                  $steps["invokeGlobalAction"] = (() => {
+                    if ($state.operators2[$state.operatorselect].chargeRange) {
+                      if ($state.operatorselect == 1) {
+                        return $state.amont % 1000 != 0;
+                      }
+                      if (
+                        $state.amont >=
+                          $state.operators2[$state.operatorselect].chargeRange
+                            .min &&
+                        $state.amont <=
+                          $state.operators2[$state.operatorselect].chargeRange
+                            .max
+                      ) {
+                        return false;
+                      } else {
+                        return true;
+                      }
+                    } else return false;
+                  })()
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            "error",
+                            (() => {
+                              try {
+                                return (() => {
+                                  if ($state.operatorselect == 1) {
+                                    if ($state.amont % 1000 != 0)
+                                      return "مبلغ باید ضریبی از 1000 باشد.";
+                                  }
+                                  return (
+                                    "مبلغ باید بین " +
+                                    $state.operators2[
+                                      $state.operatorselect
+                                    ].chargeRange.min.toLocaleString("en") +
+                                    " تومان تا " +
+                                    $state.operators2[
+                                      $state.operatorselect
+                                    ].chargeRange.max.toLocaleString("en") +
+                                    " تومان باشد."
+                                  );
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })(),
+                            "top-left"
+                          ]
+                        };
+                        return $globalActions["Fragment.showToast"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__gYUz
+                  )}
+                >
+                  {"\u0627\u062f\u0627\u0645\u0647"}
+                </div>
+              </Button>
+            ) : null}
+            {(
+              hasVariant($state, "stepscharg", "step3")
+                ? true
+                : hasVariant($state, "stepscharg", "step2")
+                ? true
+                : false
+            ) ? (
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__zA7Y3,
+                  {
+                    [sty.textstepscharg_step2__zA7Y3TtIk]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
+                    [sty.textstepscharg_step3__zA7Y3Wug5H]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  }
+                )}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToChargeStep1"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/charging` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToChargeStep1"] != null &&
+                    typeof $steps["goToChargeStep1"] === "object" &&
+                    typeof $steps["goToChargeStep1"].then === "function"
+                  ) {
+                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
+                  }
+                }}
+              >
+                {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+              </div>
+            ) : null}
+          </Stack__>
           <AntdModal
             data-plasmic-name={"modal"}
             data-plasmic-override={overrides.modal}
@@ -4406,10 +4406,6 @@ function PlasmicCharging__RenderFunc(props: {
 const PlasmicDescendants = {
   chargeStep1: [
     "chargeStep1",
-    "backstep2",
-    "backstep3",
-    "step1Next",
-    "step2Next",
     "header",
     "reveal",
     "wallet",
@@ -4428,6 +4424,10 @@ const PlasmicDescendants = {
     "boxselect3",
     "chargeType",
     "boxselect2",
+    "backstep2",
+    "backstep3",
+    "step1Next",
+    "step2Next",
     "modal",
     "ul",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
@@ -4436,10 +4436,6 @@ const PlasmicDescendants = {
     "modal2",
     "lottie"
   ],
-  backstep2: ["backstep2"],
-  backstep3: ["backstep3"],
-  step1Next: ["step1Next"],
-  step2Next: ["step2Next"],
   header: ["header"],
   reveal: [
     "reveal",
@@ -4498,6 +4494,10 @@ const PlasmicDescendants = {
   boxselect3: ["boxselect3"],
   chargeType: ["chargeType", "boxselect2"],
   boxselect2: ["boxselect2"],
+  backstep2: ["backstep2"],
+  backstep3: ["backstep3"],
+  step1Next: ["step1Next"],
+  step2Next: ["step2Next"],
   modal: [
     "modal",
     "ul",
@@ -4522,10 +4522,6 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   chargeStep1: "div";
-  backstep2: typeof Button;
-  backstep3: typeof Button;
-  step1Next: typeof Button;
-  step2Next: typeof Button;
   header: "div";
   reveal: typeof Reveal;
   wallet: "div";
@@ -4544,6 +4540,10 @@ type NodeDefaultElementType = {
   boxselect3: typeof Boxselect;
   chargeType: "div";
   boxselect2: typeof Boxselect;
+  backstep2: typeof Button;
+  backstep3: typeof Button;
+  step1Next: typeof Button;
+  step2Next: typeof Button;
   modal: typeof AntdModal;
   ul: "ul";
   اپراتور: "div";
@@ -4638,10 +4638,6 @@ export const PlasmicCharging = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("chargeStep1")),
   {
     // Helper components rendering sub-elements
-    backstep2: makeNodeComponent("backstep2"),
-    backstep3: makeNodeComponent("backstep3"),
-    step1Next: makeNodeComponent("step1Next"),
-    step2Next: makeNodeComponent("step2Next"),
     header: makeNodeComponent("header"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
@@ -4664,6 +4660,10 @@ export const PlasmicCharging = Object.assign(
     boxselect3: makeNodeComponent("boxselect3"),
     chargeType: makeNodeComponent("chargeType"),
     boxselect2: makeNodeComponent("boxselect2"),
+    backstep2: makeNodeComponent("backstep2"),
+    backstep3: makeNodeComponent("backstep3"),
+    step1Next: makeNodeComponent("step1Next"),
+    step2Next: makeNodeComponent("step2Next"),
     modal: makeNodeComponent("modal"),
     ul: makeNodeComponent("ul"),
     اپراتور: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u0631"),

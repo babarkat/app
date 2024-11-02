@@ -61,9 +61,9 @@ import {
 import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
-import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
+import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
@@ -93,21 +93,21 @@ import sty from "./PlasmicHomepage.module.css"; // plasmic-import: CKHzBo8fkmuJ/
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
-import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
-import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
-import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Vector5Icon from "./icons/PlasmicIcon__Vector5"; // plasmic-import: OQAWETC3rCV5/icon
+import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
+import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
 import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
 import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zXLIAYD/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
+import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu9gyKG/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
@@ -128,11 +128,6 @@ export type PlasmicHomepage__OverridesType = {
   header?: Flex__<"div">;
   wallet?: Flex__<"div">;
   tooltip?: Flex__<typeof AntdTooltip>;
-  footer?: Flex__<"div">;
-  snapp2?: Flex__<"div">;
-  vuesaxBoldHome?: Flex__<"div">;
-  charge2?: Flex__<"div">;
-  vuesaxBoldReceipt?: Flex__<"div">;
   services?: Flex__<"div">;
   internet?: Flex__<"div">;
   internet3?: Flex__<"div">;
@@ -147,6 +142,12 @@ export type PlasmicHomepage__OverridesType = {
   comingSoon4?: Flex__<"div">;
   vuesaxLinearStrongbox22?: Flex__<"div">;
   frame2?: Flex__<"div">;
+  services4?: Flex__<"div">;
+  footer?: Flex__<"div">;
+  snapp2?: Flex__<"div">;
+  vuesaxBoldHome?: Flex__<"div">;
+  charge2?: Flex__<"div">;
+  vuesaxBoldReceipt?: Flex__<"div">;
   profile?: Flex__<typeof ApiRequest>;
   modal?: Flex__<typeof AntdModal>;
   wallet2?: Flex__<"div">;
@@ -308,12 +309,6 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "5022291068506748"
-      },
-      {
-        path: "logout",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "drawer.open",
@@ -497,88 +492,6 @@ function PlasmicHomepage__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-
-              {(() => {
-                try {
-                  return $state.logout;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
-                  }
-                  throw e;
-                }
-              })() ? (
-                <Button
-                  className={classNames("__wab_instance", sty.button__jcRls)}
-                  color={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "sand"
-                      : "sand"
-                  }
-                  endIcon={
-                    <Icon24Icon
-                      className={classNames(projectcss.all, sty.svg__z6PMw)}
-                      role={"img"}
-                    />
-                  }
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return localStorage.removeItem("userbabarcat");
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-
-                    $steps["goToLogIn"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/login` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToLogIn"] != null &&
-                      typeof $steps["goToLogIn"] === "object" &&
-                      typeof $steps["goToLogIn"].then === "function"
-                    ) {
-                      $steps["goToLogIn"] = await $steps["goToLogIn"];
-                    }
-                  }}
-                  showEndIcon={true}
-                >
-                  {
-                    "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628"
-                  }
-                </Button>
-              ) : null}
             </div>
             <Icon4Icon
               className={classNames(projectcss.all, sty.svg__tnUMf)}
@@ -750,96 +663,6 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </AntdTooltip>
           </Stack__>
-          <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
-            <div
-              data-plasmic-name={"footer"}
-              data-plasmic-override={overrides.footer}
-              className={classNames(projectcss.all, sty.footer)}
-            >
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"snapp2"}
-                data-plasmic-override={overrides.snapp2}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.snapp2)}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldHome"}
-                  data-plasmic-override={overrides.vuesaxBoldHome}
-                  className={classNames(projectcss.all, sty.vuesaxBoldHome)}
-                >
-                  <HomeIcon
-                    className={classNames(projectcss.all, sty.svg__fbf4J)}
-                    role={"img"}
-                  />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ruTXz
-                  )}
-                >
-                  {"\u062e\u0627\u0646\u0647"}
-                </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"charge2"}
-                data-plasmic-override={overrides.charge2}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.charge2)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToChargeStep1"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/transaction` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToChargeStep1"] != null &&
-                    typeof $steps["goToChargeStep1"] === "object" &&
-                    typeof $steps["goToChargeStep1"].then === "function"
-                  ) {
-                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-                  }
-                }}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldReceipt"}
-                  data-plasmic-override={overrides.vuesaxBoldReceipt}
-                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
-                >
-                  <ReceiptIcon
-                    className={classNames(projectcss.all, sty.svg__yjKw)}
-                    role={"img"}
-                  />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___4P0Rx
-                  )}
-                >
-                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-                </div>
-              </Stack__>
-            </div>
-          </div>
           <Stack__
             as={"div"}
             hasGap={true}
@@ -1422,7 +1245,108 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
             </Stack__>
+            {(
+              hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
+            ) ? (
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"services4"}
+                data-plasmic-override={overrides.services4}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.services4)}
+              />
+            ) : null}
           </Stack__>
+          <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
+            <div
+              data-plasmic-name={"footer"}
+              data-plasmic-override={overrides.footer}
+              className={classNames(projectcss.all, sty.footer)}
+            >
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"snapp2"}
+                data-plasmic-override={overrides.snapp2}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.snapp2)}
+              >
+                <div
+                  data-plasmic-name={"vuesaxBoldHome"}
+                  data-plasmic-override={overrides.vuesaxBoldHome}
+                  className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+                >
+                  <HomeIcon
+                    className={classNames(projectcss.all, sty.svg__fbf4J)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__ruTXz
+                  )}
+                >
+                  {"\u062e\u0627\u0646\u0647"}
+                </div>
+              </Stack__>
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"charge2"}
+                data-plasmic-override={overrides.charge2}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.charge2)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToChargeStep1"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/transaction` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToChargeStep1"] != null &&
+                    typeof $steps["goToChargeStep1"] === "object" &&
+                    typeof $steps["goToChargeStep1"].then === "function"
+                  ) {
+                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
+                  }
+                }}
+              >
+                <div
+                  data-plasmic-name={"vuesaxBoldReceipt"}
+                  data-plasmic-override={overrides.vuesaxBoldReceipt}
+                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
+                >
+                  <ReceiptIcon
+                    className={classNames(projectcss.all, sty.svg__yjKw)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4P0Rx
+                  )}
+                >
+                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+                </div>
+              </Stack__>
+            </div>
+          </div>
           <ApiRequest
             data-plasmic-name={"profile"}
             data-plasmic-override={overrides.profile}
@@ -3028,11 +2952,6 @@ const PlasmicDescendants = {
     "header",
     "wallet",
     "tooltip",
-    "footer",
-    "snapp2",
-    "vuesaxBoldHome",
-    "charge2",
-    "vuesaxBoldReceipt",
     "services",
     "internet",
     "internet3",
@@ -3047,6 +2966,12 @@ const PlasmicDescendants = {
     "comingSoon4",
     "vuesaxLinearStrongbox22",
     "frame2",
+    "services4",
+    "footer",
+    "snapp2",
+    "vuesaxBoldHome",
+    "charge2",
+    "vuesaxBoldReceipt",
     "profile",
     "modal",
     "wallet2",
@@ -3068,17 +2993,6 @@ const PlasmicDescendants = {
   header: ["header"],
   wallet: ["wallet", "tooltip"],
   tooltip: ["tooltip"],
-  footer: [
-    "footer",
-    "snapp2",
-    "vuesaxBoldHome",
-    "charge2",
-    "vuesaxBoldReceipt"
-  ],
-  snapp2: ["snapp2", "vuesaxBoldHome"],
-  vuesaxBoldHome: ["vuesaxBoldHome"],
-  charge2: ["charge2", "vuesaxBoldReceipt"],
-  vuesaxBoldReceipt: ["vuesaxBoldReceipt"],
   services: ["services", "internet", "internet3"],
   internet: ["internet"],
   internet3: ["internet3"],
@@ -3111,6 +3025,18 @@ const PlasmicDescendants = {
   comingSoon4: ["comingSoon4", "vuesaxLinearStrongbox22", "frame2"],
   vuesaxLinearStrongbox22: ["vuesaxLinearStrongbox22", "frame2"],
   frame2: ["frame2"],
+  services4: ["services4"],
+  footer: [
+    "footer",
+    "snapp2",
+    "vuesaxBoldHome",
+    "charge2",
+    "vuesaxBoldReceipt"
+  ],
+  snapp2: ["snapp2", "vuesaxBoldHome"],
+  vuesaxBoldHome: ["vuesaxBoldHome"],
+  charge2: ["charge2", "vuesaxBoldReceipt"],
+  vuesaxBoldReceipt: ["vuesaxBoldReceipt"],
   profile: ["profile"],
   modal: ["modal", "wallet2", "input", "operators4", "boxselect4"],
   wallet2: ["wallet2", "input"],
@@ -3145,11 +3071,6 @@ type NodeDefaultElementType = {
   header: "div";
   wallet: "div";
   tooltip: typeof AntdTooltip;
-  footer: "div";
-  snapp2: "div";
-  vuesaxBoldHome: "div";
-  charge2: "div";
-  vuesaxBoldReceipt: "div";
   services: "div";
   internet: "div";
   internet3: "div";
@@ -3164,6 +3085,12 @@ type NodeDefaultElementType = {
   comingSoon4: "div";
   vuesaxLinearStrongbox22: "div";
   frame2: "div";
+  services4: "div";
+  footer: "div";
+  snapp2: "div";
+  vuesaxBoldHome: "div";
+  charge2: "div";
+  vuesaxBoldReceipt: "div";
   profile: typeof ApiRequest;
   modal: typeof AntdModal;
   wallet2: "div";
@@ -3271,11 +3198,6 @@ export const PlasmicHomepage = Object.assign(
     header: makeNodeComponent("header"),
     wallet: makeNodeComponent("wallet"),
     tooltip: makeNodeComponent("tooltip"),
-    footer: makeNodeComponent("footer"),
-    snapp2: makeNodeComponent("snapp2"),
-    vuesaxBoldHome: makeNodeComponent("vuesaxBoldHome"),
-    charge2: makeNodeComponent("charge2"),
-    vuesaxBoldReceipt: makeNodeComponent("vuesaxBoldReceipt"),
     services: makeNodeComponent("services"),
     internet: makeNodeComponent("internet"),
     internet3: makeNodeComponent("internet3"),
@@ -3290,6 +3212,12 @@ export const PlasmicHomepage = Object.assign(
     comingSoon4: makeNodeComponent("comingSoon4"),
     vuesaxLinearStrongbox22: makeNodeComponent("vuesaxLinearStrongbox22"),
     frame2: makeNodeComponent("frame2"),
+    services4: makeNodeComponent("services4"),
+    footer: makeNodeComponent("footer"),
+    snapp2: makeNodeComponent("snapp2"),
+    vuesaxBoldHome: makeNodeComponent("vuesaxBoldHome"),
+    charge2: makeNodeComponent("charge2"),
+    vuesaxBoldReceipt: makeNodeComponent("vuesaxBoldReceipt"),
     profile: makeNodeComponent("profile"),
     modal: makeNodeComponent("modal"),
     wallet2: makeNodeComponent("wallet2"),
