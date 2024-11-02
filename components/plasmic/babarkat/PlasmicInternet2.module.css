@@ -73,6 +73,11 @@
     grid-column-end: -1 !important;
   }
 }
+.headersteps2_step3 {
+  width: 100%;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+}
 .svg__fwxpg {
   object-fit: cover;
   max-width: 100%;

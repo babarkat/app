@@ -35,11 +35,39 @@
     grid-column: 4;
   }
 }
+.rootglobal_experiment_override > * {
+  grid-column: 4;
+}
 .rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant > * {
   grid-column: 4;
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .rootglobal_experiment_override > * {
+    grid-column: 4;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
   .rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant > * {
+    grid-column: 4;
+  }
+}
+.rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override
+  > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override
+    > * {
+    grid-column: 4;
+  }
+}
+.rootglobal_unnamedGlobalGroupOfVariants2_unnamedVariant_global_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override
+  > * {
+  grid-column: 4;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .rootglobal_unnamedGlobalGroupOfVariants2_unnamedVariant_global_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override
+    > * {
     grid-column: 4;
   }
 }

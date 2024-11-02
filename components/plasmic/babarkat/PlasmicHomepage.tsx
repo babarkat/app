@@ -74,6 +74,14 @@ import {
   UnnamedGlobalGroupOfVariantsValue,
   useUnnamedGlobalGroupOfVariants
 } from "./PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants"; // plasmic-import: 0yrtEc_Se3kZ/globalVariant
+import {
+  ExperimentValue,
+  useExperiment
+} from "./PlasmicGlobalVariant__Experiment"; // plasmic-import: 0yNpRAZ9BHRO/globalVariant
+import {
+  UnnamedGlobalGroupOfVariants2Value,
+  useUnnamedGlobalGroupOfVariants2
+} from "./PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2"; // plasmic-import: N3RmGzhPpcNq/globalVariant
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -368,6 +376,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
   const globalVariants = ensureGlobalVariants({
     unnamedGlobalGroupOfVariants: useUnnamedGlobalGroupOfVariants(),
+    experiment: useExperiment(),
+    unnamedGlobalGroupOfVariants2: useUnnamedGlobalGroupOfVariants2(),
     screen: useScreenVariantsosEvNkdp6Zt6()
   });
 
@@ -397,7 +407,31 @@ function PlasmicHomepage__RenderFunc(props: {
             plasmic_plasmic_rich_components_css.plasmic_tokens,
             sty.root,
             {
+              [sty.rootglobal_experiment_override]: hasVariant(
+                globalVariants,
+                "experiment",
+                "override"
+              ),
+              [sty.rootglobal_unnamedGlobalGroupOfVariants2_unnamedVariant_global_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override]:
+                hasVariant(globalVariants, "experiment", "override") &&
+                hasVariant(
+                  globalVariants,
+                  "unnamedGlobalGroupOfVariants",
+                  "unnamedVariant"
+                ) &&
+                hasVariant(
+                  globalVariants,
+                  "unnamedGlobalGroupOfVariants2",
+                  "unnamedVariant"
+                ),
               [sty.rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant]:
+                hasVariant(
+                  globalVariants,
+                  "unnamedGlobalGroupOfVariants",
+                  "unnamedVariant"
+                ),
+              [sty.rootglobal_unnamedGlobalGroupOfVariants_unnamedVariant_global_experiment_override]:
+                hasVariant(globalVariants, "experiment", "override") &&
                 hasVariant(
                   globalVariants,
                   "unnamedGlobalGroupOfVariants",
