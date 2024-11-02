@@ -19,24 +19,19 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
   >;
-
   cmsCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof CmsCredentialsProvider>, "children">
   >;
@@ -208,7 +203,7 @@ export default function GlobalContextsProvider(
               css={
                 embedCssProps && "css" in embedCssProps
                   ? embedCssProps.css!
-                  : "\r\n*{\r\n  direction: rtl;\r\n  font-family: 'yekan bakh';\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 6px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n"
+                  : "\r\n*{\r\n  direction: rtl;\r\n  font-family: 'yekan bakh';\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 4px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n"
               }
             >
               <ContentfulCredentialsProvider

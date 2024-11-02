@@ -1398,20 +1398,19 @@ function PlasmicHomepage__RenderFunc(props: {
               (async data => {
                 const $steps = {};
 
-                $steps["runCode"] = (() => {
-                  if ($state.profile.data) {
-                    return $state.profile.data[0].success == true;
-                  } else return false;
-                })()
+                $steps["runCode"] = (
+                  $state.profile?.data ? $state.profile.data[0].success : false
+                )
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
-                            $state.userbabarcat = {
-                              name: state.profile.data[0].user.name,
-                              last_name: state.profile.data[0].user.last_name,
-                              toman: $state.profile.data[0].user.toman * 1000
-                            };
+                            $state.userbabarcat.name =
+                              $state.profile.data[0].user.name;
+                            $state.userbabarcat.last_name =
+                              $state.profile.data[0].user.last_name;
+                            $state.userbabarcat.toman =
+                              $state.profile.data[0].user.toman * 1000;
                             return localStorage.setItem(
                               "userbabarcat",
                               JSON.stringify($state.userbabarcat)
@@ -2066,7 +2065,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           const actionArgs = {
                             args: [
                               "PUT",
-                              "https://n8n.babarkat.com/webhook/Babarkat/login",
+                              "https://n8n.babarkat.com/webhook-test/Babarkat/login",
                               undefined,
                               (() => {
                                 try {
