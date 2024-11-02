@@ -463,6 +463,12 @@ function PlasmicCharging__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "pardakhtid",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -2879,7 +2885,8 @@ function PlasmicCharging__RenderFunc(props: {
                                         $state.operators2[$state.operatorselect]
                                           .nameop + "_charge",
                                       originId: $state.uuid + "",
-                                      priceType: "toman"
+                                      priceType: "toman",
+                                      token: $state.userinfo.token
                                     };
                                   } catch (e) {
                                     if (
@@ -2910,9 +2917,46 @@ function PlasmicCharging__RenderFunc(props: {
                       ];
                     }
 
+                    $steps["updatePardakhtid"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["pardakhtid"]
+                              },
+                              operation: 0,
+                              value: $steps.invokeGlobalAction4.data[0].id
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updatePardakhtid"] != null &&
+                      typeof $steps["updatePardakhtid"] === "object" &&
+                      typeof $steps["updatePardakhtid"].then === "function"
+                    ) {
+                      $steps["updatePardakhtid"] = await $steps[
+                        "updatePardakhtid"
+                      ];
+                    }
+
                     $steps["invokeGlobalAction"] =
                       $state.amont < $state.mojody &&
-                      $steps.invokeGlobalAction4.data[0].success == true
+                      $steps.invokeGlobalAction4?.data[0]?.success == true
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -2963,33 +3007,34 @@ function PlasmicCharging__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateInfopardakt"] =
-                      $state.amont < $state.mojody
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["infopardakt"]
-                              },
-                              operation: 0,
-                              value: $steps.invokeGlobalAction.data[0]
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
+                    $steps["updateInfopardakt"] = (
+                      $steps.invokeGlobalAction?.data ? true : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["infopardakt"]
+                            },
+                            operation: 0,
+                            value: $steps.invokeGlobalAction.data
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
                       $steps["updateInfopardakt"] != null &&
                       typeof $steps["updateInfopardakt"] === "object" &&
@@ -3000,33 +3045,86 @@ function PlasmicCharging__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateModal2Open"] =
-                      $state.infopardakt.code == 1
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["modal2", "open"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
+                    $steps["invokeGlobalAction5"] = (() => {
+                      if (
+                        $state.infopardakt.code !== undefined &&
+                        $state.pardakhtid != 0
+                      )
+                        return $state.infopardakt.code == 1;
+                      else return false;
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "PUT",
+                              "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    id: $state.pardakhtid,
+                                    trackingId: $state.infopardakt.ref_code,
+                                    token: $state.userinfo.token
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction5"] != null &&
+                      typeof $steps["invokeGlobalAction5"] === "object" &&
+                      typeof $steps["invokeGlobalAction5"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction5"] = await $steps[
+                        "invokeGlobalAction5"
+                      ];
+                    }
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                    $steps["updateModal2Open"] = (() => {
+                      if ($state.infopardakt.code !== undefined)
+                        return $state.infopardakt.code == 1;
+                      else return false;
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal2", "open"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                     if (
                       $steps["updateModal2Open"] != null &&
                       typeof $steps["updateModal2Open"] === "object" &&
@@ -3037,23 +3135,25 @@ function PlasmicCharging__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["invokeGlobalAction3"] =
-                      $state.infopardakt.code != 1 &&
-                      $state.infopardakt.code != undefined
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "error",
-                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
-                                "top-left"
-                              ]
-                            };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                    $steps["invokeGlobalAction3"] = (() => {
+                      if ($state.infopardakt.code !== undefined)
+                        return $state.infopardakt.code != 1;
+                      else return true;
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
                     if (
                       $steps["invokeGlobalAction3"] != null &&
                       typeof $steps["invokeGlobalAction3"] === "object" &&

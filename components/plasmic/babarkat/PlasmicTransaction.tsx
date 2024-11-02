@@ -2282,6 +2282,12 @@ function PlasmicTransaction__RenderFunc(props: {
                             ) : null}
                           </Stack__>
                         </TabContent>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___1CjQh
+                          )}
+                        />
                       </div>
                     </div>
                   )}
@@ -2361,7 +2367,15 @@ function PlasmicTransaction__RenderFunc(props: {
                     />
                   }
                 >
-                  {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__pIwTf
+                    )}
+                  >
+                    {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
+                  </div>
                 </Button>
                 <div
                   className={classNames(
@@ -2469,7 +2483,15 @@ function PlasmicTransaction__RenderFunc(props: {
                     />
                   }
                 >
-                  {"\u0635\u0641\u062d\u0647 \u0628\u0639\u062f"}
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__kwzKn
+                    )}
+                  >
+                    {"\u0635\u0641\u062d\u0647 \u0628\u0639\u062f"}
+                  </div>
                 </Button>
               </div>
             </Stack__>

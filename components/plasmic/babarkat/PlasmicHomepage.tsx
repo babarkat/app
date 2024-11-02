@@ -70,6 +70,7 @@ import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/compo
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
+import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 import {
   UnnamedGlobalGroupOfVariantsValue,
   useUnnamedGlobalGroupOfVariants
@@ -82,7 +83,6 @@ import {
   UnnamedGlobalGroupOfVariants2Value,
   useUnnamedGlobalGroupOfVariants2
 } from "./PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2"; // plasmic-import: N3RmGzhPpcNq/globalVariant
-import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -375,10 +375,10 @@ function PlasmicHomepage__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsosEvNkdp6Zt6(),
     unnamedGlobalGroupOfVariants: useUnnamedGlobalGroupOfVariants(),
     experiment: useExperiment(),
-    unnamedGlobalGroupOfVariants2: useUnnamedGlobalGroupOfVariants2(),
-    screen: useScreenVariantsosEvNkdp6Zt6()
+    unnamedGlobalGroupOfVariants2: useUnnamedGlobalGroupOfVariants2()
   });
 
   return (
@@ -406,7 +406,9 @@ function PlasmicHomepage__RenderFunc(props: {
             plasmic_antd_5_hostless_css.plasmic_tokens,
             plasmic_plasmic_rich_components_css.plasmic_tokens,
             sty.root,
-            "page",
+            hasVariant(globalVariants, "screen", "mobileOnly")
+              ? "page"
+              : "page",
             {
               [sty.rootglobal_experiment_override]: hasVariant(
                 globalVariants,

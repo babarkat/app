@@ -3158,7 +3158,9 @@ function PlasmicInternet2__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateInfopardakt"] = $steps.invokeGlobalAction.data
+                    $steps["updateInfopardakt"] = (
+                      $steps.invokeGlobalAction?.data ? true : false
+                    )
                       ? (() => {
                           const actionArgs = {
                             variable: {

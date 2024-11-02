@@ -491,7 +491,7 @@
   box-shadow: 5px -10px 20px -10px #00000087;
   background: #19242f;
   height: auto;
-  width: 60%;
+  width: 75%;
   justify-content: center;
   align-items: center;
   flex-direction: row;
@@ -685,7 +685,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 0px 0px 100px;
+  padding: 0px;
 }
 .freeBox__vPrSd > :global(.__wab_flex-container) {
   flex-direction: column;
@@ -697,6 +697,7 @@
   .freeBox__vPrSd {
     display: flex;
     flex-direction: column;
+    padding-bottom: 0px;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -3488,7 +3489,7 @@
   width: 30px;
   height: 30px;
   align-self: center;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(180deg);
+  transform: none;
   color: var(--token-Pxe4wDL2kJpb);
   flex-shrink: 0;
 }
