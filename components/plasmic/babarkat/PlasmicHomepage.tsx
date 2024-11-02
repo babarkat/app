@@ -109,6 +109,7 @@ import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIw
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
+import Icon32Icon from "./icons/PlasmicIcon__Icon32"; // plasmic-import: m7NcUd1l4JZ_/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
@@ -2882,8 +2883,19 @@ function PlasmicHomepage__RenderFunc(props: {
                       </React.Fragment>
                     </div>
                   </div>
-                  <Icon10Icon
-                    className={classNames(projectcss.all, sty.svg__geqy4)}
+                  <PlasmicIcon__
+                    PlasmicIconType={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? Icon32Icon
+                        : Icon10Icon
+                    }
+                    className={classNames(
+                      projectcss.all,
+                      sty.svg__geqy4,
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "go"
+                        : undefined
+                    )}
                     role={"img"}
                   />
                 </Stack__>
@@ -2993,7 +3005,12 @@ function PlasmicHomepage__RenderFunc(props: {
                     }
                   </div>
                 </div>
-                <Icon10Icon
+                <PlasmicIcon__
+                  PlasmicIconType={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? Icon32Icon
+                      : Icon10Icon
+                  }
                   className={classNames(projectcss.all, sty.svg__ushXm)}
                   role={"img"}
                 />

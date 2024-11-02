@@ -1730,6 +1730,11 @@
           "id": "ruzJ-DuAxbGs",
           "name": "Icon31Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon31.tsx"
+        },
+        {
+          "id": "m7NcUd1l4JZ_",
+          "name": "Icon32Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon32.tsx"
         }
       ],
       "images": [

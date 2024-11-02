@@ -3352,7 +3352,7 @@
   width: 30px;
   height: 30px;
   align-self: center;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(180deg);
+  transform: none;
   color: var(--token-P02GAf-HlHok);
   flex-shrink: 0;
 }
@@ -3365,7 +3365,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__mbRct {
-    height: 120px;
+    height: 80px;
   }
 }
 .freeBox___64PnC {
@@ -3492,4 +3492,9 @@
   transform: none;
   color: var(--token-Pxe4wDL2kJpb);
   flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__geqy4 {
+    color: var(--token-jgohepLVeKvh);
+  }
 }
