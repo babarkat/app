@@ -1002,7 +1002,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  width: auto;
+  width: 75%;
   height: auto;
   max-width: 100%;
   background: #243444;
@@ -1026,6 +1026,18 @@
   > picture
   > img {
   margin-top: 5px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__blzPa {
+    width: 100%;
+    min-width: 0;
+    margin: 0px;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__blzPa > :global(.__wab_flex-container) {
+    min-width: 0;
+  }
 }
 .transaction2:global(.__wab_instance) {
   position: relative;
@@ -1187,7 +1199,7 @@
   height: auto;
   max-width: 100%;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 12px;
   min-width: 0;
 }
 .button__sqdp8:global(.__wab_instance) {

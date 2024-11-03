@@ -2626,8 +2626,9 @@ function PlasmicTransaction__RenderFunc(props: {
                         {(() => {
                           try {
                             return (
-                              $state.transaction2.price.toLocaleString() +
-                              " تومان "
+                              (
+                                $state.transaction2.price * 1000
+                              ).toLocaleString() + " تومان "
                             );
                           } catch (e) {
                             if (
