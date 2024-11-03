@@ -224,6 +224,11 @@
 .walletsteps2_step3 {
   margin-top: 50px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .walletsteps2_step3 {
+    margin-top: 30px;
+  }
+}
 .svg__ztYdh {
   object-fit: cover;
   max-width: 100%;
