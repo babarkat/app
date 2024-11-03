@@ -762,6 +762,11 @@ function PlasmicInternet2__RenderFunc(props: {
                   data-plasmic-name={"steps"}
                   data-plasmic-override={overrides.steps}
                   className={classNames(projectcss.all, sty.steps, {
+                    [sty.stepssteps2_step2]: hasVariant(
+                      $state,
+                      "steps2",
+                      "step2"
+                    ),
                     [sty.stepssteps2_step3]: hasVariant(
                       $state,
                       "steps2",
@@ -1093,6 +1098,11 @@ function PlasmicInternet2__RenderFunc(props: {
                 </Stack__>
                 <div
                   className={classNames(projectcss.all, sty.freeBox___8MKoj, {
+                    [sty.freeBoxsteps2_step2___8MKojoGK8]: hasVariant(
+                      $state,
+                      "steps2",
+                      "step2"
+                    ),
                     [sty.freeBoxsteps2_step3___8MKojYl49R]: hasVariant(
                       $state,
                       "steps2",
@@ -1214,7 +1224,15 @@ function PlasmicInternet2__RenderFunc(props: {
                     ) : null}
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__totPe)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__totPe, {
+                    [sty.freeBoxsteps2_step2__totPeoGK8]: hasVariant(
+                      $state,
+                      "steps2",
+                      "step2"
+                    )
+                  })}
+                >
                   <Input
                     data-plasmic-name={"fragmentInput"}
                     data-plasmic-override={overrides.fragmentInput}
@@ -1840,7 +1858,14 @@ function PlasmicInternet2__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox___0I08B
+                          sty.freeBox___0I08B,
+                          {
+                            [sty.freeBoxsteps2_step2___0I08BoGK8]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step2"
+                            )
+                          }
                         )}
                       >
                         <Stack__

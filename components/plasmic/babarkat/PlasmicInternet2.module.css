@@ -124,6 +124,11 @@
     min-width: 0;
   }
 }
+.revealsteps2_step2:global(.__wab_instance) {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
 .revealsteps2_step3:global(.__wab_instance) {
   width: 75%;
 }
@@ -1185,6 +1190,9 @@
   min-width: 0;
   padding: 0px;
 }
+.freeBoxsteps2_step2___0I08BoGK8 {
+  height: 745px;
+}
 .freeBox__fazHu {
   display: flex;
   flex-direction: row;
@@ -1320,6 +1328,10 @@
   align-items: center;
   min-width: 0;
   padding: 8px;
+}
+.freeBoxsteps2_step2__sgAlWoGK8 {
+  overflow: auto;
+  margin: 0px 0px -30px;
 }
 .tabContent:global(.__wab_instance) {
   max-width: 100%;

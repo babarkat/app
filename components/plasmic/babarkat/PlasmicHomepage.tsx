@@ -168,7 +168,6 @@ export type PlasmicHomepage__OverridesType = {
   location?: Flex__<typeof Input>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
-  input2?: Flex__<typeof Input>;
   drawer?: Flex__<typeof AntdDrawer>;
 };
 
@@ -295,12 +294,6 @@ function PlasmicHomepage__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
-      },
-      {
-        path: "input2.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "shaba",
@@ -2224,6 +2217,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   </div>
                 </Button>
               </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox__fCnFo)} />
             </div>
           </AntdModal>
           <AntdModal
@@ -2343,68 +2337,12 @@ function PlasmicHomepage__RenderFunc(props: {
                     </React.Fragment>
                   )}
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox___5XCH)}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___5Fe
-                    )}
-                  >
-                    {
-                      "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 (\u062a\u0648\u0645\u0627\u0646)"
-                    }
-                  </div>
-                  <Input
-                    data-plasmic-name={"input2"}
-                    data-plasmic-override={overrides.input2}
-                    className={classNames("__wab_instance", sty.input2)}
-                    onChange={async (...eventArgs: any) => {
-                      generateStateOnChangeProp($state, [
-                        "input2",
-                        "value"
-                      ]).apply(null, eventArgs);
-                      (async value => {
-                        const $steps = {};
-                      }).apply(null, eventArgs);
-                    }}
-                    placeholder={"\u062a\u0648\u0645\u0627\u0646"}
-                    type={"text"}
-                    value={generateStateValueProp($state, ["input2", "value"])}
-                  />
-                </Stack__>
               </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox___6McQj)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__ppXNm)}
-                />
-
                 <div className={classNames(projectcss.all, sty.freeBox__bfJ7G)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__jsAv)}
                   >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__vmxAw)}
-                      displayHeight={"50px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"50px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/babarkat/images/image14.png",
-                        fullWidth: 500,
-                        fullHeight: 500,
-                        aspectRatio: undefined
-                      }}
-                    />
-
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__zruyv)}
@@ -2585,15 +2523,6 @@ function PlasmicHomepage__RenderFunc(props: {
                         {"6748  0685  2910  5022"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__jbUa6
-                      )}
-                    >
-                      {"5022291068506748"}
-                    </div>
                   </Stack__>
                 </div>
                 <div
@@ -2703,6 +2632,17 @@ function PlasmicHomepage__RenderFunc(props: {
                     />
                   </div>
                 </Stack__>
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? true
+                    : false
+                ) ? (
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__q1Z2X)}
+                  />
+                ) : null}
               </div>
             </div>
           </AntdModal>
@@ -3058,7 +2998,6 @@ const PlasmicDescendants = {
     "location",
     "modal2",
     "wallet3",
-    "input2",
     "drawer"
   ],
   header: ["header"],
@@ -3129,9 +3068,8 @@ const PlasmicDescendants = {
   fathername: ["fathername"],
   city: ["city"],
   location: ["location"],
-  modal2: ["modal2", "wallet3", "input2"],
-  wallet3: ["wallet3", "input2"],
-  input2: ["input2"],
+  modal2: ["modal2", "wallet3"],
+  wallet3: ["wallet3"],
   drawer: ["drawer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -3177,7 +3115,6 @@ type NodeDefaultElementType = {
   location: typeof Input;
   modal2: typeof AntdModal;
   wallet3: "div";
-  input2: typeof Input;
   drawer: typeof AntdDrawer;
 };
 
@@ -3304,7 +3241,6 @@ export const PlasmicHomepage = Object.assign(
     location: makeNodeComponent("location"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
-    input2: makeNodeComponent("input2"),
     drawer: makeNodeComponent("drawer"),
 
     // Metadata about props expected for PlasmicHomepage
