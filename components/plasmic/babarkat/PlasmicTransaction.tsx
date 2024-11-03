@@ -2083,7 +2083,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                           <React.Fragment>
                                             {(() => {
                                               try {
-                                                return "انتقال وجه";
+                                                return currentItem.receiver;
                                               } catch (e) {
                                                 if (
                                                   e instanceof TypeError ||
@@ -2117,7 +2117,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                   e?.plasmicType ===
                                                     "PlasmicUndefinedDataError"
                                                 ) {
-                                                  return "5000000 \u062a\u0648\u0645\u0627\u0646";
+                                                  return "--";
                                                 }
                                                 throw e;
                                               }
@@ -2237,7 +2237,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                   e?.plasmicType ===
                                                     "PlasmicUndefinedDataError"
                                                 ) {
-                                                  return "1403/05/07 10:20";
+                                                  return "--";
                                                 }
                                                 throw e;
                                               }

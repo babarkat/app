@@ -3016,7 +3016,18 @@ function PlasmicInternet2__RenderFunc(props: {
                   }
                 })() ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__e6W2Q)}
+                    className={classNames(projectcss.all, sty.freeBox__e6W2Q, {
+                      [sty.freeBoxsteps2_step2__e6W2QoGK8]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step2"
+                      ),
+                      [sty.freeBoxsteps2_step3__e6W2QYl49R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
+                      )
+                    })}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3089,15 +3100,15 @@ function PlasmicInternet2__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction2"] =
-                        $state.mojody < $state.selectpack.amount
+                        $state.mojodi < $state.selectpack.amount
                           ? (() => {
                               const actionArgs = {
                                 args: [
-                                  undefined,
+                                  "warning",
                                   "\u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u06a9\u0627\u0641\u06cc \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
                                   undefined,
                                   undefined,
-                                  "topLeft"
+                                  "topRight"
                                 ]
                               };
                               return $globalActions[
@@ -3116,7 +3127,7 @@ function PlasmicInternet2__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction4"] =
-                        $state.mojody > $state.selectpack.amount
+                        $state.mojodi > $state.selectpack.amount
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -3203,7 +3214,6 @@ function PlasmicInternet2__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction"] =
-                        $state.mojody > $state.selectpack.amount &&
                         $steps.invokeGlobalAction4?.data[0]?.success == true
                           ? (() => {
                               const actionArgs = {
@@ -3293,14 +3303,12 @@ function PlasmicInternet2__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction5"] = (() => {
-                        if (
-                          $state.infopardakt.code !== undefined &&
-                          $state.pardakhtid != 0
-                        )
-                          return $state.infopardakt.code == 1;
-                        else return false;
-                      })()
+                      $steps["invokeGlobalAction5"] = (
+                        $state.infopardakt?.code !== undefined &&
+                        $state.pardakhtid !== 0
+                          ? $state.infopardakt.code === 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -3343,11 +3351,11 @@ function PlasmicInternet2__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["updateModal3Open"] = (() => {
-                        if ($state.infopardakt.code !== undefined)
-                          return $state.infopardakt.code == 1;
-                        else return false;
-                      })()
+                      $steps["updateModal3Open"] = (
+                        $state.infopardakt?.code !== undefined
+                          ? $state.infopardakt.code == 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               variable: {
@@ -3383,15 +3391,15 @@ function PlasmicInternet2__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction3"] = (() => {
-                        if ($state.infopardakt.code !== undefined)
-                          return $state.infopardakt.code != 1;
-                        else return true;
-                      })()
+                      $steps["invokeGlobalAction3"] = (
+                        $state.infopardakt?.code
+                          ? $state.infopardakt?.code != 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               args: [
-                                undefined,
+                                "error",
                                 "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
                                 "top-left"
                               ]
@@ -3472,24 +3480,56 @@ function PlasmicInternet2__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___8Gd6
+                          sty.text___8Gd6,
+                          hasVariant($state, "steps2", "step3")
+                            ? "dateshow"
+                            : undefined,
+                          {
+                            [sty.textsteps2_step3___8Gd6Yl49R]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step3"
+                            )
+                          }
                         )}
                       >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return "موجودی :" + $state.mojodi + " تومان ";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
+                        {hasVariant($state, "steps2", "step3") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "موجودی:" +
+                                  $state.mojodi.toLocaleString() +
+                                  " تومان"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return "موجودی :" + $state.mojodi + " تومان ";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
                       </div>
                     </div>
                     <Group7SvgIcon

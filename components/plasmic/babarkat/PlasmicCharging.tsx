@@ -2572,14 +2572,11 @@ function PlasmicCharging__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction5"] = (() => {
-                        if (
-                          $state.infopardakt.code !== undefined &&
-                          $state.pardakhtid != 0
-                        )
-                          return $state.infopardakt.code == 1;
-                        else return false;
-                      })()
+                      $steps["invokeGlobalAction5"] = (
+                        $state.infopardakt?.code
+                          ? $state.infopardakt?.code == 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -2622,11 +2619,11 @@ function PlasmicCharging__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["updateModal2Open"] = (() => {
-                        if ($state.infopardakt.code !== undefined)
-                          return $state.infopardakt.code == 1;
-                        else return false;
-                      })()
+                      $steps["updateModal2Open"] = (
+                        $state.infopardakt?.code
+                          ? $state.infopardakt?.code == 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               variable: {
@@ -2662,11 +2659,11 @@ function PlasmicCharging__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction3"] = (() => {
-                        if ($state.infopardakt.code !== undefined)
-                          return $state.infopardakt.code != 1;
-                        else return true;
-                      })()
+                      $steps["invokeGlobalAction3"] = (
+                        $state.infopardakt?.code
+                          ? $state.infopardakt?.code != 1
+                          : false
+                      )
                         ? (() => {
                             const actionArgs = {
                               args: [
