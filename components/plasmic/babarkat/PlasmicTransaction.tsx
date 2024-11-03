@@ -2104,25 +2104,53 @@ function PlasmicTransaction__RenderFunc(props: {
                                             sty.text__dZxVm
                                           )}
                                         >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  currentItem.price.toLocaleString() +
-                                                  " تومان "
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "--";
+                                          {hasVariant(
+                                            globalVariants,
+                                            "screen",
+                                            "mobileOnly"
+                                          ) ? (
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    (
+                                                      currentItem.value * 1000
+                                                    ).toLocaleString() +
+                                                    " تومان "
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "--";
+                                                  }
+                                                  throw e;
                                                 }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
+                                              })()}
+                                            </React.Fragment>
+                                          ) : (
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    currentItem.price.toLocaleString() +
+                                                    " تومان "
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "--";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          )}
                                         </div>
                                       </div>
                                       <div
@@ -2603,137 +2631,276 @@ function PlasmicTransaction__RenderFunc(props: {
                     }
                   })()}
                 >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uQxTh)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__a4FNw
-                      )}
-                    >
-                      {"\u0645\u0628\u0644\u063a :"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__c8OJz
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
+                  {(
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
                           try {
-                            return (
-                              (
-                                $state.transaction2.price * 1000
-                              ).toLocaleString() + " تومان "
-                            );
+                            return $state.transaction == "transaction";
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return "100000 \u062a\u0648\u0645\u0627\u0646";
+                              return true;
                             }
                             throw e;
                           }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__eqZl7)}
-                  >
+                        })()
+                      : true
+                  ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__g0F7F
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__uQxTh)}
                     >
-                      {
-                        "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
-                      }
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__a4FNw
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "\u0639\u0646\u0648\u0627\u0646:"
+                          : "\u0645\u0628\u0644\u063a :"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__c8OJz
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.transaction2.receiver;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "100000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  (
+                                    $state.transaction2.price * 1000
+                                  ).toLocaleString() + " تومان "
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "100000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
+                      </div>
                     </div>
+                  ) : null}
+                  {(
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? true
+                      : false
+                  ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___4ZorO
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__f3QK4)}
                     >
-                      <React.Fragment>
-                        {(() => {
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__yAyeQ
+                        )}
+                      >
+                        {"\u0645\u0628\u0644\u063a :"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ywh9G
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  switch ($state.transaction) {
+                                    case "charge":
+                                      return (
+                                        (
+                                          $state.transaction2.price * 1000
+                                        ).toLocaleString() + " تومان"
+                                      );
+                                    case "transaction":
+                                      return (
+                                        (
+                                          $state.transaction2.value * 1000
+                                        ).toLocaleString() + " تومان"
+                                      );
+                                  }
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "100000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  (
+                                    $state.transaction2.price * 1000
+                                  ).toLocaleString() + " تومان "
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "100000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
                           try {
-                            return (() => {
-                              let date =
-                                $state.transaction2.createdAt.split(" ")[0];
-                              let time =
-                                $state.transaction2.createdAt.split(" ")[1];
-                              let gy = parseInt(date.split("-")[0]);
-                              let gm = parseInt(date.split("-")[1]);
-                              let gd = parseInt(date.split("-")[2]);
-                              let shamsiMonthDays = [
-                                31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29
-                              ];
+                            return $state.transaction == "charge";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : true
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__eqZl7)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__g0F7F
+                        )}
+                      >
+                        {
+                          "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___4ZorO
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return (() => {
+                                let date =
+                                  $state.transaction2.createdAt.split(" ")[0];
+                                let time =
+                                  $state.transaction2.createdAt.split(" ")[1];
+                                let gy = parseInt(date.split("-")[0]);
+                                let gm = parseInt(date.split("-")[1]);
+                                let gd = parseInt(date.split("-")[2]);
+                                let shamsiMonthDays = [
+                                  31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29
+                                ];
 
-                              let miladiDaysInMonth = [
-                                31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-                              ];
+                                let miladiDaysInMonth = [
+                                  31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+                                ];
 
-                              let isLeapYear =
-                                gy % 4 === 0 &&
-                                (gy % 100 !== 0 || gy % 400 === 0);
-                              if (isLeapYear) {
-                                miladiDaysInMonth[1] = 29;
-                              }
-                              let daysPassedMiladi = gd;
-                              for (let i = 0; i < gm - 1; i++) {
-                                daysPassedMiladi += miladiDaysInMonth[i];
-                              }
-                              let shamsiNewYearDayInMiladi = isLeapYear
-                                ? 80
-                                : 79;
-                              let daysPassedInShamsiYear =
-                                daysPassedMiladi - shamsiNewYearDayInMiladi;
-                              if (daysPassedInShamsiYear < 0) {
-                                gy--;
-                                isLeapYear =
+                                let isLeapYear =
                                   gy % 4 === 0 &&
                                   (gy % 100 !== 0 || gy % 400 === 0);
-                                daysPassedInShamsiYear += isLeapYear
-                                  ? 366
-                                  : 365;
-                              }
-                              let jy = gy - 621;
-                              let jm = 0;
-                              let jd = daysPassedInShamsiYear;
-                              for (let i = 0; i < shamsiMonthDays.length; i++) {
-                                if (jd < shamsiMonthDays[i]) {
-                                  jm = i + 1;
-                                  jd++;
-                                  break;
-                                } else {
-                                  jd -= shamsiMonthDays[i];
+                                if (isLeapYear) {
+                                  miladiDaysInMonth[1] = 29;
                                 }
+                                let daysPassedMiladi = gd;
+                                for (let i = 0; i < gm - 1; i++) {
+                                  daysPassedMiladi += miladiDaysInMonth[i];
+                                }
+                                let shamsiNewYearDayInMiladi = isLeapYear
+                                  ? 80
+                                  : 79;
+                                let daysPassedInShamsiYear =
+                                  daysPassedMiladi - shamsiNewYearDayInMiladi;
+                                if (daysPassedInShamsiYear < 0) {
+                                  gy--;
+                                  isLeapYear =
+                                    gy % 4 === 0 &&
+                                    (gy % 100 !== 0 || gy % 400 === 0);
+                                  daysPassedInShamsiYear += isLeapYear
+                                    ? 366
+                                    : 365;
+                                }
+                                let jy = gy - 621;
+                                let jm = 0;
+                                let jd = daysPassedInShamsiYear;
+                                for (
+                                  let i = 0;
+                                  i < shamsiMonthDays.length;
+                                  i++
+                                ) {
+                                  if (jd < shamsiMonthDays[i]) {
+                                    jm = i + 1;
+                                    jd++;
+                                    break;
+                                  } else {
+                                    jd -= shamsiMonthDays[i];
+                                  }
+                                }
+                                return jy + "/" + jm + "/" + jd + "  " + time;
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "1403/07/05 10:15:30";
                               }
-                              return jy + "/" + jm + "/" + jd + "  " + time;
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "1403/07/05 10:15:30";
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
+                          })()}
+                        </React.Fragment>
+                      </div>
                     </div>
-                  </div>
+                  ) : null}
                   <div
                     className={classNames(projectcss.all, sty.freeBox__lMMc)}
                   />
@@ -2816,7 +2983,9 @@ function PlasmicTransaction__RenderFunc(props: {
                           sty.text__z9F8F
                         )}
                       >
-                        {"\u0627\u067e\u0631\u0627\u062a\u0648\u0631"}
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "\u0646\u0648\u0639 \u0634\u0627\u0631\u0698"
+                          : "\u0627\u067e\u0631\u0627\u062a\u0648\u0631"}
                       </div>
                       <div
                         className={classNames(
@@ -2825,40 +2994,130 @@ function PlasmicTransaction__RenderFunc(props: {
                           sty.text__wcBN
                         )}
                       >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  switch (true) {
+                                    case $state.transaction2.type.startsWith(
+                                      "iran"
+                                    ):
+                                      return "ایران";
+                                    case $state.transaction2.type.startsWith(
+                                      "afghan"
+                                    ) ||
+                                      $state.transaction2.type.startsWith(
+                                        "hamrahaval"
+                                      ):
+                                      return "افقانستان";
+                                    default:
+                                      return "نامشخص";
+                                  }
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0631\u0627\u06cc\u062a\u0644";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  switch (true) {
+                                    case $state.transaction2.type.startsWith(
+                                      "irance"
+                                    ):
+                                      return "ایرانسل";
+                                    case $state.transaction2.type.startsWith(
+                                      "mci"
+                                    ) ||
+                                      $state.transaction2.type.startsWith(
+                                        "hamrahaval"
+                                      ):
+                                      return "همراه اول";
+                                    case $state.transaction2.type.startsWith(
+                                      "rightel"
+                                    ):
+                                      return "رایتل";
+                                    case $state.transaction2.type.startsWith(
+                                      "shatel"
+                                    ):
+                                      return "شاتل";
+                                    default:
+                                      return "نامشخص";
+                                  }
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0631\u0627\u06cc\u062a\u0644";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
+                      </div>
+                    </div>
+                  ) : null}
+                  {(
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return $state.transaction == "charge";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : true
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__atx4)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wZOoq
+                        )}
+                      >
+                        {
+                          "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
+                        }
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__vhT9
+                        )}
+                      >
                         <React.Fragment>
                           {(() => {
                             try {
-                              return (() => {
-                                switch (true) {
-                                  case $state.transaction2.type.startsWith(
-                                    "irance"
-                                  ):
-                                    return "ایرانسل";
-                                  case $state.transaction2.type.startsWith(
-                                    "mci"
-                                  ) ||
-                                    $state.transaction2.type.startsWith(
-                                      "hamrahaval"
-                                    ):
-                                    return "همراه اول";
-                                  case $state.transaction2.type.startsWith(
-                                    "rightel"
-                                  ):
-                                    return "رایتل";
-                                  case $state.transaction2.type.startsWith(
-                                    "shatel"
-                                  ):
-                                    return "شاتل";
-                                  default:
-                                    return "نامشخص";
-                                }
-                              })();
+                              return $state.transaction2.originId;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
                                 e?.plasmicType === "PlasmicUndefinedDataError"
                               ) {
-                                return "\u0631\u0627\u06cc\u062a\u0644";
+                                return "445874888475";
                               }
                               throw e;
                             }
@@ -2867,44 +3126,6 @@ function PlasmicTransaction__RenderFunc(props: {
                       </div>
                     </div>
                   ) : null}
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__atx4)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wZOoq
-                      )}
-                    >
-                      {
-                        "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
-                      }
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vhT9
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return $state.transaction2.originId;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "445874888475";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
                 </Transaction2>
                 <Button
                   className={classNames("__wab_instance", sty.button__sqdp8)}
