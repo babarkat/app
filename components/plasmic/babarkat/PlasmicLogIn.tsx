@@ -2884,11 +2884,23 @@ function PlasmicLogIn__RenderFunc(props: {
                         "slids",
                         "unnamedVariant3"
                       ),
+                      [sty.textunnamedVariant2__wYgldJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
                       [sty.textunnamedVariant__wYgldDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
-                      )
+                      ),
+                      [sty.textunnamedVariant_unnamedVariant2__wYgldDv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant")
                     }
                   )}
                 >

@@ -1774,6 +1774,21 @@
           "id": "T5qnRYhm3_iD",
           "name": "Icon37Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon37.tsx"
+        },
+        {
+          "id": "JYguj3uS6NKx",
+          "name": "Icon38Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon38.tsx"
+        },
+        {
+          "id": "JBVCC6KIJ2B6",
+          "name": "Icon39Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon39.tsx"
+        },
+        {
+          "id": "6MrfqQhZviFG",
+          "name": "Icon40Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon40.tsx"
         }
       ],
       "images": [
@@ -1941,6 +1956,51 @@
           "id": "TyefqlqJVNPU",
           "name": "mobile-alt-svgrepo-com.svg",
           "filePath": "../public/plasmic/babarkat/images/mobileAltSvgrepoComSvg.svg"
+        },
+        {
+          "id": "TlC4NneQ7ZYD",
+          "name": "image 24",
+          "filePath": "../public/plasmic/babarkat/images/image24.svg"
+        },
+        {
+          "id": "RoYImnJmYYrp",
+          "name": "image 25",
+          "filePath": "../public/plasmic/babarkat/images/image25.svg"
+        },
+        {
+          "id": "MxZiaMbZgzkV",
+          "name": "image 26",
+          "filePath": "../public/plasmic/babarkat/images/image26.svg"
+        },
+        {
+          "id": "JPA4nYQpAsgx",
+          "name": "image 27",
+          "filePath": "../public/plasmic/babarkat/images/image27.svg"
+        },
+        {
+          "id": "V7oDRCN9qbUq",
+          "name": "image 28",
+          "filePath": "../public/plasmic/babarkat/images/image28.svg"
+        },
+        {
+          "id": "ywPeg7E_m0rs",
+          "name": "image 29",
+          "filePath": "../public/plasmic/babarkat/images/image29.svg"
+        },
+        {
+          "id": "Gq7lM_BKJMXu",
+          "name": "image 30",
+          "filePath": "../public/plasmic/babarkat/images/image30.svg"
+        },
+        {
+          "id": "NYnQajLUF4Z4",
+          "name": "image 31",
+          "filePath": "../public/plasmic/babarkat/images/image31.svg"
+        },
+        {
+          "id": "6e7kaXhlwwW-",
+          "name": "image 32",
+          "filePath": "../public/plasmic/babarkat/images/image32.svg"
         }
       ],
       "indirect": false,

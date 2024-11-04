@@ -747,11 +747,13 @@
   font-family: "Vazirmatn", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  margin-top: 5px;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__jivU {
     font-size: 14px;
+    margin-top: 5px;
   }
 }
 .comingSoon2 {
@@ -936,51 +938,22 @@
   width: auto;
   height: 1em;
 }
-.vuesaxLinearStrongbox23 {
+.img__phhYv {
+  object-fit: contain;
+  max-width: 100%;
   width: 80px;
   height: 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  object-position: 50% 50%;
   flex-shrink: 0;
 }
+.img__phhYv > picture > img {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
 @media (min-width: 0px) and (max-width: 768px) {
-  .vuesaxLinearStrongbox23 {
+  .img__phhYv {
     width: 50px;
     height: 50px;
-    align-self: auto;
-    flex-shrink: 0;
-  }
-}
-.svg__foTqj {
-  object-fit: cover;
-  max-width: 100%;
-  color: #5dd597;
-  filter: drop-shadow(0px 5px 8px rgba(93, 212, 167, 0.25));
-  transform: translate(-0.10599999999999454px, 0.4759999999999991px);
-  width: 80px;
-  height: 80px;
-  display: block;
-  position: relative;
-  top: auto;
-  left: auto;
-  flex-shrink: 0;
-}
-.imagePsd2 {
-  background: url("/plasmic/babarkat/images/imagePsd1.png") center center / cover no-repeat;
-  width: 100px;
-  height: 100px;
-  display: block;
-  position: absolute;
-  top: -10px;
-  left: -10px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .imagePsd2 {
-    width: 70px;
-    height: 70px;
     flex-shrink: 0;
   }
 }
@@ -994,6 +967,7 @@
   font-family: "Vazirmatn", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  margin-top: 5px;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1117,47 +1091,27 @@
     transform-style: preserve-3d;
   }
 }
-.svg__l4GIb {
-  object-fit: cover;
+.img__fe1WY {
+  object-fit: contain;
   max-width: 100%;
-  color: #5dd597;
-  filter: drop-shadow(0px 5px 8px rgba(93, 212, 167, 0.25));
-  transform: translate(-0.10599999999999454px, 0.4759999999999991px);
   width: 80px;
   height: 80px;
-  display: block;
-  position: relative;
-  top: auto;
-  left: auto;
   flex-shrink: 0;
 }
+.img__fe1WY > picture > img {
+  object-fit: contain;
+}
 @media (min-width: 0px) and (max-width: 768px) {
-  .svg__l4GIb {
-    left: auto;
-    top: auto;
+  .img__fe1WY {
     width: 50px;
     height: 50px;
+    object-fit: contain;
     flex-shrink: 0;
   }
 }
-.text___84D5U {
-  position: absolute;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  color: #ffffff;
-  font-family: "Life Savers";
-  left: 0px;
-  top: 17px;
-  font-weight: 700;
-  font-size: 50px;
-  min-width: 0;
-}
 @media (min-width: 0px) and (max-width: 768px) {
-  .text___84D5U {
-    font-size: 30px;
-    top: 18px;
+  .img__fe1WY > picture > img {
+    object-fit: contain;
   }
 }
 .text__fjyMb {
@@ -1170,6 +1124,7 @@
   font-family: "Vazirmatn", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  margin-top: 5px;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1237,70 +1192,21 @@
     transform-style: preserve-3d;
   }
 }
-.vuesaxLinearStrongbox22 {
+.img__r0Oco {
+  object-fit: contain;
+  max-width: 100%;
   width: 80px;
   height: 80px;
-  display: block;
   flex-shrink: 0;
 }
+.img__r0Oco > picture > img {
+  object-fit: contain;
+}
 @media (min-width: 0px) and (max-width: 768px) {
-  .vuesaxLinearStrongbox22 {
+  .img__r0Oco {
     width: 50px;
     height: 50px;
     flex-shrink: 0;
-  }
-}
-.svg___96VBd {
-  object-fit: cover;
-  max-width: 100%;
-  color: #5dd597;
-  filter: drop-shadow(0px 5px 8px rgba(93, 212, 167, 0.25));
-  width: 80px;
-  height: 80px;
-  display: block;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg___96VBd {
-    width: 50px;
-    height: 50px;
-  }
-}
-.frame2 {
-  transform: translate(0.10599999999999454px, -0.4759999999999991px);
-  width: 70px;
-  height: 70px;
-  display: block;
-  position: absolute;
-  top: 6px;
-  left: 5px;
-  overflow: hidden;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .frame2 {
-    width: 50px;
-    height: 50px;
-  }
-}
-.img__iKcxI {
-  object-fit: cover;
-  max-width: 100%;
-  width: 60px;
-  height: 60px;
-  display: block !important;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-}
-.img__iKcxI > picture > img {
-  object-fit: cover;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .img__iKcxI {
-    width: 35px;
-    height: 35px;
   }
 }
 .text__sqfe1 {
@@ -1313,6 +1219,7 @@
   font-family: "Vazirmatn", sans-serif;
   font-weight: 600;
   font-size: 20px;
+  margin-top: 5px;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {

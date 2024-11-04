@@ -103,15 +103,16 @@ import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96M
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Vector5Icon from "./icons/PlasmicIcon__Vector5"; // plasmic-import: OQAWETC3rCV5/icon
 import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
-import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
-import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
+import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
+import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: 6MrfqQhZviFG/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
 import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
 import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zXLIAYD/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
+import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
+import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu9gyKG/icon
 
@@ -140,13 +141,9 @@ export type PlasmicHomepage__OverridesType = {
   comingSoon?: Flex__<"div">;
   comingSoon2?: Flex__<"div">;
   modal3?: Flex__<typeof AntdModal>;
-  vuesaxLinearStrongbox23?: Flex__<"div">;
-  imagePsd2?: Flex__<"div">;
   services3?: Flex__<"div">;
   comingSoon3?: Flex__<"div">;
   comingSoon4?: Flex__<"div">;
-  vuesaxLinearStrongbox22?: Flex__<"div">;
-  frame2?: Flex__<"div">;
   services4?: Flex__<"div">;
   footer?: Flex__<"div">;
   snapp2?: Flex__<"div">;
@@ -759,9 +756,9 @@ function PlasmicHomepage__RenderFunc(props: {
                   }
                   loading={"lazy"}
                   src={{
-                    src: "/plasmic/babarkat/images/image.svg",
-                    fullWidth: 24,
-                    fullHeight: 24,
+                    src: "/plasmic/babarkat/images/image25.svg",
+                    fullWidth: 180,
+                    fullHeight: 180,
                     aspectRatio: 1
                   }}
                 />
@@ -830,9 +827,9 @@ function PlasmicHomepage__RenderFunc(props: {
                   }
                   loading={"lazy"}
                   src={{
-                    src: "/plasmic/babarkat/images/image11.svg",
-                    fullWidth: 22,
-                    fullHeight: 22,
+                    src: "/plasmic/babarkat/images/image26.svg",
+                    fullWidth: 180,
+                    fullHeight: 180,
                     aspectRatio: 1
                   }}
                 />
@@ -887,12 +884,21 @@ function PlasmicHomepage__RenderFunc(props: {
                       : "80px"
                   }
                   loading={"lazy"}
-                  src={{
-                    src: "/plasmic/babarkat/images/image3.png",
-                    fullWidth: 128,
-                    fullHeight: 128,
-                    aspectRatio: undefined
-                  }}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          src: "/plasmic/babarkat/images/image28.svg",
+                          fullWidth: 180,
+                          fullHeight: 180,
+                          aspectRatio: 1
+                        }
+                      : {
+                          src: "/plasmic/babarkat/images/image29.svg",
+                          fullWidth: 180,
+                          fullHeight: 180,
+                          aspectRatio: 1
+                        }
+                  }
                 />
 
                 <div
@@ -1126,25 +1132,32 @@ function PlasmicHomepage__RenderFunc(props: {
                     </Button>
                   </Stack__>
                 </AntdModal>
-                <div
-                  data-plasmic-name={"vuesaxLinearStrongbox23"}
-                  data-plasmic-override={overrides.vuesaxLinearStrongbox23}
-                  className={classNames(
-                    projectcss.all,
-                    sty.vuesaxLinearStrongbox23
-                  )}
-                >
-                  <Vector5Icon
-                    className={classNames(projectcss.all, sty.svg__foTqj)}
-                    role={"img"}
-                  />
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__phhYv)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image27.svg",
+                    fullWidth: 164,
+                    fullHeight: 180,
+                    aspectRatio: 0.911111
+                  }}
+                />
 
-                  <div
-                    data-plasmic-name={"imagePsd2"}
-                    data-plasmic-override={overrides.imagePsd2}
-                    className={classNames(projectcss.all, sty.imagePsd2)}
-                  />
-                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1154,7 +1167,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"
-                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                    : "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"}
                 </div>
               </div>
             </Stack__>
@@ -1179,20 +1192,41 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
                 </div>
-                <Vector5Icon
-                  className={classNames(projectcss.all, sty.svg__l4GIb)}
-                  role={"img"}
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__fe1WY)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          src: "/plasmic/babarkat/images/image31.svg",
+                          fullWidth: 164,
+                          fullHeight: 180,
+                          aspectRatio: 0.911111
+                        }
+                      : {
+                          src: "/plasmic/babarkat/images/image32.svg",
+                          fullWidth: 164,
+                          fullHeight: 180,
+                          aspectRatio: 0.911111
+                        }
+                  }
                 />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___84D5U
-                  )}
-                >
-                  {"UC"}
-                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1202,7 +1236,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
-                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                    : "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"}
                 </div>
               </div>
               <div
@@ -1219,51 +1253,32 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
                 </div>
-                <div
-                  data-plasmic-name={"vuesaxLinearStrongbox22"}
-                  data-plasmic-override={overrides.vuesaxLinearStrongbox22}
-                  className={classNames(
-                    projectcss.all,
-                    sty.vuesaxLinearStrongbox22
-                  )}
-                >
-                  <Vector5Icon
-                    className={classNames(projectcss.all, sty.svg___96VBd)}
-                    role={"img"}
-                  />
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__r0Oco)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "50px"
+                      : "80px"
+                  }
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image30.svg",
+                    fullWidth: 164,
+                    fullHeight: 180,
+                    aspectRatio: 0.911111
+                  }}
+                />
 
-                  <div
-                    data-plasmic-name={"frame2"}
-                    data-plasmic-override={overrides.frame2}
-                    className={classNames(projectcss.all, sty.frame2)}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__iKcxI)}
-                      displayHeight={
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "35px"
-                          : "60px"
-                      }
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "35px"
-                          : "60px"
-                      }
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/babarkat/images/svgRepoIconCarrier.svg",
-                        fullWidth: 20,
-                        fullHeight: 20,
-                        aspectRatio: 1
-                      }}
-                    />
-                  </div>
-                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1273,7 +1288,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
-                    : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                    : "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"}
                 </div>
               </div>
             </Stack__>
@@ -1841,7 +1856,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__qoDcq)}
                     >
-                      <Icon22Icon
+                      <Icon38Icon
                         className={classNames(projectcss.all, sty.svg___0WTwg)}
                         onClick={async event => {
                           const $steps = {};
@@ -1874,7 +1889,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         role={"img"}
                       />
 
-                      <Icon23Icon
+                      <Icon40Icon
                         className={classNames(projectcss.all, sty.svg__dEpUr)}
                         onClick={async event => {
                           const $steps = {};
@@ -3058,13 +3073,9 @@ const PlasmicDescendants = {
     "comingSoon",
     "comingSoon2",
     "modal3",
-    "vuesaxLinearStrongbox23",
-    "imagePsd2",
     "services3",
     "comingSoon3",
     "comingSoon4",
-    "vuesaxLinearStrongbox22",
-    "frame2",
     "services4",
     "footer",
     "snapp2",
@@ -3094,35 +3105,13 @@ const PlasmicDescendants = {
   services: ["services", "internet", "internet3"],
   internet: ["internet"],
   internet3: ["internet3"],
-  services2: [
-    "services2",
-    "comingSoon",
-    "comingSoon2",
-    "modal3",
-    "vuesaxLinearStrongbox23",
-    "imagePsd2"
-  ],
+  services2: ["services2", "comingSoon", "comingSoon2", "modal3"],
   comingSoon: ["comingSoon"],
-  comingSoon2: [
-    "comingSoon2",
-    "modal3",
-    "vuesaxLinearStrongbox23",
-    "imagePsd2"
-  ],
+  comingSoon2: ["comingSoon2", "modal3"],
   modal3: ["modal3"],
-  vuesaxLinearStrongbox23: ["vuesaxLinearStrongbox23", "imagePsd2"],
-  imagePsd2: ["imagePsd2"],
-  services3: [
-    "services3",
-    "comingSoon3",
-    "comingSoon4",
-    "vuesaxLinearStrongbox22",
-    "frame2"
-  ],
+  services3: ["services3", "comingSoon3", "comingSoon4"],
   comingSoon3: ["comingSoon3"],
-  comingSoon4: ["comingSoon4", "vuesaxLinearStrongbox22", "frame2"],
-  vuesaxLinearStrongbox22: ["vuesaxLinearStrongbox22", "frame2"],
-  frame2: ["frame2"],
+  comingSoon4: ["comingSoon4"],
   services4: ["services4"],
   footer: [
     "footer",
@@ -3175,13 +3164,9 @@ type NodeDefaultElementType = {
   comingSoon: "div";
   comingSoon2: "div";
   modal3: typeof AntdModal;
-  vuesaxLinearStrongbox23: "div";
-  imagePsd2: "div";
   services3: "div";
   comingSoon3: "div";
   comingSoon4: "div";
-  vuesaxLinearStrongbox22: "div";
-  frame2: "div";
   services4: "div";
   footer: "div";
   snapp2: "div";
@@ -3301,13 +3286,9 @@ export const PlasmicHomepage = Object.assign(
     comingSoon: makeNodeComponent("comingSoon"),
     comingSoon2: makeNodeComponent("comingSoon2"),
     modal3: makeNodeComponent("modal3"),
-    vuesaxLinearStrongbox23: makeNodeComponent("vuesaxLinearStrongbox23"),
-    imagePsd2: makeNodeComponent("imagePsd2"),
     services3: makeNodeComponent("services3"),
     comingSoon3: makeNodeComponent("comingSoon3"),
     comingSoon4: makeNodeComponent("comingSoon4"),
-    vuesaxLinearStrongbox22: makeNodeComponent("vuesaxLinearStrongbox22"),
-    frame2: makeNodeComponent("frame2"),
     services4: makeNodeComponent("services4"),
     footer: makeNodeComponent("footer"),
     snapp2: makeNodeComponent("snapp2"),
