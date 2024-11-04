@@ -1250,7 +1250,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                 return (() => {
                                                   switch (true) {
                                                     case currentItem.type.includes(
-                                                      "charge"
+                                                      "argin"
                                                     ):
                                                       return "sim";
                                                     case currentItem.type.includes(
@@ -1293,7 +1293,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                 return (() => {
                                                   switch (true) {
                                                     case currentItem.type.includes(
-                                                      "charge"
+                                                      "argin"
                                                     ):
                                                       return "شارژ سیم کارت";
                                                     default:
@@ -1324,8 +1324,9 @@ function PlasmicTransaction__RenderFunc(props: {
                                             {(() => {
                                               try {
                                                 return (
-                                                  currentItem.price.toLocaleString() +
-                                                  " تومان "
+                                                  (
+                                                    currentItem.price * 1000
+                                                  ).toLocaleString() + " تومان "
                                                 );
                                               } catch (e) {
                                                 if (
