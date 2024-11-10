@@ -5,23 +5,23 @@ import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-we
 import GlobalContextsProvider from "../../components/plasmic/babarkat/PlasmicGlobalContextsProvider";
 import { UnnamedGlobalGroupOfVariantsContext } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
 import { UnnamedGlobalGroupOfVariants2Context } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
-import { PlasmicHome } from "../../components/plasmic/babarkat/PlasmicHome";
+import { PlasmicInternet22 } from "../../components/plasmic/babarkat/PlasmicInternet22";
 import { useRouter } from "next/router";
 
-function Home() {
-  // Use PlasmicHome to render this component as it was
+function Internet22() {
+  // Use PlasmicInternet22 to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicHome are:
+  // Props you can pass into PlasmicInternet22 are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, PlasmicHome is wrapped by your project's global
+  // By default, PlasmicInternet22 is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -34,7 +34,7 @@ function Home() {
             params={useRouter()?.query}
             query={useRouter()?.query}
           >
-            <PlasmicHome />
+            <PlasmicInternet22 />
           </PageParamsProvider__>
         </GlobalContextsProvider>
       </UnnamedGlobalGroupOfVariantsContext.Provider>
@@ -42,4 +42,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Internet22;

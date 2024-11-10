@@ -841,7 +841,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     sty.text__lcYoQ
                   )}
                 >
-                  {"\u0634\u0627\u0631\u0632"}
+                  {"\u0634\u0627\u0631\u0698"}
                 </div>
               </div>
             </Stack__>

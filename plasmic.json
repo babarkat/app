@@ -1335,18 +1335,32 @@
           "componentType": "component"
         },
         {
-          "id": "AT_jYggIUMxZ",
-          "name": "Home",
+          "id": "b_FfCbz2fLZ2",
+          "name": "Charging2",
           "type": "managed",
           "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicHome.tsx",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCharging2.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/home.tsx"
+            "modulePath": "../src/pages/charging-2.tsx"
           },
-          "cssFilePath": "plasmic/babarkat/PlasmicHome.module.css",
+          "cssFilePath": "plasmic/babarkat/PlasmicCharging2.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/home"
+          "path": "/charging-2"
+        },
+        {
+          "id": "3zgeFpmpMsFC",
+          "name": "Internet22",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet22.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/intenet-2.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicInternet22.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/intenet-2"
         }
       ],
       "icons": [
