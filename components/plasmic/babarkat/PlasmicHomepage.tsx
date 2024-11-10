@@ -105,12 +105,11 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsF
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
+import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
-import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: 6MrfqQhZviFG/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
 import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
 import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zXLIAYD/icon
-import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: BzJvQ-Ivkti9/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
@@ -309,7 +308,8 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "drawer.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "modal3.open",
@@ -1650,84 +1650,90 @@ function PlasmicHomepage__RenderFunc(props: {
               </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox___8W95F)}>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__xtpi)}
+                  className={classNames(projectcss.all, sty.freeBox__jC5YE)}
                 />
 
-                <div className={classNames(projectcss.all, sty.freeBox__km6Os)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__zGjZk
-                    )}
-                  >
-                    {
-                      "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                    }
-                  </div>
-                  <Stack__
-                    as={"div"}
-                    data-plasmic-name={"operators4"}
-                    data-plasmic-override={overrides.operators4}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.operators4)}
-                  >
-                    {(_par =>
-                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                      (() => {
-                        try {
-                          return [
-                            { url: "https://zarinp.al/642974", price: 100000 },
-                            { url: "https://zarinp.al/642973", price: 300000 },
-                            { url: "https://zarinp.al/642986", price: 500000 },
-                            { url: "https://zarinp.al/642987", price: 1000000 }
-                          ];
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox__km6Os)}
+                >
+                  {(
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? true
+                      : false
+                  ) ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__woCgu)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vsOhu
+                        )}
+                      >
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__z6Q94)}
+                          displayHeight={"40px"}
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={"40px"}
+                          loading={"lazy"}
+                          src={{
+                            src: "/plasmic/babarkat/images/image15.png",
+                            fullWidth: 813,
+                            fullHeight: 900,
+                            aspectRatio: undefined
+                          }}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___15SCf
+                          )}
+                        >
+                          {
+                            "\u0628\u0627\u0646\u06a9 \u067e\u0627\u0633\u0627\u0631\u06af\u0627\u062f"
                           }
-                          throw e;
-                        }
-                      })()
-                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                      const amonttem = __plasmic_item_0;
-                      const amontIndex = __plasmic_idx_0;
-                      return (() => {
-                        const child$Props = {
-                          className: classNames(
-                            "__wab_instance",
-                            sty.boxselect4
-                          ),
-                          disable2: generateStateValueProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          key: amontIndex,
-                          onClick: async event => {
+                        </div>
+                      </div>
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__uzGw
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fEYx
+                          )}
+                        >
+                          {
+                            "\u0631\u0627\u0634\u062f \u0627\u0645\u06cc\u0646\u06cc "
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__ksNrS
+                          )}
+                          onClick={async event => {
                             const $steps = {};
 
                             $steps["runCode"] = true
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return (() => {
-                                        for (
-                                          let i = 0;
-                                          i < $state.boxselect4.length;
-                                          i++
-                                        ) {
-                                          $state.boxselect4[i].select = false;
-                                        }
-                                        $state.boxselect4[amontIndex].select =
-                                          true;
-                                        $state.payUri = amonttem.url;
-                                        return ($state.input.value =
-                                          amonttem.price);
-                                      })();
+                                      return $$.copyToClipboard($state.shaba);
                                     }
                                   };
                                   return (({ customFunction }) => {
@@ -1742,90 +1748,319 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["runCode"] = await $steps["runCode"];
                             }
-                          },
-                          onDisable2Change: generateStateOnChangeProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          onSelectChange: generateStateOnChangeProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "select"
-                          ]),
-                          select: generateStateValueProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "select"
-                          ])
-                        };
 
-                        initializePlasmicStates(
-                          $state,
-                          [
-                            {
-                              name: "boxselect4[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? false
-                                  : false
-                            },
-                            {
-                              name: "boxselect4[].disable2",
-                              initFunc: ({ $props, $state, $queries }) => false
+                            $steps["invokeGlobalAction"] =
+                              $steps.runCode == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 \u06a9\u067e\u06cc \u0634\u062f.",
+                                        "top-left"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
                             }
-                          ],
-                          [__plasmic_idx_0]
-                        );
-                        return (
-                          <Boxselect3
-                            data-plasmic-name={"boxselect4"}
-                            data-plasmic-override={overrides.boxselect4}
-                            {...child$Props}
+                          }}
+                        >
+                          <Icon20Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__hxEti
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__qOj9B
+                            )}
                           >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__s1SI
-                              )}
+                            {"IR88  0570  0256  8001  1868  7281  01"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__dkoo8
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return $$.copyToClipboard($state.card);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["invokeGlobalAction"] =
+                              $steps.runCode == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u06a9\u067e\u06cc \u0634\u062f.",
+                                        "top-left"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+                          }}
+                        >
+                          <Icon20Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__z8UzV
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__vb44I
+                            )}
+                          >
+                            {"6748  0685  2910  5022"}
+                          </div>
+                        </div>
+                      </Stack__>
+                    </div>
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__rxRjC)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__zGjZk
+                      )}
+                    >
+                      {
+                        "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                      }
+                    </div>
+                    <Stack__
+                      as={"div"}
+                      data-plasmic-name={"operators4"}
+                      data-plasmic-override={overrides.operators4}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.operators4)}
+                    >
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return [
+                              {
+                                url: "https://zarinp.al/642974",
+                                price: 100000
+                              },
+                              {
+                                url: "https://zarinp.al/642973",
+                                price: 300000
+                              },
+                              {
+                                url: "https://zarinp.al/642986",
+                                price: 500000
+                              },
+                              {
+                                url: "https://zarinp.al/642987",
+                                price: 1000000
+                              }
+                            ];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const amonttem = __plasmic_item_0;
+                        const amontIndex = __plasmic_idx_0;
+                        return (() => {
+                          const child$Props = {
+                            className: classNames(
+                              "__wab_instance",
+                              sty.boxselect4
+                            ),
+                            disable2: generateStateValueProp($state, [
+                              "boxselect4",
+                              __plasmic_idx_0,
+                              "disable2"
+                            ]),
+                            key: amontIndex,
+                            onClick: async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return (() => {
+                                          for (
+                                            let i = 0;
+                                            i < $state.boxselect4.length;
+                                            i++
+                                          ) {
+                                            $state.boxselect4[i].select = false;
+                                          }
+                                          $state.boxselect4[amontIndex].select =
+                                            true;
+                                          $state.payUri = amonttem.url;
+                                          return ($state.input.value =
+                                            amonttem.price);
+                                        })();
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            },
+                            onDisable2Change: generateStateOnChangeProp(
+                              $state,
+                              ["boxselect4", __plasmic_idx_0, "disable2"]
+                            ),
+                            onSelectChange: generateStateOnChangeProp($state, [
+                              "boxselect4",
+                              __plasmic_idx_0,
+                              "select"
+                            ]),
+                            select: generateStateValueProp($state, [
+                              "boxselect4",
+                              __plasmic_idx_0,
+                              "select"
+                            ])
+                          };
+
+                          initializePlasmicStates(
+                            $state,
+                            [
+                              {
+                                name: "boxselect4[].select",
+                                initFunc: ({ $props, $state, $queries }) =>
+                                  hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  )
+                                    ? false
+                                    : false
+                              },
+                              {
+                                name: "boxselect4[].disable2",
+                                initFunc: ({ $props, $state, $queries }) =>
+                                  false
+                              }
+                            ],
+                            [__plasmic_idx_0]
+                          );
+                          return (
+                            <Boxselect3
+                              data-plasmic-name={"boxselect4"}
+                              data-plasmic-override={overrides.boxselect4}
+                              {...child$Props}
                             >
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__x5YCy
+                                  sty.freeBox__s1SI
                                 )}
                               >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return (
-                                        amonttem.price.toLocaleString("en-US") +
-                                        " تومان"
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__x5YCy
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          amonttem.price.toLocaleString(
+                                            "en-US"
+                                          ) + " تومان"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "";
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
+                                    })()}
+                                  </React.Fragment>
+                                </div>
                               </div>
-                            </div>
-                          </Boxselect3>
-                        );
-                      })();
-                    })}
-                  </Stack__>
+                            </Boxselect3>
+                          );
+                        })();
+                      })}
+                    </Stack__>
+                  </div>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -1861,69 +2096,51 @@ function PlasmicHomepage__RenderFunc(props: {
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["runCode"] = true
+                          $steps["goToPage"] = true
                             ? (() => {
                                 const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      return window.open(
-                                        "https://wa.me/989202116750",
-                                        "_blank"
-                                      );
-                                    })();
-                                  }
+                                  destination: (() => {
+                                    try {
+                                      return "https://wa.me/message/SHT3Z2IGZZBEF1";
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
                                 };
-                                return (({ customFunction }) => {
-                                  return customFunction();
+                                return (({ destination }) => {
+                                  if (
+                                    typeof destination === "string" &&
+                                    destination.startsWith("#")
+                                  ) {
+                                    document
+                                      .getElementById(destination.substr(1))
+                                      .scrollIntoView({ behavior: "smooth" });
+                                  } else {
+                                    __nextRouter?.push(destination);
+                                  }
                                 })?.apply(null, [actionArgs]);
                               })()
                             : undefined;
                           if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
+                            $steps["goToPage"] != null &&
+                            typeof $steps["goToPage"] === "object" &&
+                            typeof $steps["goToPage"].then === "function"
                           ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-                        }}
-                        role={"img"}
-                      />
-
-                      <Icon40Icon
-                        className={classNames(projectcss.all, sty.svg__dEpUr)}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      return window.open(
-                                        "https://t.me/Rashed_amini",
-                                        "_blank"
-                                      );
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
+                            $steps["goToPage"] = await $steps["goToPage"];
                           }
                         }}
                         role={"img"}
                       />
                     </div>
                   </Stack__>
-                </div>
+                </Stack__>
                 <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
                   <Button
                     className={classNames("__wab_instance", sty.button__dLo8Z)}
@@ -1948,7 +2165,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return window.open($state.payUri, "_blank");
+                                return window.open($state.payUri);
                               }
                             };
                             return (({ customFunction }) => {
