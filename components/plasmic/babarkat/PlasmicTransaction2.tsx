@@ -91,17 +91,23 @@ export const PlasmicTransaction2__VariantProps = new Array<VariantPropType>(
 
 export type PlasmicTransaction2__ArgsType = {
   children?: React.ReactNode;
+  slot?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicTransaction2__ArgsType;
-export const PlasmicTransaction2__ArgProps = new Array<ArgPropType>("children");
+export const PlasmicTransaction2__ArgProps = new Array<ArgPropType>(
+  "children",
+  "slot"
+);
 
 export type PlasmicTransaction2__OverridesType = {
   root?: Flex__<"div">;
   svg?: Flex__<"svg">;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultTransaction2Props {
   children?: React.ReactNode;
+  slot?: React.ReactNode;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
     "intenet" | "walet" | "sim" | "panel"
@@ -268,55 +274,63 @@ function PlasmicTransaction2__RenderFunc(props: {
         />
       </div>
       <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text__aAt6,
-          {
-            [sty.textfiled__aAt60GNub]: hasVariant($state, "filed", "filed"),
-            [sty.textunnamedGroupOfVariants_intenet__aAt6SkCi]: hasVariant(
+        className={classNames(projectcss.all, sty.freeBox__aAt6, {
+          [sty.freeBoxfiled__aAt60GNub]: hasVariant($state, "filed", "filed"),
+          [sty.freeBoxunnamedGroupOfVariants_intenet__aAt6SkCi]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "intenet"
+          ),
+          [sty.freeBoxunnamedGroupOfVariants_panel__aAt6Ul1Qs]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "panel"
+          ),
+          [sty.freeBoxunnamedGroupOfVariants_walet__aAt6A16YY]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "walet"
+          )
+        })}
+      >
+        {renderPlasmicSlot({
+          defaultContents:
+            "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647",
+          value: args.slot,
+          className: classNames(sty.slotTargetSlot, {
+            [sty.slotTargetSlotfiled]: hasVariant($state, "filed", "filed"),
+            [sty.slotTargetSlotunnamedGroupOfVariants_intenet]: hasVariant(
               $state,
               "unnamedGroupOfVariants",
               "intenet"
             ),
-            [sty.textunnamedGroupOfVariants_panel__aAt6Ul1Qs]: hasVariant(
+            [sty.slotTargetSlotunnamedGroupOfVariants_panel]: hasVariant(
               $state,
               "unnamedGroupOfVariants",
               "panel"
             ),
-            [sty.textunnamedGroupOfVariants_walet__aAt6A16YY]: hasVariant(
+            [sty.slotTargetSlotunnamedGroupOfVariants_walet]: hasVariant(
               $state,
               "unnamedGroupOfVariants",
               "walet"
             )
-          }
-        )}
-      >
-        {hasVariant($state, "unnamedGroupOfVariants", "panel")
-          ? "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647"
-          : hasVariant($state, "unnamedGroupOfVariants", "walet")
-          ? "\u062d\u0648\u0627\u0644\u0647 \u0647\u0627"
-          : hasVariant($state, "unnamedGroupOfVariants", "intenet")
-          ? "\u062e\u0631\u06cc\u062f \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
-          : "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"}
+          })
+        })}
       </div>
       <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text___0Oj4M,
-          {
-            [sty.textfiled___0Oj4M0GNub]: hasVariant($state, "filed", "filed"),
-            [sty.textunnamedGroupOfVariants_intenet_filed___0Oj4MSkCi0GNub]:
-              hasVariant($state, "filed", "filed") &&
-              hasVariant($state, "unnamedGroupOfVariants", "intenet"),
-            [sty.textunnamedGroupOfVariants_walet___0Oj4MA16YY]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "walet"
-            )
-          }
-        )}
+        data-plasmic-name={"text"}
+        data-plasmic-override={overrides.text}
+        className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
+          [sty.textfiled]: hasVariant($state, "filed", "filed"),
+          [sty.textunnamedGroupOfVariants_intenet_filed]:
+            hasVariant($state, "filed", "filed") &&
+            hasVariant($state, "unnamedGroupOfVariants", "intenet"),
+          [sty.textunnamedGroupOfVariants_walet]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "walet"
+          )
+        })}
       >
         {hasVariant($state, "filed", "filed")
           ? "\u0639\u0645\u0644\u06cc\u0627\u062a \u0646\u0627\u0645\u0648\u0641\u0642 \u0627\u0646\u062c\u0627\u0645 \u0634\u062f"
@@ -477,8 +491,9 @@ function PlasmicTransaction2__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "svg"],
-  svg: ["svg"]
+  root: ["root", "svg", "text"],
+  svg: ["svg"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -486,6 +501,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   svg: "svg";
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -549,6 +565,7 @@ export const PlasmicTransaction2 = Object.assign(
   {
     // Helper components rendering sub-elements
     svg: makeNodeComponent("svg"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicTransaction2
     internalVariantProps: PlasmicTransaction2__VariantProps,

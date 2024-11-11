@@ -49,18 +49,23 @@
 .svgfiled {
   color: #ff4d4f;
 }
-.text__aAt6 {
+.freeBox__aAt6 {
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: center;
-  color: #ffffff;
-  font-size: var(--token-16_cC9w3e0Nk);
-  font-weight: 700;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
   min-width: 0;
 }
-.text___0Oj4M {
+.slotTargetSlot {
+  font-size: var(--token-16_cC9w3e0Nk);
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+}
+.text {
   position: relative;
   width: 100%;
   height: auto;
