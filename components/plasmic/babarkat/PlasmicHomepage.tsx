@@ -749,8 +749,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__bBBrJ)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -758,8 +758,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={{
@@ -820,8 +820,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__yvAdp)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -829,8 +829,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={{
@@ -878,8 +878,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__plw8V)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -887,8 +887,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={
@@ -1144,8 +1144,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__phhYv)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -1153,8 +1153,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={{
@@ -1204,8 +1204,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__fe1WY)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -1213,8 +1213,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={
@@ -1265,8 +1265,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames(sty.img__r0Oco)}
                   displayHeight={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -1274,8 +1274,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   displayMinWidth={"0"}
                   displayWidth={
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "50px"
-                      : "80px"
+                      ? "40px"
+                      : "60px"
                   }
                   loading={"lazy"}
                   src={{
