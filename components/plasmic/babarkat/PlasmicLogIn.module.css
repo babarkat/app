@@ -382,7 +382,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .textpassword__r99Zr8PqF9 {
-    font-size: 20px;
+    font-size: 18px;
     display: block;
   }
 }
@@ -398,6 +398,14 @@
   min-width: 0;
   min-height: 0;
   display: none;
+}
+.revealpassword__iFido8PqF9:global(.__wab_instance) {
+  display: flex;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .revealpassword__iFido8PqF9:global(.__wab_instance) {
+    font-size: 18px;
+  }
 }
 .text___6GGct {
   font-size: 24px;
@@ -492,7 +500,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBoxpassword__csia18PqF9 {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
   }
 }
 .passcyrcle:global(.__wab_instance) {
@@ -901,8 +909,8 @@
   .freeBoxpassword___4XuwG8PqF9 {
     padding-right: 15px;
     padding-left: 15px;
-    grid-row-gap: 30px;
-    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-column-gap: 40px;
     width: auto;
   }
 }
@@ -911,8 +919,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .buttonpassword__pW2Lf8PqF9:global(.__wab_instance) {
-    width: auto;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 .svg__hkvk8 {
@@ -927,6 +935,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .textpassword__xZgPj8PqF9 {
     font-size: 20px;
+    width: auto;
   }
 }
 .svg___8UOiv {
@@ -937,6 +946,12 @@
 }
 .button__ejCMr:global(.__wab_instance) {
   max-width: 100%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .buttonpassword__ejCMr8PqF9:global(.__wab_instance) {
+    width: 50px;
+    height: 50px;
+  }
 }
 .svg__uEto {
   position: relative;
@@ -957,6 +972,12 @@
   width: 70px;
   height: 50px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .svgpassword__qVFp18PqF9 {
+    height: 50px;
+    width: 50px;
+  }
+}
 .svg__rzw7P {
   position: relative;
   object-fit: cover;
@@ -968,8 +989,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .buttonpassword__fgCjE8PqF9:global(.__wab_instance) {
-    width: auto;
-    height: 80px;
+    width: 60px;
+    height: 60px;
   }
 }
 .svg__iUera {

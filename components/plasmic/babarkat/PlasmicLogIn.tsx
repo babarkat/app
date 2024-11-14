@@ -2111,9 +2111,15 @@ function PlasmicLogIn__RenderFunc(props: {
                         shape={
                           hasVariant($state, "password", "password") &&
                           hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "rounded"
+                            ? "round"
                             : hasVariant($state, "password", "password")
                             ? "rounded"
+                            : undefined
+                        }
+                        size={
+                          hasVariant($state, "password", "password") &&
+                          hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "minimal"
                             : undefined
                         }
                       >
@@ -2215,7 +2221,12 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["updatePass"] = await $steps["updatePass"];
                       }
                     }}
-                    shape={"rounded"}
+                    shape={
+                      hasVariant($state, "password", "password") &&
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "round"
+                        : "rounded"
+                    }
                     size={
                       hasVariant($state, "password", "password")
                         ? "minimal"
@@ -2426,7 +2437,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         shape={
                           hasVariant($state, "password", "password") &&
                           hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "rounded"
+                            ? "round"
                             : hasVariant($state, "password", "password")
                             ? "rounded"
                             : undefined
