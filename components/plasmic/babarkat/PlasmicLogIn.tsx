@@ -96,8 +96,7 @@ import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: DTzpbJAxICns/icon
-import Icon53Icon from "./icons/PlasmicIcon__Icon53"; // plasmic-import: ydKkg-AZBpFi/icon
+import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: x3OJQfNZRJRt/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
 
@@ -1942,7 +1941,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                     (() => {
                       try {
-                        return [1, 2, 3, 4, 5, 6, 7, 8, 9];
+                        return [3, 2, 1, 6, 5, 4, 9, 8, 7];
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1979,6 +1978,11 @@ function PlasmicLogIn__RenderFunc(props: {
                             )
                           }
                         )}
+                        color={
+                          hasVariant($state, "password", "password")
+                            ? "black"
+                            : undefined
+                        }
                         key={currentIndex}
                         onClick={async event => {
                           const $steps = {};
@@ -2161,110 +2165,46 @@ function PlasmicLogIn__RenderFunc(props: {
                       </Button>
                     );
                   })}
-                  <Button
-                    className={classNames("__wab_instance", sty.button__ejCMr, {
-                      [sty.buttonpassword__ejCMr8PqF9]: hasVariant(
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__qXopR, {
+                      [sty.freeBoxpassword__qXopR8PqF9]: hasVariant(
                         $state,
                         "password",
                         "password"
                       ),
-                      [sty.buttonunnamedVariant2__ejCMrJmKha]: hasVariant(
+                      [sty.freeBoxunnamedVariant2__qXopRJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ),
-                      [sty.buttonunnamedVariant__ejCMrDv9B5]: hasVariant(
+                      [sty.freeBoxunnamedVariant__qXopRDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
                       )
                     })}
-                    color={
-                      hasVariant($state, "password", "password")
-                        ? "clear"
-                        : undefined
-                    }
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["updatePass"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["pass"]
-                              },
-                              operation: 0,
-                              value: $state.pass.slice(0, -1)
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updatePass"] != null &&
-                        typeof $steps["updatePass"] === "object" &&
-                        typeof $steps["updatePass"].then === "function"
-                      ) {
-                        $steps["updatePass"] = await $steps["updatePass"];
-                      }
-                    }}
-                    shape={
-                      hasVariant($state, "password", "password") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "round"
-                        : "rounded"
-                    }
-                    size={
-                      hasVariant($state, "password", "password")
-                        ? "minimal"
-                        : undefined
-                    }
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___66WHa,
-                        {
-                          [sty.textpassword___66WHa8PqF9]: hasVariant(
-                            $state,
-                            "password",
-                            "password"
-                          )
-                        }
-                      )}
-                    >
-                      {"Button"}
-                    </div>
-                    <PlasmicIcon__
-                      PlasmicIconType={
-                        hasVariant($state, "password", "password")
-                          ? Icon53Icon
-                          : Icon51Icon
-                      }
-                      className={classNames(projectcss.all, sty.svg__qVFp1, {
-                        [sty.svgpassword__qVFp18PqF9]: hasVariant(
+                    <Icon54Icon
+                      className={classNames(projectcss.all, sty.svg__gD3Ze, {
+                        [sty.svgpassword__gD3Ze8PqF9]: hasVariant(
                           $state,
                           "password",
                           "password"
+                        ),
+                        [sty.svgunnamedVariant2__gD3ZeJmKha]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                        [sty.svgunnamedVariant__gD3ZeDv9B5]: hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
                         )
                       })}
                       role={"img"}
                     />
-                  </Button>
+                  </div>
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                     (() => {
                       try {
@@ -2305,6 +2245,11 @@ function PlasmicLogIn__RenderFunc(props: {
                             )
                           }
                         )}
+                        color={
+                          hasVariant($state, "password", "password")
+                            ? "black"
+                            : undefined
+                        }
                         key={currentIndex}
                         onClick={async event => {
                           const $steps = {};
@@ -3248,6 +3193,11 @@ function PlasmicLogIn__RenderFunc(props: {
                     data-plasmic-name={"sendcode"}
                     data-plasmic-override={overrides.sendcode}
                     className={classNames("__wab_instance", sty.sendcode, {
+                      [sty.sendcodepassword]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
                       [sty.sendcodeslids_unnamedVariant3]: hasVariant(
                         $state,
                         "slids",
@@ -3508,12 +3458,30 @@ function PlasmicLogIn__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               customFunction: async () => {
-                                return localStorage.setItem(
-                                  "userbabarcat",
-                                  JSON.stringify(
+                                return (() => {
+                                  localStorage.setItem(
+                                    "userbabarcat",
+                                    JSON.stringify(
+                                      $steps.invokeGlobalAction2.data[0].data
+                                    )
+                                  );
+                                  sessionStorage.setItem(
+                                    "userbabarcattiken",
                                     $steps.invokeGlobalAction2.data[0].data
-                                  )
-                                );
+                                      .token
+                                  );
+                                  let date = new Date();
+                                  date.setTime(date.getTime() + 10 * 60 * 1000);
+                                  let expires =
+                                    "; expires=" + date.toUTCString();
+                                  return (document.cookie =
+                                    "userbabarcattiken" +
+                                    "=" +
+                                    $steps.invokeGlobalAction2.data[0].data
+                                      .token +
+                                    expires +
+                                    "; path=/");
+                                })();
                               }
                             };
                             return (({ customFunction }) => {
@@ -4132,55 +4100,6 @@ function PlasmicLogIn__RenderFunc(props: {
             );
             (async loading => {
               const $steps = {};
-
-              $steps["updatePassword"] =
-                localStorage.getItem("babarkatPass") != null
-                  ? (() => {
-                      const actionArgs = { vgroup: "password", operation: 4 };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
-                        }
-
-                        $stateSet($state, vgroup, true);
-                        return true;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updatePassword"] != null &&
-                typeof $steps["updatePassword"] === "object" &&
-                typeof $steps["updatePassword"].then === "function"
-              ) {
-                $steps["updatePassword"] = await $steps["updatePassword"];
-              }
-
-              $steps["goToHomepage"] =
-                localStorage.getItem("userbabarcat") != null &&
-                localStorage.getItem("babarkatPass") == null
-                  ? (() => {
-                      const actionArgs = { destination: `/` };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["goToHomepage"] != null &&
-                typeof $steps["goToHomepage"] === "object" &&
-                typeof $steps["goToHomepage"].then === "function"
-              ) {
-                $steps["goToHomepage"] = await $steps["goToHomepage"];
-              }
             }).apply(null, eventArgs);
           }}
           onSuccess={generateStateOnChangeProp($state, ["apiRequest", "data"])}

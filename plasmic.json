@@ -1881,6 +1881,11 @@
           "id": "ydKkg-AZBpFi",
           "name": "Icon53Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon53.tsx"
+        },
+        {
+          "id": "x3OJQfNZRJRt",
+          "name": "Icon54Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon54.tsx"
         }
       ],
       "images": [

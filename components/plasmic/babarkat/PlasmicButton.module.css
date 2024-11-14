@@ -94,6 +94,9 @@
 .rootcolor_link {
   background: #ffffff00;
 }
+.rootcolor_black {
+  background: #161e26;
+}
 .rootshowStartIcon_shape_rounded {
   padding-left: 16px;
 }
@@ -200,6 +203,12 @@
 }
 .rootcolor_link:active {
   background: #ffffff00;
+}
+.rootcolor_black____focusVisibleWithin {
+  box-shadow: none;
+}
+.rootcolor_black:focus-within {
+  box-shadow: none;
 }
 .startIconContainer {
   display: flex;

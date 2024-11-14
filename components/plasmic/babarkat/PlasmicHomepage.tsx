@@ -1509,16 +1509,15 @@ function PlasmicHomepage__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
-                            $state.userbabarcat.name =
-                              $state.profile.data[0].user.name;
-                            $state.userbabarcat.last_name =
-                              $state.profile.data[0].user.last_name;
+                            $state.userbabarcat = $state.profile.data[0].user;
                             $state.userbabarcat.toman =
                               $state.profile.data[0].user.toman * 1000;
-                            return localStorage.setItem(
+                            localStorage.setItem(
                               "userbabarcat",
                               JSON.stringify($state.userbabarcat)
                             );
+                            return ($state.userbabarcat.token =
+                              sessionStorage.getItem("userbabarcattiken"));
                           })();
                         }
                       };
