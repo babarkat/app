@@ -3465,22 +3465,17 @@ function PlasmicLogIn__RenderFunc(props: {
                                       $steps.invokeGlobalAction2.data[0].data
                                     )
                                   );
-                                  sessionStorage.setItem(
-                                    "userbabarcattiken",
-                                    $steps.invokeGlobalAction2.data[0].data
-                                      .token
+                                  const item = {
+                                    value:
+                                      $steps.invokeGlobalAction2.data[0].data
+                                        .token,
+                                    expiration:
+                                      new Date().getTime() + 10 * 60 * 1000
+                                  };
+                                  return sessionStorage.setItem(
+                                    "userbabarcatToken",
+                                    JSON.stringify(item)
                                   );
-                                  let date = new Date();
-                                  date.setTime(date.getTime() + 10 * 60 * 1000);
-                                  let expires =
-                                    "; expires=" + date.toUTCString();
-                                  return (document.cookie =
-                                    "userbabarcattiken" +
-                                    "=" +
-                                    $steps.invokeGlobalAction2.data[0].data
-                                      .token +
-                                    expires +
-                                    "; path=/");
                                 })();
                               }
                             };

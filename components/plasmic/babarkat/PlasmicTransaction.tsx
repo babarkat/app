@@ -78,6 +78,7 @@ import Transaction2 from "../../Transaction2"; // plasmic-import: KdLckjkHArJ8/c
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadioButton } from "@plasmicpkgs/antd5/skinny/registerRadio";
+import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 
 import {
   ExperimentValue,
@@ -138,6 +139,7 @@ export type PlasmicTransaction__OverridesType = {
   vuesaxBoldHome2?: Flex__<"div">;
   charge3?: Flex__<"div">;
   vuesaxBoldReceipt3?: Flex__<"div">;
+  timer?: Flex__<typeof Timer>;
 };
 
 export interface DefaultTransactionProps {}
@@ -346,6 +348,45 @@ function PlasmicTransaction__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "token",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "variable",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return undefined;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -3802,7 +3843,7 @@ function PlasmicTransaction__RenderFunc(props: {
             params={(() => {
               try {
                 return {
-                  userToken: $state.userinfo.token,
+                  userToken: $state.token,
                   page: $state.page,
                   transaction: $state.transaction
                 };
@@ -4376,6 +4417,52 @@ function PlasmicTransaction__RenderFunc(props: {
               </Stack__>
             </div>
           </div>
+          <Timer
+            data-plasmic-name={"timer"}
+            data-plasmic-override={overrides.timer}
+            className={classNames("__wab_instance", sty.timer)}
+            intervalSeconds={1}
+            isRunning={true}
+            onTick={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return (window.location.href =
+                              "https://app.babarkat.com/login/");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            runWhileEditing={false}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4400,7 +4487,8 @@ const PlasmicDescendants = {
     "snapp3",
     "vuesaxBoldHome2",
     "charge3",
-    "vuesaxBoldReceipt3"
+    "vuesaxBoldReceipt3",
+    "timer"
   ],
   header: ["header"],
   reveal: ["reveal", "wallet", "tabsContainer", "tabUnderline"],
@@ -4423,7 +4511,8 @@ const PlasmicDescendants = {
   snapp3: ["snapp3", "vuesaxBoldHome2"],
   vuesaxBoldHome2: ["vuesaxBoldHome2"],
   charge3: ["charge3", "vuesaxBoldReceipt3"],
-  vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"]
+  vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"],
+  timer: ["timer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4446,6 +4535,7 @@ type NodeDefaultElementType = {
   vuesaxBoldHome2: "div";
   charge3: "div";
   vuesaxBoldReceipt3: "div";
+  timer: typeof Timer;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4549,6 +4639,7 @@ export const PlasmicTransaction = Object.assign(
     vuesaxBoldHome2: makeNodeComponent("vuesaxBoldHome2"),
     charge3: makeNodeComponent("charge3"),
     vuesaxBoldReceipt3: makeNodeComponent("vuesaxBoldReceipt3"),
+    timer: makeNodeComponent("timer"),
 
     // Metadata about props expected for PlasmicTransaction
     internalVariantProps: PlasmicTransaction__VariantProps,

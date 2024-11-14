@@ -74,6 +74,7 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K1
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
+import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -178,6 +179,7 @@ export type PlasmicHomepage__OverridesType = {
   wallet3?: Flex__<"div">;
   drawer?: Flex__<typeof AntdDrawer>;
   modal5?: Flex__<typeof AntdModal>;
+  timer?: Flex__<typeof Timer>;
 };
 
 export interface DefaultHomepageProps {}
@@ -423,6 +425,26 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "token",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -1468,6 +1490,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 const $steps = {};
 
                 $steps["goToLogIn"] =
+                  sessionStorage.getItem("userbabarcatToken") == null ||
                   localStorage.getItem("userbabarcat") == null
                     ? (() => {
                         const actionArgs = { destination: `/login` };
@@ -1512,12 +1535,10 @@ function PlasmicHomepage__RenderFunc(props: {
                             $state.userbabarcat = $state.profile.data[0].user;
                             $state.userbabarcat.toman =
                               $state.profile.data[0].user.toman * 1000;
-                            localStorage.setItem(
+                            return localStorage.setItem(
                               "userbabarcat",
                               JSON.stringify($state.userbabarcat)
                             );
-                            return ($state.userbabarcat.token =
-                              sessionStorage.getItem("userbabarcattiken"));
                           })();
                         }
                       };
@@ -1537,7 +1558,7 @@ function PlasmicHomepage__RenderFunc(props: {
             }}
             params={(() => {
               try {
-                return { userToken: $state.userbabarcat.token };
+                return { userToken: $state.token };
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -13259,6 +13280,52 @@ function PlasmicHomepage__RenderFunc(props: {
               </div>
             </Stack__>
           </AntdModal>
+          <Timer
+            data-plasmic-name={"timer"}
+            data-plasmic-override={overrides.timer}
+            className={classNames("__wab_instance", sty.timer)}
+            intervalSeconds={1}
+            isRunning={true}
+            onTick={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return (window.location.href =
+                              "https://app.babarkat.com/login/");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            runWhileEditing={false}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -13310,7 +13377,8 @@ const PlasmicDescendants = {
     "modal2",
     "wallet3",
     "drawer",
-    "modal5"
+    "modal5",
+    "timer"
   ],
   header: ["header"],
   wallet: ["wallet", "tooltip"],
@@ -13376,7 +13444,8 @@ const PlasmicDescendants = {
   modal2: ["modal2", "wallet3"],
   wallet3: ["wallet3"],
   drawer: ["drawer"],
-  modal5: ["modal5"]
+  modal5: ["modal5"],
+  timer: ["timer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -13426,6 +13495,7 @@ type NodeDefaultElementType = {
   wallet3: "div";
   drawer: typeof AntdDrawer;
   modal5: typeof AntdModal;
+  timer: typeof Timer;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -13556,6 +13626,7 @@ export const PlasmicHomepage = Object.assign(
     wallet3: makeNodeComponent("wallet3"),
     drawer: makeNodeComponent("drawer"),
     modal5: makeNodeComponent("modal5"),
+    timer: makeNodeComponent("timer"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
