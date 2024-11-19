@@ -371,6 +371,12 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "pass1",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
       }
     ],
     [$props, $ctx, $refs]
@@ -1254,7 +1260,19 @@ function PlasmicLogIn__RenderFunc(props: {
                       hasVariant($state, "loginByPassword", "loginByPassword")
                         ? "password"
                         : hasVariant($state, "password", "password")
-                        ? "password"
+                        ? (() => {
+                            try {
+                              return $state.pass1;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "password";
+                              }
+                              throw e;
+                            }
+                          })()
                         : hasVariant(globalVariants, "screen", "mobileOnly")
                         ? "tel"
                         : "tel"
@@ -1276,31 +1294,43 @@ function PlasmicLogIn__RenderFunc(props: {
                     onClick={async event => {
                       const $steps = {};
 
-                      $steps["runCode"] = true
+                      $steps["updatePass1"] = true
                         ? (() => {
                             const actionArgs = {
-                              customFunction: async () => {
-                                return (document.getElementsByClassName(
-                                  "LogIn__fragmentInput3password__xj7J8PqF9"
-                                )[0].type = "text");
-                              }
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["pass1"]
+                              },
+                              operation: 0,
+                              value: "text"
                             };
-                            return (({ customFunction }) => {
-                              return customFunction();
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
                       if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
+                        $steps["updatePass1"] != null &&
+                        typeof $steps["updatePass1"] === "object" &&
+                        typeof $steps["updatePass1"].then === "function"
                       ) {
-                        $steps["runCode"] = await $steps["runCode"];
+                        $steps["updatePass1"] = await $steps["updatePass1"];
                       }
 
                       $steps["invokeGlobalAction"] = true
                         ? (() => {
-                            const actionArgs = { args: [2000] };
+                            const actionArgs = { args: [1000] };
                             return $globalActions["Fragment.wait"]?.apply(
                               null,
                               [...actionArgs.args]
@@ -1320,14 +1350,26 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["runCode2"] = true
                         ? (() => {
                             const actionArgs = {
-                              customFunction: async () => {
-                                return (document.getElementsByClassName(
-                                  "LogIn__fragmentInput3password__xj7J8PqF9"
-                                )[0].type = "password");
-                              }
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["pass1"]
+                              },
+                              operation: 0,
+                              value: "password"
                             };
-                            return (({ customFunction }) => {
-                              return customFunction();
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
@@ -2618,6 +2660,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             args: [
                               "POST",
                               "https://n8n.babarkat.com/webhook/Babarkat/password",
+                              undefined,
                               (() => {
                                 try {
                                   return {
@@ -2636,8 +2679,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                   }
                                   throw e;
                                 }
-                              })(),
-                              undefined
+                              })()
                             ]
                           };
                           return $globalActions["Fragment.apiRequest"]?.apply(
