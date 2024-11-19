@@ -1281,7 +1281,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             const actionArgs = {
                               customFunction: async () => {
                                 return (document.getElementsByClassName(
-                                  "LogIn__fragmentInput3loginByPassword__xj7J0DikB"
+                                  "LogIn__fragmentInput3password__xj7J8PqF9"
                                 )[0].type = "text");
                               }
                             };
@@ -1322,7 +1322,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             const actionArgs = {
                               customFunction: async () => {
                                 return (document.getElementsByClassName(
-                                  "LogIn__fragmentInput3loginByPassword__xj7J0DikB"
+                                  "LogIn__fragmentInput3password__xj7J8PqF9"
                                 )[0].type = "password");
                               }
                             };
@@ -1999,6 +1999,30 @@ function PlasmicLogIn__RenderFunc(props: {
                     typeof $steps["updatePassword"].then === "function"
                   ) {
                     $steps["updatePassword"] = await $steps["updatePassword"];
+                  }
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              return localStorage.removeItem(
+                                "userBabarkatPass"
+                              );
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
               >
@@ -4816,46 +4840,31 @@ function PlasmicLogIn__RenderFunc(props: {
             (async loading => {
               const $steps = {};
 
-              $steps["goToPage"] = true
-                ? (() => {
-                    const actionArgs = {
-                      destination: (() => {
-                        try {
-                          return (
-                            localStorage.getItem("userbabarcat") != null &&
-                            sessionStorage.getItem("userbabarcatToken") != null
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
+              $steps["goToHomepage"] =
+                localStorage.getItem("userbabarcat") != null &&
+                sessionStorage.getItem("userbabarcatToken") != null
+                  ? (() => {
+                      const actionArgs = { destination: `/` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
                         }
-                      })()
-                    };
-                    return (({ destination }) => {
-                      if (
-                        typeof destination === "string" &&
-                        destination.startsWith("#")
-                      ) {
-                        document
-                          .getElementById(destination.substr(1))
-                          .scrollIntoView({ behavior: "smooth" });
-                      } else {
-                        __nextRouter?.push(destination);
-                      }
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
               if (
-                $steps["goToPage"] != null &&
-                typeof $steps["goToPage"] === "object" &&
-                typeof $steps["goToPage"].then === "function"
+                $steps["goToHomepage"] != null &&
+                typeof $steps["goToHomepage"] === "object" &&
+                typeof $steps["goToHomepage"].then === "function"
               ) {
-                $steps["goToPage"] = await $steps["goToPage"];
+                $steps["goToHomepage"] = await $steps["goToHomepage"];
               }
 
               $steps["updatePassword"] =
