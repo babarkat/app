@@ -1015,9 +1015,9 @@ function PlasmicHomepage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["goToPage"] = true
+                  $steps["goToSnap"] = true
                     ? (() => {
-                        const actionArgs = {};
+                        const actionArgs = { destination: `/snap` };
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&
@@ -1033,11 +1033,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["goToPage"] != null &&
-                    typeof $steps["goToPage"] === "object" &&
-                    typeof $steps["goToPage"].then === "function"
+                    $steps["goToSnap"] != null &&
+                    typeof $steps["goToSnap"] === "object" &&
+                    typeof $steps["goToSnap"].then === "function"
                   ) {
-                    $steps["goToPage"] = await $steps["goToPage"];
+                    $steps["goToSnap"] = await $steps["goToSnap"];
                   }
                 }}
               >

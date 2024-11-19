@@ -76,6 +76,11 @@
 .rootunnamedVariant2 > * {
   grid-column: 4;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .rootunnamedVariant2 > * {
+    grid-column: 4;
+  }
+}
 .rootpassword > * {
   grid-column: 4;
 }
@@ -1652,6 +1657,12 @@
 }
 .group9unnamedVariant2 {
   display: block;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .group9unnamedVariant2 {
+    left: 15px;
+    top: 15px;
+  }
 }
 .group9password {
   top: 10px;
