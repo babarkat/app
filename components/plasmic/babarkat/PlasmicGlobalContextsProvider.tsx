@@ -19,24 +19,19 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
   >;
-
   cmsCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof CmsCredentialsProvider>, "children">
   >;
@@ -208,7 +203,7 @@ export default function GlobalContextsProvider(
               css={
                 embedCssProps && "css" in embedCssProps
                   ? embedCssProps.css!
-                  : "@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/27fad752d4c101730c76d75d98cf2183.ttf');\r\n  font-weight: normal;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/4b67ac4a1cf16c1e0bd59bb2099e5ae7.ttf');\r\n  font-weight: bold;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/3c08154f4d5e905b9b9724aeab3fbf39.ttf');\r\n  font-weight: 600;\r\n}\r\n*{\r\n  direction: rtl;\r\n  font-family: 'IranSans' !important;\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 4px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n"
+                  : "@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/27fad752d4c101730c76d75d98cf2183.ttf');\r\n  font-weight: normal;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/4b67ac4a1cf16c1e0bd59bb2099e5ae7.ttf');\r\n  font-weight: bold;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/3c08154f4d5e905b9b9724aeab3fbf39.ttf');\r\n  font-weight: 600;\r\n}\r\n*{\r\n  direction: rtl;\r\n  font-family: 'IranSans' !important;\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 4px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n\r\n.ant-progress-text{\r\n      display: none;\r\n}"
               }
             >
               <ContentfulCredentialsProvider

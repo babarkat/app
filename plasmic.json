@@ -1243,20 +1243,6 @@
           "componentType": "component"
         },
         {
-          "id": "sK9gh25-ApmB",
-          "name": "Internet2",
-          "type": "managed",
-          "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet2.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/intenet.tsx"
-          },
-          "cssFilePath": "plasmic/babarkat/PlasmicInternet2.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/intenet"
-        },
-        {
           "id": "skA4mCHGCjr2",
           "name": "Boxselect2",
           "type": "managed",
@@ -1335,34 +1321,6 @@
           "componentType": "component"
         },
         {
-          "id": "b_FfCbz2fLZ2",
-          "name": "Charging2",
-          "type": "managed",
-          "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicCharging2.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/charging-2.tsx"
-          },
-          "cssFilePath": "plasmic/babarkat/PlasmicCharging2.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/charging-2"
-        },
-        {
-          "id": "3zgeFpmpMsFC",
-          "name": "Internet22",
-          "type": "managed",
-          "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet22.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/intenet-2.tsx"
-          },
-          "cssFilePath": "plasmic/babarkat/PlasmicInternet22.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/intenet-2"
-        },
-        {
           "id": "Laaw61fX6dv7",
           "name": "Passcyrcle",
           "type": "managed",
@@ -1374,6 +1332,34 @@
           "cssFilePath": "plasmic/babarkat/PlasmicPasscyrcle.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "sK9gh25-ApmB",
+          "name": "Internet3",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet3.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/intenet.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicInternet3.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/intenet"
+        },
+        {
+          "id": "ZCvnmuylbYRk",
+          "name": "Snap",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicSnap.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/snap.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicSnap.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/snap"
         }
       ],
       "icons": [
@@ -1886,6 +1872,16 @@
           "id": "x3OJQfNZRJRt",
           "name": "Icon54Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon54.tsx"
+        },
+        {
+          "id": "pYVCSSEZE7RE",
+          "name": "Icon55Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon55.tsx"
+        },
+        {
+          "id": "CbXhIHUxIzPz",
+          "name": "Icon56Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon56.tsx"
         }
       ],
       "images": [
@@ -2098,6 +2094,11 @@
           "id": "6e7kaXhlwwW-",
           "name": "image 32",
           "filePath": "../public/plasmic/babarkat/images/image32.svg"
+        },
+        {
+          "id": "cht_k6E97KTR",
+          "name": "image 33",
+          "filePath": "../public/plasmic/babarkat/images/image33.png"
         }
       ],
       "indirect": false,

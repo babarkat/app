@@ -67,6 +67,7 @@ import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/compone
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
+import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -139,6 +140,7 @@ export type PlasmicCharging__OverridesType = {
   اپراتور3?: Flex__<"div">;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
+  timer?: Flex__<typeof Timer>;
 };
 
 export interface DefaultChargingProps {}
@@ -469,6 +471,26 @@ function PlasmicCharging__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "token",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -2413,7 +2435,7 @@ function PlasmicCharging__RenderFunc(props: {
                                           ].nameop + "_charge",
                                         originId: $state.uuid + "",
                                         priceType: "toman",
-                                        userToken: $state.userinfo.token
+                                        userToken: $state.token
                                       };
                                     } catch (e) {
                                       if (
@@ -2588,7 +2610,7 @@ function PlasmicCharging__RenderFunc(props: {
                                     return {
                                       id: $state.pardakhtid,
                                       trackingId: $state.infopardakt.ref_code,
-                                      userToken: $state.userinfo.token
+                                      userToken: $state.token
                                     };
                                   } catch (e) {
                                     if (
@@ -4487,6 +4509,52 @@ function PlasmicCharging__RenderFunc(props: {
               </div>
             </AntdModal>
           </div>
+          <Timer
+            data-plasmic-name={"timer"}
+            data-plasmic-override={overrides.timer}
+            className={classNames("__wab_instance", sty.timer)}
+            intervalSeconds={1}
+            isRunning={true}
+            onTick={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return (window.location.href =
+                              "https://app.babarkat.com/login/");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            runWhileEditing={false}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4524,7 +4592,8 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
-    "lottie"
+    "lottie",
+    "timer"
   ],
   header: ["header"],
   reveal: [
@@ -4605,7 +4674,8 @@ const PlasmicDescendants = {
   اپراتور2: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06312"],
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal2: ["modal2", "lottie"],
-  lottie: ["lottie"]
+  lottie: ["lottie"],
+  timer: ["timer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4641,6 +4711,7 @@ type NodeDefaultElementType = {
   اپراتور3: "div";
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
+  timer: typeof Timer;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4761,6 +4832,7 @@ export const PlasmicCharging = Object.assign(
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
+    timer: makeNodeComponent("timer"),
 
     // Metadata about props expected for PlasmicCharging
     internalVariantProps: PlasmicCharging__VariantProps,

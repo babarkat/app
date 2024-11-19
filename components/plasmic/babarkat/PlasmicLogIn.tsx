@@ -62,12 +62,12 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
-import Passcyrcle from "../../Passcyrcle"; // plasmic-import: Laaw61fX6dv7/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
   ExperimentValue,
@@ -91,16 +91,14 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicLogIn.module.css"; // plasmic-import: -3JBPQCG-aXv/css
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
-import Icon49Icon from "./icons/PlasmicIcon__Icon49"; // plasmic-import: cLJlMjIvXxjv/icon
+import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: CbXhIHUxIzPz/icon
+import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: x3OJQfNZRJRt/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
-
-import __lib_md5 from "md5";
 
 createPlasmicElementProxy;
 
@@ -109,6 +107,7 @@ export type PlasmicLogIn__VariantMembers = {
   slids: "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3";
   unnamedVariant2: "unnamedVariant2";
   password: "password";
+  loginByPassword: "loginByPassword";
 };
 export type PlasmicLogIn__VariantsArgs = {
   unnamedVariant?: SingleBooleanChoiceArg<"unnamedVariant">;
@@ -117,13 +116,15 @@ export type PlasmicLogIn__VariantsArgs = {
   >;
   unnamedVariant2?: SingleBooleanChoiceArg<"unnamedVariant2">;
   password?: SingleBooleanChoiceArg<"password">;
+  loginByPassword?: SingleBooleanChoiceArg<"loginByPassword">;
 };
 type VariantPropType = keyof PlasmicLogIn__VariantsArgs;
 export const PlasmicLogIn__VariantProps = new Array<VariantPropType>(
   "unnamedVariant",
   "slids",
   "unnamedVariant2",
-  "password"
+  "password",
+  "loginByPassword"
 );
 
 export type PlasmicLogIn__ArgsType = {
@@ -134,11 +135,14 @@ export const PlasmicLogIn__ArgProps = new Array<ArgPropType>("disabled");
 
 export type PlasmicLogIn__OverridesType = {
   root?: Flex__<"div">;
-  passcyrcle?: Flex__<typeof Passcyrcle>;
+  reveal?: Flex__<typeof Reveal>;
   fragmentInput?: Flex__<typeof Input>;
+  fragmentInput3?: Flex__<typeof Input>;
   fragmentInput2?: Flex__<typeof Input>;
   timer?: Flex__<typeof Timer>;
   select?: Flex__<typeof AntdSelect>;
+  btnNumber?: Flex__<typeof Button>;
+  btnSaraf?: Flex__<typeof Button>;
   sendcode?: Flex__<typeof Button>;
   figmaPaste?: Flex__<"div">;
   group?: Flex__<"div">;
@@ -160,9 +164,7 @@ export type PlasmicLogIn__OverridesType = {
 
 export interface DefaultLogInProps {}
 
-const $$ = {
-  md5: __lib_md5
-};
+const $$ = {};
 
 function useNextRouter() {
   try {
@@ -359,24 +361,16 @@ function PlasmicLogIn__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "passcyrcle[].password",
+        path: "loginByPassword",
         type: "private",
-        variableType: "boolean"
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.loginByPassword
       },
       {
-        path: "passcyrcle[].bad",
+        path: "fragmentInput3.value",
         type: "private",
-        variableType: "boolean"
-      },
-      {
-        path: "passcyrcle[].good",
-        type: "private",
-        variableType: "boolean"
-      },
-      {
-        path: "passcyrcle[].pass",
-        type: "private",
-        variableType: "boolean"
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -442,7 +436,21 @@ function PlasmicLogIn__RenderFunc(props: {
                 "unnamedGlobalGroupOfVariants",
                 "unnamedVariant"
               ),
+            [sty.rootloginByPassword]: hasVariant(
+              $state,
+              "loginByPassword",
+              "loginByPassword"
+            ),
+            [sty.rootloginByPassword_password]:
+              hasVariant($state, "password", "password") &&
+              hasVariant($state, "loginByPassword", "loginByPassword"),
+            [sty.rootloginByPassword_unnamedVariant2]:
+              hasVariant($state, "loginByPassword", "loginByPassword") &&
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
             [sty.rootpassword]: hasVariant($state, "password", "password"),
+            [sty.rootpassword_unnamedVariant2]:
+              hasVariant($state, "password", "password") &&
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
             [sty.rootpassword_unnamedVariant]:
               hasVariant($state, "password", "password") &&
               hasVariant($state, "unnamedVariant", "unnamedVariant"),
@@ -516,6 +524,8 @@ function PlasmicLogIn__RenderFunc(props: {
               })()
         ) ? (
           <Reveal
+            data-plasmic-name={"reveal"}
+            data-plasmic-override={overrides.reveal}
             cascade={
               hasVariant($state, "slids", "unnamedVariant3")
                 ? false
@@ -523,23 +533,24 @@ function PlasmicLogIn__RenderFunc(props: {
                 ? false
                 : undefined
             }
-            className={classNames("__wab_instance", sty.reveal__udbuU, {
-              [sty.revealpassword__udbuU8PqF9]: hasVariant(
+            className={classNames("__wab_instance", sty.reveal, {
+              [sty.revealloginByPassword]: hasVariant(
                 $state,
-                "password",
-                "password"
+                "loginByPassword",
+                "loginByPassword"
               ),
-              [sty.revealslids_unnamedVariant3__udbuUi1KiV]: hasVariant(
+              [sty.revealpassword]: hasVariant($state, "password", "password"),
+              [sty.revealslids_unnamedVariant3]: hasVariant(
                 $state,
                 "slids",
                 "unnamedVariant3"
               ),
-              [sty.revealslids_unnamedVariant__udbuUMe9Ia]: hasVariant(
+              [sty.revealslids_unnamedVariant]: hasVariant(
                 $state,
                 "slids",
                 "unnamedVariant"
               ),
-              [sty.revealunnamedVariant__udbuUDv9B5]: hasVariant(
+              [sty.revealunnamedVariant]: hasVariant(
                 $state,
                 "unnamedVariant",
                 "unnamedVariant"
@@ -553,17 +564,27 @@ function PlasmicLogIn__RenderFunc(props: {
                 : undefined
             }
             direction={
-              hasVariant($state, "slids", "unnamedVariant3")
+              hasVariant($state, "loginByPassword", "loginByPassword")
+                ? "left"
+                : hasVariant($state, "password", "password")
+                ? "left"
+                : hasVariant($state, "slids", "unnamedVariant3")
                 ? "left"
                 : hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "left"
                 : undefined
             }
             effect={
-              hasVariant($state, "slids", "unnamedVariant3")
+              hasVariant($state, "loginByPassword", "loginByPassword")
+                ? "fade"
+                : hasVariant($state, "password", "password")
+                ? "fade"
+                : hasVariant($state, "slids", "unnamedVariant3")
                 ? "slide"
                 : hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "slide"
+                : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? "fade"
                 : undefined
             }
             reverse={
@@ -620,6 +641,11 @@ function PlasmicLogIn__RenderFunc(props: {
             >
               <div
                 className={classNames(projectcss.all, sty.freeBox__oDeZc, {
+                  [sty.freeBoxloginByPassword__oDeZc0DikB]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
                   [sty.freeBoxpassword__oDeZc8PqF9]: hasVariant(
                     $state,
                     "password",
@@ -650,10 +676,21 @@ function PlasmicLogIn__RenderFunc(props: {
                 <PlasmicIcon__
                   PlasmicIconType={
                     hasVariant($state, "password", "password")
-                      ? Icon49Icon
+                      ? Icon56Icon
                       : BabarkatlogoCopy2SvgIcon
                   }
                   className={classNames(projectcss.all, sty.svg___6T7, {
+                    [sty.svgloginByPassword___6T70DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.svgloginByPassword_password___6T70DikB8PqF9]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) && hasVariant($state, "password", "password"),
                     [sty.svgpassword___6T78PqF9]: hasVariant(
                       $state,
                       "password",
@@ -689,6 +726,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__pZ2Jh, {
+                      [sty.imgpassword__pZ2Jh8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
                       [sty.imgslids_unnamedVariant__pZ2JhMe9Ia]: hasVariant(
                         $state,
                         "slids",
@@ -729,6 +771,11 @@ function PlasmicLogIn__RenderFunc(props: {
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox__mauVi, {
+                  [sty.freeBoxloginByPassword__mauVi0DikB]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
                   [sty.freeBoxpassword__mauVi8PqF9]: hasVariant(
                     $state,
                     "password",
@@ -756,441 +803,70 @@ function PlasmicLogIn__RenderFunc(props: {
                   )
                 })}
               >
-                {(
-                  hasVariant($state, "password", "password") &&
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return (() => {
-                            if ($state.pass.length == 4)
-                              return (
-                                $$.md5($state.pass) ==
-                                localStorage.getItem("babarkatPass")
-                              );
-                            else return true;
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "password", "password")
-                    ? (() => {
-                        try {
-                          return (() => {
-                            if ($state.pass.length == 4)
-                              return (
-                                $$.md5($state.pass) ==
-                                localStorage.getItem("babarkatPass")
-                              );
-                            else return true;
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : true
-                ) ? (
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__r99Zr,
-                      {
-                        [sty.textpassword__r99Zr8PqF9]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        ),
-                        [sty.textslids_unnamedVariant3__r99ZrI1KiV]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
-                        [sty.textunnamedVariant2__r99ZrJmKha]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                        [sty.textunnamedVariant__r99ZrDv9B5]: hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "password", "password")
-                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                      : hasVariant($state, "slids", "unnamedVariant3")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
-                  </div>
-                ) : null}
-                <Reveal
-                  className={classNames("__wab_instance", sty.reveal__iFido, {
-                    [sty.revealpassword__iFido8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.revealunnamedVariant2__iFidoJmKha]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.revealunnamedVariant__iFidoDv9B5]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  })}
-                  effect={"bounce"}
-                  triggerOnce={true}
-                >
-                  {(
-                    hasVariant($state, "password", "password") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return (() => {
-                              if ($state.pass.length == 4)
-                                return (
-                                  $$.md5($state.pass) !=
-                                  localStorage.getItem("babarkatPass")
-                                );
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "password", "password")
-                      ? (() => {
-                          try {
-                            return (() => {
-                              if ($state.pass.length == 4)
-                                return (
-                                  $$.md5($state.pass) !=
-                                  localStorage.getItem("babarkatPass")
-                                );
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : true
-                  ) ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___6GGct,
-                        {
-                          [sty.textpassword___6GGct8PqF9]: hasVariant(
-                            $state,
-                            "password",
-                            "password"
-                          ),
-                          [sty.textpassword_unnamedVariant2___6GGct8PqF9JmKha]:
-                            hasVariant(
-                              $state,
-                              "unnamedVariant2",
-                              "unnamedVariant2"
-                            ) && hasVariant($state, "password", "password"),
-                          [sty.textslids_unnamedVariant3___6GGcti1KiV]:
-                            hasVariant($state, "slids", "unnamedVariant3"),
-                          [sty.textunnamedVariant2___6GGctJmKha]: hasVariant(
-                            $state,
-                            "unnamedVariant2",
-                            "unnamedVariant2"
-                          ),
-                          [sty.textunnamedVariant___6GGctDv9B5]: hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ),
-                          [sty.textunnamedVariant_unnamedVariant2___6GGctDv9B5JmKha]:
-                            hasVariant(
-                              $state,
-                              "unnamedVariant",
-                              "unnamedVariant"
-                            ) &&
-                            hasVariant(
-                              $state,
-                              "unnamedVariant2",
-                              "unnamedVariant2"
-                            )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "password", "password") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631  \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a."
-                        : hasVariant($state, "password", "password")
-                        ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631  \u0627\u0634\u062a\u0628\u0627\u0647 \u0627\u0633\u062a."
-                        : hasVariant(
-                            $state,
-                            "unnamedVariant2",
-                            "unnamedVariant2"
-                          )
-                        ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                        : hasVariant($state, "slids", "unnamedVariant3")
-                        ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                        : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                        ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                        : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
-                    </div>
-                  ) : null}
-                </Reveal>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(
                     projectcss.all,
-                    sty.freeBox__csia1,
-                    "dateshow",
+                    projectcss.__wab_text,
+                    sty.text__zL7Oq,
                     {
-                      [sty.freeBoxpassword__csia18PqF9]: hasVariant(
+                      [sty.textloginByPassword__zL7Oq0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant__zL7Oq0DikBDv9B5]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
+                      [sty.textpassword__zL7Oq8PqF9]: hasVariant(
                         $state,
                         "password",
                         "password"
                       ),
-                      [sty.freeBoxpassword_unnamedVariant2__csia18PqF9JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.freeBoxunnamedVariant2__csia1JmKha]: hasVariant(
+                      [sty.textslids_unnamedVariant3__zL7OqI1KiV]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.textunnamedVariant2__zL7OqJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ),
-                      [sty.freeBoxunnamedVariant__csia1Dv9B5]: hasVariant(
+                      [sty.textunnamedVariant__zL7OqDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
-                      ),
-                      [sty.freeBoxunnamedVariant_unnamedVariant2__csia1Dv9B5JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      )
                     }
                   )}
                 >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
-                      try {
-                        return [0, 1, 2, 3];
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (() => {
-                      const child$Props = {
-                        bad: generateStateValueProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "bad"
-                        ]),
-                        className: classNames(
-                          "__wab_instance",
-                          sty.passcyrcle,
-                          {
-                            [sty.passcyrclepassword]: hasVariant(
-                              $state,
-                              "password",
-                              "password"
-                            )
-                          }
-                        ),
-                        good: generateStateValueProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "good"
-                        ]),
-                        key: currentIndex,
-                        onBadChange: generateStateOnChangeProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "bad"
-                        ]),
-                        onGoodChange: generateStateOnChangeProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "good"
-                        ]),
-                        onPassChange: generateStateOnChangeProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "pass"
-                        ]),
-                        onPasswordChange: generateStateOnChangeProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "password"
-                        ]),
-                        pass: generateStateValueProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "pass"
-                        ]),
-                        password: generateStateValueProp($state, [
-                          "passcyrcle",
-                          __plasmic_idx_0,
-                          "password"
-                        ])
-                      };
-
-                      initializePlasmicStates(
-                        $state,
-                        [
-                          {
-                            name: "passcyrcle[].password",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              hasVariant($state, "password", "password")
-                                ? (() => {
-                                    try {
-                                      return currentIndex < $state.pass.length;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return [];
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                : (() => {
-                                    try {
-                                      return $state.pass;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                          },
-                          {
-                            name: "passcyrcle[].bad",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              (() => {
-                                try {
-                                  return (() => {
-                                    if ($state.pass.length == 4)
-                                      return (
-                                        $$.md5($state.pass) !=
-                                        localStorage.getItem("babarkatPass")
-                                      );
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
-                                }
-                              })()
-                          },
-                          {
-                            name: "passcyrcle[].good",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              (() => {
-                                try {
-                                  return (() => {
-                                    if ($state.pass.length == 4)
-                                      return (
-                                        $$.md5($state.pass) ===
-                                        localStorage.getItem("babarkatPass")
-                                      );
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return [];
-                                  }
-                                  throw e;
-                                }
-                              })()
-                          },
-                          {
-                            name: "passcyrcle[].pass",
-                            initFunc: ({ $props, $state, $queries }) =>
-                              hasVariant($state, "password", "password")
-                                ? false
-                                : false
-                          }
-                        ],
-                        [__plasmic_idx_0]
-                      );
-                      return (
-                        <Passcyrcle
-                          data-plasmic-name={"passcyrcle"}
-                          data-plasmic-override={overrides.passcyrcle}
-                          {...child$Props}
-                        />
-                      );
-                    })();
-                  })}
-                </Stack__>
+                  {hasVariant($state, "loginByPassword", "loginByPassword")
+                    ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : hasVariant($state, "password", "password")
+                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                    : hasVariant($state, "slids", "unnamedVariant3")
+                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                    : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.text__wdrTs,
                     {
+                      [sty.textloginByPassword__wdrTs0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
                       [sty.textpassword__wdrTs8PqF9]: hasVariant(
                         $state,
                         "password",
@@ -1270,6 +946,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"fragmentInput"}
                   data-plasmic-override={overrides.fragmentInput}
                   className={classNames("__wab_instance", sty.fragmentInput, {
+                    [sty.fragmentInputloginByPassword]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
                     [sty.fragmentInputpassword]: hasVariant(
                       $state,
                       "password",
@@ -1305,7 +986,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       const $steps = {};
                     }).apply(null, eventArgs);
                   }}
-                  placeholder={"98+"}
+                  placeholder={"*********09"}
                   type={
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "tel"
@@ -1317,6 +998,350 @@ function PlasmicLogIn__RenderFunc(props: {
                   ])}
                 />
 
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aBe0K,
+                    {
+                      [sty.textloginByPassword__aBe0K0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant__aBe0K0DikBDv9B5]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
+                      [sty.textpassword__aBe0K8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textslids_unnamedVariant3__aBe0KI1KiV]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.textunnamedVariant2__aBe0KJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant__aBe0KDv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "loginByPassword", "loginByPassword")
+                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                    : hasVariant($state, "password", "password")
+                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                    : hasVariant($state, "slids", "unnamedVariant3")
+                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                    : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__obSwQ,
+                    {
+                      [sty.textloginByPassword__obSwQ0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textpassword__obSwQ8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textslids_unnamedVariant3__obSwQi1KiV]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.textunnamedVariant2__obSwQJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant__obSwQDv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      )
+                    }
+                  )}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLoginByPassword"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "loginByPassword",
+                            operation: 4
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+
+                            $stateSet($state, vgroup, true);
+                            return true;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoginByPassword"] != null &&
+                      typeof $steps["updateLoginByPassword"] === "object" &&
+                      typeof $steps["updateLoginByPassword"].then === "function"
+                    ) {
+                      $steps["updateLoginByPassword"] = await $steps[
+                        "updateLoginByPassword"
+                      ];
+                    }
+                  }}
+                >
+                  {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
+                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
+                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
+                    <div
+                      className={projectcss.__wab_expr_html_text}
+                      dangerouslySetInnerHTML={{
+                        __html: (() => {
+                          try {
+                            return (
+                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
+                              $state.number +
+                              "</b> را وارد نمایید."
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
+                            }
+                            throw e;
+                          }
+                        })()
+                      }}
+                    />
+                  ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
+                    <div
+                      className={projectcss.__wab_expr_html_text}
+                      dangerouslySetInnerHTML={{
+                        __html: (() => {
+                          try {
+                            return (
+                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
+                              $state.number +
+                              "</b> را وارد نمایید."
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
+                            }
+                            throw e;
+                          }
+                        })()
+                      }}
+                    />
+                  ) : (
+                    "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 "
+                  )}
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___8MdV, {
+                    [sty.freeBoxloginByPassword___8MdV0DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.freeBoxpassword___8MdV8PqF9]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.freeBoxslids_unnamedVariant3___8MdVi1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.freeBoxunnamedVariant2___8MdVJmKha]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.freeBoxunnamedVariant___8MdVDv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
+                >
+                  <Input
+                    data-plasmic-name={"fragmentInput3"}
+                    data-plasmic-override={overrides.fragmentInput3}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.fragmentInput3,
+                      {
+                        [sty.fragmentInput3loginByPassword]: hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                        [sty.fragmentInput3password]: hasVariant(
+                          $state,
+                          "password",
+                          "password"
+                        ),
+                        [sty.fragmentInput3slids_unnamedVariant3]: hasVariant(
+                          $state,
+                          "slids",
+                          "unnamedVariant3"
+                        ),
+                        [sty.fragmentInput3unnamedVariant2]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                        [sty.fragmentInput3unnamedVariant]: hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        )
+                      }
+                    )}
+                    disabled={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? false
+                        : undefined
+                    }
+                    onChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentInput3",
+                        "value"
+                      ]).apply(null, eventArgs);
+                      (async value => {
+                        const $steps = {};
+                      }).apply(null, eventArgs);
+                    }}
+                    placeholder={
+                      hasVariant($state, "loginByPassword", "loginByPassword")
+                        ? ``
+                        : hasVariant($state, "password", "password")
+                        ? ``
+                        : "98+"
+                    }
+                    type={
+                      hasVariant($state, "loginByPassword", "loginByPassword")
+                        ? "password"
+                        : hasVariant($state, "password", "password")
+                        ? "password"
+                        : hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "tel"
+                        : "tel"
+                    }
+                    value={generateStateValueProp($state, [
+                      "fragmentInput3",
+                      "value"
+                    ])}
+                  />
+
+                  <Icon55Icon
+                    className={classNames(projectcss.all, sty.svg__rwAhK, {
+                      [sty.svgpassword__rwAhK8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "LogIn__fragmentInput3loginByPassword__xj7J0DikB"
+                                )[0].type = "text");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = { args: [2000] };
+                            return $globalActions["Fragment.wait"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+
+                      $steps["runCode2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "LogIn__fragmentInput3loginByPassword__xj7J0DikB"
+                                )[0].type = "password");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode2"] != null &&
+                        typeof $steps["runCode2"] === "object" &&
+                        typeof $steps["runCode2"].then === "function"
+                      ) {
+                        $steps["runCode2"] = await $steps["runCode2"];
+                      }
+                    }}
+                    role={"img"}
+                  />
+                </div>
                 <Stack__
                   as={"div"}
                   hasGap={true}
@@ -1918,516 +1943,77 @@ function PlasmicLogIn__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["select", "value"])}
                 />
-
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___4XuwG, {
-                    [sty.freeBoxpassword___4XuwG8PqF9]: hasVariant(
+              </Stack__>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__vfBkC,
+                  {
+                    [sty.textloginByPassword__vfBkC0DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.textpassword__vfBkC8PqF9]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
-                    [sty.freeBoxunnamedVariant2___4XuwGJmKha]: hasVariant(
+                    [sty.textslids_unnamedVariant3__vfBkCi1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.textunnamedVariant2__vfBkCJmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
                       "unnamedVariant2"
                     ),
-                    [sty.freeBoxunnamedVariant___4XuwGDv9B5]: hasVariant(
+                    [sty.textunnamedVariant__vfBkCDv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
                     )
-                  })}
-                >
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
-                      try {
-                        return [3, 2, 1, 6, 5, 4, 9, 8, 7];
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (
-                      <Button
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__pW2Lf,
-                          {
-                            [sty.buttonpassword__pW2Lf8PqF9]: hasVariant(
-                              $state,
-                              "password",
-                              "password"
-                            ),
-                            [sty.buttonunnamedVariant2__pW2LfJmKha]: hasVariant(
-                              $state,
-                              "unnamedVariant2",
-                              "unnamedVariant2"
-                            ),
-                            [sty.buttonunnamedVariant__pW2LfDv9B5]: hasVariant(
-                              $state,
-                              "unnamedVariant",
-                              "unnamedVariant"
-                            )
-                          }
-                        )}
-                        color={
-                          hasVariant($state, "password", "password")
-                            ? "black"
-                            : undefined
-                        }
-                        key={currentIndex}
-                        onClick={async event => {
-                          const $steps = {};
+                  }
+                )}
+                onClick={async event => {
+                  const $steps = {};
 
-                          $steps["updatePass"] =
-                            $state.pass.length < 4
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["pass"]
-                                    },
-                                    operation: 0,
-                                    value: $state.pass + currentItem
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updatePass"] != null &&
-                            typeof $steps["updatePass"] === "object" &&
-                            typeof $steps["updatePass"].then === "function"
-                          ) {
-                            $steps["updatePass"] = await $steps["updatePass"];
+                  $steps["updatePassword"] = true
+                    ? (() => {
+                        const actionArgs = { vgroup: "password", operation: 6 };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
                           }
 
-                          $steps["invokeGlobalAction"] =
-                            $state.pass.length == 4
-                              ? (() => {
-                                  const actionArgs = { args: [2000] };
-                                  return $globalActions["Fragment.wait"]?.apply(
-                                    null,
-                                    [...actionArgs.args]
-                                  );
-                                })()
-                              : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
-                          }
-
-                          $steps["goToHomepage"] =
-                            $$.md5($state.pass) ===
-                            localStorage.getItem("babarkatPass")
-                              ? (() => {
-                                  const actionArgs = { destination: `/` };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["goToHomepage"] != null &&
-                            typeof $steps["goToHomepage"] === "object" &&
-                            typeof $steps["goToHomepage"].then === "function"
-                          ) {
-                            $steps["goToHomepage"] = await $steps[
-                              "goToHomepage"
-                            ];
-                          }
-
-                          $steps["updatePass2"] = (() => {
-                            if ($state.pass.length == 4)
-                              return (
-                                $$.md5($state.pass) !=
-                                localStorage.getItem("babarkatPass")
-                              );
-                          })()
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["pass"]
-                                  },
-                                  operation: 0,
-                                  value: ""
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updatePass2"] != null &&
-                            typeof $steps["updatePass2"] === "object" &&
-                            typeof $steps["updatePass2"].then === "function"
-                          ) {
-                            $steps["updatePass2"] = await $steps["updatePass2"];
-                          }
-                        }}
-                        shape={
-                          hasVariant($state, "password", "password") &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "round"
-                            : hasVariant($state, "password", "password")
-                            ? "rounded"
-                            : undefined
-                        }
-                        size={
-                          hasVariant($state, "password", "password") &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "minimal"
-                            : undefined
-                        }
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xZgPj,
-                            {
-                              [sty.textpassword__xZgPj8PqF9]: hasVariant(
-                                $state,
-                                "password",
-                                "password"
-                              )
-                            }
-                          )}
-                        >
-                          {hasVariant($state, "password", "password") ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return currentItem;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "Button";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            "Button"
-                          )}
-                        </div>
-                      </Button>
-                    );
-                  })}
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qXopR, {
-                      [sty.freeBoxpassword__qXopR8PqF9]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.freeBoxunnamedVariant2__qXopRJmKha]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.freeBoxunnamedVariant__qXopRDv9B5]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    })}
-                  >
-                    <Icon54Icon
-                      className={classNames(projectcss.all, sty.svg__gD3Ze, {
-                        [sty.svgpassword__gD3Ze8PqF9]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        ),
-                        [sty.svgunnamedVariant2__gD3ZeJmKha]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                        [sty.svgunnamedVariant__gD3ZeDv9B5]: hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        )
-                      })}
-                      role={"img"}
-                    />
-                  </div>
-                  {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
-                    (() => {
-                      try {
-                        return [0];
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()
-                  ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                    const currentItem = __plasmic_item_0;
-                    const currentIndex = __plasmic_idx_0;
-                    return (
-                      <Button
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__fgCjE,
-                          {
-                            [sty.buttonpassword__fgCjE8PqF9]: hasVariant(
-                              $state,
-                              "password",
-                              "password"
-                            ),
-                            [sty.buttonunnamedVariant2__fgCjEJmKha]: hasVariant(
-                              $state,
-                              "unnamedVariant2",
-                              "unnamedVariant2"
-                            ),
-                            [sty.buttonunnamedVariant__fgCjEDv9B5]: hasVariant(
-                              $state,
-                              "unnamedVariant",
-                              "unnamedVariant"
-                            )
-                          }
-                        )}
-                        color={
-                          hasVariant($state, "password", "password")
-                            ? "black"
-                            : undefined
-                        }
-                        key={currentIndex}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["updatePass"] =
-                            $state.pass.length < 4
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["pass"]
-                                    },
-                                    operation: 0,
-                                    value: $state.pass + currentItem
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updatePass"] != null &&
-                            typeof $steps["updatePass"] === "object" &&
-                            typeof $steps["updatePass"].then === "function"
-                          ) {
-                            $steps["updatePass"] = await $steps["updatePass"];
-                          }
-
-                          $steps["invokeGlobalAction"] =
-                            $state.pass.length == 4
-                              ? (() => {
-                                  const actionArgs = { args: [2000] };
-                                  return $globalActions["Fragment.wait"]?.apply(
-                                    null,
-                                    [...actionArgs.args]
-                                  );
-                                })()
-                              : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
-                          }
-
-                          $steps["goToHomepage"] =
-                            $$.md5($state.pass) ===
-                            localStorage.getItem("babarkatPass")
-                              ? (() => {
-                                  const actionArgs = { destination: `/` };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["goToHomepage"] != null &&
-                            typeof $steps["goToHomepage"] === "object" &&
-                            typeof $steps["goToHomepage"].then === "function"
-                          ) {
-                            $steps["goToHomepage"] = await $steps[
-                              "goToHomepage"
-                            ];
-                          }
-
-                          $steps["updatePass2"] = (() => {
-                            if ($state.pass.length == 4)
-                              return (
-                                $$.md5($state.pass) !=
-                                localStorage.getItem("babarkatPass")
-                              );
-                          })()
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["pass"]
-                                  },
-                                  operation: 0,
-                                  value: ""
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updatePass2"] != null &&
-                            typeof $steps["updatePass2"] === "object" &&
-                            typeof $steps["updatePass2"].then === "function"
-                          ) {
-                            $steps["updatePass2"] = await $steps["updatePass2"];
-                          }
-                        }}
-                        shape={
-                          hasVariant($state, "password", "password") &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "round"
-                            : hasVariant($state, "password", "password")
-                            ? "rounded"
-                            : undefined
-                        }
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__he7Bl,
-                            {
-                              [sty.textpassword__he7Bl8PqF9]: hasVariant(
-                                $state,
-                                "password",
-                                "password"
-                              )
-                            }
-                          )}
-                        >
-                          {hasVariant($state, "password", "password") ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return currentItem;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "Button";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            "Button"
-                          )}
-                        </div>
-                      </Button>
-                    );
-                  })}
-                </div>
-              </Stack__>
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updatePassword"] != null &&
+                    typeof $steps["updatePassword"] === "object" &&
+                    typeof $steps["updatePassword"].then === "function"
+                  ) {
+                    $steps["updatePassword"] = await $steps["updatePassword"];
+                  }
+                }}
+              >
+                {hasVariant($state, "loginByPassword", "loginByPassword")
+                  ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                  : hasVariant($state, "password", "password")
+                  ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
+                  : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                  ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                  : hasVariant($state, "slids", "unnamedVariant3")
+                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                  : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+              </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__rr6S, {
                   [sty.freeBoxpassword__rr6S8PqF9]: hasVariant(
@@ -2458,33 +2044,40 @@ function PlasmicLogIn__RenderFunc(props: {
                 })}
               >
                 <Button
-                  className={classNames("__wab_instance", sty.button___9BCa8, {
-                    [sty.buttonpassword___9BCa88PqF9]: hasVariant(
+                  data-plasmic-name={"btnNumber"}
+                  data-plasmic-override={overrides.btnNumber}
+                  className={classNames("__wab_instance", sty.btnNumber, {
+                    [sty.btnNumberloginByPassword]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.btnNumberpassword]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
-                    [sty.buttonslids_unnamedVariant3___9BCa8I1KiV]: hasVariant(
+                    [sty.btnNumberslids_unnamedVariant3]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant3"
                     ),
-                    [sty.buttonslids_unnamedVariant___9BCa8Me9Ia]: hasVariant(
+                    [sty.btnNumberslids_unnamedVariant]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant2___9BCa8JmKha]: hasVariant(
+                    [sty.btnNumberunnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
                       "unnamedVariant2"
                     ),
-                    [sty.buttonunnamedVariant___9BCa8Dv9B5]: hasVariant(
+                    [sty.btnNumberunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant_unnamedVariant2___9BCa8Dv9B5JmKha]:
+                    [sty.btnNumberunnamedVariant_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -2727,60 +2320,9 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateFragmentInputValue2"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.saraf != null
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["saraf"]
-                            },
-                            operation: 0,
-                            value: (() => {
-                              const transformedArray =
-                                $steps.invokeGlobalAction2.data[0].saraf.map(
-                                  item => ({
-                                    label: item.name,
-                                    value: item.id
-                                  })
-                                );
-                              return transformedArray;
-                            })()
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateFragmentInputValue2"] != null &&
-                      typeof $steps["updateFragmentInputValue2"] === "object" &&
-                      typeof $steps["updateFragmentInputValue2"].then ===
-                        "function"
-                    ) {
-                      $steps["updateFragmentInputValue2"] = await $steps[
-                        "updateFragmentInputValue2"
-                      ];
-                    }
-
                     $steps["updateUnnamedVariant"] = (
                       $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success ===
-                            true && $state.saraf.length <= 0
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
                         : false
                     )
                       ? (() => {
@@ -2841,38 +2383,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     ) {
                       $steps["updateLoadedbtn2"] = await $steps[
                         "updateLoadedbtn2"
-                      ];
-                    }
-
-                    $steps["updateFragmentInputValue3"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success ===
-                            true && $state.saraf.length > 0
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "unnamedVariant2",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
-
-                            $stateSet($state, vgroup, true);
-                            return true;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateFragmentInputValue3"] != null &&
-                      typeof $steps["updateFragmentInputValue3"] === "object" &&
-                      typeof $steps["updateFragmentInputValue3"].then ===
-                        "function"
-                    ) {
-                      $steps["updateFragmentInputValue3"] = await $steps[
-                        "updateFragmentInputValue3"
                       ];
                     }
 
@@ -2940,28 +2450,38 @@ function PlasmicLogIn__RenderFunc(props: {
                   </div>
                 </Button>
                 <Button
-                  className={classNames("__wab_instance", sty.button__qK3, {
-                    [sty.buttonslids_unnamedVariant3__qK3I1KiV]: hasVariant(
+                  className={classNames("__wab_instance", sty.button__smPmc, {
+                    [sty.buttonloginByPassword__smPmc0DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.buttonpassword__smPmc8PqF9]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.buttonslids_unnamedVariant3__smPmcI1KiV]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant3"
                     ),
-                    [sty.buttonslids_unnamedVariant__qK3Me9Ia]: hasVariant(
+                    [sty.buttonslids_unnamedVariant__smPmcMe9Ia]: hasVariant(
                       $state,
                       "slids",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant2__qK3JmKha]: hasVariant(
+                    [sty.buttonunnamedVariant2__smPmcJmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
                       "unnamedVariant2"
                     ),
-                    [sty.buttonunnamedVariant__qK3Dv9B5]: hasVariant(
+                    [sty.buttonunnamedVariant__smPmcDv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant_unnamedVariant2__qK3Dv9B5JmKha]:
+                    [sty.buttonunnamedVariant_unnamedVariant2__smPmcDv9B5JmKha]:
                       hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -2972,15 +2492,36 @@ function PlasmicLogIn__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__pEfNe)}
+                      className={classNames(projectcss.all, sty.svg__cy30B)}
                       role={"img"}
                     />
                   }
                   isDisabled={
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    hasVariant($state, "loginByPassword", "loginByPassword")
                       ? (() => {
                           try {
-                            return false;
+                            return (
+                              $state.fragmentInput.value.length != 11 ||
+                              $state.fragmentInput3.value.length == 0 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant($state, "password", "password")
+                      ? (() => {
+                          try {
+                            return (
+                              $state.fragmentInput3.value.length == 0 ||
+                              $state.loadedbtn
+                            );
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -3010,6 +2551,864 @@ function PlasmicLogIn__RenderFunc(props: {
                   }
                   onClick={async event => {
                     const $steps = {};
+
+                    $steps["updateLoadedbtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn"] != null &&
+                      typeof $steps["updateLoadedbtn"] === "object" &&
+                      typeof $steps["updateLoadedbtn"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn"] = await $steps[
+                        "updateLoadedbtn"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/password",
+                              (() => {
+                                try {
+                                  return {
+                                    mobile: JSON.parse(
+                                      localStorage.getItem("userbabarcat")
+                                    ).mobile,
+                                    password: $state.fragmentInput3.value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })(),
+                              undefined
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction3"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === false
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0631\u0645\u0632 \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0633\u062a.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
+                    }
+
+                    $steps["updateFragmentInputValue2"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                localStorage.setItem(
+                                  "userbabarcat",
+                                  JSON.stringify(
+                                    $steps.invokeGlobalAction2.data[0].data
+                                  )
+                                );
+                                const item = {
+                                  value:
+                                    $steps.invokeGlobalAction2.data[0].data
+                                      .token,
+                                  expiration:
+                                    new Date().getTime() + 10 * 60 * 1000
+                                };
+                                return sessionStorage.setItem(
+                                  "userbabarcatToken",
+                                  JSON.stringify(item)
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue2"] != null &&
+                      typeof $steps["updateFragmentInputValue2"] === "object" &&
+                      typeof $steps["updateFragmentInputValue2"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue2"] = await $steps[
+                        "updateFragmentInputValue2"
+                      ];
+                    }
+
+                    $steps["goToHomepage"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = { destination: `/` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["goToHomepage"] != null &&
+                      typeof $steps["goToHomepage"] === "object" &&
+                      typeof $steps["goToHomepage"].then === "function"
+                    ) {
+                      $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+
+                    $steps["updateLoadedbtn2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn2"] != null &&
+                      typeof $steps["updateLoadedbtn2"] === "object" &&
+                      typeof $steps["updateLoadedbtn2"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn2"] = await $steps[
+                        "updateLoadedbtn2"
+                      ];
+                    }
+                  }}
+                  showEndIcon={(() => {
+                    try {
+                      return $state.loadedbtn;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__yawAd,
+                      {
+                        [sty.textloginByPassword__yawAd0DikB]: hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                        [sty.textpassword__yawAd8PqF9]: hasVariant(
+                          $state,
+                          "password",
+                          "password"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "loginByPassword", "loginByPassword")
+                      ? "\u0648\u0631\u0648\u062f"
+                      : hasVariant($state, "password", "password")
+                      ? "\u0648\u0631\u0648\u062f"
+                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                  </div>
+                </Button>
+                <Button
+                  className={classNames("__wab_instance", sty.button__rMmn, {
+                    [sty.buttonloginByPassword__rMmn0DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.buttonpassword__rMmn8PqF9]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.buttonslids_unnamedVariant3__rMmnI1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.buttonslids_unnamedVariant__rMmnMe9Ia]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant"
+                    ),
+                    [sty.buttonunnamedVariant2__rMmnJmKha]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.buttonunnamedVariant__rMmnDv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.buttonunnamedVariant_unnamedVariant2__rMmnDv9B5JmKha]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
+                  color={"green"}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg___5Hjd)}
+                      role={"img"}
+                    />
+                  }
+                  isDisabled={
+                    hasVariant($state, "loginByPassword", "loginByPassword")
+                      ? (() => {
+                          try {
+                            return (
+                              $state.fragmentInput.value.length != 11 ||
+                              $state.fragmentInput3.value.length == 0 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant($state, "password", "password")
+                      ? (() => {
+                          try {
+                            return (
+                              $state.fragmentInput3.value.length == 0 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return (
+                              $state.fragmentInput.value.length != 11 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLoadedbtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn"] != null &&
+                      typeof $steps["updateLoadedbtn"] === "object" &&
+                      typeof $steps["updateLoadedbtn"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn"] = await $steps[
+                        "updateLoadedbtn"
+                      ];
+                    }
+
+                    $steps["updateNumber"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["number"]
+                            },
+                            operation: 0,
+                            value: JSON.parse(
+                              localStorage.getItem("userbabarcat")
+                            ).mobile
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateNumber"] != null &&
+                      typeof $steps["updateNumber"] === "object" &&
+                      typeof $steps["updateNumber"].then === "function"
+                    ) {
+                      $steps["updateNumber"] = await $steps["updateNumber"];
+                    }
+
+                    $steps["invokeGlobalAction"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                      return !phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0637\u0648\u0631 \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["updateFragmentInputValue"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                      return !phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["fragmentInput", "value"]
+                            },
+                            operation: 0,
+                            value: ""
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue"] != null &&
+                      typeof $steps["updateFragmentInputValue"] === "object" &&
+                      typeof $steps["updateFragmentInputValue"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue"] = await $steps[
+                        "updateFragmentInputValue"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
+                      return phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/password",
+                              (() => {
+                                try {
+                                  return {
+                                    mobile: $state.number,
+                                    password: $state.fragmentInput3.value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })(),
+                              undefined
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction3"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === false
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
+                    }
+
+                    $steps["updateFragmentInputValue2"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                const item = {
+                                  value:
+                                    $steps.invokeGlobalAction2.data[0].data
+                                      .token,
+                                  expiration:
+                                    new Date().getTime() + 10 * 60 * 1000
+                                };
+                                return sessionStorage.setItem(
+                                  "userbabarcatToken",
+                                  JSON.stringify(item)
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue2"] != null &&
+                      typeof $steps["updateFragmentInputValue2"] === "object" &&
+                      typeof $steps["updateFragmentInputValue2"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue2"] = await $steps[
+                        "updateFragmentInputValue2"
+                      ];
+                    }
+
+                    $steps["goToHomepage"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = { destination: `/` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["goToHomepage"] != null &&
+                      typeof $steps["goToHomepage"] === "object" &&
+                      typeof $steps["goToHomepage"].then === "function"
+                    ) {
+                      $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+
+                    $steps["updateLoadedbtn2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn2"] != null &&
+                      typeof $steps["updateLoadedbtn2"] === "object" &&
+                      typeof $steps["updateLoadedbtn2"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn2"] = await $steps[
+                        "updateLoadedbtn2"
+                      ];
+                    }
+                  }}
+                  showEndIcon={(() => {
+                    try {
+                      return $state.loadedbtn;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___73Cik,
+                      {
+                        [sty.textloginByPassword___73Cik0DikB]: hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                        [sty.textpassword___73Cik8PqF9]: hasVariant(
+                          $state,
+                          "password",
+                          "password"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "loginByPassword", "loginByPassword")
+                      ? "\u0648\u0631\u0648\u062f"
+                      : hasVariant($state, "password", "password")
+                      ? "\u0648\u0631\u0648\u062f"
+                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                  </div>
+                </Button>
+                <Button
+                  data-plasmic-name={"btnSaraf"}
+                  data-plasmic-override={overrides.btnSaraf}
+                  className={classNames("__wab_instance", sty.btnSaraf, {
+                    [sty.btnSarafloginByPassword]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.btnSarafloginByPassword_password]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
+                    [sty.btnSarafpassword]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.btnSarafslids_unnamedVariant3]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.btnSarafslids_unnamedVariant]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant"
+                    ),
+                    [sty.btnSarafunnamedVariant2]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.btnSarafunnamedVariant]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.btnSarafunnamedVariant_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
+                  color={"green"}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg__pEfNe)}
+                      role={"img"}
+                    />
+                  }
+                  isDisabled={
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? (() => {
+                          try {
+                            return $state.loadedbtn;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? (() => {
+                          try {
+                            return $state.loadedbtn;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return (
+                              $state.fragmentInput.value.length != 11 ||
+                              $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLoadedbtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn"] != null &&
+                      typeof $steps["updateLoadedbtn"] === "object" &&
+                      typeof $steps["updateLoadedbtn"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn"] = await $steps[
+                        "updateLoadedbtn"
+                      ];
+                    }
 
                     $steps["updateSelectsaraf"] = true
                       ? (() => {
@@ -3047,67 +3446,161 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateUnnamedVariant2"] = true
+                    $steps["invokeGlobalAction"] = true
                       ? (() => {
                           const actionArgs = {
-                            vgroup: "unnamedVariant2",
-                            operation: 6
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/login",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    _saraf: $state.selectsaraf,
+                                    userToken: JSON.parse(
+                                      sessionStorage.getItem(
+                                        "userbabarcatToken"
+                                      )
+                                    ).value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
                           };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
 
-                            $stateSet($state, vgroup, false);
-                            return false;
+                    $steps["invokeGlobalAction2"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == false
+                        : true
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["runCode"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                localStorage.setItem(
+                                  "userbabarcat",
+                                  JSON.stringify(
+                                    $steps.invokeGlobalAction.data[0].data
+                                  )
+                                );
+                                const item = {
+                                  value:
+                                    $steps.invokeGlobalAction.data[0].data
+                                      .token,
+                                  expiration:
+                                    new Date().getTime() + 10 * 60 * 1000
+                                };
+                                return sessionStorage.setItem(
+                                  "userbabarcatToken",
+                                  JSON.stringify(item)
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updateUnnamedVariant2"] != null &&
-                      typeof $steps["updateUnnamedVariant2"] === "object" &&
-                      typeof $steps["updateUnnamedVariant2"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["updateUnnamedVariant2"] = await $steps[
-                        "updateUnnamedVariant2"
-                      ];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
 
-                    $steps["updateUnnamedVariant"] = true
+                    $steps["goToHomepage"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == true
+                        : false
+                    )
                       ? (() => {
-                          const actionArgs = {
-                            vgroup: "unnamedVariant",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
+                          const actionArgs = { destination: `/` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
                             }
-
-                            $stateSet($state, vgroup, true);
-                            return true;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updateUnnamedVariant"] != null &&
-                      typeof $steps["updateUnnamedVariant"] === "object" &&
-                      typeof $steps["updateUnnamedVariant"].then === "function"
+                      $steps["goToHomepage"] != null &&
+                      typeof $steps["goToHomepage"] === "object" &&
+                      typeof $steps["goToHomepage"].then === "function"
                     ) {
-                      $steps["updateUnnamedVariant"] = await $steps[
-                        "updateUnnamedVariant"
-                      ];
+                      $steps["goToHomepage"] = await $steps["goToHomepage"];
                     }
 
-                    $steps["updateTime"] = true
+                    $steps["updateLoadedbtn2"] = true
                       ? (() => {
                           const actionArgs = {
                             variable: {
                               objRoot: $state,
-                              variablePath: ["time"]
+                              variablePath: ["loadedbtn"]
                             },
                             operation: 0,
-                            value: 60
+                            value: false
                           };
                           return (({
                             variable,
@@ -3126,18 +3619,35 @@ function PlasmicLogIn__RenderFunc(props: {
                         })()
                       : undefined;
                     if (
-                      $steps["updateTime"] != null &&
-                      typeof $steps["updateTime"] === "object" &&
-                      typeof $steps["updateTime"].then === "function"
+                      $steps["updateLoadedbtn2"] != null &&
+                      typeof $steps["updateLoadedbtn2"] === "object" &&
+                      typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateTime"] = await $steps["updateTime"];
+                      $steps["updateLoadedbtn2"] = await $steps[
+                        "updateLoadedbtn2"
+                      ];
                     }
                   }}
                   showEndIcon={
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? (() => {
                           try {
-                            return false;
+                            return $state.loadedbtn;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? (() => {
+                          try {
+                            return $state.loadedbtn;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -3193,21 +3703,44 @@ function PlasmicLogIn__RenderFunc(props: {
                     data-plasmic-name={"sendcode"}
                     data-plasmic-override={overrides.sendcode}
                     className={classNames("__wab_instance", sty.sendcode, {
+                      [sty.sendcodeloginByPassword]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
                       [sty.sendcodepassword]: hasVariant(
                         $state,
                         "password",
                         "password"
                       ),
+                      [sty.sendcodepassword_unnamedVariant2]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) && hasVariant($state, "password", "password"),
                       [sty.sendcodeslids_unnamedVariant3]: hasVariant(
                         $state,
                         "slids",
                         "unnamedVariant3"
                       ),
+                      [sty.sendcodeunnamedVariant2]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
                       [sty.sendcodeunnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
-                      )
+                      ),
+                      [sty.sendcodeunnamedVariant_unnamedVariant2]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant")
                     })}
                     color={"green"}
                     endIcon={
@@ -3388,8 +3921,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                   try {
                                     return {
                                       mobile: $state.number,
-                                      code: $state.code,
-                                      _saraf: $state.selectsaraf
+                                      code: $state.code
                                     };
                                   } catch (e) {
                                     if (
@@ -3524,7 +4056,10 @@ function PlasmicLogIn__RenderFunc(props: {
 
                       $steps["goToHomepage"] = (
                         $steps.invokeGlobalAction2?.data
-                          ? $steps.invokeGlobalAction2?.data[0]?.success == true
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
+                              true &&
+                            $steps.invokeGlobalAction2?.data[0]?.saraf.length <
+                              2
                           : false
                       )
                         ? (() => {
@@ -3549,6 +4084,109 @@ function PlasmicLogIn__RenderFunc(props: {
                         typeof $steps["goToHomepage"].then === "function"
                       ) {
                         $steps["goToHomepage"] = await $steps["goToHomepage"];
+                      }
+
+                      $steps["updateSaraf"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["saraf"]
+                              },
+                              operation: 0,
+                              value: (() => {
+                                const transformedArray =
+                                  $steps.invokeGlobalAction2.data[0].saraf.map(
+                                    item => ({
+                                      label: item.name,
+                                      value: item.id
+                                    })
+                                  );
+                                return transformedArray;
+                              })()
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSaraf"] != null &&
+                        typeof $steps["updateSaraf"] === "object" &&
+                        typeof $steps["updateSaraf"].then === "function"
+                      ) {
+                        $steps["updateSaraf"] = await $steps["updateSaraf"];
+                      }
+
+                      $steps["updateUnnamedVariant2"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                              true && $state.saraf.length > 1
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "unnamedVariant2",
+                              operation: 4
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
+
+                              $stateSet($state, vgroup, true);
+                              return true;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateUnnamedVariant2"] != null &&
+                        typeof $steps["updateUnnamedVariant2"] === "object" &&
+                        typeof $steps["updateUnnamedVariant2"].then ===
+                          "function"
+                      ) {
+                        $steps["updateUnnamedVariant2"] = await $steps[
+                          "updateUnnamedVariant2"
+                        ];
+                      }
+
+                      $steps["updateUnnamedVariant"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "unnamedVariant",
+                              operation: 6,
+                              value: "unnamedVariant"
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
+
+                              $stateSet($state, vgroup, false);
+                              return false;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateUnnamedVariant"] != null &&
+                        typeof $steps["updateUnnamedVariant"] === "object" &&
+                        typeof $steps["updateUnnamedVariant"].then ===
+                          "function"
+                      ) {
+                        $steps["updateUnnamedVariant"] = await $steps[
+                          "updateUnnamedVariant"
+                        ];
                       }
 
                       $steps["updateLoadedbtn2"] = true
@@ -3842,11 +4480,22 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"group9"}
                 data-plasmic-override={overrides.group9}
                 className={classNames(projectcss.all, sty.group9, {
+                  [sty.group9loginByPassword]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.group9loginByPassword_unnamedVariant2]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.group9password]: hasVariant(
                     $state,
                     "password",
                     "password"
                   ),
+                  [sty.group9password_unnamedVariant2]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.group9slids_unnamedVariant2]: hasVariant(
                     $state,
                     "slids",
@@ -3904,6 +4553,32 @@ function PlasmicLogIn__RenderFunc(props: {
                       "updateUnnamedVariant"
                     ];
                   }
+
+                  $steps["updateLoginByPassword"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "loginByPassword",
+                          operation: 6
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateLoginByPassword"] != null &&
+                    typeof $steps["updateLoginByPassword"] === "object" &&
+                    typeof $steps["updateLoginByPassword"].then === "function"
+                  ) {
+                    $steps["updateLoginByPassword"] = await $steps[
+                      "updateLoginByPassword"
+                    ];
+                  }
                 }}
               >
                 <div
@@ -3912,6 +4587,34 @@ function PlasmicLogIn__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__wYgld,
                     {
+                      [sty.textloginByPassword__wYgld0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant2__wYgld0DikBJmKha]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                      [sty.textpassword__wYgld8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textpassword_unnamedVariant2__wYgld8PqF9JmKha]:
+                        hasVariant($state, "password", "password") &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
                       [sty.textslids_unnamedVariant3__wYgldI1KiV]: hasVariant(
                         $state,
                         "slids",
@@ -3937,12 +4640,24 @@ function PlasmicLogIn__RenderFunc(props: {
                     }
                   )}
                 >
-                  {
-                    "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                  }
+                  {hasVariant($state, "loginByPassword", "loginByPassword")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : hasVariant($state, "password", "password")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg___40A0, {
+                    [sty.svgloginByPassword_unnamedVariant2___40A00DikBJmKha]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                    [sty.svgpassword_unnamedVariant2___40A08PqF9JmKha]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.svgslids_unnamedVariant3___40A0I1KiV]: hasVariant(
                       $state,
                       "slids",
@@ -4073,6 +4788,11 @@ function PlasmicLogIn__RenderFunc(props: {
           data-plasmic-name={"apiRequest"}
           data-plasmic-override={overrides.apiRequest}
           className={classNames("__wab_instance", sty.apiRequest, {
+            [sty.apiRequestpassword]: hasVariant(
+              $state,
+              "password",
+              "password"
+            ),
             [sty.apiRequestunnamedVariant2]: hasVariant(
               $state,
               "unnamedVariant2",
@@ -4095,6 +4815,71 @@ function PlasmicLogIn__RenderFunc(props: {
             );
             (async loading => {
               const $steps = {};
+
+              $steps["goToPage"] = true
+                ? (() => {
+                    const actionArgs = {
+                      destination: (() => {
+                        try {
+                          return (
+                            localStorage.getItem("userbabarcat") != null &&
+                            sessionStorage.getItem("userbabarcatToken") != null
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToPage"] != null &&
+                typeof $steps["goToPage"] === "object" &&
+                typeof $steps["goToPage"].then === "function"
+              ) {
+                $steps["goToPage"] = await $steps["goToPage"];
+              }
+
+              $steps["updatePassword"] =
+                localStorage.getItem("userbabarcat") != null &&
+                sessionStorage.getItem("userbabarcatToken") == null
+                  ? (() => {
+                      const actionArgs = { vgroup: "password", operation: 4 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, true);
+                        return true;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updatePassword"] != null &&
+                typeof $steps["updatePassword"] === "object" &&
+                typeof $steps["updatePassword"].then === "function"
+              ) {
+                $steps["updatePassword"] = await $steps["updatePassword"];
+              }
             }).apply(null, eventArgs);
           }}
           onSuccess={generateStateOnChangeProp($state, ["apiRequest", "data"])}
@@ -4108,11 +4893,14 @@ function PlasmicLogIn__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
-    "passcyrcle",
+    "reveal",
     "fragmentInput",
+    "fragmentInput3",
     "fragmentInput2",
     "timer",
     "select",
+    "btnNumber",
+    "btnSaraf",
     "sendcode",
     "figmaPaste",
     "group",
@@ -4131,11 +4919,39 @@ const PlasmicDescendants = {
     "group9",
     "apiRequest"
   ],
-  passcyrcle: ["passcyrcle"],
+  reveal: [
+    "reveal",
+    "fragmentInput",
+    "fragmentInput3",
+    "fragmentInput2",
+    "timer",
+    "select",
+    "btnNumber",
+    "btnSaraf",
+    "sendcode",
+    "figmaPaste",
+    "group",
+    "group2",
+    "rectangle35",
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle",
+    "group8",
+    "group9"
+  ],
   fragmentInput: ["fragmentInput"],
+  fragmentInput3: ["fragmentInput3"],
   fragmentInput2: ["fragmentInput2"],
   timer: ["timer"],
   select: ["select"],
+  btnNumber: ["btnNumber"],
+  btnSaraf: ["btnSaraf"],
   sendcode: ["sendcode"],
   figmaPaste: [
     "figmaPaste",
@@ -4197,11 +5013,14 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  passcyrcle: typeof Passcyrcle;
+  reveal: typeof Reveal;
   fragmentInput: typeof Input;
+  fragmentInput3: typeof Input;
   fragmentInput2: typeof Input;
   timer: typeof Timer;
   select: typeof AntdSelect;
+  btnNumber: typeof Button;
+  btnSaraf: typeof Button;
   sendcode: typeof Button;
   figmaPaste: "div";
   group: "div";
@@ -4306,11 +5125,14 @@ export const PlasmicLogIn = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("root")),
   {
     // Helper components rendering sub-elements
-    passcyrcle: makeNodeComponent("passcyrcle"),
+    reveal: makeNodeComponent("reveal"),
     fragmentInput: makeNodeComponent("fragmentInput"),
+    fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput2: makeNodeComponent("fragmentInput2"),
     timer: makeNodeComponent("timer"),
     select: makeNodeComponent("select"),
+    btnNumber: makeNodeComponent("btnNumber"),
+    btnSaraf: makeNodeComponent("btnSaraf"),
     sendcode: makeNodeComponent("sendcode"),
     figmaPaste: makeNodeComponent("figmaPaste"),
     group: makeNodeComponent("group"),

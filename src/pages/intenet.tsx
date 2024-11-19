@@ -5,23 +5,23 @@ import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-we
 import GlobalContextsProvider from "../../components/plasmic/babarkat/PlasmicGlobalContextsProvider";
 import { UnnamedGlobalGroupOfVariantsContext } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
 import { UnnamedGlobalGroupOfVariants2Context } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
-import { PlasmicInternet2 } from "../../components/plasmic/babarkat/PlasmicInternet2";
+import { PlasmicInternet3 } from "../../components/plasmic/babarkat/PlasmicInternet3";
 import { useRouter } from "next/router";
 
-function Internet2() {
-  // Use PlasmicInternet2 to render this component as it was
+function Internet3() {
+  // Use PlasmicInternet3 to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicInternet2 are:
+  // Props you can pass into PlasmicInternet3 are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, PlasmicInternet2 is wrapped by your project's global
+  // By default, PlasmicInternet3 is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -34,7 +34,7 @@ function Internet2() {
             params={useRouter()?.query}
             query={useRouter()?.query}
           >
-            <PlasmicInternet2 />
+            <PlasmicInternet3 />
           </PageParamsProvider__>
         </GlobalContextsProvider>
       </UnnamedGlobalGroupOfVariantsContext.Provider>
@@ -42,4 +42,4 @@ function Internet2() {
   );
 }
 
-export default Internet2;
+export default Internet3;

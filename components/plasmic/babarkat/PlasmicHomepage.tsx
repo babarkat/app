@@ -72,6 +72,7 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
+import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
@@ -114,6 +115,8 @@ import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zX
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: rPH6lstZmeFB/icon
 import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
+import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: flxpisepE8-C/icon
@@ -174,6 +177,7 @@ export type PlasmicHomepage__OverridesType = {
   repeatPass?: Flex__<typeof Input>;
   nowPass?: Flex__<typeof Input>;
   newPass?: Flex__<typeof Input>;
+  progress?: Flex__<typeof AntdProgress>;
   reoeatNewPass?: Flex__<typeof Input>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
@@ -445,6 +449,18 @@ function PlasmicHomepage__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "p1",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "lodingbtn",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -996,6 +1012,34 @@ function PlasmicHomepage__RenderFunc(props: {
                 data-plasmic-name={"comingSoon2"}
                 data-plasmic-override={overrides.comingSoon2}
                 className={classNames(projectcss.all, sty.comingSoon2)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToPage"] = true
+                    ? (() => {
+                        const actionArgs = {};
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
+                  ) {
+                    $steps["goToPage"] = await $steps["goToPage"];
+                  }
+                }}
               >
                 <div
                   className={classNames(
@@ -2684,177 +2728,81 @@ function PlasmicHomepage__RenderFunc(props: {
                   </Button>
                 </Stack__>
               ) : null}
-              {(() => {
-                try {
-                  return localStorage.getItem("babarkatPass") != null;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
-                  }
-                  throw e;
-                }
-              })() ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__xvYdk)}
-                >
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__xvYdk)}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__frGwD)}>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__frGwD)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___8Ul2L
+                    )}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___8Ul2L
-                      )}
-                    >
-                      {
-                        "\u062a\u063a\u06cc\u06cc\u0631  \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                      }
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vIlR0)}
-                  >
-                    <Icon46Icon
-                      className={classNames(projectcss.all, sty.svg__sxWgM)}
-                      role={"img"}
-                    />
-
-                    <Input
-                      data-plasmic-name={"nowPass"}
-                      data-plasmic-override={overrides.nowPass}
-                      className={classNames("__wab_instance", sty.nowPass)}
-                      onChange={generateStateOnChangeProp($state, [
-                        "nowPass",
-                        "value"
-                      ])}
-                      placeholder={
-                        "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc"
-                      }
-                      type={"number"}
-                      value={generateStateValueProp($state, [
-                        "nowPass",
-                        "value"
-                      ])}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__dLoHe)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tA22H
-                      )}
-                    >
-                      {
-                        "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f 4 \u0631\u0642\u0645 \u0628\u0627\u0634\u062f."
-                      }
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__iGKy)}
-                    >
-                      <Icon44Icon
-                        className={classNames(projectcss.all, sty.svg__hghAw)}
-                        role={"img"}
-                      />
-
-                      <Input
-                        data-plasmic-name={"newPass"}
-                        data-plasmic-override={overrides.newPass}
-                        className={classNames("__wab_instance", sty.newPass)}
-                        onChange={generateStateOnChangeProp($state, [
-                          "newPass",
-                          "value"
-                        ])}
-                        placeholder={
-                          "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
-                        }
-                        type={"number"}
-                        value={generateStateValueProp($state, [
-                          "newPass",
-                          "value"
-                        ])}
-                      />
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qvL9Q)}
-                  >
-                    <Icon45Icon
-                      className={classNames(projectcss.all, sty.svg__juFwd)}
-                      role={"img"}
-                    />
-
-                    <Input
-                      data-plasmic-name={"reoeatNewPass"}
-                      data-plasmic-override={overrides.reoeatNewPass}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.reoeatNewPass
-                      )}
-                      onChange={generateStateOnChangeProp($state, [
-                        "reoeatNewPass",
-                        "value"
-                      ])}
-                      placeholder={
-                        "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
-                      }
-                      type={"number"}
-                      value={generateStateValueProp($state, [
-                        "reoeatNewPass",
-                        "value"
-                      ])}
-                    />
-                  </div>
-                  <Button
-                    className={classNames("__wab_instance", sty.button__k2KYz)}
-                    color={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "green"
-                        : "green"
+                    {
+                      "\u062a\u063a\u06cc\u06cc\u0631  \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                     }
-                    isDisabled={(() => {
-                      try {
-                        return (
-                          $state.nowPass.value.length != 4 ||
-                          $state.newPass.value.length != 4 ||
-                          $state.reoeatNewPass.value.length != 4
-                        );
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()}
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__vIlR0)}>
+                  <Icon46Icon
+                    className={classNames(projectcss.all, sty.svg__sxWgM)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"nowPass"}
+                    data-plasmic-override={overrides.nowPass}
+                    className={classNames("__wab_instance", sty.nowPass)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "nowPass",
+                      "value"
+                    ])}
+                    placeholder={
+                      "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc"
+                    }
+                    type={"password"}
+                    value={generateStateValueProp($state, ["nowPass", "value"])}
+                  />
+
+                  <Icon55Icon
+                    className={classNames(projectcss.all, sty.svg__gy2L)}
                     onClick={async event => {
                       const $steps = {};
 
-                      $steps["invokeGlobalAction"] =
-                        $state.newPass.value != $state.reoeatNewPass.value
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627 \u062a\u06a9\u0631\u0627\u0631 \u0622\u0646 \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f.",
-                                  "top-left"
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "__wab_instance Homepage__nowPass__oykll"
+                                )[0].type = "text");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = { args: [1000] };
+                            return $globalActions["Fragment.wait"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction"] != null &&
                         typeof $steps["invokeGlobalAction"] === "object" &&
@@ -2865,109 +2813,135 @@ function PlasmicHomepage__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction2"] =
-                        localStorage.getItem("babarkatPass") !=
-                        $$.md5($state.nowPass.value)
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0633\u062a.",
-                                  "top-left"
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                      $steps["runCode2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "__wab_instance Homepage__nowPass__oykll"
+                                )[0].type = "password");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
-                        $steps["invokeGlobalAction2"] != null &&
-                        typeof $steps["invokeGlobalAction2"] === "object" &&
-                        typeof $steps["invokeGlobalAction2"].then === "function"
+                        $steps["runCode2"] != null &&
+                        typeof $steps["runCode2"] === "object" &&
+                        typeof $steps["runCode2"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
+                        $steps["runCode2"] = await $steps["runCode2"];
                       }
+                    }}
+                    role={"img"}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__dLoHe)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__tA22H
+                    )}
+                  >
+                    {
+                      "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 \u06f8 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631\u060c \u0634\u0627\u0645\u0644 \u0627\u0639\u062f\u0627\u062f\u060c \u062d\u0631\u0648\u0641 \u0628\u0632\u0631\u06af \u0648 \u06a9\u0648\u0686\u06a9 \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0648 \u0646\u0645\u0627\u062f\u0647\u0627\u06cc \u0648\u06cc\u0698\u0647 \u0628\u0627\u0634\u062f."
+                    }
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__iGKy)}
+                  >
+                    <Icon44Icon
+                      className={classNames(projectcss.all, sty.svg__hghAw)}
+                      role={"img"}
+                    />
 
-                      $steps["invokeGlobalAction3"] =
-                        localStorage.getItem("babarkatPass") ===
-                          $$.md5($state.nowPass.value) &&
-                        $state.newPass.value === $state.reoeatNewPass.value
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  undefined,
-                                  "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f \u062b\u0628\u062a \u0634\u062f.",
-                                  "top-left"
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction3"] != null &&
-                        typeof $steps["invokeGlobalAction3"] === "object" &&
-                        typeof $steps["invokeGlobalAction3"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction3"] = await $steps[
-                          "invokeGlobalAction3"
-                        ];
+                    <Input
+                      data-plasmic-name={"newPass"}
+                      data-plasmic-override={overrides.newPass}
+                      className={classNames("__wab_instance", sty.newPass)}
+                      onChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "newPass",
+                          "value"
+                        ]).apply(null, eventArgs);
+                        (async value => {
+                          const $steps = {};
+
+                          $steps["updateP1"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["p1"]
+                                  },
+                                  operation: 0,
+                                  value: (() => {
+                                    let score = 0;
+                                    if ($state.newPass.value.length >= 8)
+                                      score += 20;
+                                    if (/[a-z]/.test($state.newPass.value))
+                                      score += 20;
+                                    if (/[A-Z]/.test($state.newPass.value))
+                                      score += 20;
+                                    if (/[0-9]/.test($state.newPass.value))
+                                      score += 20;
+                                    if (
+                                      /[^a-zA-Z0-9]/.test($state.newPass.value)
+                                    )
+                                      score += 20;
+                                    return score;
+                                  })()
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateP1"] != null &&
+                            typeof $steps["updateP1"] === "object" &&
+                            typeof $steps["updateP1"].then === "function"
+                          ) {
+                            $steps["updateP1"] = await $steps["updateP1"];
+                          }
+                        }).apply(null, eventArgs);
+                      }}
+                      placeholder={
+                        "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
                       }
+                      type={"password"}
+                      value={generateStateValueProp($state, [
+                        "newPass",
+                        "value"
+                      ])}
+                    />
 
-                      $steps["updateModal4Open"] =
-                        localStorage.getItem("babarkatPass") ===
-                          $$.md5($state.nowPass.value) &&
-                        $state.newPass.value === $state.reoeatNewPass.value
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["password", "open"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                    <Icon55Icon
+                      className={classNames(projectcss.all, sty.svg__mwoF)}
+                      onClick={async event => {
+                        const $steps = {};
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updateModal4Open"] != null &&
-                        typeof $steps["updateModal4Open"] === "object" &&
-                        typeof $steps["updateModal4Open"].then === "function"
-                      ) {
-                        $steps["updateModal4Open"] = await $steps[
-                          "updateModal4Open"
-                        ];
-                      }
-
-                      $steps["runCode"] =
-                        localStorage.getItem("babarkatPass") ===
-                          $$.md5($state.nowPass.value) &&
-                        $state.newPass.value === $state.reoeatNewPass.value
+                        $steps["runCode"] = true
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return localStorage.setItem(
-                                    "babarkatPass",
-                                    $$.md5($state.newPass.value)
-                                  );
+                                  return (document.getElementsByClassName(
+                                    "Homepage__newPass__yimvt"
+                                  )[0].type = "text");
                                 }
                               };
                               return (({ customFunction }) => {
@@ -2975,6 +2949,154 @@ function PlasmicHomepage__RenderFunc(props: {
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = { args: [1000] };
+                              return $globalActions["Fragment.wait"]?.apply(
+                                null,
+                                [...actionArgs.args]
+                              );
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+
+                        $steps["runCode2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (document.getElementsByClassName(
+                                    "Homepage__newPass__yimvt"
+                                  )[0].type = "password");
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode2"] != null &&
+                          typeof $steps["runCode2"] === "object" &&
+                          typeof $steps["runCode2"].then === "function"
+                        ) {
+                          $steps["runCode2"] = await $steps["runCode2"];
+                        }
+                      }}
+                      role={"img"}
+                    />
+                  </div>
+                  <AntdProgress
+                    data-plasmic-name={"progress"}
+                    data-plasmic-override={overrides.progress}
+                    className={classNames("__wab_instance", sty.progress)}
+                    percent={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return $state.p1;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 50;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return $state.p1;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 0;
+                              }
+                              throw e;
+                            }
+                          })()
+                    }
+                    strokeColor={(() => {
+                      try {
+                        return $state.p1 > 80
+                          ? "#2DC57B"
+                          : $state.p1 > 50
+                          ? "#FAAD14"
+                          : "#FF4D4F";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "#FAAD14";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  />
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__qvL9Q)}>
+                  <Icon45Icon
+                    className={classNames(projectcss.all, sty.svg__juFwd)}
+                    role={"img"}
+                  />
+
+                  <Input
+                    data-plasmic-name={"reoeatNewPass"}
+                    data-plasmic-override={overrides.reoeatNewPass}
+                    className={classNames("__wab_instance", sty.reoeatNewPass)}
+                    onChange={generateStateOnChangeProp($state, [
+                      "reoeatNewPass",
+                      "value"
+                    ])}
+                    placeholder={
+                      "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
+                    }
+                    type={"password"}
+                    value={generateStateValueProp($state, [
+                      "reoeatNewPass",
+                      "value"
+                    ])}
+                  />
+
+                  <Icon55Icon
+                    className={classNames(projectcss.all, sty.svg__pkSb)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "Homepage__reoeatNewPass__h7Mg2"
+                                )[0].type = "text");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
                         $steps["runCode"] != null &&
                         typeof $steps["runCode"] === "object" &&
@@ -2982,20 +3104,467 @@ function PlasmicHomepage__RenderFunc(props: {
                       ) {
                         $steps["runCode"] = await $steps["runCode"];
                       }
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = { args: [1000] };
+                            return $globalActions["Fragment.wait"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+
+                      $steps["runCode2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (document.getElementsByClassName(
+                                  "Homepage__reoeatNewPass__h7Mg2"
+                                )[0].type = "password");
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode2"] != null &&
+                        typeof $steps["runCode2"] === "object" &&
+                        typeof $steps["runCode2"].then === "function"
+                      ) {
+                        $steps["runCode2"] = await $steps["runCode2"];
+                      }
                     }}
-                  >
+                    role={"img"}
+                  />
+
+                  {(() => {
+                    try {
+                      return (
+                        $state.reoeatNewPass.value.length > 0 &&
+                        $state.newPass.value != $state.reoeatNewPass.value
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
                     <div
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__ie6Vs
+                        sty.text__rCg0Y
                       )}
                     >
-                      {"\u062a\u0627\u06cc\u06cc\u062f"}
+                      {
+                        "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0628\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f."
+                      }
                     </div>
-                  </Button>
-                </Stack__>
-              ) : null}
+                  ) : null}
+                  {(() => {
+                    try {
+                      return (
+                        $state.reoeatNewPass.value.length > 0 &&
+                        $state.newPass.value == $state.reoeatNewPass.value
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__thuQj
+                      )}
+                    >
+                      {
+                        "\u062a\u0637\u0627\u0628\u0642 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062a\u0623\u06cc\u06cc\u062f \u0634\u062f."
+                      }
+                    </div>
+                  ) : null}
+                </div>
+                <Button
+                  className={classNames("__wab_instance", sty.button__k2KYz)}
+                  color={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "green"
+                      : "green"
+                  }
+                  endIcon={
+                    <PlasmicIcon__
+                      PlasmicIconType={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? IconIcon
+                          : Icon3Icon
+                      }
+                      className={classNames(projectcss.all, sty.svg___8UdaD)}
+                      role={"img"}
+                    />
+                  }
+                  isDisabled={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return (
+                              $state.newPass.value !=
+                                $state.reoeatNewPass.value ||
+                              $state.p1 != 100 ||
+                              $state.lodingbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return (
+                              $state.newPass.value !=
+                                $state.reoeatNewPass.value || $state.p1 != 100
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLodingbtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["lodingbtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLodingbtn"] != null &&
+                      typeof $steps["updateLodingbtn"] === "object" &&
+                      typeof $steps["updateLodingbtn"].then === "function"
+                    ) {
+                      $steps["updateLodingbtn"] = await $steps[
+                        "updateLodingbtn"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/password",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    mobile: $state.userbabarcat.mobile,
+                                    password: $state.nowPass.value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction"] =
+                      $steps.invokeGlobalAction2?.data[0]?.success === false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u06cc\u0633\u062a.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction3"] =
+                      $steps.invokeGlobalAction2?.data[0]?.success === true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "https://n8n.babarkat.com/webhook/Babarkat/password",
+                                (() => {
+                                  try {
+                                    return {
+                                      userToken: $state.token,
+                                      password: $state.newPass.value
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
+                                undefined,
+                                undefined
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
+                    }
+
+                    $steps["updateModal4Open"] =
+                      $steps.invokeGlobalAction3?.data[0]?.success === true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "\u0631\u0645\u0632 \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062a\u063a\u06cc\u06cc\u0631 \u06cc\u0627\u0641\u062a.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updateModal4Open"] != null &&
+                      typeof $steps["updateModal4Open"] === "object" &&
+                      typeof $steps["updateModal4Open"].then === "function"
+                    ) {
+                      $steps["updateModal4Open"] = await $steps[
+                        "updateModal4Open"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction4"] =
+                      $steps.invokeGlobalAction3?.data[0]?.success === false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                    if (
+                      $steps["invokeGlobalAction4"] != null &&
+                      typeof $steps["invokeGlobalAction4"] === "object" &&
+                      typeof $steps["invokeGlobalAction4"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction4"] = await $steps[
+                        "invokeGlobalAction4"
+                      ];
+                    }
+
+                    $steps["updateLodingbtn2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["lodingbtn"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLodingbtn2"] != null &&
+                      typeof $steps["updateLodingbtn2"] === "object" &&
+                      typeof $steps["updateLodingbtn2"].then === "function"
+                    ) {
+                      $steps["updateLodingbtn2"] = await $steps[
+                        "updateLodingbtn2"
+                      ];
+                    }
+
+                    $steps["updatePasswordOpen"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["password", "open"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updatePasswordOpen"] != null &&
+                      typeof $steps["updatePasswordOpen"] === "object" &&
+                      typeof $steps["updatePasswordOpen"].then === "function"
+                    ) {
+                      $steps["updatePasswordOpen"] = await $steps[
+                        "updatePasswordOpen"
+                      ];
+                    }
+                  }}
+                  showEndIcon={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return $state.lodingbtn;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "showEndIcon";
+                            }
+                            throw e;
+                          }
+                        })()
+                      : undefined
+                  }
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ie6Vs
+                    )}
+                  >
+                    {"\u062a\u0627\u06cc\u06cc\u062f"}
+                  </div>
+                </Button>
+              </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox__g6HzD)} />
             </div>
           </AntdModal>
@@ -13373,6 +13942,7 @@ const PlasmicDescendants = {
     "repeatPass",
     "nowPass",
     "newPass",
+    "progress",
     "reoeatNewPass",
     "modal2",
     "wallet3",
@@ -13433,6 +14003,7 @@ const PlasmicDescendants = {
     "repeatPass",
     "nowPass",
     "newPass",
+    "progress",
     "reoeatNewPass"
   ],
   wallet5: ["wallet5"],
@@ -13440,6 +14011,7 @@ const PlasmicDescendants = {
   repeatPass: ["repeatPass"],
   nowPass: ["nowPass"],
   newPass: ["newPass"],
+  progress: ["progress"],
   reoeatNewPass: ["reoeatNewPass"],
   modal2: ["modal2", "wallet3"],
   wallet3: ["wallet3"],
@@ -13490,6 +14062,7 @@ type NodeDefaultElementType = {
   repeatPass: typeof Input;
   nowPass: typeof Input;
   newPass: typeof Input;
+  progress: typeof AntdProgress;
   reoeatNewPass: typeof Input;
   modal2: typeof AntdModal;
   wallet3: "div";
@@ -13621,6 +14194,7 @@ export const PlasmicHomepage = Object.assign(
     repeatPass: makeNodeComponent("repeatPass"),
     nowPass: makeNodeComponent("nowPass"),
     newPass: makeNodeComponent("newPass"),
+    progress: makeNodeComponent("progress"),
     reoeatNewPass: makeNodeComponent("reoeatNewPass"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),

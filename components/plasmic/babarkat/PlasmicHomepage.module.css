@@ -3187,6 +3187,17 @@
     border-width: 0px;
   }
 }
+.svg__gy2L {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-jgohepLVeKvh);
+  width: 20px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  height: 20px;
+  flex-shrink: 0;
+}
 .freeBox__dLoHe {
   display: flex;
   flex-direction: column;
@@ -3252,9 +3263,24 @@
     border-width: 0px;
   }
 }
+.svg__mwoF {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-jgohepLVeKvh);
+  width: 20px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.progress:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
 .freeBox__qvL9Q {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   align-items: stretch;
   justify-content: flex-start;
@@ -3272,10 +3298,16 @@
   width: auto;
   height: 25px;
   position: absolute;
-  left: auto;
+  left: 753px;
   top: 10px;
   margin-right: 0px;
-  right: 8px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__juFwd {
+    left: auto;
+    right: 8px;
+  }
 }
 .reoeatNewPass:global(.__wab_instance) {
   width: 100%;
@@ -3285,8 +3317,40 @@
   color: #ffffff;
   height: 50px;
   min-width: 0;
+  flex-shrink: 0;
   padding: 20px 50px 20px 20px;
-  border-width: 0px;
+  border: 0px solid #00ff09;
+}
+.svg__pkSb {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-jgohepLVeKvh);
+  width: 20px;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.text__rCg0Y {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-_u6T-ctQmwmL);
+  padding-right: 5px;
+  min-width: 0;
+}
+.text__thuQj {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-s7Z9BN_B1gNc);
+  padding-right: 5px;
+  min-width: 0;
 }
 .button__k2KYz:global(.__wab_instance) {
   max-width: 100%;
@@ -3323,6 +3387,11 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg___8UdaD {
+    color: var(--token-jgohepLVeKvh);
+  }
 }
 .freeBox__g6HzD {
   display: flex;
