@@ -2168,6 +2168,11 @@ function PlasmicLogIn__RenderFunc(props: {
               </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__rr6S, {
+                  [sty.freeBoxloginByPassword__rr6S0DikB]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
                   [sty.freeBoxpassword__rr6S8PqF9]: hasVariant(
                     $state,
                     "password",
@@ -3272,7 +3277,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateFragmentInputValue2"] = false
+                    $steps["updateFragmentInputValue2"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {

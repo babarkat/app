@@ -596,638 +596,228 @@ function PlasmicHomepage__RenderFunc(props: {
             }
           )}
         >
-          <div
-            data-plasmic-name={"header"}
-            data-plasmic-override={overrides.header}
-            className={classNames(projectcss.all, sty.header)}
-          >
-            <BabarkatlogoCopy2SvgIcon
-              className={classNames(projectcss.all, sty.svg__tu4I6)}
-              role={"img"}
-            />
-
-            <div className={classNames(projectcss.all, sty.freeBox__cpweg)}>
-              <GroupSvgIcon
-                className={classNames(projectcss.all, sty.svg__bgff6)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateDrawerOpen"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["drawer", "open"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateDrawerOpen"] != null &&
-                    typeof $steps["updateDrawerOpen"] === "object" &&
-                    typeof $steps["updateDrawerOpen"].then === "function"
-                  ) {
-                    $steps["updateDrawerOpen"] = await $steps[
-                      "updateDrawerOpen"
-                    ];
-                  }
-                }}
-                role={"img"}
-              />
-            </div>
-            <Icon4Icon
-              className={classNames(projectcss.all, sty.svg__tnUMf)}
-              role={"img"}
-            />
-          </div>
-          <Stack__
-            as={"div"}
-            data-plasmic-name={"wallet"}
-            data-plasmic-override={overrides.wallet}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.wallet)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__i7Hyk)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__e2Zg)}
+          {(() => {
+            try {
+              return !$state.profile.loading;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div className={classNames(projectcss.all, sty.freeBox__kT9W)}>
+              <div
+                data-plasmic-name={"header"}
+                data-plasmic-override={overrides.header}
+                className={classNames(projectcss.all, sty.header)}
               >
-                <Icon19Icon
-                  className={classNames(projectcss.all, sty.svg__zxpZu)}
+                <BabarkatlogoCopy2SvgIcon
+                  className={classNames(projectcss.all, sty.svg__tu4I6)}
                   role={"img"}
                 />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__tq0Hf
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $state.userbabarcat.last_name;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
+                <div className={classNames(projectcss.all, sty.freeBox__cpweg)}>
+                  <GroupSvgIcon
+                    className={classNames(projectcss.all, sty.svg__bgff6)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateDrawerOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["drawer", "open"]
+                              },
+                              operation: 0,
+                              value: true
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateDrawerOpen"] != null &&
+                        typeof $steps["updateDrawerOpen"] === "object" &&
+                        typeof $steps["updateDrawerOpen"].then === "function"
+                      ) {
+                        $steps["updateDrawerOpen"] = await $steps[
+                          "updateDrawerOpen"
+                        ];
                       }
-                    })()}
-                  </React.Fragment>
+                    }}
+                    role={"img"}
+                  />
                 </div>
-              </Stack__>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ldM2P
-                )}
-              >
-                {hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                  : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
+                <Icon4Icon
+                  className={classNames(projectcss.all, sty.svg__tnUMf)}
+                  role={"img"}
+                />
               </div>
-            </Stack__>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__vdEzP,
-                "dateshow"
-              )}
-            >
-              {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return (() => {
-                        return $state.userbabarcat.toman.toLocaleString();
-                      })();
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "0";
-                      }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
-              ) : (
-                <React.Fragment>
-                  {(() => {
-                    try {
-                      return $state.userbabarcat.toman.toLocaleString();
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return "0";
-                      }
-                      throw e;
-                    }
-                  })()}
-                </React.Fragment>
-              )}
-            </div>
-            <BabarkatlogoCopy2SvgIcon
-              className={classNames(projectcss.all, sty.svg___7Xbq)}
-              role={"img"}
-            />
-
-            {(
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? true
-                : (() => {
-                    try {
-                      return true;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })()
-            ) ? (
-              <AntdTooltip
-                data-plasmic-name={"tooltip"}
-                data-plasmic-override={overrides.tooltip}
-                className={classNames("__wab_instance", sty.tooltip)}
-                color={true ? "var(--antd-colorBgMask)" : undefined}
-                placement={"bottom"}
-                titleText={
-                  "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
-                }
+              <Stack__
+                as={"div"}
+                data-plasmic-name={"wallet"}
+                data-plasmic-override={overrides.wallet}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.wallet)}
               >
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__z7W8B)}
-                  onClick={async event => {
-                    const $steps = {};
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox__i7Hyk)}
+                >
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.freeBox__e2Zg)}
+                  >
+                    <Icon19Icon
+                      className={classNames(projectcss.all, sty.svg__zxpZu)}
+                      role={"img"}
+                    />
 
-                    $steps["updateModal5Open"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["modal5", "open"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__tq0Hf
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.userbabarcat.last_name;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "";
                             }
-                            const { objRoot, variablePath } = variable;
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </Stack__>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ldM2P
+                    )}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                      : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
+                  </div>
+                </Stack__>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vdEzP,
+                    "dateshow"
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (() => {
+                            return $state.userbabarcat.toman.toLocaleString();
+                          })();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "0";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.userbabarcat.toman.toLocaleString();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "0";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  )}
+                </div>
+                <BabarkatlogoCopy2SvgIcon
+                  className={classNames(projectcss.all, sty.svg___7Xbq)}
+                  role={"img"}
+                />
 
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateModal5Open"] != null &&
-                      typeof $steps["updateModal5Open"] === "object" &&
-                      typeof $steps["updateModal5Open"].then === "function"
-                    ) {
-                      $steps["updateModal5Open"] = await $steps[
-                        "updateModal5Open"
-                      ];
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? true
+                    : (() => {
+                        try {
+                          return true;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
+                ) ? (
+                  <AntdTooltip
+                    data-plasmic-name={"tooltip"}
+                    data-plasmic-override={overrides.tooltip}
+                    className={classNames("__wab_instance", sty.tooltip)}
+                    color={true ? "var(--antd-colorBgMask)" : undefined}
+                    placement={"bottom"}
+                    titleText={
+                      "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                     }
-                  }}
-                >
-                  <Icon12Icon
-                    className={classNames(projectcss.all, sty.svg__sMir1)}
-                    role={"img"}
-                  />
-                </div>
-              </AntdTooltip>
-            ) : null}
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__vPrSd)}
-          >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"services"}
-              data-plasmic-override={overrides.services}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.services)}
-            >
-              <div
-                data-plasmic-name={"internet"}
-                data-plasmic-override={overrides.internet}
-                className={classNames(projectcss.all, sty.internet)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToIntenet"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/intenet` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToIntenet"] != null &&
-                    typeof $steps["goToIntenet"] === "object" &&
-                    typeof $steps["goToIntenet"].then === "function"
-                  ) {
-                    $steps["goToIntenet"] = await $steps["goToIntenet"];
-                  }
-                }}
-              >
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__bBBrJ)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/babarkat/images/image25.svg",
-                    fullWidth: 180,
-                    fullHeight: 180,
-                    aspectRatio: 1
-                  }}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__zh6Pr
-                  )}
-                >
-                  {
-                    "\u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
-                  }
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"internet3"}
-                data-plasmic-override={overrides.internet3}
-                className={classNames(projectcss.all, sty.internet3)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToCharge2"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/charging` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToCharge2"] != null &&
-                    typeof $steps["goToCharge2"] === "object" &&
-                    typeof $steps["goToCharge2"].then === "function"
-                  ) {
-                    $steps["goToCharge2"] = await $steps["goToCharge2"];
-                  }
-                }}
-              >
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__yvAdp)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/babarkat/images/image26.svg",
-                    fullWidth: 180,
-                    fullHeight: 180,
-                    aspectRatio: 1
-                  }}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lcYoQ
-                  )}
-                >
-                  {"\u0634\u0627\u0631\u0698"}
-                </div>
-              </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"services2"}
-              data-plasmic-override={overrides.services2}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.services2)}
-            >
-              <div
-                data-plasmic-name={"comingSoon"}
-                data-plasmic-override={overrides.comingSoon}
-                className={classNames(projectcss.all, sty.comingSoon)}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jwDh
-                  )}
-                >
-                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                </div>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__plw8V)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? {
-                          src: "/plasmic/babarkat/images/image28.svg",
-                          fullWidth: 180,
-                          fullHeight: 180,
-                          aspectRatio: 1
-                        }
-                      : {
-                          src: "/plasmic/babarkat/images/image29.svg",
-                          fullWidth: 180,
-                          fullHeight: 180,
-                          aspectRatio: 1
-                        }
-                  }
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jivU
-                  )}
-                >
-                  {
-                    "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
-                  }
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"comingSoon2"}
-                data-plasmic-override={overrides.comingSoon2}
-                className={classNames(projectcss.all, sty.comingSoon2)}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToSnap"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/snap` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToSnap"] != null &&
-                    typeof $steps["goToSnap"] === "object" &&
-                    typeof $steps["goToSnap"].then === "function"
-                  ) {
-                    $steps["goToSnap"] = await $steps["goToSnap"];
-                  }
-                }}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__fkQ6C
-                  )}
-                >
-                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                </div>
-                <AntdModal
-                  data-plasmic-name={"modal3"}
-                  data-plasmic-override={overrides.modal3}
-                  className={classNames("__wab_instance", sty.modal3)}
-                  defaultStylesClassName={classNames(
-                    projectcss.root_reset,
-                    projectcss.plasmic_default_styles,
-                    projectcss.plasmic_mixins,
-                    projectcss.plasmic_tokens,
-                    plasmic_antd_5_hostless_css.plasmic_tokens,
-                    plasmic_plasmic_rich_components_css.plasmic_tokens
-                  )}
-                  hideFooter={true}
-                  maskClosable={true}
-                  modalContentClassName={classNames({
-                    [sty["pcls_AxXZI_1rmT4o"]]: true
-                  })}
-                  modalScopeClassName={sty["modal3__modal"]}
-                  onOpenChange={generateStateOnChangeProp($state, [
-                    "modal3",
-                    "open"
-                  ])}
-                  open={generateStateValueProp($state, ["modal3", "open"])}
-                  title={null}
-                  trigger={null}
-                  width={"520"}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox__nVlDi)}
                   >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__o47Hv
-                      )}
-                    >
-                      {
-                        "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
-                      }
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___9Smum
-                      )}
-                    >
-                      {
-                        "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
-                      }
-                    </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox___4HfvK)}
-                  >
-                    <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__zg2TY
-                      )}
-                      color={"red"}
+                      className={classNames(projectcss.all, sty.freeBox__z7W8B)}
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["runCode"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return localStorage.removeItem(
-                                    "userbabarcat"
-                                  );
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
-                        ) {
-                          $steps["runCode"] = await $steps["runCode"];
-                        }
-
-                        $steps["goToLogIn"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/login` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToLogIn"] != null &&
-                          typeof $steps["goToLogIn"] === "object" &&
-                          typeof $steps["goToLogIn"].then === "function"
-                        ) {
-                          $steps["goToLogIn"] = await $steps["goToLogIn"];
-                        }
-
-                        $steps["updateModal3Open"] = true
+                        $steps["updateModal5Open"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
                                   objRoot: $state,
-                                  variablePath: ["modal3", "open"]
+                                  variablePath: ["modal5", "open"]
                                 },
                                 operation: 0,
-                                value: false
+                                value: true
                               };
                               return (({
                                 variable,
@@ -1246,330 +836,771 @@ function PlasmicHomepage__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["updateModal3Open"] != null &&
-                          typeof $steps["updateModal3Open"] === "object" &&
-                          typeof $steps["updateModal3Open"].then === "function"
+                          $steps["updateModal5Open"] != null &&
+                          typeof $steps["updateModal5Open"] === "object" &&
+                          typeof $steps["updateModal5Open"].then === "function"
                         ) {
-                          $steps["updateModal3Open"] = await $steps[
-                            "updateModal3Open"
+                          $steps["updateModal5Open"] = await $steps[
+                            "updateModal5Open"
                           ];
                         }
                       }}
                     >
-                      {"\u0628\u0644\u0647"}
-                    </Button>
-                    <Button
+                      <Icon12Icon
+                        className={classNames(projectcss.all, sty.svg__sMir1)}
+                        role={"img"}
+                      />
+                    </div>
+                  </AntdTooltip>
+                ) : null}
+              </Stack__>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__vPrSd)}
+              >
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"services"}
+                  data-plasmic-override={overrides.services}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.services)}
+                >
+                  <div
+                    data-plasmic-name={"internet"}
+                    data-plasmic-override={overrides.internet}
+                    className={classNames(projectcss.all, sty.internet)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToIntenet"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/intenet` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToIntenet"] != null &&
+                        typeof $steps["goToIntenet"] === "object" &&
+                        typeof $steps["goToIntenet"].then === "function"
+                      ) {
+                        $steps["goToIntenet"] = await $steps["goToIntenet"];
+                      }
+                    }}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__bBBrJ)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/babarkat/images/image25.svg",
+                        fullWidth: 180,
+                        fullHeight: 180,
+                        aspectRatio: 1
+                      }}
+                    />
+
+                    <div
                       className={classNames(
-                        "__wab_instance",
-                        sty.button__jgicn
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__zh6Pr
                       )}
-                      color={"sand"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateModal3Open"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["modal3", "open"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateModal3Open"] != null &&
-                          typeof $steps["updateModal3Open"] === "object" &&
-                          typeof $steps["updateModal3Open"].then === "function"
-                        ) {
-                          $steps["updateModal3Open"] = await $steps[
-                            "updateModal3Open"
-                          ];
-                        }
-                      }}
                     >
-                      {"\u0627\u0646\u0635\u0631\u0627\u0641"}
-                    </Button>
-                  </Stack__>
-                </AntdModal>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__phhYv)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/babarkat/images/image27.svg",
-                    fullWidth: 164,
-                    fullHeight: 180,
-                    aspectRatio: 0.911111
-                  }}
-                />
+                      {
+                        "\u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"internet3"}
+                    data-plasmic-override={overrides.internet3}
+                    className={classNames(projectcss.all, sty.internet3)}
+                    onClick={async event => {
+                      const $steps = {};
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__yjJhg
-                  )}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"
-                    : "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"}
-                </div>
-              </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"services3"}
-              data-plasmic-override={overrides.services3}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.services3)}
-            >
-              <div
-                data-plasmic-name={"comingSoon3"}
-                data-plasmic-override={overrides.comingSoon3}
-                className={classNames(projectcss.all, sty.comingSoon3)}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__e0B1Y
-                  )}
-                >
-                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                </div>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__fe1WY)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? {
-                          src: "/plasmic/babarkat/images/image31.svg",
-                          fullWidth: 164,
-                          fullHeight: 180,
-                          aspectRatio: 0.911111
-                        }
-                      : {
-                          src: "/plasmic/babarkat/images/image32.svg",
-                          fullWidth: 164,
-                          fullHeight: 180,
-                          aspectRatio: 0.911111
-                        }
-                  }
-                />
+                      $steps["goToCharge2"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/charging` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToCharge2"] != null &&
+                        typeof $steps["goToCharge2"] === "object" &&
+                        typeof $steps["goToCharge2"].then === "function"
+                      ) {
+                        $steps["goToCharge2"] = await $steps["goToCharge2"];
+                      }
+                    }}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__yvAdp)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/babarkat/images/image26.svg",
+                        fullWidth: 180,
+                        fullHeight: 180,
+                        aspectRatio: 1
+                      }}
+                    />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__fjyMb
-                  )}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__lcYoQ
+                      )}
+                    >
+                      {"\u0634\u0627\u0631\u0698"}
+                    </div>
+                  </div>
+                </Stack__>
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"services2"}
+                  data-plasmic-override={overrides.services2}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.services2)}
                 >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
-                    : "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"}
-                </div>
-              </div>
-              <div
-                data-plasmic-name={"comingSoon4"}
-                data-plasmic-override={overrides.comingSoon4}
-                className={classNames(projectcss.all, sty.comingSoon4)}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__wAq6O
-                  )}
-                >
-                  {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                </div>
-                <PlasmicImg__
-                  alt={""}
-                  className={classNames(sty.img__r0Oco)}
-                  displayHeight={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  displayMaxHeight={"none"}
-                  displayMaxWidth={"100%"}
-                  displayMinHeight={"0"}
-                  displayMinWidth={"0"}
-                  displayWidth={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "40px"
-                      : "60px"
-                  }
-                  loading={"lazy"}
-                  src={{
-                    src: "/plasmic/babarkat/images/image30.svg",
-                    fullWidth: 164,
-                    fullHeight: 180,
-                    aspectRatio: 0.911111
-                  }}
-                />
+                  <div
+                    data-plasmic-name={"comingSoon"}
+                    data-plasmic-override={overrides.comingSoon}
+                    className={classNames(projectcss.all, sty.comingSoon)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__jwDh
+                      )}
+                    >
+                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                    </div>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__plw8V)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? {
+                              src: "/plasmic/babarkat/images/image28.svg",
+                              fullWidth: 180,
+                              fullHeight: 180,
+                              aspectRatio: 1
+                            }
+                          : {
+                              src: "/plasmic/babarkat/images/image29.svg",
+                              fullWidth: 180,
+                              fullHeight: 180,
+                              aspectRatio: 1
+                            }
+                      }
+                    />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__sqfe1
-                  )}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
-                    : "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"}
-                </div>
-              </div>
-            </Stack__>
-            {(
-              hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
-            ) ? (
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"services4"}
-                data-plasmic-override={overrides.services4}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.services4)}
-              />
-            ) : null}
-          </Stack__>
-          <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
-            <div
-              data-plasmic-name={"footer"}
-              data-plasmic-override={overrides.footer}
-              className={classNames(projectcss.all, sty.footer)}
-            >
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"snapp2"}
-                data-plasmic-override={overrides.snapp2}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.snapp2)}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldHome"}
-                  data-plasmic-override={overrides.vuesaxBoldHome}
-                  className={classNames(projectcss.all, sty.vuesaxBoldHome)}
-                >
-                  <HomeIcon
-                    className={classNames(projectcss.all, sty.svg__fbf4J)}
-                    role={"img"}
-                  />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ruTXz
-                  )}
-                >
-                  {"\u062e\u0627\u0646\u0647"}
-                </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"charge2"}
-                data-plasmic-override={overrides.charge2}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.charge2)}
-                onClick={async event => {
-                  const $steps = {};
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__jivU
+                      )}
+                    >
+                      {
+                        "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"comingSoon2"}
+                    data-plasmic-override={overrides.comingSoon2}
+                    className={classNames(projectcss.all, sty.comingSoon2)}
+                    onClick={async event => {
+                      const $steps = {};
 
-                  $steps["goToChargeStep1"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/transaction` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
+                      $steps["goToSnap"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/snap` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToSnap"] != null &&
+                        typeof $steps["goToSnap"] === "object" &&
+                        typeof $steps["goToSnap"].then === "function"
+                      ) {
+                        $steps["goToSnap"] = await $steps["goToSnap"];
+                      }
+                    }}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__fkQ6C
+                      )}
+                    >
+                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                    </div>
+                    <AntdModal
+                      data-plasmic-name={"modal3"}
+                      data-plasmic-override={overrides.modal3}
+                      className={classNames("__wab_instance", sty.modal3)}
+                      defaultStylesClassName={classNames(
+                        projectcss.root_reset,
+                        projectcss.plasmic_default_styles,
+                        projectcss.plasmic_mixins,
+                        projectcss.plasmic_tokens,
+                        plasmic_antd_5_hostless_css.plasmic_tokens,
+                        plasmic_plasmic_rich_components_css.plasmic_tokens
+                      )}
+                      hideFooter={true}
+                      maskClosable={true}
+                      modalContentClassName={classNames({
+                        [sty["pcls_AxXZI_1rmT4o"]]: true
+                      })}
+                      modalScopeClassName={sty["modal3__modal"]}
+                      onOpenChange={generateStateOnChangeProp($state, [
+                        "modal3",
+                        "open"
+                      ])}
+                      open={generateStateValueProp($state, ["modal3", "open"])}
+                      title={null}
+                      trigger={null}
+                      width={"520"}
+                    >
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nVlDi
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__o47Hv
+                          )}
+                        >
+                          {
+                            "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
                           }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToChargeStep1"] != null &&
-                    typeof $steps["goToChargeStep1"] === "object" &&
-                    typeof $steps["goToChargeStep1"].then === "function"
-                  ) {
-                    $steps["goToChargeStep1"] = await $steps["goToChargeStep1"];
-                  }
-                }}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldReceipt"}
-                  data-plasmic-override={overrides.vuesaxBoldReceipt}
-                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt)}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___9Smum
+                          )}
+                        >
+                          {
+                            "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
+                          }
+                        </div>
+                      </Stack__>
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___4HfvK
+                        )}
+                      >
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__zg2TY
+                          )}
+                          color={"red"}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return localStorage.removeItem(
+                                        "userbabarcat"
+                                      );
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["goToLogIn"] = true
+                              ? (() => {
+                                  const actionArgs = { destination: `/login` };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToLogIn"] != null &&
+                              typeof $steps["goToLogIn"] === "object" &&
+                              typeof $steps["goToLogIn"].then === "function"
+                            ) {
+                              $steps["goToLogIn"] = await $steps["goToLogIn"];
+                            }
+
+                            $steps["updateModal3Open"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["modal3", "open"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateModal3Open"] != null &&
+                              typeof $steps["updateModal3Open"] === "object" &&
+                              typeof $steps["updateModal3Open"].then ===
+                                "function"
+                            ) {
+                              $steps["updateModal3Open"] = await $steps[
+                                "updateModal3Open"
+                              ];
+                            }
+                          }}
+                        >
+                          {"\u0628\u0644\u0647"}
+                        </Button>
+                        <Button
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__jgicn
+                          )}
+                          color={"sand"}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateModal3Open"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["modal3", "open"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateModal3Open"] != null &&
+                              typeof $steps["updateModal3Open"] === "object" &&
+                              typeof $steps["updateModal3Open"].then ===
+                                "function"
+                            ) {
+                              $steps["updateModal3Open"] = await $steps[
+                                "updateModal3Open"
+                              ];
+                            }
+                          }}
+                        >
+                          {"\u0627\u0646\u0635\u0631\u0627\u0641"}
+                        </Button>
+                      </Stack__>
+                    </AntdModal>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__phhYv)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/babarkat/images/image27.svg",
+                        fullWidth: 164,
+                        fullHeight: 180,
+                        aspectRatio: 0.911111
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__yjJhg
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"
+                        : "\u062e\u062f\u0645\u0627\u062a \u0627\u0633\u0646\u067e"}
+                    </div>
+                  </div>
+                </Stack__>
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"services3"}
+                  data-plasmic-override={overrides.services3}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.services3)}
                 >
-                  <ReceiptIcon
-                    className={classNames(projectcss.all, sty.svg__yjKw)}
-                    role={"img"}
+                  <div
+                    data-plasmic-name={"comingSoon3"}
+                    data-plasmic-override={overrides.comingSoon3}
+                    className={classNames(projectcss.all, sty.comingSoon3)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__e0B1Y
+                      )}
+                    >
+                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                    </div>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__fe1WY)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? {
+                              src: "/plasmic/babarkat/images/image31.svg",
+                              fullWidth: 164,
+                              fullHeight: 180,
+                              aspectRatio: 0.911111
+                            }
+                          : {
+                              src: "/plasmic/babarkat/images/image32.svg",
+                              fullWidth: 164,
+                              fullHeight: 180,
+                              aspectRatio: 0.911111
+                            }
+                      }
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__fjyMb
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
+                        : "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"}
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"comingSoon4"}
+                    data-plasmic-override={overrides.comingSoon4}
+                    className={classNames(projectcss.all, sty.comingSoon4)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__wAq6O
+                      )}
+                    >
+                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                    </div>
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__r0Oco)}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "40px"
+                          : "60px"
+                      }
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/babarkat/images/image30.svg",
+                        fullWidth: 164,
+                        fullHeight: 180,
+                        aspectRatio: 0.911111
+                      }}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__sqfe1
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
+                        : "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"}
+                    </div>
+                  </div>
+                </Stack__>
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? true
+                    : false
+                ) ? (
+                  <Stack__
+                    as={"div"}
+                    data-plasmic-name={"services4"}
+                    data-plasmic-override={overrides.services4}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.services4)}
                   />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___4P0Rx
-                  )}
-                >
-                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-                </div>
+                ) : null}
               </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
+                <div
+                  data-plasmic-name={"footer"}
+                  data-plasmic-override={overrides.footer}
+                  className={classNames(projectcss.all, sty.footer)}
+                >
+                  <Stack__
+                    as={"div"}
+                    data-plasmic-name={"snapp2"}
+                    data-plasmic-override={overrides.snapp2}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.snapp2)}
+                  >
+                    <div
+                      data-plasmic-name={"vuesaxBoldHome"}
+                      data-plasmic-override={overrides.vuesaxBoldHome}
+                      className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+                    >
+                      <HomeIcon
+                        className={classNames(projectcss.all, sty.svg__fbf4J)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ruTXz
+                      )}
+                    >
+                      {"\u062e\u0627\u0646\u0647"}
+                    </div>
+                  </Stack__>
+                  <Stack__
+                    as={"div"}
+                    data-plasmic-name={"charge2"}
+                    data-plasmic-override={overrides.charge2}
+                    hasGap={true}
+                    className={classNames(projectcss.all, sty.charge2)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToChargeStep1"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/transaction` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToChargeStep1"] != null &&
+                        typeof $steps["goToChargeStep1"] === "object" &&
+                        typeof $steps["goToChargeStep1"].then === "function"
+                      ) {
+                        $steps["goToChargeStep1"] = await $steps[
+                          "goToChargeStep1"
+                        ];
+                      }
+                    }}
+                  >
+                    <div
+                      data-plasmic-name={"vuesaxBoldReceipt"}
+                      data-plasmic-override={overrides.vuesaxBoldReceipt}
+                      className={classNames(
+                        projectcss.all,
+                        sty.vuesaxBoldReceipt
+                      )}
+                    >
+                      <ReceiptIcon
+                        className={classNames(projectcss.all, sty.svg__yjKw)}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___4P0Rx
+                      )}
+                    >
+                      {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+                    </div>
+                  </Stack__>
+                </div>
+              </div>
             </div>
-          </div>
+          ) : null}
           <ApiRequest
             data-plasmic-name={"profile"}
             data-plasmic-override={overrides.profile}
