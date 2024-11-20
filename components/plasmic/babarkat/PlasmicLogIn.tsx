@@ -2822,12 +2822,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
-                                localStorage.setItem(
-                                  "userbabarcat",
-                                  JSON.stringify(
-                                    $steps.invokeGlobalAction2.data[0].data
-                                  )
-                                );
                                 const item = {
                                   value:
                                     $steps.invokeGlobalAction2.data[0].data
@@ -3110,9 +3104,7 @@ function PlasmicLogIn__RenderFunc(props: {
                               variablePath: ["number"]
                             },
                             operation: 0,
-                            value: JSON.parse(
-                              localStorage.getItem("userbabarcat")
-                            ).mobile
+                            value: $state.fragmentInput.value
                           };
                           return (({
                             variable,
