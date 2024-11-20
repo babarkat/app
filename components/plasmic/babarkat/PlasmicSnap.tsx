@@ -371,7 +371,7 @@ function PlasmicSnap__RenderFunc(props: {
         path: "amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) => 100000
       },
       {
         path: "stepscharg",
