@@ -68,6 +68,7 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -140,6 +141,7 @@ export type PlasmicSnap__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultSnapProps {}
@@ -3873,6 +3875,15 @@ function PlasmicSnap__RenderFunc(props: {
             }}
             runWhileEditing={false}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            // \u0627\u06cc\u0646\u062c\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u06a9\u062f\u06cc \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u062c\u0631\u0627 \u0634\u0648\u062f \u0631\u0627 \u0627\u0636\u0627\u0641\u0647 \u06a9\u0646\u06cc\u062f\r\n            alert('\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0635\u0641\u062d\u0647 \u0642\u0628\u0644 \u0647\u0633\u062a\u06cc\u062f!');\r\n            \r\n            // \u0627\u06af\u0631 \u0646\u06cc\u0627\u0632 \u062f\u0627\u0631\u06cc\u062f \u06a9\u0627\u0631\u06cc \u0645\u062a\u0641\u0627\u0648\u062a \u0627\u0646\u062c\u0627\u0645 \u062f\u0647\u06cc\u062f\r\n            // \u0628\u0647 \u062c\u0627\u06cc \u0628\u0627\u0632\u06af\u0634\u062a \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0647 URL \u062e\u0627\u0635\u06cc \u0645\u0646\u062a\u0642\u0644 \u0634\u0648\u06cc\u062f\r\n            window.location.href = '/new-page';\r\n        });\r\n    </script>"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -3910,7 +3921,8 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
     "lottie",
-    "timer"
+    "timer",
+    "embedHtml"
   ],
   header: ["header"],
   reveal: [
@@ -3989,7 +4001,8 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
-  timer: ["timer"]
+  timer: ["timer"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4025,6 +4038,7 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4145,6 +4159,7 @@ export const PlasmicSnap = Object.assign(
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicSnap
     internalVariantProps: PlasmicSnap__VariantProps,

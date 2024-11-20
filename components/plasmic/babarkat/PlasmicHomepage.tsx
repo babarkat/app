@@ -14008,7 +14008,19 @@ function PlasmicHomepage__RenderFunc(props: {
                         placeholder={
                           "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
                         }
-                        type={"password"}
+                        type={(() => {
+                          try {
+                            return $state.pass1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "password";
+                            }
+                            throw e;
+                          }
+                        })()}
                         value={generateStateValueProp($state, [
                           "newPass2",
                           "value"
@@ -14020,26 +14032,38 @@ function PlasmicHomepage__RenderFunc(props: {
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["runCode"] = true
+                          $steps["updatePass1"] = true
                             ? (() => {
                                 const actionArgs = {
-                                  customFunction: async () => {
-                                    return (document.getElementsByClassName(
-                                      "Homepage__newPass2___4HD"
-                                    )[0].type = "text");
-                                  }
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["pass1"]
+                                  },
+                                  operation: 0,
+                                  value: "text"
                                 };
-                                return (({ customFunction }) => {
-                                  return customFunction();
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
                                 })?.apply(null, [actionArgs]);
                               })()
                             : undefined;
                           if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
+                            $steps["updatePass1"] != null &&
+                            typeof $steps["updatePass1"] === "object" &&
+                            typeof $steps["updatePass1"].then === "function"
                           ) {
-                            $steps["runCode"] = await $steps["runCode"];
+                            $steps["updatePass1"] = await $steps["updatePass1"];
                           }
 
                           $steps["invokeGlobalAction"] = true
@@ -14065,14 +14089,26 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["runCode2"] = true
                             ? (() => {
                                 const actionArgs = {
-                                  customFunction: async () => {
-                                    return (document.getElementsByClassName(
-                                      "Homepage__newPass2___4HD"
-                                    )[0].type = "password");
-                                  }
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["pass1"]
+                                  },
+                                  operation: 0,
+                                  value: "password"
                                 };
-                                return (({ customFunction }) => {
-                                  return customFunction();
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
                                 })?.apply(null, [actionArgs]);
                               })()
                             : undefined;
@@ -14162,7 +14198,19 @@ function PlasmicHomepage__RenderFunc(props: {
                       placeholder={
                         "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
                       }
-                      type={"password"}
+                      type={(() => {
+                        try {
+                          return $state.pass2;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "password";
+                          }
+                          throw e;
+                        }
+                      })()}
                       value={generateStateValueProp($state, [
                         "reoeatNewPass2",
                         "value"
@@ -14174,26 +14222,38 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["runCode"] = true
+                        $steps["updatePass2"] = true
                           ? (() => {
                               const actionArgs = {
-                                customFunction: async () => {
-                                  return (document.getElementsByClassName(
-                                    "Homepage__reoeatNewPass2__jkUPi"
-                                  )[0].type = "text");
-                                }
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["pass2"]
+                                },
+                                operation: 0,
+                                value: "text"
                               };
-                              return (({ customFunction }) => {
-                                return customFunction();
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
+                          $steps["updatePass2"] != null &&
+                          typeof $steps["updatePass2"] === "object" &&
+                          typeof $steps["updatePass2"].then === "function"
                         ) {
-                          $steps["runCode"] = await $steps["runCode"];
+                          $steps["updatePass2"] = await $steps["updatePass2"];
                         }
 
                         $steps["invokeGlobalAction"] = true
@@ -14219,14 +14279,26 @@ function PlasmicHomepage__RenderFunc(props: {
                         $steps["runCode2"] = true
                           ? (() => {
                               const actionArgs = {
-                                customFunction: async () => {
-                                  return (document.getElementsByClassName(
-                                    "Homepage__reoeatNewPass2__jkUPi"
-                                  )[0].type = "password");
-                                }
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["pass2"]
+                                },
+                                operation: 0,
+                                value: "password"
                               };
-                              return (({ customFunction }) => {
-                                return customFunction();
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;

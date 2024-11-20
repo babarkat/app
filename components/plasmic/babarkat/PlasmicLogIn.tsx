@@ -4999,7 +4999,8 @@ function PlasmicLogIn__RenderFunc(props: {
 
               $steps["updatePassword"] =
                 localStorage.getItem("userbabarcat") != null &&
-                sessionStorage.getItem("userbabarcatToken") == null
+                sessionStorage.getItem("userbabarcatToken") == null &&
+                localStorage.getItem("userBabarkatPass") != null
                   ? (() => {
                       const actionArgs = { vgroup: "password", operation: 4 };
                       return (({ vgroup, value }) => {
