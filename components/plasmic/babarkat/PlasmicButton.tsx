@@ -508,6 +508,9 @@ function PlasmicButton__RenderFunc(props: {
               "color",
               "green"
             ),
+            [sty.slotTargetChildrencolor_green_isDisabled]:
+              hasVariant($state, "color", "green") &&
+              hasVariant($state, "isDisabled", "isDisabled"),
             [sty.slotTargetChildrencolor_link]: hasVariant(
               $state,
               "color",

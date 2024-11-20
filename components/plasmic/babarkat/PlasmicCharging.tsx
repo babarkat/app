@@ -68,6 +68,7 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -141,6 +142,7 @@ export type PlasmicCharging__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultChargingProps {}
@@ -4555,6 +4557,15 @@ function PlasmicCharging__RenderFunc(props: {
             }}
             runWhileEditing={false}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = window.location.href;\r\n        });\r\n    </script>"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4593,7 +4604,8 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
     "lottie",
-    "timer"
+    "timer",
+    "embedHtml"
   ],
   header: ["header"],
   reveal: [
@@ -4675,7 +4687,8 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
-  timer: ["timer"]
+  timer: ["timer"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4712,6 +4725,7 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4833,6 +4847,7 @@ export const PlasmicCharging = Object.assign(
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicCharging
     internalVariantProps: PlasmicCharging__VariantProps,

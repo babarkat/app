@@ -76,6 +76,7 @@ import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -184,6 +185,7 @@ export type PlasmicHomepage__OverridesType = {
   modal6?: Flex__<typeof AntdModal>;
   newPass2?: Flex__<typeof Input>;
   reoeatNewPass2?: Flex__<typeof Input>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultHomepageProps {}
@@ -13838,7 +13840,8 @@ function PlasmicHomepage__RenderFunc(props: {
               ]),
               open: generateStateValueProp($state, ["modal6", "open"]),
               title: null,
-              trigger: null
+              trigger: null,
+              width: "100vw"
             };
             initializeCodeComponentStates(
               $state,
@@ -14687,6 +14690,14 @@ function PlasmicHomepage__RenderFunc(props: {
               </AntdModal>
             );
           })()}
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = window.location.href;\r\n        });\r\n    </script>"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -14740,7 +14751,8 @@ const PlasmicDescendants = {
     "timer",
     "modal6",
     "newPass2",
-    "reoeatNewPass2"
+    "reoeatNewPass2",
+    "embedHtml"
   ],
   header: ["header"],
   wallet: ["wallet", "tooltip"],
@@ -14800,7 +14812,8 @@ const PlasmicDescendants = {
   timer: ["timer"],
   modal6: ["modal6", "newPass2", "reoeatNewPass2"],
   newPass2: ["newPass2"],
-  reoeatNewPass2: ["reoeatNewPass2"]
+  reoeatNewPass2: ["reoeatNewPass2"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -14852,6 +14865,7 @@ type NodeDefaultElementType = {
   modal6: typeof AntdModal;
   newPass2: typeof Input;
   reoeatNewPass2: typeof Input;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -14984,6 +14998,7 @@ export const PlasmicHomepage = Object.assign(
     modal6: makeNodeComponent("modal6"),
     newPass2: makeNodeComponent("newPass2"),
     reoeatNewPass2: makeNodeComponent("reoeatNewPass2"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
