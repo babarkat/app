@@ -95,10 +95,10 @@ import { v4 as __lib_uuid__v4 } from "uuid";
 createPlasmicElementProxy;
 
 export type PlasmicSnap__VariantMembers = {
-  stepscharg: "step2" | "step3";
+  stepscharg: "step3";
 };
 export type PlasmicSnap__VariantsArgs = {
-  stepscharg?: SingleChoiceArg<"step2" | "step3">;
+  stepscharg?: SingleChoiceArg<"step3">;
 };
 type VariantPropType = keyof PlasmicSnap__VariantsArgs;
 export const PlasmicSnap__VariantProps = new Array<VariantPropType>(
@@ -369,7 +369,7 @@ function PlasmicSnap__RenderFunc(props: {
         path: "amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) => 100000
       },
       {
         path: "stepscharg",
@@ -538,11 +538,6 @@ function PlasmicSnap__RenderFunc(props: {
               ? "page"
               : undefined,
             {
-              [sty.chargeStep1stepscharg_step2]: hasVariant(
-                $state,
-                "stepscharg",
-                "step2"
-              ),
               [sty.chargeStep1stepscharg_step3]: hasVariant(
                 $state,
                 "stepscharg",
@@ -553,11 +548,6 @@ function PlasmicSnap__RenderFunc(props: {
         >
           <div
             className={classNames(projectcss.all, sty.freeBox__utlDe, {
-              [sty.freeBoxstepscharg_step2__utlDeVvKa]: hasVariant(
-                $state,
-                "stepscharg",
-                "step2"
-              ),
               [sty.freeBoxstepscharg_step3__utlDezZ317]: hasVariant(
                 $state,
                 "stepscharg",
@@ -569,11 +559,6 @@ function PlasmicSnap__RenderFunc(props: {
               data-plasmic-name={"header"}
               data-plasmic-override={overrides.header}
               className={classNames(projectcss.all, sty.header, {
-                [sty.headerstepscharg_step2]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step2"
-                ),
                 [sty.headerstepscharg_step3]: hasVariant(
                   $state,
                   "stepscharg",
@@ -588,11 +573,6 @@ function PlasmicSnap__RenderFunc(props: {
                     : Icon3Icon
                 }
                 className={classNames(projectcss.all, sty.svg___0OtwH, {
-                  [sty.svgstepscharg_step2___0OtwHvvKa]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.svgstepscharg_step3___0OtwHzZ317]: hasVariant(
                     $state,
                     "stepscharg",
@@ -636,11 +616,6 @@ function PlasmicSnap__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__suHcX,
                   {
-                    [sty.textstepscharg_step2__suHcXvvKa]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.textstepscharg_step3__suHcXzZ317]: hasVariant(
                       $state,
                       "stepscharg",
@@ -710,22 +685,8 @@ function PlasmicSnap__RenderFunc(props: {
               data-plasmic-name={"reveal"}
               data-plasmic-override={overrides.reveal}
               cascade={false}
-              className={classNames("__wab_instance", sty.reveal, {
-                [sty.revealstepscharg_step2]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step2"
-                )
-              })}
-              duration={
-                hasVariant($state, "stepscharg", "step2") ? 2000 : undefined
-              }
-              effect={
-                hasVariant($state, "stepscharg", "step2") ? "fade" : "fade"
-              }
-              reverse={
-                hasVariant($state, "stepscharg", "step2") ? false : undefined
-              }
+              className={classNames("__wab_instance", sty.reveal)}
+              effect={"fade"}
               triggerOnce={true}
             >
               <Stack__
@@ -734,11 +695,6 @@ function PlasmicSnap__RenderFunc(props: {
                 data-plasmic-override={overrides.wallet}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.wallet, {
-                  [sty.walletstepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.walletstepscharg_step3]: hasVariant(
                     $state,
                     "stepscharg",
@@ -748,11 +704,6 @@ function PlasmicSnap__RenderFunc(props: {
               >
                 <BabarkatlogoCopy2SvgIcon
                   className={classNames(projectcss.all, sty.svg__p6Ujp, {
-                    [sty.svgstepscharg_step2__p6UjpVvKa]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.svgstepscharg_step3__p6UjpzZ317]: hasVariant(
                       $state,
                       "stepscharg",
@@ -766,11 +717,6 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-name={"steps"}
                   data-plasmic-override={overrides.steps}
                   className={classNames(projectcss.all, sty.steps, {
-                    [sty.stepsstepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.stepsstepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -789,16 +735,9 @@ function PlasmicSnap__RenderFunc(props: {
                       PlasmicIconType={
                         hasVariant($state, "stepscharg", "step3")
                           ? CheckCircleSvgrepoComSvgIcon
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? CheckCircleSvgrepoComSvgIcon
                           : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
                       className={classNames(projectcss.all, sty.selected, {
-                        [sty.selectedstepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
                         [sty.selectedstepscharg_step3]: hasVariant(
                           $state,
                           "stepscharg",
@@ -814,11 +753,6 @@ function PlasmicSnap__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text___2CRi,
                         {
-                          [sty.textstepscharg_step2___2CRivvKa]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
                           [sty.textstepscharg_step3___2CRIzZ317]: hasVariant(
                             $state,
                             "stepscharg",
@@ -851,11 +785,6 @@ function PlasmicSnap__RenderFunc(props: {
                           : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
                       className={classNames(projectcss.all, sty.unselected, {
-                        [sty.unselectedstepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
                         [sty.unselectedstepscharg_step3]: hasVariant(
                           $state,
                           "stepscharg",
@@ -871,11 +800,6 @@ function PlasmicSnap__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text___2Jkv,
                         {
-                          [sty.textstepscharg_step2___2JkvVvKa]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
                           [sty.textstepscharg_step3___2JkvZZ317]: hasVariant(
                             $state,
                             "stepscharg",
@@ -903,11 +827,6 @@ function PlasmicSnap__RenderFunc(props: {
                       data-plasmic-name={"unselected2"}
                       data-plasmic-override={overrides.unselected2}
                       className={classNames(projectcss.all, sty.unselected2, {
-                        [sty.unselected2stepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
                         [sty.unselected2stepscharg_step3]: hasVariant(
                           $state,
                           "stepscharg",
@@ -923,11 +842,6 @@ function PlasmicSnap__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text__jIlbO,
                         {
-                          [sty.textstepscharg_step2__jIlbOvvKa]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
                           [sty.textstepscharg_step3__jIlbOzZ317]: hasVariant(
                             $state,
                             "stepscharg",
@@ -946,11 +860,6 @@ function PlasmicSnap__RenderFunc(props: {
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__k1Kvz, {
-                    [sty.freeBoxstepscharg_step2__k1KvzvvKa]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.freeBoxstepscharg_step3__k1KvZzZ317]: hasVariant(
                       $state,
                       "stepscharg",
@@ -964,11 +873,6 @@ function PlasmicSnap__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__vprau,
                       {
-                        [sty.textstepscharg_step2__vprauVvKa]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
                         [sty.textstepscharg_step3__vprauzZ317]: hasVariant(
                           $state,
                           "stepscharg",
@@ -979,17 +883,10 @@ function PlasmicSnap__RenderFunc(props: {
                   >
                     {hasVariant($state, "stepscharg", "step3")
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                      : hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0627\u0633\u0646\u067e (\u062a\u0648\u0645\u0627\u0646)."
                       : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__afbuj, {
-                      [sty.freeBoxstepscharg_step2__afbujVvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.freeBoxstepscharg_step3__afbujzZ317]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1006,11 +903,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text___87TVs,
                           {
-                            [sty.textstepscharg_step2___87TVsVvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3___87TVszZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1021,8 +913,6 @@ function PlasmicSnap__RenderFunc(props: {
                       >
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0639\u0646\u0648\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                           : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                       </div>
                     ) : null}
@@ -1040,11 +930,6 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox___9WxZl, {
-                      [sty.freeBoxstepscharg_step2___9WxZlVvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.freeBoxstepscharg_step3___9WxZlzZ317]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1061,11 +946,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text__thz2P,
                           {
-                            [sty.textstepscharg_step2__thz2PvvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3__thz2PzZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1076,8 +956,6 @@ function PlasmicSnap__RenderFunc(props: {
                       >
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                           : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                       </div>
                     ) : null}
@@ -1090,11 +968,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text__udvOm,
                           {
-                            [sty.textstepscharg_step2__udvOmVvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3__udvOmzZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1119,8 +992,6 @@ function PlasmicSnap__RenderFunc(props: {
                               }
                             })()}
                           </React.Fragment>
-                        ) : hasVariant($state, "stepscharg", "step2") ? (
-                          "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                         ) : (
                           "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
                         )}
@@ -1129,11 +1000,6 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__vWsap, {
-                      [sty.freeBoxstepscharg_step2__vWsapVvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.freeBoxstepscharg_step3__vWsapzZ317]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1150,11 +1016,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text__fUxQ2,
                           {
-                            [sty.textstepscharg_step2__fUxQ2VvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3__fUxQ2ZZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1165,8 +1026,6 @@ function PlasmicSnap__RenderFunc(props: {
                       >
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                           : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                       </div>
                     ) : null}
@@ -1179,11 +1038,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text___91CL,
                           {
-                            [sty.textstepscharg_step2___91CLvvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3___91CLzZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1210,8 +1064,6 @@ function PlasmicSnap__RenderFunc(props: {
                               }
                             })()}
                           </React.Fragment>
-                        ) : hasVariant($state, "stepscharg", "step2") ? (
-                          "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                         ) : (
                           "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
                         )}
@@ -1226,11 +1078,6 @@ function PlasmicSnap__RenderFunc(props: {
                     data-plasmic-name={"fragmentInput"}
                     data-plasmic-override={overrides.fragmentInput}
                     className={classNames("__wab_instance", sty.fragmentInput, {
-                      [sty.fragmentInputstepscharg_step2]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.fragmentInputstepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1349,11 +1196,6 @@ function PlasmicSnap__RenderFunc(props: {
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__jiteR, {
-                      [sty.imgstepscharg_step2__jiteRvvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.imgstepscharg_step3__jiteRzZ317]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1412,56 +1254,11 @@ function PlasmicSnap__RenderFunc(props: {
                     }
                   />
                 </div>
-                {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
+                {false ? (
                   <Input
                     data-plasmic-name={"fragmentInput2"}
                     data-plasmic-override={overrides.fragmentInput2}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.fragmentInput2,
-                      {
-                        [sty.fragmentInput2stepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        )
-                      }
-                    )}
-                    disabled={
-                      hasVariant($state, "stepscharg", "step2") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? (() => {
-                            try {
-                              return undefined;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant($state, "stepscharg", "step2")
-                        ? (() => {
-                            try {
-                              return (
-                                $state.typecharge == 1 ||
-                                $state.operatorselect == 3
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        : undefined
-                    }
+                    className={classNames("__wab_instance", sty.fragmentInput2)}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
                         "fragmentInput2",
@@ -1516,11 +1313,6 @@ function PlasmicSnap__RenderFunc(props: {
               </Stack__>
               <div
                 className={classNames(projectcss.all, sty.freeBox___3KmGp, {
-                  [sty.freeBoxstepscharg_step2___3KmGpvvKa]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.freeBoxstepscharg_step3___3KmGPzZ317]: hasVariant(
                     $state,
                     "stepscharg",
@@ -1532,14 +1324,7 @@ function PlasmicSnap__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__hOx7T,
-                    {
-                      [sty.textstepscharg_step2__hOx7TvvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      )
-                    }
+                    sty.text__hOx7T
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1551,13 +1336,7 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-name={"operators"}
                   data-plasmic-override={overrides.operators}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.operators, {
-                    [sty.operatorsstepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    )
-                  })}
+                  className={classNames(projectcss.all, sty.operators)}
                 >
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                     (() => {
@@ -1722,14 +1501,9 @@ function PlasmicSnap__RenderFunc(props: {
                   })}
                 </Stack__>
               </div>
-              {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
+              {false ? (
                 <div
                   className={classNames(projectcss.all, sty.freeBox___2VgrC, {
-                    [sty.freeBoxstepscharg_step2___2VgrCvvKa]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.freeBoxstepscharg_step3___2VgrCzZ317]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1743,11 +1517,6 @@ function PlasmicSnap__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__raLk,
                       {
-                        [sty.textstepscharg_step2__raLkVvKa]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
                         [sty.textstepscharg_step3__raLkzZ317]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1758,8 +1527,6 @@ function PlasmicSnap__RenderFunc(props: {
                   >
                     {hasVariant($state, "stepscharg", "step3")
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                      : hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                       : ""}
                   </div>
                   <Stack__
@@ -1768,11 +1535,6 @@ function PlasmicSnap__RenderFunc(props: {
                     data-plasmic-override={overrides.operators3}
                     hasGap={true}
                     className={classNames(projectcss.all, sty.operators3, {
-                      [sty.operators3stepscharg_step2]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.operators3stepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1805,11 +1567,6 @@ function PlasmicSnap__RenderFunc(props: {
                             "__wab_instance",
                             sty.boxselect3,
                             {
-                              [sty.boxselect3stepscharg_step2]: hasVariant(
-                                $state,
-                                "stepscharg",
-                                "step2"
-                              ),
                               [sty.boxselect3stepscharg_step3]: hasVariant(
                                 $state,
                                 "stepscharg",
@@ -1922,62 +1679,32 @@ function PlasmicSnap__RenderFunc(props: {
                             <div
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__f05Yr,
-                                {
-                                  [sty.freeBoxstepscharg_step2__f05YrVvKa]:
-                                    hasVariant($state, "stepscharg", "step2")
-                                }
+                                sty.freeBox__f05Yr
                               )}
                             >
                               <div
                                 className={classNames(
                                   projectcss.all,
                                   projectcss.__wab_text,
-                                  sty.text___7Un2,
-                                  {
-                                    [sty.textstepscharg_step2___7Un2VvKa]:
-                                      hasVariant($state, "stepscharg", "step2")
-                                  }
+                                  sty.text___7Un2
                                 )}
                               >
-                                {hasVariant($state, "stepscharg", "step2") ? (
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return (
-                                          amonttem.toLocaleString("en-US") +
-                                          " تومان"
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "";
-                                        }
-                                        throw e;
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return amonttem.toLocaleString("en-US");
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
                                       }
-                                    })()}
-                                  </React.Fragment>
-                                ) : (
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return amonttem.toLocaleString("en-US");
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                )}
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
                               </div>
                             </div>
                           </Boxselect>
@@ -1989,11 +1716,6 @@ function PlasmicSnap__RenderFunc(props: {
               ) : null}
               <div
                 className={classNames(projectcss.all, sty.freeBox__qrsqM, {
-                  [sty.freeBoxstepscharg_step2__qrsqMvvKa]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.freeBoxstepscharg_step3__qrsqMzZ317]: hasVariant(
                     $state,
                     "stepscharg",
@@ -2007,11 +1729,6 @@ function PlasmicSnap__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__hRm2E,
                     {
-                      [sty.textstepscharg_step2__hRm2EvvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.textstepscharg_step3__hRm2EzZ317]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2022,8 +1739,6 @@ function PlasmicSnap__RenderFunc(props: {
                 >
                   {hasVariant($state, "stepscharg", "step3")
                     ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                    : hasVariant($state, "stepscharg", "step2")
-                    ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                     : "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
                 </div>
                 <Stack__
@@ -2032,11 +1747,6 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-override={overrides.operators4}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.operators4, {
-                    [sty.operators4stepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.operators4stepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -2067,11 +1777,6 @@ function PlasmicSnap__RenderFunc(props: {
                           "__wab_instance",
                           sty.boxselect4,
                           {
-                            [sty.boxselect4stepscharg_step2]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.boxselect4stepscharg_step3]: hasVariant(
                               $state,
                               "stepscharg",
@@ -2180,65 +1885,35 @@ function PlasmicSnap__RenderFunc(props: {
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__cKa6P,
-                              {
-                                [sty.freeBoxstepscharg_step2__cKa6PVvKa]:
-                                  hasVariant($state, "stepscharg", "step2")
-                              }
+                              sty.freeBox__cKa6P
                             )}
                           >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__nRsc,
-                                {
-                                  [sty.textstepscharg_step2__nRscVvKa]:
-                                    hasVariant($state, "stepscharg", "step2")
-                                }
+                                sty.text__nRsc
                               )}
                             >
-                              {hasVariant($state, "stepscharg", "step2") ? (
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return (
-                                        amonttem.toLocaleString("en-US") +
-                                        " تومان"
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
-                                      }
-                                      throw e;
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      amonttem.toLocaleString("en-US") +
+                                      " تومان "
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "";
                                     }
-                                  })()}
-                                </React.Fragment>
-                              ) : (
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return (
-                                        amonttem.toLocaleString("en-US") +
-                                        " تومان "
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              )}
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
                             </div>
                           </div>
                         </Boxselect>
@@ -2251,11 +1926,6 @@ function PlasmicSnap__RenderFunc(props: {
                 as={"div"}
                 hasGap={true}
                 className={classNames(projectcss.all, sty.freeBox___3UNf, {
-                  [sty.freeBoxstepscharg_step2___3UNfVvKa]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.freeBoxstepscharg_step3___3UNfzZ317]: hasVariant(
                     $state,
                     "stepscharg",
@@ -2433,43 +2103,6 @@ function PlasmicSnap__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["updatePardakhtid"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["pardakhtid"]
-                                },
-                                operation: 0,
-                                value: $steps.invokeGlobalAction4.data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updatePardakhtid"] != null &&
-                        typeof $steps["updatePardakhtid"] === "object" &&
-                        typeof $steps["updatePardakhtid"].then === "function"
-                      ) {
-                        $steps["updatePardakhtid"] = await $steps[
-                          "updatePardakhtid"
-                        ];
-                      }
-
                       $steps["invokeGlobalAction"] =
                         $state.amont < $state.mojody &&
                         $steps.invokeGlobalAction4?.data[0]?.success == true
@@ -2522,7 +2155,7 @@ function PlasmicSnap__RenderFunc(props: {
                       }
 
                       $steps["updateModal2Open"] =
-                        steps.invokeGlobalAction4?.data[0]?.success == true
+                        $steps.invokeGlobalAction4?.data[0]?.success == true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -2667,11 +2300,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text__wz8RY,
                           {
-                            [sty.textstepscharg_step2__wz8RYvvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3__wz8RYzZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -2814,11 +2442,6 @@ function PlasmicSnap__RenderFunc(props: {
                           projectcss.__wab_text,
                           sty.text__nzckW,
                           {
-                            [sty.textstepscharg_step2__nzckWvvKa]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
                             [sty.textstepscharg_step3__nzckWzZ317]: hasVariant(
                               $state,
                               "stepscharg",
@@ -2891,11 +2514,6 @@ function PlasmicSnap__RenderFunc(props: {
               as={"div"}
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__wmaIu, {
-                [sty.freeBoxstepscharg_step2__wmaIuVvKa]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step2"
-                ),
                 [sty.freeBoxstepscharg_step3__wmaIuzZ317]: hasVariant(
                   $state,
                   "stepscharg",
@@ -2904,9 +2522,7 @@ function PlasmicSnap__RenderFunc(props: {
               })}
             >
               {(
-                hasVariant($state, "stepscharg", "step2")
-                  ? true
-                  : hasVariant(globalVariants, "screen", "mobileOnly")
+                hasVariant(globalVariants, "screen", "mobileOnly")
                   ? true
                   : false
               ) ? (
@@ -2914,22 +2530,13 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-name={"backstep2"}
                   data-plasmic-override={overrides.backstep2}
                   className={classNames("__wab_instance", sty.backstep2, {
-                    [sty.backstep2stepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.backstep2stepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
                     )
                   })}
-                  color={
-                    hasVariant($state, "stepscharg", "step2")
-                      ? "softGreen"
-                      : "green"
-                  }
+                  color={"green"}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2964,26 +2571,15 @@ function PlasmicSnap__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__yFn4W,
-                      {
-                        [sty.textstepscharg_step2__yFn4WvvKa]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        )
-                      }
+                      sty.text__yFn4W
                     )}
                   >
-                    {hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                      : "\u0627\u062f\u0627\u0645\u0647"}
+                    {"\u0627\u062f\u0627\u0645\u0647"}
                   </div>
                 </Button>
               ) : null}
               {(
                 hasVariant($state, "stepscharg", "step3")
-                  ? true
-                  : hasVariant($state, "stepscharg", "step2")
                   ? true
                   : hasVariant(globalVariants, "screen", "mobileOnly")
                   ? true
@@ -2993,22 +2589,13 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-name={"backstep3"}
                   data-plasmic-override={overrides.backstep3}
                   className={classNames("__wab_instance", sty.backstep3, {
-                    [sty.backstep3stepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.backstep3stepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
                     )
                   })}
-                  color={
-                    hasVariant($state, "stepscharg", "step2")
-                      ? "softGreen"
-                      : "softGreen"
-                  }
+                  color={"softGreen"}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3017,7 +2604,7 @@ function PlasmicSnap__RenderFunc(props: {
                           const actionArgs = {
                             vgroup: "stepscharg",
                             operation: 0,
-                            value: "step2"
+                            value: []
                           };
                           return (({ vgroup, value }) => {
                             if (typeof value === "string") {
@@ -3044,19 +2631,10 @@ function PlasmicSnap__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__yldpQ,
-                      {
-                        [sty.textstepscharg_step2__yldpQvvKa]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        )
-                      }
+                      sty.text__yldpQ
                     )}
                   >
-                    {hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                      : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+                    {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
                   </div>
                 </Button>
               ) : null}
@@ -3064,11 +2642,6 @@ function PlasmicSnap__RenderFunc(props: {
                 data-plasmic-name={"step1Next"}
                 data-plasmic-override={overrides.step1Next}
                 className={classNames("__wab_instance", sty.step1Next, {
-                  [sty.step1Nextstepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
                   [sty.step1Nextstepscharg_step3]: hasVariant(
                     $state,
                     "stepscharg",
@@ -3196,9 +2769,7 @@ function PlasmicSnap__RenderFunc(props: {
                 </div>
               </Button>
               {(
-                hasVariant($state, "stepscharg", "step2")
-                  ? true
-                  : hasVariant(globalVariants, "screen", "mobileOnly")
+                hasVariant(globalVariants, "screen", "mobileOnly")
                   ? true
                   : false
               ) ? (
@@ -3206,11 +2777,6 @@ function PlasmicSnap__RenderFunc(props: {
                   data-plasmic-name={"step2Next"}
                   data-plasmic-override={overrides.step2Next}
                   className={classNames("__wab_instance", sty.step2Next, {
-                    [sty.step2Nextstepscharg_step2]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
                     [sty.step2Nextstepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -3367,24 +2933,13 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                 </Button>
               ) : null}
-              {(
-                hasVariant($state, "stepscharg", "step3")
-                  ? true
-                  : hasVariant($state, "stepscharg", "step2")
-                  ? true
-                  : false
-              ) ? (
+              {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
                     sty.text__cf0Qe,
                     {
-                      [sty.textstepscharg_step2__cf0QeVvKa]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
                       [sty.textstepscharg_step3__cf0QezZ317]: hasVariant(
                         $state,
                         "stepscharg",

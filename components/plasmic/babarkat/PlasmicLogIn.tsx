@@ -1008,6 +1008,75 @@ function PlasmicLogIn__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
+                    sty.text__lh2V1,
+                    {
+                      [sty.textloginByPassword__lh2V10DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textpassword__lh2V18PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textunnamedVariant2__lh2V1JmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant__lh2V1Dv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.textunnamedVariant_unnamedVariant2__lh2V1Dv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    }
+                  )}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLoginByPassword"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            vgroup: "loginByPassword",
+                            operation: 4
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
+                            }
+
+                            $stateSet($state, vgroup, true);
+                            return true;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoginByPassword"] != null &&
+                      typeof $steps["updateLoginByPassword"] === "object" &&
+                      typeof $steps["updateLoginByPassword"].then === "function"
+                    ) {
+                      $steps["updateLoginByPassword"] = await $steps[
+                        "updateLoginByPassword"
+                      ];
+                    }
+                  }}
+                >
+                  {
+                    "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 >"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
                     sty.text__aBe0K,
                     {
                       [sty.textloginByPassword__aBe0K0DikB]: hasVariant(
@@ -1258,7 +1327,19 @@ function PlasmicLogIn__RenderFunc(props: {
                     }
                     type={
                       hasVariant($state, "loginByPassword", "loginByPassword")
-                        ? "password"
+                        ? (() => {
+                            try {
+                              return $state.pass1;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "password";
+                              }
+                              throw e;
+                            }
+                          })()
                         : hasVariant($state, "password", "password")
                         ? (() => {
                             try {
@@ -1285,6 +1366,11 @@ function PlasmicLogIn__RenderFunc(props: {
 
                   <Icon55Icon
                     className={classNames(projectcss.all, sty.svg__rwAhK, {
+                      [sty.svgloginByPassword__rwAhK0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
                       [sty.svgpassword__rwAhK8PqF9]: hasVariant(
                         $state,
                         "password",
@@ -3129,6 +3215,7 @@ function PlasmicLogIn__RenderFunc(props: {
                             args: [
                               "POST",
                               "https://n8n.babarkat.com/webhook/Babarkat/password",
+                              undefined,
                               (() => {
                                 try {
                                   return {
@@ -3145,8 +3232,7 @@ function PlasmicLogIn__RenderFunc(props: {
                                   }
                                   throw e;
                                 }
-                              })(),
-                              undefined
+                              })()
                             ]
                           };
                           return $globalActions["Fragment.apiRequest"]?.apply(
@@ -3174,7 +3260,7 @@ function PlasmicLogIn__RenderFunc(props: {
                           const actionArgs = {
                             args: [
                               "error",
-                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                              "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0646\u0627\u062f\u0631\u0633\u062a \u0627\u0633\u062a.",
                               "top-left"
                             ]
                           };
@@ -3194,15 +3280,17 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateFragmentInputValue2"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
-                        : false
-                    )
+                    $steps["updateFragmentInputValue2"] = false
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
                               return (() => {
+                                localStorage.setItem(
+                                  "userbabarcat",
+                                  JSON.stringify(
+                                    $steps.invokeGlobalAction2.data[0].data
+                                  )
+                                );
                                 const item = {
                                   value:
                                     $steps.invokeGlobalAction2.data[0].data
