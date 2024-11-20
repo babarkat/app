@@ -843,6 +843,7 @@
   background: #1bae67;
   transform: rotateX(0deg) rotateY(20deg) rotateZ(-40deg);
   transform-style: preserve-3d;
+  display: none;
 }
 .text__fkQ6C * {
   transform-style: preserve-3d;

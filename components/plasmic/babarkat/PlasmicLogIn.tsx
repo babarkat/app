@@ -499,6 +499,61 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "unnamedVariant", "unnamedVariant")
           }
         )}
+        onLoad={async event => {
+          const $steps = {};
+
+          $steps["updatePassword"] =
+            localStorage.getItem("userbabarcat") != null &&
+            sessionStorage.getItem("userbabarcatToken") == null &&
+            localStorage.getItem("userBabarkatPass") != null
+              ? (() => {
+                  const actionArgs = { vgroup: "password", operation: 2 };
+                  return (({ vgroup, value }) => {
+                    if (typeof value === "string") {
+                      value = [value];
+                    }
+
+                    const oldValue = $stateGet($state, vgroup);
+                    $stateSet($state, vgroup, !oldValue);
+                    return !oldValue;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+          if (
+            $steps["updatePassword"] != null &&
+            typeof $steps["updatePassword"] === "object" &&
+            typeof $steps["updatePassword"].then === "function"
+          ) {
+            $steps["updatePassword"] = await $steps["updatePassword"];
+          }
+
+          $steps["goToHomepage"] =
+            localStorage.getItem("userbabarcat") != null &&
+            sessionStorage.getItem("userbabarcatToken") != null
+              ? (() => {
+                  const actionArgs = { destination: `/` };
+                  return (({ destination }) => {
+                    if (
+                      typeof destination === "string" &&
+                      destination.startsWith("#")
+                    ) {
+                      document
+                        .getElementById(destination.substr(1))
+                        .scrollIntoView({ behavior: "smooth" });
+                    } else {
+                      __nextRouter?.push(destination);
+                    }
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+          if (
+            $steps["goToHomepage"] != null &&
+            typeof $steps["goToHomepage"] === "object" &&
+            typeof $steps["goToHomepage"].then === "function"
+          ) {
+            $steps["goToHomepage"] = await $steps["goToHomepage"];
+          }
+        }}
       >
         {(
           hasVariant(globalVariants, "screen", "mobileOnly")
