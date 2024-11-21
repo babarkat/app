@@ -510,7 +510,20 @@ function PlasmicSnap__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <title key="title">{PlasmicSnap.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicSnap.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicSnap.pageMetadata.title}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -3879,9 +3892,15 @@ function PlasmicSnap__RenderFunc(props: {
           <Embed
             data-plasmic-name={"embedHtml"}
             data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml)}
+            className={classNames("__wab_instance", sty.embedHtml, {
+              [sty.embedHtmlstepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
             code={
-              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = window.location.href;\r\n        });\r\n    </script>"
+              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href =\"/snapp\"\r\n        });\r\n    </script>"
             }
           />
         </div>
@@ -4167,7 +4186,7 @@ export const PlasmicSnap = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "بابرکت",
       description: "",
       ogImageSrc: "",
       canonical: ""

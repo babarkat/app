@@ -1354,7 +1354,7 @@
           "projectId": "sZQMbqXz9utLNaTnNb3uss",
           "renderModuleFilePath": "plasmic/babarkat/PlasmicSnap.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/snap.tsx"
+            "modulePath": "../src/pages/snapp.tsx"
           },
           "cssFilePath": "plasmic/babarkat/PlasmicSnap.module.css",
           "scheme": "blackbox",
