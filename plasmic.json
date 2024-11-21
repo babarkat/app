@@ -1360,6 +1360,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/snap"
+        },
+        {
+          "id": "guZRqy1VG4VR",
+          "name": "Header",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicHeader.tsx",
+          "importSpec": {
+            "modulePath": "Header.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicHeader.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2099,6 +2112,11 @@
           "id": "cht_k6E97KTR",
           "name": "image 33",
           "filePath": "../public/plasmic/babarkat/images/image33.png"
+        },
+        {
+          "id": "0SI1e84W0MZs",
+          "name": "Group 33840.png",
+          "filePath": "../public/plasmic/babarkat/images/group33840Png.png"
         }
       ],
       "indirect": false,

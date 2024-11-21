@@ -66,6 +66,7 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
+import Header from "../../Header"; // plasmic-import: guZRqy1VG4VR/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { TabsContainer } from "@plasmicpkgs/plasmic-tabs";
@@ -93,9 +94,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicTransaction.module.css"; // plasmic-import: Ic-wT0cLUqQN/css
 
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
-import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
-import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Setting5Icon from "./icons/PlasmicIcon__Setting5"; // plasmic-import: L7zh2uJLRuwn/icon
 import Icon25Icon from "./icons/PlasmicIcon__Icon25"; // plasmic-import: DDtlhnj6MIF5/icon
@@ -123,7 +121,7 @@ export const PlasmicTransaction__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicTransaction__OverridesType = {
   root?: Flex__<"div">;
-  header?: Flex__<"div">;
+  header?: Flex__<typeof Header>;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
   tabsContainer?: Flex__<typeof TabsContainer>;
@@ -440,28 +438,38 @@ function PlasmicTransaction__RenderFunc(props: {
             }
           )}
         >
-          <div
+          <Header
             data-plasmic-name={"header"}
             data-plasmic-override={overrides.header}
-            className={classNames(projectcss.all, sty.header, {
-              [sty.headerno]: hasVariant($state, "no", "no")
-            })}
-          >
-            <BabarkatlogoCopy2SvgIcon
-              className={classNames(projectcss.all, sty.svg__x6IBd)}
-              role={"img"}
-            />
+            className={classNames("__wab_instance", sty.header)}
+            token={(() => {
+              try {
+                return $state.token;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+            userbabarcat={(() => {
+              try {
+                return $state.userinfo;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return {};
+                }
+                throw e;
+              }
+            })()}
+          />
 
-            <GroupSvgIcon
-              className={classNames(projectcss.all, sty.svg__xu0XD)}
-              role={"img"}
-            />
-
-            <Icon4Icon
-              className={classNames(projectcss.all, sty.svg__tugfH)}
-              role={"img"}
-            />
-          </div>
           <Reveal
             data-plasmic-name={"reveal"}
             data-plasmic-override={overrides.reveal}
@@ -4519,7 +4527,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  header: "div";
+  header: typeof Header;
   reveal: typeof Reveal;
   wallet: "div";
   tabsContainer: typeof TabsContainer;

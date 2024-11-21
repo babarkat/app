@@ -346,7 +346,20 @@ function PlasmicLogIn__RenderFunc(props: {
         path: "selectsaraf",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.saraf[0].value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 0;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "password",
@@ -397,7 +410,31 @@ function PlasmicLogIn__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary_large_image" />
+        <title key="title">{PlasmicLogIn.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicLogIn.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicLogIn.pageMetadata.title}
+        />
+
+        <meta
+          key="og:image"
+          property="og:image"
+          content={PlasmicLogIn.pageMetadata.ogImageSrc}
+        />
+        <meta
+          key="twitter:image"
+          name="twitter:image"
+          content={PlasmicLogIn.pageMetadata.ogImageSrc}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -2083,10 +2120,51 @@ function PlasmicLogIn__RenderFunc(props: {
                       throw e;
                     }
                   })()}
-                  onChange={generateStateOnChangeProp($state, [
-                    "select",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "select",
+                      "value"
+                    ]).apply(null, eventArgs);
+                    (async (value, option) => {
+                      const $steps = {};
+
+                      $steps["updateSelectsaraf"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["selectsaraf"]
+                              },
+                              operation: 0,
+                              value: $state.select.value
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSelectsaraf"] != null &&
+                        typeof $steps["updateSelectsaraf"] === "object" &&
+                        typeof $steps["updateSelectsaraf"].then === "function"
+                      ) {
+                        $steps["updateSelectsaraf"] = await $steps[
+                          "updateSelectsaraf"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
+                  }}
                   options={(() => {
                     try {
                       return $state.saraf;
@@ -3628,7 +3706,7 @@ function PlasmicLogIn__RenderFunc(props: {
                               variablePath: ["selectsaraf"]
                             },
                             operation: 0,
-                            value: $state.select.value.value
+                            value: $state.select.value
                           };
                           return (({
                             variable,
@@ -5353,9 +5431,10 @@ export const PlasmicLogIn = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "بابرکت",
       description: "",
-      ogImageSrc: "",
+      ogImageSrc:
+        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png",
       canonical: ""
     }
   }

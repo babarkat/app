@@ -580,7 +580,20 @@ function PlasmicInternet3__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <title key="title">{PlasmicInternet3.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicInternet3.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicInternet3.pageMetadata.title}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -4611,7 +4624,7 @@ export const PlasmicInternet3 = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "بابرکت",
       description: "",
       ogImageSrc: "",
       canonical: ""

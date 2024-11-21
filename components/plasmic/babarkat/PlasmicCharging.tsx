@@ -510,7 +510,20 @@ function PlasmicCharging__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <title key="title">{PlasmicCharging.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicCharging.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicCharging.pageMetadata.title}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -4855,7 +4868,7 @@ export const PlasmicCharging = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "بابرکت",
       description: "",
       ogImageSrc: "",
       canonical: ""

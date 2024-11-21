@@ -51,82 +51,13 @@
     grid-column: 4;
   }
 }
-.header {
-  display: flex;
-  flex-direction: row;
-  position: fixed;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: auto;
+.header:global(.__wab_instance) {
   max-width: 100%;
-  background: #1e2c39;
-  box-shadow: 0px 12px 16px 0px #00000047;
   left: 0;
   top: 0;
   z-index: 1;
+  position: fixed;
   right: 0;
-  bottom: auto;
-  grid-column-start: 1 !important;
-  grid-column-end: -1 !important;
-  padding: 10px 24px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .header {
-    top: 0;
-    right: 0;
-    left: 0;
-    width: auto;
-  }
-}
-.svg__x6IBd {
-  object-fit: cover;
-  max-width: 100%;
-  width: 90px;
-  height: 80px;
-  position: absolute;
-  left: 47%;
-  top: -2px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__x6IBd {
-    left: 38%;
-    width: 100px;
-    height: 100px;
-    max-width: 100%;
-    top: -15px;
-    flex-shrink: 0;
-  }
-}
-.svg__xu0XD {
-  object-fit: cover;
-  max-width: 100%;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__xu0XD {
-    width: 30px;
-    height: 40px;
-    max-width: 100%;
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-}
-.svg__tugfH {
-  object-fit: cover;
-  max-width: 100%;
-  color: #5ed5a8;
-  width: 24px;
-  height: 24px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__tugfH {
-    color: #5ed5a8;
-  }
 }
 .reveal:global(.__wab_instance) {
   max-width: 100%;
