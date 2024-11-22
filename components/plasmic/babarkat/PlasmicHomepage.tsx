@@ -637,7 +637,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     ? true
                     : (() => {
                         try {
-                          return true;
+                          return $state.userbabarcat.canEdit;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
