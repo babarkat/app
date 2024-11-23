@@ -328,19 +328,34 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.saraf[0];
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return 100;
-              }
-              throw e;
-            }
-          })()
+          hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+          hasVariant(globalVariants, "screen", "mobileOnly")
+            ? (() => {
+                try {
+                  return $state.saraf[0];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 100;
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return $state.saraf[0];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 100;
+                  }
+                  throw e;
+                }
+              })()
       },
       {
         path: "selectsaraf",
@@ -487,6 +502,10 @@ function PlasmicLogIn__RenderFunc(props: {
             [sty.rootloginByPassword_password]:
               hasVariant($state, "password", "password") &&
               hasVariant($state, "loginByPassword", "loginByPassword"),
+            [sty.rootloginByPassword_password_unnamedVariant2]:
+              hasVariant($state, "loginByPassword", "loginByPassword") &&
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+              hasVariant($state, "password", "password"),
             [sty.rootloginByPassword_unnamedVariant2]:
               hasVariant($state, "loginByPassword", "loginByPassword") &&
               hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
@@ -989,7 +1008,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   )}
                 >
                   {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
-                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
+                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                   ) : hasVariant($state, "slids", "unnamedVariant3") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
@@ -2107,19 +2126,36 @@ function PlasmicLogIn__RenderFunc(props: {
                     plasmic_antd_5_hostless_css.plasmic_tokens,
                     plasmic_plasmic_rich_components_css.plasmic_tokens
                   )}
-                  defaultValue={(() => {
-                    try {
-                      return $state.saraf[0];
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return 100;
-                      }
-                      throw e;
-                    }
-                  })()}
+                  defaultValue={
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return $state.saraf[0];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 100;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return $state.saraf[0];
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 100;
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
                       "select",
@@ -3482,6 +3518,38 @@ function PlasmicLogIn__RenderFunc(props: {
                       typeof $steps["goToHomepage"].then === "function"
                     ) {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+
+                    $steps["updateFragmentInputValue3"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                return localStorage.setItem(
+                                  "userBabarkatPass",
+                                  "true"
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue3"] != null &&
+                      typeof $steps["updateFragmentInputValue3"] === "object" &&
+                      typeof $steps["updateFragmentInputValue3"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue3"] = await $steps[
+                        "updateFragmentInputValue3"
+                      ];
                     }
 
                     $steps["updateLoadedbtn2"] = true
