@@ -361,20 +361,7 @@ function PlasmicLogIn__RenderFunc(props: {
         path: "selectsaraf",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.saraf[0].value;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return 0;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
         path: "password",
@@ -2163,42 +2150,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     ]).apply(null, eventArgs);
                     (async (value, option) => {
                       const $steps = {};
-
-                      $steps["updateSelectsaraf"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["selectsaraf"]
-                              },
-                              operation: 0,
-                              value: $state.select.value
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateSelectsaraf"] != null &&
-                        typeof $steps["updateSelectsaraf"] === "object" &&
-                        typeof $steps["updateSelectsaraf"].then === "function"
-                      ) {
-                        $steps["updateSelectsaraf"] = await $steps[
-                          "updateSelectsaraf"
-                        ];
-                      }
                     }).apply(null, eventArgs);
                   }}
                   options={(() => {
