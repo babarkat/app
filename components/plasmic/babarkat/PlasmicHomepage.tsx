@@ -293,7 +293,7 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "card",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "5022291068506748"
+        initFunc: ({ $props, $state, $queries, $ctx }) => "5022291045351606"
       },
       {
         path: "inventoryIncrease.open",
@@ -634,7 +634,19 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? true
+                    ? (() => {
+                        try {
+                          return $state.userbabarcat.canEdit;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
                     : (() => {
                         try {
                           return $state.userbabarcat.canEdit;
@@ -1973,7 +1985,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       )}
                     >
                       {
-                        "\u0631\u0627\u0634\u062f \u0627\u0645\u06cc\u0646\u06cc "
+                        "\u0628\u0647\u0646\u0627\u0645 \u0645\u062d\u0645\u062f \u062d\u0633\u06cc\u0646 \u0632\u0627\u062f\u0647"
                       }
                     </div>
                     <div

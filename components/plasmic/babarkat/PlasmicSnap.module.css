@@ -280,52 +280,6 @@
   margin-bottom: 15px;
   flex-shrink: 0;
 }
-.مبلغشارژ {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.unselected {
-  object-fit: cover;
-  max-width: 100%;
-  color: var(--token-2aHIw8xI62Xi);
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-.unselectedstepscharg_step3 {
-  color: #00ffcc;
-}
-.text___2Jkv {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-family: "Vazirmatn", sans-serif;
-  text-align: center;
-  color: var(--token-2aHIw8xI62Xi);
-  min-width: 0;
-}
-.textstepscharg_step3___2JkvZZ317 {
-  color: #00ffcc;
-}
-.svg__hk4S7 {
-  object-fit: cover;
-  max-width: 100%;
-  color: #ffffff;
-  width: 20px;
-  height: 20px;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
-  margin-bottom: 15px;
-  flex-shrink: 0;
-}
 .تاییدخرید {
   display: flex;
   flex-direction: column;
@@ -1499,50 +1453,7 @@
   font-size: 16px;
   padding-bottom: 10px;
   color: var(--token-jgohepLVeKvh);
-}
-.ul {
-  display: flex;
-  padding-right: 20px;
-  padding-left: 0px;
-  padding-bottom: 20px;
-  color: var(--token-jgohepLVeKvh);
-  flex-direction: column;
-}
-.ul > :global(.__wab_flex-container) {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-top: calc(0px - 5px);
-  height: calc(100% + 5px);
-}
-.ul > :global(.__wab_flex-container) > *,
-.ul > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.ul > :global(.__wab_flex-container) > picture > img,
-.ul > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-top: 5px;
-}
-.li___28SrA {
-  display: list-item;
-}
-.freeBox__ov0H8 {
-  display: flex;
-}
-.li__lzqQn {
-  display: list-item;
-}
-.freeBox___2JdhE {
-  display: flex;
-}
-.li__ctBoj {
-  display: list-item;
-}
-.freeBox__jBAns {
-  display: flex;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .اپراتور3 {
-    text-align: right;
-  }
+  text-align: justify;
 }
 .button__kYb2A:global(.__wab_instance) {
   max-width: 100%;

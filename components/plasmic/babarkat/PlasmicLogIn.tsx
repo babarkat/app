@@ -947,7 +947,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     : hasVariant($state, "password", "password")
                     ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                     : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
                     : hasVariant($state, "slids", "unnamedVariant3")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")

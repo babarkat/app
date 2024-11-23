@@ -118,8 +118,6 @@ export type PlasmicSnap__OverridesType = {
   steps?: Flex__<"div">;
   مشخصات?: Flex__<"div">;
   selected?: Flex__<"svg">;
-  مبلغشارژ?: Flex__<"div">;
-  unselected?: Flex__<"svg">;
   تاییدخرید?: Flex__<"div">;
   unselected2?: Flex__<"svg">;
   fragmentInput?: Flex__<typeof Input>;
@@ -135,9 +133,6 @@ export type PlasmicSnap__OverridesType = {
   step1Next?: Flex__<typeof Button>;
   step2Next?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
-  ul?: Flex__<"ul">;
-  اپراتور2?: Flex__<"div">;
-  اپراتور3?: Flex__<"div">;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
@@ -700,7 +695,13 @@ function PlasmicSnap__RenderFunc(props: {
               data-plasmic-name={"reveal"}
               data-plasmic-override={overrides.reveal}
               cascade={false}
-              className={classNames("__wab_instance", sty.reveal)}
+              className={classNames("__wab_instance", sty.reveal, {
+                [sty.revealstepscharg_step3]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step3"
+                )
+              })}
               effect={"fade"}
               triggerOnce={true}
             >
@@ -781,53 +782,6 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                   <LineXlSvgrepoComSvgIcon
                     className={classNames(projectcss.all, sty.svg___1SBz2)}
-                    role={"img"}
-                  />
-
-                  <div
-                    data-plasmic-name={
-                      "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698"
-                    }
-                    data-plasmic-override={overrides.مبلغشارژ}
-                    className={classNames(projectcss.all, sty.مبلغشارژ)}
-                  >
-                    <PlasmicIcon__
-                      data-plasmic-name={"unselected"}
-                      data-plasmic-override={overrides.unselected}
-                      PlasmicIconType={
-                        hasVariant($state, "stepscharg", "step3")
-                          ? CheckCircleSvgrepoComSvgIcon
-                          : RadioButtonCheckedSvgrepoCom2SvgIcon
-                      }
-                      className={classNames(projectcss.all, sty.unselected, {
-                        [sty.unselectedstepscharg_step3]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___2Jkv,
-                        {
-                          [sty.textstepscharg_step3___2JkvZZ317]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      {"\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698"}
-                    </div>
-                  </div>
-                  <LineXlSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__hk4S7)}
                     role={"img"}
                   />
 
@@ -2771,6 +2725,40 @@ function PlasmicSnap__RenderFunc(props: {
                       "invokeGlobalAction"
                     ];
                   }
+
+                  $steps["updateModalOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["modal", "open"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModalOpen"] != null &&
+                    typeof $steps["updateModalOpen"] === "object" &&
+                    typeof $steps["updateModalOpen"].then === "function"
+                  ) {
+                    $steps["updateModalOpen"] = await $steps["updateModalOpen"];
+                  }
                 }}
               >
                 <div
@@ -3033,7 +3021,15 @@ function PlasmicSnap__RenderFunc(props: {
               title={null}
               trigger={null}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__wnIlH)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__wnIlH, {
+                  [sty.freeBoxstepscharg_step3__wnIlHzZ317]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+              >
                 <div
                   className={classNames(
                     projectcss.all,
@@ -3066,127 +3062,48 @@ function PlasmicSnap__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "stepscharg", "step3")
-                    ? "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:"
-                    : "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:"}
+                  {hasVariant($state, "stepscharg", "step3") ? (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return "شارژ اسنپ بین ساعات ۱۰ الی ۱۸ همه روزه، طی ۱۰ دقیقه بعد از درخواست شما، انجام میگردد.\n در صورتی که در خارج از این بازه درخواست ثبت کنید، موجودی از حساب شما کسر میگردد و می بایست تا تایم بعدی اجرای درخواست منتظر بمانید.";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return "شارژ اسنپ بین ساعات ۱۰ الی ۱۸ همه روزه، طی ۱۰ دقیقه بعد از درخواست شما، انجام میگردد.\n\nدر صورتی که در خارج از این بازه درخواست ثبت کنید، موجودی از حساب شما کسر میگردد و می بایست تا تایم بعدی اجرای درخواست منتظر بمانید.";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  )}
                 </div>
-                <Stack__
-                  as={"ul"}
-                  data-plasmic-name={"ul"}
-                  data-plasmic-override={overrides.ul}
-                  hasGap={true}
-                  className={classNames(projectcss.all, projectcss.ul, sty.ul, {
-                    [sty.ulstepscharg_step3]: hasVariant(
+                <Button
+                  className={classNames("__wab_instance", sty.button__kYb2A, {
+                    [sty.buttonstepscharg_step3__kYb2AzZ317]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
                     )
                   })}
-                >
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li___28SrA
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ov0H8)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yVyRx,
-                          {
-                            [sty.textstepscharg_step3__yVyRXzZ317]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {
-                          "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f ."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li__lzqQn
-                    )}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2JdhE
-                      )}
-                    >
-                      <div
-                        data-plasmic-name={
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u06312"
-                        }
-                        data-plasmic-override={overrides.اپراتور2}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور2,
-                          {
-                            [sty.اپراتور2stepscharg_step3]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {
-                          "\u0637\u0631\u062d \u062f\u0644 \u062e\u0648\u0627\u0647 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li__ctBoj
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jBAns)}
-                    >
-                      <div
-                        data-plasmic-name={
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-                        }
-                        data-plasmic-override={overrides.اپراتور3}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور3,
-                          {
-                            [sty.اپراتور3stepscharg_step3]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "stepscharg", "step3")
-                          ? "\u0628\u0639\u062f \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u067e\u0631\u062f\u0627\u062e\u062a \u062a\u0627 1 \u0633\u0627\u0639\u062a \u0628\u0633\u062a\u0647 \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0645\u06cc \u0634\u0648\u062f."
-                          : "\u0628\u0639\u062f \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a \u062a\u0627 1 \u0633\u0627\u0639\u062a \u0628\u0639\u062f \u0628\u0633\u062a\u0647 \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0645\u06cc \u0634\u0648\u062f."}
-                      </div>
-                    </div>
-                  </li>
-                </Stack__>
-                <Button
-                  className={classNames("__wab_instance", sty.button__kYb2A)}
                   color={"green"}
                   onClick={async event => {
                     const $steps = {};
@@ -3845,9 +3762,15 @@ function PlasmicSnap__RenderFunc(props: {
           <Timer
             data-plasmic-name={"timer"}
             data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer)}
+            className={classNames("__wab_instance", sty.timer, {
+              [sty.timerstepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
             intervalSeconds={1}
-            isRunning={true}
+            isRunning={hasVariant($state, "stepscharg", "step3") ? false : true}
             onTick={async () => {
               const $steps = {};
 
@@ -3918,8 +3841,6 @@ const PlasmicDescendants = {
     "steps",
     "\u0645\u0634\u062e\u0635\u0627\u062a",
     "selected",
-    "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698",
-    "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
     "fragmentInput",
@@ -3935,9 +3856,6 @@ const PlasmicDescendants = {
     "step1Next",
     "step2Next",
     "modal",
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
     "lottie",
     "timer",
@@ -3950,8 +3868,6 @@ const PlasmicDescendants = {
     "steps",
     "\u0645\u0634\u062e\u0635\u0627\u062a",
     "selected",
-    "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698",
-    "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
     "fragmentInput",
@@ -3968,8 +3884,6 @@ const PlasmicDescendants = {
     "steps",
     "\u0645\u0634\u062e\u0635\u0627\u062a",
     "selected",
-    "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698",
-    "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
     "fragmentInput",
@@ -3979,15 +3893,11 @@ const PlasmicDescendants = {
     "steps",
     "\u0645\u0634\u062e\u0635\u0627\u062a",
     "selected",
-    "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698",
-    "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2"
   ],
   مشخصات: ["\u0645\u0634\u062e\u0635\u0627\u062a", "selected"],
   selected: ["selected"],
-  مبلغشارژ: ["\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698", "unselected"],
-  unselected: ["unselected"],
   تاییدخرید: [
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2"
@@ -4005,19 +3915,7 @@ const PlasmicDescendants = {
   backstep3: ["backstep3"],
   step1Next: ["step1Next"],
   step2Next: ["step2Next"],
-  modal: [
-    "modal",
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-  ],
-  ul: [
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-  ],
-  اپراتور2: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06312"],
-  اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
+  modal: ["modal"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
   timer: ["timer"],
@@ -4034,8 +3932,6 @@ type NodeDefaultElementType = {
   steps: "div";
   مشخصات: "div";
   selected: "svg";
-  مبلغشارژ: "div";
-  unselected: "svg";
   تاییدخرید: "div";
   unselected2: "svg";
   fragmentInput: typeof Input;
@@ -4051,9 +3947,6 @@ type NodeDefaultElementType = {
   step1Next: typeof Button;
   step2Next: typeof Button;
   modal: typeof AntdModal;
-  ul: "ul";
-  اپراتور2: "div";
-  اپراتور3: "div";
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
@@ -4151,10 +4044,6 @@ export const PlasmicSnap = Object.assign(
     steps: makeNodeComponent("steps"),
     مشخصات: makeNodeComponent("\u0645\u0634\u062e\u0635\u0627\u062a"),
     selected: makeNodeComponent("selected"),
-    مبلغشارژ: makeNodeComponent(
-      "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698"
-    ),
-    unselected: makeNodeComponent("unselected"),
     تاییدخرید: makeNodeComponent(
       "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f"
     ),
@@ -4172,9 +4061,6 @@ export const PlasmicSnap = Object.assign(
     step1Next: makeNodeComponent("step1Next"),
     step2Next: makeNodeComponent("step2Next"),
     modal: makeNodeComponent("modal"),
-    ul: makeNodeComponent("ul"),
-    اپراتور2: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06312"),
-    اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
