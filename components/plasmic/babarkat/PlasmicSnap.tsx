@@ -2145,8 +2145,7 @@ function PlasmicSnap__RenderFunc(props: {
 
                       $steps["invokeGlobalAction3"] =
                         $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                        $steps.invokeGlobalAction4?.data[0]?.message ==
-                          "موجودی صراف کافی نیست	"
+                        $steps.invokeGlobalAction4?.data[0]?.message
                           ? (() => {
                               const actionArgs = {
                                 args: [
