@@ -69,6 +69,7 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -137,6 +138,7 @@ export type PlasmicSnap__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
+  commissionBabarkat?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultSnapProps {}
@@ -488,6 +490,24 @@ function PlasmicSnap__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "commissionBabarkat.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "commissionBabarkat.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "commissionBabarkat.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -3853,6 +3873,48 @@ function PlasmicSnap__RenderFunc(props: {
               "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href =\"/snapp\"\r\n        });\r\n    </script>"
             }
           />
+
+          <ApiRequest
+            data-plasmic-name={"commissionBabarkat"}
+            data-plasmic-override={overrides.commissionBabarkat}
+            className={classNames("__wab_instance", sty.commissionBabarkat)}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__jWq3U
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___5HcYi
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={"GET"}
+            onError={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "error"
+            ])}
+            onLoading={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "loading"
+            ])}
+            onSuccess={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "data"
+            ])}
+            url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -3886,7 +3948,8 @@ const PlasmicDescendants = {
     "modal2",
     "lottie",
     "timer",
-    "embedHtml"
+    "embedHtml",
+    "commissionBabarkat"
   ],
   header: ["header"],
   reveal: [
@@ -3946,7 +4009,8 @@ const PlasmicDescendants = {
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
   timer: ["timer"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  commissionBabarkat: ["commissionBabarkat"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3978,6 +4042,7 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
   embedHtml: typeof Embed;
+  commissionBabarkat: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4092,6 +4157,7 @@ export const PlasmicSnap = Object.assign(
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
+    commissionBabarkat: makeNodeComponent("commissionBabarkat"),
 
     // Metadata about props expected for PlasmicSnap
     internalVariantProps: PlasmicSnap__VariantProps,

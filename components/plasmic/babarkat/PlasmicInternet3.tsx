@@ -150,6 +150,7 @@ export type PlasmicInternet3__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
+  commissionBabarkat?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultInternet3Props {}
@@ -563,6 +564,24 @@ function PlasmicInternet3__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "commissionBabarkat.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "commissionBabarkat.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "commissionBabarkat.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -1085,7 +1104,13 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__peGpz)}
+                    className={classNames(projectcss.all, sty.freeBox__peGpz, {
+                      [sty.freeBoxsteps2_step3__peGpzYl49R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
+                      )
+                    })}
                   >
                     <div
                       className={classNames(
@@ -1112,24 +1137,50 @@ function PlasmicInternet3__RenderFunc(props: {
                         }
                       )}
                     >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return (
-                              $state.selectpack.amount.toLocaleString("en") +
-                              " تومان "
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
+                      {hasVariant($state, "steps2", "step3") ? (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return (
+                                (
+                                  $state.selectpack.amount +
+                                  $state.selectpack.amount *
+                                    (($state.commissionBabarkat.data.babrkat +
+                                      $state.commissionBabarkat.data.saraf) /
+                                      100)
+                                ).toLocaleString("en") + " تومان "
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
+                          })()}
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return (
+                                $state.selectpack.amount.toLocaleString("en") +
+                                " تومان "
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      )}
                     </div>
                   </div>
                 </Stack__>
@@ -4279,7 +4330,10 @@ function PlasmicInternet3__RenderFunc(props: {
           <Timer
             data-plasmic-name={"timer"}
             data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer)}
+            className={classNames("__wab_instance", sty.timer, {
+              [sty.timersteps2_step2]: hasVariant($state, "steps2", "step2"),
+              [sty.timersteps2_step3]: hasVariant($state, "steps2", "step3")
+            })}
             intervalSeconds={1}
             isRunning={true}
             onTick={async () => {
@@ -4331,6 +4385,54 @@ function PlasmicInternet3__RenderFunc(props: {
               "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/intenet\"\r\n        });\r\n    </script>"
             }
           />
+
+          <ApiRequest
+            data-plasmic-name={"commissionBabarkat"}
+            data-plasmic-override={overrides.commissionBabarkat}
+            className={classNames("__wab_instance", sty.commissionBabarkat, {
+              [sty.commissionBabarkatsteps2_step3]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ziMw6
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___3DIm3
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={"GET"}
+            onError={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "error"
+            ])}
+            onLoading={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "loading"
+            ])}
+            onSuccess={generateStateOnChangeProp($state, [
+              "commissionBabarkat",
+              "data"
+            ])}
+            url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4371,7 +4473,8 @@ const PlasmicDescendants = {
     "modal3",
     "lottie",
     "timer",
-    "embedHtml"
+    "embedHtml",
+    "commissionBabarkat"
   ],
   header: ["header"],
   reveal: [
@@ -4455,7 +4558,8 @@ const PlasmicDescendants = {
   modal3: ["modal3", "lottie"],
   lottie: ["lottie"],
   timer: ["timer"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  commissionBabarkat: ["commissionBabarkat"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4494,6 +4598,7 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
   embedHtml: typeof Embed;
+  commissionBabarkat: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4617,6 +4722,7 @@ export const PlasmicInternet3 = Object.assign(
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
+    commissionBabarkat: makeNodeComponent("commissionBabarkat"),
 
     // Metadata about props expected for PlasmicInternet3
     internalVariantProps: PlasmicInternet3__VariantProps,
