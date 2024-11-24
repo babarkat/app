@@ -2123,6 +2123,33 @@ function PlasmicSnap__RenderFunc(props: {
                         ];
                       }
 
+                      $steps["invokeGlobalAction3"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                        $steps.invokeGlobalAction4?.data[0]?.message ==
+                          "موجودی صراف کافی نیست	"
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u0645\u0648\u062c\u0648\u062f\u06cc \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u06a9\u0627\u0641\u06cc \u0646\u06cc\u0633\u062a \u0644\u0637\u0642\u0627 \u0628\u0627 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631 \u062e\u0648\u062f \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f.",
+                                  "top-left"
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction3"] != null &&
+                        typeof $steps["invokeGlobalAction3"] === "object" &&
+                        typeof $steps["invokeGlobalAction3"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction3"] = await $steps[
+                          "invokeGlobalAction3"
+                        ];
+                      }
+
                       $steps["updateModal2Open"] =
                         $steps.invokeGlobalAction4?.data[0]?.success == true
                           ? (() => {
