@@ -1258,7 +1258,13 @@ function PlasmicCharging__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (
-                                  $state.amont.toLocaleString("en") + " تومان "
+                                  (
+                                    $state.amont +
+                                    $state.amont *
+                                      (($state.commissionBabarkat.data.babrkat +
+                                        $state.commissionBabarkat.data.saraf) /
+                                        100)
+                                  ).toLocaleString("en") + " تومان "
                                 );
                               } catch (e) {
                                 if (
