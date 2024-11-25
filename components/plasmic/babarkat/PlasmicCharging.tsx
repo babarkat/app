@@ -246,7 +246,7 @@ function PlasmicCharging__RenderFunc(props: {
           },
           {
             name: "MCI",
-            nameop: "HamrahAval",
+            nameop: "hamrah_Aval",
             description:
               "\u0634\u0627\u0631\u0698 \u0647\u0645\u0631\u0627\u0647 \u0627\u0648\u0644",
             logoUrl:
