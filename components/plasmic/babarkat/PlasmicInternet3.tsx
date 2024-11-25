@@ -259,7 +259,9 @@ function PlasmicInternet3__RenderFunc(props: {
               "0919",
               "0990",
               "0991",
-              "0992"
+              "0992",
+              "0993",
+              "0994"
             ],
             chargeRange: {
               min: 1000,
