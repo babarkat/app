@@ -332,7 +332,21 @@ function PlasmicLogIn__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
-                  return $state.saraf[0];
+                  return $state.saraf[0].value;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 100;
+                  }
+                  throw e;
+                }
+              })()
+            : hasVariant(globalVariants, "screen", "mobileOnly")
+            ? (() => {
+                try {
+                  return $state.saraf[0].value;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -345,7 +359,7 @@ function PlasmicLogIn__RenderFunc(props: {
               })()
             : (() => {
                 try {
-                  return $state.saraf[0];
+                  return $state.saraf[0].value;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -2122,7 +2136,21 @@ function PlasmicLogIn__RenderFunc(props: {
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? (() => {
                           try {
-                            return $state.saraf[0];
+                            return $state.saraf[0].value;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return 100;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? (() => {
+                          try {
+                            return $state.saraf[0].value;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -2135,7 +2163,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         })()
                       : (() => {
                           try {
-                            return $state.saraf[0];
+                            return $state.saraf[0].value;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
