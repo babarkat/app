@@ -1144,19 +1144,13 @@ function PlasmicHomepage__RenderFunc(props: {
                     </div>
                   </div>
                 </Stack__>
-                {(
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? true
-                    : false
-                ) ? (
-                  <Stack__
-                    as={"div"}
-                    data-plasmic-name={"services4"}
-                    data-plasmic-override={overrides.services4}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.services4)}
-                  />
-                ) : null}
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"services4"}
+                  data-plasmic-override={overrides.services4}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.services4)}
+                />
               </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox__p5Uu)}>
                 <div
@@ -11850,7 +11844,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 \u06f8 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631\u060c \u0634\u0627\u0645\u0644 \u0627\u0639\u062f\u0627\u062f\u060c \u062d\u0631\u0648\u0641 \u0628\u0632\u0631\u06af \u0648 \u06a9\u0648\u0686\u06a9 \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0648 \u0646\u0645\u0627\u062f\u0647\u0627\u06cc \u0648\u06cc\u0698\u0647 \u0628\u0627\u0634\u062f."
+                          "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 6 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631 \u0628\u0627\u0634\u062f."
                         }
                       </div>
                       <div
@@ -11886,20 +11880,12 @@ function PlasmicHomepage__RenderFunc(props: {
                                       operation: 0,
                                       value: (() => {
                                         let score = 0;
-                                        if ($state.newPass2.value.length >= 8)
-                                          score += 20;
-                                        if (/[a-z]/.test($state.newPass2.value))
-                                          score += 20;
-                                        if (/[A-Z]/.test($state.newPass2.value))
-                                          score += 20;
-                                        if (/[0-9]/.test($state.newPass2.value))
-                                          score += 20;
-                                        if (
-                                          /[^a-zA-Z0-9]/.test(
-                                            $state.newPass2.value
-                                          )
-                                        )
-                                          score += 20;
+                                        if ($state.newPass2.value.length >= 2)
+                                          score += 30;
+                                        if ($state.newPass2.value.length >= 4)
+                                          score += 30;
+                                        if ($state.newPass2.value.length >= 6)
+                                          score += 40;
                                         return score;
                                       })()
                                     };

@@ -38,7 +38,14 @@
     top: 0;
     left: 0;
     right: 0;
+    margin-top: 60px;
   }
+}
+.header:global(.__wab_instance) {
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  position: fixed;
 }
 .wallet {
   display: flex;
@@ -1078,10 +1085,11 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 200px;
   max-width: 100%;
   margin-top: calc(10px + 20px) !important;
   min-width: 0;
+  flex-shrink: 0;
   padding: 0px;
 }
 .services4 > :global(.__wab_flex-container) {
@@ -2924,6 +2932,7 @@
   text-align: right;
   color: var(--token-_u6T-ctQmwmL);
   padding-right: 5px;
+  padding-top: 8px;
   min-width: 0;
 }
 .text__uDdVr {
@@ -2934,6 +2943,7 @@
   text-align: right;
   color: var(--token-s7Z9BN_B1gNc);
   padding-right: 5px;
+  padding-top: 8px;
   min-width: 0;
 }
 .button___5GhRl:global(.__wab_instance) {
