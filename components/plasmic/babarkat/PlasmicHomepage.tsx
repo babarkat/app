@@ -11740,6 +11740,11 @@ function PlasmicHomepage__RenderFunc(props: {
               hideFooter: true,
               maskClosable: false,
               modalContentClassName: classNames({
+                [sty["pcls_MLrCSjnyKZhY"]]: hasVariant(
+                  globalVariants,
+                  "screen",
+                  "mobileOnly"
+                ),
                 [sty["pcls_zbrpDBitDkyb"]]: true
               }),
               modalScopeClassName: sty["modal6__modal"],
@@ -11751,7 +11756,14 @@ function PlasmicHomepage__RenderFunc(props: {
               title: null,
               trigger: null,
               width: "100vw",
-              wrapClassName: classNames({ [sty["pcls_IkhvL-EUjNx0"]]: true })
+              wrapClassName: classNames({
+                [sty["pcls_IkhvL-EUjNx0"]]: true,
+                [sty["pcls_nQaK5zi_LMad"]]: hasVariant(
+                  globalVariants,
+                  "screen",
+                  "mobileOnly"
+                )
+              })
             };
             initializeCodeComponentStates(
               $state,
