@@ -2071,10 +2071,18 @@ function PlasmicTransaction__RenderFunc(props: {
                                           <React.Fragment>
                                             {(() => {
                                               try {
-                                                return (
-                                                  currentItem.transactionType +
-                                                  " وجه"
-                                                );
+                                                return (() => {
+                                                  if (
+                                                    currentItem.transactionType ==
+                                                    "واریز"
+                                                  )
+                                                    return "رسید" + " وجه";
+                                                  else
+                                                    return (
+                                                      currentItem.transactionType +
+                                                      " وجه"
+                                                    );
+                                                })();
                                               } catch (e) {
                                                 if (
                                                   e instanceof TypeError ||
@@ -2537,9 +2545,18 @@ function PlasmicTransaction__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (
-                                  $state.transaction2.transactionType + " وجه"
-                                );
+                                return (() => {
+                                  if (
+                                    $state.transaction2.transactionType ==
+                                    "واریز"
+                                  )
+                                    return "رسید " + " وجه";
+                                  else
+                                    return (
+                                      $state.transaction2.transactionType +
+                                      " وجه"
+                                    );
+                                })();
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -2648,9 +2665,37 @@ function PlasmicTransaction__RenderFunc(props: {
                             sty.text__aqgJy
                           )}
                         >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :"
-                            : "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :"}
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :"
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    if (
+                                      $state.transaction2.transactionType ==
+                                      "واریز"
+                                    )
+                                      return "واریز کننده: ";
+                                    else return "دریافت کننده: ";
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
                         </div>
                         {(() => {
                           try {
@@ -2803,19 +2848,19 @@ function PlasmicTransaction__RenderFunc(props: {
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان "
+                                            ).toLocaleString() + " تومان"
                                           );
                                         case "dollar":
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " دلار "
+                                            ).toLocaleString() + " دلار"
                                           );
                                         case "afghani":
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " افقانی "
+                                            ).toLocaleString() + " افقانی"
                                           );
                                       }
                                     })();
@@ -3080,7 +3125,7 @@ function PlasmicTransaction__RenderFunc(props: {
                               {(() => {
                                 try {
                                   return (() => {
-                                    switch ($state.transaction2.type) {
+                                    switch ($state.transaction2.type_2) {
                                       case "toman":
                                         return (
                                           (
@@ -3262,7 +3307,7 @@ function PlasmicTransaction__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (() => {
-                                  switch ($state.transaction2.type_2) {
+                                  switch ($state.transaction2.type) {
                                     case "toman":
                                       return (
                                         (
