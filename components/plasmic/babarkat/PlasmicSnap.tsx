@@ -2524,6 +2524,107 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                 ) : null}
               </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox__hfu8C)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__yQ6Gg, {
+                    [sty.imgstepscharg_step3__yQ6GgzZ317]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
+                  displayHeight={"100%"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"100%"}
+                  loading={"lazy"}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return undefined;
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                  src={{
+                    src: "/plasmic/babarkat/images/image34.png",
+                    fullWidth: 1500,
+                    fullHeight: 500,
+                    aspectRatio: undefined
+                  }}
+                />
+
+                <Button
+                  className={classNames("__wab_instance", sty.button__jNLsb)}
+                  color={"sand"}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                return window.open(
+                                  "https://www.aparat.com/v/yephw21",
+                                  "_blank"
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                  size={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "compact"
+                      : undefined
+                  }
+                >
+                  {
+                    "\u0622\u0645\u0648\u0632\u0634 \u067e\u0631\u062f\u0627\u062e\u062a"
+                  }
+                </Button>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__n7GQp
+                  )}
+                >
+                  {
+                    "\u0622\u0645\u0648\u0632\u0634 \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0632 \u0637\u0631\u06cc\u0642 \u067e\u0646\u0644 \u0633\u0627\u0632\u0645\u0627\u0646\u06cc \u0627\u0633\u0646\u067e\n"
+                  }
+                </div>
+              </div>
             </Reveal>
             <Stack__
               as={"div"}
@@ -3876,6 +3977,7 @@ function PlasmicSnap__RenderFunc(props: {
           <ApiRequest
             data-plasmic-name={"commissionBabarkat"}
             data-plasmic-override={overrides.commissionBabarkat}
+            children={null}
             className={classNames("__wab_instance", sty.commissionBabarkat)}
             errorDisplay={
               <div
