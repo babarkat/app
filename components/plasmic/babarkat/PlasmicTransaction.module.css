@@ -892,6 +892,12 @@
   color: #ffffff;
   outline: none;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .modal:global(.__wab_instance) {
+    padding: 0px;
+    margin: 0px;
+  }
+}
 .freeBox__v19T {
   display: flex;
   flex-direction: column;

@@ -2542,32 +2542,67 @@ function PlasmicTransaction__RenderFunc(props: {
                             sty.text__c3Rwd
                           )}
                         >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (() => {
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    if (
+                                      $state.transaction2.transactionType ==
+                                      "واریز"
+                                    )
+                                      return "رسید " + " وجه";
+                                    else
+                                      return (
+                                        $state.transaction2.transactionType +
+                                        " وجه"
+                                      );
+                                  })();
+                                } catch (e) {
                                   if (
-                                    $state.transaction2.transactionType ==
-                                    "واریز"
-                                  )
-                                    return "رسید " + " وجه";
-                                  else
-                                    return (
-                                      $state.transaction2.transactionType +
-                                      " وجه"
-                                    );
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
+                                  }
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    if (
+                                      $state.transaction2.transactionType ==
+                                      "واریز"
+                                    )
+                                      return "رسید " + " وجه";
+                                    else
+                                      return (
+                                        $state.transaction2.transactionType +
+                                        " وجه"
+                                      );
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
                         </div>
                       ) : null}
                       {(() => {
@@ -2670,7 +2705,29 @@ function PlasmicTransaction__RenderFunc(props: {
                             "screen",
                             "mobileOnly"
                           ) ? (
-                            "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :"
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    if (
+                                      $state.transaction2.transactionType ==
+                                      "واریز"
+                                    )
+                                      return "واریز کننده: ";
+                                    else return "دریافت کننده: ";
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
                           ) : (
                             <React.Fragment>
                               {(() => {
@@ -2810,19 +2867,19 @@ function PlasmicTransaction__RenderFunc(props: {
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان "
+                                            ).toLocaleString() + " تومان"
                                           );
                                         case "dollar":
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " دلار "
+                                            ).toLocaleString() + " دلار"
                                           );
                                         case "afghani":
                                           return (
                                             (
                                               $state.transaction2.value * 1000
-                                            ).toLocaleString() + " افقانی "
+                                            ).toLocaleString() + " افقانی"
                                           );
                                       }
                                     })();
@@ -3087,24 +3144,24 @@ function PlasmicTransaction__RenderFunc(props: {
                               {(() => {
                                 try {
                                   return (() => {
-                                    switch ($state.transaction2.type) {
+                                    switch ($state.transaction2.type_2) {
                                       case "toman":
                                         return (
                                           (
                                             $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " تومان "
+                                          ).toLocaleString() + " تومان"
                                         );
                                       case "dollar":
                                         return (
                                           (
                                             $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " دلار "
+                                          ).toLocaleString() + " دلار"
                                         );
                                       case "afghani":
                                         return (
                                           (
                                             $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " افقانی "
+                                          ).toLocaleString() + " افقانی"
                                         );
                                     }
                                   })();
@@ -3303,42 +3360,87 @@ function PlasmicTransaction__RenderFunc(props: {
                             sty.text__kv0QD
                           )}
                         >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (() => {
-                                  switch ($state.transaction2.type) {
-                                    case "toman":
-                                      return (
-                                        (
-                                          $state.transaction2.value * 1000
-                                        ).toLocaleString() + " تومان "
-                                      );
-                                    case "dollar":
-                                      return (
-                                        (
-                                          $state.transaction2.value * 1000
-                                        ).toLocaleString() + " دلار "
-                                      );
-                                    case "afghani":
-                                      return (
-                                        (
-                                          $state.transaction2.value * 1000
-                                        ).toLocaleString() + " افقانی "
-                                      );
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    switch ($state.transaction2.type) {
+                                      case "toman":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " تومان"
+                                        );
+                                      case "dollar":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " دلار"
+                                        );
+                                      case "afghani":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " افقانی"
+                                        );
+                                    }
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "--";
                                   }
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    switch ($state.transaction2.type) {
+                                      case "toman":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " تومان "
+                                        );
+                                      case "dollar":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " دلار "
+                                        );
+                                      case "afghani":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " افقانی "
+                                        );
+                                    }
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "--";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
                         </div>
                       </div>
                     </div>
