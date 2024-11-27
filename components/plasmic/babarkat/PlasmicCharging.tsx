@@ -228,7 +228,8 @@ function PlasmicCharging__RenderFunc(props: {
               "0936",
               "0937",
               "0938",
-              "0939"
+              "0939",
+              "0941"
             ],
             chargeRange: { min: 1000, max: 200000, customAmounts: true },
             services: [
@@ -266,7 +267,8 @@ function PlasmicCharging__RenderFunc(props: {
               "0991",
               "0992",
               "0993",
-              "0994"
+              "0994",
+              "0996"
             ],
             chargeRange: {
               min: 1000,
@@ -289,7 +291,7 @@ function PlasmicCharging__RenderFunc(props: {
               "\u0634\u0627\u0631\u0698 \u0631\u0627\u06cc\u062a\u0644",
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
-            codes: ["0920", "0921", "0922"],
+            codes: ["0920", "0921", "0922", "0923"],
             chargeRange: { min: 1000, max: 150000, customAmounts: true },
             services: [
               {
