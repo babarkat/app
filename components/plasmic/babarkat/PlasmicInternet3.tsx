@@ -586,6 +586,12 @@ function PlasmicInternet3__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "error",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -3509,6 +3515,81 @@ function PlasmicInternet3__RenderFunc(props: {
                       ) {
                         $steps["invokeGlobalAction3"] = await $steps[
                           "invokeGlobalAction3"
+                        ];
+                      }
+
+                      $steps["updateError"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                        $steps.invokeGlobalAction4?.data[0]?.message
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["error"]
+                                },
+                                operation: 0,
+                                value:
+                                  $steps.invokeGlobalAction4.data[0].message
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updateError"] != null &&
+                        typeof $steps["updateError"] === "object" &&
+                        typeof $steps["updateError"].then === "function"
+                      ) {
+                        $steps["updateError"] = await $steps["updateError"];
+                      }
+
+                      $steps["invokeGlobalAction6"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                        $steps.invokeGlobalAction4?.data[0]?.message
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  (() => {
+                                    try {
+                                      return $state.error;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "plasmic-antd5-config-provider.showNotification"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction6"] != null &&
+                        typeof $steps["invokeGlobalAction6"] === "object" &&
+                        typeof $steps["invokeGlobalAction6"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction6"] = await $steps[
+                          "invokeGlobalAction6"
                         ];
                       }
 

@@ -508,6 +508,12 @@ function PlasmicSnap__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "error",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2143,6 +2149,43 @@ function PlasmicSnap__RenderFunc(props: {
                         ];
                       }
 
+                      $steps["updateError"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                        $steps.invokeGlobalAction4?.data[0]?.message
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["error"]
+                                },
+                                operation: 0,
+                                value:
+                                  $steps.invokeGlobalAction4.data[0].message
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updateError"] != null &&
+                        typeof $steps["updateError"] === "object" &&
+                        typeof $steps["updateError"].then === "function"
+                      ) {
+                        $steps["updateError"] = await $steps["updateError"];
+                      }
+
                       $steps["invokeGlobalAction3"] =
                         $steps.invokeGlobalAction4?.data[0]?.success == false &&
                         $steps.invokeGlobalAction4?.data[0]?.message
@@ -2150,12 +2193,24 @@ function PlasmicSnap__RenderFunc(props: {
                               const actionArgs = {
                                 args: [
                                   "error",
-                                  "\u0645\u0648\u062c\u0648\u062f\u06cc \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u06a9\u0627\u0641\u06cc \u0646\u06cc\u0633\u062a \u0644\u0637\u0642\u0627 \u0628\u0627 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631 \u062e\u0648\u062f \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f.",
-                                  "top-left"
+                                  (() => {
+                                    try {
+                                      return $state.error;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
                                 ]
                               };
                               return $globalActions[
-                                "Fragment.showToast"
+                                "plasmic-antd5-config-provider.showNotification"
                               ]?.apply(null, [...actionArgs.args]);
                             })()
                           : undefined;
@@ -2524,7 +2579,15 @@ function PlasmicSnap__RenderFunc(props: {
                   </div>
                 ) : null}
               </Stack__>
-              <div className={classNames(projectcss.all, sty.freeBox__hfu8C)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__hfu8C, {
+                  [sty.freeBoxstepscharg_step3__hfu8CzZ317]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+              >
                 <PlasmicImg__
                   alt={""}
                   className={classNames(sty.img__yQ6Gg, {
