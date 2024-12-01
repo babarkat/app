@@ -3457,7 +3457,8 @@ function PlasmicInternet3__RenderFunc(props: {
                       }
 
                       $steps["updatePardakhtid"] =
-                        $state.mojodi > $state.selectpack.amount
+                        $state.mojodi > $state.selectpack.amount &&
+                        $steps.invokeGlobalAction4.data?.[0]?.id
                           ? (() => {
                               const actionArgs = {
                                 variable: {
