@@ -2306,6 +2306,12 @@ function PlasmicInternet3__RenderFunc(props: {
                                                 $state,
                                                 "steps2",
                                                 "step2"
+                                              ),
+                                            [sty.freeBoxsteps2_step3__karPaYl49R]:
+                                              hasVariant(
+                                                $state,
+                                                "steps2",
+                                                "step3"
                                               )
                                           }
                                         )}
@@ -3307,7 +3313,7 @@ function PlasmicInternet3__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction"] =
-                        $state.mojodi < $state.selectpack.amount
+                        $state.mojodi > $state.selectpack.amount
                           ? (() => {
                               const actionArgs = {
                                 args: [
