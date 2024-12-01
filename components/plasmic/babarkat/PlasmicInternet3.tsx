@@ -3312,48 +3312,47 @@ function PlasmicInternet3__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction"] =
-                        $state.mojodi > $state.selectpack.amount
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/babarkat/service",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        method: "internet",
-                                        operator:
-                                          $state.operators2[
-                                            $state.operatorselect
-                                          ].name,
-                                        product_id: $state.selectpack.id,
-                                        mobile: $state.number,
-                                        internet_type:
-                                          $state.selectpack.periodicity,
-                                        sim_type: $state.selectpack.sim_type,
-                                        order_id: $state.uuid,
-                                        pay_type: "credit"
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                      $steps["invokeGlobalAction"] = false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "POST",
+                                "https://n8n.babarkat.com/webhook/babarkat/service",
+                                undefined,
+                                (() => {
+                                  try {
+                                    return {
+                                      method: "internet",
+                                      operator:
+                                        $state.operators2[$state.operatorselect]
+                                          .name,
+                                      product_id: $state.selectpack.id,
+                                      mobile: $state.number,
+                                      internet_type:
+                                        $state.selectpack.periodicity,
+                                      sim_type: $state.selectpack.sim_type,
+                                      order_id: $state.uuid,
+                                      pay_type: "credit"
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction"] != null &&
                         typeof $steps["invokeGlobalAction"] === "object" &&
@@ -3402,12 +3401,7 @@ function PlasmicInternet3__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction4"] = (
-                        $state.infopardakt?.code !== undefined &&
-                        $state.pardakhtid !== 0
-                          ? $state.infopardakt.code === 1
-                          : false
-                      )
+                      $steps["invokeGlobalAction4"] = false
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -3532,12 +3526,7 @@ function PlasmicInternet3__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction5"] = (
-                        $state.infopardakt?.code !== undefined &&
-                        $state.pardakhtid !== 0
-                          ? $state.infopardakt.code === 1
-                          : false
-                      )
+                      $steps["invokeGlobalAction5"] = false
                         ? (() => {
                             const actionArgs = {
                               args: [
