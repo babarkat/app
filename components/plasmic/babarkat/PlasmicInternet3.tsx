@@ -293,8 +293,7 @@ function PlasmicInternet3__RenderFunc(props: {
                 text: "\u0627\u0639\u062a\u0628\u0627\u0631\u06cc",
                 type: "credit"
               },
-              { text: "\u062f\u0627\u0626\u0645\u06cc", type: "permanent" },
-              { text: "\u062f\u06cc\u062a\u0627", type: "data" }
+              { text: "\u062f\u0627\u0626\u0645\u06cc", type: "permanent" }
             ]
           },
           {
@@ -318,7 +317,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "boxselect[].select",
@@ -1069,7 +1068,13 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__pWf5U)}
+                    className={classNames(projectcss.all, sty.freeBox__pWf5U, {
+                      [sty.freeBoxsteps2_step3__pWf5UYl49R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
+                      )
+                    })}
                   >
                     <div
                       className={classNames(
@@ -1111,6 +1116,83 @@ function PlasmicInternet3__RenderFunc(props: {
                           }
                         })()}
                       </React.Fragment>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__noLlj, {
+                      [sty.freeBoxsteps2_step3__noLljYl49R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gR4A9,
+                        {
+                          [sty.textsteps2_step3__gR4A9Yl49R]: hasVariant(
+                            $state,
+                            "steps2",
+                            "step3"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "steps2", "step3")
+                        ? "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"
+                        : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__yqHml,
+                        {
+                          [sty.textsteps2_step3__yqHmlYl49R]: hasVariant(
+                            $state,
+                            "steps2",
+                            "step3"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "steps2", "step3") ? (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.operators2[$state.operatorselect]
+                                .internet[$state.typecharge].text;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.number;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      )}
                     </div>
                   </div>
                   <div

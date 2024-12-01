@@ -602,6 +602,62 @@
   text-overflow: clip;
   min-width: 0;
 }
+.freeBox__noLlj {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.text__gR4A9 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  font-family: "Vazirmatn", sans-serif;
+  color: var(--token-jgohepLVeKvh);
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__gR4A9 {
+    font-weight: 700;
+  }
+}
+.text__yqHml {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Vazirmatn", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--token-jgohepLVeKvh);
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  min-width: 0;
+}
 .freeBox__peGpz {
   display: flex;
   flex-direction: row;
