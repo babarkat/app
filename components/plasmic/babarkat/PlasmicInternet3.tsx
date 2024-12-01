@@ -3609,16 +3609,12 @@ function PlasmicInternet3__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction3"] = (
-                        $state.infopardakt?.code
-                          ? $state.infopardakt?.code != 1
-                          : false
-                      )
+                      $steps["invokeGlobalAction3"] = true
                         ? (() => {
                             const actionArgs = {
                               args: [
                                 "error",
-                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                                "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u0627\u0645\u06a9\u0627\u0646 \u062e\u0631\u06cc\u062f \u0627\u06cc\u0646\u062a\u0631\u0646\u062a \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f \u0644\u0637\u0641\u0627 \u0628\u0639\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
                                 "top-left"
                               ]
                             };
