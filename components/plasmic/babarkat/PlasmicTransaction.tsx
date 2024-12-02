@@ -1345,6 +1345,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "argin"
                                                     ):
                                                       return "شارژ سیم کارت";
+                                                    case currentItem.type.includes(
+                                                      "inte"
+                                                    ):
+                                                      return "خرید بسته اینترنت";
                                                     default:
                                                       return "نوع ناشناخته";
                                                   }
@@ -4000,7 +4004,10 @@ function PlasmicTransaction__RenderFunc(props: {
                 return {
                   userToken: $state.token,
                   page: $state.page,
-                  transaction: $state.transaction
+                  transaction:
+                    $state.transaction == undefined
+                      ? "charge"
+                      : $state.transaction
                 };
               } catch (e) {
                 if (

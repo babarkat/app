@@ -512,7 +512,14 @@ function PlasmicInternet3__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+          hasVariant($state, "steps2", "step2") &&
+          hasVariant(globalVariants, "screen", "mobileOnly")
+            ? false
+            : hasVariant($state, "steps2", "step2")
+            ? false
+            : hasVariant(globalVariants, "screen", "mobileOnly")
+            ? false
+            : false
       },
       {
         path: "userinfo",
@@ -3600,7 +3607,8 @@ function PlasmicInternet3__RenderFunc(props: {
                                     throw e;
                                   }
                                 })(),
-                                "top-left"
+                                "top-left",
+                                5000
                               ]
                             };
                             return $globalActions["Fragment.showToast"]?.apply(
@@ -3921,7 +3929,9 @@ function PlasmicInternet3__RenderFunc(props: {
             <AntdModal
               data-plasmic-name={"modal3"}
               data-plasmic-override={overrides.modal3}
-              className={classNames("__wab_instance", sty.modal3)}
+              className={classNames("__wab_instance", sty.modal3, {
+                [sty.modal3steps2_step2]: hasVariant($state, "steps2", "step2")
+              })}
               defaultStylesClassName={classNames(
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,

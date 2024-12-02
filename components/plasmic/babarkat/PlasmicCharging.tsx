@@ -2756,7 +2756,8 @@ function PlasmicCharging__RenderFunc(props: {
                                     throw e;
                                   }
                                 })(),
-                                "top-left"
+                                "top-left",
+                                5000
                               ]
                             };
                             return $globalActions["Fragment.showToast"]?.apply(
