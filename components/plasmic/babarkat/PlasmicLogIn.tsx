@@ -730,11 +730,19 @@ function PlasmicLogIn__RenderFunc(props: {
                   ? "animate"
                   : undefined,
                 {
+                  [sty.freeBoxloginByPassword__ss9JK0DikB]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
                   [sty.freeBoxpassword__ss9JK8PqF9]: hasVariant(
                     $state,
                     "password",
                     "password"
                   ),
+                  [sty.freeBoxpassword_unnamedVariant__ss9JK8PqF9Dv9B5]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "password", "password"),
                   [sty.freeBoxslids_unnamedVariant2__ss9JKnjomh]: hasVariant(
                     $state,
                     "slids",
@@ -750,6 +758,11 @@ function PlasmicLogIn__RenderFunc(props: {
                     "slids",
                     "unnamedVariant"
                   ),
+                  [sty.freeBoxunnamedVariant2__ss9JKJmKha]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
                   [sty.freeBoxunnamedVariant__ss9JKDv9B5]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -757,6 +770,9 @@ function PlasmicLogIn__RenderFunc(props: {
                   ),
                   [sty.freeBoxunnamedVariant_slids_unnamedVariant__ss9JKDv9B5Me9Ia]:
                     hasVariant($state, "slids", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
+                  [sty.freeBoxunnamedVariant_unnamedVariant2__ss9JKDv9B5JmKha]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
                     hasVariant($state, "unnamedVariant", "unnamedVariant")
                 }
               )}

@@ -69,6 +69,8 @@ import {
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
+import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -90,13 +92,16 @@ import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtu
 import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zXLIAYD/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
+import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
+import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: rPH6lstZmeFB/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: flxpisepE8-C/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu9gyKG/icon
+import Icon57Icon from "./icons/PlasmicIcon__Icon57"; // plasmic-import: T9OBsfBXupjw/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 
 import __lib_md5 from "md5";
@@ -133,6 +138,33 @@ export type PlasmicHeader__OverridesType = {
   fathername?: Flex__<typeof Input>;
   city?: Flex__<typeof Input>;
   location?: Flex__<typeof Input>;
+  editSaraf?: Flex__<typeof AntdModal>;
+  wallet6?: Flex__<"div">;
+  img?: Flex__<typeof PlasmicImg__>;
+  fragmentInput?: Flex__<typeof Input>;
+  fragmentInput3?: Flex__<typeof Input>;
+  fragmentInput2?: Flex__<typeof Input>;
+  timer?: Flex__<typeof Timer>;
+  select?: Flex__<typeof AntdSelect>;
+  btnNumber?: Flex__<typeof Button>;
+  button?: Flex__<typeof Button>;
+  button2?: Flex__<typeof Button>;
+  btnSaraf?: Flex__<typeof Button>;
+  sendcode?: Flex__<typeof Button>;
+  figmaPaste?: Flex__<"div">;
+  group?: Flex__<"div">;
+  group2?: Flex__<"div">;
+  rectangle35?: Flex__<"div">;
+  group3?: Flex__<"div">;
+  group4?: Flex__<"div">;
+  rectangle23?: Flex__<"div">;
+  group5?: Flex__<"div">;
+  rectangle24?: Flex__<"div">;
+  group6?: Flex__<"div">;
+  rectangle25?: Flex__<"div">;
+  group7?: Flex__<"div">;
+  rectangle?: Flex__<"div">;
+  group8?: Flex__<"div">;
   editPassword?: Flex__<typeof AntdModal>;
   wallet5?: Flex__<"div">;
   nowPass?: Flex__<typeof Input>;
@@ -327,6 +359,83 @@ function PlasmicHeader__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "editSaraf.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+      },
+      {
+        path: "fragmentInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "fragmentInput3.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "fragmentInput2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "select.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $props.userbabarcat._saraf;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "saraflist",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (() => {
+                const transformedArray = $props.userbabarcat.saraflist.map(
+                  item => ({
+                    label: item.name,
+                    value: item.id
+                  })
+                );
+                return transformedArray;
+              })();
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "loadedbtn",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -763,6 +872,900 @@ function PlasmicHeader__RenderFunc(props: {
             </Button>
           </Stack__>
           <div className={classNames(projectcss.all, sty.freeBox__wJUmw)} />
+        </div>
+      </AntdModal>
+      <AntdModal
+        data-plasmic-name={"editSaraf"}
+        data-plasmic-override={overrides.editSaraf}
+        className={classNames("__wab_instance", sty.editSaraf)}
+        closeButtonClassName={classNames({ [sty["pcls_LO2dPyO7g1fN"]]: true })}
+        defaultStylesClassName={classNames(
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens
+        )}
+        hideFooter={true}
+        modalContentClassName={classNames({
+          [sty["pcls_KLaWN2XlLNSk"]]: true,
+          [sty["pcls_emKwbulljBAR"]]: hasVariant(
+            globalVariants,
+            "screen",
+            "mobileOnly"
+          )
+        })}
+        modalScopeClassName={sty["editSaraf__modal"]}
+        onOpenChange={generateStateOnChangeProp($state, ["editSaraf", "open"])}
+        open={generateStateValueProp($state, ["editSaraf", "open"])}
+        title={null}
+        trigger={null}
+        width={
+          hasVariant(globalVariants, "screen", "mobileOnly") ? "100vw" : "100vw"
+        }
+        wrapClassName={classNames({ [sty["pcls_ECy8sTZpS0H1"]]: true })}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__xbkO)}>
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"wallet6"}
+            data-plasmic-override={overrides.wallet6}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.wallet6)}
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox___0E0Sh)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__kplWd
+                )}
+              >
+                {
+                  "\u062a\u063a\u06cc\u06cc\u0631 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631"
+                }
+              </div>
+            </Stack__>
+          </Stack__>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox___0PVr0)}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__uOCyg)}>
+              <div className={classNames(projectcss.all, sty.freeBox__wLrkG)}>
+                {false ? (
+                  <PlasmicImg__
+                    data-plasmic-name={"img"}
+                    data-plasmic-override={overrides.img}
+                    alt={""}
+                    className={classNames(sty.img)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"auto"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/babarkat/images/image10.svg",
+                      fullWidth: 100,
+                      fullHeight: 100,
+                      aspectRatio: 1
+                    }}
+                  />
+                ) : null}
+              </div>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__zu7Pk)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___62RaG
+                  )}
+                >
+                  {
+                    "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__dhrRs
+                  )}
+                >
+                  {
+                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
+                  }
+                </div>
+                <Input
+                  data-plasmic-name={"fragmentInput"}
+                  data-plasmic-override={overrides.fragmentInput}
+                  className={classNames("__wab_instance", sty.fragmentInput)}
+                  disabled={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? false
+                      : undefined
+                  }
+                  onChange={generateStateOnChangeProp($state, [
+                    "fragmentInput",
+                    "value"
+                  ])}
+                  placeholder={"*********09"}
+                  type={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "tel"
+                      : "tel"
+                  }
+                  value={generateStateValueProp($state, [
+                    "fragmentInput",
+                    "value"
+                  ])}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__veRk
+                  )}
+                >
+                  {
+                    "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 >"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uyF4O
+                  )}
+                >
+                  {
+                    "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nwZ
+                  )}
+                >
+                  {
+                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
+                  }
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__cvZrj)}>
+                  <Input
+                    data-plasmic-name={"fragmentInput3"}
+                    data-plasmic-override={overrides.fragmentInput3}
+                    className={classNames("__wab_instance", sty.fragmentInput3)}
+                    disabled={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? false
+                        : undefined
+                    }
+                    onChange={generateStateOnChangeProp($state, [
+                      "fragmentInput3",
+                      "value"
+                    ])}
+                    placeholder={"98+"}
+                    type={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "tel"
+                        : "tel"
+                    }
+                    value={generateStateValueProp($state, [
+                      "fragmentInput3",
+                      "value"
+                    ])}
+                  />
+
+                  <Icon55Icon
+                    className={classNames(projectcss.all, sty.svg__tRtl9)}
+                    role={"img"}
+                  />
+                </div>
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox__ozlBn)}
+                >
+                  <Input
+                    data-plasmic-name={"fragmentInput2"}
+                    data-plasmic-override={overrides.fragmentInput2}
+                    className={classNames("__wab_instance", sty.fragmentInput2)}
+                    disabled={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? false
+                        : undefined
+                    }
+                    onChange={generateStateOnChangeProp($state, [
+                      "fragmentInput2",
+                      "value"
+                    ])}
+                    placeholder={"98+"}
+                    type={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "tel"
+                        : "number"
+                    }
+                    value={generateStateValueProp($state, [
+                      "fragmentInput2",
+                      "value"
+                    ])}
+                  />
+                </Stack__>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4Euqw
+                  )}
+                >
+                  {
+                    "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"
+                  }
+                </div>
+                <Timer
+                  data-plasmic-name={"timer"}
+                  data-plasmic-override={overrides.timer}
+                  className={classNames("__wab_instance", sty.timer)}
+                  isRunning={true}
+                  runWhileEditing={false}
+                />
+
+                {false ? (
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zAzMt
+                    )}
+                  >
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"
+                    }
+                  </div>
+                ) : null}
+                <AntdSelect
+                  data-plasmic-name={"select"}
+                  data-plasmic-override={overrides.select}
+                  className={classNames("__wab_instance", sty.select)}
+                  defaultOpen={false}
+                  defaultStylesClassName={classNames(
+                    projectcss.root_reset,
+                    projectcss.plasmic_default_styles,
+                    projectcss.plasmic_mixins,
+                    projectcss.plasmic_tokens,
+                    plasmic_antd_5_hostless_css.plasmic_tokens,
+                    plasmic_plasmic_rich_components_css.plasmic_tokens
+                  )}
+                  defaultValue={(() => {
+                    try {
+                      return $props.userbabarcat._saraf;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  onChange={generateStateOnChangeProp($state, [
+                    "select",
+                    "value"
+                  ])}
+                  options={(() => {
+                    try {
+                      return $state.saraflist;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                  placeholder={null}
+                  popupScopeClassName={sty["select__popup"]}
+                  size={"large"}
+                  suffixIcon={
+                    <PlasmicIcon__
+                      PlasmicIconType={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? Icon37Icon
+                          : Icon10Icon
+                      }
+                      className={classNames(projectcss.all, sty.svg__q783Z)}
+                      role={"img"}
+                    />
+                  }
+                  value={generateStateValueProp($state, ["select", "value"])}
+                />
+              </Stack__>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__bpaf0
+                )}
+              >
+                {
+                  "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                }
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__wq4F)}>
+                <Button
+                  data-plasmic-name={"btnNumber"}
+                  data-plasmic-override={overrides.btnNumber}
+                  className={classNames("__wab_instance", sty.btnNumber)}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg__klha)}
+                      role={"img"}
+                    />
+                  }
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__izSt
+                    )}
+                  >
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
+                  </div>
+                </Button>
+                <Button
+                  data-plasmic-name={"button"}
+                  data-plasmic-override={overrides.button}
+                  className={classNames("__wab_instance", sty.button)}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg___9MBcw)}
+                      role={"img"}
+                    />
+                  }
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__vRf7X
+                    )}
+                  >
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
+                  </div>
+                </Button>
+                <Button
+                  data-plasmic-name={"button2"}
+                  data-plasmic-override={overrides.button2}
+                  className={classNames("__wab_instance", sty.button2)}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg___6B9Mm)}
+                      role={"img"}
+                    />
+                  }
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__iwiI
+                    )}
+                  >
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
+                  </div>
+                </Button>
+                <Button
+                  data-plasmic-name={"btnSaraf"}
+                  data-plasmic-override={overrides.btnSaraf}
+                  className={classNames("__wab_instance", sty.btnSaraf)}
+                  color={"green"}
+                  endIcon={
+                    <IconIcon
+                      className={classNames(projectcss.all, sty.svg__mzGtD)}
+                      role={"img"}
+                    />
+                  }
+                  isDisabled={(() => {
+                    try {
+                      return $state.loadedbtn;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateLoadedbtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn"] != null &&
+                      typeof $steps["updateLoadedbtn"] === "object" &&
+                      typeof $steps["updateLoadedbtn"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn"] = await $steps[
+                        "updateLoadedbtn"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/login",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    _saraf: $state.select.value,
+                                    userToken: $props.token
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == false
+                        : true
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              undefined,
+                              "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f."
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["runCode"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                localStorage.setItem(
+                                  "userbabarcat",
+                                  JSON.stringify(
+                                    $steps.invokeGlobalAction.data[0].data
+                                  )
+                                );
+                                const item = {
+                                  value:
+                                    $steps.invokeGlobalAction.data[0].data
+                                      .token,
+                                  expiration:
+                                    new Date().getTime() + 10 * 60 * 1000
+                                };
+                                return sessionStorage.setItem(
+                                  "userbabarcatToken",
+                                  JSON.stringify(item)
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+
+                    $steps["updateEditSarafOpen"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == true
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["editSaraf", "open"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateEditSarafOpen"] != null &&
+                      typeof $steps["updateEditSarafOpen"] === "object" &&
+                      typeof $steps["updateEditSarafOpen"].then === "function"
+                    ) {
+                      $steps["updateEditSarafOpen"] = await $steps[
+                        "updateEditSarafOpen"
+                      ];
+                    }
+
+                    $steps["updateLoadedbtn2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            queryInvalidation: ["plasmic_refresh_all"]
+                          };
+                          return (async ({ queryInvalidation }) => {
+                            if (!queryInvalidation) {
+                              return;
+                            }
+                            await plasmicInvalidate(queryInvalidation);
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn2"] != null &&
+                      typeof $steps["updateLoadedbtn2"] === "object" &&
+                      typeof $steps["updateLoadedbtn2"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn2"] = await $steps[
+                        "updateLoadedbtn2"
+                      ];
+                    }
+
+                    $steps["updateLoadedbtn3"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadedbtn"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadedbtn3"] != null &&
+                      typeof $steps["updateLoadedbtn3"] === "object" &&
+                      typeof $steps["updateLoadedbtn3"].then === "function"
+                    ) {
+                      $steps["updateLoadedbtn3"] = await $steps[
+                        "updateLoadedbtn3"
+                      ];
+                    }
+                  }}
+                  showEndIcon={(() => {
+                    try {
+                      return $state.loadedbtn;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__vh8Cv
+                    )}
+                  >
+                    {"\u062a\u0627\u06cc\u06cc\u062f"}
+                  </div>
+                </Button>
+                {false ? (
+                  <Button
+                    data-plasmic-name={"sendcode"}
+                    data-plasmic-override={overrides.sendcode}
+                    className={classNames("__wab_instance", sty.sendcode)}
+                    endIcon={
+                      <Icon3Icon
+                        className={classNames(projectcss.all, sty.svg___1KoDi)}
+                        role={"img"}
+                      />
+                    }
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___5U4Jm
+                      )}
+                    >
+                      {"\u062a\u0627\u06cc\u06cc\u062f"}
+                    </div>
+                  </Button>
+                ) : null}
+              </div>
+              {false ? (
+                <div
+                  data-plasmic-name={"figmaPaste"}
+                  data-plasmic-override={overrides.figmaPaste}
+                  className={classNames(projectcss.all, sty.figmaPaste)}
+                >
+                  <div
+                    data-plasmic-name={"group"}
+                    data-plasmic-override={overrides.group}
+                    className={classNames(projectcss.all, sty.group)}
+                  >
+                    <div
+                      data-plasmic-name={"group2"}
+                      data-plasmic-override={overrides.group2}
+                      className={classNames(projectcss.all, sty.group2)}
+                    >
+                      <div
+                        data-plasmic-name={"rectangle35"}
+                        data-plasmic-override={overrides.rectangle35}
+                        className={classNames(projectcss.all, sty.rectangle35)}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___4Ikul
+                        )}
+                      >
+                        {"\u0627\u062f\u0627\u0645\u0647"}
+                      </div>
+                    </div>
+                    <div
+                      data-plasmic-name={"group3"}
+                      data-plasmic-override={overrides.group3}
+                      className={classNames(projectcss.all, sty.group3)}
+                    >
+                      <div
+                        data-plasmic-name={"group4"}
+                        data-plasmic-override={overrides.group4}
+                        className={classNames(projectcss.all, sty.group4)}
+                      >
+                        <div
+                          data-plasmic-name={"rectangle23"}
+                          data-plasmic-override={overrides.rectangle23}
+                          className={classNames(
+                            projectcss.all,
+                            sty.rectangle23
+                          )}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___8Fk2E
+                          )}
+                        >
+                          {"1"}
+                        </div>
+                      </div>
+                      <div
+                        data-plasmic-name={"group5"}
+                        data-plasmic-override={overrides.group5}
+                        className={classNames(projectcss.all, sty.group5)}
+                      >
+                        <div
+                          data-plasmic-name={"rectangle24"}
+                          data-plasmic-override={overrides.rectangle24}
+                          className={classNames(
+                            projectcss.all,
+                            sty.rectangle24
+                          )}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__b1Dbp
+                          )}
+                        >
+                          {"2"}
+                        </div>
+                      </div>
+                      <div
+                        data-plasmic-name={"group6"}
+                        data-plasmic-override={overrides.group6}
+                        className={classNames(projectcss.all, sty.group6)}
+                      >
+                        <div
+                          data-plasmic-name={"rectangle25"}
+                          data-plasmic-override={overrides.rectangle25}
+                          className={classNames(
+                            projectcss.all,
+                            sty.rectangle25
+                          )}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___5LoVc
+                          )}
+                        >
+                          {"3"}
+                        </div>
+                      </div>
+                      <div
+                        data-plasmic-name={"group7"}
+                        data-plasmic-override={overrides.group7}
+                        className={classNames(projectcss.all, sty.group7)}
+                      >
+                        <div
+                          data-plasmic-name={"rectangle"}
+                          data-plasmic-override={overrides.rectangle}
+                          className={classNames(projectcss.all, sty.rectangle)}
+                        />
+
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dWdJs
+                          )}
+                        >
+                          {"4"}
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__nszs
+                      )}
+                    >
+                      {
+                        "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                      }
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ge6Py
+                      )}
+                    >
+                      {
+                        "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    data-plasmic-name={"group8"}
+                    data-plasmic-override={overrides.group8}
+                    className={classNames(projectcss.all, sty.group8)}
+                  />
+                </div>
+              ) : null}
+            </div>
+          </Stack__>
+          <div className={classNames(projectcss.all, sty.freeBox__g4CXs)} />
         </div>
       </AntdModal>
       <AntdModal
@@ -1865,98 +2868,220 @@ function PlasmicHeader__RenderFunc(props: {
           <Stack__
             as={"div"}
             hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__ka5OS)}
-            onClick={async event => {
-              const $steps = {};
-
-              $steps["updateDrawerOpen"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["drawer", "open"]
-                      },
-                      operation: 0,
-                      value: false
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateDrawerOpen"] != null &&
-                typeof $steps["updateDrawerOpen"] === "object" &&
-                typeof $steps["updateDrawerOpen"].then === "function"
-              ) {
-                $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-              }
-
-              $steps["updatePasswordOpen"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["editPassword", "open"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updatePasswordOpen"] != null &&
-                typeof $steps["updatePasswordOpen"] === "object" &&
-                typeof $steps["updatePasswordOpen"].then === "function"
-              ) {
-                $steps["updatePasswordOpen"] = await $steps[
-                  "updatePasswordOpen"
-                ];
-              }
-            }}
+            className={classNames(projectcss.all, sty.freeBox__wlCoF)}
           >
-            <Icon43Icon
-              className={classNames(projectcss.all, sty.svg__qlF3U)}
-              role={"img"}
-            />
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__ka5OS)}
+              onClick={async event => {
+                const $steps = {};
 
-            <div className={classNames(projectcss.all, sty.freeBox__a6Bmx)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__hjppR
-                )}
-              >
-                {
-                  "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                $steps["updateDrawerOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["drawer", "open"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateDrawerOpen"] != null &&
+                  typeof $steps["updateDrawerOpen"] === "object" &&
+                  typeof $steps["updateDrawerOpen"].then === "function"
+                ) {
+                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
                 }
+
+                $steps["updatePasswordOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["editPassword", "open"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePasswordOpen"] != null &&
+                  typeof $steps["updatePasswordOpen"] === "object" &&
+                  typeof $steps["updatePasswordOpen"].then === "function"
+                ) {
+                  $steps["updatePasswordOpen"] = await $steps[
+                    "updatePasswordOpen"
+                  ];
+                }
+              }}
+            >
+              <Icon43Icon
+                className={classNames(projectcss.all, sty.svg__qlF3U)}
+                role={"img"}
+              />
+
+              <div className={classNames(projectcss.all, sty.freeBox__a6Bmx)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__hjppR
+                  )}
+                >
+                  {
+                    "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                  }
+                </div>
               </div>
-            </div>
-            <PlasmicIcon__
-              PlasmicIconType={
-                hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? Icon36Icon
-                  : Icon36Icon
-              }
-              className={classNames(projectcss.all, sty.svg__k7Yjj)}
-              role={"img"}
-            />
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon36Icon
+                    : Icon36Icon
+                }
+                className={classNames(projectcss.all, sty.svg__k7Yjj)}
+                role={"img"}
+              />
+            </Stack__>
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox___4BKvU)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateDrawerOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["drawer", "open"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateDrawerOpen"] != null &&
+                  typeof $steps["updateDrawerOpen"] === "object" &&
+                  typeof $steps["updateDrawerOpen"].then === "function"
+                ) {
+                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                }
+
+                $steps["updatePasswordOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["editSaraf", "open"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePasswordOpen"] != null &&
+                  typeof $steps["updatePasswordOpen"] === "object" &&
+                  typeof $steps["updatePasswordOpen"].then === "function"
+                ) {
+                  $steps["updatePasswordOpen"] = await $steps[
+                    "updatePasswordOpen"
+                  ];
+                }
+              }}
+            >
+              <Icon57Icon
+                className={classNames(projectcss.all, sty.svg__idyNs)}
+                role={"img"}
+              />
+
+              <div className={classNames(projectcss.all, sty.freeBox__jHxP)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vifz0
+                  )}
+                >
+                  {
+                    "\u062a\u063a\u06cc\u06cc\u0631 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631"
+                  }
+                </div>
+              </div>
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon36Icon
+                    : Icon36Icon
+                }
+                className={classNames(projectcss.all, sty.svg__nfSzB)}
+                role={"img"}
+              />
+            </Stack__>
           </Stack__>
           <Stack__
             as={"div"}
@@ -2246,6 +3371,33 @@ const PlasmicDescendants = {
     "fathername",
     "city",
     "location",
+    "editSaraf",
+    "wallet6",
+    "img",
+    "fragmentInput",
+    "fragmentInput3",
+    "fragmentInput2",
+    "timer",
+    "select",
+    "btnNumber",
+    "button",
+    "button2",
+    "btnSaraf",
+    "sendcode",
+    "figmaPaste",
+    "group",
+    "group2",
+    "rectangle35",
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle",
+    "group8",
     "editPassword",
     "wallet5",
     "nowPass",
@@ -2270,6 +3422,99 @@ const PlasmicDescendants = {
   fathername: ["fathername"],
   city: ["city"],
   location: ["location"],
+  editSaraf: [
+    "editSaraf",
+    "wallet6",
+    "img",
+    "fragmentInput",
+    "fragmentInput3",
+    "fragmentInput2",
+    "timer",
+    "select",
+    "btnNumber",
+    "button",
+    "button2",
+    "btnSaraf",
+    "sendcode",
+    "figmaPaste",
+    "group",
+    "group2",
+    "rectangle35",
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle",
+    "group8"
+  ],
+  wallet6: ["wallet6"],
+  img: ["img"],
+  fragmentInput: ["fragmentInput"],
+  fragmentInput3: ["fragmentInput3"],
+  fragmentInput2: ["fragmentInput2"],
+  timer: ["timer"],
+  select: ["select"],
+  btnNumber: ["btnNumber"],
+  button: ["button"],
+  button2: ["button2"],
+  btnSaraf: ["btnSaraf"],
+  sendcode: ["sendcode"],
+  figmaPaste: [
+    "figmaPaste",
+    "group",
+    "group2",
+    "rectangle35",
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle",
+    "group8"
+  ],
+  group: [
+    "group",
+    "group2",
+    "rectangle35",
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle"
+  ],
+  group2: ["group2", "rectangle35"],
+  rectangle35: ["rectangle35"],
+  group3: [
+    "group3",
+    "group4",
+    "rectangle23",
+    "group5",
+    "rectangle24",
+    "group6",
+    "rectangle25",
+    "group7",
+    "rectangle"
+  ],
+  group4: ["group4", "rectangle23"],
+  rectangle23: ["rectangle23"],
+  group5: ["group5", "rectangle24"],
+  rectangle24: ["rectangle24"],
+  group6: ["group6", "rectangle25"],
+  rectangle25: ["rectangle25"],
+  group7: ["group7", "rectangle"],
+  rectangle: ["rectangle"],
+  group8: ["group8"],
   editPassword: [
     "editPassword",
     "wallet5",
@@ -2298,6 +3543,33 @@ type NodeDefaultElementType = {
   fathername: typeof Input;
   city: typeof Input;
   location: typeof Input;
+  editSaraf: typeof AntdModal;
+  wallet6: "div";
+  img: typeof PlasmicImg__;
+  fragmentInput: typeof Input;
+  fragmentInput3: typeof Input;
+  fragmentInput2: typeof Input;
+  timer: typeof Timer;
+  select: typeof AntdSelect;
+  btnNumber: typeof Button;
+  button: typeof Button;
+  button2: typeof Button;
+  btnSaraf: typeof Button;
+  sendcode: typeof Button;
+  figmaPaste: "div";
+  group: "div";
+  group2: "div";
+  rectangle35: "div";
+  group3: "div";
+  group4: "div";
+  rectangle23: "div";
+  group5: "div";
+  rectangle24: "div";
+  group6: "div";
+  rectangle25: "div";
+  group7: "div";
+  rectangle: "div";
+  group8: "div";
   editPassword: typeof AntdModal;
   wallet5: "div";
   nowPass: typeof Input;
@@ -2375,6 +3647,33 @@ export const PlasmicHeader = Object.assign(
     fathername: makeNodeComponent("fathername"),
     city: makeNodeComponent("city"),
     location: makeNodeComponent("location"),
+    editSaraf: makeNodeComponent("editSaraf"),
+    wallet6: makeNodeComponent("wallet6"),
+    img: makeNodeComponent("img"),
+    fragmentInput: makeNodeComponent("fragmentInput"),
+    fragmentInput3: makeNodeComponent("fragmentInput3"),
+    fragmentInput2: makeNodeComponent("fragmentInput2"),
+    timer: makeNodeComponent("timer"),
+    select: makeNodeComponent("select"),
+    btnNumber: makeNodeComponent("btnNumber"),
+    button: makeNodeComponent("button"),
+    button2: makeNodeComponent("button2"),
+    btnSaraf: makeNodeComponent("btnSaraf"),
+    sendcode: makeNodeComponent("sendcode"),
+    figmaPaste: makeNodeComponent("figmaPaste"),
+    group: makeNodeComponent("group"),
+    group2: makeNodeComponent("group2"),
+    rectangle35: makeNodeComponent("rectangle35"),
+    group3: makeNodeComponent("group3"),
+    group4: makeNodeComponent("group4"),
+    rectangle23: makeNodeComponent("rectangle23"),
+    group5: makeNodeComponent("group5"),
+    rectangle24: makeNodeComponent("rectangle24"),
+    group6: makeNodeComponent("group6"),
+    rectangle25: makeNodeComponent("rectangle25"),
+    group7: makeNodeComponent("group7"),
+    rectangle: makeNodeComponent("rectangle"),
+    group8: makeNodeComponent("group8"),
     editPassword: makeNodeComponent("editPassword"),
     wallet5: makeNodeComponent("wallet5"),
     nowPass: makeNodeComponent("nowPass"),

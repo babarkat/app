@@ -470,6 +470,11 @@
   min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .text__zL7Oq {
+    font-size: 20px;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
   .textunnamedVariant__zL7OqDv9B5 {
     position: sticky;
     left: 0px;
@@ -626,6 +631,11 @@
   text-decoration-line: underline;
   font-size: 16px;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__lh2V1 {
+    font-size: 14px;
+  }
 }
 .textunnamedVariant__lh2V1Dv9B5 {
   display: none;
@@ -1255,6 +1265,11 @@
   padding-left: 0px;
   font-size: 18px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___1TNZm {
+    font-size: 16px;
+  }
+}
 .svg__ke3Bs {
   position: relative;
   object-fit: cover;
@@ -1297,6 +1312,11 @@
   padding-left: 0px;
   font-size: 18px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .textpassword__yawAd8PqF9 {
+    font-size: 16px;
+  }
+}
 .svg__cy30B {
   position: relative;
   object-fit: cover;
@@ -1338,6 +1358,11 @@
   padding-right: 0px;
   padding-left: 0px;
   font-size: 18px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .textloginByPassword___73Cik0DikB {
+    font-size: 16px;
+  }
 }
 .svg___5Hjd {
   position: relative;
@@ -1407,6 +1432,11 @@
   padding-right: 0px;
   padding-left: 0px;
   font-size: 18px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .textunnamedVariant__sE8BlDv9B5 {
+    font-size: 16px;
+  }
 }
 .svg__r6GXo {
   position: relative;

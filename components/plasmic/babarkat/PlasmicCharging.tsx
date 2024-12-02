@@ -236,7 +236,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [1000, 5000, 10000, 20000, 50000]
+                chargeAmounts: [5000, 10000, 20000, 50000, 100000]
               },
               {
                 type: "amazing",
@@ -280,7 +280,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [5000, 10000, 20000, 100000]
+                chargeAmounts: [5000, 10000, 20000, 50000, 100000]
               }
             ]
           },
@@ -297,7 +297,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [1000, 5000, 10000, 20000, 50000]
+                chargeAmounts: [5000, 10000, 20000, 50000, 100000]
               },
               {
                 type: "amazing",
@@ -2645,43 +2645,42 @@ function PlasmicCharging__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction5"] = (
-                        $state.infopardakt?.code
-                          ? $state.infopardakt?.code == 1
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "PUT",
-                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                undefined,
-                                (() => {
-                                  try {
-                                    return {
-                                      id: $state.pardakhtid,
-                                      trackingId: $state.infopardakt.ref_code,
-                                      userToken: $state.token
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
+                      $steps["invokeGlobalAction5"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "PUT",
+                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        id: $state.pardakhtid,
+                                        trackingId:
+                                          $state.infopardakt?.code == 1
+                                            ? $state.infopardakt.ref_code
+                                            : -1,
+                                        userToken: $state.token
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                       if (
                         $steps["invokeGlobalAction5"] != null &&
                         typeof $steps["invokeGlobalAction5"] === "object" &&
@@ -2741,7 +2740,22 @@ function PlasmicCharging__RenderFunc(props: {
                             const actionArgs = {
                               args: [
                                 "error",
-                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                                (() => {
+                                  try {
+                                    return $state.infopardakt.msg
+                                      ? $state.infopardakt.msg
+                                      : "مشکلی رخ داده است مجدد تلاش کنید.";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })(),
                                 "top-left"
                               ]
                             };

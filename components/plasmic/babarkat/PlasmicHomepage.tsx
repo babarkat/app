@@ -557,7 +557,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return $state.userbabarcat.last_name;
+                            return $state.userbabarcat.sarafName;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1309,6 +1309,8 @@ function PlasmicHomepage__RenderFunc(props: {
                         customFunction: async () => {
                           return (() => {
                             $state.userbabarcat = $state.profile.data[0].user;
+                            $state.userbabarcat.saraflist =
+                              $state.profile.data[0].saraf;
                             $state.userbabarcat.toman =
                               $state.profile.data[0].user.toman * 1000;
                             return localStorage.setItem(
