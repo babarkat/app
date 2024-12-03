@@ -341,7 +341,10 @@ function PlasmicHomepage__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
-                  return localStorage.getItem("userBabarkatPass") == null;
+                  return (
+                    localStorage.getItem("userBabarkatPass") == null &&
+                    $state.userbabarcat?.hasPassword == false
+                  );
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -354,7 +357,10 @@ function PlasmicHomepage__RenderFunc(props: {
               })()
             : (() => {
                 try {
-                  return localStorage.getItem("userBabarkatPass") == null;
+                  return (
+                    localStorage.getItem("userBabarkatPass") == null &&
+                    $state.userbabarcat?.hasPassword == false
+                  );
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -11796,7 +11802,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       ? (() => {
                           try {
                             return (
-                              localStorage.getItem("userBabarkatPass") == null
+                              localStorage.getItem("userBabarkatPass") ==
+                                null &&
+                              $state.userbabarcat?.hasPassword == false
                             );
                           } catch (e) {
                             if (
@@ -11811,7 +11819,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       : (() => {
                           try {
                             return (
-                              localStorage.getItem("userBabarkatPass") == null
+                              localStorage.getItem("userBabarkatPass") ==
+                                null &&
+                              $state.userbabarcat?.hasPassword == false
                             );
                           } catch (e) {
                             if (
