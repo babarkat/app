@@ -372,7 +372,8 @@ function PlasmicCharging__RenderFunc(props: {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "stepscharg", "step2") ? `` : ""
       },
       {
         path: "boxselect3[].select",
@@ -1269,8 +1270,8 @@ function PlasmicCharging__RenderFunc(props: {
                               try {
                                 return (
                                   (
-                                    $state.amont +
-                                    $state.amont *
+                                    parseInt($state.amont) +
+                                    parseInt($state.amont) *
                                       (($state.commissionBabarkat.data.babrkat +
                                         $state.commissionBabarkat.data.saraf) /
                                         100)
@@ -1506,6 +1507,11 @@ function PlasmicCharging__RenderFunc(props: {
                           $state,
                           "stepscharg",
                           "step2"
+                        ),
+                        [sty.fragmentInput2stepscharg_step3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
                         )
                       }
                     )}
@@ -1560,7 +1566,7 @@ function PlasmicCharging__RenderFunc(props: {
                                   variablePath: ["amont"]
                                 },
                                 operation: 0,
-                                value: $state.fragmentInput2.value
+                                value: parseInt($state.fragmentInput2.value)
                               };
                               return (({
                                 variable,
@@ -1588,7 +1594,11 @@ function PlasmicCharging__RenderFunc(props: {
                       }).apply(null, eventArgs);
                     }}
                     placeholder={"\u062a\u0648\u0645\u0627\u0646"}
-                    type={"number"}
+                    type={
+                      hasVariant($state, "stepscharg", "step2")
+                        ? "number"
+                        : "number"
+                    }
                     value={generateStateValueProp($state, [
                       "fragmentInput2",
                       "value"
@@ -2977,7 +2987,13 @@ function PlasmicCharging__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return "موجودی :" + $state.mojody + " تومان ";
+                                return (
+                                  "موجودی :" +
+                                  parseInt(
+                                    $state.mojody.toFixed(0)
+                                  ).toLocaleString() +
+                                  " تومان "
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||

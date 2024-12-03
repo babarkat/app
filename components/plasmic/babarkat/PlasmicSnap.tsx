@@ -2382,7 +2382,13 @@ function PlasmicSnap__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return "موجودی :" + $state.mojody + " تومان ";
+                                return (
+                                  "موجودی:" +
+                                  parseInt(
+                                    $state.mojody.toFixed(0)
+                                  ).toLocaleString() +
+                                  " تومان"
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||

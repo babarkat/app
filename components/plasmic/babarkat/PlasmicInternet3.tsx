@@ -3781,7 +3781,9 @@ function PlasmicInternet3__RenderFunc(props: {
                               try {
                                 return (
                                   "موجودی:" +
-                                  $state.mojodi.toLocaleString() +
+                                  parseInt(
+                                    $state.mojodi.toFixed(0)
+                                  ).toLocaleString() +
                                   " تومان"
                                 );
                               } catch (e) {
