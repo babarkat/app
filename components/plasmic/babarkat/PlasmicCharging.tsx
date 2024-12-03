@@ -3543,6 +3543,40 @@ function PlasmicCharging__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
+                    $steps["updateAmont"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["amont"]
+                            },
+                            operation: 0,
+                            value: parseInt($state.amont)
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateAmont"] != null &&
+                      typeof $steps["updateAmont"] === "object" &&
+                      typeof $steps["updateAmont"].then === "function"
+                    ) {
+                      $steps["updateAmont"] = await $steps["updateAmont"];
+                    }
+
                     $steps["updateUnnamedVariant2"] = (() => {
                       if (
                         $state.operators2[$state.operatorselect].chargeRange
