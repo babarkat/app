@@ -2098,6 +2098,43 @@ function PlasmicSnap__RenderFunc(props: {
                         ];
                       }
 
+                      $steps["updatePardakhtid"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["pardakhtid"]
+                                },
+                                operation: 0,
+                                value: $steps.invokeGlobalAction4.data[0].id
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updatePardakhtid"] != null &&
+                        typeof $steps["updatePardakhtid"] === "object" &&
+                        typeof $steps["updatePardakhtid"].then === "function"
+                      ) {
+                        $steps["updatePardakhtid"] = await $steps[
+                          "updatePardakhtid"
+                        ];
+                      }
+
                       $steps["invokeGlobalAction"] =
                         $state.amont < $state.mojody &&
                         $steps.invokeGlobalAction4?.data[0]?.success == true
@@ -2118,6 +2155,9 @@ function PlasmicSnap__RenderFunc(props: {
                                           $state.number +
                                           " \nتوکن: " +
                                           $state.token +
+                                          "" +
+                                          " \nشناسه تراکنش: " +
+                                          $state.uuid +
                                           ""
                                       };
                                     } catch (e) {
@@ -2146,6 +2186,49 @@ function PlasmicSnap__RenderFunc(props: {
                       ) {
                         $steps["invokeGlobalAction"] = await $steps[
                           "invokeGlobalAction"
+                        ];
+                      }
+
+                      $steps["invokeGlobalAction5"] =
+                        $steps.invokeGlobalAction4?.data[0]?.success == true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        id: $state.pardakhtid,
+                                        trackingId: $state.uuid,
+                                        userToken: $state.token
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction5"] != null &&
+                        typeof $steps["invokeGlobalAction5"] === "object" &&
+                        typeof $steps["invokeGlobalAction5"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction5"] = await $steps[
+                          "invokeGlobalAction5"
                         ];
                       }
 
