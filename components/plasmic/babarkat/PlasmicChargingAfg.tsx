@@ -3502,7 +3502,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             operation: 0,
                             value:
                               parseInt($state.amont) *
-                              parseFloat($state.exchangeRate.data.rate)
+                              $state.exchangeRate.data.rate
                           };
                           return (({
                             variable,
@@ -4803,7 +4803,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             url={
               hasVariant($state, "stepscharg", "step3")
                 ? "https://n8n.babarkat.com/webhook/exchangeRate"
-                : "https://n8n.babarkat.com/webhook/CommissionBabarkat"
+                : "https://n8n.babarkat.com/webhook/exchangeRate"
             }
           />
         </div>
