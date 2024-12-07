@@ -1373,6 +1373,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicHeader.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "pOaFejV3HuWO",
+          "name": "ChargingAfg",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicChargingAfg.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/charging-2.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicChargingAfg.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/charging-2"
         }
       ],
       "icons": [
