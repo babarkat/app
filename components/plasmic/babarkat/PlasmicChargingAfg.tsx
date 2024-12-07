@@ -1263,15 +1263,16 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (
-                                  (
+                                return (() => {
+                                  const totalAmount = (
                                     parseInt($state.amont) +
                                     parseInt($state.amont) *
                                       (($state.commissionBabarkat.data.babrkat +
                                         $state.commissionBabarkat.data.saraf) /
                                         100)
-                                  ).toLocaleString("en") + " تومان "
-                                );
+                                  ).toLocaleString("en");
+                                  return totalAmount + " تومان ";
+                                })();
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -3501,7 +3502,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             operation: 0,
                             value:
                               parseInt($state.amont) *
-                              $state.exchangeRate.data.rate
+                              parseFloat($state.exchangeRate.data.rate)
                           };
                           return (({
                             variable,
@@ -4754,59 +4755,57 @@ function PlasmicChargingAfg__RenderFunc(props: {
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
 
-          {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
-            <ApiRequest
-              data-plasmic-name={"exchangeRate"}
-              data-plasmic-override={overrides.exchangeRate}
-              className={classNames("__wab_instance", sty.exchangeRate, {
-                [sty.exchangeRatestepscharg_step3]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step3"
-                )
-              })}
-              errorDisplay={
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__kdXbx
-                  )}
-                >
-                  {"Error fetching data"}
-                </div>
-              }
-              loadingDisplay={
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__bp9We
-                  )}
-                >
-                  {"Loading..."}
-                </div>
-              }
-              method={hasVariant($state, "stepscharg", "step3") ? "GET" : "GET"}
-              onError={generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "error"
-              ])}
-              onLoading={generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "loading"
-              ])}
-              onSuccess={generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "data"
-              ])}
-              url={
-                hasVariant($state, "stepscharg", "step3")
-                  ? "https://n8n.babarkat.com/webhook/exchangeRate"
-                  : "https://n8n.babarkat.com/webhook/CommissionBabarkat"
-              }
-            />
-          ) : null}
+          <ApiRequest
+            data-plasmic-name={"exchangeRate"}
+            data-plasmic-override={overrides.exchangeRate}
+            className={classNames("__wab_instance", sty.exchangeRate, {
+              [sty.exchangeRatestepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__kdXbx
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__bp9We
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={hasVariant($state, "stepscharg", "step3") ? "GET" : "GET"}
+            onError={generateStateOnChangeProp($state, [
+              "exchangeRate",
+              "error"
+            ])}
+            onLoading={generateStateOnChangeProp($state, [
+              "exchangeRate",
+              "loading"
+            ])}
+            onSuccess={generateStateOnChangeProp($state, [
+              "exchangeRate",
+              "data"
+            ])}
+            url={
+              hasVariant($state, "stepscharg", "step3")
+                ? "https://n8n.babarkat.com/webhook/exchangeRate"
+                : "https://n8n.babarkat.com/webhook/CommissionBabarkat"
+            }
+          />
         </div>
       </div>
     </React.Fragment>
