@@ -410,7 +410,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+          hasVariant($state, "stepscharg", "step3") &&
+          hasVariant(globalVariants, "screen", "mobileOnly")
+            ? false
+            : hasVariant($state, "stepscharg", "step3")
+            ? false
+            : false
       },
       {
         path: "infopardakt",
@@ -2574,25 +2579,25 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 args: [
-                                  "POST",
+                                  "GET",
                                   "https://n8n.babarkat.com/webhook/telegram_Bot",
                                   (() => {
                                     try {
                                       return {
                                         text:
-                                          "\nخرید شارژ با موفقیت انجام شد.\nنام: " +
+                                          "\\nخرید شارژ با موفقیت انجام شد.\\nنام: " +
                                           $state.userinfo.last_name +
-                                          "\nاپراتور: " +
+                                          "\\nاپراتور: " +
                                           $state.operators2[
                                             $state.operatorselect
                                           ].nameop +
-                                          "\nقیمت به تومان: " +
+                                          "\\nقیمت به تومان: " +
                                           $state.amount +
-                                          "\nقیمت به افغانی: " +
+                                          "\\nقیمت به افغانی: " +
                                           $state.amontAfg +
-                                          "\nشماره: " +
+                                          "\\nشماره: " +
                                           $state.number +
-                                          "\nشناسه تراکنش: " +
+                                          "\\nشناسه تراکنش: " +
                                           $state.uuid
                                       };
                                     } catch (e) {
@@ -4463,61 +4468,14 @@ function PlasmicChargingAfg__RenderFunc(props: {
                   }
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__z7X55, {
-                    [sty.freeBoxstepscharg_step3__z7X55Q2TCe]: hasVariant(
+                  className={classNames(projectcss.all, sty.freeBox__ouj7U, {
+                    [sty.freeBoxstepscharg_step3__ouj7Uq2TCe]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
                     )
                   })}
                 >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__iiiGp
-                    )}
-                  >
-                    {
-                      "\u0634\u0645\u0627\u0631\u0647 \u067e\u06cc\u06af\u06cc\u0631\u06cc"
-                    }
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nFdJ9,
-                      {
-                        [sty.textstepscharg_step3__nFdJ9Q2TCe]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      }
-                    )}
-                  >
-                    {hasVariant($state, "stepscharg", "step3") ? (
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return $state.infopardakt.ref_code;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    ) : (
-                      "4458748475"
-                    )}
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ouj7U)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -4547,7 +4505,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return $state.infopardakt.trans_id;
+                            return $state.uuid;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
