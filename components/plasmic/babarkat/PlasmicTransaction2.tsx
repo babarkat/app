@@ -70,17 +70,18 @@ import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; 
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
 import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
 import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3UQ7U7/icon
+import Icon58Icon from "./icons/PlasmicIcon__Icon58"; // plasmic-import: b6_fsTkPhz_-/icon
 
 createPlasmicElementProxy;
 
 export type PlasmicTransaction2__VariantMembers = {
   filed: "filed";
-  unnamedGroupOfVariants: "intenet" | "walet" | "sim" | "panel";
+  unnamedGroupOfVariants: "intenet" | "walet" | "sim" | "panel" | "snap";
 };
 export type PlasmicTransaction2__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel"
+    "intenet" | "walet" | "sim" | "panel" | "snap"
   >;
 };
 type VariantPropType = keyof PlasmicTransaction2__VariantsArgs;
@@ -110,7 +111,7 @@ export interface DefaultTransaction2Props {
   slot?: React.ReactNode;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel"
+    "intenet" | "walet" | "sim" | "panel" | "snap"
   >;
   className?: string;
 }
@@ -217,6 +218,11 @@ function PlasmicTransaction2__RenderFunc(props: {
             "unnamedGroupOfVariants",
             "sim"
           ),
+          [sty.rootunnamedGroupOfVariants_snap]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "snap"
+          ),
           [sty.rootunnamedGroupOfVariants_walet]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
@@ -244,7 +250,9 @@ function PlasmicTransaction2__RenderFunc(props: {
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
           PlasmicIconType={
-            hasVariant($state, "unnamedGroupOfVariants", "panel")
+            hasVariant($state, "unnamedGroupOfVariants", "snap")
+              ? Icon58Icon
+              : hasVariant($state, "unnamedGroupOfVariants", "panel")
               ? Icon14Icon
               : hasVariant($state, "unnamedGroupOfVariants", "walet")
               ? SvgRepoIconCarrier4Icon
@@ -263,6 +271,11 @@ function PlasmicTransaction2__RenderFunc(props: {
               $state,
               "unnamedGroupOfVariants",
               "panel"
+            ),
+            [sty.svgunnamedGroupOfVariants_snap]: hasVariant(
+              $state,
+              "unnamedGroupOfVariants",
+              "snap"
             ),
             [sty.svgunnamedGroupOfVariants_walet]: hasVariant(
               $state,

@@ -1900,6 +1900,11 @@
           "id": "T9OBsfBXupjw",
           "name": "Icon57Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon57.tsx"
+        },
+        {
+          "id": "b6_fsTkPhz_-",
+          "name": "Icon58Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon58.tsx"
         }
       ],
       "images": [

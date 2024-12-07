@@ -1272,13 +1272,17 @@ function PlasmicTransaction__RenderFunc(props: {
                                                 return (() => {
                                                   switch (true) {
                                                     case currentItem.type.includes(
-                                                      "charge"
+                                                      "argin"
                                                     ):
                                                       return "sim";
                                                     case currentItem.type.includes(
                                                       "inte"
                                                     ):
                                                       return "intenet";
+                                                    case currentItem.type.includes(
+                                                      "snap"
+                                                    ):
+                                                      return "snap";
                                                     default:
                                                       return "";
                                                   }
@@ -1306,6 +1310,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "inte"
                                                     ):
                                                       return "intenet";
+                                                    case currentItem.type.includes(
+                                                      "snap"
+                                                    ):
+                                                      return "snap";
                                                     default:
                                                       return "";
                                                   }
@@ -1349,6 +1357,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "inte"
                                                     ):
                                                       return "خرید بسته اینترنت";
+                                                    case currentItem.type.includes(
+                                                      "snap"
+                                                    ):
+                                                      return "خرید بسته اسنپ";
                                                     default:
                                                       return "نوع ناشناخته";
                                                   }
@@ -2077,8 +2089,9 @@ function PlasmicTransaction__RenderFunc(props: {
                                               try {
                                                 return (() => {
                                                   if (
-                                                    currentItem.transactionType ==
-                                                    "واریز"
+                                                    currentItem.transactionType.includes(
+                                                      "واریز"
+                                                    )
                                                   )
                                                     return "رسید" + " وجه";
                                                   else
@@ -2556,15 +2569,17 @@ function PlasmicTransaction__RenderFunc(props: {
                                 try {
                                   return (() => {
                                     if (
-                                      $state.transaction2.transactionType ==
-                                      "واریز"
-                                    )
-                                      return "رسید " + " وجه";
-                                    else
+                                      $state.transaction2.transactionType.includes(
+                                        "واریز"
+                                      )
+                                    ) {
+                                      return "رسید وجه";
+                                    } else {
                                       return (
                                         $state.transaction2.transactionType +
                                         " وجه"
                                       );
+                                    }
                                   })();
                                 } catch (e) {
                                   if (
@@ -2584,15 +2599,17 @@ function PlasmicTransaction__RenderFunc(props: {
                                 try {
                                   return (() => {
                                     if (
-                                      $state.transaction2.transactionType ==
-                                      "واریز"
-                                    )
-                                      return "رسید " + " وجه";
-                                    else
+                                      $state.transaction2.transactionType.includes(
+                                        "واریز"
+                                      )
+                                    ) {
+                                      return "رسید وجه";
+                                    } else {
                                       return (
                                         $state.transaction2.transactionType +
                                         " وجه"
                                       );
+                                    }
                                   })();
                                 } catch (e) {
                                   if (
@@ -2656,6 +2673,8 @@ function PlasmicTransaction__RenderFunc(props: {
                             return "sim";
                           case $state.transaction2.type.includes("inte"):
                             return "intenet";
+                          case $state.transaction2.type.includes("snap"):
+                            return "snap";
                           case $state.transaction == "remittance":
                             return "walet";
                           case $state.transaction == "transaction":
@@ -2714,11 +2733,14 @@ function PlasmicTransaction__RenderFunc(props: {
                                 try {
                                   return (() => {
                                     if (
-                                      $state.transaction2.transactionType ==
-                                      "واریز"
-                                    )
+                                      $state.transaction2.transactionType.includes(
+                                        "واریز"
+                                      )
+                                    ) {
                                       return "واریز کننده: ";
-                                    else return "دریافت کننده: ";
+                                    } else {
+                                      return "دریافت کننده: ";
+                                    }
                                   })();
                                 } catch (e) {
                                   if (
@@ -2738,11 +2760,14 @@ function PlasmicTransaction__RenderFunc(props: {
                                 try {
                                   return (() => {
                                     if (
-                                      $state.transaction2.transactionType ==
-                                      "واریز"
-                                    )
+                                      $state.transaction2.transactionType.includes(
+                                        "واریز"
+                                      )
+                                    ) {
                                       return "واریز کننده: ";
-                                    else return "دریافت کننده: ";
+                                    } else {
+                                      return "دریافت کننده: ";
+                                    }
                                   })();
                                 } catch (e) {
                                   if (
@@ -3195,15 +3220,13 @@ function PlasmicTransaction__RenderFunc(props: {
                                         );
                                       case "dollar":
                                         return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " دلار "
+                                          $state.transaction2.amount.toLocaleString() +
+                                          " دلار "
                                         );
                                       case "afghani":
                                         return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " افقانی "
+                                          $state.transaction2.amount.toLocaleString() +
+                                          " افقانی "
                                         );
                                     }
                                   })();
