@@ -1970,22 +1970,40 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             {
                               name: "boxselect3[].disable2",
                               initFunc: ({ $props, $state, $queries }) =>
-                                (() => {
-                                  try {
-                                    return (
-                                      $state.fragmentInput.value.length != 11
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return false;
-                                    }
-                                    throw e;
-                                  }
-                                })()
+                                hasVariant($state, "stepscharg", "step2")
+                                  ? (() => {
+                                      try {
+                                        return (
+                                          $state.fragmentInput.value.length != 9
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return false;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  : (() => {
+                                      try {
+                                        return (
+                                          $state.fragmentInput.value.length !=
+                                          11
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return false;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
                             }
                           ],
                           [__plasmic_idx_0]
@@ -3332,7 +3350,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                   }
 
                   $steps["updateUnnamedVariant"] = (() => {
-                    const phoneRegex = /^\+?\d{2}\s?\d{9}$|^\d{9}$/;
+                    const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
                     return phoneRegex.test($state.number);
                   })()
                     ? (() => {
@@ -3362,7 +3380,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                   }
 
                   $steps["invokeGlobalAction"] = (() => {
-                    const phoneRegex = /^\+?\d{2}\s?\d{9}$|^\d{9}$/;
+                    const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
                     return !phoneRegex.test($state.number);
                   })()
                     ? (() => {
