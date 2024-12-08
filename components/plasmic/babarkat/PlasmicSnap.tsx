@@ -2686,7 +2686,11 @@ function PlasmicSnap__RenderFunc(props: {
                       "step3"
                     )
                   })}
-                  displayHeight={"100%"}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "auto"
+                      : "100%"
+                  }
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
                   displayMinHeight={"0"}
@@ -2700,7 +2704,11 @@ function PlasmicSnap__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             customFunction: async () => {
-                              return undefined;
+                              return (() => {
+                                return Android.onElementClicked(
+                                  "https://www.aparat.com/v/yephw21"
+                                );
+                              })();
                             }
                           };
                           return (({ customFunction }) => {
@@ -2736,7 +2744,7 @@ function PlasmicSnap__RenderFunc(props: {
                             customFunction: async () => {
                               return (() => {
                                 return Android.onElementClicked(
-                                  "This is a button click!"
+                                  "https://www.aparat.com/v/yephw21"
                                 );
                               })();
                             }
@@ -2752,26 +2760,6 @@ function PlasmicSnap__RenderFunc(props: {
                       typeof $steps["runCode2"].then === "function"
                     ) {
                       $steps["runCode2"] = await $steps["runCode2"];
-                    }
-
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {})();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
                     }
                   }}
                   size={

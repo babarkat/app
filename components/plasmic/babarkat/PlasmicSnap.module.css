@@ -1253,6 +1253,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .img__yQ6Gg {
     border-bottom-left-radius: 50px;
+    height: auto;
   }
 }
 .imgstepscharg_step3__yQ6GgzZ317 {
@@ -1296,10 +1297,11 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__n7GQp {
-    font-size: var(--token-BlA-iDkaAWvO);
+    font-size: var(--token-hYndcje43OGL);
     top: 20px;
     right: 15px;
     height: auto;
+    max-width: 50%;
   }
 }
 .freeBox__wmaIu {
