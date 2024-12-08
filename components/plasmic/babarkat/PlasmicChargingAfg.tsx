@@ -230,7 +230,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             nameop: "Roshan",
             description: "\u0631\u0648\u0634\u0646",
             logoUrl:
-              "https://api-staging.mizban.exchange/assets/images/image-1b8eba50-5469-4192-92d4-bf8492dc389c.png?_ts=1685280575.9517856",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6QMcI-cMZH4PIVOwCRKoiTgFF9oN45hEJMQ&s",
             codes: ["72", "79"],
             chargeRange: {
               min: 1000,
