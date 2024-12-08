@@ -381,7 +381,7 @@ function PlasmicSnap__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+          hasVariant($state, "stepscharg", "step3") ? true : false
       },
       {
         path: "variable",
@@ -3977,6 +3977,68 @@ function PlasmicSnap__RenderFunc(props: {
                   {
                     "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
                   }
+                </div>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__a3BEc, {
+                    [sty.freeBoxstepscharg_step3__a3BECzZ317]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__qWwaE,
+                      {
+                        [sty.textstepscharg_step3__qWwaEzZ317]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__pHzG,
+                      {
+                        [sty.textstepscharg_step3__pHzGzZ317]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "stepscharg", "step3") ? (
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.uuid;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    ) : (
+                      "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
+                    )}
+                  </div>
                 </div>
                 <Button
                   className={classNames("__wab_instance", sty.button___31MXm, {

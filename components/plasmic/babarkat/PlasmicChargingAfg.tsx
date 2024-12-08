@@ -136,10 +136,6 @@ export type PlasmicChargingAfg__OverridesType = {
   step1Next?: Flex__<typeof Button>;
   step2Next?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
-  ul?: Flex__<"ul">;
-  اپراتور?: Flex__<"div">;
-  اپراتور2?: Flex__<"div">;
-  اپراتور3?: Flex__<"div">;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
@@ -372,7 +368,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "stepscharg", "step3") ? true : false
       },
       {
         path: "variable",
@@ -414,6 +411,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? false
             : hasVariant($state, "stepscharg", "step3")
+            ? false
+            : hasVariant($state, "stepscharg", "step2")
             ? false
             : false
       },
@@ -3733,6 +3732,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
               data-plasmic-name={"modal"}
               data-plasmic-override={overrides.modal}
               className={classNames("__wab_instance", sty.modal, {
+                [sty.modalstepscharg_step2]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step2"
+                ),
                 [sty.modalstepscharg_step3]: hasVariant(
                   $state,
                   "stepscharg",
@@ -3765,12 +3769,27 @@ function PlasmicChargingAfg__RenderFunc(props: {
               title={null}
               trigger={null}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__x5PtT)}>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__x5PtT, {
+                  [sty.freeBoxstepscharg_step3__x5PtTq2TCe]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
+                  )
+                })}
+              >
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__csGlV
+                    sty.text__csGlV,
+                    {
+                      [sty.textstepscharg_step3__csGlVq2TCe]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
+                      )
+                    }
                   )}
                 >
                   {
@@ -3781,127 +3800,31 @@ function PlasmicChargingAfg__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text___0SUvX
+                    sty.text__lop9V,
+                    {
+                      [sty.textstepscharg_step3__lop9Vq2TCe]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
+                      )
+                    }
                   )}
                 >
-                  {
-                    "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698:"
-                  }
+                  {hasVariant($state, "stepscharg", "step3") &&
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0634\u0627\u0631\u0698 \u0628\u06cc\u0646 \u0633\u0627\u0639\u0627\u062a \u06f1\u06f0 \u0627\u0644\u06cc \u06f1\u06f8 \u0647\u0645\u0647 \u0631\u0648\u0632\u0647\u060c \u0637\u06cc \u06f1\u06f0 \u062f\u0642\u06cc\u0642\u0647 \u0628\u0639\u062f \u0627\u0632 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627\u060c \u0627\u0646\u062c\u0627\u0645 \u0645\u06cc\u06af\u0631\u062f\u062f.\n\u062f\u0631 \u0635\u0648\u0631\u062a\u06cc \u06a9\u0647 \u062f\u0631 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0646 \u0628\u0627\u0632\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062b\u0628\u062a \u06a9\u0646\u06cc\u062f\u060c \u0645\u0648\u062c\u0648\u062f\u06cc \u0627\u0632 \u062d\u0633\u0627\u0628 \u0634\u0645\u0627 \u06a9\u0633\u0631 \u0645\u06cc\u06af\u0631\u062f\u062f \u0648 \u0645\u06cc \u0628\u0627\u06cc\u0633\u062a \u062a\u0627 \u062a\u0627\u06cc\u0645 \u0628\u0639\u062f\u06cc \u0627\u062c\u0631\u0627\u06cc \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0645\u0646\u062a\u0638\u0631 \u0628\u0645\u0627\u0646\u06cc\u062f."
+                    : hasVariant($state, "stepscharg", "step3")
+                    ? "\u0634\u0627\u0631\u0698 \u0628\u06cc\u0646 \u0633\u0627\u0639\u0627\u062a \u06f1\u06f0 \u0627\u0644\u06cc \u06f1\u06f8 \u0647\u0645\u0647 \u0631\u0648\u0632\u0647\u060c \u0637\u06cc \u06f1\u06f0 \u062f\u0642\u06cc\u0642\u0647 \u0628\u0639\u062f \u0627\u0632 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627\u060c \u0627\u0646\u062c\u0627\u0645 \u0645\u06cc\u06af\u0631\u062f\u062f.\n\u062f\u0631 \u0635\u0648\u0631\u062a\u06cc \u06a9\u0647 \u062f\u0631 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0646 \u0628\u0627\u0632\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062b\u0628\u062a \u06a9\u0646\u06cc\u062f\u060c \u0645\u0648\u062c\u0648\u062f\u06cc \u0627\u0632 \u062d\u0633\u0627\u0628 \u0634\u0645\u0627 \u06a9\u0633\u0631 \u0645\u06cc\u06af\u0631\u062f\u062f \u0648 \u0645\u06cc \u0628\u0627\u06cc\u0633\u062a \u062a\u0627 \u062a\u0627\u06cc\u0645 \u0628\u0639\u062f\u06cc \u0627\u062c\u0631\u0627\u06cc \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0645\u0646\u062a\u0638\u0631 \u0628\u0645\u0627\u0646\u06cc\u062f."
+                    : "Enter some text"}
                 </div>
-                <Stack__
-                  as={"ul"}
-                  data-plasmic-name={"ul"}
-                  data-plasmic-override={overrides.ul}
-                  hasGap={true}
-                  className={classNames(projectcss.all, projectcss.ul, sty.ul)}
-                >
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li__gwMzd
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zlV5T)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__g1WEg
-                        )}
-                      >
-                        {
-                          "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f ."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li___7NdH2
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__axSa)}
-                    >
-                      <div
-                        data-plasmic-name={
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u0631"
-                        }
-                        data-plasmic-override={overrides.اپراتور}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور
-                        )}
-                      >
-                        {
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li__hlWxp
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__h4Zun)}
-                    >
-                      <div
-                        data-plasmic-name={
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u06312"
-                        }
-                        data-plasmic-override={overrides.اپراتور2}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور2
-                        )}
-                      >
-                        {
-                          "\u0637\u0631\u062d \u062f\u0644 \u062e\u0648\u0627\u0647 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.li,
-                      sty.li__tBo2D
-                    )}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vN4U)}
-                    >
-                      <div
-                        data-plasmic-name={
-                          "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-                        }
-                        data-plasmic-override={overrides.اپراتور3}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور3
-                        )}
-                      >
-                        {
-                          "\u0645\u0628\u0644\u063a \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
-                        }
-                      </div>
-                    </div>
-                  </li>
-                </Stack__>
                 <Button
-                  className={classNames("__wab_instance", sty.button__vleie)}
+                  className={classNames("__wab_instance", sty.button__vleie, {
+                    [sty.buttonstepscharg_step3__vleieq2TCe]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                   color={"green"}
                   onClick={async event => {
                     const $steps = {};
@@ -3951,6 +3874,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
               data-plasmic-name={"modal2"}
               data-plasmic-override={overrides.modal2}
               className={classNames("__wab_instance", sty.modal2, {
+                [sty.modal2stepscharg_step2]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step2"
+                ),
                 [sty.modal2stepscharg_step3]: hasVariant(
                   $state,
                   "stepscharg",
@@ -3967,7 +3895,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               )}
               hideFooter={true}
               maskClosable={
-                hasVariant($state, "stepscharg", "step3") ? false : undefined
+                hasVariant($state, "stepscharg", "step3") ? false : false
               }
               modalContentClassName={classNames({
                 [sty["pcls_FxYaEiUUZvZf"]]: true,
@@ -4472,6 +4400,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__ouj7U, {
+                    [sty.freeBoxstepscharg_step2__ouj7U1Oc4H]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
                     [sty.freeBoxstepscharg_step3__ouj7Uq2TCe]: hasVariant(
                       $state,
                       "stepscharg",
@@ -4483,7 +4416,14 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__vEfgv
+                      sty.text__vEfgv,
+                      {
+                        [sty.textstepscharg_step2__vEfgv1Oc4H]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        )
+                      }
                     )}
                   >
                     {
@@ -4496,6 +4436,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__d9Qew,
                       {
+                        [sty.textstepscharg_step2__d9Qew1Oc4H]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
                         [sty.textstepscharg_step3__d9Qewq2TCe]: hasVariant(
                           $state,
                           "stepscharg",
@@ -4799,10 +4744,6 @@ const PlasmicDescendants = {
     "step1Next",
     "step2Next",
     "modal",
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
     "lottie",
     "timer",
@@ -4872,22 +4813,7 @@ const PlasmicDescendants = {
   backstep3: ["backstep3"],
   step1Next: ["step1Next"],
   step2Next: ["step2Next"],
-  modal: [
-    "modal",
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-  ],
-  ul: [
-    "ul",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
-  ],
-  اپراتور: ["\u0627\u067e\u0631\u0627\u062a\u0648\u0631"],
-  اپراتور2: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06312"],
-  اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
+  modal: ["modal"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
   timer: ["timer"],
@@ -4923,10 +4849,6 @@ type NodeDefaultElementType = {
   step1Next: typeof Button;
   step2Next: typeof Button;
   modal: typeof AntdModal;
-  ul: "ul";
-  اپراتور: "div";
-  اپراتور2: "div";
-  اپراتور3: "div";
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
@@ -5047,10 +4969,6 @@ export const PlasmicChargingAfg = Object.assign(
     step1Next: makeNodeComponent("step1Next"),
     step2Next: makeNodeComponent("step2Next"),
     modal: makeNodeComponent("modal"),
-    ul: makeNodeComponent("ul"),
-    اپراتور: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u0631"),
-    اپراتور2: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06312"),
-    اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),

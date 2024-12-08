@@ -4035,7 +4035,9 @@ function PlasmicCharging__RenderFunc(props: {
                   ? "100vw"
                   : hasVariant($state, "stepscharg", "step3")
                   ? "55%"
-                  : undefined
+                  : hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? "100%"
+                  : "55%"
               }
               wrapClassName={classNames({
                 [sty["pcls_gZ8Pl2A2vodC"]]: hasVariant(

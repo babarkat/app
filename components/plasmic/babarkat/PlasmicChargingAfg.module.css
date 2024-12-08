@@ -1666,56 +1666,30 @@
   margin-bottom: 20px;
   color: var(--token-jgohepLVeKvh);
 }
-.text___0SUvX {
-  width: auto;
-  font-size: 16px;
-  padding-bottom: 10px;
-  color: var(--token-jgohepLVeKvh);
+.textstepscharg_step3__csGlVq2TCe {
+  margin-bottom: 10px;
 }
-.ul {
-  display: flex;
-  padding-right: 20px;
-  padding-left: 0px;
+.text__lop9V {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+}
+.textstepscharg_step3__lop9Vq2TCe {
+  text-align: justify;
+  font-size: var(--token-70Yb0tqelyc1);
+  color: var(--token-jgohepLVeKvh);
   padding-bottom: 20px;
-  color: var(--token-jgohepLVeKvh);
-  flex-direction: column;
+  padding-top: 0px;
+  display: block;
 }
-.ul > :global(.__wab_flex-container) {
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  margin-top: calc(0px - 5px);
-  height: calc(100% + 5px);
-}
-.ul > :global(.__wab_flex-container) > *,
-.ul > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.ul > :global(.__wab_flex-container) > picture > img,
-.ul > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-top: 5px;
-}
-.li__gwMzd {
-  display: list-item;
-}
-.freeBox__zlV5T {
-  display: flex;
-}
-.li___7NdH2 {
-  display: list-item;
-}
-.freeBox__axSa {
-  display: flex;
-}
-.li__hlWxp {
-  display: list-item;
-}
-.freeBox__h4Zun {
-  display: flex;
-}
-.li__tBo2D {
-  display: list-item;
-}
-.freeBox__vN4U {
-  display: flex;
+@media (min-width: 0px) and (max-width: 768px) {
+  .textstepscharg_step3__lop9Vq2TCe {
+    text-align: justify;
+    padding-top: 0px;
+  }
 }
 .button__vleie:global(.__wab_instance) {
   max-width: 100%;
@@ -1737,21 +1711,24 @@
 .modal2:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
-  padding-right: 24px;
-  padding-left: 24px;
+  padding-right: 0px;
+  padding-left: 0px;
   left: 0;
   top: auto;
   z-index: 1;
   position: fixed;
   right: 0;
-  bottom: 0;
-  height: 375px;
+  bottom: 0px;
+  height: 344px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
   flex-shrink: 0;
 }
 .modal2__modal :global(.ant-modal-content) {
   background: #1b272a;
   outline: none;
   border-radius: 30px 30px 0px 0px;
+  margin: 0px;
 }
 .modal2stepscharg_step3:global(.__wab_instance) {
   padding-left: 0px;
