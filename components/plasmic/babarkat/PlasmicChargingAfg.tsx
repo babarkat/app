@@ -212,7 +212,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             logoUrl:
               "https://api.mizban.exchange/assets/images/image-97d39e98-d656-4c75-b939-05bf762cc4a3.png?_ts=1685280750.0366116",
             codes: ["78", "73"],
-            chargeRange: { min: 1000, max: 100000, customAmounts: false },
+            chargeRange: { min: 10, max: 10000000, customAmounts: false },
             services: [
               {
                 type: "normal",
@@ -229,10 +229,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6QMcI-cMZH4PIVOwCRKoiTgFF9oN45hEJMQ&s",
             codes: ["72", "79"],
             chargeRange: {
-              min: 1000,
-              max: 100000,
+              min: 10,
+              max: 10000000,
               customAmounts: false,
-              amountStep: 1000
+              amountStep: 10
             },
             services: [
               {
@@ -249,7 +249,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             logoUrl:
               "https://api.mizban.exchange/assets/images/image-f32300cb-f9b0-4104-8650-8fbf13ccdb56.png?_ts=1685280911.6977296",
             codes: ["74"],
-            chargeRange: { min: 1000, max: 100000, customAmounts: false },
+            chargeRange: { min: 10, max: 10000000, customAmounts: false },
             services: [
               {
                 type: "normal",
@@ -1419,7 +1419,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
                       }).apply(null, eventArgs);
                     }}
-                    placeholder={"+93"}
+                    placeholder={"93+"}
                     type={"tel"}
                     value={generateStateValueProp($state, [
                       "fragmentInput",
