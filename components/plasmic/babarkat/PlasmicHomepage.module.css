@@ -662,34 +662,6 @@
     padding: 10px;
   }
 }
-.text__jwDh {
-  position: absolute;
-  width: 100px;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  color: var(--token-41VRhDKfihhY);
-  font-family: "Vazirmatn", sans-serif;
-  left: -25px;
-  top: 12px;
-  background: #1bae67;
-  transform: rotateX(0deg) rotateY(20deg) rotateZ(-40deg);
-  transform-style: preserve-3d;
-}
-.text__jwDh * {
-  transform-style: preserve-3d;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__jwDh {
-    background: #33bd68;
-    transform-style: preserve-3d;
-  }
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__jwDh * {
-    transform-style: preserve-3d;
-  }
-}
 .img__plw8V {
   object-fit: cover;
   max-width: 100%;

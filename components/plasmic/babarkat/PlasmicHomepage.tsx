@@ -929,15 +929,6 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     }}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__jwDh
-                      )}
-                    >
-                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                    </div>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__plw8V)}
