@@ -2169,7 +2169,7 @@ function PlasmicHeader__RenderFunc(props: {
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
-                          return $props.p1;
+                          return $state.p1;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -2424,8 +2424,8 @@ function PlasmicHeader__RenderFunc(props: {
                       try {
                         return (
                           $state.newPass.value != $state.reoeatNewPass.value ||
-                          $props.p1 != 100 ||
-                          $props.lodingbtn
+                          $state.p1 != 100 ||
+                          $state.lodingbtn
                         );
                       } catch (e) {
                         if (
@@ -2456,6 +2456,40 @@ function PlasmicHeader__RenderFunc(props: {
               }
               onClick={async event => {
                 const $steps = {};
+
+                $steps["updateLoadedbtn"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["loadedbtn"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateLoadedbtn"] != null &&
+                  typeof $steps["updateLoadedbtn"] === "object" &&
+                  typeof $steps["updateLoadedbtn"].then === "function"
+                ) {
+                  $steps["updateLoadedbtn"] = await $steps["updateLoadedbtn"];
+                }
 
                 $steps["invokeGlobalAction2"] = true
                   ? (() => {
@@ -2653,12 +2687,46 @@ function PlasmicHeader__RenderFunc(props: {
                     "updatePasswordOpen"
                   ];
                 }
+
+                $steps["updateLoadedbtn2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["loadedbtn"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateLoadedbtn2"] != null &&
+                  typeof $steps["updateLoadedbtn2"] === "object" &&
+                  typeof $steps["updateLoadedbtn2"].then === "function"
+                ) {
+                  $steps["updateLoadedbtn2"] = await $steps["updateLoadedbtn2"];
+                }
               }}
               showEndIcon={
                 hasVariant(globalVariants, "screen", "mobileOnly")
                   ? (() => {
                       try {
-                        return $props.lodingbtn;
+                        return $state.loadedbtn;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||

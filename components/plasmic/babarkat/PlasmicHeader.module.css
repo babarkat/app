@@ -1984,7 +1984,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__uiwci {
-    font-size: 22px;
+    font-size: 20px;
   }
 }
 .freeBox__fklle {
@@ -2073,6 +2073,11 @@
   font-weight: 700;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__wt6XN {
+    font-size: 18px;
+  }
 }
 .freeBox__lvYIt {
   display: flex;
