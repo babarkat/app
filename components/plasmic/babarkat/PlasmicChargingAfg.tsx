@@ -3307,7 +3307,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                 color={"green"}
                 isDisabled={(() => {
                   try {
-                    return $state.fragmentInput.value.length != 9;
+                    return (
+                      $state.fragmentInput.value.length != 9 &&
+                      $state.operatorselect == -1
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
