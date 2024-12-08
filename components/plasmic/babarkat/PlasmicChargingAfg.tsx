@@ -2585,19 +2585,19 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                     try {
                                       return {
                                         text:
-                                          "\\nخرید شارژ با موفقیت انجام شد.\\nنام: " +
+                                          "\nخرید شارژ با موفقیت انجام شد.\nنام: " +
                                           $state.userinfo.last_name +
-                                          "\\nاپراتور: " +
+                                          "\nاپراتور: " +
                                           $state.operators2[
                                             $state.operatorselect
-                                          ].nameop +
-                                          "\\nقیمت به تومان: " +
-                                          $state.amount +
-                                          "\\nقیمت به افغانی: " +
+                                          ].description +
+                                          "\nقیمت به تومان: " +
+                                          $state.amont +
+                                          "\nقیمت به افغانی: " +
                                           $state.amontAfg +
-                                          "\\nشماره: " +
+                                          "\nشماره: " +
                                           $state.number +
-                                          "\\nشناسه تراکنش: " +
+                                          "\nشناسه تراکنش: " +
                                           $state.uuid
                                       };
                                     } catch (e) {
