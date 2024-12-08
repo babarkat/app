@@ -698,6 +698,35 @@
     margin-top: 5px;
   }
 }
+.text__ku6Uz {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  color: var(--token-41VRhDKfihhY);
+  font-family: "Vazirmatn", sans-serif;
+  left: -25px;
+  top: 12px;
+  background: var(--token-8dHZNKgzL8aW);
+  transform: rotateX(0deg) rotateY(20deg) rotateZ(-40deg);
+  font-weight: 700;
+  transform-style: preserve-3d;
+}
+.text__ku6Uz * {
+  transform-style: preserve-3d;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ku6Uz {
+    background: #33bd68;
+    transform-style: preserve-3d;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ku6Uz * {
+    transform-style: preserve-3d;
+  }
+}
 .comingSoon2 {
   display: flex;
   flex-direction: column;

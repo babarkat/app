@@ -975,6 +975,15 @@ function PlasmicHomepage__RenderFunc(props: {
                         "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
                       }
                     </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__ku6Uz
+                      )}
+                    >
+                      {"\u062c\u062f\u06cc\u062f"}
+                    </div>
                   </div>
                   <div
                     data-plasmic-name={"comingSoon2"}
