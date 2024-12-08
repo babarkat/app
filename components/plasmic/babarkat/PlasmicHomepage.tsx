@@ -898,6 +898,36 @@ function PlasmicHomepage__RenderFunc(props: {
                     data-plasmic-name={"comingSoon"}
                     data-plasmic-override={overrides.comingSoon}
                     className={classNames(projectcss.all, sty.comingSoon)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToChargingAfg"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/charging-2` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToChargingAfg"] != null &&
+                        typeof $steps["goToChargingAfg"] === "object" &&
+                        typeof $steps["goToChargingAfg"].then === "function"
+                      ) {
+                        $steps["goToChargingAfg"] = await $steps[
+                          "goToChargingAfg"
+                        ];
+                      }
+                    }}
                   >
                     <div
                       className={classNames(
