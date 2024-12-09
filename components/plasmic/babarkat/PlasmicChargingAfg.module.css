@@ -677,7 +677,7 @@
   max-width: 100%;
   object-fit: cover;
   background: #ffffff;
-  text-align: right;
+  text-align: left;
   color: var(--token-WxvvgatuPYoJ);
   font-family: "Vazirmatn", sans-serif;
   padding-right: 50px;
@@ -693,6 +693,17 @@
 }
 .fragmentInputstepscharg_step3:global(.__wab_instance) {
   display: none;
+}
+.text__rwMv {
+  position: absolute;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  left: 10px;
+  top: 12px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
 }
 .img__paJ9 {
   object-fit: contain;
@@ -736,6 +747,16 @@
   .fragmentInput2:global(.__wab_instance) {
     z-index: 5;
   }
+}
+.text__od3Ng {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-jgohepLVeKvh);
+  padding-top: 10px;
+  min-width: 0;
 }
 .freeBox__mrHvi {
   flex-direction: column;

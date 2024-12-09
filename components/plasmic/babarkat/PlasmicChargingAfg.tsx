@@ -369,7 +369,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? true : false
+          hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "variable",
@@ -1419,7 +1419,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
                       }).apply(null, eventArgs);
                     }}
-                    placeholder={"93+"}
+                    placeholder={"712345678"}
                     type={"tel"}
                     value={generateStateValueProp($state, [
                       "fragmentInput",
@@ -1427,6 +1427,15 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     ])}
                   />
 
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rwMv
+                    )}
+                  >
+                    {"93+"}
+                  </div>
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__paJ9, {
@@ -1592,6 +1601,17 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     ])}
                   />
                 ) : null}
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__od3Ng
+                  )}
+                >
+                  {
+                    "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u062e\u0648\u062f \u0631\u0627 \u0628\u062f\u0648\u0646 \u0635\u0641\u0631 \u0627\u0628\u062a\u062f\u0627\u06cc \u0634\u0645\u0627\u0631\u0647 \u0648 \u0628\u062f\u0648\u0646 \u06a9\u062f \u06a9\u0634\u0648\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f. \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0645\u062b\u0627\u0644: 712345678"
+                  }
+                </div>
               </Stack__>
               <div
                 className={classNames(projectcss.all, sty.freeBox__mrHvi, {
@@ -2597,7 +2617,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                           "\nقیمت به افغانی: " +
                                           $state.amontAfg +
                                           "\nشماره: " +
+                                          "`" +
                                           $state.number +
+                                          "\nکپی کردن شماره: " +
+                                          "`" +
+                                          $state.number.slice(5) +
+                                          "`" +
                                           "\nشناسه تراکنش: " +
                                           $state.uuid
                                       };

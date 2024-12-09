@@ -2200,7 +2200,14 @@ function PlasmicInternet3__RenderFunc(props: {
                               data-plasmic-override={overrides.tabUnderline}
                               className={classNames(
                                 "__wab_instance",
-                                sty.tabUnderline
+                                sty.tabUnderline,
+                                {
+                                  [sty.tabUnderlinesteps2_step2]: hasVariant(
+                                    $state,
+                                    "steps2",
+                                    "step2"
+                                  )
+                                }
                               )}
                             />
                           </Stack__>
