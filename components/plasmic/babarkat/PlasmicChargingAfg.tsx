@@ -1011,7 +1011,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     {hasVariant($state, "stepscharg", "step3")
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                       : hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u0627\u0641\u0642\u0627\u0646\u06cc)."
+                      ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u0627\u0641\u063a\u0627\u0646\u06cc)."
                       : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                   </div>
                   <div
@@ -1578,7 +1578,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     }}
                     placeholder={
                       hasVariant($state, "stepscharg", "step2")
-                        ? "\u0627\u0641\u0642\u0627\u0646\u06cc"
+                        ? "\u0627\u0641\u063a\u0627\u0646\u06cc"
                         : "\u062a\u0648\u0645\u0627\u0646"
                     }
                     type={
@@ -1841,7 +1841,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     {hasVariant($state, "stepscharg", "step3")
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                       : hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u0627\u0641\u0642\u0627\u0646\u06cc)"
+                      ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u0627\u0641\u063a\u0627\u0646\u06cc)"
                       : ""}
                   </div>
                   <Stack__
@@ -2036,7 +2036,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                   sty.text__clHnn,
                                   {
                                     [sty.textstepscharg_step2__clHnn1Oc4H]:
-                                      hasVariant($state, "stepscharg", "step2")
+                                      hasVariant($state, "stepscharg", "step2"),
+                                    [sty.textstepscharg_step3__clHnnq2TCe]:
+                                      hasVariant($state, "stepscharg", "step3")
                                   }
                                 )}
                               >
@@ -2046,7 +2048,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                       try {
                                         return (
                                           amonttem.toLocaleString("en-US") +
-                                          " افقانی"
+                                          " افغانی"
                                         );
                                       } catch (e) {
                                         if (
