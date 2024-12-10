@@ -1431,7 +1431,19 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__rwMv
+                      sty.text__rwMv,
+                      {
+                        [sty.textstepscharg_step2__rwMv1Oc4H]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.textstepscharg_step3__rwMvQ2TCe]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      }
                     )}
                   >
                     {"93+"}
@@ -1523,22 +1535,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       }
                     )}
                     disabled={
-                      hasVariant($state, "stepscharg", "step2") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? (() => {
-                            try {
-                              return undefined;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant($state, "stepscharg", "step2")
+                      hasVariant($state, "stepscharg", "step2")
                         ? true
                         : undefined
                     }
@@ -1605,7 +1602,19 @@ function PlasmicChargingAfg__RenderFunc(props: {
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__od3Ng
+                    sty.text__od3Ng,
+                    {
+                      [sty.textstepscharg_step2__od3Ng1Oc4H]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step2"
+                      ),
+                      [sty.textstepscharg_step3__od3Ngq2TCe]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
+                      )
+                    }
                   )}
                 >
                   {
