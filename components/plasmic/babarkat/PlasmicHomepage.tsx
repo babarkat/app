@@ -606,9 +606,9 @@ function PlasmicHomepage__RenderFunc(props: {
                     <React.Fragment>
                       {(() => {
                         try {
-                          return (() => {
-                            return $state.userbabarcat.toman.toLocaleString();
-                          })();
+                          return parseInt(
+                            $state.userbabarcat.toman.toFixed(0)
+                          ).toLocaleString();
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
