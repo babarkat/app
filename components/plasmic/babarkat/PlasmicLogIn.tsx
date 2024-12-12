@@ -67,6 +67,7 @@ import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -160,6 +161,7 @@ export type PlasmicLogIn__OverridesType = {
   group8?: Flex__<"div">;
   group9?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultLogInProps {}
@@ -817,44 +819,91 @@ function PlasmicLogIn__RenderFunc(props: {
                       ? Icon56Icon
                       : BabarkatlogoCopy2SvgIcon
                   }
-                  className={classNames(projectcss.all, sty.svg___6T7, {
-                    [sty.svgloginByPassword___6T70DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.svgloginByPassword_password___6T70DikB8PqF9]:
-                      hasVariant(
+                  className={classNames(
+                    projectcss.all,
+                    sty.svg___6T7,
+                    "logoLogin",
+                    {
+                      [sty.svgloginByPassword___6T70DikB]: hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.svgpassword___6T78PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.svgslids_unnamedVariant3___6T7I1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgslids_unnamedVariant___6T7Me9Ia]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.svgunnamedVariant2___6T7JmKha]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.svgunnamedVariant___6T7Dv9B5]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  })}
+                      ),
+                      [sty.svgloginByPassword_password___6T70DikB8PqF9]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) && hasVariant($state, "password", "password"),
+                      [sty.svgloginByPassword_password_unnamedVariant_unnamedVariant2___6T70DikB8PqF9Dv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "password", "password") &&
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                      [sty.svgpassword___6T78PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.svgpassword_unnamedVariant2___6T78PqF9JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) && hasVariant($state, "password", "password"),
+                      [sty.svgpassword_unnamedVariant_unnamedVariant2___6T78PqF9Dv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "password", "password"),
+                      [sty.svgslids_unnamedVariant3___6T7I1KiV]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.svgslids_unnamedVariant___6T7Me9Ia]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant"
+                      ),
+                      [sty.svgunnamedVariant2___6T7JmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.svgunnamedVariant___6T7Dv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.svgunnamedVariant_unnamedVariant2___6T7Dv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    }
+                  )}
                   role={"img"}
                 />
 
@@ -5226,6 +5275,21 @@ function PlasmicLogIn__RenderFunc(props: {
           onSuccess={generateStateOnChangeProp($state, ["apiRequest", "data"])}
           url={"/"}
         />
+
+        <Embed
+          data-plasmic-name={"embedHtml"}
+          data-plasmic-override={overrides.embedHtml}
+          className={classNames("__wab_instance", sty.embedHtml, {
+            [sty.embedHtmlloginByPassword]: hasVariant(
+              $state,
+              "loginByPassword",
+              "loginByPassword"
+            )
+          })}
+          code={
+            "    <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
+          }
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -5258,7 +5322,8 @@ const PlasmicDescendants = {
     "rectangle",
     "group8",
     "group9",
-    "apiRequest"
+    "apiRequest",
+    "embedHtml"
   ],
   reveal: [
     "reveal",
@@ -5347,7 +5412,8 @@ const PlasmicDescendants = {
   rectangle: ["rectangle"],
   group8: ["group8"],
   group9: ["group9"],
-  apiRequest: ["apiRequest"]
+  apiRequest: ["apiRequest"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5379,6 +5445,7 @@ type NodeDefaultElementType = {
   group8: "div";
   group9: "div";
   apiRequest: typeof ApiRequest;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5491,6 +5558,7 @@ export const PlasmicLogIn = Object.assign(
     group8: makeNodeComponent("group8"),
     group9: makeNodeComponent("group9"),
     apiRequest: makeNodeComponent("apiRequest"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicLogIn
     internalVariantProps: PlasmicLogIn__VariantProps,
