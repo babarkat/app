@@ -621,6 +621,17 @@
   margin-left: calc(0px + 0px) !important;
   margin-top: calc(0px + 10px) !important;
 }
+.fragmentInputunnamedVariant_unnamedVariant2:global(.__wab_instance) {
+  margin-top: calc(0px + 20px) !important;
+}
+.fragmentInputpassword_unnamedVariant2:global(.__wab_instance) {
+  margin-left: calc(0px + 0px) !important;
+  margin-top: calc(0px + 10px) !important;
+}
+.fragmentInputloginByPassword_password:global(.__wab_instance) {
+  margin-left: calc(0px + 0px) !important;
+  margin-top: calc(0px + 10px) !important;
+}
 .text__lh2V1 {
   position: relative;
   width: 100%;
@@ -1861,6 +1872,7 @@
   object-fit: cover;
   max-width: 100%;
   width: 150px;
+  display: none !important;
 }
 .img___6WuZh > picture > img {
   object-fit: cover;

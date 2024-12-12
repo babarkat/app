@@ -1118,11 +1118,20 @@ function PlasmicLogIn__RenderFunc(props: {
                       "loginByPassword",
                       "loginByPassword"
                     ),
+                    [sty.fragmentInputloginByPassword_password]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
                     [sty.fragmentInputpassword]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
+                    [sty.fragmentInputpassword_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) && hasVariant($state, "password", "password"),
                     [sty.fragmentInputslids_unnamedVariant3]: hasVariant(
                       $state,
                       "slids",
@@ -1137,7 +1146,10 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
-                    )
+                    ),
+                    [sty.fragmentInputunnamedVariant_unnamedVariant2]:
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                   })}
                   disabled={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1153,7 +1165,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       const $steps = {};
                     }).apply(null, eventArgs);
                   }}
-                  placeholder={"*********09"}
+                  placeholder={"09*********"}
                   type={
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "tel"
