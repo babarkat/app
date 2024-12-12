@@ -819,91 +819,71 @@ function PlasmicLogIn__RenderFunc(props: {
                       ? Icon56Icon
                       : BabarkatlogoCopy2SvgIcon
                   }
-                  className={classNames(
-                    projectcss.all,
-                    sty.svg___6T7,
-                    "logoLogin",
-                    {
-                      [sty.svgloginByPassword___6T70DikB]: hasVariant(
+                  className={classNames(projectcss.all, sty.svg___6T7, ``, {
+                    [sty.svgloginByPassword___6T70DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.svgloginByPassword_password___6T70DikB8PqF9]:
+                      hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
-                      ),
-                      [sty.svgloginByPassword_password___6T70DikB8PqF9]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.svgloginByPassword_password_unnamedVariant_unnamedVariant2___6T70DikB8PqF9Dv9B5JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.svgpassword___6T78PqF9]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.svgpassword_unnamedVariant2___6T78PqF9JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.svgpassword_unnamedVariant_unnamedVariant2___6T78PqF9Dv9B5JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "password", "password"),
-                      [sty.svgslids_unnamedVariant3___6T7I1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.svgslids_unnamedVariant___6T7Me9Ia]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant"
-                      ),
-                      [sty.svgunnamedVariant2___6T7JmKha]: hasVariant(
+                      ) && hasVariant($state, "password", "password"),
+                    [sty.svgloginByPassword_password_unnamedVariant_unnamedVariant2___6T70DikB8PqF9Dv9B5JmKha]:
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                      hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
-                      ),
-                      [sty.svgunnamedVariant___6T7Dv9B5]: hasVariant(
+                      ) &&
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
+                    [sty.svgpassword___6T78PqF9]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.svgpassword_unnamedVariant2___6T78PqF9JmKha]:
+                      hasVariant(
                         $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.svgunnamedVariant_unnamedVariant2___6T7Dv9B5JmKha]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    }
-                  )}
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) && hasVariant($state, "password", "password"),
+                    [sty.svgpassword_unnamedVariant_unnamedVariant2___6T78PqF9Dv9B5JmKha]:
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "password", "password"),
+                    [sty.svgslids_unnamedVariant3___6T7I1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.svgslids_unnamedVariant___6T7Me9Ia]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant"
+                    ),
+                    [sty.svgunnamedVariant2___6T7JmKha]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.svgunnamedVariant___6T7Dv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.svgunnamedVariant_unnamedVariant2___6T7Dv9B5JmKha]:
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                  })}
+                  id={"logoLogin"}
                   role={"img"}
                 />
 
@@ -5287,7 +5267,9 @@ function PlasmicLogIn__RenderFunc(props: {
             )
           })}
           code={
-            "    <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
+            hasVariant($state, "loginByPassword", "loginByPassword")
+              ? "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
+              : "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
           }
         />
       </div>
