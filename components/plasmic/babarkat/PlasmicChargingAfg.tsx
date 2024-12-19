@@ -2690,6 +2690,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                           "\nشماره: " +
                                           "`" +
                                           $state.number +
+                                          "`" +
                                           "\nکپی کردن شماره: " +
                                           "`" +
                                           $state.number.slice(5) +
