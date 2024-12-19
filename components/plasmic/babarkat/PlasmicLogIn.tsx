@@ -160,6 +160,7 @@ export type PlasmicLogIn__OverridesType = {
   rectangle?: Flex__<"div">;
   group8?: Flex__<"div">;
   group9?: Flex__<"div">;
+  group10?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
   embedHtml?: Flex__<typeof Embed>;
 };
@@ -1161,6 +1162,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       "fragmentInput",
                       "value"
                     ]).apply(null, eventArgs);
+
                     (async value => {
                       const $steps = {};
                     }).apply(null, eventArgs);
@@ -1487,6 +1489,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         "fragmentInput3",
                         "value"
                       ]).apply(null, eventArgs);
+
                       (async value => {
                         const $steps = {};
                       }).apply(null, eventArgs);
@@ -1688,6 +1691,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         "fragmentInput2",
                         "value"
                       ]).apply(null, eventArgs);
+
                       (async value => {
                         const $steps = {};
                       }).apply(null, eventArgs);
@@ -2237,6 +2241,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       "select",
                       "value"
                     ]).apply(null, eventArgs);
+
                     (async (value, option) => {
                       const $steps = {};
                     }).apply(null, eventArgs);
@@ -4680,7 +4685,13 @@ function PlasmicLogIn__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group"}
                     data-plasmic-override={overrides.group}
-                    className={classNames(projectcss.all, sty.group)}
+                    className={classNames(projectcss.all, sty.group, {
+                      [sty.groupunnamedVariant]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      )
+                    })}
                   >
                     <div
                       data-plasmic-name={"group2"}
@@ -4892,6 +4903,9 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.group9password_unnamedVariant2]:
                     hasVariant($state, "password", "password") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group9password_unnamedVariant]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "password", "password"),
                   [sty.group9slids_unnamedVariant2]: hasVariant(
                     $state,
                     "slids",
@@ -5068,6 +5082,197 @@ function PlasmicLogIn__RenderFunc(props: {
                   role={"img"}
                 />
               </div>
+              <div
+                data-plasmic-name={"group10"}
+                data-plasmic-override={overrides.group10}
+                className={classNames(projectcss.all, sty.group10, {
+                  [sty.group10loginByPassword]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.group10loginByPassword_unnamedVariant2]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group10password]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.group10password_unnamedVariant2]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group10slids_unnamedVariant2]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant2"
+                  ),
+                  [sty.group10slids_unnamedVariant3]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant3"
+                  ),
+                  [sty.group10slids_unnamedVariant]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant"
+                  ),
+                  [sty.group10unnamedVariant2]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.group10unnamedVariant]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.group10unnamedVariant_unnamedVariant2]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                })}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateUnnamedVariant"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "unnamedVariant",
+                          operation: 6
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateUnnamedVariant"] != null &&
+                    typeof $steps["updateUnnamedVariant"] === "object" &&
+                    typeof $steps["updateUnnamedVariant"].then === "function"
+                  ) {
+                    $steps["updateUnnamedVariant"] = await $steps[
+                      "updateUnnamedVariant"
+                    ];
+                  }
+
+                  $steps["updatePassword"] = true
+                    ? (() => {
+                        const actionArgs = { vgroup: "password", operation: 6 };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updatePassword"] != null &&
+                    typeof $steps["updatePassword"] === "object" &&
+                    typeof $steps["updatePassword"].then === "function"
+                  ) {
+                    $steps["updatePassword"] = await $steps["updatePassword"];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__agfv,
+                    {
+                      [sty.textloginByPassword__agfv0DikB]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant2__agfv0DikBJmKha]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                      [sty.textpassword__agfv8PqF9]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textpassword_unnamedVariant2__agfv8PqF9JmKha]:
+                        hasVariant($state, "password", "password") &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                      [sty.textslids_unnamedVariant3__agfvi1KiV]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.textunnamedVariant2__agfvJmKha]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant__agfvDv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.textunnamedVariant_unnamedVariant2__agfvDv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    }
+                  )}
+                >
+                  {hasVariant($state, "loginByPassword", "loginByPassword")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : hasVariant($state, "password", "password")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                </div>
+                <LeftArrowBackSvgrepoComSvgIcon
+                  className={classNames(projectcss.all, sty.svg__hTSxw, {
+                    [sty.svgloginByPassword_unnamedVariant2__hTSxw0DikBJmKha]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                    [sty.svgpassword_unnamedVariant2__hTSxw8PqF9JmKha]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                    [sty.svgslids_unnamedVariant3__hTSxwI1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.svgunnamedVariant__hTSxwDv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
+                  role={"img"}
+                />
+              </div>
             </div>
           </Reveal>
         ) : null}
@@ -5184,6 +5389,11 @@ function PlasmicLogIn__RenderFunc(props: {
           data-plasmic-name={"apiRequest"}
           data-plasmic-override={overrides.apiRequest}
           className={classNames("__wab_instance", sty.apiRequest, {
+            [sty.apiRequestloginByPassword]: hasVariant(
+              $state,
+              "loginByPassword",
+              "loginByPassword"
+            ),
             [sty.apiRequestpassword]: hasVariant(
               $state,
               "password",
@@ -5203,12 +5413,18 @@ function PlasmicLogIn__RenderFunc(props: {
           errorDisplay={null}
           loadingDisplay={null}
           method={"GET"}
-          onError={generateStateOnChangeProp($state, ["apiRequest", "error"])}
+          onError={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["apiRequest", "error"]).apply(
+              null,
+              eventArgs
+            );
+          }}
           onLoading={async (...eventArgs: any) => {
             generateStateOnChangeProp($state, ["apiRequest", "loading"]).apply(
               null,
               eventArgs
             );
+
             (async loading => {
               const $steps = {};
 
@@ -5264,7 +5480,12 @@ function PlasmicLogIn__RenderFunc(props: {
               }
             }).apply(null, eventArgs);
           }}
-          onSuccess={generateStateOnChangeProp($state, ["apiRequest", "data"])}
+          onSuccess={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
+              null,
+              eventArgs
+            );
+          }}
           url={"/"}
         />
 
@@ -5323,6 +5544,7 @@ const PlasmicDescendants = {
     "rectangle",
     "group8",
     "group9",
+    "group10",
     "apiRequest",
     "embedHtml"
   ],
@@ -5350,7 +5572,8 @@ const PlasmicDescendants = {
     "group7",
     "rectangle",
     "group8",
-    "group9"
+    "group9",
+    "group10"
   ],
   fragmentInput: ["fragmentInput"],
   fragmentInput3: ["fragmentInput3"],
@@ -5413,6 +5636,7 @@ const PlasmicDescendants = {
   rectangle: ["rectangle"],
   group8: ["group8"],
   group9: ["group9"],
+  group10: ["group10"],
   apiRequest: ["apiRequest"],
   embedHtml: ["embedHtml"]
 } as const;
@@ -5445,6 +5669,7 @@ type NodeDefaultElementType = {
   rectangle: "div";
   group8: "div";
   group9: "div";
+  group10: "div";
   apiRequest: typeof ApiRequest;
   embedHtml: typeof Embed;
 };
@@ -5558,6 +5783,7 @@ export const PlasmicLogIn = Object.assign(
     rectangle: makeNodeComponent("rectangle"),
     group8: makeNodeComponent("group8"),
     group9: makeNodeComponent("group9"),
+    group10: makeNodeComponent("group10"),
     apiRequest: makeNodeComponent("apiRequest"),
     embedHtml: makeNodeComponent("embedHtml"),
 

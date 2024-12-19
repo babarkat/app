@@ -1440,6 +1440,7 @@ function PlasmicInternet3__RenderFunc(props: {
                         "fragmentInput",
                         "value"
                       ]).apply(null, eventArgs);
+
                       (async value => {
                         const $steps = {};
 
@@ -1695,16 +1696,36 @@ function PlasmicInternet3__RenderFunc(props: {
                             $steps["runCode"] = await $steps["runCode"];
                           }
                         },
-                        onDisable2Change: generateStateOnChangeProp($state, [
-                          "boxselect",
-                          __plasmic_idx_0,
-                          "disable2"
-                        ]),
-                        onSelectChange: generateStateOnChangeProp($state, [
-                          "boxselect",
-                          __plasmic_idx_0,
-                          "select"
-                        ]),
+                        onDisable2Change: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "boxselect",
+                            __plasmic_idx_0,
+                            "disable2"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        },
+                        onSelectChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "boxselect",
+                            __plasmic_idx_0,
+                            "select"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        },
                         select: generateStateValueProp($state, [
                           "boxselect",
                           __plasmic_idx_0,
@@ -1920,16 +1941,36 @@ function PlasmicInternet3__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
                           },
-                          onDisable2Change: generateStateOnChangeProp($state, [
-                            "boxselect2",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          onSelectChange: generateStateOnChangeProp($state, [
-                            "boxselect2",
-                            __plasmic_idx_0,
-                            "select"
-                          ]),
+                          onDisable2Change: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect2",
+                              __plasmic_idx_0,
+                              "disable2"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
+                          onSelectChange: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect2",
+                              __plasmic_idx_0,
+                              "select"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
                           select: generateStateValueProp($state, [
                             "boxselect2",
                             __plasmic_idx_0,
@@ -2621,19 +2662,24 @@ function PlasmicInternet3__RenderFunc(props: {
               errorDisplay={null}
               loadingDisplay={null}
               method={"GET"}
-              onError={generateStateOnChangeProp($state, [
-                "apiRequest",
-                "error"
-              ])}
-              onLoading={generateStateOnChangeProp($state, [
-                "apiRequest",
-                "loading"
-              ])}
+              onError={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "error"
+                ]).apply(null, eventArgs);
+              }}
+              onLoading={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "apiRequest",
+                  "loading"
+                ]).apply(null, eventArgs);
+              }}
               onSuccess={async (...eventArgs: any) => {
                 generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
                   null,
                   eventArgs
                 );
+
                 (async data => {
                   const $steps = {};
 
@@ -3000,10 +3046,12 @@ function PlasmicInternet3__RenderFunc(props: {
                 [sty["pcls_xvBr3m1KBZYR"]]: true
               })}
               modalScopeClassName={sty["modal__modal"]}
-              onOpenChange={generateStateOnChangeProp($state, [
-                "modal",
-                "open"
-              ])}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["modal", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
               open={generateStateValueProp($state, ["modal", "open"])}
               title={null}
               trigger={null}
@@ -3959,10 +4007,12 @@ function PlasmicInternet3__RenderFunc(props: {
                 )
               })}
               modalScopeClassName={sty["modal3__modal"]}
-              onOpenChange={generateStateOnChangeProp($state, [
-                "modal3",
-                "open"
-              ])}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["modal3", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
               open={generateStateValueProp($state, ["modal3", "open"])}
               title={null}
               trigger={null}
@@ -4624,18 +4674,24 @@ function PlasmicInternet3__RenderFunc(props: {
               </div>
             }
             method={"GET"}
-            onError={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "error"
-            ])}
-            onLoading={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "loading"
-            ])}
-            onSuccess={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "data"
-            ])}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "error"
+              ]).apply(null, eventArgs);
+            }}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "loading"
+              ]).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "data"
+              ]).apply(null, eventArgs);
+            }}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
         </div>

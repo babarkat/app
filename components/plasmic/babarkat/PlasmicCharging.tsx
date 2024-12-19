@@ -1318,6 +1318,7 @@ function PlasmicCharging__RenderFunc(props: {
                         "fragmentInput",
                         "value"
                       ]).apply(null, eventArgs);
+
                       (async value => {
                         const $steps = {};
 
@@ -1555,6 +1556,7 @@ function PlasmicCharging__RenderFunc(props: {
                         "fragmentInput2",
                         "value"
                       ]).apply(null, eventArgs);
+
                       (async value => {
                         const $steps = {};
 
@@ -1721,16 +1723,36 @@ function PlasmicCharging__RenderFunc(props: {
                             $steps["runCode"] = await $steps["runCode"];
                           }
                         },
-                        onDisable2Change: generateStateOnChangeProp($state, [
-                          "boxselect",
-                          __plasmic_idx_0,
-                          "disable2"
-                        ]),
-                        onSelectChange: generateStateOnChangeProp($state, [
-                          "boxselect",
-                          __plasmic_idx_0,
-                          "select"
-                        ]),
+                        onDisable2Change: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "boxselect",
+                            __plasmic_idx_0,
+                            "disable2"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        },
+                        onSelectChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "boxselect",
+                            __plasmic_idx_0,
+                            "select"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        },
                         select: generateStateValueProp($state, [
                           "boxselect",
                           __plasmic_idx_0,
@@ -1954,16 +1976,36 @@ function PlasmicCharging__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
                           },
-                          onDisable2Change: generateStateOnChangeProp($state, [
-                            "boxselect3",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          onSelectChange: generateStateOnChangeProp($state, [
-                            "boxselect3",
-                            __plasmic_idx_0,
-                            "select"
-                          ]),
+                          onDisable2Change: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect3",
+                              __plasmic_idx_0,
+                              "disable2"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
+                          onSelectChange: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect3",
+                              __plasmic_idx_0,
+                              "select"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
                           select: generateStateValueProp($state, [
                             "boxselect3",
                             __plasmic_idx_0,
@@ -2212,16 +2254,36 @@ function PlasmicCharging__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
                           },
-                          onDisable2Change: generateStateOnChangeProp($state, [
-                            "boxselect2",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          onSelectChange: generateStateOnChangeProp($state, [
-                            "boxselect2",
-                            __plasmic_idx_0,
-                            "select"
-                          ]),
+                          onDisable2Change: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect2",
+                              __plasmic_idx_0,
+                              "disable2"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
+                          onSelectChange: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect2",
+                              __plasmic_idx_0,
+                              "select"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
                           select: generateStateValueProp($state, [
                             "boxselect2",
                             __plasmic_idx_0,
@@ -3798,10 +3860,12 @@ function PlasmicCharging__RenderFunc(props: {
                 [sty["pcls_vp1Ewjn0yy6s"]]: true
               })}
               modalScopeClassName={sty["modal__modal"]}
-              onOpenChange={generateStateOnChangeProp($state, [
-                "modal",
-                "open"
-              ])}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["modal", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
               open={generateStateValueProp($state, ["modal", "open"])}
               title={null}
               trigger={null}
@@ -4022,10 +4086,12 @@ function PlasmicCharging__RenderFunc(props: {
                 [sty["pcls_owS3eLZxgVwz"]]: true
               })}
               modalScopeClassName={sty["modal2__modal"]}
-              onOpenChange={generateStateOnChangeProp($state, [
-                "modal2",
-                "open"
-              ])}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["modal2", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
               open={generateStateValueProp($state, ["modal2", "open"])}
               title={null}
               trigger={null}
@@ -4785,18 +4851,24 @@ function PlasmicCharging__RenderFunc(props: {
               </div>
             }
             method={"GET"}
-            onError={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "error"
-            ])}
-            onLoading={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "loading"
-            ])}
-            onSuccess={generateStateOnChangeProp($state, [
-              "commissionBabarkat",
-              "data"
-            ])}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "error"
+              ]).apply(null, eventArgs);
+            }}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "loading"
+              ]).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "commissionBabarkat",
+                "data"
+              ]).apply(null, eventArgs);
+            }}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
         </div>

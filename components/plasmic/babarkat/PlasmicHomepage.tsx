@@ -1299,12 +1299,18 @@ function PlasmicHomepage__RenderFunc(props: {
             errorDisplay={null}
             loadingDisplay={null}
             method={"GET"}
-            onError={generateStateOnChangeProp($state, ["profile", "error"])}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["profile", "error"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             onLoading={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, ["profile", "loading"]).apply(
                 null,
                 eventArgs
               );
+
               (async loading => {
                 const $steps = {};
 
@@ -1341,6 +1347,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
               (async data => {
                 const $steps = {};
 
@@ -1418,7 +1425,12 @@ function PlasmicHomepage__RenderFunc(props: {
               [sty["pcls_sCrz8NBk1ScS"]]: true
             })}
             modalScopeClassName={sty["modal__modal"]}
-            onOpenChange={generateStateOnChangeProp($state, ["modal", "open"])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["modal", "open"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             open={generateStateValueProp($state, ["modal", "open"])}
             title={null}
             trigger={null}
@@ -1532,6 +1544,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       null,
                       eventArgs
                     );
+
                     (async value => {
                       const $steps = {};
                     }).apply(null, eventArgs);
@@ -1638,16 +1651,36 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
                           },
-                          onDisable2Change: generateStateOnChangeProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "disable2"
-                          ]),
-                          onSelectChange: generateStateOnChangeProp($state, [
-                            "boxselect4",
-                            __plasmic_idx_0,
-                            "select"
-                          ]),
+                          onDisable2Change: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect4",
+                              __plasmic_idx_0,
+                              "disable2"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
+                          onSelectChange: async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "boxselect4",
+                              __plasmic_idx_0,
+                              "select"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          },
                           select: generateStateValueProp($state, [
                             "boxselect4",
                             __plasmic_idx_0,
@@ -1885,7 +1918,12 @@ function PlasmicHomepage__RenderFunc(props: {
               [sty["pcls_KT42DFSzmxMu"]]: true
             })}
             modalScopeClassName={sty["modal2__modal"]}
-            onOpenChange={generateStateOnChangeProp($state, ["modal2", "open"])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["modal2", "open"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             open={generateStateValueProp($state, ["modal2", "open"])}
             title={null}
             trigger={null}
@@ -2265,10 +2303,12 @@ function PlasmicHomepage__RenderFunc(props: {
               [sty["pcls_u_s-vsuRRCEN"]]: true
             })}
             modalScopeClassName={sty["inventoryIncrease__modal"]}
-            onOpenChange={generateStateOnChangeProp($state, [
-              "inventoryIncrease",
-              "open"
-            ])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "inventoryIncrease",
+                "open"
+              ]).apply(null, eventArgs);
+            }}
             open={generateStateValueProp($state, ["inventoryIncrease", "open"])}
             title={null}
             trigger={null}
@@ -11793,10 +11833,12 @@ function PlasmicHomepage__RenderFunc(props: {
                 [sty["pcls_zbrpDBitDkyb"]]: true
               }),
               modalScopeClassName: sty["modal6__modal"],
-              onOpenChange: generateStateOnChangeProp($state, [
-                "modal6",
-                "open"
-              ]),
+              onOpenChange: async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["modal6", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              },
               open: generateStateValueProp($state, ["modal6", "open"]),
               title: null,
               trigger: null,
@@ -11928,6 +11970,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               "newPass2",
                               "value"
                             ]).apply(null, eventArgs);
+
                             (async value => {
                               const $steps = {};
 
@@ -12169,10 +12212,12 @@ function PlasmicHomepage__RenderFunc(props: {
                           "__wab_instance",
                           sty.reoeatNewPass2
                         )}
-                        onChange={generateStateOnChangeProp($state, [
-                          "reoeatNewPass2",
-                          "value"
-                        ])}
+                        onChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "reoeatNewPass2",
+                            "value"
+                          ]).apply(null, eventArgs);
+                        }}
                         placeholder={
                           "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
                         }

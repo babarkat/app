@@ -2505,7 +2505,12 @@ function PlasmicTransaction__RenderFunc(props: {
               [sty["pcls_nbIyKKb0bYr0"]]: true
             })}
             modalScopeClassName={sty["modal__modal"]}
-            onOpenChange={generateStateOnChangeProp($state, ["modal", "open"])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["modal", "open"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             open={generateStateValueProp($state, ["modal", "open"])}
             title={null}
             trigger={null}
@@ -3932,12 +3937,18 @@ function PlasmicTransaction__RenderFunc(props: {
             errorDisplay={null}
             loadingDisplay={null}
             method={"GET"}
-            onError={generateStateOnChangeProp($state, ["apiRequest", "error"])}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["apiRequest", "error"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             onLoading={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
                 "apiRequest",
                 "loading"
               ]).apply(null, eventArgs);
+
               (async loading => {
                 const $steps = {};
 
@@ -3981,6 +3992,7 @@ function PlasmicTransaction__RenderFunc(props: {
                 null,
                 eventArgs
               );
+
               (async data => {
                 const $steps = {};
 
@@ -4062,7 +4074,12 @@ function PlasmicTransaction__RenderFunc(props: {
               [sty["pcls_W0wxY-8tf7x5"]]: true
             })}
             modalScopeClassName={sty["modal2__modal"]}
-            onOpenChange={generateStateOnChangeProp($state, ["modal2", "open"])}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["modal2", "open"]).apply(
+                null,
+                eventArgs
+              );
+            }}
             open={generateStateValueProp($state, ["modal2", "open"])}
             title={null}
             trigger={null}
@@ -4099,10 +4116,12 @@ function PlasmicTransaction__RenderFunc(props: {
                   data-plasmic-override={overrides.radioGroup2}
                   className={classNames("__wab_instance", sty.radioGroup2)}
                   defaultValue={"month"}
-                  onChange={generateStateOnChangeProp($state, [
-                    "radioGroup2",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "radioGroup2",
+                      "value"
+                    ]).apply(null, eventArgs);
+                  }}
                   optionType={"button"}
                   options={(() => {
                     const __composite = [
@@ -4248,10 +4267,12 @@ function PlasmicTransaction__RenderFunc(props: {
                 data-plasmic-override={overrides.radioGroup}
                 className={classNames("__wab_instance", sty.radioGroup)}
                 defaultValue={"all"}
-                onChange={generateStateOnChangeProp($state, [
-                  "radioGroup",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "radioGroup",
+                    "value"
+                  ]).apply(null, eventArgs);
+                }}
                 optionType={"button"}
                 options={(() => {
                   const __composite = [

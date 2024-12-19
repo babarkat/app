@@ -207,7 +207,12 @@ function PlasmicDrawer__RenderFunc(props: {
       )}
       defaultOpen={true}
       noContain={true}
-      onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
+      onOpenChange={async (...eventArgs: any) => {
+        generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+          null,
+          eventArgs
+        );
+      }}
       open={generateStateValueProp($state, ["dialog", "open"])}
       overlayClassName={classNames({ [sty["pcls_7rI5znMGseJL"]]: true })}
       themeResetClass={classNames(

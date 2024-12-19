@@ -541,10 +541,12 @@ function PlasmicHeader__RenderFunc(props: {
           )
         })}
         modalScopeClassName={sty["editProfile__modal"]}
-        onOpenChange={generateStateOnChangeProp($state, [
-          "editProfile",
-          "open"
-        ])}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["editProfile", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
         open={generateStateValueProp($state, ["editProfile", "open"])}
         title={null}
         trigger={null}
@@ -605,7 +607,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"name"}
                 data-plasmic-override={overrides.name}
                 className={classNames("__wab_instance", sty.name)}
-                onChange={generateStateOnChangeProp($state, ["name", "value"])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, ["name", "value"]).apply(
+                    null,
+                    eventArgs
+                  );
+                }}
                 placeholder={"\u0646\u0627\u0645"}
                 type={"text"}
                 value={generateStateValueProp($state, ["name", "value"])}
@@ -621,10 +628,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"lastname"}
                 data-plasmic-override={overrides.lastname}
                 className={classNames("__wab_instance", sty.lastname)}
-                onChange={generateStateOnChangeProp($state, [
-                  "lastname",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "lastname",
+                    "value"
+                  ]).apply(null, eventArgs);
+                }}
                 placeholder={
                   "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
                 }
@@ -642,10 +651,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"fathername"}
                 data-plasmic-override={overrides.fathername}
                 className={classNames("__wab_instance", sty.fathername)}
-                onChange={generateStateOnChangeProp($state, [
-                  "fathername",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "fathername",
+                    "value"
+                  ]).apply(null, eventArgs);
+                }}
                 placeholder={"\u0646\u0627\u0645 \u067e\u062f\u0631"}
                 type={"text"}
                 value={generateStateValueProp($state, ["fathername", "value"])}
@@ -661,7 +672,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"city"}
                 data-plasmic-override={overrides.city}
                 className={classNames("__wab_instance", sty.city)}
-                onChange={generateStateOnChangeProp($state, ["city", "value"])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, ["city", "value"]).apply(
+                    null,
+                    eventArgs
+                  );
+                }}
                 placeholder={
                   "\u0634\u0647\u0631 \u0645\u062d\u0644 \u062a\u0648\u0644\u062f"
                 }
@@ -679,10 +695,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"location"}
                 data-plasmic-override={overrides.location}
                 className={classNames("__wab_instance", sty.location)}
-                onChange={generateStateOnChangeProp($state, [
-                  "location",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "location",
+                    "value"
+                  ]).apply(null, eventArgs);
+                }}
                 placeholder={" \u0622\u062f\u0631\u0633"}
                 type={"text"}
                 value={generateStateValueProp($state, ["location", "value"])}
@@ -897,7 +915,12 @@ function PlasmicHeader__RenderFunc(props: {
           )
         })}
         modalScopeClassName={sty["editSaraf__modal"]}
-        onOpenChange={generateStateOnChangeProp($state, ["editSaraf", "open"])}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["editSaraf", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
         open={generateStateValueProp($state, ["editSaraf", "open"])}
         title={null}
         trigger={null}
@@ -997,10 +1020,12 @@ function PlasmicHeader__RenderFunc(props: {
                       ? false
                       : undefined
                   }
-                  onChange={generateStateOnChangeProp($state, [
-                    "fragmentInput",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "fragmentInput",
+                      "value"
+                    ]).apply(null, eventArgs);
+                  }}
                   placeholder={"*********09"}
                   type={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1056,10 +1081,12 @@ function PlasmicHeader__RenderFunc(props: {
                         ? false
                         : undefined
                     }
-                    onChange={generateStateOnChangeProp($state, [
-                      "fragmentInput3",
-                      "value"
-                    ])}
+                    onChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentInput3",
+                        "value"
+                      ]).apply(null, eventArgs);
+                    }}
                     placeholder={"98+"}
                     type={
                       hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1091,10 +1118,12 @@ function PlasmicHeader__RenderFunc(props: {
                         ? false
                         : undefined
                     }
-                    onChange={generateStateOnChangeProp($state, [
-                      "fragmentInput2",
-                      "value"
-                    ])}
+                    onChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentInput2",
+                        "value"
+                      ]).apply(null, eventArgs);
+                    }}
                     placeholder={"98+"}
                     type={
                       hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1165,10 +1194,12 @@ function PlasmicHeader__RenderFunc(props: {
                       throw e;
                     }
                   })()}
-                  onChange={generateStateOnChangeProp($state, [
-                    "select",
-                    "value"
-                  ])}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "select",
+                      "value"
+                    ]).apply(null, eventArgs);
+                  }}
                   options={(() => {
                     try {
                       return $state.saraflist;
@@ -1791,10 +1822,12 @@ function PlasmicHeader__RenderFunc(props: {
           )
         })}
         modalScopeClassName={sty["editPassword__modal"]}
-        onOpenChange={generateStateOnChangeProp($state, [
-          "editPassword",
-          "open"
-        ])}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["editPassword", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
         open={generateStateValueProp($state, ["editPassword", "open"])}
         title={null}
         trigger={null}
@@ -1857,10 +1890,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"nowPass"}
                 data-plasmic-override={overrides.nowPass}
                 className={classNames("__wab_instance", sty.nowPass)}
-                onChange={generateStateOnChangeProp($state, [
-                  "nowPass",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, ["nowPass", "value"]).apply(
+                    null,
+                    eventArgs
+                  );
+                }}
                 placeholder={
                   "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc"
                 }
@@ -2001,6 +2036,7 @@ function PlasmicHeader__RenderFunc(props: {
                       "newPass",
                       "value"
                     ]).apply(null, eventArgs);
+
                     (async value => {
                       const $steps = {};
 
@@ -2223,10 +2259,12 @@ function PlasmicHeader__RenderFunc(props: {
                 data-plasmic-name={"reoeatNewPass"}
                 data-plasmic-override={overrides.reoeatNewPass}
                 className={classNames("__wab_instance", sty.reoeatNewPass)}
-                onChange={generateStateOnChangeProp($state, [
-                  "reoeatNewPass",
-                  "value"
-                ])}
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "reoeatNewPass",
+                    "value"
+                  ]).apply(null, eventArgs);
+                }}
                 placeholder={
                   "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062c\u062f\u06cc\u062f"
                 }
@@ -2771,7 +2809,12 @@ function PlasmicHeader__RenderFunc(props: {
         drawerHeaderClassName={classNames({ [sty["pcls_Ob_VTA5_Ey9K"]]: true })}
         drawerScopeClassName={sty["drawer__drawer"]}
         drawerTitleClassName={classNames({ [sty["pcls_zN8rMt01-aq4"]]: true })}
-        onOpenChange={generateStateOnChangeProp($state, ["drawer", "open"])}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["drawer", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
         open={generateStateValueProp($state, ["drawer", "open"])}
         title={
           <React.Fragment>
@@ -3263,7 +3306,12 @@ function PlasmicHeader__RenderFunc(props: {
         maskClosable={true}
         modalContentClassName={classNames({ [sty["pcls_TPizMrKYPhnq"]]: true })}
         modalScopeClassName={sty["exitModal__modal"]}
-        onOpenChange={generateStateOnChangeProp($state, ["exitModal", "open"])}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["exitModal", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
         open={generateStateValueProp($state, ["exitModal", "open"])}
         title={null}
         trigger={null}
