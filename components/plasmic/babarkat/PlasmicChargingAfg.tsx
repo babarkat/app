@@ -2525,7 +2525,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                 variablePath: ["uuid"]
                               },
                               operation: 0,
-                              value: $$.uuid.v4().replace(/[^0-9]/g, "")
+                              value: (() => {
+                                return $$.uuid
+                                  .v4()
+                                  .replace(/[^0-9]/g, "")
+                                  .slice(0, 10);
+                              })()
                             };
                             return (({
                               variable,
@@ -2677,8 +2682,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                     try {
                                       return {
                                         text:
-                                          "\nخرید شارژ با موفقیت انجام شد.\nنام: " +
+                                          "\n ✅ خرید موفق شارژ افغانستان \nکاربر: " +
                                           $state.userinfo.last_name +
+                                          "\nشماره کاربر: " +
+                                          $state.userinfo.mobile +
+                                          "___________________________" +
                                           "\nاپراتور: " +
                                           $state.operators2[
                                             $state.operatorselect
