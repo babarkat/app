@@ -2060,7 +2060,12 @@ function PlasmicSnap__RenderFunc(props: {
                                 variablePath: ["uuid"]
                               },
                               operation: 0,
-                              value: $$.uuid.v4().replace(/[^0-9]/g, "")
+                              value: (() => {
+                                return $$.uuid
+                                  .v4()
+                                  .replace(/[^0-9]/g, "")
+                                  .slice(0, 10);
+                              })()
                             };
                             return (({
                               variable,
