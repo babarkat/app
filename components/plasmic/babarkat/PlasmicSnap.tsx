@@ -1046,7 +1046,13 @@ function PlasmicSnap__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (
-                                  $state.amont.toLocaleString("en") + " تومان "
+                                  (
+                                    parseInt($state.amont) +
+                                    parseInt($state.amont) *
+                                      (($state.commissionBabarkat.data.babrkat +
+                                        $state.commissionBabarkat.data.saraf) /
+                                        100)
+                                  ).toLocaleString("en") + " تومان "
                                 );
                               } catch (e) {
                                 if (
@@ -4277,7 +4283,13 @@ function PlasmicSnap__RenderFunc(props: {
             data-plasmic-name={"commissionBabarkat"}
             data-plasmic-override={overrides.commissionBabarkat}
             children={null}
-            className={classNames("__wab_instance", sty.commissionBabarkat)}
+            className={classNames("__wab_instance", sty.commissionBabarkat, {
+              [sty.commissionBabarkatstepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
             errorDisplay={
               <div
                 className={classNames(
