@@ -381,7 +381,7 @@ function PlasmicSnap__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? true : false
+          hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "variable",
@@ -2228,7 +2228,7 @@ function PlasmicSnap__RenderFunc(props: {
                                           $state.number +
                                           "`\n" +
                                           "مبلغ: " +
-                                          $state.amount +
+                                          $state.amont +
                                           "\n" +
                                           "شناسه تراکنش: " +
                                           $state.uuid +
