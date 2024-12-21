@@ -1855,7 +1855,7 @@
 .group10loginByPassword {
   top: 0px;
   left: 0px;
-  display: block;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .group10loginByPassword {
