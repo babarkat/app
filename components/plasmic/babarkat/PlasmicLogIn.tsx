@@ -513,6 +513,9 @@ function PlasmicLogIn__RenderFunc(props: {
             [sty.rootloginByPassword_unnamedVariant2]:
               hasVariant($state, "loginByPassword", "loginByPassword") &&
               hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+            [sty.rootloginByPassword_unnamedVariant]:
+              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+              hasVariant($state, "loginByPassword", "loginByPassword"),
             [sty.rootpassword]: hasVariant($state, "password", "password"),
             [sty.rootpassword_unnamedVariant2]:
               hasVariant($state, "password", "password") &&
@@ -5094,6 +5097,9 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.group10loginByPassword_unnamedVariant2]:
                     hasVariant($state, "loginByPassword", "loginByPassword") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group10loginByPassword_unnamedVariant]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
                   [sty.group10password]: hasVariant(
                     $state,
                     "password",

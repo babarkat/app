@@ -122,6 +122,9 @@
 .rootpassword_unnamedVariant > * {
   grid-column: 4;
 }
+.rootloginByPassword_unnamedVariant > * {
+  grid-column: 4;
+}
 .rootpassword_unnamedVariant2 > * {
   grid-column: 4;
 }
@@ -1838,6 +1841,7 @@
   .group10unnamedVariant2 {
     left: 0px;
     top: 0px;
+    display: none;
   }
 }
 .group10password {
@@ -1847,8 +1851,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .group10password {
-    top: 0px;
-    left: 0px;
+    top: 8px;
+    left: 8px;
     z-index: 50;
   }
 }
