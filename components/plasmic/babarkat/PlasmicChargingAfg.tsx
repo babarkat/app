@@ -2686,7 +2686,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                           $state.userinfo.last_name +
                                           "\nشماره کاربر: " +
                                           $state.userinfo.mobile +
-                                          "___________________________" +
+                                          "\n......................" +
                                           "\nاپراتور: " +
                                           $state.operators2[
                                             $state.operatorselect
@@ -2696,9 +2696,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                           "\nقیمت به افغانی: " +
                                           $state.amontAfg +
                                           "\nشماره: " +
-                                          "`" +
                                           $state.number +
-                                          "`" +
                                           "\nکپی کردن شماره: " +
                                           "`" +
                                           $state.number.slice(5) +
