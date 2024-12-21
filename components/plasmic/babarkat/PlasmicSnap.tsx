@@ -2221,7 +2221,7 @@ function PlasmicSnap__RenderFunc(props: {
                                           "شماره کاربر: " +
                                           $state.userinfo.mobile +
                                           "\n" +
-                                          "___________________________" +
+                                          "........................" +
                                           "\n" +
                                           "شماره: " +
                                           "`" +
