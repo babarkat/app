@@ -369,7 +369,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+          hasVariant($state, "stepscharg", "step3") ? true : false
       },
       {
         path: "variable",
