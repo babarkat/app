@@ -381,7 +381,7 @@ function PlasmicSnap__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+          hasVariant($state, "stepscharg", "step3") ? true : false
       },
       {
         path: "variable",
@@ -2268,7 +2268,7 @@ function PlasmicSnap__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 args: [
-                                  "POST",
+                                  "PUT",
                                   "https://n8n.babarkat.com/webhook/Babarkat/transaction",
                                   undefined,
                                   (() => {
