@@ -523,7 +523,7 @@ function PlasmicCharging__RenderFunc(props: {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx, $refs]
@@ -2894,7 +2894,15 @@ function PlasmicCharging__RenderFunc(props: {
                                   "error",
                                   (() => {
                                     try {
-                                      return $state.error;
+                                      return (() => {
+                                        if ($state.error.includes("صراف")) {
+                                          return ($state.error =
+                                            $state.error.replace(
+                                              "صراف",
+                                              "امانتدار"
+                                            ));
+                                        } else return $state.error;
+                                      })();
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||

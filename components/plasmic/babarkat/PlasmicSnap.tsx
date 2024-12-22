@@ -2358,7 +2358,15 @@ function PlasmicSnap__RenderFunc(props: {
                                   "error",
                                   (() => {
                                     try {
-                                      return $state.error;
+                                      return (() => {
+                                        if ($state.error.includes("صراف")) {
+                                          return ($state.error =
+                                            $state.error.replace(
+                                              "صراف",
+                                              "امانتدار"
+                                            ));
+                                        } else return $state.error;
+                                      })();
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
