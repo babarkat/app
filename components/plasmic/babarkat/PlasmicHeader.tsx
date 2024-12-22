@@ -1549,6 +1549,45 @@ function PlasmicHeader__RenderFunc(props: {
                       ];
                     }
 
+                    $steps["invokeGlobalAction3"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://api.babarkat.com/users/logLaunch",
+                              undefined,
+                              (() => {
+                                try {
+                                  return { type: "chooseSarafLogin" };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
+                    }
+
                     $steps["updateLoadedbtn3"] = true
                       ? (() => {
                           const actionArgs = {

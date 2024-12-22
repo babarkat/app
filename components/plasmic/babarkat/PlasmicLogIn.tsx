@@ -3103,6 +3103,45 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
                     }
 
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://api.babarkat.com/users/logLaunch",
+                              undefined,
+                              (() => {
+                                try {
+                                  return { type: "loginPassword" };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
                     $steps["updateLoadedbtn2"] = true
                       ? (() => {
                           const actionArgs = {
@@ -3186,11 +3225,36 @@ function PlasmicLogIn__RenderFunc(props: {
                       "loginByPassword",
                       "loginByPassword"
                     ),
+                    [sty.buttonloginByPassword_password_unnamedVariant2__rMmn0DikB8PqF9JmKha]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "password", "password"),
+                    [sty.buttonloginByPassword_unnamedVariant2__rMmn0DikBJmKha]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.buttonpassword__rMmn8PqF9]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
+                    [sty.buttonpassword_unnamedVariant2__rMmn8PqF9JmKha]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) && hasVariant($state, "password", "password"),
                     [sty.buttonslids_unnamedVariant3__rMmnI1KiV]: hasVariant(
                       $state,
                       "slids",
@@ -3600,6 +3664,46 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
+                    $steps["updateFragmentInputValue4"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://api.babarkat.com/users/logLaunch",
+                              undefined,
+                              (() => {
+                                try {
+                                  return { type: "loginPassword" };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateFragmentInputValue4"] != null &&
+                      typeof $steps["updateFragmentInputValue4"] === "object" &&
+                      typeof $steps["updateFragmentInputValue4"].then ===
+                        "function"
+                    ) {
+                      $steps["updateFragmentInputValue4"] = await $steps[
+                        "updateFragmentInputValue4"
+                      ];
+                    }
+
                     $steps["updateLoadedbtn2"] = true
                       ? (() => {
                           const actionArgs = {
@@ -3687,6 +3791,13 @@ function PlasmicLogIn__RenderFunc(props: {
                     ),
                     [sty.btnSarafloginByPassword_password]:
                       hasVariant($state, "password", "password") &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
+                    [sty.btnSarafloginByPassword_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
                       hasVariant($state, "loginByPassword", "loginByPassword"),
                     [sty.btnSarafpassword]: hasVariant(
                       $state,
@@ -3994,6 +4105,45 @@ function PlasmicLogIn__RenderFunc(props: {
                       typeof $steps["goToHomepage"].then === "function"
                     ) {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+
+                    $steps["invokeGlobalAction3"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://api.babarkat.com/users/logLaunch",
+                              undefined,
+                              (() => {
+                                try {
+                                  return { type: "loginSms" };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
                     }
 
                     $steps["updateLoadedbtn2"] = true
