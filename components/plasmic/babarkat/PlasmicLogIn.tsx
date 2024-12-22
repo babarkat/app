@@ -62,10 +62,10 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
+import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
-import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -93,12 +93,12 @@ import sty from "./PlasmicLogIn.module.css"; // plasmic-import: -3JBPQCG-aXv/css
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: CbXhIHUxIzPz/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
 
 createPlasmicElementProxy;
@@ -510,12 +510,21 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "loginByPassword", "loginByPassword") &&
               hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
               hasVariant($state, "password", "password"),
+            [sty.rootloginByPassword_password_unnamedVariant_unnamedVariant2]:
+              hasVariant($state, "loginByPassword", "loginByPassword") &&
+              hasVariant($state, "password", "password") &&
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+              hasVariant($state, "unnamedVariant", "unnamedVariant"),
             [sty.rootloginByPassword_unnamedVariant2]:
               hasVariant($state, "loginByPassword", "loginByPassword") &&
               hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
             [sty.rootloginByPassword_unnamedVariant]:
               hasVariant($state, "unnamedVariant", "unnamedVariant") &&
               hasVariant($state, "loginByPassword", "loginByPassword"),
+            [sty.rootloginByPassword_unnamedVariant_unnamedVariant2]:
+              hasVariant($state, "loginByPassword", "loginByPassword") &&
+              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+              hasVariant($state, "unnamedVariant", "unnamedVariant"),
             [sty.rootpassword]: hasVariant($state, "password", "password"),
             [sty.rootpassword_unnamedVariant2]:
               hasVariant($state, "password", "password") &&
@@ -975,57 +984,164 @@ function PlasmicLogIn__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__zL7Oq,
-                    {
-                      [sty.textloginByPassword__zL7Oq0DikB]: hasVariant(
+                  className={classNames(projectcss.all, sty.freeBox__eu9Fj, {
+                    [sty.freeBoxloginByPassword__eu9Fj0DikB]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.freeBoxslids_unnamedVariant3__eu9FjI1KiV]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.freeBoxunnamedVariant__eu9FjDv9B5]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zL7Oq,
+                      {
+                        [sty.textloginByPassword__zL7Oq0DikB]: hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                        [sty.textloginByPassword_unnamedVariant__zL7Oq0DikBDv9B5]:
+                          hasVariant(
+                            $state,
+                            "loginByPassword",
+                            "loginByPassword"
+                          ) &&
+                          hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          ),
+                        [sty.textpassword__zL7Oq8PqF9]: hasVariant(
+                          $state,
+                          "password",
+                          "password"
+                        ),
+                        [sty.textslids_unnamedVariant3__zL7OqI1KiV]: hasVariant(
+                          $state,
+                          "slids",
+                          "unnamedVariant3"
+                        ),
+                        [sty.textunnamedVariant2__zL7OqJmKha]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                        [sty.textunnamedVariant__zL7OqDv9B5]: hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "loginByPassword", "loginByPassword")
+                      ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                      : hasVariant($state, "password", "password")
+                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                      : hasVariant($state, "slids", "unnamedVariant3")
+                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                  </div>
+                  <Button
+                    className={classNames("__wab_instance", sty.button__oyrKw, {
+                      [sty.buttonloginByPassword__oyrKw0DikB]: hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
                       ),
-                      [sty.textloginByPassword_unnamedVariant__zL7Oq0DikBDv9B5]:
+                      [sty.buttonloginByPassword_password__oyrKw0DikB8PqF9]:
+                        hasVariant($state, "password", "password") &&
                         hasVariant(
                           $state,
                           "loginByPassword",
                           "loginByPassword"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
-                      [sty.textpassword__zL7Oq8PqF9]: hasVariant(
+                        ),
+                      [sty.buttonpassword__oyrKw8PqF9]: hasVariant(
                         $state,
                         "password",
                         "password"
                       ),
-                      [sty.textslids_unnamedVariant3__zL7OqI1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__zL7OqJmKha]: hasVariant(
+                      [sty.buttonpassword_unnamedVariant2__oyrKw8PqF9JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) && hasVariant($state, "password", "password"),
+                      [sty.buttonunnamedVariant2__oyrKwJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ),
-                      [sty.textunnamedVariant__zL7OqDv9B5]: hasVariant(
+                      [sty.buttonunnamedVariant__oyrKwDv9B5]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
-                      )
+                      ),
+                      [sty.buttonunnamedVariant_unnamedVariant2__oyrKwDv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    })}
+                    color={
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                        ? "softGreen"
+                        : undefined
                     }
-                  )}
-                >
-                  {hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateUnnamedVariant"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "unnamedVariant",
+                              operation: 6
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
+
+                              $stateSet($state, vgroup, false);
+                              return false;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateUnnamedVariant"] != null &&
+                        typeof $steps["updateUnnamedVariant"] === "object" &&
+                        typeof $steps["updateUnnamedVariant"].then ===
+                          "function"
+                      ) {
+                        $steps["updateUnnamedVariant"] = await $steps[
+                          "updateUnnamedVariant"
+                        ];
+                      }
+                    }}
+                  >
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      ? "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647"
+                      : "Button"}
+                  </Button>
                 </div>
                 <div
                   className={classNames(
