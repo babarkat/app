@@ -968,6 +968,7 @@
   .freeBox__blzPa {
     width: 100%;
     min-width: 0;
+    padding: 16px;
     margin: 0px;
   }
 }

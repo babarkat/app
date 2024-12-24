@@ -95,6 +95,12 @@
   padding: 24px 20px;
   border-top: 20px solid #00000052;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__b64Ws {
+    margin-top: calc(10px + 10px) !important;
+    padding: 20px 14px;
+  }
+}
 .freeBoxfiled__b64Ws0GNub {
   background: linear-gradient(0deg, #ffffff0d 0%, #d9363e33 100%);
   margin-top: calc(10px + 10px) !important;

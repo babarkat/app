@@ -91,13 +91,13 @@ export const PlasmicTransaction2__VariantProps = new Array<VariantPropType>(
 );
 
 export type PlasmicTransaction2__ArgsType = {
-  children?: React.ReactNode;
   slot?: React.ReactNode;
+  children?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicTransaction2__ArgsType;
 export const PlasmicTransaction2__ArgProps = new Array<ArgPropType>(
-  "children",
-  "slot"
+  "slot",
+  "children"
 );
 
 export type PlasmicTransaction2__OverridesType = {
@@ -107,8 +107,8 @@ export type PlasmicTransaction2__OverridesType = {
 };
 
 export interface DefaultTransaction2Props {
-  children?: React.ReactNode;
   slot?: React.ReactNode;
+  children?: React.ReactNode;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
     "intenet" | "walet" | "sim" | "panel" | "snap"
