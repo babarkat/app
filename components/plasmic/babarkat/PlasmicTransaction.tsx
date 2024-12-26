@@ -1897,7 +1897,10 @@ function PlasmicTransaction__RenderFunc(props: {
                               : null}
                             {(() => {
                               try {
-                                return $state.list.length == 0;
+                                return (
+                                  $state.list?.length == 0 &&
+                                  $state.apiRequest?.loading == false
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -1910,7 +1913,7 @@ function PlasmicTransaction__RenderFunc(props: {
                             })() ? (
                               <PlasmicImg__
                                 alt={""}
-                                className={classNames(sty.img__nd3H)}
+                                className={classNames(sty.img__mcns8)}
                                 displayHeight={"auto"}
                                 displayMaxHeight={"none"}
                                 displayMaxWidth={"100%"}
@@ -1922,6 +1925,37 @@ function PlasmicTransaction__RenderFunc(props: {
                                   src: "/plasmic/babarkat/images/image12.png",
                                   fullWidth: 450,
                                   fullHeight: 450,
+                                  aspectRatio: undefined
+                                }}
+                              />
+                            ) : null}
+                            {(() => {
+                              try {
+                                return $state.apiRequest.loading;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <PlasmicImg__
+                                alt={""}
+                                className={classNames(sty.img__vEvM)}
+                                displayHeight={"200px"}
+                                displayMaxHeight={"none"}
+                                displayMaxWidth={"100%"}
+                                displayMinHeight={"0"}
+                                displayMinWidth={"0"}
+                                displayWidth={"200px"}
+                                loading={"lazy"}
+                                src={{
+                                  src: "/plasmic/babarkat/images/image36.gif",
+                                  fullWidth: 441,
+                                  fullHeight: 291,
                                   aspectRatio: undefined
                                 }}
                               />
@@ -2246,7 +2280,10 @@ function PlasmicTransaction__RenderFunc(props: {
                               : null}
                             {(() => {
                               try {
-                                return $state.list.length == 0;
+                                return (
+                                  $state.list?.length == 0 &&
+                                  $state.apiRequest?.loading == false
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -2259,7 +2296,7 @@ function PlasmicTransaction__RenderFunc(props: {
                             })() ? (
                               <PlasmicImg__
                                 alt={""}
-                                className={classNames(sty.img__zjDzg)}
+                                className={classNames(sty.img___9FNsK)}
                                 displayHeight={"auto"}
                                 displayMaxHeight={"none"}
                                 displayMaxWidth={"100%"}
@@ -2271,6 +2308,37 @@ function PlasmicTransaction__RenderFunc(props: {
                                   src: "/plasmic/babarkat/images/image12.png",
                                   fullWidth: 450,
                                   fullHeight: 450,
+                                  aspectRatio: undefined
+                                }}
+                              />
+                            ) : null}
+                            {(() => {
+                              try {
+                                return $state.apiRequest.loading;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <PlasmicImg__
+                                alt={""}
+                                className={classNames(sty.img__rIjGf)}
+                                displayHeight={"200px"}
+                                displayMaxHeight={"none"}
+                                displayMaxWidth={"100%"}
+                                displayMinHeight={"0"}
+                                displayMinWidth={"0"}
+                                displayWidth={"200px"}
+                                loading={"lazy"}
+                                src={{
+                                  src: "/plasmic/babarkat/images/image36.gif",
+                                  fullWidth: 441,
+                                  fullHeight: 291,
                                   aspectRatio: undefined
                                 }}
                               />
