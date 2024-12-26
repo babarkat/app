@@ -96,6 +96,7 @@ import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSE
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon60Icon from "./icons/PlasmicIcon__Icon60"; // plasmic-import: P52THJblgWka/icon
 import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: rPH6lstZmeFB/icon
@@ -897,6 +898,26 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-override={overrides.editSaraf}
         className={classNames("__wab_instance", sty.editSaraf)}
         closeButtonClassName={classNames({ [sty["pcls_LO2dPyO7g1fN"]]: true })}
+        closeIcon={
+          (() => {
+            try {
+              return !$state.loadedbtn;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <Icon60Icon
+              className={classNames(projectcss.all, sty.svg__dkfx7)}
+              role={"img"}
+            />
+          ) : null
+        }
         defaultStylesClassName={classNames(
           projectcss.root_reset,
           projectcss.plasmic_default_styles,

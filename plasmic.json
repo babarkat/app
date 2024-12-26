@@ -1919,6 +1919,16 @@
           "id": "b6_fsTkPhz_-",
           "name": "Icon58Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon58.tsx"
+        },
+        {
+          "id": "ZA1Z9BHjlyhi",
+          "name": "Icon59Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon59.tsx"
+        },
+        {
+          "id": "P52THJblgWka",
+          "name": "Icon60Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon60.tsx"
         }
       ],
       "images": [
@@ -2146,6 +2156,16 @@
           "id": "_FIpLZK0DbFy",
           "name": "image 34",
           "filePath": "../public/plasmic/babarkat/images/image34.png"
+        },
+        {
+          "id": "_wuP0_lad7aM",
+          "name": "image 35",
+          "filePath": "../public/plasmic/babarkat/images/image35.svg"
+        },
+        {
+          "id": "IER5zHFXiggT",
+          "name": "image 36",
+          "filePath": "../public/plasmic/babarkat/images/image36.gif"
         }
       ],
       "indirect": false,

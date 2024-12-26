@@ -1803,6 +1803,13 @@
   flex-shrink: 0;
   padding: 8px;
 }
+.svg__dkfx7 {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-jgohepLVeKvh);
+  width: 20px;
+  height: 20px;
+}
 .editPassword:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;

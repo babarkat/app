@@ -521,6 +521,17 @@
 .img___9LaBu > picture > img {
   object-fit: cover;
 }
+.img__kwXsk {
+  object-fit: cover;
+  max-width: 100%;
+  width: 200px;
+  height: 200px;
+  filter: invert(60%) contrast(200%) brightness(200%);
+  flex-shrink: 0;
+}
+.img__kwXsk > picture > img {
+  object-fit: cover;
+}
 .tabContent__hHaCh:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
