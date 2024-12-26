@@ -1578,23 +1578,62 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <PlasmicImg__
-                                alt={""}
-                                className={classNames(sty.img__kwXsk)}
-                                displayHeight={"200px"}
-                                displayMaxHeight={"none"}
-                                displayMaxWidth={"100%"}
-                                displayMinHeight={"0"}
-                                displayMinWidth={"0"}
-                                displayWidth={"200px"}
-                                loading={"lazy"}
-                                src={{
-                                  src: "/plasmic/babarkat/images/image36.gif",
-                                  fullWidth: 441,
-                                  fullHeight: 291,
-                                  aspectRatio: undefined
-                                }}
-                              />
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qOmEq
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__t20Ar,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__rsEP,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___5ITqL,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__htEuw,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__lmXcb,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__l6ZoF,
+                                    "shimmer"
+                                  )}
+                                />
+                              </Stack__>
                             ) : null}
                           </Stack__>
                         </TabContent>
@@ -1942,23 +1981,62 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <PlasmicImg__
-                                alt={""}
-                                className={classNames(sty.img__vEvM)}
-                                displayHeight={"200px"}
-                                displayMaxHeight={"none"}
-                                displayMaxWidth={"100%"}
-                                displayMinHeight={"0"}
-                                displayMinWidth={"0"}
-                                displayWidth={"200px"}
-                                loading={"lazy"}
-                                src={{
-                                  src: "/plasmic/babarkat/images/image36.gif",
-                                  fullWidth: 441,
-                                  fullHeight: 291,
-                                  aspectRatio: undefined
-                                }}
-                              />
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__q0C45
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__hxwt7,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__tpLwX,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___6JRie,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__w7Tkp,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___4Fbvz,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__s4OWe,
+                                    "shimmer"
+                                  )}
+                                />
+                              </Stack__>
                             ) : null}
                           </Stack__>
                         </TabContent>
@@ -2325,23 +2403,62 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <PlasmicImg__
-                                alt={""}
-                                className={classNames(sty.img__rIjGf)}
-                                displayHeight={"200px"}
-                                displayMaxHeight={"none"}
-                                displayMaxWidth={"100%"}
-                                displayMinHeight={"0"}
-                                displayMinWidth={"0"}
-                                displayWidth={"200px"}
-                                loading={"lazy"}
-                                src={{
-                                  src: "/plasmic/babarkat/images/image36.gif",
-                                  fullWidth: 441,
-                                  fullHeight: 291,
-                                  aspectRatio: undefined
-                                }}
-                              />
+                              <Stack__
+                                as={"div"}
+                                hasGap={true}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__pJbgr
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__npu1H,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__mvEwk,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___7L5Uc,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___5W,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___97Q7O,
+                                    "shimmer"
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__iqG8J,
+                                    "shimmer"
+                                  )}
+                                />
+                              </Stack__>
                             ) : null}
                           </Stack__>
                         </TabContent>
