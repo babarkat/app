@@ -416,7 +416,7 @@ function PlasmicHomepage__RenderFunc(props: {
             transform: "translateY(0px) "
           },
           {
-            id: "Afghani",
+            id: "afghani",
             name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
             color: "#17704D",
             width: "95%",
@@ -654,6 +654,90 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["updateStartY"] = await $steps["updateStartY"];
                   }
                 }}
+                onTouchEnd={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              let __plasmic_ret = undefined;
+                              if ($state.startY > event.clientY) {
+                                const lastCard = $state.cards.pop();
+                                $state.cards.unshift(lastCard);
+                                for (let i = 0; i < $state.cards.length; i++) {
+                                  $state.cards[i].zIndex =
+                                    $state.cards.length - i;
+                                  __plasmic_ret = $state.cards[i].width = `${
+                                    100 - i * 5
+                                  }%`;
+                                }
+                              } else if ($state.startY < event.clientY) {
+                                const firstCard = $state.cards.shift();
+                                $state.cards.push(firstCard);
+                                for (let i = 0; i < $state.cards.length; i++) {
+                                  $state.cards[i].zIndex =
+                                    $state.cards.length - i;
+                                  __plasmic_ret = $state.cards[i].width = `${
+                                    100 - i * 5
+                                  }%`;
+                                }
+                              }
+                              return __plasmic_ret;
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+                onTouchStart={async event => {
+                  const $steps = {};
+
+                  $steps["updateStartY"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["startY"]
+                          },
+                          operation: 0,
+                          value: event.clientY
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateStartY"] != null &&
+                    typeof $steps["updateStartY"] === "object" &&
+                    typeof $steps["updateStartY"].then === "function"
+                  ) {
+                    $steps["updateStartY"] = await $steps["updateStartY"];
+                  }
+                }}
                 style={{ Position: "Relative" }}
               >
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -821,7 +905,7 @@ function PlasmicHomepage__RenderFunc(props: {
                             {(() => {
                               try {
                                 return parseInt(
-                                  $state.userbabarcat.toman.toFixed(0)
+                                  $state.userbabarcat[currentItem.id].toFixed(0)
                                 ).toLocaleString();
                               } catch (e) {
                                 if (

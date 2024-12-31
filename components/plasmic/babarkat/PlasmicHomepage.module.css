@@ -44,7 +44,7 @@
 .header:global(.__wab_instance) {
   left: 0px;
   top: 0px;
-  z-index: 1;
+  z-index: 50;
   position: fixed;
 }
 .freeBox___8Ai8W {
@@ -388,6 +388,7 @@
   height: auto;
   max-width: 100%;
   margin-top: 20px;
+  z-index: 10;
   padding: 0px;
 }
 .freeBox__vPrSd > :global(.__wab_flex-container) {
@@ -413,6 +414,7 @@
     flex-direction: column;
     padding-bottom: 0px;
     width: 90%;
+    z-index: 10;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -521,6 +523,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .internet {
     background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
+    z-index: 10;
   }
 }
 .img__bBBrJ {
@@ -576,6 +579,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .internet3 {
     background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
+    z-index: 10;
   }
 }
 .img__yvAdp {
