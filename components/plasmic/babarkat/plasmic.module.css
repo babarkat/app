@@ -147,6 +147,14 @@
   --mixin-Gi3Icy6Qwu1Z_white-space: pre-wrap;
 }
 
+.plasmic_mixins,
+.plasmic_mixins:where(.global_experiment_override),
+.plasmic_mixins:where(.global_unnamedGlobalGroupOfVariants_unnamedVariant),
+.plasmic_mixins:where(.global_unnamedGlobalGroupOfVariants2_unnamedVariant) {
+  --mixin-m_UeEBkdHs9r_white-space: pre-wrap;
+  --plasmic-mixin-relative_white-space: var(--mixin-m_UeEBkdHs9r_white-space);
+}
+
 :where(.all) {
   display: block;
   white-space: inherit;

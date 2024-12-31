@@ -401,6 +401,43 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+      },
+      {
+        path: "cards",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            id: "toman",
+            name: "\u062a\u0648\u0645\u0627\u0646",
+            color: "#2DC57B",
+            width: "100%",
+            zIndex: 4,
+            transform: "translateY(0px) "
+          },
+          {
+            id: "Afghani",
+            name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+            color: "#17704D",
+            width: "95%",
+            zIndex: 3,
+            transform: "translateY(-15px) "
+          },
+          {
+            id: "dollar",
+            name: "\u062f\u0644\u0627\u0631",
+            color: "#007B77",
+            width: "90%",
+            zIndex: 2,
+            transform: "translateY(-15px) "
+          }
+        ]
+      },
+      {
+        path: "startY",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -531,120 +568,299 @@ function PlasmicHomepage__RenderFunc(props: {
                 userbabarcat={$state.userbabarcat}
               />
 
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"wallet"}
-                data-plasmic-override={overrides.wallet}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.wallet)}
+              <div
+                className={classNames(projectcss.all, sty.freeBox___8Ai8W)}
+                onDragEnd={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              let __plasmic_ret = undefined;
+                              if ($state.startY > event.clientY) {
+                                const lastCard = $state.cards.pop();
+                                $state.cards.unshift(lastCard);
+                                for (let i = 0; i < $state.cards.length; i++) {
+                                  $state.cards[i].zIndex =
+                                    $state.cards.length - i;
+                                  __plasmic_ret = $state.cards[i].width = `${
+                                    100 - i * 5
+                                  }%`;
+                                }
+                              } else if ($state.startY < event.clientY) {
+                                const firstCard = $state.cards.shift();
+                                $state.cards.push(firstCard);
+                                for (let i = 0; i < $state.cards.length; i++) {
+                                  $state.cards[i].zIndex =
+                                    $state.cards.length - i;
+                                  __plasmic_ret = $state.cards[i].width = `${
+                                    100 - i * 5
+                                  }%`;
+                                }
+                              }
+                              return __plasmic_ret;
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+                onDragStart={async event => {
+                  const $steps = {};
+
+                  $steps["updateStartY"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["startY"]
+                          },
+                          operation: 0,
+                          value: event.clientY
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateStartY"] != null &&
+                    typeof $steps["updateStartY"] === "object" &&
+                    typeof $steps["updateStartY"].then === "function"
+                  ) {
+                    $steps["updateStartY"] = await $steps["updateStartY"];
+                  }
+                }}
+                style={{ Position: "Relative" }}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__i7Hyk)}
-                >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
-                    className={classNames(projectcss.all, sty.freeBox__e2Zg)}
-                  >
-                    <Icon19Icon
-                      className={classNames(projectcss.all, sty.svg__zxpZu)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__tq0Hf
-                      )}
+                {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                  (() => {
+                    try {
+                      return $state.cards;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                  const currentItem = __plasmic_item_0;
+                  const currentIndex = __plasmic_idx_0;
+                  return (
+                    <Stack__
+                      as={"div"}
+                      data-plasmic-name={"wallet"}
+                      data-plasmic-override={overrides.wallet}
+                      hasGap={true}
+                      className={classNames(projectcss.all, sty.wallet, "card")}
+                      draggable={"true"}
+                      key={currentIndex}
+                      style={(() => {
+                        try {
+                          return {
+                            "z-index": currentItem.zIndex.toString(),
+                            width: currentItem.width,
+                            transform: currentItem.transform,
+                            "background-color": `${currentItem.color}`
+                          };
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
                     >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return (
-                              $state.userbabarcat.last_name +
-                              " (امانتداری " +
-                              $state.userbabarcat.sarafName +
-                              ") "
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </Stack__>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ldM2P
-                    )}
-                  >
-                    {hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                      : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
-                  </div>
-                </Stack__>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__vdEzP,
-                    "dateshow"
-                  )}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return parseInt(
-                            $state.userbabarcat.toman.toFixed(0)
-                          ).toLocaleString();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "0";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return parseInt(
-                            $state.userbabarcat.toman.toFixed(0)
-                          ).toLocaleString();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "0";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  )}
-                </div>
-                <BabarkatlogoCopy2SvgIcon
-                  className={classNames(projectcss.all, sty.svg___7Xbq)}
-                  role={"img"}
-                />
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__i7Hyk
+                        )}
+                      >
+                        <Stack__
+                          as={"div"}
+                          hasGap={true}
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__e2Zg
+                          )}
+                        >
+                          <Icon19Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__zxpZu
+                            )}
+                            role={"img"}
+                          />
 
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__tq0Hf
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    $state.userbabarcat.last_name +
+                                    " (امانتداری " +
+                                    $state.userbabarcat.sarafName +
+                                    ") "
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </Stack__>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ldM2P
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return `موجودی نقدی (${currentItem.name})`;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    if (currentItem.id == "gift") {
+                                      return "هدیه بابرکت (تومان)";
+                                    } else
+                                      return `موجودی نقدی (${currentItem.name})`;
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0648\u062c\u0648\u062f\u06cc \u0646\u0642\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      </Stack__>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__vdEzP,
+                          "dateshow"
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return parseInt(
+                                  $state.userbabarcat.toman.toFixed(0)
+                                ).toLocaleString();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "0";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return parseInt(
+                                  $state.userbabarcat[currentItem.id].toFixed(0)
+                                ).toLocaleString();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "0";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
+                      </div>
+                      <BabarkatlogoCopy2SvgIcon
+                        className={classNames(projectcss.all, sty.svg___7Xbq)}
+                        role={"img"}
+                      />
+                    </Stack__>
+                  );
+                })}
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
@@ -733,7 +949,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     </div>
                   </AntdTooltip>
                 ) : null}
-              </Stack__>
+              </div>
               <Stack__
                 as={"div"}
                 hasGap={true}
@@ -12761,7 +12977,7 @@ const PlasmicDescendants = {
     "reoeatNewPass2"
   ],
   header: ["header"],
-  wallet: ["wallet", "tooltip"],
+  wallet: ["wallet"],
   tooltip: ["tooltip"],
   services: ["services", "internet", "internet3"],
   internet: ["internet"],

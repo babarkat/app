@@ -47,18 +47,48 @@
   z-index: 1;
   position: fixed;
 }
-.wallet {
+.freeBox___8Ai8W {
   display: flex;
   flex-direction: column;
   position: relative;
   width: 75%;
   height: 200px;
   max-width: 100%;
-  background: #2dc57b;
-  margin-top: 80px;
-  box-shadow: none;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 100px;
   margin-bottom: 24px;
+  transition-property: all;
+  transition-duration: 0.3s;
+  z-index: 20;
   flex-shrink: 0;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 0.3s;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___8Ai8W {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    width: 90%;
+    height: 150px;
+    flex-shrink: 0;
+  }
+}
+.wallet {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: 200px;
+  max-width: 100%;
+  background: #2dc57b;
+  box-shadow: none;
+  transition-property: all, all;
+  transition-duration: 1s, 0.3s;
+  cursor: default;
+  flex-shrink: 0;
+  -webkit-transition-property: all, all;
+  -webkit-transition-duration: 1s, 0.3s;
   border-radius: 10px;
   padding: 5px 50px 50px;
 }
@@ -84,10 +114,8 @@
     max-width: auto;
     background: #2dc57b;
     height: 150px;
-    margin-bottom: 24px;
     display: flex;
     flex-direction: column;
-    margin-top: 24px;
     width: 90%;
     flex-shrink: 0;
     padding: 5px 20px 20px;
@@ -253,6 +281,8 @@
   color: var(--token-41VRhDKfihhY);
   text-align: right;
   font-size: 24px;
+  isolation: auto;
+  cursor: default;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -273,6 +303,11 @@
   align-self: center;
   color: var(--token-41VRhDKfihhY);
   font-size: 32px;
+  transition-property: all;
+  transition-duration: 1s;
+  cursor: default;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__vdEzP {
@@ -296,9 +331,17 @@
 .tooltip:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+  position: absolute;
+  left: auto;
+  top: 239px;
+  align-self: center;
+  z-index: 50;
+  right: auto;
+  bottom: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .tooltip:global(.__wab_instance) {
+    top: 184px;
     display: flex;
   }
 }

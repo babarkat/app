@@ -1387,6 +1387,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/charging-2"
+        },
+        {
+          "id": "LXo9RUqhmVGZ",
+          "name": "NewPage",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicNewPage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicNewPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new-page"
         }
       ],
       "icons": [
