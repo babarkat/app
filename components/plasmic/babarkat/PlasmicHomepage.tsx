@@ -654,7 +654,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["updateStartY"] = await $steps["updateStartY"];
                   }
                 }}
-                onTouchMove={async event => {
+                onTouchEnd={async event => {
                   const $steps = {};
 
                   $steps["runCode"] = true
