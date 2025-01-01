@@ -95,10 +95,11 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: CKHzBo8fkmuJ/css
 
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
+import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
 import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz_/icon
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
+import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
@@ -660,16 +661,18 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["updateStartY"] = await $steps["updateStartY"];
                   }
                 }}
-                onMouseMove={async event => {
+                onTouchEnd={async event => {
                   const $steps = {};
 
-                  $steps["runCode"] = $state.drag
+                  $steps["runCode"] = true
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
                             return (() => {
                               let __plasmic_ret = undefined;
-                              if ($state.startY > event.touches[0].clientY) {
+                              if (
+                                $state.startY > event.changedTouches[0].clientY
+                              ) {
                                 const lastCard = $state.cards.pop();
                                 $state.cards.unshift(lastCard);
                                 for (let i = 0; i < $state.cards.length; i++) {
@@ -680,7 +683,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   }%`;
                                 }
                               } else if (
-                                $state.startY < event.touches[0].clientY
+                                $state.startY < event.changedTouches[0].clientY
                               ) {
                                 const firstCard = $state.cards.shift();
                                 $state.cards.push(firstCard);
@@ -707,43 +710,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["runCode"].then === "function"
                   ) {
                     $steps["runCode"] = await $steps["runCode"];
-                  }
-                }}
-                onTouchEnd={async event => {
-                  const $steps = {};
-
-                  $steps["updateDrag"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["drag"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateDrag"] != null &&
-                    typeof $steps["updateDrag"] === "object" &&
-                    typeof $steps["updateDrag"].then === "function"
-                  ) {
-                    $steps["updateDrag"] = await $steps["updateDrag"];
                   }
                 }}
                 onTouchStart={async event => {
@@ -1017,7 +983,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           </React.Fragment>
                         )}
                       </div>
-                      <BabarkatlogoCopy2SvgIcon
+                      <Icon61Icon
                         className={classNames(projectcss.all, sty.svg___7Xbq)}
                         role={"img"}
                       />

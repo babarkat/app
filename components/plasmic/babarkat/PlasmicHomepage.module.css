@@ -320,13 +320,21 @@
   object-fit: cover;
   max-width: 100%;
   position: absolute;
-  left: -10px;
-  top: -60px;
+  left: 12px;
+  top: 5px;
   opacity: 0.1;
   width: 300px;
-  height: 300px;
+  height: 150px;
   filter: contrast(200%);
   flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg___7Xbq {
+    width: 250px;
+    height: 150px;
+    top: -2px;
+    flex-shrink: 0;
+  }
 }
 .tooltip:global(.__wab_instance) {
   max-width: 100%;

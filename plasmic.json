@@ -1943,6 +1943,11 @@
           "id": "P52THJblgWka",
           "name": "Icon60Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon60.tsx"
+        },
+        {
+          "id": "6aKHa8qmDKOv",
+          "name": "Icon61Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon61.tsx"
         }
       ],
       "images": [
