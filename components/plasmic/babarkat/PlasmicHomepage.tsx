@@ -654,7 +654,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["updateStartY"] = await $steps["updateStartY"];
                   }
                 }}
-                onTouchEnd={async event => {
+                onTouchMove={async event => {
                   const $steps = {};
 
                   $steps["runCode"] = true
@@ -663,7 +663,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           customFunction: async () => {
                             return (() => {
                               let __plasmic_ret = undefined;
-                              if ($state.startY > event.clientY) {
+                              if ($state.startY > event.touches[0].clientY) {
                                 const lastCard = $state.cards.pop();
                                 $state.cards.unshift(lastCard);
                                 for (let i = 0; i < $state.cards.length; i++) {
@@ -673,7 +673,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                     100 - i * 5
                                   }%`;
                                 }
-                              } else if ($state.startY < event.clientY) {
+                              } else if (
+                                $state.startY < event.touches[0].clientY
+                              ) {
                                 const firstCard = $state.cards.shift();
                                 $state.cards.push(firstCard);
                                 for (let i = 0; i < $state.cards.length; i++) {
@@ -712,7 +714,7 @@ function PlasmicHomepage__RenderFunc(props: {
                             variablePath: ["startY"]
                           },
                           operation: 0,
-                          value: event.clientY
+                          value: event.touches[0].clientY
                         };
                         return (({
                           variable,
