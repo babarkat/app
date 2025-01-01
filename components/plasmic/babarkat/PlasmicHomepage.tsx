@@ -438,6 +438,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "drag",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -654,10 +660,10 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["updateStartY"] = await $steps["updateStartY"];
                   }
                 }}
-                onTouchEnd={async event => {
+                onMouseMove={async event => {
                   const $steps = {};
 
-                  $steps["runCode"] = true
+                  $steps["runCode"] = $state.drag
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
@@ -703,6 +709,43 @@ function PlasmicHomepage__RenderFunc(props: {
                     $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
+                onTouchEnd={async event => {
+                  const $steps = {};
+
+                  $steps["updateDrag"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drag"]
+                          },
+                          operation: 0,
+                          value: true
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateDrag"] != null &&
+                    typeof $steps["updateDrag"] === "object" &&
+                    typeof $steps["updateDrag"].then === "function"
+                  ) {
+                    $steps["updateDrag"] = await $steps["updateDrag"];
+                  }
+                }}
                 onTouchStart={async event => {
                   const $steps = {};
 
@@ -738,6 +781,40 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateStartY"].then === "function"
                   ) {
                     $steps["updateStartY"] = await $steps["updateStartY"];
+                  }
+
+                  $steps["updateDrag"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drag"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateDrag"] != null &&
+                    typeof $steps["updateDrag"] === "object" &&
+                    typeof $steps["updateDrag"].then === "function"
+                  ) {
+                    $steps["updateDrag"] = await $steps["updateDrag"];
                   }
                 }}
                 style={{ Position: "Relative" }}
