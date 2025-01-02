@@ -157,6 +157,7 @@ export type PlasmicHomepage__OverridesType = {
   newPass2?: Flex__<typeof Input>;
   progress?: Flex__<typeof AntdProgress>;
   reoeatNewPass2?: Flex__<typeof Input>;
+  modal7?: Flex__<typeof AntdModal>;
 };
 
 export interface DefaultHomepageProps {}
@@ -419,7 +420,7 @@ function PlasmicHomepage__RenderFunc(props: {
           {
             id: "afghani",
             name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
-            color: "#17704D",
+            color: "#C9A92B",
             width: "95%",
             zIndex: 3,
             transform: "translateY(-15px) "
@@ -427,7 +428,7 @@ function PlasmicHomepage__RenderFunc(props: {
           {
             id: "dollar",
             name: "\u062f\u0644\u0627\u0631",
-            color: "#007B77",
+            color: "#3574BF",
             width: "90%",
             zIndex: 2,
             transform: "translateY(-15px) "
@@ -442,6 +443,12 @@ function PlasmicHomepage__RenderFunc(props: {
       },
       {
         path: "drag",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "modal7.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
@@ -13063,6 +13070,112 @@ function PlasmicHomepage__RenderFunc(props: {
               </AntdModal>
             );
           })()}
+          <AntdModal
+            data-plasmic-name={"modal7"}
+            data-plasmic-override={overrides.modal7}
+            className={classNames("__wab_instance", sty.modal7)}
+            defaultStylesClassName={classNames(
+              projectcss.root_reset,
+              projectcss.plasmic_default_styles,
+              projectcss.plasmic_mixins,
+              projectcss.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens
+            )}
+            hideFooter={true}
+            maskClosable={
+              hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
+            }
+            modalContentClassName={classNames({
+              [sty["pcls_XLKNADDGlXsG"]]: hasVariant(
+                globalVariants,
+                "screen",
+                "mobileOnly"
+              ),
+              [sty["pcls_ef_vQou0idM7"]]: true
+            })}
+            modalScopeClassName={sty["modal7__modal"]}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["modal7", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              (async open => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return localStorage.setItem(
+                            "intro",
+                            JSON.stringify([1])
+                          );
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+              }).apply(null, eventArgs);
+            }}
+            open={generateStateValueProp($state, ["modal7", "open"])}
+            title={null}
+            trigger={null}
+            width={"100vw"}
+            wrapClassName={classNames({
+              [sty["pcls_9RQb9iUzcSUh"]]: true,
+              [sty["pcls_cUuQrTTdpeOd"]]: hasVariant(
+                globalVariants,
+                "screen",
+                "mobileOnly"
+              )
+            })}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__s8Rr)}>
+              <div className={classNames(projectcss.all, sty.freeBox__z2PZy)}>
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__mAlJs)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"100px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/babarkat/images/image37.gif",
+                    fullWidth: 400,
+                    fullHeight: 400,
+                    aspectRatio: undefined
+                  }}
+                />
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__fAf7Z)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___1IJzc
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0628\u0627 \u0628\u0627\u0644\u0627 \u06a9\u0634\u06cc\u062f\u0646 \u06a9\u0627\u0631\u062a\u060c \u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628 \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u0627\u0631\u0632\u0647\u0627\u06cc \u062f\u06cc\u06af\u0631 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u06cc\u062f."
+                    : "\u0628\u0627 \u0628\u0627\u0644\u0627 \u06a9\u0634\u06cc\u062f\u0646 \u06a9\u0627\u0631\u062a\u060c \u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628 \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u0627\u0631\u0632\u0647\u0627\u06cc \u062f\u06cc\u06af\u0631 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u06cc\u062f."}
+                </div>
+              </div>
+            </div>
+          </AntdModal>
         </div>
       </div>
     </React.Fragment>
@@ -13103,7 +13216,8 @@ const PlasmicDescendants = {
     "modal6",
     "newPass2",
     "progress",
-    "reoeatNewPass2"
+    "reoeatNewPass2",
+    "modal7"
   ],
   header: ["header"],
   wallet: ["wallet"],
@@ -13142,7 +13256,8 @@ const PlasmicDescendants = {
   modal6: ["modal6", "newPass2", "progress", "reoeatNewPass2"],
   newPass2: ["newPass2"],
   progress: ["progress"],
-  reoeatNewPass2: ["reoeatNewPass2"]
+  reoeatNewPass2: ["reoeatNewPass2"],
+  modal7: ["modal7"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -13181,6 +13296,7 @@ type NodeDefaultElementType = {
   newPass2: typeof Input;
   progress: typeof AntdProgress;
   reoeatNewPass2: typeof Input;
+  modal7: typeof AntdModal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -13300,6 +13416,7 @@ export const PlasmicHomepage = Object.assign(
     newPass2: makeNodeComponent("newPass2"),
     progress: makeNodeComponent("progress"),
     reoeatNewPass2: makeNodeComponent("reoeatNewPass2"),
+    modal7: makeNodeComponent("modal7"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
