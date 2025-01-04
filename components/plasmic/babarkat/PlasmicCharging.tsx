@@ -2512,7 +2512,12 @@ function PlasmicCharging__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction2"] =
-                        $state.mojody < $state.amont
+                        $state.mojody <
+                        parseInt($state.amont) +
+                          parseInt($state.amont) *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100)
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -2539,7 +2544,12 @@ function PlasmicCharging__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction4"] =
-                        $state.amont < $state.mojody
+                        parseInt($state.amont) +
+                          parseInt($state.amont) *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100) <
+                        $state.mojody
                           ? (() => {
                               const actionArgs = {
                                 args: [

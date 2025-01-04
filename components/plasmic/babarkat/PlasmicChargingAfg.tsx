@@ -2557,7 +2557,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction2"] =
-                        $state.mojody < $state.amont
+                        $state.mojody <
+                        parseInt($state.amont) +
+                          parseInt($state.amont) *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100)
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -2584,7 +2589,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction4"] =
-                        $state.amont < $state.mojody
+                        parseInt($state.amont) +
+                          parseInt($state.amont) *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100) <
+                        $state.mojody
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -3648,43 +3658,24 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       $steps["updateAmont"] = await $steps["updateAmont"];
                     }
 
-                    $steps["updateUnnamedVariant2"] = (() => {
-                      if (
-                        $state.operators2[$state.operatorselect].chargeRange
-                      ) {
-                        if ($state.operatorselect == 1) {
-                          return $state.amont % 1000 === 0;
-                        }
-                        if (
-                          $state.amont >=
-                            $state.operators2[$state.operatorselect].chargeRange
-                              .min &&
-                          $state.amont <=
-                            $state.operators2[$state.operatorselect].chargeRange
-                              .max
-                        ) {
-                          return true;
-                        } else {
-                          return false;
-                        }
-                      } else return true;
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "stepscharg",
-                            operation: 0,
-                            value: "step3"
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
+                    $steps["updateUnnamedVariant2"] =
+                      $state.amont != 0
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "stepscharg",
+                              operation: 0,
+                              value: "step3"
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
 
-                            $stateSet($state, vgroup, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
+                              $stateSet($state, vgroup, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                     if (
                       $steps["updateUnnamedVariant2"] != null &&
                       typeof $steps["updateUnnamedVariant2"] === "object" &&
@@ -3692,80 +3683,6 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     ) {
                       $steps["updateUnnamedVariant2"] = await $steps[
                         "updateUnnamedVariant2"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction"] = (() => {
-                      if (
-                        $state.operators2[$state.operatorselect].chargeRange
-                      ) {
-                        if ($state.operatorselect == 1) {
-                          return $state.amont % 1000 != 0;
-                        }
-                        if (
-                          $state.amont >=
-                            $state.operators2[$state.operatorselect].chargeRange
-                              .min &&
-                          $state.amont <=
-                            $state.operators2[$state.operatorselect].chargeRange
-                              .max
-                        ) {
-                          return false;
-                        } else {
-                          return true;
-                        }
-                      } else return false;
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              (() => {
-                                try {
-                                  return (() => {
-                                    if ($state.operatorselect == 1) {
-                                      if ($state.amont % 1000 != 0)
-                                        return "مبلغ باید ضریبی از 1000 باشد.";
-                                    }
-                                    return (
-                                      "مبلغ باید بین " +
-                                      $state.operators2[
-                                        $state.operatorselect
-                                      ].chargeRange.min.toLocaleString("en") +
-                                      " تومان تا " +
-                                      $state.operators2[
-                                        $state.operatorselect
-                                      ].chargeRange.max.toLocaleString("en") +
-                                      " تومان باشد."
-                                    );
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })(),
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
                       ];
                     }
                   }}
@@ -3934,6 +3851,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
                 </div>
                 <Button
                   className={classNames("__wab_instance", sty.button__vleie, {
+                    [sty.buttonstepscharg_step2__vleie1Oc4H]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
                     [sty.buttonstepscharg_step3__vleieq2TCe]: hasVariant(
                       $state,
                       "stepscharg",

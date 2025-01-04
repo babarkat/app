@@ -3348,7 +3348,12 @@ function PlasmicInternet3__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction2"] =
-                        $state.mojodi < $state.selectpack.amount
+                        $state.mojodi <
+                        $state.selectpack.amount +
+                          $state.selectpack.amount *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100)
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -3375,7 +3380,12 @@ function PlasmicInternet3__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction4"] =
-                        $state.mojodi > $state.selectpack.amount
+                        $state.mojodi >
+                        $state.selectpack.amount +
+                          $state.selectpack.amount *
+                            (($state.commissionBabarkat.data.babrkat +
+                              $state.commissionBabarkat.data.saraf) /
+                              100)
                           ? (() => {
                               const actionArgs = {
                                 args: [
