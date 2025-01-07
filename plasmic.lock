@@ -253,7 +253,7 @@
         "sqPBLwEBBKHA2WDuGb17eV": "2.3.0",
         "hjKYmYi6HMwK6TRyk7ew5R": "6.42.0",
         "cAAqA2dcbTMWwuLSmjs7ss": "0.4.0",
-        "gmeH6XgPaBtkt51HunAo4g": "18.10.0"
+        "gmeH6XgPaBtkt51HunAo4g": "18.11.0"
       },
       "lang": "ts",
       "fileLocks": [
@@ -1265,12 +1265,12 @@
         {
           "type": "renderModule",
           "assetId": "guZRqy1VG4VR",
-          "checksum": "7d69b4ab3973dc735905d4944fe7583f"
+          "checksum": "ae59ad48bf629a1ede9deb5003608ad5"
         },
         {
           "type": "cssRules",
           "assetId": "guZRqy1VG4VR",
-          "checksum": "7d69b4ab3973dc735905d4944fe7583f"
+          "checksum": "ae59ad48bf629a1ede9deb5003608ad5"
         },
         {
           "type": "image",
@@ -1376,6 +1376,46 @@
           "assetId": "sZQMbqXz9utLNaTnNb3uss",
           "type": "projectCss",
           "checksum": "0a5068d4f0b83a9940823a395e31933d"
+        },
+        {
+          "type": "icon",
+          "assetId": "HyZ9H0U3_RLQ",
+          "checksum": "6a1a4770a8f5498f8717de9bde40f645"
+        },
+        {
+          "type": "icon",
+          "assetId": "3pIKdy4AyleH",
+          "checksum": "b8a3975e96219ee2c66e3c8ba47ddc13"
+        },
+        {
+          "type": "icon",
+          "assetId": "ikcgDOFGXPOS",
+          "checksum": "bb1b1c1a988e248fc4df392397e94952"
+        },
+        {
+          "type": "icon",
+          "assetId": "8LQnltq2G2pW",
+          "checksum": "d9d11e51212ffae6cc35a333e9331321"
+        },
+        {
+          "type": "icon",
+          "assetId": "bzeBiBKMlpJN",
+          "checksum": "8fd1dd2c4457c92e8e3601b2cb79752e"
+        },
+        {
+          "type": "icon",
+          "assetId": "4j3pGxLGyNho",
+          "checksum": "86a253707715dd605a1da39dec88fb39"
+        },
+        {
+          "type": "icon",
+          "assetId": "PDvr5CaZHzSh",
+          "checksum": "b2b3ba560a73e0a6b4893049b48e27fc"
+        },
+        {
+          "type": "icon",
+          "assetId": "0IzoCqJISrHt",
+          "checksum": "825e3b577ed1a149f03a854f90900e6e"
         }
       ],
       "codegenVersion": "0.0.1"
@@ -1463,7 +1503,7 @@
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
-      "version": "18.10.0",
+      "version": "18.11.0",
       "dependencies": {},
       "lang": "ts",
       "fileLocks": [

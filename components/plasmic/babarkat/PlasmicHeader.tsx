@@ -97,14 +97,19 @@ import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon60Icon from "./icons/PlasmicIcon__Icon60"; // plasmic-import: P52THJblgWka/icon
+import Icon63Icon from "./icons/PlasmicIcon__Icon63"; // plasmic-import: 3pIKdy4AyleH/icon
+import Icon64Icon from "./icons/PlasmicIcon__Icon64"; // plasmic-import: ikcgDOFGXPOS/icon
+import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: rPH6lstZmeFB/icon
 import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: flxpisepE8-C/icon
 import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu9gyKG/icon
 import Icon57Icon from "./icons/PlasmicIcon__Icon57"; // plasmic-import: T9OBsfBXupjw/icon
+import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
 
+import __lib_copyToClipboard from "copy-to-clipboard";
 import __lib_md5 from "md5";
 
 createPlasmicElementProxy;
@@ -166,6 +171,8 @@ export type PlasmicHeader__OverridesType = {
   group7?: Flex__<"div">;
   rectangle?: Flex__<"div">;
   group8?: Flex__<"div">;
+  support?: Flex__<typeof AntdModal>;
+  wallet7?: Flex__<"div">;
   editPassword?: Flex__<typeof AntdModal>;
   wallet5?: Flex__<"div">;
   nowPass?: Flex__<typeof Input>;
@@ -186,6 +193,7 @@ export interface DefaultHeaderProps {
 }
 
 const $$ = {
+  copyToClipboard: __lib_copyToClipboard,
   md5: __lib_md5
 };
 
@@ -437,6 +445,13 @@ function PlasmicHeader__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "support.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       }
     ],
     [$props, $ctx, $refs]
@@ -1867,6 +1882,270 @@ function PlasmicHeader__RenderFunc(props: {
         </div>
       </AntdModal>
       <AntdModal
+        data-plasmic-name={"support"}
+        data-plasmic-override={overrides.support}
+        className={classNames("__wab_instance", sty.support)}
+        closeButtonClassName={classNames({ [sty["pcls_I3V8uXLAhMOG"]]: true })}
+        closeIcon={
+          <Icon60Icon
+            className={classNames(projectcss.all, sty.svg__psSw1)}
+            role={"img"}
+          />
+        }
+        defaultStylesClassName={classNames(
+          projectcss.root_reset,
+          projectcss.plasmic_default_styles,
+          projectcss.plasmic_mixins,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens
+        )}
+        hideFooter={true}
+        modalContentClassName={classNames({
+          [sty["pcls_JVT-lW6sudcQ"]]: true,
+          [sty["pcls_QsGw2v-yxSEV"]]: hasVariant(
+            globalVariants,
+            "screen",
+            "mobileOnly"
+          )
+        })}
+        modalScopeClassName={sty["support__modal"]}
+        onOpenChange={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["support", "open"]).apply(
+            null,
+            eventArgs
+          );
+        }}
+        open={generateStateValueProp($state, ["support", "open"])}
+        title={null}
+        trigger={null}
+        width={
+          hasVariant(globalVariants, "screen", "mobileOnly") ? "100vw" : "100vw"
+        }
+        wrapClassName={classNames({ [sty["pcls_jCHCzh-MESJT"]]: true })}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__zzWtD)}>
+          <Stack__
+            as={"div"}
+            data-plasmic-name={"wallet7"}
+            data-plasmic-override={overrides.wallet7}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.wallet7)}
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__ovnj)}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__d6YO
+                )}
+              >
+                {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
+              </div>
+            </Stack__>
+          </Stack__>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__d1WQ)}
+          >
+            <Icon63Icon
+              className={classNames(projectcss.all, sty.svg__lnJa8)}
+              role={"img"}
+            />
+
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__bkd8
+              )}
+            >
+              {
+                "\u0631\u0627\u0647 \u0647\u0627\u06cc \u0627\u0631\u062a\u0628\u0627\u0637\u06cc \u0628\u0627 \u0645\u0627"
+              }
+            </div>
+          </Stack__>
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox___5BhwW)}
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__ewOsF)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return $$.copyToClipboard("02171057159");
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["invokeGlobalAction"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "\u0634\u0645\u0627\u0631\u0647 \u062a\u0645\u0627\u0633 \u06a9\u067e\u06cc \u0634\u062f.",
+                          "top-left",
+                          5000
+                        ]
+                      };
+                      return $globalActions["Fragment.showToast"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
+                ) {
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
+                  ];
+                }
+              }}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__agRs)}>
+                <Icon64Icon
+                  className={classNames(projectcss.all, sty.svg__ytc6G)}
+                  role={"img"}
+                />
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__jsNhG)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xt5Hf
+                  )}
+                >
+                  {
+                    "\u062a\u0645\u0627\u0633 \u0628\u0627 \u0648\u0627\u062d\u062f \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__mk83
+                  )}
+                >
+                  {"02171057159"}
+                </div>
+              </div>
+            </Stack__>
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__uxnBp)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return Android.onElementClicked(
+                            "https://wa.me/+989202116750"
+                          );
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["invokeGlobalAction"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0642\u0627\u0644 \u0628\u0647 \u0648\u0627\u062a\u0633\u0627\u067e ...",
+                          "top-left",
+                          5000
+                        ]
+                      };
+                      return $globalActions["Fragment.showToast"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
+                ) {
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
+                  ];
+                }
+              }}
+            >
+              <div className={classNames(projectcss.all, sty.freeBox__ge920)}>
+                <Icon22Icon
+                  className={classNames(projectcss.all, sty.svg__l2WDh)}
+                  role={"img"}
+                />
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__rPqdo)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__piaKq
+                  )}
+                >
+                  {
+                    "\u0627\u0631\u062a\u0628\u0627\u0637 \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u062a\u0633\u0627\u067e"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__jbkcX
+                  )}
+                >
+                  {"09202116750"}
+                </div>
+              </div>
+            </Stack__>
+          </Stack__>
+          <div className={classNames(projectcss.all, sty.freeBox__uJ4K)} />
+        </div>
+      </AntdModal>
+      <AntdModal
         data-plasmic-name={"editPassword"}
         data-plasmic-override={overrides.editPassword}
         className={classNames("__wab_instance", sty.editPassword)}
@@ -3260,6 +3539,110 @@ function PlasmicHeader__RenderFunc(props: {
                 role={"img"}
               />
             </Stack__>
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__aDXqQ)}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateDrawerOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["drawer", "open"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateDrawerOpen"] != null &&
+                  typeof $steps["updateDrawerOpen"] === "object" &&
+                  typeof $steps["updateDrawerOpen"].then === "function"
+                ) {
+                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                }
+
+                $steps["updatePasswordOpen"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["support", "open"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePasswordOpen"] != null &&
+                  typeof $steps["updatePasswordOpen"] === "object" &&
+                  typeof $steps["updatePasswordOpen"].then === "function"
+                ) {
+                  $steps["updatePasswordOpen"] = await $steps[
+                    "updatePasswordOpen"
+                  ];
+                }
+              }}
+            >
+              <Icon69Icon
+                className={classNames(projectcss.all, sty.svg__dDeLg)}
+                role={"img"}
+              />
+
+              <div className={classNames(projectcss.all, sty.freeBox___0Rt0N)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__oxgZ0
+                  )}
+                >
+                  {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
+                </div>
+              </div>
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon36Icon
+                    : Icon36Icon
+                }
+                className={classNames(projectcss.all, sty.svg___06LD1)}
+                role={"img"}
+              />
+            </Stack__>
           </Stack__>
           <Stack__
             as={"div"}
@@ -3581,6 +3964,8 @@ const PlasmicDescendants = {
     "group7",
     "rectangle",
     "group8",
+    "support",
+    "wallet7",
     "editPassword",
     "wallet5",
     "nowPass",
@@ -3698,6 +4083,8 @@ const PlasmicDescendants = {
   group7: ["group7", "rectangle"],
   rectangle: ["rectangle"],
   group8: ["group8"],
+  support: ["support", "wallet7"],
+  wallet7: ["wallet7"],
   editPassword: [
     "editPassword",
     "wallet5",
@@ -3753,6 +4140,8 @@ type NodeDefaultElementType = {
   group7: "div";
   rectangle: "div";
   group8: "div";
+  support: typeof AntdModal;
+  wallet7: "div";
   editPassword: typeof AntdModal;
   wallet5: "div";
   nowPass: typeof Input;
@@ -3857,6 +4246,8 @@ export const PlasmicHeader = Object.assign(
     group7: makeNodeComponent("group7"),
     rectangle: makeNodeComponent("rectangle"),
     group8: makeNodeComponent("group8"),
+    support: makeNodeComponent("support"),
+    wallet7: makeNodeComponent("wallet7"),
     editPassword: makeNodeComponent("editPassword"),
     wallet5: makeNodeComponent("wallet5"),
     nowPass: makeNodeComponent("nowPass"),

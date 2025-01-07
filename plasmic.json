@@ -1984,6 +1984,46 @@
           "id": "ZVXDcND35NZY",
           "name": "ChevronDownIcon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__ChevronDown.tsx"
+        },
+        {
+          "id": "HyZ9H0U3_RLQ",
+          "name": "Icon62Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon62.tsx"
+        },
+        {
+          "id": "3pIKdy4AyleH",
+          "name": "Icon63Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon63.tsx"
+        },
+        {
+          "id": "ikcgDOFGXPOS",
+          "name": "Icon64Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon64.tsx"
+        },
+        {
+          "id": "8LQnltq2G2pW",
+          "name": "Icon65Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon65.tsx"
+        },
+        {
+          "id": "bzeBiBKMlpJN",
+          "name": "Icon66Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon66.tsx"
+        },
+        {
+          "id": "4j3pGxLGyNho",
+          "name": "Icon67Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon67.tsx"
+        },
+        {
+          "id": "PDvr5CaZHzSh",
+          "name": "Icon68Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon68.tsx"
+        },
+        {
+          "id": "0IzoCqJISrHt",
+          "name": "Icon69Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon69.tsx"
         }
       ],
       "images": [
@@ -2713,8 +2753,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
