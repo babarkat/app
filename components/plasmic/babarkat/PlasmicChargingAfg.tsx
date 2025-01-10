@@ -217,7 +217,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [50, 100, 300, 500, 1000]
+                chargeAmounts: [50, 100, 150, 200, 300, 500, 1000]
               }
             ]
           },
@@ -238,7 +238,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [50, 100, 300, 500, 1000]
+                chargeAmounts: [50, 100, 150, 200, 300, 500, 1000]
               }
             ]
           },
@@ -254,7 +254,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [50, 100, 300, 500, 1000]
+                chargeAmounts: [50, 100, 150, 200, 300, 500, 1000]
               }
             ]
           },
@@ -269,7 +269,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [50, 100, 300, 500, 1000]
+                chargeAmounts: [50, 100, 150, 200, 300, 500, 1000]
               }
             ]
           },
@@ -285,7 +285,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [50, 100, 300, 500, 1000]
+                chargeAmounts: [50, 100, 150, 200, 300, 500, 1000]
               }
             ]
           }
