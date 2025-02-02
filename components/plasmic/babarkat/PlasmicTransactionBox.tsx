@@ -71,6 +71,7 @@ import sty from "./PlasmicTransactionBox.module.css"; // plasmic-import: 9xs0oaO
 import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; // plasmic-import: aoPueH94YLGd/icon
 import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3UQ7U7/icon
 import Icon58Icon from "./icons/PlasmicIcon__Icon58"; // plasmic-import: b6_fsTkPhz_-/icon
+import Icon70Icon from "./icons/PlasmicIcon__Icon70"; // plasmic-import: I0oI14s4oqbt/icon
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
 import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
 
@@ -84,12 +85,13 @@ export type PlasmicTransactionBox__VariantMembers = {
     | "sim"
     | "panel"
     | "unnamedVariant"
-    | "snap";
+    | "snap"
+    | "pubg";
 };
 export type PlasmicTransactionBox__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap"
+    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap" | "pubg"
   >;
 };
 type VariantPropType = keyof PlasmicTransactionBox__VariantsArgs;
@@ -119,7 +121,7 @@ export interface DefaultTransactionBoxProps {
   onClick?: (event: any) => void;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap"
+    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap" | "pubg"
   >;
   className?: string;
 }
@@ -232,6 +234,11 @@ function PlasmicTransactionBox__RenderFunc(props: {
             "unnamedGroupOfVariants",
             "panel"
           ),
+          [sty.rootunnamedGroupOfVariants_pubg]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "pubg"
+          ),
           [sty.rootunnamedGroupOfVariants_sim]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
@@ -275,7 +282,9 @@ function PlasmicTransactionBox__RenderFunc(props: {
       >
         <PlasmicIcon__
           PlasmicIconType={
-            hasVariant($state, "unnamedGroupOfVariants", "snap")
+            hasVariant($state, "unnamedGroupOfVariants", "pubg")
+              ? Icon70Icon
+              : hasVariant($state, "unnamedGroupOfVariants", "snap")
               ? Icon58Icon
               : hasVariant($state, "unnamedGroupOfVariants", "panel")
               ? Icon14Icon
@@ -292,6 +301,11 @@ function PlasmicTransactionBox__RenderFunc(props: {
               $state,
               "unnamedGroupOfVariants",
               "panel"
+            ),
+            [sty.svgunnamedGroupOfVariants_pubg__iNIjiOa6AJ]: hasVariant(
+              $state,
+              "unnamedGroupOfVariants",
+              "pubg"
             ),
             [sty.svgunnamedGroupOfVariants_snap__iNIjiPkiCr]: hasVariant(
               $state,

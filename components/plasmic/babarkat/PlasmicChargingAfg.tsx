@@ -369,7 +369,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? true : false
+          hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "variable",
@@ -4648,7 +4648,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             data-plasmic-override={overrides.embedHtml}
             className={classNames("__wab_instance", sty.embedHtml)}
             code={
-              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/charging\"\r\n        });\r\n    </script>"
+              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/charging-2\"\r\n        });\r\n    </script>"
             }
           />
 

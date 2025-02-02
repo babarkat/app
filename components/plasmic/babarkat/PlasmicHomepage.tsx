@@ -1327,15 +1327,6 @@ function PlasmicHomepage__RenderFunc(props: {
                         "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
                       }
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__ku6Uz
-                      )}
-                    >
-                      {"\u062c\u062f\u06cc\u062f"}
-                    </div>
                   </div>
                   <div
                     data-plasmic-name={"comingSoon2"}
@@ -1429,6 +1420,34 @@ function PlasmicHomepage__RenderFunc(props: {
                     data-plasmic-name={"comingSoon3"}
                     data-plasmic-override={overrides.comingSoon3}
                     className={classNames(projectcss.all, sty.comingSoon3)}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["goToPubg"] = true
+                        ? (() => {
+                            const actionArgs = { destination: `/pubg` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToPubg"] != null &&
+                        typeof $steps["goToPubg"] === "object" &&
+                        typeof $steps["goToPubg"].then === "function"
+                      ) {
+                        $steps["goToPubg"] = await $steps["goToPubg"];
+                      }
+                    }}
                   >
                     <div
                       className={classNames(
@@ -1437,7 +1456,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         sty.text__e0B1Y
                       )}
                     >
-                      {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
+                      {"\u062c\u062f\u06cc\u062f"}
                     </div>
                     <PlasmicImg__
                       alt={""}
@@ -2140,44 +2159,52 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["goToPage"] = true
+                        $steps["runCode"] = true
                           ? (() => {
                               const actionArgs = {
-                                destination: (() => {
-                                  try {
-                                    return "https://wa.me/message/SHT3Z2IGZZBEF1";
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
+                                customFunction: async () => {
+                                  return Android.onElementClicked(
+                                    "https://wa.me/+989202116750"
+                                  );
                                 }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["goToPage"] != null &&
-                          typeof $steps["goToPage"] === "object" &&
-                          typeof $steps["goToPage"].then === "function"
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
                         ) {
-                          $steps["goToPage"] = await $steps["goToPage"];
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  "\u062f\u0631\u062d\u0627\u0644 \u0627\u0646\u062a\u0642\u0627\u0644 \u0628\u0647 \u0648\u0627\u062a\u0633\u0627\u067e ...",
+                                  "top-left",
+                                  5000
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
                         }
                       }}
                       role={"img"}
@@ -2586,37 +2613,52 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["goToHttpsWaMeMessageSht3Z2Igzzbef1"] = true
+                        $steps["runCode"] = true
                           ? (() => {
                               const actionArgs = {
-                                destination:
-                                  "https://wa.me/message/SHT3Z2IGZZBEF1"
-                              };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
+                                customFunction: async () => {
+                                  return Android.onElementClicked(
+                                    "https://wa.me/+989202116750"
+                                  );
                                 }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["goToHttpsWaMeMessageSht3Z2Igzzbef1"] !=
-                            null &&
-                          typeof $steps[
-                            "goToHttpsWaMeMessageSht3Z2Igzzbef1"
-                          ] === "object" &&
-                          typeof $steps["goToHttpsWaMeMessageSht3Z2Igzzbef1"]
-                            .then === "function"
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
                         ) {
-                          $steps["goToHttpsWaMeMessageSht3Z2Igzzbef1"] =
-                            await $steps["goToHttpsWaMeMessageSht3Z2Igzzbef1"];
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0642\u0627\u0644 \u0628\u0647 \u0648\u0627\u062a\u0633\u0627\u067e ...",
+                                  "top-left",
+                                  5000
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
                         }
                       }}
                       role={"img"}

@@ -1032,8 +1032,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -1427,6 +1426,34 @@
           "cssFilePath": "plasmic/babarkat/PlasmicModal.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "jtwtirwKo1Bp",
+          "name": "Call",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCall.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/call.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCall.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/call"
+        },
+        {
+          "id": "Izx7HE7nypnF",
+          "name": "Pubg",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicPubg.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/pubg.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicPubg.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/pubg"
         }
       ],
       "icons": [
@@ -2024,6 +2051,21 @@
           "id": "0IzoCqJISrHt",
           "name": "Icon69Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon69.tsx"
+        },
+        {
+          "id": "I0oI14s4oqbt",
+          "name": "Icon70Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon70.tsx"
+        },
+        {
+          "id": "HJlsby8ZZt3B",
+          "name": "Icon71Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon71.tsx"
+        },
+        {
+          "id": "IUYTI9O-WF22",
+          "name": "Icon72Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon72.tsx"
         }
       ],
       "images": [
@@ -2266,6 +2308,21 @@
           "id": "8zu-cN8zGPuP",
           "name": "image 37",
           "filePath": "../public/plasmic/babarkat/images/image37.gif"
+        },
+        {
+          "id": "Qg9O4UlqJR_0",
+          "name": "image 38",
+          "filePath": "../public/plasmic/babarkat/images/image38.webp"
+        },
+        {
+          "id": "40X-gweIHc36",
+          "name": "games-pubg-icon-2048x2048-9s0jeh3k.png",
+          "filePath": "../public/plasmic/babarkat/images/gamesPubgIcon2048X20489S0Jeh3KPng.png"
+        },
+        {
+          "id": "0reejGjmQu3s",
+          "name": "image 39",
+          "filePath": "../public/plasmic/babarkat/images/image39.svg"
         }
       ],
       "indirect": false,
@@ -2469,8 +2526,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -2753,8 +2809,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
@@ -2789,6 +2844,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.334",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.334/dist/plasmic.schema.json"
+  "cliVersion": "0.1.335",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.335/dist/plasmic.schema.json"
 }

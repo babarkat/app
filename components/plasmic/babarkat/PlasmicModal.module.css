@@ -45,7 +45,7 @@
   flex-direction: column;
   outline-style: none;
 }
-.ariaHeading:global(.__wab_instance) {
+.ariaHeadingDeprecated:global(.__wab_instance) {
   flex-shrink: 0;
   padding: var(--token-Vnin7lBvcq0-);
   margin: 0rem;
