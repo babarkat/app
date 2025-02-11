@@ -866,47 +866,6 @@ function PlasmicLogIn2__RenderFunc(props: {
                   role={"img"}
                 />
 
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__hmhIt,
-                    {
-                      [sty.textforgottenPassword_unnamedVariant2_unnamedVariant__hmhIt6YjBJ9ExhQA83H]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "forgottenPassword",
-                          "forgottenPassword"
-                        ),
-                      [sty.textunnamedVariant2__hmhItj9Exh]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant2_unnamedVariant__hmhItj9ExhQA83H]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    }
-                  )}
-                >
-                  {
-                    "\u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                  }
-                </div>
                 {(
                   hasVariant($state, "slids", "unnamedVariant") ? true : false
                 ) ? (
@@ -1069,7 +1028,9 @@ function PlasmicLogIn2__RenderFunc(props: {
                       ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                       : hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 "}
+                      : hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 (\u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631) "
+                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 (\u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631) "}
                   </div>
                   <Button
                     className={classNames("__wab_instance", sty.button__k3Gig, {

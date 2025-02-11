@@ -3835,7 +3835,10 @@ function PlasmicTransaction__RenderFunc(props: {
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? (() => {
                           try {
-                            return $state.transaction == "charge";
+                            return (
+                              $state.transaction == "charge" &&
+                              $state.transaction2.type != "uc_pubg"
+                            );
                           } catch (e) {
                             if (
                               e instanceof TypeError ||

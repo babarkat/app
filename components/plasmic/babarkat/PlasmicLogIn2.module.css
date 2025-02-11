@@ -348,21 +348,6 @@
     flex-shrink: 0;
   }
 }
-.text__hmhIt {
-  position: absolute;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: 24px;
-  color: var(--token-s7Z9BN_B1gNc);
-  font-weight: 700;
-  text-align: center;
-  left: 0;
-  top: 179px;
-  z-index: 1;
-  right: 0;
-  bottom: 0;
-}
 .img__iq2Sj {
   object-fit: cover;
   max-width: 100%;
