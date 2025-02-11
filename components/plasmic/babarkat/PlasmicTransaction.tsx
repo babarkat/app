@@ -252,7 +252,7 @@ function PlasmicTransaction__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $props.tabButton;
+              return $props.tabButton || "charge";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -286,43 +286,56 @@ function PlasmicTransaction__RenderFunc(props: {
         path: "list",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
-          {
-            type: "irancell_charge",
-            mobile: "09037415754",
-            createdAt: "2024-10-16 22:58:44",
-            price: 1500,
-            originId: "6565"
-          },
-          {
-            type: "irancell_charge",
-            mobile: "09037415755",
-            createdAt: "2024-9-16 22:59:44",
-            price: 1510,
-            originId: "6566"
-          },
-          {
-            type: "irancell_charge",
-            mobile: "09037415756",
-            createdAt: "2024-9-16 23:00:44",
-            price: 1520,
-            originId: "6567"
-          },
-          {
-            type: "irancell_charge",
-            mobile: "09037415757",
-            createdAt: "2024-1-16 23:01:44",
-            price: 1530,
-            originId: "6568"
-          },
-          {
-            type: "irancell_charge",
-            mobile: "09037415758",
-            createdAt: "2024-5-16 23:02:44",
-            price: 1540,
-            originId: "6569"
-          }
-        ]
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return undefined;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [
+                  {
+                    type: "irancell_charge",
+                    mobile: "09037415754",
+                    createdAt: "2024-10-16 22:58:44",
+                    price: 1500,
+                    originId: "6565"
+                  },
+                  {
+                    type: "irancell_charge",
+                    mobile: "09037415755",
+                    createdAt: "2024-9-16 22:59:44",
+                    price: 1510,
+                    originId: "6566"
+                  },
+                  {
+                    type: "irancell_charge",
+                    mobile: "09037415756",
+                    createdAt: "2024-9-16 23:00:44",
+                    price: 1520,
+                    originId: "6567"
+                  },
+                  {
+                    type: "irancell_charge",
+                    mobile: "09037415757",
+                    createdAt: "2024-1-16 23:01:44",
+                    price: 1530,
+                    originId: "6568"
+                  },
+                  {
+                    type: "irancell_charge",
+                    mobile: "09037415758",
+                    createdAt: "2024-5-16 23:02:44",
+                    price: 1540,
+                    originId: "6569"
+                  }
+                ];
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "fiterlist",
@@ -1293,6 +1306,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "snap"
                                                     ):
                                                       return "snap";
+                                                    case currentItem.type.includes(
+                                                      "uc_pubg"
+                                                    ):
+                                                      return "pubg";
                                                     default:
                                                       return "";
                                                   }
@@ -1482,7 +1499,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                   e?.plasmicType ===
                                                     "PlasmicUndefinedDataError"
                                                 ) {
-                                                  return "1403/05/07 10:20";
+                                                  return "//";
                                                 }
                                                 throw e;
                                               }
@@ -3412,15 +3429,13 @@ function PlasmicTransaction__RenderFunc(props: {
                                         );
                                       case "dollar":
                                         return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " دلار"
+                                          $state.transaction2.amount.toLocaleString() +
+                                          " دلار"
                                         );
                                       case "afghani":
                                         return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " افقانی"
+                                          $state.transaction2.amount.toLocaleString() +
+                                          " افقانی"
                                         );
                                     }
                                   })();
@@ -3532,6 +3547,120 @@ function PlasmicTransaction__RenderFunc(props: {
                                   return $state.transaction2.createdAtFa
                                     .split("-")
                                     .join("/");
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "1403/07/05 10:15:30";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___2OeGb
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hC5Oe
+                          )}
+                        >
+                          {"\u0646\u0631\u062e \u0631\u0648\u0632:"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__q9XwP,
+                            hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "dateshow"
+                              : undefined
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    switch ($state.transaction2.type) {
+                                      case "toman":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " تومان "
+                                        );
+                                      case "dollar":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " دلار "
+                                        );
+                                      case "afghani":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " افقانی "
+                                        );
+                                    }
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "--";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    switch ($state.transaction2.type) {
+                                      case "toman":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " تومان "
+                                        );
+                                      case "dollar":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " دلار "
+                                        );
+                                      case "afghani":
+                                        return (
+                                          (
+                                            $state.transaction2
+                                              .today_value_rate * 1000
+                                          ).toLocaleString() + " افقانی "
+                                        );
+                                    }
+                                  })();
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -3719,7 +3848,10 @@ function PlasmicTransaction__RenderFunc(props: {
                         })()
                       : (() => {
                           try {
-                            return $state.transaction == "charge";
+                            return (
+                              $state.transaction == "charge" &&
+                              $state.transaction2.type != "uc_pubg"
+                            );
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -3734,94 +3866,88 @@ function PlasmicTransaction__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__agJjx)}
                     >
-                      {(
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? true
-                          : false
-                      ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hcdYd
+                        )}
+                      >
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__hcdYd
+                            projectcss.__wab_text,
+                            sty.text__lwX0M
                           )}
                         >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lwX0M
-                            )}
-                          >
-                            {"\u0645\u0628\u0644\u063a :"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___1OfKn
-                            )}
-                          >
-                            {hasVariant(
-                              globalVariants,
-                              "screen",
-                              "mobileOnly"
-                            ) ? (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (() => {
-                                      switch ($state.transaction) {
-                                        case "charge":
-                                          return (
-                                            (
-                                              $state.transaction2.price * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                        case "transaction":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                      }
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "--";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (
-                                      (
-                                        $state.transaction2.price * 1000
-                                      ).toLocaleString() + " تومان "
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            )}
-                          </div>
+                          {"\u0645\u0628\u0644\u063a :"}
                         </div>
-                      ) : null}
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___1OfKn
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    switch ($state.transaction) {
+                                      case "charge":
+                                        return (
+                                          (
+                                            $state.transaction2.price * 1000
+                                          ).toLocaleString() + " تومان"
+                                        );
+                                      case "transaction":
+                                        return (
+                                          (
+                                            $state.transaction2.value * 1000
+                                          ).toLocaleString() + " تومان"
+                                        );
+                                    }
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "--";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    (
+                                      $state.transaction2.price * 1000
+                                    ).toLocaleString() + " تومان "
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "100000 \u062a\u0648\u0645\u0627\u0646";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -3973,7 +4099,7 @@ function PlasmicTransaction__RenderFunc(props: {
                           )}
                         >
                           {
-                            "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 :"
+                            "\u0634\u0645\u0627\u0631\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647:"
                           }
                         </div>
                         <div
@@ -4039,11 +4165,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                       ):
                                         return "ایران";
                                       case $state.transaction2.type.startsWith(
-                                        "afghan"
-                                      ) ||
-                                        $state.transaction2.type.startsWith(
-                                          "hamrahaval"
-                                        ):
+                                        "Afgan"
+                                      ):
                                         return "افقانستان";
                                       default:
                                         return "نامشخص";
@@ -4072,11 +4195,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                       ):
                                         return "ایران";
                                       case $state.transaction2.type.startsWith(
-                                        "afghan"
-                                      ) ||
-                                        $state.transaction2.type.startsWith(
-                                          "hamrahaval"
-                                        ):
+                                        "Afgan"
+                                      ):
                                         return "افقانستان";
                                       default:
                                         return "نامشخص";
@@ -4387,7 +4507,10 @@ function PlasmicTransaction__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return $state.transaction2.price.toLocaleString();
+                                  return (
+                                    $state.transaction2.price.toLocaleString() +
+                                    " تومان "
+                                  );
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||

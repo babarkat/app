@@ -1032,7 +1032,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -1454,6 +1455,33 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/pubg"
+        },
+        {
+          "id": "f_2K-lwgshWK",
+          "name": "LogIn2",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn2.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/Forgotten-password.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/Forgotten-password"
+        },
+        {
+          "id": "uj9U0aRqhjqk",
+          "name": "Editpass",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicEditpass.tsx",
+          "importSpec": {
+            "modulePath": "Editpass.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicEditpass.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2066,6 +2094,11 @@
           "id": "IUYTI9O-WF22",
           "name": "Icon72Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon72.tsx"
+        },
+        {
+          "id": "MlBQyepRtm17",
+          "name": "Icon73Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon73.tsx"
         }
       ],
       "images": [
@@ -2323,6 +2356,11 @@
           "id": "0reejGjmQu3s",
           "name": "image 39",
           "filePath": "../public/plasmic/babarkat/images/image39.svg"
+        },
+        {
+          "id": "DyK7bEgWO0Nx",
+          "name": "image 40",
+          "filePath": "../public/plasmic/babarkat/images/image40.png"
         }
       ],
       "indirect": false,
@@ -2526,7 +2564,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -2809,7 +2848,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {

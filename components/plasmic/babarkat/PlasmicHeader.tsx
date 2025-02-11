@@ -2226,134 +2226,177 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__lvYIt)}>
-              <Icon46Icon
-                className={classNames(projectcss.all, sty.svg__a9Ffs)}
-                role={"img"}
-              />
+            <div className={classNames(projectcss.all, sty.freeBox__eKrXk)}>
+              <div className={classNames(projectcss.all, sty.freeBox__lvYIt)}>
+                <Icon46Icon
+                  className={classNames(projectcss.all, sty.svg__a9Ffs)}
+                  role={"img"}
+                />
 
-              <Input
-                data-plasmic-name={"nowPass"}
-                data-plasmic-override={overrides.nowPass}
-                className={classNames("__wab_instance", sty.nowPass)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["nowPass", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                placeholder={
-                  "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc"
-                }
-                type={(() => {
-                  try {
-                    return $state.pass1;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "password";
-                    }
-                    throw e;
+                <Input
+                  data-plasmic-name={"nowPass"}
+                  data-plasmic-override={overrides.nowPass}
+                  className={classNames("__wab_instance", sty.nowPass)}
+                  onChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "nowPass",
+                      "value"
+                    ]).apply(null, eventArgs);
+                  }}
+                  placeholder={
+                    "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0641\u0639\u0644\u06cc"
                   }
-                })()}
-                value={generateStateValueProp($state, ["nowPass", "value"])}
-              />
+                  type={(() => {
+                    try {
+                      return $state.pass1;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "password";
+                      }
+                      throw e;
+                    }
+                  })()}
+                  value={generateStateValueProp($state, ["nowPass", "value"])}
+                />
 
-              <Icon55Icon
-                className={classNames(projectcss.all, sty.svg__kd9Gl)}
+                <Icon55Icon
+                  className={classNames(projectcss.all, sty.svg__kd9Gl)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updatePass1"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["pass1"]
+                            },
+                            operation: 0,
+                            value: "text"
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updatePass1"] != null &&
+                      typeof $steps["updatePass1"] === "object" &&
+                      typeof $steps["updatePass1"].then === "function"
+                    ) {
+                      $steps["updatePass1"] = await $steps["updatePass1"];
+                    }
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = { args: [1000] };
+                          return $globalActions["Fragment.wait"]?.apply(null, [
+                            ...actionArgs.args
+                          ]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["updatePass12"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["pass1"]
+                            },
+                            operation: 0,
+                            value: "password"
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updatePass12"] != null &&
+                      typeof $steps["updatePass12"] === "object" &&
+                      typeof $steps["updatePass12"].then === "function"
+                    ) {
+                      $steps["updatePass12"] = await $steps["updatePass12"];
+                    }
+                  }}
+                  role={"img"}
+                />
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__kVsXz
+                )}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updatePass1"] = true
+                  $steps["goToLogIn2"] = true
                     ? (() => {
                         const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["pass1"]
-                          },
-                          operation: 0,
-                          value: "text"
+                          destination: `/Forgotten-password`
                         };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updatePass1"] != null &&
-                    typeof $steps["updatePass1"] === "object" &&
-                    typeof $steps["updatePass1"].then === "function"
+                    $steps["goToLogIn2"] != null &&
+                    typeof $steps["goToLogIn2"] === "object" &&
+                    typeof $steps["goToLogIn2"].then === "function"
                   ) {
-                    $steps["updatePass1"] = await $steps["updatePass1"];
-                  }
-
-                  $steps["invokeGlobalAction"] = true
-                    ? (() => {
-                        const actionArgs = { args: [1000] };
-                        return $globalActions["Fragment.wait"]?.apply(null, [
-                          ...actionArgs.args
-                        ]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
-                  ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
-                  }
-
-                  $steps["updatePass12"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["pass1"]
-                          },
-                          operation: 0,
-                          value: "password"
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updatePass12"] != null &&
-                    typeof $steps["updatePass12"] === "object" &&
-                    typeof $steps["updatePass12"].then === "function"
-                  ) {
-                    $steps["updatePass12"] = await $steps["updatePass12"];
+                    $steps["goToLogIn2"] = await $steps["goToLogIn2"];
                   }
                 }}
-                role={"img"}
-              />
+              >
+                {
+                  "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
+                }
+              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__h35Lx)}>
               <div
