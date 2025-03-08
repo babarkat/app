@@ -2590,7 +2590,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                           onClick: async event => {
                             const $steps = {};
 
-                            $steps["runCode"] = !$state.boxselect2[0].disable2
+                            $steps["runCode"] = true
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
@@ -2675,45 +2675,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             },
                             {
                               name: "boxselect2[].disable2",
-                              initFunc: ({ $props, $state, $queries }) =>
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? (() => {
-                                      try {
-                                        return (
-                                          $state.fragmentInput.value.length !=
-                                          11
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return false;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  : (() => {
-                                      try {
-                                        return (
-                                          $state.fragmentInput.value.length != 9
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return false;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
+                              initFunc: ({ $props, $state, $queries }) => false
                             }
                           ],
                           [__plasmic_idx_0]

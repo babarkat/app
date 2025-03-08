@@ -1780,6 +1780,13 @@
   height: 60px;
   flex-shrink: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__eStn3 {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
+}
 .text__sqfe1 {
   position: relative;
   width: 100%;
