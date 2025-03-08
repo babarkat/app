@@ -66,6 +66,7 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
+import PercentageBox from "../../PercentageBox"; // plasmic-import: TD7BXkDTXaTo/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
@@ -125,6 +126,7 @@ export type PlasmicHeader__ArgsType = {
   newPassValue?: string;
   reoeatNewPassValue?: string;
   token?: string;
+  level?: number;
 };
 type ArgPropType = keyof PlasmicHeader__ArgsType;
 export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
@@ -132,11 +134,13 @@ export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
   "lodingbtn",
   "newPassValue",
   "reoeatNewPassValue",
-  "token"
+  "token",
+  "level"
 );
 
 export type PlasmicHeader__OverridesType = {
   header?: Flex__<"div">;
+  percentageBox?: Flex__<typeof PercentageBox>;
   editProfile?: Flex__<typeof AntdModal>;
   wallet4?: Flex__<"div">;
   name?: Flex__<typeof Input>;
@@ -189,6 +193,7 @@ export interface DefaultHeaderProps {
   newPassValue?: string;
   reoeatNewPassValue?: string;
   token?: string;
+  level?: number;
   className?: string;
 }
 
@@ -491,44 +496,109 @@ function PlasmicHeader__RenderFunc(props: {
         role={"img"}
       />
 
-      <div className={classNames(projectcss.all, sty.freeBox__h41B6)}>
-        <GroupSvgIcon
-          className={classNames(projectcss.all, sty.svg__bVNe)}
-          onClick={async event => {
-            const $steps = {};
+      <Stack__
+        as={"div"}
+        hasGap={true}
+        className={classNames(projectcss.all, sty.freeBox__nBoJs)}
+      >
+        <div className={classNames(projectcss.all, sty.freeBox__h41B6)}>
+          <GroupSvgIcon
+            className={classNames(projectcss.all, sty.svg__bVNe)}
+            onClick={async event => {
+              const $steps = {};
 
-            $steps["updateDrawerOpen"] = true
-              ? (() => {
-                  const actionArgs = {
-                    variable: {
-                      objRoot: $state,
-                      variablePath: ["drawer", "open"]
-                    },
-                    operation: 0,
-                    value: true
-                  };
-                  return (({ variable, value, startIndex, deleteCount }) => {
-                    if (!variable) {
-                      return;
-                    }
-                    const { objRoot, variablePath } = variable;
+              $steps["updateDrawerOpen"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["drawer", "open"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                    $stateSet(objRoot, variablePath, value);
-                    return value;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-            if (
-              $steps["updateDrawerOpen"] != null &&
-              typeof $steps["updateDrawerOpen"] === "object" &&
-              typeof $steps["updateDrawerOpen"].then === "function"
-            ) {
-              $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateDrawerOpen"] != null &&
+                typeof $steps["updateDrawerOpen"] === "object" &&
+                typeof $steps["updateDrawerOpen"].then === "function"
+              ) {
+                $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
+              }
+            }}
+            role={"img"}
+          />
+        </div>
+        <PercentageBox
+          data-plasmic-name={"percentageBox"}
+          data-plasmic-override={overrides.percentageBox}
+          className={classNames("__wab_instance", sty.percentageBox)}
+          shape={"round"}
+          unnamedGroupOfVariants={(() => {
+            try {
+              return $props.level == 0
+                ? "red"
+                : $props.level == 3
+                ? "yellow"
+                : $props.level == 2
+                ? "blue"
+                : $props.level == 1
+                ? ""
+                : "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return "blue";
+              }
+              throw e;
             }
-          }}
-          role={"img"}
-        />
-      </div>
+          })()}
+        >
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__rumSg
+            )}
+          >
+            <React.Fragment>
+              {(() => {
+                try {
+                  return $props.level == 0
+                    ? "بلاک"
+                    : $props.level == 3
+                    ? "با اعتبار"
+                    : $props.level == 2
+                    ? "همکار"
+                    : $props.level == 1
+                    ? "عادی"
+                    : "";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return "99 % ";
+                  }
+                  throw e;
+                }
+              })()}
+            </React.Fragment>
+          </div>
+        </PercentageBox>
+      </Stack__>
       <Icon4Icon
         className={classNames(projectcss.all, sty.svg___4Y1Ns)}
         role={"img"}
@@ -3973,6 +4043,7 @@ function PlasmicHeader__RenderFunc(props: {
 const PlasmicDescendants = {
   header: [
     "header",
+    "percentageBox",
     "editProfile",
     "wallet4",
     "name",
@@ -4018,6 +4089,7 @@ const PlasmicDescendants = {
     "drawer",
     "exitModal"
   ],
+  percentageBox: ["percentageBox"],
   editProfile: [
     "editProfile",
     "wallet4",
@@ -4149,6 +4221,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   header: "div";
+  percentageBox: typeof PercentageBox;
   editProfile: typeof AntdModal;
   wallet4: "div";
   name: typeof Input;
@@ -4255,6 +4328,7 @@ export const PlasmicHeader = Object.assign(
   makeNodeComponent("header"),
   {
     // Helper components rendering sub-elements
+    percentageBox: makeNodeComponent("percentageBox"),
     editProfile: makeNodeComponent("editProfile"),
     wallet4: makeNodeComponent("wallet4"),
     _name: makeNodeComponent("name"),

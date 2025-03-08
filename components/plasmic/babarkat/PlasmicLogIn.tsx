@@ -64,8 +64,8 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
+import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -138,6 +138,7 @@ export type PlasmicLogIn__OverridesType = {
   root?: Flex__<"div">;
   reveal?: Flex__<typeof Reveal>;
   fragmentInput?: Flex__<typeof Input>;
+  select2?: Flex__<typeof AntdSelect>;
   fragmentInput3?: Flex__<typeof Input>;
   fragmentInput2?: Flex__<typeof Input>;
   timer?: Flex__<typeof Timer>;
@@ -221,20 +222,7 @@ function PlasmicLogIn__RenderFunc(props: {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.fragmentInput.value;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "error",
@@ -409,6 +397,58 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+      },
+      {
+        path: "contry",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            value: "+98",
+            label: "IR +98",
+            description: "Iran",
+            phoneFormats: {
+              type: "Mobile",
+              regex: "^9\\d{9}$",
+              example: "9123456789"
+            }
+          },
+          {
+            value: "+93",
+            label: "AF +93",
+            description: "Afghanistan",
+            phoneFormats: {
+              type: "Mobile",
+              regex: "^7\\d{8}$",
+              example: "70123456"
+            }
+          }
+        ]
+      },
+      {
+        path: "select2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "+98"
+      },
+      {
+        path: "selectContry",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.select2.value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -956,11 +996,17 @@ function PlasmicLogIn__RenderFunc(props: {
                     "loginByPassword",
                     "loginByPassword"
                   ),
+                  [sty.freeBoxloginByPassword_password__mauVi0DikB8PqF9]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
                   [sty.freeBoxpassword__mauVi8PqF9]: hasVariant(
                     $state,
                     "password",
                     "password"
                   ),
+                  [sty.freeBoxpassword_unnamedVariant2__mauVi8PqF9JmKha]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "password", "password"),
                   [sty.freeBoxslids_unnamedVariant3__mauViI1KiV]: hasVariant(
                     $state,
                     "slids",
@@ -980,7 +1026,10 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "unnamedVariant",
                     "unnamedVariant"
-                  )
+                  ),
+                  [sty.freeBoxunnamedVariant_unnamedVariant2__mauViDv9B5JmKha]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                 })}
               >
                 <div
@@ -1208,11 +1257,20 @@ function PlasmicLogIn__RenderFunc(props: {
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
+                            return (() => {
+                              if ($state.selectContry == "+98")
+                                return (
+                                  "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
+                                  $state.number +
+                                  "</b> را وارد نمایید."
+                                );
+                              else
+                                return (
+                                  "لطفا کد 4 رقمی ارسال شده به <b style='color: #2DC57B;'>واتساپ</b> شماره <b style='color: #2DC57B;'>" +
+                                  $state.number +
+                                  "</b> را وارد نمایید."
+                                );
+                            })();
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1229,75 +1287,191 @@ function PlasmicLogIn__RenderFunc(props: {
                     "\u0644\u0637\u0641\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f. \u0633\u067e\u0633 \u06cc\u06a9 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f \u0628\u0631\u0627\u06cc \u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a \u0627\u0631\u0633\u0627\u0644 \u0645\u06cc \u0634\u0648\u062f"
                   )}
                 </div>
-                <Input
-                  data-plasmic-name={"fragmentInput"}
-                  data-plasmic-override={overrides.fragmentInput}
-                  className={classNames("__wab_instance", sty.fragmentInput, {
-                    [sty.fragmentInputloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.fragmentInputloginByPassword_password]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.fragmentInputpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.fragmentInputpassword_unnamedVariant2]:
-                      hasVariant(
+                <div className={classNames(projectcss.all, sty.freeBox__bsqO1)}>
+                  <Input
+                    data-plasmic-name={"fragmentInput"}
+                    data-plasmic-override={overrides.fragmentInput}
+                    className={classNames("__wab_instance", sty.fragmentInput, {
+                      [sty.fragmentInputloginByPassword]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.fragmentInputloginByPassword_password]:
+                        hasVariant($state, "password", "password") &&
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                      [sty.fragmentInputpassword]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.fragmentInputpassword_unnamedVariant2]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) && hasVariant($state, "password", "password"),
+                      [sty.fragmentInputslids_unnamedVariant3]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.fragmentInputunnamedVariant2]: hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.fragmentInputslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.fragmentInputunnamedVariant2]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.fragmentInputunnamedVariant]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.fragmentInputunnamedVariant_unnamedVariant2]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                  })}
-                  disabled={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? false
-                      : undefined
-                  }
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
+                      ),
+                      [sty.fragmentInputunnamedVariant]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.fragmentInputunnamedVariant_unnamedVariant2]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    })}
+                    disabled={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? false
+                        : undefined
+                    }
+                    onChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "fragmentInput",
+                        "value"
+                      ]).apply(null, eventArgs);
+
+                      (async value => {
+                        const $steps = {};
+                      }).apply(null, eventArgs);
+                    }}
+                    placeholder={(() => {
+                      try {
+                        return $state.contry.find(
+                          item => item.value == $state.selectContry
+                        ).phoneFormats.example;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    type={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "tel"
+                        : "tel"
+                    }
+                    value={generateStateValueProp($state, [
                       "fragmentInput",
                       "value"
-                    ]).apply(null, eventArgs);
+                    ])}
+                  />
 
-                    (async value => {
-                      const $steps = {};
-                    }).apply(null, eventArgs);
-                  }}
-                  placeholder={"09*********"}
-                  type={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "tel"
-                      : "tel"
-                  }
-                  value={generateStateValueProp($state, [
-                    "fragmentInput",
-                    "value"
-                  ])}
-                />
-
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__wvuQl, {
+                      [sty.freeBoxunnamedVariant__wvuQlDv9B5]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.freeBoxunnamedVariant_unnamedVariant2__wvuQlDv9B5JmKha]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    })}
+                  >
+                    <AntdSelect
+                      data-plasmic-name={"select2"}
+                      data-plasmic-override={overrides.select2}
+                      bordered={false}
+                      className={classNames("__wab_instance", sty.select2, {
+                        [sty.select2loginByPassword]: hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                        [sty.select2loginByPassword_password]:
+                          hasVariant($state, "password", "password") &&
+                          hasVariant(
+                            $state,
+                            "loginByPassword",
+                            "loginByPassword"
+                          ),
+                        [sty.select2password]: hasVariant(
+                          $state,
+                          "password",
+                          "password"
+                        ),
+                        [sty.select2password_unnamedVariant2]:
+                          hasVariant(
+                            $state,
+                            "unnamedVariant2",
+                            "unnamedVariant2"
+                          ) && hasVariant($state, "password", "password"),
+                        [sty.select2unnamedVariant2]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                        [sty.select2unnamedVariant]: hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        )
+                      })}
+                      defaultStylesClassName={classNames(
+                        projectcss.root_reset,
+                        projectcss.plasmic_default_styles,
+                        projectcss.plasmic_mixins,
+                        projectcss.plasmic_tokens,
+                        plasmic_antd_5_hostless_css.plasmic_tokens,
+                        plasmic_plasmic_rich_components_css.plasmic_tokens
+                      )}
+                      defaultValue={"+98"}
+                      onChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "select2",
+                          "value"
+                        ]).apply(null, eventArgs);
+                      }}
+                      options={(() => {
+                        try {
+                          return $state.contry;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      placeholder={"Select..."}
+                      popupScopeClassName={sty["select2__popup"]}
+                      size={"large"}
+                      value={generateStateValueProp($state, [
+                        "select2",
+                        "value"
+                      ])}
+                    />
+                  </div>
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1514,11 +1688,20 @@ function PlasmicLogIn__RenderFunc(props: {
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
+                            return (() => {
+                              if ($state.selectContry == "+98")
+                                return (
+                                  "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
+                                  $state.number +
+                                  "</b> را وارد نمایید."
+                                );
+                              else
+                                return (
+                                  "لطفا کد 4 رقمی ارسال شده به <b style='color: #2DC57B;'>واتساپ</b> شماره <b style='color: #2DC57B;'>" +
+                                  $state.number +
+                                  "</b> را وارد نمایید."
+                                );
+                            })();
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1793,11 +1976,27 @@ function PlasmicLogIn__RenderFunc(props: {
                           "slids",
                           "unnamedVariant3"
                         ),
+                        [sty.fragmentInput2unnamedVariant2]: hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
                         [sty.fragmentInput2unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
                           "unnamedVariant"
-                        )
+                        ),
+                        [sty.fragmentInput2unnamedVariant_unnamedVariant2]:
+                          hasVariant(
+                            $state,
+                            "unnamedVariant",
+                            "unnamedVariant"
+                          ) &&
+                          hasVariant(
+                            $state,
+                            "unnamedVariant2",
+                            "unnamedVariant2"
+                          )
                       }
                     )}
                     disabled={
@@ -2529,6 +2728,12 @@ function PlasmicLogIn__RenderFunc(props: {
                       "password",
                       "password"
                     ),
+                    [sty.btnNumberpassword_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) && hasVariant($state, "password", "password"),
                     [sty.btnNumberslids_unnamedVariant3]: hasVariant(
                       $state,
                       "slids",
@@ -2567,8 +2772,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   isDisabled={(() => {
                     try {
                       return (
-                        $state.fragmentInput.value.length != 11 ||
-                        $state.loadedbtn
+                        !$state.fragmentInput.value.match(
+                          $state.contry.find(
+                            item => item.value === $state.selectContry
+                          ).phoneFormats.regex
+                        ) || $state.loadedbtn
                       );
                     } catch (e) {
                       if (
@@ -2627,7 +2835,15 @@ function PlasmicLogIn__RenderFunc(props: {
                               variablePath: ["number"]
                             },
                             operation: 0,
-                            value: $state.fragmentInput.value
+                            value: (() => {
+                              if ($state.selectContry == "+98")
+                                return "0" + $state.fragmentInput.value;
+                              else
+                                return (
+                                  $state.selectContry +
+                                  $state.fragmentInput.value
+                                );
+                            })()
                           };
                           return (({
                             variable,
@@ -2653,78 +2869,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["updateNumber"] = await $steps["updateNumber"];
                     }
 
-                    $steps["invokeGlobalAction"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return !phoneRegex.test($state.number);
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0637\u0648\u0631 \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.",
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
-                    }
-
-                    $steps["updateFragmentInputValue"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return !phoneRegex.test($state.number);
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["fragmentInput", "value"]
-                            },
-                            operation: 0,
-                            value: ""
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateFragmentInputValue"] != null &&
-                      typeof $steps["updateFragmentInputValue"] === "object" &&
-                      typeof $steps["updateFragmentInputValue"].then ===
-                        "function"
-                    ) {
-                      $steps["updateFragmentInputValue"] = await $steps[
-                        "updateFragmentInputValue"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction2"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return phoneRegex.test($state.number);
-                    })()
+                    $steps["invokeGlobalAction2"] = true
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -3409,9 +3554,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       ? (() => {
                           try {
                             return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
+                              $state.fragmentInput.value.match(
+                                $state.contry.find(
+                                  item => item.value == $state.selectContry
+                                ).phoneFormats.regex
+                              ) || $state.loadedbtn
                             );
                           } catch (e) {
                             if (
@@ -3504,7 +3651,15 @@ function PlasmicLogIn__RenderFunc(props: {
                               variablePath: ["number"]
                             },
                             operation: 0,
-                            value: $state.fragmentInput.value
+                            value: (() => {
+                              if ($state.selectContry == "+98")
+                                return "0" + $state.fragmentInput.value;
+                              else
+                                return (
+                                  $state.selectContry +
+                                  $state.fragmentInput.value
+                                );
+                            })()
                           };
                           return (({
                             variable,
@@ -3530,78 +3685,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["updateNumber"] = await $steps["updateNumber"];
                     }
 
-                    $steps["invokeGlobalAction"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return !phoneRegex.test($state.number);
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0637\u0648\u0631 \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.",
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
-                    }
-
-                    $steps["updateFragmentInputValue"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return !phoneRegex.test($state.number);
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["fragmentInput", "value"]
-                            },
-                            operation: 0,
-                            value: ""
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateFragmentInputValue"] != null &&
-                      typeof $steps["updateFragmentInputValue"] === "object" &&
-                      typeof $steps["updateFragmentInputValue"].then ===
-                        "function"
-                    ) {
-                      $steps["updateFragmentInputValue"] = await $steps[
-                        "updateFragmentInputValue"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction2"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                      return phoneRegex.test($state.number);
-                    })()
+                    $steps["invokeGlobalAction2"] = true
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -5806,6 +5890,7 @@ const PlasmicDescendants = {
     "root",
     "reveal",
     "fragmentInput",
+    "select2",
     "fragmentInput3",
     "fragmentInput2",
     "timer",
@@ -5835,6 +5920,7 @@ const PlasmicDescendants = {
   reveal: [
     "reveal",
     "fragmentInput",
+    "select2",
     "fragmentInput3",
     "fragmentInput2",
     "timer",
@@ -5860,6 +5946,7 @@ const PlasmicDescendants = {
     "group10"
   ],
   fragmentInput: ["fragmentInput"],
+  select2: ["select2"],
   fragmentInput3: ["fragmentInput3"],
   fragmentInput2: ["fragmentInput2"],
   timer: ["timer"],
@@ -5931,6 +6018,7 @@ type NodeDefaultElementType = {
   root: "div";
   reveal: typeof Reveal;
   fragmentInput: typeof Input;
+  select2: typeof AntdSelect;
   fragmentInput3: typeof Input;
   fragmentInput2: typeof Input;
   timer: typeof Timer;
@@ -6045,6 +6133,7 @@ export const PlasmicLogIn = Object.assign(
     // Helper components rendering sub-elements
     reveal: makeNodeComponent("reveal"),
     fragmentInput: makeNodeComponent("fragmentInput"),
+    select2: makeNodeComponent("select2"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput2: makeNodeComponent("fragmentInput2"),
     timer: makeNodeComponent("timer"),

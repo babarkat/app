@@ -617,74 +617,88 @@
 .textloginByPassword__wdrTs0DikB {
   display: none;
 }
+.freeBox__bsqO1 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  top: auto;
+  left: auto;
+  z-index: 1;
+  align-self: auto;
+  margin-top: calc(0px + 20px) !important;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  min-width: 0;
+  padding: 0px;
+}
 .fragmentInput:global(.__wab_instance) {
   width: 100%;
   max-width: 100%;
   object-fit: cover;
   color: var(--token-DbGdjBpQ6R_X);
   background: #161e26;
-  left: auto;
-  top: auto;
-  z-index: 1;
-  position: relative;
-  margin-left: 0px;
-  margin-top: calc(0px + 20px) !important;
-  margin-right: 0px;
-  margin-bottom: 0px;
-  align-self: auto;
   height: 50px;
   font-size: 16px;
-  text-align: right;
+  text-align: left;
+  padding-left: 100px;
   min-width: 0;
-  flex-shrink: 0;
   border: 1px solid #161e26;
 }
-@media (min-width: 0px) and (max-width: 768px) {
-  .fragmentInput:global(.__wab_instance) {
-    margin-top: calc(0px + 20px) !important;
-  }
-}
 .fragmentInputunnamedVariant:global(.__wab_instance) {
-  margin-top: calc(0px + 20px) !important;
   display: none;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .fragmentInputunnamedVariant:global(.__wab_instance) {
-    margin-top: calc(0px + 20px) !important;
-  }
 }
 .fragmentInputslids_unnamedVariant3:global(.__wab_instance) {
-  margin-top: calc(0px + 20px) !important;
   display: none;
 }
-@media (min-width: 0px) and (max-width: 768px) {
-  .fragmentInputslids_unnamedVariant3:global(.__wab_instance) {
-    margin-top: calc(0px + 20px) !important;
-  }
-}
 .fragmentInputunnamedVariant2:global(.__wab_instance) {
-  margin-top: calc(0px + 20px) !important;
   display: none;
 }
 .fragmentInputpassword:global(.__wab_instance) {
-  margin-left: calc(0px + 0px) !important;
-  margin-top: calc(0px + 10px) !important;
   display: none;
 }
-.fragmentInputloginByPassword:global(.__wab_instance) {
-  margin-left: calc(0px + 0px) !important;
-  margin-top: calc(0px + 10px) !important;
+.freeBox__wvuQl {
+  display: flex;
+  position: absolute;
+  width: 95px;
+  height: auto;
+  max-width: 100%;
+  left: 0;
+  top: 0;
+  right: auto;
+  bottom: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0px;
 }
-.fragmentInputunnamedVariant_unnamedVariant2:global(.__wab_instance) {
-  margin-top: calc(0px + 20px) !important;
+.select2:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  position: sticky;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  text-align: left;
+  color: #ffffff;
+  border-right-width: 1px;
+  border-right-style: solid;
+  font-size: 13px;
 }
-.fragmentInputpassword_unnamedVariant2:global(.__wab_instance) {
-  margin-left: calc(0px + 0px) !important;
-  margin-top: calc(0px + 10px) !important;
+.select2unnamedVariant:global(.__wab_instance) {
+  display: none;
 }
-.fragmentInputloginByPassword_password:global(.__wab_instance) {
-  margin-left: calc(0px + 0px) !important;
-  margin-top: calc(0px + 10px) !important;
+.select2unnamedVariant2:global(.__wab_instance) {
+  display: none;
+}
+.select2password:global(.__wab_instance) {
+  display: none;
 }
 .text__lh2V1 {
   position: relative;
@@ -1044,6 +1058,12 @@
     text-align: center;
     margin-left: calc(0px + 25px) !important;
   }
+}
+.fragmentInput2unnamedVariant2:global(.__wab_instance) {
+  margin-left: calc(0px + 25px) !important;
+}
+.fragmentInput2unnamedVariant_unnamedVariant2:global(.__wab_instance) {
+  margin-left: calc(0px + 25px) !important;
 }
 .text___7LuKp {
   font-size: 14px;

@@ -1,6 +1,46 @@
 {
   "props": [
     {
+      "name": "1",
+      "type": "spacing",
+      "value": "0.25rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "LaEv2Dm1x3K9"
+      }
+    },
+    {
+      "name": "10",
+      "type": "spacing",
+      "value": "2.5rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "R6c1b-gPSxDB"
+      }
+    },
+    {
+      "name": "2",
+      "type": "spacing",
+      "value": "0.5rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "vAZ8o9ODdwJP"
+      }
+    },
+    {
+      "name": "Basic/Border",
+      "type": "color",
+      "value": "#D1D5DB",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "YJorFWlQWPQi"
+      }
+    },
+    {
       "name": "Basic/Container-Background",
       "type": "color",
       "value": "#FFFFFF",
@@ -28,6 +68,16 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "f9NVqkrFQD54"
+      }
+    },
+    {
+      "name": "Basic/Text-Secondary",
+      "type": "color",
+      "value": "#6B7280",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "AmXnBejG2lvi"
       }
     },
     {
@@ -378,6 +428,16 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "Vnin7lBvcq0-"
+      }
+    },
+    {
+      "name": "Size-32",
+      "type": "spacing",
+      "value": "2rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "q4sKX2uPm3g_"
       }
     },
     {
@@ -2568,6 +2628,26 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "s7Z9BN_B1gNc"
+      }
+    },
+    {
+      "name": "green-600",
+      "type": "color",
+      "value": "#16A34A",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "fNYqKZOa5tL7"
+      }
+    },
+    {
+      "name": "small",
+      "type": "fontsize",
+      "value": "0.875rem",
+      "category": "fontsize",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "nMbfJzF0Fhmf"
       }
     }
   ],

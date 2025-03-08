@@ -104,6 +104,7 @@ import Icon73Icon from "./icons/PlasmicIcon__Icon73"; // plasmic-import: MlBQyep
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
 import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
+import Icon75Icon from "./icons/PlasmicIcon__Icon75"; // plasmic-import: 6Z8AxjvytrhO/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
@@ -1913,15 +1914,6 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
                       }}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__e0B1Y
-                        )}
-                      >
-                        {"\u062c\u062f\u06cc\u062f"}
-                      </div>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__fe1WY)}
@@ -1973,40 +1965,42 @@ function PlasmicHomepage__RenderFunc(props: {
                       data-plasmic-name={"comingSoon4"}
                       data-plasmic-override={overrides.comingSoon4}
                       className={classNames(projectcss.all, sty.comingSoon4)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["goToAfgPackage"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/package-AFG`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToAfgPackage"] != null &&
+                          typeof $steps["goToAfgPackage"] === "object" &&
+                          typeof $steps["goToAfgPackage"].then === "function"
+                        ) {
+                          $steps["goToAfgPackage"] = await $steps[
+                            "goToAfgPackage"
+                          ];
+                        }
+                      }}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wAq6O
-                        )}
-                      >
-                        {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__r0Oco)}
-                        displayHeight={
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "40px"
-                            : "60px"
-                        }
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "40px"
-                            : "60px"
-                        }
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/babarkat/images/image30.svg",
-                          fullWidth: 164,
-                          fullHeight: 180,
-                          aspectRatio: 0.911111
-                        }}
+                      <Icon75Icon
+                        className={classNames(projectcss.all, sty.svg__eStn3)}
+                        role={"img"}
                       />
 
                       <div
@@ -2017,8 +2011,17 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"
-                          : "\u062a\u0645\u0627\u0633 \u062a\u0644\u0641\u0646\u06cc"}
+                          ? "\u0628\u0633\u062a\u0647 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+                          : "\u0628\u0633\u062a\u0647 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__rOkz
+                        )}
+                      >
+                        {"\u062c\u062f\u06cc\u062f"}
                       </div>
                     </div>
                   </Stack__>
@@ -13484,6 +13487,19 @@ function PlasmicHomepage__RenderFunc(props: {
             data-plasmic-name={"header"}
             data-plasmic-override={overrides.header}
             className={classNames("__wab_instance", sty.header)}
+            level={(() => {
+              try {
+                return $state.userbabarcat.level;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             lodingbtn={$state.lodingbtn}
             newPassValue={$state.newPassValue}
             reoeatNewPassValue={$state.reoeatNewPassValue}
