@@ -367,7 +367,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+          hasVariant($state, "stepscharg", "step3") ? true : false
       },
       {
         path: "variable",
@@ -2554,83 +2554,45 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         $steps["updateUuid"] = await $steps["updateUuid"];
                       }
 
-                      $steps["invokeGlobalAction2"] =
-                        $state.mojody <
-                        parseInt($state.amont) +
-                          parseInt($state.amont) *
-                            (($state.commissionBabarkat.data.babrkat +
-                              $state.commissionBabarkat.data.saraf) /
-                              100)
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "warning",
-                                  "\u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u06a9\u0627\u0641\u06cc \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                                  undefined,
-                                  undefined,
-                                  "topRight"
-                                ]
-                              };
-                              return $globalActions[
-                                "plasmic-antd5-config-provider.showNotification"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction2"] != null &&
-                        typeof $steps["invokeGlobalAction2"] === "object" &&
-                        typeof $steps["invokeGlobalAction2"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction4"] =
-                        parseInt($state.amont) +
-                          parseInt($state.amont) *
-                            (($state.commissionBabarkat.data.babrkat +
-                              $state.commissionBabarkat.data.saraf) /
-                              100) <
-                        $state.mojody
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        type: "Afgan_charging",
-                                        mobile: $state.number,
-                                        price: $state.amont,
-                                        origin:
-                                          $state.operators2[
-                                            $state.operatorselect
-                                          ].nameop + "_charge",
-                                        originId: $state.uuid + "",
-                                        priceType: "toman",
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                      $steps["invokeGlobalAction4"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "POST",
+                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                undefined,
+                                (() => {
+                                  try {
+                                    return {
+                                      type: "Afgan_charging",
+                                      mobile: $state.number,
+                                      price: $state.amont,
+                                      origin:
+                                        $state.operators2[$state.operatorselect]
+                                          .nameop + "_charge",
+                                      originId: $state.uuid + "",
+                                      priceType: "toman",
+                                      userToken: $state.token
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction4"] != null &&
                         typeof $steps["invokeGlobalAction4"] === "object" &&
@@ -2679,7 +2641,6 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction"] =
-                        $state.amont < $state.mojody &&
                         $steps.invokeGlobalAction4?.data[0]?.success == true
                           ? (() => {
                               const actionArgs = {

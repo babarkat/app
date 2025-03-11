@@ -68,7 +68,6 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -137,7 +136,6 @@ export type PlasmicSnap__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   timer?: Flex__<typeof Timer>;
-  embedHtml?: Flex__<typeof Embed>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
 };
 
@@ -2097,70 +2095,43 @@ function PlasmicSnap__RenderFunc(props: {
                         $steps["updateUuid"] = await $steps["updateUuid"];
                       }
 
-                      $steps["invokeGlobalAction2"] =
-                        $state.mojody < $state.amont
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "warning",
-                                  "\u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u06a9\u0627\u0641\u06cc \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                                  undefined,
-                                  undefined,
-                                  "topRight"
-                                ]
-                              };
-                              return $globalActions[
-                                "plasmic-antd5-config-provider.showNotification"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction2"] != null &&
-                        typeof $steps["invokeGlobalAction2"] === "object" &&
-                        typeof $steps["invokeGlobalAction2"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction4"] =
-                        $state.amont < $state.mojody
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        type: "snap",
-                                        mobile: $state.number,
-                                        price: $state.amont,
-                                        origin: "snap_charge",
-                                        originId: $state.uuid + "",
-                                        priceType: "toman",
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                      $steps["invokeGlobalAction4"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "POST",
+                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                undefined,
+                                (() => {
+                                  try {
+                                    return {
+                                      type: "snap",
+                                      mobile: $state.number,
+                                      price: $state.amont,
+                                      origin: "snap_charge",
+                                      originId: $state.uuid + "",
+                                      priceType: "toman",
+                                      userToken: $state.token
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["invokeGlobalAction4"] != null &&
                         typeof $steps["invokeGlobalAction4"] === "object" &&
@@ -2209,7 +2180,6 @@ function PlasmicSnap__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction"] =
-                        $state.amont < $state.mojody &&
                         $steps.invokeGlobalAction4?.data[0]?.success == true
                           ? (() => {
                               const actionArgs = {
@@ -4272,21 +4242,6 @@ function PlasmicSnap__RenderFunc(props: {
             runWhileEditing={false}
           />
 
-          <Embed
-            data-plasmic-name={"embedHtml"}
-            data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml, {
-              [sty.embedHtmlstepscharg_step3]: hasVariant(
-                $state,
-                "stepscharg",
-                "step3"
-              )
-            })}
-            code={
-              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href =\"/snapp\"\r\n        });\r\n    </script>"
-            }
-          />
-
           <ApiRequest
             data-plasmic-name={"commissionBabarkat"}
             data-plasmic-override={overrides.commissionBabarkat}
@@ -4374,7 +4329,6 @@ const PlasmicDescendants = {
     "modal2",
     "lottie",
     "timer",
-    "embedHtml",
     "commissionBabarkat"
   ],
   header: ["header"],
@@ -4435,7 +4389,6 @@ const PlasmicDescendants = {
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
   timer: ["timer"],
-  embedHtml: ["embedHtml"],
   commissionBabarkat: ["commissionBabarkat"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -4467,7 +4420,6 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   timer: typeof Timer;
-  embedHtml: typeof Embed;
   commissionBabarkat: typeof ApiRequest;
 };
 
@@ -4582,7 +4534,6 @@ export const PlasmicSnap = Object.assign(
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     timer: makeNodeComponent("timer"),
-    embedHtml: makeNodeComponent("embedHtml"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
 
     // Metadata about props expected for PlasmicSnap

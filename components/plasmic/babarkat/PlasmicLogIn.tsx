@@ -1759,6 +1759,12 @@ function PlasmicLogIn__RenderFunc(props: {
                           "loginByPassword",
                           "loginByPassword"
                         ),
+                        [sty.fragmentInput3loginByPassword_password]:
+                          hasVariant(
+                            $state,
+                            "loginByPassword",
+                            "loginByPassword"
+                          ) && hasVariant($state, "password", "password"),
                         [sty.fragmentInput3password]: hasVariant(
                           $state,
                           "password",
@@ -3550,13 +3556,34 @@ function PlasmicLogIn__RenderFunc(props: {
                     />
                   }
                   isDisabled={
-                    hasVariant($state, "loginByPassword", "loginByPassword")
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant(globalVariants, "screen", "mobileOnly")
                       ? (() => {
                           try {
                             return (
-                              $state.fragmentInput.value.match(
+                              !$state.fragmentInput.value.match(
                                 $state.contry.find(
-                                  item => item.value == $state.selectContry
+                                  item => item.value === $state.selectContry
+                                ).phoneFormats.regex
+                              ) || $state.loadedbtn
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : hasVariant($state, "loginByPassword", "loginByPassword")
+                      ? (() => {
+                          try {
+                            return (
+                              !$state.fragmentInput.value.match(
+                                $state.contry.find(
+                                  item => item.value === $state.selectContry
                                 ).phoneFormats.regex
                               ) || $state.loadedbtn
                             );
