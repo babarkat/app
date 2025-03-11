@@ -3531,19 +3531,35 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     )
                   })}
                   color={"green"}
-                  isDisabled={(() => {
-                    try {
-                      return $state.amont == 0;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()}
+                  isDisabled={
+                    hasVariant($state, "stepscharg", "step2")
+                      ? (() => {
+                          try {
+                            return $state.amontAfg == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      : (() => {
+                          try {
+                            return $state.amont == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                  }
                   onClick={async event => {
                     const $steps = {};
 
