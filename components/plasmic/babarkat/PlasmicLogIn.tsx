@@ -405,7 +405,7 @@ function PlasmicLogIn__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => [
           {
             value: "+98",
-            label: "IR +98",
+            label: "\ud83c\uddee\ud83c\uddf7 +98",
             description: "Iran",
             phoneFormats: {
               type: "Mobile",
@@ -415,12 +415,22 @@ function PlasmicLogIn__RenderFunc(props: {
           },
           {
             value: "+93",
-            label: "AF +93",
+            label: "\ud83c\udde6\ud83c\uddeb +93",
             description: "Afghanistan",
             phoneFormats: {
               type: "Mobile",
               regex: "^7\\d{8}$",
               example: "70123456"
+            }
+          },
+          {
+            value: "+90",
+            label: "\ud83c\uddf9\ud83c\uddf7 +90",
+            description: "Turkey",
+            phoneFormats: {
+              type: "Mobile",
+              regex: "^5\\d{9}$",
+              example: "5012345678"
             }
           }
         ]
@@ -5483,6 +5493,9 @@ function PlasmicLogIn__RenderFunc(props: {
                     "loginByPassword",
                     "loginByPassword"
                   ),
+                  [sty.group10loginByPassword_password]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
                   [sty.group10loginByPassword_unnamedVariant2]:
                     hasVariant($state, "loginByPassword", "loginByPassword") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),

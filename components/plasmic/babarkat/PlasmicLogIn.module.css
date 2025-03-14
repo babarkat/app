@@ -1922,8 +1922,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .group10password {
-    top: 8px;
-    left: 8px;
+    top: 20px;
+    left: 16px;
     z-index: 50;
   }
 }
