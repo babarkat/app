@@ -106,16 +106,12 @@ createPlasmicElementProxy;
 
 export type PlasmicLogIn__VariantMembers = {
   unnamedVariant: "unnamedVariant";
-  slids: "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3";
   unnamedVariant2: "unnamedVariant2";
   password: "password";
   loginByPassword: "loginByPassword";
 };
 export type PlasmicLogIn__VariantsArgs = {
   unnamedVariant?: SingleBooleanChoiceArg<"unnamedVariant">;
-  slids?: SingleChoiceArg<
-    "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3"
-  >;
   unnamedVariant2?: SingleBooleanChoiceArg<"unnamedVariant2">;
   password?: SingleBooleanChoiceArg<"password">;
   loginByPassword?: SingleBooleanChoiceArg<"loginByPassword">;
@@ -123,7 +119,6 @@ export type PlasmicLogIn__VariantsArgs = {
 type VariantPropType = keyof PlasmicLogIn__VariantsArgs;
 export const PlasmicLogIn__VariantProps = new Array<VariantPropType>(
   "unnamedVariant",
-  "slids",
   "unnamedVariant2",
   "password",
   "loginByPassword"
@@ -271,12 +266,6 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
-      },
-      {
-        path: "slids",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.slids
       },
       {
         path: "apiRequest.data",
@@ -585,21 +574,6 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "unnamedVariant", "unnamedVariant") &&
               hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
               hasVariant($state, "password", "password"),
-            [sty.rootslids_unnamedVariant2]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant2"
-            ),
-            [sty.rootslids_unnamedVariant3]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant3"
-            ),
-            [sty.rootslids_unnamedVariant]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant"
-            ),
             [sty.rootunnamedVariant2]: hasVariant(
               $state,
               "unnamedVariant2",
@@ -610,15 +584,6 @@ function PlasmicLogIn__RenderFunc(props: {
               "unnamedVariant",
               "unnamedVariant"
             ),
-            [sty.rootunnamedVariant_slids_unnamedVariant2]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant2"),
-            [sty.rootunnamedVariant_slids_unnamedVariant3]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant3"),
-            [sty.rootunnamedVariant_slids_unnamedVariant]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant"),
             [sty.rootunnamedVariant_unnamedVariant2]:
               hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
               hasVariant($state, "unnamedVariant", "unnamedVariant")
@@ -713,9 +678,7 @@ function PlasmicLogIn__RenderFunc(props: {
             data-plasmic-name={"reveal"}
             data-plasmic-override={overrides.reveal}
             cascade={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? false
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? false
                 : undefined
             }
@@ -726,16 +689,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 "loginByPassword"
               ),
               [sty.revealpassword]: hasVariant($state, "password", "password"),
-              [sty.revealslids_unnamedVariant3]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant3"
-              ),
-              [sty.revealslids_unnamedVariant]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant"
-              ),
               [sty.revealunnamedVariant]: hasVariant(
                 $state,
                 "unnamedVariant",
@@ -743,9 +696,7 @@ function PlasmicLogIn__RenderFunc(props: {
               )
             })}
             damping={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? 0.5
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? 0.5
                 : undefined
             }
@@ -753,8 +704,6 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "loginByPassword", "loginByPassword")
                 ? "left"
                 : hasVariant($state, "password", "password")
-                ? "left"
-                : hasVariant($state, "slids", "unnamedVariant3")
                 ? "left"
                 : hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "left"
@@ -765,8 +714,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 ? "fade"
                 : hasVariant($state, "password", "password")
                 ? "fade"
-                : hasVariant($state, "slids", "unnamedVariant3")
-                ? "slide"
                 : hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "slide"
                 : hasVariant(globalVariants, "screen", "mobileOnly")
@@ -774,9 +721,7 @@ function PlasmicLogIn__RenderFunc(props: {
                 : undefined
             }
             reverse={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? false
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? false
                 : undefined
             }
@@ -786,11 +731,8 @@ function PlasmicLogIn__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.freeBox__ss9JK,
-                hasVariant($state, "slids", "unnamedVariant3") &&
+                hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "animate"
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "animate"
                   : undefined,
                 {
@@ -807,21 +749,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.freeBoxpassword_unnamedVariant__ss9JK8PqF9Dv9B5]:
                     hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant($state, "password", "password"),
-                  [sty.freeBoxslids_unnamedVariant2__ss9JKnjomh]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__ss9JKi1KiV]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__ss9JKMe9Ia]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
                   [sty.freeBoxunnamedVariant2__ss9JKJmKha]: hasVariant(
                     $state,
                     "unnamedVariant2",
@@ -832,9 +759,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     "unnamedVariant",
                     "unnamedVariant"
                   ),
-                  [sty.freeBoxunnamedVariant_slids_unnamedVariant__ss9JKDv9B5Me9Ia]:
-                    hasVariant($state, "slids", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
                   [sty.freeBoxunnamedVariant_unnamedVariant2__ss9JKDv9B5JmKha]:
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
                     hasVariant($state, "unnamedVariant", "unnamedVariant")
@@ -852,16 +776,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "password",
                     "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__oDeZci1KiV]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__oDeZcMe9Ia]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
                   ),
                   [sty.freeBoxunnamedVariant2__oDeZcJmKha]: hasVariant(
                     $state,
@@ -921,16 +835,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         "unnamedVariant2"
                       ) &&
                       hasVariant($state, "password", "password"),
-                    [sty.svgslids_unnamedVariant3___6T7I1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgslids_unnamedVariant___6T7Me9Ia]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
                     [sty.svgunnamedVariant2___6T7JmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -949,9 +853,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   role={"img"}
                 />
 
-                {(
-                  hasVariant($state, "slids", "unnamedVariant") ? true : false
-                ) ? (
+                {false ? (
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__pZ2Jh, {
@@ -959,33 +861,14 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "password",
                         "password"
-                      ),
-                      [sty.imgslids_unnamedVariant__pZ2JhMe9Ia]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant"
                       )
                     })}
-                    displayHeight={
-                      hasVariant($state, "slids", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "50px"
-                        : hasVariant($state, "slids", "unnamedVariant")
-                        ? "100px"
-                        : "auto"
-                    }
+                    displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
                     displayMinHeight={"0"}
                     displayMinWidth={"0"}
-                    displayWidth={
-                      hasVariant($state, "slids", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "50px"
-                        : hasVariant($state, "slids", "unnamedVariant")
-                        ? "100px"
-                        : "auto"
-                    }
+                    displayWidth={"auto"}
                     loading={"lazy"}
                     src={{
                       src: "/plasmic/babarkat/images/image10.svg",
@@ -1016,16 +899,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.freeBoxpassword_unnamedVariant2__mauVi8PqF9JmKha]:
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
                     hasVariant($state, "password", "password"),
-                  [sty.freeBoxslids_unnamedVariant3__mauViI1KiV]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__mauViMe9Ia]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
                   [sty.freeBoxunnamedVariant2__mauViJmKha]: hasVariant(
                     $state,
                     "unnamedVariant2",
@@ -1047,11 +920,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "loginByPassword",
                       "loginByPassword"
-                    ),
-                    [sty.freeBoxslids_unnamedVariant3__eu9FjI1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
                     ),
                     [sty.freeBoxunnamedVariant__eu9FjDv9B5]: hasVariant(
                       $state,
@@ -1087,11 +955,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           "password",
                           "password"
                         ),
-                        [sty.textslids_unnamedVariant3__zL7OqI1KiV]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.textunnamedVariant2__zL7OqJmKha]: hasVariant(
                           $state,
                           "unnamedVariant2",
@@ -1111,8 +974,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                       : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                       ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                      : hasVariant($state, "slids", "unnamedVariant3")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                       : hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                       : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
@@ -1217,11 +1078,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         "password",
                         "password"
                       ),
-                      [sty.textslids_unnamedVariant3__wdrTsI1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.textunnamedVariant2__wdrTsJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -1237,29 +1093,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 >
                   {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
                     "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
                   ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
@@ -1324,11 +1157,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           "unnamedVariant2",
                           "unnamedVariant2"
                         ) && hasVariant($state, "password", "password"),
-                      [sty.fragmentInputslids_unnamedVariant3]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.fragmentInputunnamedVariant2]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -1573,11 +1401,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         "password",
                         "password"
                       ),
-                      [sty.textslids_unnamedVariant3__aBe0KI1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.textunnamedVariant2__aBe0KJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -1597,8 +1420,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                     : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                     ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
@@ -1618,11 +1439,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "password",
                         "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__obSwQi1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
                       ),
                       [sty.textunnamedVariant2__obSwQJmKha]: hasVariant(
                         $state,
@@ -1668,29 +1484,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 >
                   {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
                     "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
                   ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
@@ -1739,11 +1532,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       "password",
                       "password"
                     ),
-                    [sty.freeBoxslids_unnamedVariant3___8MdVi1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.freeBoxunnamedVariant2___8MdVJmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -1778,11 +1566,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           $state,
                           "password",
                           "password"
-                        ),
-                        [sty.fragmentInput3slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
                         ),
                         [sty.fragmentInput3unnamedVariant2]: hasVariant(
                           $state,
@@ -1967,11 +1750,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__hXlRb, {
-                    [sty.freeBoxslids_unnamedVariant3__hXlRbI1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.freeBoxunnamedVariant__hXlRbDv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1986,11 +1764,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       "__wab_instance",
                       sty.fragmentInput2,
                       {
-                        [sty.fragmentInput2slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.fragmentInput2unnamedVariant2]: hasVariant(
                           $state,
                           "unnamedVariant2",
@@ -2030,9 +1803,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       }).apply(null, eventArgs);
                     }}
                     placeholder={
-                      hasVariant($state, "slids", "unnamedVariant3")
-                        ? ``
-                        : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
                         ? ``
                         : "98+"
                     }
@@ -2048,37 +1819,8 @@ function PlasmicLogIn__RenderFunc(props: {
                   />
                 </Stack__>
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3") &&
+                  hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
                           return $state.time != 0;
@@ -2114,8 +1856,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text___7LuKp,
                       {
-                        [sty.textslids_unnamedVariant3___7LuKpI1KiV]:
-                          hasVariant($state, "slids", "unnamedVariant3"),
                         [sty.textunnamedVariant___7LuKpDv9B5]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -2131,79 +1871,8 @@ function PlasmicLogIn__RenderFunc(props: {
                       }
                     )}
                   >
-                    {hasVariant($state, "slids", "unnamedVariant3") &&
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                      <div
-                        className={projectcss.__wab_expr_html_text}
-                        dangerouslySetInnerHTML={{
-                          __html: (() => {
-                            try {
-                              return (() => {
-                                setInterval(() => {
-                                  if ($state.time <= 0) {
-                                  } else {
-                                    $state.time--;
-                                  }
-                                }, 10000);
-                                return (
-                                  "ارسال مجدد پیامک  (" +
-                                  "<b style='color: #2DC57B;'>" +
-                                  $state.time +
-                                  "</b>" +
-                                  ")"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                              }
-                              throw e;
-                            }
-                          })()
-                        }}
-                      />
-                    ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                      <div
-                        className={projectcss.__wab_expr_html_text}
-                        dangerouslySetInnerHTML={{
-                          __html: (() => {
-                            try {
-                              return (() => {
-                                setInterval(() => {
-                                  if ($state.time <= 0) {
-                                  } else {
-                                    $state.time--;
-                                  }
-                                }, 10000);
-                                return (
-                                  "ارسال مجدد پیامک  (" +
-                                  "<b style='color: #2DC57B;'>" +
-                                  $state.time +
-                                  "</b>" +
-                                  ")"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                              }
-                              throw e;
-                            }
-                          })()
-                        }}
-                      />
-                    ) : hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ) &&
-                      hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <div
                         className={projectcss.__wab_expr_html_text}
                         dangerouslySetInnerHTML={{
@@ -2333,37 +2002,8 @@ function PlasmicLogIn__RenderFunc(props: {
                 />
 
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3") &&
+                  hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
                           return $state.time == 0;
@@ -2399,11 +2039,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__qrzqV,
                       {
-                        [sty.textslids_unnamedVariant3__qrzqVi1KiV]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.textunnamedVariant__qrzqVDv9B5]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -2488,9 +2123,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       }
                     }}
                   >
-                    {hasVariant($state, "slids", "unnamedVariant3")
-                      ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
                       : "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"}
                   </div>
@@ -2638,11 +2271,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       "password",
                       "password"
                     ),
-                    [sty.textslids_unnamedVariant3__vfBkCi1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.textunnamedVariant2__vfBkCJmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -2692,8 +2320,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
                   : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                   ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                  : hasVariant($state, "slids", "unnamedVariant3")
-                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                   : hasVariant($state, "unnamedVariant", "unnamedVariant")
                   ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                   : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
@@ -2709,16 +2335,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "password",
                     "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__rr6SI1KiV]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__rr6SMe9Ia]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
                   ),
                   [sty.freeBoxunnamedVariant2__rr6SJmKha]: hasVariant(
                     $state,
@@ -2752,16 +2368,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ) && hasVariant($state, "password", "password"),
-                    [sty.btnNumberslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.btnNumberslids_unnamedVariant]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
                     [sty.btnNumberunnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -3098,16 +2704,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "password",
                       "password"
-                    ),
-                    [sty.buttonslids_unnamedVariant3__smPmcI1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.buttonslids_unnamedVariant__smPmcMe9Ia]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
                     ),
                     [sty.buttonunnamedVariant2__smPmcJmKha]: hasVariant(
                       $state,
@@ -3532,16 +3128,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ) && hasVariant($state, "password", "password"),
-                    [sty.buttonslids_unnamedVariant3__rMmnI1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.buttonslids_unnamedVariant__rMmnMe9Ia]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
                     [sty.buttonunnamedVariant2__rMmnJmKha]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -4048,16 +3634,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       "password",
                       "password"
                     ),
-                    [sty.btnSarafslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.btnSarafslids_unnamedVariant]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
                     [sty.btnSarafunnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -4498,9 +4074,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   </div>
                 </Button>
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3")
-                    ? true
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? true
                     : false
                 ) ? (
@@ -4524,11 +4098,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           "unnamedVariant2",
                           "unnamedVariant2"
                         ) && hasVariant($state, "password", "password"),
-                      [sty.sendcodeslids_unnamedVariant3]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.sendcodeunnamedVariant2]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -4566,41 +4135,8 @@ function PlasmicLogIn__RenderFunc(props: {
                       />
                     }
                     isDisabled={
-                      hasVariant($state, "slids", "unnamedVariant3") &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                       hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 4;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant($state, "slids", "unnamedVariant3")
-                        ? (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 4;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ) &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
                         ? (() => {
                             try {
                               return $state.fragmentInput2.value.length != 4;
@@ -5064,9 +4600,7 @@ function PlasmicLogIn__RenderFunc(props: {
                 ) : null}
               </div>
               {(
-                hasVariant($state, "slids", "unnamedVariant3")
-                  ? true
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                hasVariant($state, "unnamedVariant", "unnamedVariant")
                   ? true
                   : false
               ) ? (
@@ -5074,11 +4608,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"figmaPaste"}
                   data-plasmic-override={overrides.figmaPaste}
                   className={classNames(projectcss.all, sty.figmaPaste, {
-                    [sty.figmaPasteslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.figmaPasteunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5122,11 +4651,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       data-plasmic-name={"group3"}
                       data-plasmic-override={overrides.group3}
                       className={classNames(projectcss.all, sty.group3, {
-                        [sty.group3slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.group3unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -5215,11 +4739,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           data-plasmic-name={"rectangle"}
                           data-plasmic-override={overrides.rectangle}
                           className={classNames(projectcss.all, sty.rectangle, {
-                            [sty.rectangleslids_unnamedVariant3]: hasVariant(
-                              $state,
-                              "slids",
-                              "unnamedVariant3"
-                            ),
                             [sty.rectangleunnamedVariant]: hasVariant(
                               $state,
                               "unnamedVariant",
@@ -5245,8 +4764,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text__oDmNk,
                         {
-                          [sty.textslids_unnamedVariant3__oDmNki1KiV]:
-                            hasVariant($state, "slids", "unnamedVariant3"),
                           [sty.textunnamedVariant__oDmNkDv9B5]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -5265,8 +4782,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text___7SctQ,
                         {
-                          [sty.textslids_unnamedVariant3___7SctQi1KiV]:
-                            hasVariant($state, "slids", "unnamedVariant3"),
                           [sty.textunnamedVariant___7SctQDv9B5]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -5310,21 +4825,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.group9password_unnamedVariant]:
                     hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant($state, "password", "password"),
-                  [sty.group9slids_unnamedVariant2]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group9slids_unnamedVariant3]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.group9slids_unnamedVariant]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
                   [sty.group9unnamedVariant2]: hasVariant(
                     $state,
                     "unnamedVariant2",
@@ -5429,11 +4929,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           "unnamedVariant2",
                           "unnamedVariant2"
                         ),
-                      [sty.textslids_unnamedVariant3__wYgldI1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.textunnamedVariant2__wYgldJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -5472,11 +4967,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     [sty.svgpassword_unnamedVariant2___40A08PqF9JmKha]:
                       hasVariant($state, "password", "password") &&
                       hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgslids_unnamedVariant3___40A0I1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.svgunnamedVariant___40A0Dv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5512,21 +5002,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.group10password_unnamedVariant2]:
                     hasVariant($state, "password", "password") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group10slids_unnamedVariant2]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group10slids_unnamedVariant3]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.group10slids_unnamedVariant]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
                   [sty.group10unnamedVariant2]: hasVariant(
                     $state,
                     "unnamedVariant2",
@@ -5626,11 +5101,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           "unnamedVariant2",
                           "unnamedVariant2"
                         ),
-                      [sty.textslids_unnamedVariant3__agfvi1KiV]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
                       [sty.textunnamedVariant2__agfvJmKha]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -5669,11 +5139,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     [sty.svgpassword_unnamedVariant2__hTSxw8PqF9JmKha]:
                       hasVariant($state, "password", "password") &&
                       hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgslids_unnamedVariant3__hTSxwI1KiV]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.svgunnamedVariant__hTSxwDv9B5]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5751,41 +5216,16 @@ function PlasmicLogIn__RenderFunc(props: {
             </div>
           </Stack__>
         ) : null}
-        {(hasVariant($state, "slids", "unnamedVariant") ? true : false) ? (
+        {false ? (
           <PlasmicImg__
             alt={""}
-            className={classNames(sty.img__hdnt5, {
-              [sty.imgslids_unnamedVariant2__hdnt5Njomh]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant2"
-              ),
-              [sty.imgslids_unnamedVariant3__hdnt5I1KiV]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant3"
-              ),
-              [sty.imgslids_unnamedVariant__hdnt5Me9Ia]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant"
-              )
-            })}
-            displayHeight={
-              hasVariant($state, "slids", "unnamedVariant") ? "100%" : "auto"
-            }
+            className={classNames(sty.img__hdnt5)}
+            displayHeight={"auto"}
             displayMaxHeight={"none"}
             displayMaxWidth={"100%"}
             displayMinHeight={"0"}
             displayMinWidth={"0"}
-            displayWidth={
-              hasVariant($state, "slids", "unnamedVariant") &&
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "100%"
-                : hasVariant($state, "slids", "unnamedVariant")
-                ? "auto"
-                : "auto"
-            }
+            displayWidth={"auto"}
             loading={"lazy"}
             src={{
               src: "/plasmic/babarkat/images/image8.png",

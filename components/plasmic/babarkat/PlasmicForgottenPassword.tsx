@@ -94,12 +94,10 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicForgottenPassword.module.css"; // plasmic-import: dyOTtMZDhn7d/css
 
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
-import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: CbXhIHUxIzPz/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
 
@@ -107,32 +105,15 @@ createPlasmicElementProxy;
 
 export type PlasmicForgottenPassword__VariantMembers = {
   unnamedVariant: "unnamedVariant";
-  slids: "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3";
-  unnamedVariant2: "unnamedVariant2";
-  password: "password";
-  loginByPassword: "loginByPassword";
   forgottenPassword: "forgottenPassword";
 };
 export type PlasmicForgottenPassword__VariantsArgs = {
   unnamedVariant?: SingleBooleanChoiceArg<"unnamedVariant">;
-  slids?: SingleChoiceArg<
-    "unnamedVariant" | "unnamedVariant2" | "unnamedVariant3"
-  >;
-  unnamedVariant2?: SingleBooleanChoiceArg<"unnamedVariant2">;
-  password?: SingleBooleanChoiceArg<"password">;
-  loginByPassword?: SingleBooleanChoiceArg<"loginByPassword">;
   forgottenPassword?: SingleBooleanChoiceArg<"forgottenPassword">;
 };
 type VariantPropType = keyof PlasmicForgottenPassword__VariantsArgs;
 export const PlasmicForgottenPassword__VariantProps =
-  new Array<VariantPropType>(
-    "unnamedVariant",
-    "slids",
-    "unnamedVariant2",
-    "password",
-    "loginByPassword",
-    "forgottenPassword"
-  );
+  new Array<VariantPropType>("unnamedVariant", "forgottenPassword");
 
 export type PlasmicForgottenPassword__ArgsType = { disabled?: boolean };
 type ArgPropType = keyof PlasmicForgottenPassword__ArgsType;
@@ -282,12 +263,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "slids",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.slids
-      },
-      {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
@@ -317,32 +292,11 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         ]
       },
       {
-        path: "unnamedVariant2",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.unnamedVariant2
-      },
-      {
         path: "select.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
-            ? (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
-                  }
-                  throw e;
-                }
-              })()
-            : hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
                   return $state.saraf[0].value;
@@ -377,22 +331,10 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "password",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.password
-      },
-      {
         path: "pass",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "loginByPassword",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.loginByPassword
       },
       {
         path: "fragmentInput3.value",
@@ -571,137 +513,15 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 "unnamedGlobalGroupOfVariants",
                 "unnamedVariant"
               ),
-            [sty.rootloginByPassword]: hasVariant(
-              $state,
-              "loginByPassword",
-              "loginByPassword"
-            ),
-            [sty.rootloginByPassword_password]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootloginByPassword_unnamedVariant2]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-            [sty.rootloginByPassword_unnamedVariant2_password]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootloginByPassword_unnamedVariant2_unnamedVariant]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-              hasVariant($state, "unnamedVariant", "unnamedVariant"),
-            [sty.rootloginByPassword_unnamedVariant2_unnamedVariant_password]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-              hasVariant($state, "unnamedVariant", "unnamedVariant"),
-            [sty.rootloginByPassword_unnamedVariant]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootpassword]: hasVariant($state, "password", "password"),
-            [sty.rootslids_unnamedVariant2]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant2"
-            ),
-            [sty.rootslids_unnamedVariant2_unnamedVariant]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant2"),
-            [sty.rootslids_unnamedVariant3]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant3"
-            ),
-            [sty.rootslids_unnamedVariant3_unnamedVariant]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant3"),
-            [sty.rootslids_unnamedVariant]: hasVariant(
-              $state,
-              "slids",
-              "unnamedVariant"
-            ),
-            [sty.rootslids_unnamedVariant_unnamedVariant]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "slids", "unnamedVariant"),
-            [sty.rootunnamedVariant2]: hasVariant(
-              $state,
-              "unnamedVariant2",
-              "unnamedVariant2"
-            ),
-            [sty.rootunnamedVariant2_password]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-            [sty.rootunnamedVariant2_unnamedVariant]:
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-              hasVariant($state, "unnamedVariant", "unnamedVariant"),
-            [sty.rootunnamedVariant2_unnamedVariant_password]:
-              hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-              hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-              hasVariant($state, "password", "password"),
             [sty.rootunnamedVariant]: hasVariant(
               $state,
               "unnamedVariant",
               "unnamedVariant"
-            ),
-            [sty.rootunnamedVariant_password]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "unnamedVariant", "unnamedVariant")
+            )
           }
         )}
         onLoad={async event => {
           const $steps = {};
-
-          $steps["updatePassword"] =
-            localStorage.getItem("userbabarcat") != null &&
-            sessionStorage.getItem("userbabarcatToken") == null &&
-            localStorage.getItem("userBabarkatPass") != null
-              ? (() => {
-                  const actionArgs = { vgroup: "password", operation: 2 };
-                  return (({ vgroup, value }) => {
-                    if (typeof value === "string") {
-                      value = [value];
-                    }
-
-                    const oldValue = $stateGet($state, vgroup);
-                    $stateSet($state, vgroup, !oldValue);
-                    return !oldValue;
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["updatePassword"] != null &&
-            typeof $steps["updatePassword"] === "object" &&
-            typeof $steps["updatePassword"].then === "function"
-          ) {
-            $steps["updatePassword"] = await $steps["updatePassword"];
-          }
-
-          $steps["goToHomepage"] =
-            localStorage.getItem("userbabarcat") != null &&
-            sessionStorage.getItem("userbabarcatToken") != null
-              ? (() => {
-                  const actionArgs = { destination: `/` };
-                  return (({ destination }) => {
-                    if (
-                      typeof destination === "string" &&
-                      destination.startsWith("#")
-                    ) {
-                      document
-                        .getElementById(destination.substr(1))
-                        .scrollIntoView({ behavior: "smooth" });
-                    } else {
-                      __nextRouter?.push(destination);
-                    }
-                  })?.apply(null, [actionArgs]);
-                })()
-              : undefined;
-          if (
-            $steps["goToHomepage"] != null &&
-            typeof $steps["goToHomepage"] === "object" &&
-            typeof $steps["goToHomepage"].then === "function"
-          ) {
-            $steps["goToHomepage"] = await $steps["goToHomepage"];
-          }
         }}
       >
         {(
@@ -725,9 +545,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             data-plasmic-name={"reveal"}
             data-plasmic-override={overrides.reveal}
             cascade={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? false
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? false
                 : undefined
             }
@@ -737,39 +555,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 "forgottenPassword",
                 "forgottenPassword"
               ),
-              [sty.revealloginByPassword]: hasVariant(
-                $state,
-                "loginByPassword",
-                "loginByPassword"
-              ),
-              [sty.revealloginByPassword_forgottenPassword]:
-                hasVariant($state, "loginByPassword", "loginByPassword") &&
-                hasVariant($state, "forgottenPassword", "forgottenPassword"),
-              [sty.revealloginByPassword_password]:
-                hasVariant($state, "password", "password") &&
-                hasVariant($state, "loginByPassword", "loginByPassword"),
-              [sty.revealpassword]: hasVariant($state, "password", "password"),
-              [sty.revealslids_unnamedVariant3]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant3"
-              ),
-              [sty.revealslids_unnamedVariant]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant"
-              ),
-              [sty.revealunnamedVariant2]: hasVariant(
-                $state,
-                "unnamedVariant2",
-                "unnamedVariant2"
-              ),
-              [sty.revealunnamedVariant2_password]:
-                hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                hasVariant($state, "password", "password"),
-              [sty.revealunnamedVariant2_unnamedVariant]:
-                hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
               [sty.revealunnamedVariant]: hasVariant(
                 $state,
                 "unnamedVariant",
@@ -777,40 +562,24 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               )
             })}
             damping={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? 0.5
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? 0.5
                 : undefined
             }
             direction={
-              hasVariant($state, "loginByPassword", "loginByPassword")
-                ? "left"
-                : hasVariant($state, "password", "password")
-                ? "left"
-                : hasVariant($state, "slids", "unnamedVariant3")
-                ? "left"
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "left"
                 : undefined
             }
             effect={
-              hasVariant($state, "loginByPassword", "loginByPassword")
-                ? "fade"
-                : hasVariant($state, "password", "password")
-                ? "fade"
-                : hasVariant($state, "slids", "unnamedVariant3")
-                ? "slide"
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "slide"
                 : hasVariant(globalVariants, "screen", "mobileOnly")
                 ? "fade"
                 : undefined
             }
             reverse={
-              hasVariant($state, "slids", "unnamedVariant3")
-                ? false
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
+              hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? false
                 : undefined
             }
@@ -820,11 +589,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               className={classNames(
                 projectcss.all,
                 sty.freeBox__fsz1,
-                hasVariant($state, "slids", "unnamedVariant3") &&
+                hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "animate"
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "animate"
                   : undefined,
                 {
@@ -833,50 +599,11 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "forgottenPassword",
                     "forgottenPassword"
                   ),
-                  [sty.freeBoxloginByPassword__fsz16PhKf]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxpassword__fsz1MzuNw]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant2__fsz1M5EJh]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__fsz1D2M3Q]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__fsz10Ult]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant_unnamedVariant__fsz10UltL6NG6]:
-                    hasVariant($state, "slids", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
-                  [sty.freeBoxunnamedVariant2__fsz1JhBkr]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.freeBoxunnamedVariant2_unnamedVariant__fsz1JhBkrL6NG6]:
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
                   [sty.freeBoxunnamedVariant__fsz1L6NG6]: hasVariant(
                     $state,
                     "unnamedVariant",
                     "unnamedVariant"
-                  ),
-                  [sty.freeBoxunnamedVariant_password__fsz1L6NG6MzuNw]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "password", "password")
+                  )
                 }
               )}
             >
@@ -887,31 +614,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "forgottenPassword",
                     "forgottenPassword"
                   ),
-                  [sty.freeBoxloginByPassword__lq0Kh6PhKf]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxpassword__lq0KhmzuNw]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__lq0Khd2M3Q]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__lq0Kh0Ult]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.freeBoxunnamedVariant2__lq0KhJhBkr]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
                   [sty.freeBoxunnamedVariant__lq0Khl6NG6]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -919,75 +621,13 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   )
                 })}
               >
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant($state, "password", "password")
-                      ? Icon56Icon
-                      : BabarkatlogoCopy2SvgIcon
-                  }
+                <BabarkatlogoCopy2SvgIcon
                   className={classNames(projectcss.all, sty.svg__snpJc, ``, {
                     [sty.svgforgottenPassword__snpJceMJzM]: hasVariant(
                       $state,
                       "forgottenPassword",
                       "forgottenPassword"
                     ),
-                    [sty.svgloginByPassword__snpJc6PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.svgloginByPassword_password__snpJc6PhKfMzuNw]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.svgloginByPassword_unnamedVariant2_unnamedVariant_password__snpJc6PhKfJhBkrL6NG6MzuNw]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.svgpassword__snpJcmzuNw]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.svgslids_unnamedVariant3__snpJcd2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgslids_unnamedVariant__snpJc0Ult]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.svgunnamedVariant2__snpJcJhBkr]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.svgunnamedVariant2_password__snpJcJhBkrMzuNw]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.svgunnamedVariant2_unnamedVariant__snpJcJhBkrL6NG6]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgunnamedVariant2_unnamedVariant_password__snpJcJhBkrL6NG6MzuNw]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "password", "password"),
                     [sty.svgunnamedVariant__snpJcl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -998,9 +638,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   role={"img"}
                 />
 
-                {(
-                  hasVariant($state, "slids", "unnamedVariant") ? true : false
-                ) ? (
+                {false ? (
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__m2Rf8, {
@@ -1008,38 +646,14 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         $state,
                         "forgottenPassword",
                         "forgottenPassword"
-                      ),
-                      [sty.imgpassword__m2Rf8MzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.imgslids_unnamedVariant__m2Rf80Ult]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant"
                       )
                     })}
-                    displayHeight={
-                      hasVariant($state, "slids", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "50px"
-                        : hasVariant($state, "slids", "unnamedVariant")
-                        ? "100px"
-                        : "auto"
-                    }
+                    displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
                     displayMinHeight={"0"}
                     displayMinWidth={"0"}
-                    displayWidth={
-                      hasVariant($state, "slids", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "50px"
-                        : hasVariant($state, "slids", "unnamedVariant")
-                        ? "100px"
-                        : "auto"
-                    }
+                    displayWidth={"auto"}
                     loading={"lazy"}
                     src={{
                       src: "/plasmic/babarkat/images/image10.svg",
@@ -1082,40 +696,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "forgottenPassword",
                     "forgottenPassword"
                   ),
-                  [sty.freeBoxloginByPassword__siguy6PhKf]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxloginByPassword_password__siguy6PhKfMzuNw]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.freeBoxpassword__siguymzuNw]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__siguyd2M3Q]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__siguy0Ult]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.freeBoxunnamedVariant2__siguyJhBkr]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.freeBoxunnamedVariant2_password__siguyJhBkrMzuNw]:
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.freeBoxunnamedVariant2_unnamedVariant__siguyJhBkrL6NG6]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.freeBoxunnamedVariant__siguyl6NG6]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -1130,16 +710,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "forgottenPassword",
                       "forgottenPassword"
                     ),
-                    [sty.freeBoxloginByPassword__gmhp56PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.freeBoxslids_unnamedVariant3__gmhp5D2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.freeBoxunnamedVariant__gmhp5L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1153,34 +723,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text___1Bs2L,
                       {
-                        [sty.textloginByPassword___1Bs2L6PhKf]: hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                        [sty.textloginByPassword_unnamedVariant___1Bs2L6PhKfL6NG6]:
-                          hasVariant(
-                            $state,
-                            "loginByPassword",
-                            "loginByPassword"
-                          ) &&
-                          hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ),
-                        [sty.textpassword___1Bs2LmzuNw]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        ),
-                        [sty.textslids_unnamedVariant3___1Bs2Ld2M3Q]:
-                          hasVariant($state, "slids", "unnamedVariant3"),
-                        [sty.textunnamedVariant2___1Bs2LJhBkr]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                         [sty.textunnamedVariant___1Bs2Ll6NG6]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -1189,59 +731,12 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       }
                     )}
                   >
-                    {hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                      : hasVariant($state, "password", "password")
-                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                      : hasVariant($state, "slids", "unnamedVariant3")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                       : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 (\u0628\u0627\u0632\u06cc\u0627\u0628\u06cc \u0631\u0645\u0632 \u0639\u0628\u0648\u0631) "}
                   </div>
                   <Button
                     className={classNames("__wab_instance", sty.button__g59O, {
-                      [sty.buttonloginByPassword__g59O6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.buttonloginByPassword_password__g59O6PhKfMzuNw]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.buttonpassword__g59OmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.buttonunnamedVariant2__g59OJhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.buttonunnamedVariant2_password__g59OJhBkrMzuNw]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.buttonunnamedVariant2_unnamedVariant__g59OJhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                       [sty.buttonunnamedVariant__g59Ol6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1295,26 +790,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__y6Tvd,
                     {
-                      [sty.textloginByPassword__y6Tvd6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword__y6TvDmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__y6TvDd2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__y6TvdjhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
                       [sty.textunnamedVariant__y6TvDl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1323,32 +798,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
-                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
+                  {hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
                       dangerouslySetInnerHTML={{
@@ -1389,50 +839,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     data-plasmic-name={"fragmentInput"}
                     data-plasmic-override={overrides.fragmentInput}
                     className={classNames("__wab_instance", sty.fragmentInput, {
-                      [sty.fragmentInputloginByPassword]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.fragmentInputloginByPassword_password]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.fragmentInputpassword]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.fragmentInputslids_unnamedVariant3]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.fragmentInputunnamedVariant2]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.fragmentInputunnamedVariant2_password]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.fragmentInputunnamedVariant2_unnamedVariant]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                       [sty.fragmentInputunnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1482,17 +888,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
 
                   <div
                     className={classNames(projectcss.all, sty.freeBox__cMvfB, {
-                      [sty.freeBoxunnamedVariant2_unnamedVariant__cMvfBjhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                       [sty.freeBoxunnamedVariant__cMvfBl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1505,34 +900,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       data-plasmic-override={overrides.select2}
                       bordered={false}
                       className={classNames("__wab_instance", sty.select2, {
-                        [sty.select2loginByPassword]: hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                        [sty.select2loginByPassword_password]:
-                          hasVariant($state, "password", "password") &&
-                          hasVariant(
-                            $state,
-                            "loginByPassword",
-                            "loginByPassword"
-                          ),
-                        [sty.select2password]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        ),
-                        [sty.select2unnamedVariant2]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                        [sty.select2unnamedVariant2_password]:
-                          hasVariant(
-                            $state,
-                            "unnamedVariant2",
-                            "unnamedVariant2"
-                          ) && hasVariant($state, "password", "password"),
                         [sty.select2unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -1583,32 +950,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__cAkDz,
                     {
-                      [sty.textloginByPassword__cAkDz6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword__cAkDzmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textunnamedVariant2__cAkDzJhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant2_unnamedVariant__cAkDzJhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                       [sty.textunnamedVariant__cAkDzl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1618,32 +959,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   )}
                   onClick={async event => {
                     const $steps = {};
-
-                    $steps["updateLoginByPassword"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "loginByPassword",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
-
-                            $stateSet($state, vgroup, true);
-                            return true;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoginByPassword"] != null &&
-                      typeof $steps["updateLoginByPassword"] === "object" &&
-                      typeof $steps["updateLoginByPassword"].then === "function"
-                    ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
-                    }
                   }}
                 >
                   {
@@ -1656,33 +971,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__c4P5,
                     {
-                      [sty.textloginByPassword__c4P56PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textloginByPassword_unnamedVariant__c4P56PhKfL6NG6]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
-                      [sty.textpassword__c4P5MzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__c4P5D2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__c4P5JhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
                       [sty.textunnamedVariant__c4P5L6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1691,15 +979,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  {hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
@@ -1709,26 +989,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__nk22K,
                     {
-                      [sty.textloginByPassword__nk22K6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword__nk22KmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__nk22Kd2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__nk22KjhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
                       [sty.textunnamedVariant__nk22Kl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1738,60 +998,9 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   )}
                   onClick={async event => {
                     const $steps = {};
-
-                    $steps["updateLoginByPassword"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "loginByPassword",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
-
-                            $stateSet($state, vgroup, true);
-                            return true;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoginByPassword"] != null &&
-                      typeof $steps["updateLoginByPassword"] === "object" &&
-                      typeof $steps["updateLoginByPassword"].then === "function"
-                    ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
-                    }
                   }}
                 >
-                  {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
-                    "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                  ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                              $state.number +
-                              "</b> را وارد نمایید."
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
+                  {hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
                       className={projectcss.__wab_expr_html_text}
                       dangerouslySetInnerHTML={{
@@ -1829,26 +1038,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__eJlP9, {
-                    [sty.freeBoxloginByPassword__eJlP96PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.freeBoxpassword__eJlP9MzuNw]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.freeBoxslids_unnamedVariant3__eJlP9D2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.freeBoxunnamedVariant2__eJlP9JhBkr]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
                     [sty.freeBoxunnamedVariant__eJlP9L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1863,32 +1052,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "__wab_instance",
                       sty.fragmentInput3,
                       {
-                        [sty.fragmentInput3loginByPassword]: hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                        [sty.fragmentInput3loginByPassword_password]:
-                          hasVariant(
-                            $state,
-                            "loginByPassword",
-                            "loginByPassword"
-                          ) && hasVariant($state, "password", "password"),
-                        [sty.fragmentInput3password]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        ),
-                        [sty.fragmentInput3slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
-                        [sty.fragmentInput3unnamedVariant2]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
                         [sty.fragmentInput3unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -1911,43 +1074,9 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         const $steps = {};
                       }).apply(null, eventArgs);
                     }}
-                    placeholder={
-                      hasVariant($state, "loginByPassword", "loginByPassword")
-                        ? ``
-                        : hasVariant($state, "password", "password")
-                        ? ``
-                        : "98+"
-                    }
+                    placeholder={"98+"}
                     type={
-                      hasVariant($state, "loginByPassword", "loginByPassword")
-                        ? (() => {
-                            try {
-                              return $state.pass1;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "password";
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant($state, "password", "password")
-                        ? (() => {
-                            try {
-                              return $state.pass1;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "password";
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant(globalVariants, "screen", "mobileOnly")
+                      hasVariant(globalVariants, "screen", "mobileOnly")
                         ? "tel"
                         : "tel"
                     }
@@ -1958,18 +1087,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   />
 
                   <Icon55Icon
-                    className={classNames(projectcss.all, sty.svg__zFbUt, {
-                      [sty.svgloginByPassword__zFbUt6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.svgpassword__zFbUTmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      )
-                    })}
+                    className={classNames(projectcss.all, sty.svg__zFbUt)}
                     onClick={async event => {
                       const $steps = {};
 
@@ -2067,11 +1185,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   as={"div"}
                   hasGap={true}
                   className={classNames(projectcss.all, sty.freeBox__m9Cur, {
-                    [sty.freeBoxslids_unnamedVariant3__m9CuRd2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.freeBoxunnamedVariant__m9CuRl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -2086,27 +1199,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "__wab_instance",
                       sty.fragmentInput2,
                       {
-                        [sty.fragmentInput2slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
-                        [sty.fragmentInput2unnamedVariant2]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                        [sty.fragmentInput2unnamedVariant2_unnamedVariant]:
-                          hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ) &&
-                          hasVariant(
-                            $state,
-                            "unnamedVariant2",
-                            "unnamedVariant2"
-                          ),
                         [sty.fragmentInput2unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -2130,9 +1222,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       }).apply(null, eventArgs);
                     }}
                     placeholder={
-                      hasVariant($state, "slids", "unnamedVariant3")
-                        ? ``
-                        : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
                         ? ``
                         : "98+"
                     }
@@ -2148,37 +1238,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   />
                 </Stack__>
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3") &&
+                  hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
                           return $state.time != 0;
@@ -2214,22 +1275,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__rgVrY,
                       {
-                        [sty.textslids_unnamedVariant3__rgVrYd2M3Q]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
-                        [sty.textunnamedVariant2_unnamedVariant__rgVrYjhBkrL6NG6]:
-                          hasVariant(
-                            $state,
-                            "unnamedVariant2",
-                            "unnamedVariant2"
-                          ) &&
-                          hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ),
                         [sty.textunnamedVariant__rgVrYl6NG6]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -2238,79 +1283,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       }
                     )}
                   >
-                    {hasVariant($state, "slids", "unnamedVariant3") &&
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                      <div
-                        className={projectcss.__wab_expr_html_text}
-                        dangerouslySetInnerHTML={{
-                          __html: (() => {
-                            try {
-                              return (() => {
-                                setInterval(() => {
-                                  if ($state.time <= 0) {
-                                  } else {
-                                    $state.time--;
-                                  }
-                                }, 10000);
-                                return (
-                                  "ارسال مجدد پیامک  (" +
-                                  "<b style='color: #2DC57B;'>" +
-                                  $state.time +
-                                  "</b>" +
-                                  ")"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                              }
-                              throw e;
-                            }
-                          })()
-                        }}
-                      />
-                    ) : hasVariant($state, "slids", "unnamedVariant3") ? (
-                      <div
-                        className={projectcss.__wab_expr_html_text}
-                        dangerouslySetInnerHTML={{
-                          __html: (() => {
-                            try {
-                              return (() => {
-                                setInterval(() => {
-                                  if ($state.time <= 0) {
-                                  } else {
-                                    $state.time--;
-                                  }
-                                }, 10000);
-                                return (
-                                  "ارسال مجدد پیامک  (" +
-                                  "<b style='color: #2DC57B;'>" +
-                                  $state.time +
-                                  "</b>" +
-                                  ")"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                              }
-                              throw e;
-                            }
-                          })()
-                        }}
-                      />
-                    ) : hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ) &&
-                      hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <div
                         className={projectcss.__wab_expr_html_text}
                         dangerouslySetInnerHTML={{
@@ -2373,11 +1347,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   data-plasmic-name={"timer"}
                   data-plasmic-override={overrides.timer}
                   className={classNames("__wab_instance", sty.timer, {
-                    [sty.timerpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
                     [sty.timerunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -2440,37 +1409,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 />
 
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3") &&
+                  hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "slids", "unnamedVariant3")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
                           return $state.time == 0;
@@ -2506,11 +1446,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__gGrRx,
                       {
-                        [sty.textslids_unnamedVariant3__gGrRXd2M3Q]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.textunnamedVariant__gGrRXl6NG6]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -2595,9 +1530,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       }
                     }}
                   >
-                    {hasVariant($state, "slids", "unnamedVariant3")
-                      ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    {hasVariant($state, "unnamedVariant", "unnamedVariant")
                       ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
                       : "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"}
                   </div>
@@ -2606,18 +1539,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   data-plasmic-name={"select"}
                   data-plasmic-override={overrides.select}
                   className={classNames("__wab_instance", sty.select, {
-                    [sty.selectunnamedVariant2]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.selectunnamedVariant2_unnamedVariant]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.selectunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -2633,22 +1554,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     plasmic_plasmic_rich_components_css.plasmic_tokens
                   )}
                   defaultValue={
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
                     hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant(globalVariants, "screen", "mobileOnly")
                       ? (() => {
                           try {
                             return $state.saraf[0].value;
@@ -2703,23 +1609,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   popupScopeClassName={sty["select__popup"]}
                   size={"large"}
                   suffixIcon={
-                    <PlasmicIcon__
-                      PlasmicIconType={
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? Icon37Icon
-                          : Icon10Icon
-                      }
-                      className={classNames(projectcss.all, sty.svg__ndBpo, {
-                        [sty.svgunnamedVariant2__ndBpoJhBkr]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        )
-                      })}
+                    <Icon10Icon
+                      className={classNames(projectcss.all, sty.svg__ndBpo)}
                       role={"img"}
                     />
                   }
@@ -2732,26 +1623,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__tAdfq,
                   {
-                    [sty.textloginByPassword__tAdfq6PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__tAdfqmzuNw]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textslids_unnamedVariant3__tAdfqd2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.textunnamedVariant2__tAdfqJhBkr]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
                     [sty.textunnamedVariant__tAdfql6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -2788,15 +1659,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   }
                 }}
               >
-                {hasVariant($state, "loginByPassword", "loginByPassword")
-                  ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                  : hasVariant($state, "password", "password")
-                  ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
-                  : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                  ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                  : hasVariant($state, "slids", "unnamedVariant3")
-                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                {hasVariant($state, "unnamedVariant", "unnamedVariant")
                   ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                   : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
@@ -2806,31 +1669,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     $state,
                     "forgottenPassword",
                     "forgottenPassword"
-                  ),
-                  [sty.freeBoxloginByPassword__pgWAh6PhKf]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxpassword__pgWAhmzuNw]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant3__pgWAhd2M3Q]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.freeBoxslids_unnamedVariant__pgWAh0Ult]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.freeBoxunnamedVariant2__pgWAhJhBkr]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
                   ),
                   [sty.freeBoxunnamedVariant__pgWAhl6NG6]: hasVariant(
                     $state,
@@ -2848,44 +1686,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "forgottenPassword",
                       "forgottenPassword"
                     ),
-                    [sty.btnNumberloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.btnNumberpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.btnNumberslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.btnNumberslids_unnamedVariant]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.btnNumberunnamedVariant2]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.btnNumberunnamedVariant2_password]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.btnNumberunnamedVariant2_unnamedVariant]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.btnNumberunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -3198,41 +1998,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 </Button>
                 <Button
                   className={classNames("__wab_instance", sty.button___8Na, {
-                    [sty.buttonloginByPassword___8Na6PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.buttonloginByPassword_password___8Na6PhKfMzuNw]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.buttonpassword___8NaMzuNw]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.buttonslids_unnamedVariant3___8NaD2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.buttonslids_unnamedVariant___8Na0Ult]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.buttonunnamedVariant2___8NaJhBkr]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.buttonunnamedVariant2_unnamedVariant___8NaJhBkrL6NG6]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.buttonunnamedVariant___8NaL6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -3246,59 +2011,22 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       role={"img"}
                     />
                   }
-                  isDisabled={
-                    hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "password", "password")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
+                  isDisabled={(() => {
+                    try {
+                      return (
+                        $state.fragmentInput.value.length != 11 ||
+                        $state.loadedbtn
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3579,93 +2307,16 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__eePhF,
-                      {
-                        [sty.textloginByPassword__eePhF6PhKf]: hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                        [sty.textpassword__eePhFmzuNw]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        )
-                      }
+                      sty.text__eePhF
                     )}
                   >
-                    {hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : hasVariant($state, "password", "password")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
                   </div>
                 </Button>
                 <Button
                   className={classNames("__wab_instance", sty.button__fIcq, {
-                    [sty.buttonloginByPassword__fIcq6PhKf]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.buttonloginByPassword_password__fIcq6PhKfMzuNw]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.buttonloginByPassword_unnamedVariant2__fIcq6PhKfJhBkr]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.buttonloginByPassword_unnamedVariant2_password__fIcq6PhKfJhBkrMzuNw]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "password", "password"),
-                    [sty.buttonpassword__fIcqMzuNw]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.buttonslids_unnamedVariant3__fIcqD2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.buttonslids_unnamedVariant__fIcq0Ult]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.buttonunnamedVariant2__fIcqJhBkr]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.buttonunnamedVariant2_password__fIcqJhBkrMzuNw]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.buttonunnamedVariant2_unnamedVariant__fIcqJhBkrL6NG6]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.buttonunnamedVariant__fIcqL6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -3679,82 +2330,22 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       role={"img"}
                     />
                   }
-                  isDisabled={
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return (
-                              !$state.fragmentInput.value.match(
-                                $state.contry.find(
-                                  item => item.value === $state.selectContry
-                                ).phoneFormats.regex
-                              ) || $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? (() => {
-                          try {
-                            return (
-                              !$state.fragmentInput.value.match(
-                                $state.contry.find(
-                                  item => item.value === $state.selectContry
-                                ).phoneFormats.regex
-                              ) || $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "password", "password")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
+                  isDisabled={(() => {
+                    try {
+                      return (
+                        $state.fragmentInput.value.length != 11 ||
+                        $state.loadedbtn
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
                   onClick={async event => {
                     const $steps = {};
 
@@ -4114,74 +2705,18 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__ysswt,
-                      {
-                        [sty.textloginByPassword__ysswt6PhKf]: hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                        [sty.textpassword__ysswtmzuNw]: hasVariant(
-                          $state,
-                          "password",
-                          "password"
-                        )
-                      }
+                      sty.text__ysswt
                     )}
                   >
-                    {hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : hasVariant($state, "password", "password")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
                   </div>
                 </Button>
                 <Button
                   data-plasmic-name={"btnSaraf"}
                   data-plasmic-override={overrides.btnSaraf}
                   className={classNames("__wab_instance", sty.btnSaraf, {
-                    [sty.btnSarafloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.btnSarafloginByPassword_password]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.btnSarafloginByPassword_unnamedVariant2]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.btnSarafpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.btnSarafslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.btnSarafslids_unnamedVariant]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant"
-                    ),
-                    [sty.btnSarafunnamedVariant2]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.btnSarafunnamedVariant2_unnamedVariant]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.btnSarafunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -4195,53 +2730,22 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       role={"img"}
                     />
                   }
-                  isDisabled={
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                    hasVariant($state, "unnamedVariant", "unnamedVariant")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
+                  isDisabled={(() => {
+                    try {
+                      return (
+                        $state.fragmentInput.value.length != 11 ||
+                        $state.loadedbtn
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
                   onClick={async event => {
                     const $steps = {};
 
@@ -4545,74 +3049,34 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       ];
                     }
                   }}
-                  showEndIcon={
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                    hasVariant($state, "unnamedVariant", "unnamedVariant")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
+                  showEndIcon={(() => {
+                    try {
+                      return $state.loadedbtn;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
                 >
                   <div
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__plN9Y,
-                      {
-                        [sty.textunnamedVariant2__plN9YjhBkr]: hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        )
-                      }
+                      sty.text__plN9Y
                     )}
                   >
-                    {hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? "\u062a\u0627\u06cc\u06cc\u062f"
-                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                    {
+                      "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
+                    }
                   </div>
                 </Button>
                 {(
-                  hasVariant($state, "slids", "unnamedVariant3")
-                    ? true
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? true
                     : false
                 ) ? (
@@ -4620,39 +3084,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     data-plasmic-name={"sendcode"}
                     data-plasmic-override={overrides.sendcode}
                     className={classNames("__wab_instance", sty.sendcode, {
-                      [sty.sendcodeloginByPassword]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.sendcodepassword]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.sendcodeslids_unnamedVariant3]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.sendcodeunnamedVariant2]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.sendcodeunnamedVariant2_password]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) && hasVariant($state, "password", "password"),
-                      [sty.sendcodeunnamedVariant2_unnamedVariant]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
                       [sty.sendcodeunnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -4678,41 +3109,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       />
                     }
                     isDisabled={
-                      hasVariant($state, "slids", "unnamedVariant3") &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                       hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 4;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant($state, "slids", "unnamedVariant3")
-                        ? (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 4;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant(
-                            $state,
-                            "unnamedVariant",
-                            "unnamedVariant"
-                          ) &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
                         ? (() => {
                             try {
                               return $state.fragmentInput2.value.length != 4;
@@ -5100,9 +3498,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 ) : null}
               </div>
               {(
-                hasVariant($state, "slids", "unnamedVariant3")
-                  ? true
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                hasVariant($state, "unnamedVariant", "unnamedVariant")
                   ? true
                   : false
               ) ? (
@@ -5110,11 +3506,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   data-plasmic-name={"figmaPaste"}
                   data-plasmic-override={overrides.figmaPaste}
                   className={classNames(projectcss.all, sty.figmaPaste, {
-                    [sty.figmaPasteslids_unnamedVariant3]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
                     [sty.figmaPasteunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5158,11 +3549,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       data-plasmic-name={"group3"}
                       data-plasmic-override={overrides.group3}
                       className={classNames(projectcss.all, sty.group3, {
-                        [sty.group3slids_unnamedVariant3]: hasVariant(
-                          $state,
-                          "slids",
-                          "unnamedVariant3"
-                        ),
                         [sty.group3unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -5251,11 +3637,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                           data-plasmic-name={"rectangle"}
                           data-plasmic-override={overrides.rectangle}
                           className={classNames(projectcss.all, sty.rectangle, {
-                            [sty.rectangleslids_unnamedVariant3]: hasVariant(
-                              $state,
-                              "slids",
-                              "unnamedVariant3"
-                            ),
                             [sty.rectangleunnamedVariant]: hasVariant(
                               $state,
                               "unnamedVariant",
@@ -5281,8 +3662,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text__ef0Ok,
                         {
-                          [sty.textslids_unnamedVariant3__ef0Okd2M3Q]:
-                            hasVariant($state, "slids", "unnamedVariant3"),
                           [sty.textunnamedVariant__ef0Okl6NG6]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -5301,8 +3680,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text__qhuI,
                         {
-                          [sty.textslids_unnamedVariant3__qhuId2M3Q]:
-                            hasVariant($state, "slids", "unnamedVariant3"),
                           [sty.textunnamedVariant__qhuIl6NG6]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -5327,108 +3704,14 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 data-plasmic-name={"group9"}
                 data-plasmic-override={overrides.group9}
                 className={classNames(projectcss.all, sty.group9, {
-                  [sty.group9loginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.group9loginByPassword_unnamedVariant2]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group9password]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.group9slids_unnamedVariant2]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group9slids_unnamedVariant3]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.group9slids_unnamedVariant]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.group9unnamedVariant2]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group9unnamedVariant2_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group9unnamedVariant2_unnamedVariant]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.group9unnamedVariant]: hasVariant(
                     $state,
                     "unnamedVariant",
                     "unnamedVariant"
-                  ),
-                  [sty.group9unnamedVariant_password]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "password", "password")
+                  )
                 })}
                 onClick={async event => {
                   const $steps = {};
-
-                  $steps["updateUnnamedVariant"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "unnamedVariant",
-                          operation: 6
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, false);
-                          return false;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateUnnamedVariant"] != null &&
-                    typeof $steps["updateUnnamedVariant"] === "object" &&
-                    typeof $steps["updateUnnamedVariant"].then === "function"
-                  ) {
-                    $steps["updateUnnamedVariant"] = await $steps[
-                      "updateUnnamedVariant"
-                    ];
-                  }
-
-                  $steps["updateLoginByPassword"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "loginByPassword",
-                          operation: 6
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, false);
-                          return false;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateLoginByPassword"] != null &&
-                    typeof $steps["updateLoginByPassword"] === "object" &&
-                    typeof $steps["updateLoginByPassword"].then === "function"
-                  ) {
-                    $steps["updateLoginByPassword"] = await $steps[
-                      "updateLoginByPassword"
-                    ];
-                  }
                 }}
               >
                 <div
@@ -5437,51 +3720,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__wLs3X,
                     {
-                      [sty.textloginByPassword__wLs3X6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textloginByPassword_unnamedVariant2__wLs3X6PhKfJhBkr]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textpassword__wLs3XmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__wLs3Xd2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__wLs3XJhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant2_password__wLs3XJhBkrMzuNw]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textunnamedVariant2_unnamedVariant__wLs3XJhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
                       [sty.textunnamedVariant__wLs3Xl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -5490,29 +3728,12 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                  {
+                    "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                  }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg__fMLb0, {
-                    [sty.svgloginByPassword_unnamedVariant2__fMLb06PhKfJhBkr]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgslids_unnamedVariant3__fMLb0D2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgunnamedVariant2_password__fMLb0JhBkrMzuNw]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.svgunnamedVariant__fMLb0L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5531,51 +3752,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "forgottenPassword",
                     "forgottenPassword"
                   ),
-                  [sty.group10loginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.group10loginByPassword_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.group10loginByPassword_unnamedVariant2]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group10loginByPassword_unnamedVariant]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.group10password]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.group10slids_unnamedVariant2]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group10slids_unnamedVariant3]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.group10slids_unnamedVariant]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.group10unnamedVariant2]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group10unnamedVariant2_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group10unnamedVariant2_unnamedVariant]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.group10unnamedVariant]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -5584,53 +3760,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 })}
                 onClick={async event => {
                   const $steps = {};
-
-                  $steps["updateUnnamedVariant"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          vgroup: "unnamedVariant",
-                          operation: 6
-                        };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, false);
-                          return false;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateUnnamedVariant"] != null &&
-                    typeof $steps["updateUnnamedVariant"] === "object" &&
-                    typeof $steps["updateUnnamedVariant"].then === "function"
-                  ) {
-                    $steps["updateUnnamedVariant"] = await $steps[
-                      "updateUnnamedVariant"
-                    ];
-                  }
-
-                  $steps["updatePassword"] = true
-                    ? (() => {
-                        const actionArgs = { vgroup: "password", operation: 6 };
-                        return (({ vgroup, value }) => {
-                          if (typeof value === "string") {
-                            value = [value];
-                          }
-
-                          $stateSet($state, vgroup, false);
-                          return false;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updatePassword"] != null &&
-                    typeof $steps["updatePassword"] === "object" &&
-                    typeof $steps["updatePassword"].then === "function"
-                  ) {
-                    $steps["updatePassword"] = await $steps["updatePassword"];
-                  }
                 }}
               >
                 <div
@@ -5639,51 +3768,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__jkcLu,
                     {
-                      [sty.textloginByPassword__jkcLu6PhKf]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textloginByPassword_unnamedVariant2__jkcLu6PhKfJhBkr]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textpassword__jkcLUmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__jkcLUd2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__jkcLujhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant2_password__jkcLujhBkrMzuNw]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textunnamedVariant2_unnamedVariant__jkcLujhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
                       [sty.textunnamedVariant__jkcLUl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -5692,29 +3776,12 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                  {
+                    "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                  }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg___5OQ8, {
-                    [sty.svgloginByPassword_unnamedVariant2___5OQ86PhKfJhBkr]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgslids_unnamedVariant3___5OQ8D2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgunnamedVariant2_password___5OQ8JhBkrMzuNw]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.svgunnamedVariant___5OQ8L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5733,58 +3800,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "forgottenPassword",
                     "forgottenPassword"
                   ),
-                  [sty.group11loginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.group11loginByPassword_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.group11loginByPassword_unnamedVariant2]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group11loginByPassword_unnamedVariant]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.group11password]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.group11slids_unnamedVariant2]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group11slids_unnamedVariant3]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant3"
-                  ),
-                  [sty.group11slids_unnamedVariant]: hasVariant(
-                    $state,
-                    "slids",
-                    "unnamedVariant"
-                  ),
-                  [sty.group11unnamedVariant2]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.group11unnamedVariant2_forgottenPassword]:
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
-                    hasVariant(
-                      $state,
-                      "forgottenPassword",
-                      "forgottenPassword"
-                    ),
-                  [sty.group11unnamedVariant2_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                  [sty.group11unnamedVariant2_unnamedVariant]:
-                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                   [sty.group11unnamedVariant]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -5826,51 +3841,11 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__khSP,
                     {
-                      [sty.textloginByPassword__khSP6PhKf]: hasVariant(
+                      [sty.textforgottenPassword__khSPeMJzM]: hasVariant(
                         $state,
-                        "loginByPassword",
-                        "loginByPassword"
+                        "forgottenPassword",
+                        "forgottenPassword"
                       ),
-                      [sty.textloginByPassword_unnamedVariant2__khSP6PhKfJhBkr]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textpassword__khSPmzuNw]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textslids_unnamedVariant3__khSPd2M3Q]: hasVariant(
-                        $state,
-                        "slids",
-                        "unnamedVariant3"
-                      ),
-                      [sty.textunnamedVariant2__khSPjhBkr]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant2_password__khSPjhBkrMzuNw]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ),
-                      [sty.textunnamedVariant2_unnamedVariant__khSPjhBkrL6NG6]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
                       [sty.textunnamedVariant__khSPl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -5879,29 +3854,12 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     }
                   )}
                 >
-                  {hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0648\u0631\u0648\u062f"}
+                  {
+                    "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0648\u0631\u0648\u062f"
+                  }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg__jSMqd, {
-                    [sty.svgloginByPassword_unnamedVariant2__jSMqd6PhKfJhBkr]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.svgslids_unnamedVariant3__jSMqdd2M3Q]: hasVariant(
-                      $state,
-                      "slids",
-                      "unnamedVariant3"
-                    ),
-                    [sty.svgunnamedVariant2_password__jSMqdJhBkrMzuNw]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.svgunnamedVariant__jSMqdl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -5979,41 +3937,16 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             </div>
           </Stack__>
         ) : null}
-        {(hasVariant($state, "slids", "unnamedVariant") ? true : false) ? (
+        {false ? (
           <PlasmicImg__
             alt={""}
-            className={classNames(sty.img__tZsNq, {
-              [sty.imgslids_unnamedVariant2__tZsNqm5EJh]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant2"
-              ),
-              [sty.imgslids_unnamedVariant3__tZsNQd2M3Q]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant3"
-              ),
-              [sty.imgslids_unnamedVariant__tZsNq0Ult]: hasVariant(
-                $state,
-                "slids",
-                "unnamedVariant"
-              )
-            })}
-            displayHeight={
-              hasVariant($state, "slids", "unnamedVariant") ? "100%" : "auto"
-            }
+            className={classNames(sty.img__tZsNq)}
+            displayHeight={"auto"}
             displayMaxHeight={"none"}
             displayMaxWidth={"100%"}
             displayMinHeight={"0"}
             displayMinWidth={"0"}
-            displayWidth={
-              hasVariant($state, "slids", "unnamedVariant") &&
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "100%"
-                : hasVariant($state, "slids", "unnamedVariant")
-                ? "auto"
-                : "auto"
-            }
+            displayWidth={"auto"}
             loading={"lazy"}
             src={{
               src: "/plasmic/babarkat/images/image8.png",
@@ -6035,21 +3968,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             [sty.apiRequestforgottenPassword_unnamedVariant]:
               hasVariant($state, "unnamedVariant", "unnamedVariant") &&
               hasVariant($state, "forgottenPassword", "forgottenPassword"),
-            [sty.apiRequestloginByPassword]: hasVariant(
-              $state,
-              "loginByPassword",
-              "loginByPassword"
-            ),
-            [sty.apiRequestpassword]: hasVariant(
-              $state,
-              "password",
-              "password"
-            ),
-            [sty.apiRequestunnamedVariant2]: hasVariant(
-              $state,
-              "unnamedVariant2",
-              "unnamedVariant2"
-            ),
             [sty.apiRequestunnamedVariant]: hasVariant(
               $state,
               "unnamedVariant",
@@ -6084,11 +4002,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
           data-plasmic-name={"embedHtml"}
           data-plasmic-override={overrides.embedHtml}
           className={classNames("__wab_instance", sty.embedHtml, {
-            [sty.embedHtmlloginByPassword]: hasVariant(
-              $state,
-              "loginByPassword",
-              "loginByPassword"
-            ),
             [sty.embedHtmlunnamedVariant]: hasVariant(
               $state,
               "unnamedVariant",
@@ -6096,9 +4009,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             )
           })}
           code={
-            hasVariant($state, "loginByPassword", "loginByPassword")
-              ? "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
-              : hasVariant($state, "unnamedVariant", "unnamedVariant")
+            hasVariant($state, "unnamedVariant", "unnamedVariant")
               ? "  <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n              console.log(\"\u0627\u0644\u0627\u0646\");\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
               : "  <script>\r\n          var initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                        document.getElementById('logoLogin').style.display = 'none';\r\n            } else {\r\n                        document.getElementById('logoLogin').style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
           }
