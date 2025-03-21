@@ -1828,7 +1828,7 @@
   top: 0;
   z-index: 1;
   position: fixed;
-  display: block;
+  display: none;
   margin: 20px;
 }
 .group9slids_unnamedVariant3 {
@@ -1840,7 +1840,7 @@
   margin: 20px;
 }
 .group9unnamedVariant2 {
-  display: block;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .group9unnamedVariant2 {
@@ -1871,6 +1871,9 @@
     left: 15px;
     z-index: 50;
   }
+}
+.group9unnamedVariant2_unnamedVariant {
+  display: none;
 }
 .text__wLs3X {
   display: block;
@@ -1913,12 +1916,12 @@
   display: none;
 }
 .group10unnamedVariant {
-  left: 0;
-  top: 0;
+  left: 0px;
+  top: 0px;
   z-index: 1;
-  position: fixed;
+  position: absolute;
   display: block;
-  margin: 20px;
+  margin: 0px;
 }
 .group10slids_unnamedVariant3 {
   left: 0;
@@ -1962,6 +1965,9 @@
     z-index: 50;
   }
 }
+.group10forgottenPassword {
+  display: none;
+}
 .group10loginByPassword_unnamedVariant2 {
   left: 0px;
   top: 0px;
@@ -1989,6 +1995,106 @@
   }
 }
 .svg___5OQ8 {
+  object-fit: cover;
+  max-width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  color: #a6aeb6;
+  height: 1em;
+}
+.group11 {
+  width: 188px;
+  height: 22px;
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  flex-shrink: 0;
+}
+.group11unnamedVariant {
+  left: 0;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  display: none;
+  margin: 20px;
+}
+.group11slids_unnamedVariant3 {
+  left: 0;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  display: block;
+  margin: 20px;
+}
+.group11unnamedVariant2 {
+  display: none;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .group11unnamedVariant2 {
+    left: 0px;
+    top: 0px;
+    display: none;
+  }
+}
+.group11password {
+  top: 0px;
+  left: 0px;
+  display: block;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .group11password {
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+  }
+}
+.group11loginByPassword {
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .group11loginByPassword {
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+  }
+}
+.group11forgottenPassword {
+  display: block;
+}
+.group11unnamedVariant2_unnamedVariant {
+  display: none;
+}
+.group11loginByPassword_unnamedVariant2 {
+  left: 0px;
+  top: 0px;
+}
+.text__khSP {
+  display: block;
+  font-size: 18px;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.0264em;
+  line-height: 100%;
+  color: rgba(166, 174, 182, 1);
+  position: absolute;
+  top: 0px;
+  left: 32px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .textpassword__khSPmzuNw {
+    font-size: 14px;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .textloginByPassword__khSP6PhKf {
+    font-size: 14px;
+  }
+}
+.svg__jSMqd {
   object-fit: cover;
   max-width: 100%;
   position: absolute;

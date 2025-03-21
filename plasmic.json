@@ -1457,20 +1457,6 @@
           "path": "/pubg"
         },
         {
-          "id": "f_2K-lwgshWK",
-          "name": "LogIn2",
-          "type": "managed",
-          "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn2.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/Forgotten-passwor.tsx"
-          },
-          "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/Forgotten-password"
-        },
-        {
           "id": "uj9U0aRqhjqk",
           "name": "Editpass",
           "type": "managed",
@@ -1601,6 +1587,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/Forgotten-password"
+        },
+        {
+          "id": "f_2K-lwgshWK",
+          "name": "LogIn2",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn2.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/Forgotten-passwor.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/Forgotten-passwor"
         }
       ],
       "icons": [
@@ -3007,7 +3007,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {

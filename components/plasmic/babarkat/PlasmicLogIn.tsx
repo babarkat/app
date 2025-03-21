@@ -2630,6 +2630,9 @@ function PlasmicLogIn__RenderFunc(props: {
                       "loginByPassword",
                       "loginByPassword"
                     ),
+                    [sty.textloginByPassword_password__vfBkC0DikB8PqF9]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
                     [sty.textpassword__vfBkC8PqF9]: hasVariant(
                       $state,
                       "password",
@@ -2655,10 +2658,10 @@ function PlasmicLogIn__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["goToLogIn2"] = true
+                  $steps["goToLogIn3"] = true
                     ? (() => {
                         const actionArgs = {
-                          destination: `/Forgotten-passwor`
+                          destination: `/Forgotten-password`
                         };
                         return (({ destination }) => {
                           if (
@@ -2675,16 +2678,16 @@ function PlasmicLogIn__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["goToLogIn2"] != null &&
-                    typeof $steps["goToLogIn2"] === "object" &&
-                    typeof $steps["goToLogIn2"].then === "function"
+                    $steps["goToLogIn3"] != null &&
+                    typeof $steps["goToLogIn3"] === "object" &&
+                    typeof $steps["goToLogIn3"].then === "function"
                   ) {
-                    $steps["goToLogIn2"] = await $steps["goToLogIn2"];
+                    $steps["goToLogIn3"] = await $steps["goToLogIn3"];
                   }
                 }}
               >
                 {hasVariant($state, "loginByPassword", "loginByPassword")
-                  ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                  ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
                   : hasVariant($state, "password", "password")
                   ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
                   : hasVariant($state, "unnamedVariant2", "unnamedVariant2")

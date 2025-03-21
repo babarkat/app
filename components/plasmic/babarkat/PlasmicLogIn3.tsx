@@ -166,6 +166,7 @@ export type PlasmicLogIn3__OverridesType = {
   group8?: Flex__<"div">;
   group9?: Flex__<"div">;
   group10?: Flex__<"div">;
+  group11?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
   embedHtml?: Flex__<typeof Embed>;
 };
@@ -5514,6 +5515,11 @@ function PlasmicLogIn3__RenderFunc(props: {
                 data-plasmic-name={"group10"}
                 data-plasmic-override={overrides.group10}
                 className={classNames(projectcss.all, sty.group10, {
+                  [sty.group10forgottenPassword]: hasVariant(
+                    $state,
+                    "forgottenPassword",
+                    "forgottenPassword"
+                  ),
                   [sty.group10loginByPassword]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -5699,6 +5705,193 @@ function PlasmicLogIn3__RenderFunc(props: {
                       hasVariant($state, "password", "password") &&
                       hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.svgunnamedVariant___5OQ8L6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
+                  role={"img"}
+                />
+              </div>
+              <div
+                data-plasmic-name={"group11"}
+                data-plasmic-override={overrides.group11}
+                className={classNames(projectcss.all, sty.group11, {
+                  [sty.group11forgottenPassword]: hasVariant(
+                    $state,
+                    "forgottenPassword",
+                    "forgottenPassword"
+                  ),
+                  [sty.group11loginByPassword]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.group11loginByPassword_password]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
+                  [sty.group11loginByPassword_unnamedVariant2]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group11loginByPassword_unnamedVariant]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
+                  [sty.group11password]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.group11slids_unnamedVariant2]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant2"
+                  ),
+                  [sty.group11slids_unnamedVariant3]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant3"
+                  ),
+                  [sty.group11slids_unnamedVariant]: hasVariant(
+                    $state,
+                    "slids",
+                    "unnamedVariant"
+                  ),
+                  [sty.group11unnamedVariant2]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.group11unnamedVariant2_forgottenPassword]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant(
+                      $state,
+                      "forgottenPassword",
+                      "forgottenPassword"
+                    ),
+                  [sty.group11unnamedVariant2_password]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group11unnamedVariant2_unnamedVariant]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.group11unnamedVariant]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToLogIn"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/login` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToLogIn"] != null &&
+                    typeof $steps["goToLogIn"] === "object" &&
+                    typeof $steps["goToLogIn"].then === "function"
+                  ) {
+                    $steps["goToLogIn"] = await $steps["goToLogIn"];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__khSP,
+                    {
+                      [sty.textloginByPassword__khSP6PhKf]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant2__khSP6PhKfJhBkr]:
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                      [sty.textpassword__khSPmzuNw]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textslids_unnamedVariant3__khSPd2M3Q]: hasVariant(
+                        $state,
+                        "slids",
+                        "unnamedVariant3"
+                      ),
+                      [sty.textunnamedVariant2__khSPjhBkr]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant2_password__khSPjhBkrMzuNw]:
+                        hasVariant($state, "password", "password") &&
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ),
+                      [sty.textunnamedVariant2_unnamedVariant__khSPjhBkrL6NG6]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant($state, "unnamedVariant", "unnamedVariant"),
+                      [sty.textunnamedVariant__khSPl6NG6]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "loginByPassword", "loginByPassword")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : hasVariant($state, "password", "password")
+                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                    : "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0648\u0631\u0648\u062f"}
+                </div>
+                <LeftArrowBackSvgrepoComSvgIcon
+                  className={classNames(projectcss.all, sty.svg__jSMqd, {
+                    [sty.svgloginByPassword_unnamedVariant2__jSMqd6PhKfJhBkr]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                    [sty.svgslids_unnamedVariant3__jSMqdd2M3Q]: hasVariant(
+                      $state,
+                      "slids",
+                      "unnamedVariant3"
+                    ),
+                    [sty.svgunnamedVariant2_password__jSMqdJhBkrMzuNw]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                    [sty.svgunnamedVariant__jSMqdl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
@@ -5981,6 +6174,7 @@ const PlasmicDescendants = {
     "group8",
     "group9",
     "group10",
+    "group11",
     "apiRequest",
     "embedHtml"
   ],
@@ -6011,7 +6205,8 @@ const PlasmicDescendants = {
     "rectangle",
     "group8",
     "group9",
-    "group10"
+    "group10",
+    "group11"
   ],
   editpass: ["editpass"],
   fragmentInput: ["fragmentInput"],
@@ -6077,6 +6272,7 @@ const PlasmicDescendants = {
   group8: ["group8"],
   group9: ["group9"],
   group10: ["group10"],
+  group11: ["group11"],
   apiRequest: ["apiRequest"],
   embedHtml: ["embedHtml"]
 } as const;
@@ -6112,6 +6308,7 @@ type NodeDefaultElementType = {
   group8: "div";
   group9: "div";
   group10: "div";
+  group11: "div";
   apiRequest: typeof ApiRequest;
   embedHtml: typeof Embed;
 };
@@ -6228,6 +6425,7 @@ export const PlasmicLogIn3 = Object.assign(
     group8: makeNodeComponent("group8"),
     group9: makeNodeComponent("group9"),
     group10: makeNodeComponent("group10"),
+    group11: makeNodeComponent("group11"),
     apiRequest: makeNodeComponent("apiRequest"),
     embedHtml: makeNodeComponent("embedHtml"),
 
