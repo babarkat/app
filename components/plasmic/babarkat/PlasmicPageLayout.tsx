@@ -79,9 +79,7 @@ export type PlasmicPageLayout__VariantsArgs = {};
 type VariantPropType = keyof PlasmicPageLayout__VariantsArgs;
 export const PlasmicPageLayout__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicPageLayout__ArgsType = {
-  children?: React.ReactNode;
-};
+export type PlasmicPageLayout__ArgsType = { children?: React.ReactNode };
 type ArgPropType = keyof PlasmicPageLayout__ArgsType;
 export const PlasmicPageLayout__ArgProps = new Array<ArgPropType>("children");
 
@@ -251,15 +249,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicPageLayout__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicPageLayout__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicPageLayout__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicPageLayout__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

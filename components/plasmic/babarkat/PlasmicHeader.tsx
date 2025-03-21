@@ -2438,7 +2438,7 @@ function PlasmicHeader__RenderFunc(props: {
                   $steps["goToLogIn2"] = true
                     ? (() => {
                         const actionArgs = {
-                          destination: `/Forgotten-password`
+                          destination: `/Forgotten-passwor`
                         };
                         return (({ destination }) => {
                           if (
@@ -4280,15 +4280,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicHeader__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicHeader__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicHeader__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicHeader__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;

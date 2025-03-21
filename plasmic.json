@@ -1463,7 +1463,7 @@
           "projectId": "sZQMbqXz9utLNaTnNb3uss",
           "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn2.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/Forgotten-password.tsx"
+            "modulePath": "../src/pages/Forgotten-passwor.tsx"
           },
           "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
           "scheme": "blackbox",
@@ -1587,6 +1587,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicCombobox.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "dyOTtMZDhn7d",
+          "name": "LogIn3",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn3.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/Forgotten-password.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLogIn3.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/Forgotten-password"
         }
       ],
       "icons": [
@@ -2993,8 +3007,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
@@ -3029,6 +3042,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.335",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.335/dist/plasmic.schema.json"
+  "cliVersion": "0.1.336",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.336/dist/plasmic.schema.json"
 }

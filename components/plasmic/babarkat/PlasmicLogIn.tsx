@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
+
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
@@ -128,9 +129,7 @@ export const PlasmicLogIn__VariantProps = new Array<VariantPropType>(
   "loginByPassword"
 );
 
-export type PlasmicLogIn__ArgsType = {
-  disabled?: boolean;
-};
+export type PlasmicLogIn__ArgsType = { disabled?: boolean };
 type ArgPropType = keyof PlasmicLogIn__ArgsType;
 export const PlasmicLogIn__ArgProps = new Array<ArgPropType>("disabled");
 
@@ -2659,7 +2658,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   $steps["goToLogIn2"] = true
                     ? (() => {
                         const actionArgs = {
-                          destination: `/Forgotten-password`
+                          destination: `/Forgotten-passwor`
                         };
                         return (({ destination }) => {
                           if (
@@ -6098,15 +6097,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicLogIn__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicLogIn__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicLogIn__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicLogIn__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
