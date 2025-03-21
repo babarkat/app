@@ -685,6 +685,25 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "unnamedVariant"
                     )
                   })}
+                  token={
+                    hasVariant($state, "forgottenPassword", "forgottenPassword")
+                      ? (() => {
+                          try {
+                            return JSON.parse(
+                              sessionStorage.getItem("userbabarcatToken")
+                            ).value;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      : undefined
+                  }
                 />
               </div>
               <Stack__
