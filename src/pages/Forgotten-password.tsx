@@ -5,23 +5,23 @@ import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-we
 import GlobalContextsProvider from "../../components/plasmic/babarkat/PlasmicGlobalContextsProvider";
 import { UnnamedGlobalGroupOfVariantsContext } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
 import { UnnamedGlobalGroupOfVariants2Context } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
-import { PlasmicLogIn3 } from "../../components/plasmic/babarkat/PlasmicLogIn3";
+import { PlasmicForgottenPassword } from "../../components/plasmic/babarkat/PlasmicForgottenPassword";
 import { useRouter } from "next/router";
 
-function LogIn3() {
-  // Use PlasmicLogIn3 to render this component as it was
+function ForgottenPassword() {
+  // Use PlasmicForgottenPassword to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicLogIn3 are:
+  // Props you can pass into PlasmicForgottenPassword are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, PlasmicLogIn3 is wrapped by your project's global
+  // By default, PlasmicForgottenPassword is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -35,7 +35,7 @@ function LogIn3() {
             params={useRouter()?.query}
             query={useRouter()?.query}
           >
-            <PlasmicLogIn3 />
+            <PlasmicForgottenPassword />
           </PageParamsProvider__>
         </GlobalContextsProvider>
       </UnnamedGlobalGroupOfVariantsContext.Provider>
@@ -43,4 +43,4 @@ function LogIn3() {
   );
 }
 
-export default LogIn3;
+export default ForgottenPassword;

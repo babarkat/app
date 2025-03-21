@@ -2437,9 +2437,7 @@ function PlasmicHeader__RenderFunc(props: {
 
                   $steps["goToLogIn2"] = true
                     ? (() => {
-                        const actionArgs = {
-                          destination: `/Forgotten-passwor`
-                        };
+                        const actionArgs = {};
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&
