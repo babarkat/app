@@ -68,7 +68,6 @@ import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/compone
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -138,7 +137,6 @@ export type PlasmicChargingAfg__OverridesType = {
   modal?: Flex__<typeof AntdModal>;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
-  timer?: Flex__<typeof Timer>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   exchangeRate?: Flex__<typeof ApiRequest>;
 };
@@ -4538,53 +4536,6 @@ function PlasmicChargingAfg__RenderFunc(props: {
               </div>
             </AntdModal>
           </div>
-          <Timer
-            data-plasmic-name={"timer"}
-            data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer)}
-            intervalSeconds={1}
-            isRunning={true}
-            onTick={async () => {
-              const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          const item = JSON.parse(
-                            sessionStorage.getItem("userbabarcatToken")
-                          );
-                          if (item == null) {
-                            return (window.location.href =
-                              "https://app.babarkat.com/login/");
-                          } else {
-                            const currentTime = new Date().getTime();
-                            if (currentTime > item.expiration) {
-                              return sessionStorage.removeItem(
-                                "userbabarcatToken"
-                              );
-                            }
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
-            }}
-            runWhileEditing={false}
-          />
-
           <ApiRequest
             data-plasmic-name={"commissionBabarkat"}
             data-plasmic-override={overrides.commissionBabarkat}
@@ -4735,7 +4686,6 @@ const PlasmicDescendants = {
     "modal",
     "modal2",
     "lottie",
-    "timer",
     "commissionBabarkat",
     "exchangeRate"
   ],
@@ -4804,7 +4754,6 @@ const PlasmicDescendants = {
   modal: ["modal"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
-  timer: ["timer"],
   commissionBabarkat: ["commissionBabarkat"],
   exchangeRate: ["exchangeRate"]
 } as const;
@@ -4838,7 +4787,6 @@ type NodeDefaultElementType = {
   modal: typeof AntdModal;
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
-  timer: typeof Timer;
   commissionBabarkat: typeof ApiRequest;
   exchangeRate: typeof ApiRequest;
 };
@@ -4957,7 +4905,6 @@ export const PlasmicChargingAfg = Object.assign(
     modal: makeNodeComponent("modal"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
-    timer: makeNodeComponent("timer"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     exchangeRate: makeNodeComponent("exchangeRate"),
 

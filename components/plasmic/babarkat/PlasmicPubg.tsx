@@ -73,7 +73,6 @@ import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -149,7 +148,6 @@ export type PlasmicPubg__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   rate?: Flex__<typeof ApiRequest>;
-  timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
 };
 
@@ -5365,56 +5363,6 @@ function PlasmicPubg__RenderFunc(props: {
             ) : null}
           </ApiRequest>
           {(hasVariant($state, "steps2", "step3") ? true : false) ? (
-            <Timer
-              data-plasmic-name={"timer"}
-              data-plasmic-override={overrides.timer}
-              className={classNames("__wab_instance", sty.timer, {
-                [sty.timersteps2_step3]: hasVariant($state, "steps2", "step3")
-              })}
-              intervalSeconds={1}
-              isRunning={true}
-              onTick={async () => {
-                const $steps = {};
-
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            const item = JSON.parse(
-                              sessionStorage.getItem("userbabarcatToken")
-                            );
-                            if (item == null) {
-                              return (window.location.href =
-                                "https://app.babarkat.com/login/");
-                            } else {
-                              const currentTime = new Date().getTime();
-                              if (currentTime > item.expiration) {
-                                return sessionStorage.removeItem(
-                                  "userbabarcatToken"
-                                );
-                              }
-                            }
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
-                ) {
-                  $steps["runCode"] = await $steps["runCode"];
-                }
-              }}
-              runWhileEditing={false}
-            />
-          ) : null}
-          {(hasVariant($state, "steps2", "step3") ? true : false) ? (
             <Embed
               data-plasmic-name={"embedHtml"}
               data-plasmic-override={overrides.embedHtml}
@@ -5471,7 +5419,6 @@ const PlasmicDescendants = {
     "lottie",
     "commissionBabarkat",
     "rate",
-    "timer",
     "embedHtml"
   ],
   header: ["header"],
@@ -5546,7 +5493,6 @@ const PlasmicDescendants = {
   lottie: ["lottie"],
   commissionBabarkat: ["commissionBabarkat"],
   rate: ["rate"],
-  timer: ["timer"],
   embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -5584,7 +5530,6 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   commissionBabarkat: typeof ApiRequest;
   rate: typeof ApiRequest;
-  timer: typeof Timer;
   embedHtml: typeof Embed;
 };
 
@@ -5707,7 +5652,6 @@ export const PlasmicPubg = Object.assign(
     lottie: makeNodeComponent("lottie"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     rate: makeNodeComponent("rate"),
-    timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPubg

@@ -1701,10 +1701,6 @@
   width: auto;
   height: 1em;
 }
-.timer:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .commissionBabarkat:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
