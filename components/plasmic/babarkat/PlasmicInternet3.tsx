@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -73,7 +73,6 @@ import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -149,7 +148,6 @@ export type PlasmicInternet3__OverridesType = {
   اپراتور3?: Flex__<"div">;
   modal3?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
-  timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
 };
@@ -4551,56 +4549,6 @@ function PlasmicInternet3__RenderFunc(props: {
               </div>
             </AntdModal>
           </div>
-          <Timer
-            data-plasmic-name={"timer"}
-            data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer, {
-              [sty.timersteps2_step2]: hasVariant($state, "steps2", "step2"),
-              [sty.timersteps2_step3]: hasVariant($state, "steps2", "step3")
-            })}
-            intervalSeconds={1}
-            isRunning={true}
-            onTick={async () => {
-              const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          const item = JSON.parse(
-                            sessionStorage.getItem("userbabarcatToken")
-                          );
-                          if (item == null) {
-                            return (window.location.href =
-                              "https://app.babarkat.com/login/");
-                          } else {
-                            const currentTime = new Date().getTime();
-                            if (currentTime > item.expiration) {
-                              return sessionStorage.removeItem(
-                                "userbabarcatToken"
-                              );
-                            }
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
-            }}
-            runWhileEditing={false}
-          />
-
           <Embed
             data-plasmic-name={"embedHtml"}
             data-plasmic-override={overrides.embedHtml}
@@ -4702,7 +4650,6 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal3",
     "lottie",
-    "timer",
     "embedHtml",
     "commissionBabarkat"
   ],
@@ -4787,7 +4734,6 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal3: ["modal3", "lottie"],
   lottie: ["lottie"],
-  timer: ["timer"],
   embedHtml: ["embedHtml"],
   commissionBabarkat: ["commissionBabarkat"]
 } as const;
@@ -4826,7 +4772,6 @@ type NodeDefaultElementType = {
   اپراتور3: "div";
   modal3: typeof AntdModal;
   lottie: typeof LottieWrapper;
-  timer: typeof Timer;
   embedHtml: typeof Embed;
   commissionBabarkat: typeof ApiRequest;
 };
@@ -4950,7 +4895,6 @@ export const PlasmicInternet3 = Object.assign(
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     modal3: makeNodeComponent("modal3"),
     lottie: makeNodeComponent("lottie"),
-    timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
 

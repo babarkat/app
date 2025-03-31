@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -68,7 +68,6 @@ import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/compone
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 
@@ -143,7 +142,6 @@ export type PlasmicCharging__OverridesType = {
   اپراتور3?: Flex__<"div">;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
-  timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
 };
@@ -4748,53 +4746,6 @@ function PlasmicCharging__RenderFunc(props: {
               </div>
             </AntdModal>
           </div>
-          <Timer
-            data-plasmic-name={"timer"}
-            data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer)}
-            intervalSeconds={1}
-            isRunning={true}
-            onTick={async () => {
-              const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          const item = JSON.parse(
-                            sessionStorage.getItem("userbabarcatToken")
-                          );
-                          if (item == null) {
-                            return (window.location.href =
-                              "https://app.babarkat.com/login/");
-                          } else {
-                            const currentTime = new Date().getTime();
-                            if (currentTime > item.expiration) {
-                              return sessionStorage.removeItem(
-                                "userbabarcatToken"
-                              );
-                            }
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
-            }}
-            runWhileEditing={false}
-          />
-
           <Embed
             data-plasmic-name={"embedHtml"}
             data-plasmic-override={overrides.embedHtml}
@@ -4889,7 +4840,6 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal2",
     "lottie",
-    "timer",
     "embedHtml",
     "commissionBabarkat"
   ],
@@ -4973,7 +4923,6 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
-  timer: ["timer"],
   embedHtml: ["embedHtml"],
   commissionBabarkat: ["commissionBabarkat"]
 } as const;
@@ -5011,7 +4960,6 @@ type NodeDefaultElementType = {
   اپراتور3: "div";
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
-  timer: typeof Timer;
   embedHtml: typeof Embed;
   commissionBabarkat: typeof ApiRequest;
 };
@@ -5134,7 +5082,6 @@ export const PlasmicCharging = Object.assign(
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
-    timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
 
