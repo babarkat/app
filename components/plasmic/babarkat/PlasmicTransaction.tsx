@@ -4012,59 +4012,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                     let gy = parseInt(date.split("-")[0]);
                                     let gm = parseInt(date.split("-")[1]);
                                     let gd = parseInt(date.split("-")[2]);
-                                    let shamsiMonthDays = [
-                                      31, 31, 31, 31, 31, 31, 30, 30, 30, 30,
-                                      30, 29
-                                    ];
-
-                                    let miladiDaysInMonth = [
-                                      31, 28, 31, 30, 31, 30, 31, 31, 30, 31,
-                                      30, 31
-                                    ];
-
-                                    let isLeapYear =
-                                      gy % 4 === 0 &&
-                                      (gy % 100 !== 0 || gy % 400 === 0);
-                                    if (isLeapYear) {
-                                      miladiDaysInMonth[1] = 29;
-                                    }
-                                    let daysPassedMiladi = gd;
-                                    for (let i = 0; i < gm - 1; i++) {
-                                      daysPassedMiladi += miladiDaysInMonth[i];
-                                    }
-                                    let shamsiNewYearDayInMiladi = isLeapYear
-                                      ? 80
-                                      : 79;
-                                    let daysPassedInShamsiYear =
-                                      daysPassedMiladi -
-                                      shamsiNewYearDayInMiladi;
-                                    if (daysPassedInShamsiYear < 0) {
-                                      gy--;
-                                      isLeapYear =
-                                        gy % 4 === 0 &&
-                                        (gy % 100 !== 0 || gy % 400 === 0);
-                                      daysPassedInShamsiYear += isLeapYear
-                                        ? 366
-                                        : 365;
-                                    }
-                                    let jy = gy - 621;
-                                    let jm = 0;
-                                    let jd = daysPassedInShamsiYear;
-                                    for (
-                                      let i = 0;
-                                      i < shamsiMonthDays.length;
-                                      i++
-                                    ) {
-                                      if (jd < shamsiMonthDays[i]) {
-                                        jm = i + 1;
-                                        jd++;
-                                        break;
-                                      } else {
-                                        jd -= shamsiMonthDays[i];
-                                      }
-                                    }
+                                    var { jy, jm, jd } =
+                                      window.jalaali.toJalaali(gy, gm, gd);
                                     return (
-                                      jy + "/" + jm + "/" + jd + "  " + time
+                                      jy + "/" + jm + "/" + jd + "   " + time
                                     );
                                   })();
                                 } catch (e) {
