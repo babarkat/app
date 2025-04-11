@@ -2404,7 +2404,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   "screen",
                                   "mobileOnly"
                                 )
-                                  ? "\u062e\u0631\u06cc\u062f \u06cc\u0648\u0633\u06cc \u067e\u0627\u0628\u062c\u06cc"
+                                  ? "\u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc"
                                   : "\u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc"}
                               </div>
                             </div>
