@@ -2113,7 +2113,21 @@ function PlasmicInternet3__RenderFunc(props: {
                     data-plasmic-name={"tabsContainer"}
                     data-plasmic-override={overrides.tabsContainer}
                     initialKey={
-                      hasVariant($state, "steps2", "step2") ? `` : "tab1"
+                      hasVariant($state, "steps2", "step2")
+                        ? (() => {
+                            try {
+                              return $state.variable[0].periodicity;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : "tab1"
                     }
                     mountMode={
                       hasVariant($state, "steps2", "step2")
@@ -2123,7 +2137,23 @@ function PlasmicInternet3__RenderFunc(props: {
                     previewAll={
                       hasVariant($state, "steps2", "step2") ? false : true
                     }
-                    previewKey={hasVariant($state, "steps2", "step2") ? `` : ``}
+                    previewKey={
+                      hasVariant($state, "steps2", "step2")
+                        ? (() => {
+                            try {
+                              return $state.variable[0].periodicity;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : ``
+                    }
                   >
                     <DataCtxReader__>
                       {$ctx => (
