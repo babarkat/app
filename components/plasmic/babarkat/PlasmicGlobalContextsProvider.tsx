@@ -19,24 +19,19 @@ export interface GlobalContextsProviderProps {
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   contentfulCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof ContentfulCredentialsProvider>, "children">
   >;
-
   cmsCredentialsProviderProps?: Partial<
     Omit<React.ComponentProps<typeof CmsCredentialsProvider>, "children">
   >;
@@ -208,7 +203,7 @@ export default function GlobalContextsProvider(
               css={
                 embedCssProps && "css" in embedCssProps
                   ? embedCssProps.css!
-                  : "@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/27fad752d4c101730c76d75d98cf2183.ttf');\r\n  font-weight: normal;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/4b67ac4a1cf16c1e0bd59bb2099e5ae7.ttf');\r\n  font-weight: bold;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/3c08154f4d5e905b9b9724aeab3fbf39.ttf');\r\n  font-weight: 600;\r\n}\r\n*{\r\n  direction: rtl;\r\n  font-family: 'IranSans' !important;\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 4px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n\r\n.ant-progress-text{\r\n      display: none;\r\n}\r\ninput[type=\"number\"] {\r\n  direction: ltr !important;\r\n}\r\ninput[type=\"tel\"] {\r\n  direction: ltr !important;\r\n}\r\n.shimmer {\r\n  background: linear-gradient(\r\n    90deg,\r\n    #25384b 25%, /* \u0633\u0648\u0631\u0645\u0647\u200c\u0627\u06cc \u0631\u0648\u0634\u0646\u200c\u062a\u0631 */\r\n    rgba(30, 45, 71, 0.658) 50%, /* \u0633\u0628\u0632 \u0631\u0648\u0634\u0646 \u0628\u0627 \u0627\u067e\u0627\u0633\u06cc\u062a\u06cc \u06a9\u0645\u062a\u0631 */\r\n    #25384b 75%  /* \u0633\u0648\u0631\u0645\u0647\u200c\u0627\u06cc \u0631\u0648\u0634\u0646\u200c\u062a\u0631 */\r\n  );\r\n  background-size: 200% 100%;\r\n  animation: shimmerAnimation 3s infinite linear;\r\n}\r\n\r\n@keyframes shimmerAnimation {\r\n  0% {\r\n    background-position: -200% 0;\r\n  }\r\n  100% {\r\n    background-position: 200% 0;\r\n  }\r\n}\r\n.card{\r\n position: absolute;\r\n      border-radius: 8px;\r\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}"
+                  : "@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/27fad752d4c101730c76d75d98cf2183.ttf');\r\n  font-weight: normal;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/4b67ac4a1cf16c1e0bd59bb2099e5ae7.ttf');\r\n  font-weight: bold;\r\n}\r\n@font-face{\r\n  font-family: 'IranSans';\r\n  src: url('https://site-assets.plasmic.app/3c08154f4d5e905b9b9724aeab3fbf39.ttf');\r\n  font-weight: 600;\r\n}\r\n*{\r\n  direction: rtl;\r\n  font-family: 'IranSans' !important;\r\n}\r\nbody{\r\n  background-color: #1E2C39 !important;\r\n  width: 100% !important;\r\n  height: 100% !important;\r\n}\r\n.page{\r\n  width: 100vw !important;\r\n  height: 100% !important;;\r\n}\r\n.dateshow{\r\n    direction: ltr;\r\n}\r\n.rmdp-wrapper div{\r\n   width: 110%;\r\n   border: none !important;\r\n}\r\n.ant-radio-button-wrapper-checked{\r\n  color: #2DC57B !important;\r\n  font-weight: bold;\r\n}\r\n\r\n.ant-select-selector{\r\n  background-color: #161E26 !important;\r\n  border-radius: 4px !important;\r\n  border: none !important;\r\n  color: white !important;\r\n}\r\n.rc-virtual-list-holder-inner{\r\n  text-align: right !important;\r\n  border-end-end-radius: 4px !important;\r\n}\r\n\r\n.ant-progress-text{\r\n      display: none;\r\n}\r\ninput[type=\"number\"] {\r\n  direction: ltr !important;\r\n}\r\ninput[type=\"tel\"] {\r\n  direction: ltr !important;\r\n}\r\n.shimmer {\r\n  background: linear-gradient(\r\n    90deg,\r\n    #25384b 25%, /* \u0633\u0648\u0631\u0645\u0647\u200c\u0627\u06cc \u0631\u0648\u0634\u0646\u200c\u062a\u0631 */\r\n    rgba(30, 45, 71, 0.658) 50%, /* \u0633\u0628\u0632 \u0631\u0648\u0634\u0646 \u0628\u0627 \u0627\u067e\u0627\u0633\u06cc\u062a\u06cc \u06a9\u0645\u062a\u0631 */\r\n    #25384b 75%  /* \u0633\u0648\u0631\u0645\u0647\u200c\u0627\u06cc \u0631\u0648\u0634\u0646\u200c\u062a\u0631 */\r\n  );\r\n  background-size: 200% 100%;\r\n  animation: shimmerAnimation 3s infinite linear;\r\n}\r\n\r\n@keyframes shimmerAnimation {\r\n  0% {\r\n    background-position: -200% 0;\r\n  }\r\n  100% {\r\n    background-position: 200% 0;\r\n  }\r\n}\r\n.card{\r\n position: absolute;\r\n      border-radius: 8px;\r\n      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);}\r\n\r\n        .swiper-slide {\r\n            text-align: center;\r\n            font-size: 24px;\r\n            display: flex;\r\n            justify-content: center;\r\n            align-items: center;\r\n            border: 1px solid #ddd;\r\n        }\r\n        /* \u0627\u0633\u062a\u0627\u06cc\u0644 \u0646\u0642\u0627\u0637 \u0646\u0627\u0648\u0628\u0631\u06cc */\r\n        .swiper-pagination-bullet {\r\n            width: 12px;\r\n            height: 12px;\r\n            background: #999;\r\n            opacity: 1;\r\n            margin: 0 5px !important;\r\n        }\r\n        .swiper-pagination-bullet-active {\r\n            background: #3498db;\r\n        }"
               }
             >
               <ContentfulCredentialsProvider

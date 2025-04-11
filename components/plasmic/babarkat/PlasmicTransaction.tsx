@@ -463,38 +463,52 @@ function PlasmicTransaction__RenderFunc(props: {
             }
           />
 
-          <Header
-            data-plasmic-name={"header"}
-            data-plasmic-override={overrides.header}
-            className={classNames("__wab_instance", sty.header)}
-            token={(() => {
-              try {
-                return $state.token;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
+          <section className={classNames(projectcss.all, sty.section__voHrV)}>
+            <Header
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames("__wab_instance", sty.header)}
+              level={(() => {
+                try {
+                  return $state.userinfo.level;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
                 }
-                throw e;
-              }
-            })()}
-            userbabarcat={(() => {
-              try {
-                return $state.userinfo;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return {};
+              })()}
+              token={(() => {
+                try {
+                  return $state.token;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
                 }
-                throw e;
-              }
-            })()}
-          />
-
+              })()}
+              userbabarcat={(() => {
+                try {
+                  return $state.userinfo;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return {};
+                  }
+                  throw e;
+                }
+              })()}
+            />
+          </section>
           <Reveal
             data-plasmic-name={"reveal"}
             data-plasmic-override={overrides.reveal}
@@ -2454,15 +2468,134 @@ function PlasmicTransaction__RenderFunc(props: {
                   )}
                 </DataCtxReader__>
               </TabsContainer>
-              <div className={classNames(projectcss.all, sty.freeBox___5MnOu)}>
-                <Button
-                  className={classNames("__wab_instance", sty.button__otIeN)}
-                  color={"sand"}
-                  onClick={async event => {
-                    const $steps = {};
+              <section
+                className={classNames(projectcss.all, sty.section__hIbjb)}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___5MnOu)}
+                >
+                  <Button
+                    className={classNames("__wab_instance", sty.button__otIeN)}
+                    color={"sand"}
+                    onClick={async event => {
+                      const $steps = {};
 
-                    $steps["updatePage"] =
-                      $state.page > 0
+                      $steps["updatePage"] =
+                        $state.page > 0
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["page"]
+                                },
+                                operation: 0,
+                                value: $state.page - 1
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updatePage"] != null &&
+                        typeof $steps["updatePage"] === "object" &&
+                        typeof $steps["updatePage"].then === "function"
+                      ) {
+                        $steps["updatePage"] = await $steps["updatePage"];
+                      }
+
+                      $steps["refreshData"] =
+                        $state.page > 0
+                          ? (() => {
+                              const actionArgs = {
+                                queryInvalidation: ["plasmic_refresh_all"]
+                              };
+                              return (async ({ queryInvalidation }) => {
+                                if (!queryInvalidation) {
+                                  return;
+                                }
+                                await plasmicInvalidate(queryInvalidation);
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["refreshData"] != null &&
+                        typeof $steps["refreshData"] === "object" &&
+                        typeof $steps["refreshData"].then === "function"
+                      ) {
+                        $steps["refreshData"] = await $steps["refreshData"];
+                      }
+                    }}
+                    shape={"rounded"}
+                    showStartIcon={true}
+                    size={"compact"}
+                    startIcon={
+                      <Icon25Icon
+                        className={classNames(projectcss.all, sty.svg___1Ywet)}
+                        role={"img"}
+                      />
+                    }
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__pIwTf
+                      )}
+                    >
+                      {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
+                    </div>
+                  </Button>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__gKy0S
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return "صفحه " + ($state.page + 1);
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                  <Button
+                    className={classNames("__wab_instance", sty.button___3XA3J)}
+                    color={"sand"}
+                    endIcon={
+                      <Icon26Icon
+                        className={classNames(projectcss.all, sty.svg__lmrGr)}
+                        role={"img"}
+                      />
+                    }
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updatePage"] = (() => {
+                        if ($state.apiRequest.data != null)
+                          return $state.apiRequest.data[0].list != [];
+                      })()
                         ? (() => {
                             const actionArgs = {
                               variable: {
@@ -2470,7 +2603,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                 variablePath: ["page"]
                               },
                               operation: 0,
-                              value: $state.page - 1
+                              value: $state.page + 1
                             };
                             return (({
                               variable,
@@ -2488,16 +2621,18 @@ function PlasmicTransaction__RenderFunc(props: {
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
-                    if (
-                      $steps["updatePage"] != null &&
-                      typeof $steps["updatePage"] === "object" &&
-                      typeof $steps["updatePage"].then === "function"
-                    ) {
-                      $steps["updatePage"] = await $steps["updatePage"];
-                    }
+                      if (
+                        $steps["updatePage"] != null &&
+                        typeof $steps["updatePage"] === "object" &&
+                        typeof $steps["updatePage"].then === "function"
+                      ) {
+                        $steps["updatePage"] = await $steps["updatePage"];
+                      }
 
-                    $steps["refreshData"] =
-                      $state.page > 0
+                      $steps["refreshData"] = (() => {
+                        if ($state.apiRequest.data != null)
+                          return $state.apiRequest.data[0].list != [];
+                      })()
                         ? (() => {
                             const actionArgs = {
                               queryInvalidation: ["plasmic_refresh_all"]
@@ -2510,151 +2645,36 @@ function PlasmicTransaction__RenderFunc(props: {
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
-                    if (
-                      $steps["refreshData"] != null &&
-                      typeof $steps["refreshData"] === "object" &&
-                      typeof $steps["refreshData"].then === "function"
-                    ) {
-                      $steps["refreshData"] = await $steps["refreshData"];
-                    }
-                  }}
-                  shape={"rounded"}
-                  showStartIcon={true}
-                  size={"compact"}
-                  startIcon={
-                    <Icon25Icon
-                      className={classNames(projectcss.all, sty.svg___1Ywet)}
-                      role={"img"}
-                    />
-                  }
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pIwTf
-                    )}
-                  >
-                    {"\u0635\u0641\u062d\u0647 \u0642\u0628\u0644"}
-                  </div>
-                </Button>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__gKy0S
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return "صفحه " + ($state.page + 1);
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
+                      if (
+                        $steps["refreshData"] != null &&
+                        typeof $steps["refreshData"] === "object" &&
+                        typeof $steps["refreshData"].then === "function"
+                      ) {
+                        $steps["refreshData"] = await $steps["refreshData"];
                       }
-                    })()}
-                  </React.Fragment>
-                </div>
-                <Button
-                  className={classNames("__wab_instance", sty.button___3XA3J)}
-                  color={"sand"}
-                  endIcon={
-                    <Icon26Icon
-                      className={classNames(projectcss.all, sty.svg__lmrGr)}
-                      role={"img"}
-                    />
-                  }
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updatePage"] = (() => {
-                      if ($state.apiRequest.data != null)
-                        return $state.apiRequest.data[0].list != [];
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["page"]
-                            },
-                            operation: 0,
-                            value: $state.page + 1
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updatePage"] != null &&
-                      typeof $steps["updatePage"] === "object" &&
-                      typeof $steps["updatePage"].then === "function"
-                    ) {
-                      $steps["updatePage"] = await $steps["updatePage"];
+                    }}
+                    shape={"rounded"}
+                    showEndIcon={true}
+                    size={"compact"}
+                    startIcon={
+                      <Icon25Icon
+                        className={classNames(projectcss.all, sty.svg__od3Qo)}
+                        role={"img"}
+                      />
                     }
-
-                    $steps["refreshData"] = (() => {
-                      if ($state.apiRequest.data != null)
-                        return $state.apiRequest.data[0].list != [];
-                    })()
-                      ? (() => {
-                          const actionArgs = {
-                            queryInvalidation: ["plasmic_refresh_all"]
-                          };
-                          return (async ({ queryInvalidation }) => {
-                            if (!queryInvalidation) {
-                              return;
-                            }
-                            await plasmicInvalidate(queryInvalidation);
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["refreshData"] != null &&
-                      typeof $steps["refreshData"] === "object" &&
-                      typeof $steps["refreshData"].then === "function"
-                    ) {
-                      $steps["refreshData"] = await $steps["refreshData"];
-                    }
-                  }}
-                  shape={"rounded"}
-                  showEndIcon={true}
-                  size={"compact"}
-                  startIcon={
-                    <Icon25Icon
-                      className={classNames(projectcss.all, sty.svg__od3Qo)}
-                      role={"img"}
-                    />
-                  }
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__kwzKn
-                    )}
                   >
-                    {"\u0635\u0641\u062d\u0647 \u0628\u0639\u062f"}
-                  </div>
-                </Button>
-              </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__kwzKn
+                      )}
+                    >
+                      {"\u0635\u0641\u062d\u0647 \u0628\u0639\u062f"}
+                    </div>
+                  </Button>
+                </div>
+              </section>
             </Stack__>
             <div
               className={classNames(projectcss.all, sty.freeBox__z3HRp, {
@@ -5206,96 +5226,101 @@ function PlasmicTransaction__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
-          <div className={classNames(projectcss.all, sty.freeBox__goJzD)}>
-            <div
-              data-plasmic-name={"footer2"}
-              data-plasmic-override={overrides.footer2}
-              className={classNames(projectcss.all, sty.footer2)}
-            >
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"snapp3"}
-                data-plasmic-override={overrides.snapp3}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.snapp3)}
-                onClick={async event => {
-                  const $steps = {};
+          <section className={classNames(projectcss.all, sty.section__xjf2B)}>
+            <div className={classNames(projectcss.all, sty.freeBox__goJzD)}>
+              <div
+                data-plasmic-name={"footer2"}
+                data-plasmic-override={overrides.footer2}
+                className={classNames(projectcss.all, sty.footer2)}
+              >
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"snapp3"}
+                  data-plasmic-override={overrides.snapp3}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.snapp3)}
+                  onClick={async event => {
+                    const $steps = {};
 
-                  $steps["goToHomepage"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToHomepage"] != null &&
-                    typeof $steps["goToHomepage"] === "object" &&
-                    typeof $steps["goToHomepage"].then === "function"
-                  ) {
-                    $steps["goToHomepage"] = await $steps["goToHomepage"];
-                  }
-                }}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldHome2"}
-                  data-plasmic-override={overrides.vuesaxBoldHome2}
-                  className={classNames(projectcss.all, sty.vuesaxBoldHome2)}
+                    $steps["goToHomepage"] = true
+                      ? (() => {
+                          const actionArgs = { destination: `/` };
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["goToHomepage"] != null &&
+                      typeof $steps["goToHomepage"] === "object" &&
+                      typeof $steps["goToHomepage"].then === "function"
+                    ) {
+                      $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+                  }}
                 >
-                  <HomeIcon
-                    className={classNames(projectcss.all, sty.svg__uWyC)}
-                    role={"img"}
-                  />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___8Ouys
-                  )}
+                  <div
+                    data-plasmic-name={"vuesaxBoldHome2"}
+                    data-plasmic-override={overrides.vuesaxBoldHome2}
+                    className={classNames(projectcss.all, sty.vuesaxBoldHome2)}
+                  >
+                    <HomeIcon
+                      className={classNames(projectcss.all, sty.svg__uWyC)}
+                      role={"img"}
+                    />
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___8Ouys
+                    )}
+                  >
+                    {"\u062e\u0627\u0646\u0647"}
+                  </div>
+                </Stack__>
+                <Stack__
+                  as={"div"}
+                  data-plasmic-name={"charge3"}
+                  data-plasmic-override={overrides.charge3}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.charge3)}
                 >
-                  {"\u062e\u0627\u0646\u0647"}
-                </div>
-              </Stack__>
-              <Stack__
-                as={"div"}
-                data-plasmic-name={"charge3"}
-                data-plasmic-override={overrides.charge3}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.charge3)}
-              >
-                <div
-                  data-plasmic-name={"vuesaxBoldReceipt3"}
-                  data-plasmic-override={overrides.vuesaxBoldReceipt3}
-                  className={classNames(projectcss.all, sty.vuesaxBoldReceipt3)}
-                >
-                  <ReceiptIcon
-                    className={classNames(projectcss.all, sty.svg__tKvxl)}
-                    role={"img"}
-                  />
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__h11E1
-                  )}
-                >
-                  {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
-                </div>
-              </Stack__>
+                  <div
+                    data-plasmic-name={"vuesaxBoldReceipt3"}
+                    data-plasmic-override={overrides.vuesaxBoldReceipt3}
+                    className={classNames(
+                      projectcss.all,
+                      sty.vuesaxBoldReceipt3
+                    )}
+                  >
+                    <ReceiptIcon
+                      className={classNames(projectcss.all, sty.svg__tKvxl)}
+                      role={"img"}
+                    />
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__h11E1
+                    )}
+                  >
+                    {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
+                  </div>
+                </Stack__>
+              </div>
             </div>
-          </div>
+          </section>
           <Timer
             data-plasmic-name={"timer"}
             data-plasmic-override={overrides.timer}
@@ -5314,8 +5339,7 @@ function PlasmicTransaction__RenderFunc(props: {
                             sessionStorage.getItem("userbabarcatToken")
                           );
                           if (item == null) {
-                            return (window.location.href =
-                              "https://app.babarkat.com/login/");
+                            return window.open("/login");
                           } else {
                             const currentTime = new Date().getTime();
                             if (currentTime > item.expiration) {

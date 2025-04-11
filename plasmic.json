@@ -1587,6 +1587,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/Forgotten-password"
+        },
+        {
+          "id": "LqAqGtGaA2Da",
+          "name": "Loading",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLoading.tsx",
+          "importSpec": {
+            "modulePath": "Loading.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLoading.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2219,6 +2232,81 @@
           "id": "qHh1v8j9a3mO",
           "name": "Icon76Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon76.tsx"
+        },
+        {
+          "id": "Cnj3U4oKNmRf",
+          "name": "Icon77Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon77.tsx"
+        },
+        {
+          "id": "Yub8sXrIQi2p",
+          "name": "Icon78Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon78.tsx"
+        },
+        {
+          "id": "QWABWOfHjos6",
+          "name": "Icon79Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon79.tsx"
+        },
+        {
+          "id": "Z52gdMpS8UCn",
+          "name": "Icon80Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon80.tsx"
+        },
+        {
+          "id": "eTUnLR5iDVCe",
+          "name": "Icon81Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon81.tsx"
+        },
+        {
+          "id": "9IvX4CneDX4f",
+          "name": "Icon82Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon82.tsx"
+        },
+        {
+          "id": "IKXgjK7dwscd",
+          "name": "Icon83Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon83.tsx"
+        },
+        {
+          "id": "LU2TjmzGZ0b8",
+          "name": "Icon84Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon84.tsx"
+        },
+        {
+          "id": "ey8mdZHauNVX",
+          "name": "Icon85Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon85.tsx"
+        },
+        {
+          "id": "1S-nO6eMTgHJ",
+          "name": "Icon86Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon86.tsx"
+        },
+        {
+          "id": "rc1_mgaWEpMQ",
+          "name": "Icon87Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon87.tsx"
+        },
+        {
+          "id": "bQiei9v7Hm69",
+          "name": "Icon88Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon88.tsx"
+        },
+        {
+          "id": "1mHusOdupjsZ",
+          "name": "Icon89Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon89.tsx"
+        },
+        {
+          "id": "5f9CidNJ1kxO",
+          "name": "Icon90Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon90.tsx"
+        },
+        {
+          "id": "PSRFUgRGCh4X",
+          "name": "Icon91Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon91.tsx"
         }
       ],
       "images": [
@@ -2506,6 +2594,151 @@
           "id": "zua4I-b9mc3C",
           "name": "image 45",
           "filePath": "../public/plasmic/babarkat/images/image45.svg"
+        },
+        {
+          "id": "38DV31uQDIx5",
+          "name": "image 46",
+          "filePath": "../public/plasmic/babarkat/images/image46.svg"
+        },
+        {
+          "id": "yI0UHnD7JUbe",
+          "name": "image 47",
+          "filePath": "../public/plasmic/babarkat/images/image47.svg"
+        },
+        {
+          "id": "EHkpbncAyATV",
+          "name": "image 48",
+          "filePath": "../public/plasmic/babarkat/images/image48.svg"
+        },
+        {
+          "id": "2wDycYY5LcQW",
+          "name": "image 49",
+          "filePath": "../public/plasmic/babarkat/images/image49.svg"
+        },
+        {
+          "id": "iNoItHjJwqq1",
+          "name": "image 50",
+          "filePath": "../public/plasmic/babarkat/images/image50.svg"
+        },
+        {
+          "id": "KADx7aXfOd3k",
+          "name": "image 51",
+          "filePath": "../public/plasmic/babarkat/images/image51.svg"
+        },
+        {
+          "id": "ky9Vxq4r8z2k",
+          "name": "image 52",
+          "filePath": "../public/plasmic/babarkat/images/image52.svg"
+        },
+        {
+          "id": "XHcfNb9N6qoF",
+          "name": "image 53",
+          "filePath": "../public/plasmic/babarkat/images/image53.svg"
+        },
+        {
+          "id": "HiwI3LtNL6uL",
+          "name": "image 54",
+          "filePath": "../public/plasmic/babarkat/images/image54.svg"
+        },
+        {
+          "id": "OBaijOE03CEL",
+          "name": "image 55",
+          "filePath": "../public/plasmic/babarkat/images/image55.svg"
+        },
+        {
+          "id": "B67n0ug160Rs",
+          "name": "image 56",
+          "filePath": "../public/plasmic/babarkat/images/image56.svg"
+        },
+        {
+          "id": "1vvueU3cm2cG",
+          "name": "image 57",
+          "filePath": "../public/plasmic/babarkat/images/image57.svg"
+        },
+        {
+          "id": "x_q42qGXJGgp",
+          "name": "image 58",
+          "filePath": "../public/plasmic/babarkat/images/image58.svg"
+        },
+        {
+          "id": "Dv-eVTv0lFmU",
+          "name": "image 59",
+          "filePath": "../public/plasmic/babarkat/images/image59.svg"
+        },
+        {
+          "id": "Hmo7gyj3gi-A",
+          "name": "image 60",
+          "filePath": "../public/plasmic/babarkat/images/image60.svg"
+        },
+        {
+          "id": "ho5FLWWUOGpu",
+          "name": "image 61",
+          "filePath": "../public/plasmic/babarkat/images/image61.svg"
+        },
+        {
+          "id": "XTdyusUp2iUE",
+          "name": "image 62",
+          "filePath": "../public/plasmic/babarkat/images/image62.svg"
+        },
+        {
+          "id": "NaLvc3RQUszs",
+          "name": "image 63",
+          "filePath": "../public/plasmic/babarkat/images/image63.svg"
+        },
+        {
+          "id": "D6jXxjcnY2Ib",
+          "name": "image 64",
+          "filePath": "../public/plasmic/babarkat/images/image64.svg"
+        },
+        {
+          "id": "OzbimguYldya",
+          "name": "image 65",
+          "filePath": "../public/plasmic/babarkat/images/image65.svg"
+        },
+        {
+          "id": "E8kai1UzBOw1",
+          "name": "image 66",
+          "filePath": "../public/plasmic/babarkat/images/image66.svg"
+        },
+        {
+          "id": "hshvfPqq0KPC",
+          "name": "image 67",
+          "filePath": "../public/plasmic/babarkat/images/image67.svg"
+        },
+        {
+          "id": "ya-ff3GmjWr-",
+          "name": "image 68",
+          "filePath": "../public/plasmic/babarkat/images/image68.svg"
+        },
+        {
+          "id": "2QjYyGdUfXW0",
+          "name": "image 69",
+          "filePath": "../public/plasmic/babarkat/images/image69.svg"
+        },
+        {
+          "id": "36-2VhyIigvB",
+          "name": "image 70",
+          "filePath": "../public/plasmic/babarkat/images/image70.svg"
+        },
+        {
+          "id": "-Y6BeUggheeV",
+          "name": "image 71",
+          "filePath": "../public/plasmic/babarkat/images/image71.svg"
+        },
+        {
+          "id": "4yWeqwcp0KEl",
+          "name": "image 72",
+          "filePath": "../public/plasmic/babarkat/images/image72.svg"
+        },
+        {
+          "id": "xTR4nFgywu14",
+          "name": "image 73",
+          "filePath": "../public/plasmic/babarkat/images/image73.svg"
+        },
+        {
+          "id": "1Pti3A7cfsu_",
+          "name": "image 74",
+          "filePath": "../public/plasmic/babarkat/images/image74.svg"
         }
       ],
       "indirect": false,
@@ -2993,8 +3226,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
