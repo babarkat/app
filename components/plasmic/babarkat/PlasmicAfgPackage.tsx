@@ -590,7 +590,15 @@ function PlasmicAfgPackage__RenderFunc(props: {
           }
         )}
       >
-        <section className={classNames(projectcss.all, sty.section__ihAzx)}>
+        <section
+          className={classNames(projectcss.all, sty.section__ihAzx, {
+            [sty.sectionstepscharg_step2__ihAzxzwaj5]: hasVariant(
+              $state,
+              "stepscharg",
+              "step2"
+            )
+          })}
+        >
           <div
             className={classNames(projectcss.all, sty.freeBox__erD9F, {
               [sty.freeBoxstepscharg_step2__erD9Fzwaj5]: hasVariant(

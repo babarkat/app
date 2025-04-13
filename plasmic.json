@@ -1600,6 +1600,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicLoading.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "b-NdD4-urlc5",
+          "name": "Bill",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicBill.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/charging-3.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicBill.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/charging-3"
         }
       ],
       "icons": [
@@ -2307,6 +2321,26 @@
           "id": "PSRFUgRGCh4X",
           "name": "Icon91Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon91.tsx"
+        },
+        {
+          "id": "SowHoWtrM2eF",
+          "name": "Icon92Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon92.tsx"
+        },
+        {
+          "id": "H9ZR0vqaPIx2",
+          "name": "Icon93Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon93.tsx"
+        },
+        {
+          "id": "_0EJmP7Ze04b",
+          "name": "Icon94Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon94.tsx"
+        },
+        {
+          "id": "IThJ_Rij_EiI",
+          "name": "Icon95Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon95.tsx"
         }
       ],
       "images": [
@@ -2739,6 +2773,11 @@
           "id": "1Pti3A7cfsu_",
           "name": "image 74",
           "filePath": "../public/plasmic/babarkat/images/image74.svg"
+        },
+        {
+          "id": "tLU3TjBtyt53",
+          "name": "image 75",
+          "filePath": "../public/plasmic/babarkat/images/image75.svg"
         }
       ],
       "indirect": false,
