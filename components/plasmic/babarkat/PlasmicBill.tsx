@@ -70,6 +70,7 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -157,6 +158,7 @@ export type PlasmicBill__OverridesType = {
   type2?: Flex__<typeof AntdModal>;
   comingSoon12?: Flex__<"div">;
   comingSoon13?: Flex__<"div">;
+  loading?: Flex__<typeof Loading>;
 };
 
 export interface DefaultBillProps {}
@@ -547,7 +549,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) => "id"
       },
       {
         path: "fragmentInput3.value",
@@ -560,6 +562,12 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "loading.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -3866,6 +3874,119 @@ function PlasmicBill__RenderFunc(props: {
                         </div>
                       </Button>
                     ) : null}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__jBkqJ,
+                        {
+                          [sty.textstepscharg_step1__jBkqJqKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          )
+                        }
+                      )}
+                      id={"barcode_error"}
+                      {...{ "id ": "barcode_error" }}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u0645\u062a\u0623\u0633\u0641\u0627\u0646\u0647 \u0646\u062a\u0648\u0627\u0646\u0633\u062a\u06cc\u0645 \u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u06cc\u0645.",
+                                  undefined,
+                                  5,
+                                  "bottom"
+                                ]
+                              };
+                              return $globalActions[
+                                "plasmic-antd5-config-provider.showNotification"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+                      }}
+                    >
+                      {""}
+                    </div>
+                    {(
+                      hasVariant($state, "stepscharg", "step1") ? true : false
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__bE0T7,
+                          {
+                            [sty.textstepscharg_step1__bE0T7QKzi3]: hasVariant(
+                              $state,
+                              "stepscharg",
+                              "step1"
+                            )
+                          }
+                        )}
+                        id={"loadingImage"}
+                        {...{ "id ": "loadingImage" }}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateLoadingLoad"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["loading", "load"]
+                                  },
+                                  operation: 4
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  const oldValue = $stateGet(
+                                    objRoot,
+                                    variablePath
+                                  );
+                                  $stateSet(objRoot, variablePath, !oldValue);
+                                  return !oldValue;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateLoadingLoad"] != null &&
+                            typeof $steps["updateLoadingLoad"] === "object" &&
+                            typeof $steps["updateLoadingLoad"].then ===
+                              "function"
+                          ) {
+                            $steps["updateLoadingLoad"] = await $steps[
+                              "updateLoadingLoad"
+                            ];
+                          }
+                        }}
+                      >
+                        {""}
+                      </div>
+                    ) : null}
                     <Embed
                       data-plasmic-name={"embedHtml"}
                       data-plasmic-override={overrides.embedHtml}
@@ -3874,12 +3995,17 @@ function PlasmicBill__RenderFunc(props: {
                           $state,
                           "stepscharg",
                           "step1"
+                        ),
+                        [sty.embedHtmlstepscharg_step3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
                         )
                       })}
                       code={
                         hasVariant($state, "stepscharg", "step1")
-                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n    const file = event.target.files[0];\r\n    if (!file) return;\r\n    \r\n    const canvas = document.getElementById("canvas");\r\n    const context = canvas.getContext("2d");\r\n    const img = new Image();\r\n    \r\n    img.onload = function() {\r\n      // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n      canvas.width = img.width;\r\n      canvas.height = img.height;\r\n      context.drawImage(img, 0, 0, img.width, img.height);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n      scanQRCode(canvas);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n      scanBarcode(canvas);\r\n    };\r\n    \r\n    img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n    const context = canvas.getContext("2d");\r\n    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n    const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n    \r\n    if (code) {\r\n              document.getElementsByName("idNumber")[0].value=code.data;\r\n    } else {\r\n      console.log("QR \u06a9\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f");\r\n    }\r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n    const imageData = canvas.toDataURL("image/jpeg");\r\n    \r\n    Quagga.decodeSingle({\r\n      decoder: {\r\n        readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n      },\r\n      locate: true,\r\n      src: imageData\r\n    }, function(result) {\r\n      if (result && result.codeResult) {\r\n        document.getElementsByName("idNumber")[0].value=result.codeResult.code;\r\n      } else {\r\n        console.log( "\u0628\u0627\u0631\u06a9\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f")\r\n      }\r\n    });\r\n  }\r\n</script>'
-                          : '<h1>\u0627\u0633\u06a9\u0646\u0631 QR \u06a9\u062f \u0648 \u0628\u0627\u0631\u06a9\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0622\u067e\u0644\u0648\u062f \u0639\u06a9\u0633</h1>\r\n<input type="file" id="imageInput" accept="image/*" capture="environment">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n<div id="result">\r\n  <p id="qrResult">\u0646\u062a\u06cc\u062c\u0647 QR \u06a9\u062f: -</p>\r\n  <p id="barcodeResult">\u0646\u062a\u06cc\u062c\u0647 \u0628\u0627\u0631\u06a9\u062f: -</p>\r\n</div>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n    const file = event.target.files[0];\r\n    if (!file) return;\r\n    \r\n    const canvas = document.getElementById("canvas");\r\n    const context = canvas.getContext("2d");\r\n    const img = new Image();\r\n    \r\n    img.onload = function() {\r\n      // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n      canvas.width = img.width;\r\n      canvas.height = img.height;\r\n      context.drawImage(img, 0, 0, img.width, img.height);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n      scanQRCode(canvas);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n      scanBarcode(canvas);\r\n    };\r\n    \r\n    img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n    const context = canvas.getContext("2d");\r\n    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n    const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n    \r\n    if (code) {\r\n      document.getElementById("qrResult").innerText = `\u0646\u062a\u06cc\u062c\u0647 QR \u06a9\u062f: ${code.data}`;\r\n    } else {\r\n      document.getElementById("qrResult").innerText = "QR \u06a9\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f";\r\n    }\r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n    // \u062a\u0628\u062f\u06cc\u0644 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0628\u0647 \u062a\u0635\u0648\u06cc\u0631\u06cc \u06a9\u0647 Quagga \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0628\u062e\u0648\u0627\u0646\u062f\r\n    const imageData = canvas.toDataURL("image/jpeg");\r\n    \r\n    Quagga.decodeSingle({\r\n      decoder: {\r\n        readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n      },\r\n      locate: true,\r\n      src: imageData\r\n    }, function(result) {\r\n      if (result && result.codeResult) {\r\n        document.getElementById("barcodeResult").innerText = `\u0646\u062a\u06cc\u062c\u0647 \u0628\u0627\u0631\u06a9\u062f: ${result.codeResult.code}`;\r\n      } else {\r\n        document.getElementById("barcodeResult").innerText = "\u0628\u0627\u0631\u06a9\u062f\u06cc \u06cc\u0627\u0641\u062a \u0646\u0634\u062f";\r\n      }\r\n    });\r\n  }\r\n</script>'
+                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } else {\r\n          triggerBarcodeError(); // \u062e\u0637\u0627 \u0641\u0642\u0637 \u06cc\u06a9 \u0628\u0627\u0631 \u0627\u062c\u0631\u0627 \u0634\u0648\u062f\r\n      }\r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              document.getElementsByName("idNumber")[0].value = result.codeResult.code;\r\n          } else {\r\n              triggerBarcodeError(); // \u062e\u0637\u0627 \u0641\u0642\u0637 \u06cc\u06a9 \u0628\u0627\u0631 \u0627\u062c\u0631\u0627 \u0634\u0648\u062f\r\n          }\r\n      });\r\n  }\r\n\r\n  function triggerBarcodeError() {\r\n      if (!barcodeErrorClicked) {\r\n          window.document.getElementById("barcode_error").click();\r\n          barcodeErrorClicked = true; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0645\u062c\u062f\u062f\r\n      }\r\n  }\r\n</script>'
+                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n    const file = event.target.files[0];\r\n    if (!file) return;\r\n    \r\n    const canvas = document.getElementById("canvas");\r\n    //const canvas = document.getElementById("barcode_error");\r\n    const context = canvas.getContext("2d");\r\n    const img = new Image();\r\n    \r\n    img.onload = function() {\r\n      // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n      canvas.width = img.width;\r\n      canvas.height = img.height;\r\n      context.drawImage(img, 0, 0, img.width, img.height);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n      scanQRCode(canvas);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n      scanBarcode(canvas);\r\n    };\r\n    \r\n    img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n    const context = canvas.getContext("2d");\r\n    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n    const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n    \r\n    if (code) {\r\n              document.getElementsByName("idNumber")[0].value=code.data;\r\n    } else {\r\n      window.document.getElementById("barcode_error").click();\r\n    }\r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n    const imageData = canvas.toDataURL("image/jpeg");\r\n    \r\n    Quagga.decodeSingle({\r\n      decoder: {\r\n        readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n      },\r\n      locate: true,\r\n      src: imageData\r\n    }, function(result) {\r\n      if (result && result.codeResult) {\r\n        document.getElementsByName("idNumber")[0].value=result.codeResult.code;\r\n      } else {\r\n        window.document.getElementById("barcode_error").click();\r\n      }\r\n    });\r\n  }\r\n</script>'
                       }
                     />
                   </div>
@@ -4205,6 +4331,11 @@ function PlasmicBill__RenderFunc(props: {
                         projectcss.__wab_text,
                         sty.text__w1QNb,
                         {
+                          [sty.textstepscharg_step1__w1QNbqKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
                           [sty.textstepscharg_step2__w1QNbAvykh]: hasVariant(
                             $state,
                             "stepscharg",
@@ -5621,6 +5752,26 @@ function PlasmicBill__RenderFunc(props: {
               </Stack__>
             </div>
           </AntdModal>
+          <Loading
+            data-plasmic-name={"loading"}
+            data-plasmic-override={overrides.loading}
+            className={classNames("__wab_instance", sty.loading)}
+            load={generateStateValueProp($state, ["loading", "load"])}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["loading", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5667,7 +5818,8 @@ const PlasmicDescendants = {
     "commissionBabarkat",
     "type2",
     "comingSoon12",
-    "comingSoon13"
+    "comingSoon13",
+    "loading"
   ],
   header: ["header"],
   reveal: [
@@ -5761,7 +5913,8 @@ const PlasmicDescendants = {
   commissionBabarkat: ["commissionBabarkat"],
   type2: ["type2", "comingSoon12", "comingSoon13"],
   comingSoon12: ["comingSoon12"],
-  comingSoon13: ["comingSoon13"]
+  comingSoon13: ["comingSoon13"],
+  loading: ["loading"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5806,6 +5959,7 @@ type NodeDefaultElementType = {
   type2: typeof AntdModal;
   comingSoon12: "div";
   comingSoon13: "div";
+  loading: typeof Loading;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5935,6 +6089,7 @@ export const PlasmicBill = Object.assign(
     type2: makeNodeComponent("type2"),
     comingSoon12: makeNodeComponent("comingSoon12"),
     comingSoon13: makeNodeComponent("comingSoon13"),
+    loading: makeNodeComponent("loading"),
 
     // Metadata about props expected for PlasmicBill
     internalVariantProps: PlasmicBill__VariantProps,

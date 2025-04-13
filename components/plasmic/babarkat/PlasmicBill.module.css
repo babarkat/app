@@ -1955,6 +1955,27 @@
   width: auto;
   height: 1em;
 }
+.text__jBkqJ {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  max-width: 100%;
+  flex-shrink: 0;
+  display: none;
+}
+.textstepscharg_step1__jBkqJqKzi3 {
+  display: block;
+}
+.text__bE0T7 {
+  position: relative;
+  width: 0px;
+  height: 0px;
+  max-width: 100%;
+  flex-shrink: 0;
+}
+.textstepscharg_step1__bE0T7QKzi3 {
+  display: block;
+}
 .embedHtml:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
@@ -2663,4 +2684,8 @@
   width: 0px;
   height: 0px;
   max-width: 100%;
+}
+.loading:global(.__wab_instance) {
+  max-width: 100%;
+  flex-shrink: 0;
 }
