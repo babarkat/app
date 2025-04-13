@@ -66,7 +66,7 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLoading.module.css"; // plasmic-import: LqAqGtGaA2Da/css
 
-import Icon82Icon from "./icons/PlasmicIcon__Icon82"; // plasmic-import: 9IvX4CneDX4f/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 
 createPlasmicElementProxy;
 
@@ -186,7 +186,7 @@ function PlasmicLoading__RenderFunc(props: {
           sty.root
         )}
       >
-        <Icon82Icon
+        <IconIcon
           data-plasmic-name={"svg"}
           data-plasmic-override={overrides.svg}
           className={classNames(projectcss.all, sty.svg)}

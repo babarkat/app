@@ -2689,3 +2689,7 @@
   max-width: 100%;
   flex-shrink: 0;
 }
+.loadingstepscharg_step1:global(.__wab_instance) {
+  z-index: 20;
+  flex-shrink: 0;
+}
