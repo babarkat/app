@@ -568,7 +568,13 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step1") ? true : false
+          hasVariant($state, "stepscharg", "step1") ? false : false
+      },
+      {
+        path: "id",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -647,7 +653,15 @@ function PlasmicBill__RenderFunc(props: {
             }
           )}
         >
-          <section className={classNames(projectcss.all, sty.section___1Mdb)}>
+          <section
+            className={classNames(projectcss.all, sty.section___1Mdb, {
+              [sty.sectionstepscharg_step1___1MdbqKzi3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step1"
+              )
+            })}
+          >
             <div
               className={classNames(projectcss.all, sty.freeBox__mpDk, {
                 [sty.freeBoxstepscharg_step2__mpDkAvykh]: hasVariant(
@@ -1578,6 +1592,11 @@ function PlasmicBill__RenderFunc(props: {
                           data-plasmic-name={"idinput"}
                           data-plasmic-override={overrides.idinput}
                           className={classNames("__wab_instance", sty.idinput, {
+                            [sty.idinputstepscharg_step1]: hasVariant(
+                              $state,
+                              "stepscharg",
+                              "step1"
+                            ),
                             [sty.idinputstepscharg_step2]: hasVariant(
                               $state,
                               "stepscharg",
@@ -1595,6 +1614,48 @@ function PlasmicBill__RenderFunc(props: {
                               "idinput",
                               "value"
                             ]).apply(null, eventArgs);
+
+                            (async value => {
+                              const $steps = {};
+
+                              $steps["updateIdinputValue"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["idinput", "value"]
+                                      },
+                                      operation: 0
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateIdinputValue"] != null &&
+                                typeof $steps["updateIdinputValue"] ===
+                                  "object" &&
+                                typeof $steps["updateIdinputValue"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateIdinputValue"] = await $steps[
+                                  "updateIdinputValue"
+                                ];
+                              }
+                            }).apply(null, eventArgs);
                           }}
                           placeholder={
                             "\u0645\u0627\u0646\u0646\u062f: 12345678"
@@ -3634,147 +3695,159 @@ function PlasmicBill__RenderFunc(props: {
                       )
                     })}
                   >
-                    <Button
-                      data-plasmic-name={"step1Next"}
-                      data-plasmic-override={overrides.step1Next}
-                      className={classNames("__wab_instance", sty.step1Next, {
-                        [sty.step1Nextstepscharg_step1]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step1"
-                        ),
-                        [sty.step1Nextstepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
-                        [sty.step1Nextstepscharg_step3]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      color={"green"}
-                      isDisabled={(() => {
-                        try {
-                          return $state.idinput.value.length != 11;
-                        } catch (e) {
+                    {(
+                      hasVariant($state, "stepscharg", "step1")
+                        ? (() => {
+                            try {
+                              return $state.idinput.value != "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : hasVariant($state, "stepscharg", "step3")
+                        ? true
+                        : hasVariant($state, "stepscharg", "step2")
+                        ? true
+                        : hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? true
+                        : true
+                    ) ? (
+                      <Button
+                        data-plasmic-name={"step1Next"}
+                        data-plasmic-override={overrides.step1Next}
+                        className={classNames("__wab_instance", sty.step1Next, {
+                          [sty.step1Nextstepscharg_step1]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
+                          [sty.step1Nextstepscharg_step2]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
+                          [sty.step1Nextstepscharg_step3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        })}
+                        color={"green"}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateId"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["id"]
+                                  },
+                                  operation: 0,
+                                  value: parseInt($state.idinput.value)
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
                           if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
+                            $steps["updateId"] != null &&
+                            typeof $steps["updateId"] === "object" &&
+                            typeof $steps["updateId"].then === "function"
                           ) {
-                            return [];
+                            $steps["updateId"] = await $steps["updateId"];
                           }
-                          throw e;
-                        }
-                      })()}
-                      onClick={async event => {
-                        const $steps = {};
 
-                        $steps["updateNumber"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["number"]
-                                },
-                                operation: 0,
-                                value: $state.idinput.value
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                          $steps["updateUnnamedVariant"] = (() => {
+                            const phoneRegex = /^\d{4,16}$/;
+                            return phoneRegex.test($state.id);
+                          })()
+                            ? (() => {
+                                const actionArgs = {
+                                  vgroup: "stepscharg",
+                                  operation: 0,
+                                  value: "step2"
+                                };
+                                return (({ vgroup, value }) => {
+                                  if (typeof value === "string") {
+                                    value = [value];
+                                  }
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateNumber"] != null &&
-                          typeof $steps["updateNumber"] === "object" &&
-                          typeof $steps["updateNumber"].then === "function"
-                        ) {
-                          $steps["updateNumber"] = await $steps["updateNumber"];
-                        }
+                                  $stateSet($state, vgroup, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUnnamedVariant"] != null &&
+                            typeof $steps["updateUnnamedVariant"] ===
+                              "object" &&
+                            typeof $steps["updateUnnamedVariant"].then ===
+                              "function"
+                          ) {
+                            $steps["updateUnnamedVariant"] = await $steps[
+                              "updateUnnamedVariant"
+                            ];
+                          }
 
-                        $steps["updateUnnamedVariant"] = (() => {
-                          const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                          return phoneRegex.test($state.number);
-                        })()
-                          ? (() => {
-                              const actionArgs = {
-                                vgroup: "stepscharg",
-                                operation: 0,
-                                value: "step2"
-                              };
-                              return (({ vgroup, value }) => {
-                                if (typeof value === "string") {
-                                  value = [value];
-                                }
-
-                                $stateSet($state, vgroup, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateUnnamedVariant"] != null &&
-                          typeof $steps["updateUnnamedVariant"] === "object" &&
-                          typeof $steps["updateUnnamedVariant"].then ===
-                            "function"
-                        ) {
-                          $steps["updateUnnamedVariant"] = await $steps[
-                            "updateUnnamedVariant"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction"] = (() => {
-                          const phoneRegex = /^\+?\d{2}\s?\d{11}$|^\d{11}$/;
-                          return !phoneRegex.test($state.number);
-                        })()
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                                  "top-left"
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
-                        }
-                      }}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___34Uvn
-                        )}
+                          $steps["invokeGlobalAction"] = (() => {
+                            const phoneRegex = /^\d{4,16}$/;
+                            return !phoneRegex.test($state.id);
+                          })()
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                                    "top-left"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.showToast"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
                       >
-                        {"\u0627\u062f\u0627\u0645\u0647"}
-                      </div>
-                    </Button>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___34Uvn
+                          )}
+                        >
+                          {"\u0627\u062f\u0627\u0645\u0647"}
+                        </div>
+                      </Button>
+                    ) : null}
                     {(
                       hasVariant($state, "stepscharg", "step1")
                         ? (() => {
@@ -4005,8 +4078,8 @@ function PlasmicBill__RenderFunc(props: {
                       })}
                       code={
                         hasVariant($state, "stepscharg", "step1")
-                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              document.getElementsByName("idNumber")[0].value = result.codeResult.code;\r\n          } else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n  }\r\n</script>'
-                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n    const file = event.target.files[0];\r\n    if (!file) return;\r\n    \r\n    const canvas = document.getElementById("canvas");\r\n    //const canvas = document.getElementById("barcode_error");\r\n    const context = canvas.getContext("2d");\r\n    const img = new Image();\r\n    \r\n    img.onload = function() {\r\n      // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n      canvas.width = img.width;\r\n      canvas.height = img.height;\r\n      context.drawImage(img, 0, 0, img.width, img.height);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n      scanQRCode(canvas);\r\n      \r\n      // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n      scanBarcode(canvas);\r\n    };\r\n    \r\n    img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n    const context = canvas.getContext("2d");\r\n    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n    const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n    \r\n    if (code) {\r\n              document.getElementsByName("idNumber")[0].value=code.data;\r\n    } else {\r\n      window.document.getElementById("barcode_error").click();\r\n    }\r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n    const imageData = canvas.toDataURL("image/jpeg");\r\n    \r\n    Quagga.decodeSingle({\r\n      decoder: {\r\n        readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n      },\r\n      locate: true,\r\n      src: imageData\r\n    }, function(result) {\r\n      if (result && result.codeResult) {\r\n        document.getElementsByName("idNumber")[0].value=result.codeResult.code;\r\n      } else {\r\n        window.document.getElementById("barcode_error").click();\r\n      }\r\n    });\r\n  }\r\n</script>'
+                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
+                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              document.getElementsByName("idNumber")[0].value = result.codeResult.code;\r\n              var element = document.getElementsByName("idNumber")[0];\r\n              var event = new Event(\'change\');\r\n              element.dispatchEvent(event);          } \r\n           else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
                       }
                     />
                   </div>

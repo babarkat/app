@@ -37,6 +37,9 @@
 .section___1Mdb > * {
   grid-column: 4;
 }
+.sectionstepscharg_step1___1MdbqKzi3 > * {
+  grid-column: 4;
+}
 .freeBox__mpDk {
   display: flex;
   flex-direction: column;
@@ -910,6 +913,9 @@
 }
 .idinputstepscharg_step3:global(.__wab_instance) {
   display: none;
+}
+.idinputstepscharg_step1:global(.__wab_instance) {
+  display: flex;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;
