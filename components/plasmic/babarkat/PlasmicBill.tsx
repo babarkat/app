@@ -88,6 +88,7 @@ import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8q
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
+import Icon97Icon from "./icons/PlasmicIcon__Icon97"; // plasmic-import: GeHN79sG_ozE/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
@@ -158,6 +159,7 @@ export type PlasmicBill__OverridesType = {
   type2?: Flex__<typeof AntdModal>;
   comingSoon12?: Flex__<"div">;
   comingSoon13?: Flex__<"div">;
+  info?: Flex__<typeof AntdModal>;
   loading?: Flex__<typeof Loading>;
 };
 
@@ -543,7 +545,8 @@ function PlasmicBill__RenderFunc(props: {
         path: "type2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "type",
@@ -575,6 +578,17 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "info.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "stepscharg", "step3")
+            ? false
+            : hasVariant(globalVariants, "screen", "mobileOnly")
+            ? false
+            : false
       }
     ],
     [$props, $ctx, $refs]
@@ -699,6 +713,11 @@ function PlasmicBill__RenderFunc(props: {
                       : Icon3Icon
                   }
                   className={classNames(projectcss.all, sty.svg__qGyiK, {
+                    [sty.svgstepscharg_step1__qGyiKqKzi3]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step1"
+                    ),
                     [sty.svgstepscharg_step2__qGyiKAvykh]: hasVariant(
                       $state,
                       "stepscharg",
@@ -852,6 +871,11 @@ function PlasmicBill__RenderFunc(props: {
                 >
                   <Icon61Icon
                     className={classNames(projectcss.all, sty.svg__yjxOe, {
+                      [sty.svgstepscharg_step1__yjxOeqKzi3]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step1"
+                      ),
                       [sty.svgstepscharg_step2__yjxOeAvykh]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1071,6 +1095,35 @@ function PlasmicBill__RenderFunc(props: {
                     <div
                       className={classNames(
                         projectcss.all,
+                        sty.freeBox__gPzHz,
+                        {
+                          [sty.freeBoxstepscharg_step3__gPzHzTqZTv]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        }
+                      )}
+                    >
+                      <Icon97Icon
+                        className={classNames(projectcss.all, sty.svg___6RSl, {
+                          [sty.svgstepscharg_step1___6RSlQKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
+                          [sty.svgstepscharg_step3___6RSlTqZTv]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        })}
+                        role={"img"}
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
                         projectcss.__wab_text,
                         sty.text__ovHho,
                         {
@@ -1098,7 +1151,9 @@ function PlasmicBill__RenderFunc(props: {
                         ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                         : "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                     </div>
-                    <div
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
                       className={classNames(
                         projectcss.all,
                         sty.freeBox__z1Dcz,
@@ -1139,59 +1194,111 @@ function PlasmicBill__RenderFunc(props: {
                           )}
                         >
                           {hasVariant($state, "stepscharg", "step3")
-                            ? "\u0639\u0646\u0648\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a"
+                            ? "\u0646\u0627\u0645 \u0645\u0634\u062a\u0631\u06a9"
                             : hasVariant($state, "stepscharg", "step2")
                             ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
                             : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
-                      {(
-                        hasVariant($state, "stepscharg", "step3") ? true : false
-                      ) ? (
+                      <Stack__
+                        as={"div"}
+                        hasGap={true}
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___3EJpq,
+                          {
+                            [sty.freeBoxstepscharg_step3___3EJpqTqZTv]:
+                              hasVariant($state, "stepscharg", "step3")
+                          }
+                        )}
+                      >
                         <div
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__gTc8C,
+                            sty.text___4YO1,
                             {
-                              [sty.textstepscharg_step2__gTc8CAvykh]:
+                              [sty.textstepscharg_step2___4YO1Avykh]:
                                 hasVariant($state, "stepscharg", "step2"),
-                              [sty.textstepscharg_step3__gTc8CTqZTv]:
+                              [sty.textstepscharg_step3___4YO1TqZTv]:
                                 hasVariant($state, "stepscharg", "step3")
                             }
                           )}
                         >
-                          {hasVariant($state, "stepscharg", "step3") ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    $state.operators2[$state.operatorselect]
-                                      .description +
-                                    " " +
-                                    $state.operators2[$state.operatorselect]
-                                      .services[$state.typecharge].text
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0639\u0646\u0648\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : hasVariant($state, "stepscharg", "step2") ? (
-                            "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          ) : (
-                            "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                          )}
+                          {hasVariant($state, "stepscharg", "step3")
+                            ? "\u0645\u0633\u06a9\u0646 \u0641\u0644\u0627\u0646"
+                            : hasVariant($state, "stepscharg", "step2")
+                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
-                      ) : null}
-                    </div>
+                        {(
+                          hasVariant($state, "stepscharg", "step3")
+                            ? true
+                            : false
+                        ) ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__gTc8C,
+                              {
+                                [sty.textstepscharg_step2__gTc8CAvykh]:
+                                  hasVariant($state, "stepscharg", "step2"),
+                                [sty.textstepscharg_step3__gTc8CTqZTv]:
+                                  hasVariant($state, "stepscharg", "step3")
+                              }
+                            )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["updateType3Open"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["info", "open"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateType3Open"] != null &&
+                                typeof $steps["updateType3Open"] === "object" &&
+                                typeof $steps["updateType3Open"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateType3Open"] = await $steps[
+                                  "updateType3Open"
+                                ];
+                              }
+                            }}
+                          >
+                            {hasVariant($state, "stepscharg", "step3")
+                              ? "\u062c\u0632\u06cc\u06cc\u0627\u062a >"
+                              : hasVariant($state, "stepscharg", "step2")
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                          </div>
+                        ) : null}
+                      </Stack__>
+                    </Stack__>
                     <div
                       className={classNames(
                         projectcss.all,
@@ -1375,6 +1482,11 @@ function PlasmicBill__RenderFunc(props: {
                         $state,
                         "stepscharg",
                         "step2"
+                      ),
+                      [sty.freeBoxstepscharg_step3__lP6JVTqZTv]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
                       )
                     })}
                   >
@@ -3462,7 +3574,7 @@ function PlasmicBill__RenderFunc(props: {
                     displayMaxWidth={"100%"}
                     displayMinHeight={"0"}
                     displayMinWidth={"0"}
-                    displayWidth={"150px"}
+                    displayWidth={"100px"}
                     loading={"lazy"}
                     src={{
                       src: "/plasmic/babarkat/images/image12.png",
@@ -3618,6 +3730,11 @@ function PlasmicBill__RenderFunc(props: {
                       data-plasmic-name={"backstep3"}
                       data-plasmic-override={overrides.backstep3}
                       className={classNames("__wab_instance", sty.backstep3, {
+                        [sty.backstep3stepscharg_step1]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        ),
                         [sty.backstep3stepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3642,7 +3759,7 @@ function PlasmicBill__RenderFunc(props: {
                               const actionArgs = {
                                 vgroup: "stepscharg",
                                 operation: 0,
-                                value: "step2"
+                                value: "step1"
                               };
                               return (({ vgroup, value }) => {
                                 if (typeof value === "string") {
@@ -3692,6 +3809,11 @@ function PlasmicBill__RenderFunc(props: {
                         $state,
                         "stepscharg",
                         "step1"
+                      ),
+                      [sty.freeBoxstepscharg_step3__hztXsTqZTv]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
                       )
                     })}
                   >
@@ -3750,7 +3872,11 @@ function PlasmicBill__RenderFunc(props: {
                                     variablePath: ["id"]
                                   },
                                   operation: 0,
-                                  value: parseInt($state.idinput.value)
+                                  value: parseInt(
+                                    window.document.getElementsByName(
+                                      "idNumber"
+                                    )[0].value
+                                  )
                                 };
                                 return (({
                                   variable,
@@ -3777,7 +3903,7 @@ function PlasmicBill__RenderFunc(props: {
                           }
 
                           $steps["updateUnnamedVariant"] = (() => {
-                            const phoneRegex = /^\d{4,16}$/;
+                            const phoneRegex = /^\d{3,16}$/;
                             return phoneRegex.test($state.id);
                           })()
                             ? (() => {
@@ -3809,7 +3935,7 @@ function PlasmicBill__RenderFunc(props: {
                           }
 
                           $steps["invokeGlobalAction"] = (() => {
-                            const phoneRegex = /^\d{4,16}$/;
+                            const phoneRegex = /^\d{3,16}$/;
                             return !phoneRegex.test($state.id);
                           })()
                             ? (() => {
@@ -4077,9 +4203,12 @@ function PlasmicBill__RenderFunc(props: {
                         )
                       })}
                       code={
-                        hasVariant($state, "stepscharg", "step1")
+                        hasVariant($state, "stepscharg", "step1") &&
+                        hasVariant(globalVariants, "screen", "mobileOnly")
                           ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
-                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              document.getElementsByName("idNumber")[0].value = result.codeResult.code;\r\n              var element = document.getElementsByName("idNumber")[0];\r\n              var event = new Event(\'change\');\r\n              element.dispatchEvent(event);          } \r\n           else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
+                          : hasVariant($state, "stepscharg", "step1")
+                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
+                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
                       }
                     />
                   </div>
@@ -5472,6 +5601,16 @@ function PlasmicBill__RenderFunc(props: {
                 $state,
                 "stepscharg",
                 "step1"
+              ),
+              [sty.type2stepscharg_step2]: hasVariant(
+                $state,
+                "stepscharg",
+                "step2"
+              ),
+              [sty.type2stepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
               )
             })}
             closeButtonClassName={classNames({
@@ -5704,7 +5843,7 @@ function PlasmicBill__RenderFunc(props: {
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0645\u06cc\u0632\u0628\u0627\u0646"
+                    ? "\u0622\u0628 | \u0628\u0631\u0642 | \u06af\u0627\u0632 | \u062c\u0631\u06cc\u0645\u0647 \u062e\u0648\u062f\u0631\u0648 "
                     : "\u0622\u0628 | \u0628\u0631\u0642 | \u06af\u0627\u0632 | \u062c\u0631\u06cc\u0645\u0647 \u062e\u0648\u062f\u0631\u0648 "}
                 </div>
               </Stack__>
@@ -5826,12 +5965,302 @@ function PlasmicBill__RenderFunc(props: {
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0645\u06cc\u0632\u0628\u0627\u0646"
+                    ? "\u062a\u0644\u0641\u0646 \u062b\u0627\u0628\u062a | \u0647\u0645\u0631\u0627\u0647"
                     : "\u062a\u0644\u0641\u0646 \u062b\u0627\u0628\u062a | \u0647\u0645\u0631\u0627\u0647"}
                 </div>
               </Stack__>
             </div>
           </AntdModal>
+          {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
+            <AntdModal
+              data-plasmic-name={"info"}
+              data-plasmic-override={overrides.info}
+              className={classNames("__wab_instance", sty.info, {
+                [sty.infostepscharg_step1]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step1"
+                ),
+                [sty.infostepscharg_step2]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step2"
+                ),
+                [sty.infostepscharg_step3]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step3"
+                )
+              })}
+              closeButtonClassName={classNames({
+                [sty["pcls_akIea5mb1GCq"]]: true
+              })}
+              closeIcon={
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xmBrc
+                  )}
+                >
+                  {"\n"}
+                </div>
+              }
+              defaultStylesClassName={classNames(
+                projectcss.root_reset,
+                projectcss.plasmic_default_styles,
+                projectcss.plasmic_mixins,
+                projectcss.plasmic_tokens,
+                plasmic_antd_5_hostless_css.plasmic_tokens,
+                plasmic_plasmic_rich_components_css.plasmic_tokens
+              )}
+              hideFooter={true}
+              modalContentClassName={classNames({
+                [sty["pcls_hp7nxg5nVJhv"]]: true
+              })}
+              modalScopeClassName={sty["info__modal"]}
+              onOpenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["info", "open"]).apply(
+                  null,
+                  eventArgs
+                );
+              }}
+              open={generateStateValueProp($state, ["info", "open"])}
+              title={null}
+              trigger={null}
+              width={
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? "100%"
+                  : "700"
+              }
+            >
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__dVyng)}
+              >
+                <Stack__
+                  as={"div"}
+                  hasGap={true}
+                  className={classNames(projectcss.all, sty.freeBox__ktIJh)}
+                >
+                  <Icon78Icon
+                    className={classNames(projectcss.all, sty.svg__tbeWj)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___5Fzdx
+                    )}
+                  >
+                    {"\u062c\u0632\u06cc\u06cc\u0627\u062a \u0642\u0628\u0636 "}
+                  </div>
+                </Stack__>
+                <Icon89Icon
+                  className={classNames(projectcss.all, sty.svg__dHnji)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateModal3Open"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["info", "open"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateModal3Open"] != null &&
+                      typeof $steps["updateModal3Open"] === "object" &&
+                      typeof $steps["updateModal3Open"].then === "function"
+                    ) {
+                      $steps["updateModal3Open"] = await $steps[
+                        "updateModal3Open"
+                      ];
+                    }
+                  }}
+                  role={"img"}
+                />
+              </Stack__>
+              <div className={classNames(projectcss.all, sty.freeBox__cbBbD)}>
+                <div className={classNames(projectcss.all, sty.freeBox__sLIwM)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___3RGYi
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__yft0R
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__akfwM)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__oYPkj
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__hZfA
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__eh2T)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__waO4H
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__cqbqL
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox___4YSc)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___5AZ1I
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__l6Ied
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__hDPtx)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__rUr63
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__tzV
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__wTtD)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__pJryb
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__b6Cev
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__t7MCp)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ujnaY
+                    )}
+                  >
+                    {"\u0646\u0627\u0645"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__n0JgA
+                    )}
+                  >
+                    {
+                      "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                    }
+                  </div>
+                </div>
+              </div>
+            </AntdModal>
+          ) : null}
           <Loading
             data-plasmic-name={"loading"}
             data-plasmic-override={overrides.loading}
@@ -5905,6 +6334,7 @@ const PlasmicDescendants = {
     "type2",
     "comingSoon12",
     "comingSoon13",
+    "info",
     "loading"
   ],
   header: ["header"],
@@ -6000,6 +6430,7 @@ const PlasmicDescendants = {
   type2: ["type2", "comingSoon12", "comingSoon13"],
   comingSoon12: ["comingSoon12"],
   comingSoon13: ["comingSoon13"],
+  info: ["info"],
   loading: ["loading"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -6045,6 +6476,7 @@ type NodeDefaultElementType = {
   type2: typeof AntdModal;
   comingSoon12: "div";
   comingSoon13: "div";
+  info: typeof AntdModal;
   loading: typeof Loading;
 };
 
@@ -6175,6 +6607,7 @@ export const PlasmicBill = Object.assign(
     type2: makeNodeComponent("type2"),
     comingSoon12: makeNodeComponent("comingSoon12"),
     comingSoon13: makeNodeComponent("comingSoon13"),
+    info: makeNodeComponent("info"),
     loading: makeNodeComponent("loading"),
 
     // Metadata about props expected for PlasmicBill
