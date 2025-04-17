@@ -74,6 +74,7 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -149,6 +150,7 @@ export type PlasmicPubg__OverridesType = {
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   rate?: Flex__<typeof ApiRequest>;
   embedHtml?: Flex__<typeof Embed>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultPubgProps {}
@@ -5508,6 +5510,48 @@ function PlasmicPubg__RenderFunc(props: {
               }
             />
           ) : null}
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5547,7 +5591,8 @@ const PlasmicDescendants = {
     "lottie",
     "commissionBabarkat",
     "rate",
-    "embedHtml"
+    "embedHtml",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -5621,7 +5666,8 @@ const PlasmicDescendants = {
   lottie: ["lottie"],
   commissionBabarkat: ["commissionBabarkat"],
   rate: ["rate"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5659,6 +5705,7 @@ type NodeDefaultElementType = {
   commissionBabarkat: typeof ApiRequest;
   rate: typeof ApiRequest;
   embedHtml: typeof Embed;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5781,6 +5828,7 @@ export const PlasmicPubg = Object.assign(
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     rate: makeNodeComponent("rate"),
     embedHtml: makeNodeComponent("embedHtml"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicPubg
     internalVariantProps: PlasmicPubg__VariantProps,

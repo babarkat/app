@@ -82,6 +82,7 @@ import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-impor
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadioButton } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import {
   ExperimentValue,
@@ -141,6 +142,7 @@ export type PlasmicTransaction__OverridesType = {
   charge3?: Flex__<"div">;
   vuesaxBoldReceipt3?: Flex__<"div">;
   timer?: Flex__<typeof Timer>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultTransactionProps {}
@@ -5366,6 +5368,49 @@ function PlasmicTransaction__RenderFunc(props: {
             }}
             runWhileEditing={false}
           />
+
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5392,7 +5437,8 @@ const PlasmicDescendants = {
     "vuesaxBoldHome2",
     "charge3",
     "vuesaxBoldReceipt3",
-    "timer"
+    "timer",
+    "sideEffect"
   ],
   embedHtml: ["embedHtml"],
   header: ["header"],
@@ -5417,7 +5463,8 @@ const PlasmicDescendants = {
   vuesaxBoldHome2: ["vuesaxBoldHome2"],
   charge3: ["charge3", "vuesaxBoldReceipt3"],
   vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"],
-  timer: ["timer"]
+  timer: ["timer"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5442,6 +5489,7 @@ type NodeDefaultElementType = {
   charge3: "div";
   vuesaxBoldReceipt3: "div";
   timer: typeof Timer;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5547,6 +5595,7 @@ export const PlasmicTransaction = Object.assign(
     charge3: makeNodeComponent("charge3"),
     vuesaxBoldReceipt3: makeNodeComponent("vuesaxBoldReceipt3"),
     timer: makeNodeComponent("timer"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicTransaction
     internalVariantProps: PlasmicTransaction__VariantProps,

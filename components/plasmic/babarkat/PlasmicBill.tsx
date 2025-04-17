@@ -71,6 +71,7 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -161,6 +162,7 @@ export type PlasmicBill__OverridesType = {
   comingSoon13?: Flex__<"div">;
   info?: Flex__<typeof AntdModal>;
   loading?: Flex__<typeof Loading>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultBillProps {}
@@ -6287,6 +6289,49 @@ function PlasmicBill__RenderFunc(props: {
               }
             }}
           />
+
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -6335,7 +6380,8 @@ const PlasmicDescendants = {
     "comingSoon12",
     "comingSoon13",
     "info",
-    "loading"
+    "loading",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -6431,7 +6477,8 @@ const PlasmicDescendants = {
   comingSoon12: ["comingSoon12"],
   comingSoon13: ["comingSoon13"],
   info: ["info"],
-  loading: ["loading"]
+  loading: ["loading"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -6478,6 +6525,7 @@ type NodeDefaultElementType = {
   comingSoon13: "div";
   info: typeof AntdModal;
   loading: typeof Loading;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -6609,6 +6657,7 @@ export const PlasmicBill = Object.assign(
     comingSoon13: makeNodeComponent("comingSoon13"),
     info: makeNodeComponent("info"),
     loading: makeNodeComponent("loading"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicBill
     internalVariantProps: PlasmicBill__VariantProps,

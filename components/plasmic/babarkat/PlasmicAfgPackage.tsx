@@ -69,6 +69,7 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -140,6 +141,7 @@ export type PlasmicAfgPackage__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   exchangeRate?: Flex__<typeof ApiRequest>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultAfgPackageProps {}
@@ -4983,6 +4985,49 @@ function PlasmicAfgPackage__RenderFunc(props: {
               : "https://n8n.babarkat.com/webhook/Afg-package"
           }
         />
+
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect)}
+          onMount={async () => {
+            const $steps = {};
+
+            $steps["runCode"] = true
+              ? (() => {
+                  const actionArgs = {
+                    customFunction: async () => {
+                      return (() => {
+                        const item = JSON.parse(
+                          sessionStorage.getItem("userbabarcatToken")
+                        );
+                        if (item == null) {
+                          return window.open("/login");
+                        } else {
+                          const currentTime = new Date().getTime();
+                          if (currentTime > item.expiration) {
+                            return sessionStorage.removeItem(
+                              "userbabarcatToken"
+                            );
+                          }
+                        }
+                      })();
+                    }
+                  };
+                  return (({ customFunction }) => {
+                    return customFunction();
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runCode"] != null &&
+              typeof $steps["runCode"] === "object" &&
+              typeof $steps["runCode"].then === "function"
+            ) {
+              $steps["runCode"] = await $steps["runCode"];
+            }
+          }}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -5017,7 +5062,8 @@ const PlasmicDescendants = {
     "modal2",
     "lottie",
     "commissionBabarkat",
-    "exchangeRate"
+    "exchangeRate",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -5085,7 +5131,8 @@ const PlasmicDescendants = {
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
   commissionBabarkat: ["commissionBabarkat"],
-  exchangeRate: ["exchangeRate"]
+  exchangeRate: ["exchangeRate"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5119,6 +5166,7 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   commissionBabarkat: typeof ApiRequest;
   exchangeRate: typeof ApiRequest;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5237,6 +5285,7 @@ export const PlasmicAfgPackage = Object.assign(
     lottie: makeNodeComponent("lottie"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     exchangeRate: makeNodeComponent("exchangeRate"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicAfgPackage
     internalVariantProps: PlasmicAfgPackage__VariantProps,

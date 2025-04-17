@@ -72,6 +72,7 @@ import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -146,6 +147,7 @@ export type PlasmicInternet3__OverridesType = {
   modal3?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultInternet3Props {}
@@ -4738,6 +4740,49 @@ function PlasmicInternet3__RenderFunc(props: {
             }}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
+
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4776,7 +4821,8 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "modal3",
     "lottie",
-    "commissionBabarkat"
+    "commissionBabarkat",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -4857,7 +4903,8 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   modal3: ["modal3", "lottie"],
   lottie: ["lottie"],
-  commissionBabarkat: ["commissionBabarkat"]
+  commissionBabarkat: ["commissionBabarkat"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4894,6 +4941,7 @@ type NodeDefaultElementType = {
   modal3: typeof AntdModal;
   lottie: typeof LottieWrapper;
   commissionBabarkat: typeof ApiRequest;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5015,6 +5063,7 @@ export const PlasmicInternet3 = Object.assign(
     modal3: makeNodeComponent("modal3"),
     lottie: makeNodeComponent("lottie"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicInternet3
     internalVariantProps: PlasmicInternet3__VariantProps,

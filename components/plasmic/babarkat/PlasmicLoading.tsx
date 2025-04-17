@@ -66,8 +66,6 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLoading.module.css"; // plasmic-import: LqAqGtGaA2Da/css
 
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
-
 createPlasmicElementProxy;
 
 export type PlasmicLoading__VariantMembers = {};
@@ -157,43 +155,29 @@ function PlasmicLoading__RenderFunc(props: {
   });
 
   return (
-    (() => {
-      try {
-        return $state.load;
-      } catch (e) {
-        if (
-          e instanceof TypeError ||
-          e?.plasmicType === "PlasmicUndefinedDataError"
-        ) {
-          return true;
-        }
-        throw e;
-      }
-    })() ? (
-      <div
-        data-plasmic-name={"root"}
-        data-plasmic-override={overrides.root}
-        data-plasmic-root={true}
-        data-plasmic-for-node={forNode}
-        className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
-          projectcss.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens,
-          plasmic_plasmic_rich_components_css.plasmic_tokens,
-          sty.root
-        )}
-      >
-        <IconIcon
-          data-plasmic-name={"svg"}
-          data-plasmic-override={overrides.svg}
-          className={classNames(projectcss.all, sty.svg)}
-          role={"img"}
-        />
-      </div>
-    ) : null
+    <div
+      data-plasmic-name={"root"}
+      data-plasmic-override={overrides.root}
+      data-plasmic-root={true}
+      data-plasmic-for-node={forNode}
+      className={classNames(
+        projectcss.all,
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_antd_5_hostless_css.plasmic_tokens,
+        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        sty.root
+      )}
+    >
+      <svg
+        data-plasmic-name={"svg"}
+        data-plasmic-override={overrides.svg}
+        className={classNames(projectcss.all, sty.svg)}
+        role={"img"}
+      />
+    </div>
   ) as React.ReactElement | null;
 }
 

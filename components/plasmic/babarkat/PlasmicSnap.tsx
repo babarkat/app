@@ -69,6 +69,7 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -136,6 +137,7 @@ export type PlasmicSnap__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultSnapProps {}
@@ -4293,6 +4295,49 @@ function PlasmicSnap__RenderFunc(props: {
             }}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
+
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4325,7 +4370,8 @@ const PlasmicDescendants = {
     "modal",
     "modal2",
     "lottie",
-    "commissionBabarkat"
+    "commissionBabarkat",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -4384,7 +4430,8 @@ const PlasmicDescendants = {
   modal: ["modal"],
   modal2: ["modal2", "lottie"],
   lottie: ["lottie"],
-  commissionBabarkat: ["commissionBabarkat"]
+  commissionBabarkat: ["commissionBabarkat"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4415,6 +4462,7 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   commissionBabarkat: typeof ApiRequest;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4528,6 +4576,7 @@ export const PlasmicSnap = Object.assign(
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicSnap
     internalVariantProps: PlasmicSnap__VariantProps,

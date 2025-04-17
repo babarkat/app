@@ -67,6 +67,7 @@ import {
   usePlasmicInvalidate
 } from "@plasmicapp/react-web/lib/data-sources";
 
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
@@ -77,7 +78,6 @@ import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import Header from "../../Header"; // plasmic-import: guZRqy1VG4VR/component
-import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -139,6 +139,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
+  sideEffect?: Flex__<typeof SideEffect>;
   profile?: Flex__<typeof ApiRequest>;
   wallet4?: Flex__<"div">;
   services5?: Flex__<"div">;
@@ -195,7 +196,6 @@ export type PlasmicHomepage__OverridesType = {
   comingSoon12?: Flex__<"div">;
   comingSoon15?: Flex__<"div">;
   comingSoon13?: Flex__<"div">;
-  loading?: Flex__<typeof Loading>;
 };
 
 export interface DefaultHomepageProps {}
@@ -507,25 +507,6 @@ function PlasmicHomepage__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
-        path: "loading.load",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return window.load;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return false;
-              }
-              throw e;
-            }
-          })()
-      },
-      {
         path: "call.open",
         type: "private",
         variableType: "boolean",
@@ -631,6 +612,49 @@ function PlasmicHomepage__RenderFunc(props: {
             }
           )}
         >
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          const item = JSON.parse(
+                            sessionStorage.getItem("userbabarcatToken")
+                          );
+                          if (item == null) {
+                            return window.open("/login");
+                          } else {
+                            const currentTime = new Date().getTime();
+                            if (currentTime > item.expiration) {
+                              return sessionStorage.removeItem(
+                                "userbabarcatToken"
+                              );
+                            }
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
+
           <section className={classNames(projectcss.all, sty.section__y9X3X)}>
             <div className={classNames(projectcss.all, sty.freeBox__c8Hj)}>
               <ApiRequest
@@ -15131,57 +15155,6 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__gtZ6R)} />
           </AntdModal>
-          {(() => {
-            const child$Props = {
-              className: classNames("__wab_instance", sty.loading),
-              load: generateStateValueProp($state, ["loading", "load"]),
-              onLoadChange: async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, ["loading", "load"]).apply(
-                  null,
-                  eventArgs
-                );
-
-                if (
-                  eventArgs.length > 1 &&
-                  eventArgs[1] &&
-                  eventArgs[1]._plasmic_state_init_
-                ) {
-                  return;
-                }
-              }
-            };
-
-            initializePlasmicStates(
-              $state,
-              [
-                {
-                  name: "loading.load",
-                  initFunc: ({ $props, $state, $queries }) =>
-                    (() => {
-                      try {
-                        return window.load;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return false;
-                        }
-                        throw e;
-                      }
-                    })()
-                }
-              ],
-              []
-            );
-            return (
-              <Loading
-                data-plasmic-name={"loading"}
-                data-plasmic-override={overrides.loading}
-                {...child$Props}
-              />
-            );
-          })()}
         </div>
       </div>
     </React.Fragment>
@@ -15191,6 +15164,7 @@ function PlasmicHomepage__RenderFunc(props: {
 const PlasmicDescendants = {
   root: [
     "root",
+    "sideEffect",
     "profile",
     "wallet4",
     "services5",
@@ -15246,9 +15220,9 @@ const PlasmicDescendants = {
     "call",
     "comingSoon12",
     "comingSoon15",
-    "comingSoon13",
-    "loading"
+    "comingSoon13"
   ],
+  sideEffect: ["sideEffect"],
   profile: [
     "profile",
     "wallet4",
@@ -15374,14 +15348,14 @@ const PlasmicDescendants = {
   call: ["call", "comingSoon12", "comingSoon15", "comingSoon13"],
   comingSoon12: ["comingSoon12"],
   comingSoon15: ["comingSoon15"],
-  comingSoon13: ["comingSoon13"],
-  loading: ["loading"]
+  comingSoon13: ["comingSoon13"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  sideEffect: typeof SideEffect;
   profile: typeof ApiRequest;
   wallet4: "div";
   services5: "div";
@@ -15438,7 +15412,6 @@ type NodeDefaultElementType = {
   comingSoon12: "div";
   comingSoon15: "div";
   comingSoon13: "div";
-  loading: typeof Loading;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -15526,6 +15499,7 @@ export const PlasmicHomepage = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("root")),
   {
     // Helper components rendering sub-elements
+    sideEffect: makeNodeComponent("sideEffect"),
     profile: makeNodeComponent("profile"),
     wallet4: makeNodeComponent("wallet4"),
     services5: makeNodeComponent("services5"),
@@ -15582,7 +15556,6 @@ export const PlasmicHomepage = Object.assign(
     comingSoon12: makeNodeComponent("comingSoon12"),
     comingSoon15: makeNodeComponent("comingSoon15"),
     comingSoon13: makeNodeComponent("comingSoon13"),
-    loading: makeNodeComponent("loading"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
