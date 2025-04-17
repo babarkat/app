@@ -2963,7 +2963,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
                     }
 
-                    $steps["invokeGlobalAction"] = true
+                    $steps["invokeGlobalAction"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -3487,7 +3491,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateFragmentInputValue4"] = true
+                    $steps["updateFragmentInputValue4"] = (
+                      $steps.invokeGlobalAction2?.data
+                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
+                        : false
+                    )
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -3927,7 +3935,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
                     }
 
-                    $steps["invokeGlobalAction3"] = true
+                    $steps["invokeGlobalAction3"] = (
+                      $steps.invokeGlobalAction?.data
+                        ? $steps.invokeGlobalAction?.data[0]?.success == true
+                        : false
+                    )
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -4087,6 +4099,28 @@ function PlasmicLogIn__RenderFunc(props: {
                         "loginByPassword",
                         "loginByPassword"
                       ),
+                      [sty.sendcodeloginByPassword_unnamedVariant2]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                      [sty.sendcodeloginByPassword_unnamedVariant]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
                       [sty.sendcodepassword]: hasVariant(
                         $state,
                         "password",
