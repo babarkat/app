@@ -14,6 +14,8 @@
 .svg {
   object-fit: cover;
   max-width: 100%;
-  height: 1em;
+  width: 60px;
+  height: 60px;
+  color: var(--token-s7Z9BN_B1gNc);
   flex-shrink: 0;
 }

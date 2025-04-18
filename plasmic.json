@@ -1614,6 +1614,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/charging-3"
+        },
+        {
+          "id": "L2fWbb7vOro8",
+          "name": "RadioButton",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicRadioButton.tsx",
+          "importSpec": {
+            "modulePath": "RadioButton.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicRadioButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2351,6 +2364,56 @@
           "id": "GeHN79sG_ozE",
           "name": "Icon97Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon97.tsx"
+        },
+        {
+          "id": "j58jBCJnZFEz",
+          "name": "Icon98Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon98.tsx"
+        },
+        {
+          "id": "NVA9h9iSgFVb",
+          "name": "Icon99Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon99.tsx"
+        },
+        {
+          "id": "wsvsLF00UI-6",
+          "name": "Icon100Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon100.tsx"
+        },
+        {
+          "id": "kaEdqZ6pnhpH",
+          "name": "Icon101Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon101.tsx"
+        },
+        {
+          "id": "98U05Tn3M472",
+          "name": "Icon102Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon102.tsx"
+        },
+        {
+          "id": "xiL1J9y-3Mta",
+          "name": "Icon103Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon103.tsx"
+        },
+        {
+          "id": "3o5IGmXy7oW3",
+          "name": "Icon104Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon104.tsx"
+        },
+        {
+          "id": "d7SEoq2N7nLm",
+          "name": "Icon105Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon105.tsx"
+        },
+        {
+          "id": "BxLhtAK-gq-7",
+          "name": "Icon106Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon106.tsx"
+        },
+        {
+          "id": "spxNL7aXl4b7",
+          "name": "Icon107Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon107.tsx"
         }
       ],
       "images": [
