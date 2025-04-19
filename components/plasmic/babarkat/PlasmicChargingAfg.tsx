@@ -682,7 +682,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     sty.text__giyNs
                   )}
                 >
-                  {"\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"}
+                  {
+                    "\u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+                  }
                 </div>
                 <PlasmicIcon__
                   PlasmicIconType={

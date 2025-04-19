@@ -151,10 +151,10 @@ export type PlasmicBill__OverridesType = {
   boxselect?: Flex__<typeof Boxselect>;
   operators3?: Flex__<"div">;
   boxselect3?: Flex__<typeof Boxselect>;
-  backstep2?: Flex__<typeof Button>;
   backstep3?: Flex__<typeof Button>;
-  step1Next?: Flex__<typeof Button>;
   step1Next2?: Flex__<typeof Button>;
+  backstep2?: Flex__<typeof Button>;
+  step1Next?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
   addBill?: Flex__<typeof Button>;
   step2Next?: Flex__<typeof Button>;
@@ -617,6 +617,12 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "buttonHasError",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2493,44 +2499,6 @@ function PlasmicBill__RenderFunc(props: {
 
                             (async value => {
                               const $steps = {};
-
-                              $steps["updateIdinputValue"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["idinput2", "value"]
-                                      },
-                                      operation: 0
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["updateIdinputValue"] != null &&
-                                typeof $steps["updateIdinputValue"] ===
-                                  "object" &&
-                                typeof $steps["updateIdinputValue"].then ===
-                                  "function"
-                              ) {
-                                $steps["updateIdinputValue"] = await $steps[
-                                  "updateIdinputValue"
-                                ];
-                              }
                             }).apply(null, eventArgs);
                           }}
                           placeholder={
@@ -4129,76 +4097,6 @@ function PlasmicBill__RenderFunc(props: {
                     )
                   })}
                 >
-                  <Button
-                    data-plasmic-name={"backstep2"}
-                    data-plasmic-override={overrides.backstep2}
-                    className={classNames("__wab_instance", sty.backstep2, {
-                      [sty.backstep2stepscharg_step2]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
-                      [sty.backstep2stepscharg_step3]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    })}
-                    color={
-                      hasVariant($state, "stepscharg", "step2")
-                        ? "softGreen"
-                        : "green"
-                    }
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["updateUnnamedVariant"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "stepscharg",
-                              operation: 1
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
-
-                              $stateSet($state, vgroup, undefined);
-                              return undefined;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateUnnamedVariant"] != null &&
-                        typeof $steps["updateUnnamedVariant"] === "object" &&
-                        typeof $steps["updateUnnamedVariant"].then ===
-                          "function"
-                      ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
-                      }
-                    }}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bcqup,
-                        {
-                          [sty.textstepscharg_step2__bcqupAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "stepscharg", "step2")
-                        ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                        : "\u0627\u062f\u0627\u0645\u0647"}
-                    </div>
-                  </Button>
                   {(
                     hasVariant($state, "stepscharg", "step3")
                       ? true
@@ -4285,7 +4183,9 @@ function PlasmicBill__RenderFunc(props: {
                       </div>
                     </Button>
                   ) : null}
-                  <div
+                  <Stack__
+                    as={"div"}
+                    hasGap={true}
                     className={classNames(projectcss.all, sty.freeBox__hztXs, {
                       [sty.freeBoxstepscharg_step1__hztXsQKzi3]: hasVariant(
                         $state,
@@ -4299,141 +4199,27 @@ function PlasmicBill__RenderFunc(props: {
                       )
                     })}
                   >
-                    <Button
-                      data-plasmic-name={"step1Next"}
-                      data-plasmic-override={overrides.step1Next}
-                      className={classNames("__wab_instance", sty.step1Next, {
-                        [sty.step1Nextstepscharg_step1]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step1"
-                        ),
-                        [sty.step1Nextstepscharg_step2]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step2"
-                        ),
-                        [sty.step1Nextstepscharg_step3]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      color={"green"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateId"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["id"]
-                                },
-                                operation: 0,
-                                value: parseInt(
-                                  window.document.getElementsByName(
-                                    "idNumber"
-                                  )[0].value
-                                )
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateId"] != null &&
-                          typeof $steps["updateId"] === "object" &&
-                          typeof $steps["updateId"].then === "function"
-                        ) {
-                          $steps["updateId"] = await $steps["updateId"];
-                        }
-
-                        $steps["updateUnnamedVariant"] = (() => {
-                          const phoneRegex = /^\d{3,16}$/;
-                          return phoneRegex.test($state.id);
-                        })()
-                          ? (() => {
-                              const actionArgs = {
-                                vgroup: "stepscharg",
-                                operation: 0,
-                                value: "step2"
-                              };
-                              return (({ vgroup, value }) => {
-                                if (typeof value === "string") {
-                                  value = [value];
-                                }
-
-                                $stateSet($state, vgroup, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateUnnamedVariant"] != null &&
-                          typeof $steps["updateUnnamedVariant"] === "object" &&
-                          typeof $steps["updateUnnamedVariant"].then ===
-                            "function"
-                        ) {
-                          $steps["updateUnnamedVariant"] = await $steps[
-                            "updateUnnamedVariant"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction"] = (() => {
-                          const phoneRegex = /^\d{3,16}$/;
-                          return !phoneRegex.test($state.id);
-                        })()
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                                  "top-left"
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
-                        }
-                      }}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___34Uvn
-                        )}
-                      >
-                        {"\u0627\u062f\u0627\u0645\u0647"}
-                      </div>
-                    </Button>
                     {(
                       hasVariant($state, "stepscharg", "step1")
-                        ? true
+                        ? (() => {
+                            try {
+                              return (
+                                $state.idORcode == "bill_id" &&
+                                ($state.type == "elec" ||
+                                  $state.type == "water" ||
+                                  $state.type == "gas" ||
+                                  $state.type == "other")
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
                         : hasVariant($state, "stepscharg", "step3")
                         ? true
                         : hasVariant($state, "stepscharg", "step2")
@@ -4466,7 +4252,11 @@ function PlasmicBill__RenderFunc(props: {
                             )
                           }
                         )}
-                        color={"softGreen"}
+                        color={
+                          hasVariant($state, "stepscharg", "step1")
+                            ? "clear"
+                            : "softGreen"
+                        }
                         onClick={async event => {
                           const $steps = {};
 
@@ -4492,31 +4282,50 @@ function PlasmicBill__RenderFunc(props: {
                             $steps["runCode"] = await $steps["runCode"];
                           }
                         }}
-                        showStartIcon={true}
-                        startIcon={
-                          <Icon95Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__zOhx
-                            )}
-                            role={"img"}
-                          />
+                        showStartIcon={
+                          hasVariant($state, "stepscharg", "step1")
+                            ? undefined
+                            : true
                         }
+                        startIcon={null}
                       >
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5OyPr,
+                            sty.freeBox__oJz02,
                             {
-                              [sty.textstepscharg_step1___5OyPrQKzi3]:
+                              [sty.freeBoxstepscharg_step1__oJz02QKzi3]:
                                 hasVariant($state, "stepscharg", "step1")
                             }
                           )}
                         >
-                          {
-                            "\u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f \u0642\u0628\u0636"
-                          }
+                          <Icon95Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__zOhx,
+                              {
+                                [sty.svgstepscharg_step1__zOhxQKzi3]:
+                                  hasVariant($state, "stepscharg", "step1")
+                              }
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___5OyPr,
+                              {
+                                [sty.textstepscharg_step1___5OyPrQKzi3]:
+                                  hasVariant($state, "stepscharg", "step1")
+                              }
+                            )}
+                          >
+                            {hasVariant($state, "stepscharg", "step1")
+                              ? "\u0628\u0627\u0631\u06a9\u062f \u062e\u0648\u0627\u0646"
+                              : "\u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f \u0642\u0628\u0636"}
+                          </div>
                         </div>
                       </Button>
                     ) : null}
@@ -4633,6 +4442,335 @@ function PlasmicBill__RenderFunc(props: {
                         {""}
                       </div>
                     ) : null}
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__e9RnO,
+                        {
+                          [sty.freeBoxstepscharg_step1__e9RnOqKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          )
+                        }
+                      )}
+                    >
+                      <Button
+                        data-plasmic-name={"backstep2"}
+                        data-plasmic-override={overrides.backstep2}
+                        className={classNames("__wab_instance", sty.backstep2, {
+                          [sty.backstep2stepscharg_step1]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
+                          [sty.backstep2stepscharg_step2]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
+                          [sty.backstep2stepscharg_step3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        })}
+                        color={
+                          hasVariant($state, "stepscharg", "step1")
+                            ? "softGreen"
+                            : hasVariant($state, "stepscharg", "step2")
+                            ? "softGreen"
+                            : "green"
+                        }
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateUnnamedVariant"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  vgroup: "stepscharg",
+                                  operation: 1
+                                };
+                                return (({ vgroup, value }) => {
+                                  if (typeof value === "string") {
+                                    value = [value];
+                                  }
+
+                                  $stateSet($state, vgroup, undefined);
+                                  return undefined;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUnnamedVariant"] != null &&
+                            typeof $steps["updateUnnamedVariant"] ===
+                              "object" &&
+                            typeof $steps["updateUnnamedVariant"].then ===
+                              "function"
+                          ) {
+                            $steps["updateUnnamedVariant"] = await $steps[
+                              "updateUnnamedVariant"
+                            ];
+                          }
+                        }}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bcqup,
+                            {
+                              [sty.textstepscharg_step1__bcqupQKzi3]:
+                                hasVariant($state, "stepscharg", "step1"),
+                              [sty.textstepscharg_step2__bcqupAvykh]:
+                                hasVariant($state, "stepscharg", "step2")
+                            }
+                          )}
+                        >
+                          {hasVariant($state, "stepscharg", "step1")
+                            ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                            : hasVariant($state, "stepscharg", "step2")
+                            ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                            : "\u0627\u062f\u0627\u0645\u0647"}
+                        </div>
+                      </Button>
+                      <Button
+                        data-plasmic-name={"step1Next"}
+                        data-plasmic-override={overrides.step1Next}
+                        className={classNames("__wab_instance", sty.step1Next, {
+                          [sty.step1Nextstepscharg_step1]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
+                          [sty.step1Nextstepscharg_step2]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
+                          [sty.step1Nextstepscharg_step3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        })}
+                        color={"green"}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["updateId"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["id"]
+                                  },
+                                  operation: 0,
+                                  value: parseInt(
+                                    window.document.getElementsByName(
+                                      "idNumber"
+                                    )[0].value
+                                  )
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateId"] != null &&
+                            typeof $steps["updateId"] === "object" &&
+                            typeof $steps["updateId"].then === "function"
+                          ) {
+                            $steps["updateId"] = await $steps["updateId"];
+                          }
+
+                          $steps["updateNumber"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["number"]
+                                  },
+                                  operation: 0,
+                                  value: $state.fragmentInput5.value
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateNumber"] != null &&
+                            typeof $steps["updateNumber"] === "object" &&
+                            typeof $steps["updateNumber"].then === "function"
+                          ) {
+                            $steps["updateNumber"] = await $steps[
+                              "updateNumber"
+                            ];
+                          }
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      switch ($state.type) {
+                                        case "mobile":
+                                          if (
+                                            !/^09\d{9}$/.test(
+                                              $state.fragmentInput5.value
+                                            )
+                                          ) {
+                                            $state.buttonHasError = true;
+                                          }
+                                          if ($state.operatorselect == -1)
+                                            $state.buttonHasError = true;
+                                          break;
+                                        case "phone":
+                                          if (
+                                            !/^0[1-9]\d{9}$/.test(
+                                              $state.fragmentInput4.value
+                                            )
+                                          ) {
+                                            $state.buttonHasError = true;
+                                          }
+                                          break;
+                                        case "elec":
+                                        case "water":
+                                          if (!/^\d+$/.test($state.id)) {
+                                            $state.buttonHasError = true;
+                                          }
+                                          break;
+                                        case "gas":
+                                          if (
+                                            !/^\d+$/.test($state.id) ||
+                                            $state.idinput3.value.length == 0
+                                          ) {
+                                            $state.buttonHasError = true;
+                                          }
+                                          break;
+                                      }
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["updateIdinputValue"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["idinput", "value"]
+                                  },
+                                  operation: 0
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateIdinputValue"] != null &&
+                            typeof $steps["updateIdinputValue"] === "object" &&
+                            typeof $steps["updateIdinputValue"].then ===
+                              "function"
+                          ) {
+                            $steps["updateIdinputValue"] = await $steps[
+                              "updateIdinputValue"
+                            ];
+                          }
+
+                          $steps["invokeGlobalAction"] = (() => {
+                            const phoneRegex = /^\d{3,16}$/;
+                            return !phoneRegex.test($state.id);
+                          })()
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                                    "top-left"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.showToast"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___34Uvn,
+                            {
+                              [sty.textstepscharg_step1___34UvnQKzi3]:
+                                hasVariant($state, "stepscharg", "step1")
+                            }
+                          )}
+                        >
+                          {"\u0627\u062f\u0627\u0645\u0647"}
+                        </div>
+                      </Button>
+                    </Stack__>
                     <Embed
                       data-plasmic-name={"embedHtml"}
                       data-plasmic-override={overrides.embedHtml}
@@ -4657,7 +4795,7 @@ function PlasmicBill__RenderFunc(props: {
                           : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
                       }
                     />
-                  </div>
+                  </Stack__>
                   <Button
                     data-plasmic-name={"addBill"}
                     data-plasmic-override={overrides.addBill}
@@ -4750,7 +4888,14 @@ function PlasmicBill__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__m4QM
+                        sty.text__m4QM,
+                        {
+                          [sty.textstepscharg_step1__m4QMQKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          )
+                        }
                       )}
                     >
                       {"\u0642\u0628\u0636 \u062c\u062f\u0628\u062f"}
@@ -7253,10 +7398,10 @@ const PlasmicDescendants = {
     "boxselect",
     "operators3",
     "boxselect3",
-    "backstep2",
     "backstep3",
-    "step1Next",
     "step1Next2",
+    "backstep2",
+    "step1Next",
     "embedHtml",
     "addBill",
     "step2Next",
@@ -7359,10 +7504,10 @@ const PlasmicDescendants = {
   boxselect: ["boxselect"],
   operators3: ["operators3", "boxselect3"],
   boxselect3: ["boxselect3"],
-  backstep2: ["backstep2"],
   backstep3: ["backstep3"],
-  step1Next: ["step1Next"],
   step1Next2: ["step1Next2"],
+  backstep2: ["backstep2"],
+  step1Next: ["step1Next"],
   embedHtml: ["embedHtml"],
   addBill: ["addBill"],
   step2Next: ["step2Next"],
@@ -7433,10 +7578,10 @@ type NodeDefaultElementType = {
   boxselect: typeof Boxselect;
   operators3: "div";
   boxselect3: typeof Boxselect;
-  backstep2: typeof Button;
   backstep3: typeof Button;
-  step1Next: typeof Button;
   step1Next2: typeof Button;
+  backstep2: typeof Button;
+  step1Next: typeof Button;
   embedHtml: typeof Embed;
   addBill: typeof Button;
   step2Next: typeof Button;
@@ -7573,10 +7718,10 @@ export const PlasmicBill = Object.assign(
     boxselect: makeNodeComponent("boxselect"),
     operators3: makeNodeComponent("operators3"),
     boxselect3: makeNodeComponent("boxselect3"),
-    backstep2: makeNodeComponent("backstep2"),
     backstep3: makeNodeComponent("backstep3"),
-    step1Next: makeNodeComponent("step1Next"),
     step1Next2: makeNodeComponent("step1Next2"),
+    backstep2: makeNodeComponent("backstep2"),
+    step1Next: makeNodeComponent("step1Next"),
     embedHtml: makeNodeComponent("embedHtml"),
     addBill: makeNodeComponent("addBill"),
     step2Next: makeNodeComponent("step2Next"),
