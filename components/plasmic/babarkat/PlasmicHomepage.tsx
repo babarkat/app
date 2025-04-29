@@ -107,9 +107,9 @@ import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96M
 import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
 import Icon91Icon from "./icons/PlasmicIcon__Icon91"; // plasmic-import: PSRFUgRGCh4X/icon
-import Icon80Icon from "./icons/PlasmicIcon__Icon80"; // plasmic-import: Z52gdMpS8UCn/icon
 import Icon83Icon from "./icons/PlasmicIcon__Icon83"; // plasmic-import: IKXgjK7dwscd/icon
 import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mgaWEpMQ/icon
+import Icon80Icon from "./icons/PlasmicIcon__Icon80"; // plasmic-import: Z52gdMpS8UCn/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
@@ -152,6 +152,8 @@ export type PlasmicHomepage__OverridesType = {
   internet7?: Flex__<"div">;
   internet8?: Flex__<"div">;
   services8?: Flex__<"div">;
+  button?: Flex__<typeof Button>;
+  button2?: Flex__<typeof Button>;
   wallet?: Flex__<"div">;
   tooltip?: Flex__<typeof AntdTooltip>;
   swiperContainer?: Flex__<"div">;
@@ -172,6 +174,7 @@ export type PlasmicHomepage__OverridesType = {
   input?: Flex__<typeof Input>;
   operators4?: Flex__<"div">;
   boxselect4?: Flex__<typeof Boxselect3>;
+  button3?: Flex__<typeof Button>;
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
   inventoryIncrease?: Flex__<typeof AntdModal>;
@@ -180,6 +183,7 @@ export type PlasmicHomepage__OverridesType = {
   newPass2?: Flex__<typeof Input>;
   progress?: Flex__<typeof AntdProgress>;
   reoeatNewPass2?: Flex__<typeof Input>;
+  button4?: Flex__<typeof Button>;
   modal7?: Flex__<typeof AntdModal>;
   header?: Flex__<typeof Header>;
   footer?: Flex__<"div">;
@@ -517,6 +521,82 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -721,10 +801,9 @@ function PlasmicHomepage__RenderFunc(props: {
                           : "\u062f\u0631 \u0628\u0631\u0642\u0631\u0627\u0631\u06cc \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0634\u0628\u06a9\u0647 \u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f\u0647\u060c \u0644\u0637\u0641\u0627 \u0627\u0632 \u0648\u062c\u0648\u062f \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0634\u0628\u06a9\u0647 \u0645\u0637\u0645\u0626\u0646 \u0648 \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Button
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__swqBc
-                        )}
+                        data-plasmic-name={"button"}
+                        data-plasmic-override={overrides.button}
+                        className={classNames("__wab_instance", sty.button)}
                         color={"softGreen"}
                         endIcon={
                           <Icon73Icon
@@ -735,6 +814,10 @@ function PlasmicHomepage__RenderFunc(props: {
                             role={"img"}
                           />
                         }
+                        loadingviow={generateStateValueProp($state, [
+                          "button",
+                          "loadingviow"
+                        ])}
                         onClick={async event => {
                           const $steps = {};
 
@@ -759,6 +842,22 @@ function PlasmicHomepage__RenderFunc(props: {
                             typeof $steps["runCode"].then === "function"
                           ) {
                             $steps["runCode"] = await $steps["runCode"];
+                          }
+                        }}
+                        onLoadingviowChange={async (...eventArgs: any) => {
+                          ((...eventArgs) => {
+                            generateStateOnChangeProp($state, [
+                              "button",
+                              "loadingviow"
+                            ])(eventArgs[0]);
+                          }).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
                           }
                         }}
                         shape={"rounded"}
@@ -1059,10 +1158,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     </div>
                     <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button___8Z2Am
-                      )}
+                      data-plasmic-name={"button2"}
+                      data-plasmic-override={overrides.button2}
+                      className={classNames("__wab_instance", sty.button2)}
                       color={"softGreen"}
                       endIcon={
                         <Icon73Icon
@@ -1070,6 +1168,10 @@ function PlasmicHomepage__RenderFunc(props: {
                           role={"img"}
                         />
                       }
+                      loadingviow={generateStateValueProp($state, [
+                        "button2",
+                        "loadingviow"
+                      ])}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1092,6 +1194,22 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["refreshData"].then === "function"
                         ) {
                           $steps["refreshData"] = await $steps["refreshData"];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "button2",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
                         }
                       }}
                       shape={"rounded"}
@@ -1443,7 +1561,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     {(() => {
                                       try {
                                         return (
-                                          $state.userbabarcat.last_name +
+                                          ($state.userbabarcat.last_name ||
+                                            "کاربر بی نام") +
                                           " (امانتداری " +
                                           $state.userbabarcat.sarafName +
                                           ") "
@@ -1598,7 +1717,9 @@ function PlasmicHomepage__RenderFunc(props: {
                             })()
                           : (() => {
                               try {
-                                return $state.userbabarcat.canEdit;
+                                return (
+                                  $state.userbabarcat.canEdit !== undefined
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -1755,9 +1876,39 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.freeBox__em9Jf
                         )}
                       >
-                        <Icon80Icon
-                          className={classNames(projectcss.all, sty.svg__uhTSv)}
-                          role={"img"}
+                        <PlasmicImg__
+                          alt={""}
+                          className={classNames(sty.img__rpyd)}
+                          displayHeight={
+                            hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "40px"
+                              : "60px"
+                          }
+                          displayMaxHeight={"none"}
+                          displayMaxWidth={"100%"}
+                          displayMinHeight={"0"}
+                          displayMinWidth={"0"}
+                          displayWidth={
+                            hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "40px"
+                              : "60px"
+                          }
+                          loading={"lazy"}
+                          src={
+                            hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? {
+                                  src: "/plasmic/babarkat/images/image59.svg",
+                                  fullWidth: 24,
+                                  fullHeight: 24,
+                                  aspectRatio: 1
+                                }
+                              : {
+                                  src: "/plasmic/babarkat/images/image59.svg",
+                                  fullWidth: 24,
+                                  fullHeight: 24,
+                                  aspectRatio: 1
+                                }
+                          }
                         />
                       </div>
                     </div>
@@ -3208,7 +3359,9 @@ function PlasmicHomepage__RenderFunc(props: {
               </Stack__>
               <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
                 <Button
-                  className={classNames("__wab_instance", sty.button__dLo8Z)}
+                  data-plasmic-name={"button3"}
+                  data-plasmic-override={overrides.button3}
+                  className={classNames("__wab_instance", sty.button3)}
                   color={"green"}
                   isDisabled={(() => {
                     try {
@@ -3223,6 +3376,10 @@ function PlasmicHomepage__RenderFunc(props: {
                       throw e;
                     }
                   })()}
+                  loadingviow={generateStateValueProp($state, [
+                    "button3",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3244,6 +3401,22 @@ function PlasmicHomepage__RenderFunc(props: {
                       typeof $steps["runCode"].then === "function"
                     ) {
                       $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button3",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
                     }
                   }}
                   submitsForm={false}
@@ -13781,10 +13954,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       ) : null}
                     </div>
                     <Button
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button___5GhRl
-                      )}
+                      data-plasmic-name={"button4"}
+                      data-plasmic-override={overrides.button4}
+                      className={classNames("__wab_instance", sty.button4)}
                       color={
                         hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "green"
@@ -13842,6 +14014,10 @@ function PlasmicHomepage__RenderFunc(props: {
                               }
                             })()
                       }
+                      loadingviow={generateStateValueProp($state, [
+                        "button4",
+                        "loadingviow"
+                      ])}
                       onClick={async event => {
                         const $steps = {};
 
@@ -14070,6 +14246,22 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["runCode"].then === "function"
                         ) {
                           $steps["runCode"] = await $steps["runCode"];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "button4",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
                         }
                       }}
                       showEndIcon={
@@ -14470,9 +14662,23 @@ function PlasmicHomepage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["goToPubg"] = true
+                  $steps["goToPage"] = true
                     ? (() => {
-                        const actionArgs = { destination: `/pubg` };
+                        const actionArgs = {
+                          destination: (() => {
+                            try {
+                              return "/pubg?type=UC";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return `/pubg`;
+                              }
+                              throw e;
+                            }
+                          })()
+                        };
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&
@@ -14488,11 +14694,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["goToPubg"] != null &&
-                    typeof $steps["goToPubg"] === "object" &&
-                    typeof $steps["goToPubg"].then === "function"
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
                   ) {
-                    $steps["goToPubg"] = await $steps["goToPubg"];
+                    $steps["goToPage"] = await $steps["goToPage"];
                   }
                 }}
               >
@@ -14554,30 +14760,43 @@ function PlasmicHomepage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["invokeGlobalAction"] = true
+                  $steps["goToPage"] = true
                     ? (() => {
                         const actionArgs = {
-                          args: [
-                            undefined,
-                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                            undefined,
-                            3,
-                            "bottom"
-                          ]
+                          destination: (() => {
+                            try {
+                              return "/pubg?type=bigo-live";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         };
-                        return $globalActions[
-                          "plasmic-antd5-config-provider.showNotification"
-                        ]?.apply(null, [...actionArgs.args]);
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["goToPage"] = await $steps["goToPage"];
                   }
                 }}
               >
@@ -14624,9 +14843,13 @@ function PlasmicHomepage__RenderFunc(props: {
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0627\u0644\u0645\u0627\u0633 imo"
-                    : "\u0627\u0644\u0645\u0627\u0633 imo"}
+                    ? "\u0627\u0644\u0645\u0627\u0633 Bigo Live"
+                    : "\u0627\u0644\u0645\u0627\u0633 Bigo Live"}
                 </div>
+                <Icon87Icon
+                  className={classNames(projectcss.all, sty.svg___5UAkA)}
+                  role={"img"}
+                />
               </div>
               <div
                 data-plasmic-name={"comingSoon7"}
@@ -14635,30 +14858,43 @@ function PlasmicHomepage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["invokeGlobalAction"] = true
+                  $steps["goToPage"] = true
                     ? (() => {
                         const actionArgs = {
-                          args: [
-                            undefined,
-                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                            undefined,
-                            3,
-                            "bottom"
-                          ]
+                          destination: (() => {
+                            try {
+                              return "/pubg?type=likee";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         };
-                        return $globalActions[
-                          "plasmic-antd5-config-provider.showNotification"
-                        ]?.apply(null, [...actionArgs.args]);
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["goToPage"] = await $steps["goToPage"];
                   }
                 }}
               >
@@ -14708,6 +14944,10 @@ function PlasmicHomepage__RenderFunc(props: {
                     ? "\u0627\u0644\u0645\u0627\u0633 Likee"
                     : "\u0627\u0644\u0645\u0627\u0633 Likee"}
                 </div>
+                <Icon87Icon
+                  className={classNames(projectcss.all, sty.svg__yVhm4)}
+                  role={"img"}
+                />
               </div>
               <div
                 data-plasmic-name={"comingSoon8"}
@@ -14716,30 +14956,43 @@ function PlasmicHomepage__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["invokeGlobalAction"] = true
+                  $steps["goToPage"] = true
                     ? (() => {
                         const actionArgs = {
-                          args: [
-                            undefined,
-                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                            undefined,
-                            3,
-                            "bottom"
-                          ]
+                          destination: (() => {
+                            try {
+                              return "/pubg?type=imo";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         };
-                        return $globalActions[
-                          "plasmic-antd5-config-provider.showNotification"
-                        ]?.apply(null, [...actionArgs.args]);
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
+                    $steps["goToPage"] != null &&
+                    typeof $steps["goToPage"] === "object" &&
+                    typeof $steps["goToPage"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["goToPage"] = await $steps["goToPage"];
                   }
                 }}
               >
@@ -14786,9 +15039,13 @@ function PlasmicHomepage__RenderFunc(props: {
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0627\u0644\u0645\u0627\u0633 Bigo Live"
-                    : "\u0627\u0644\u0645\u0627\u0633 Bigo Live"}
+                    ? "\u0627\u0644\u0645\u0627\u0633 imo"
+                    : "\u0627\u0644\u0645\u0627\u0633 imo"}
                 </div>
+                <Icon87Icon
+                  className={classNames(projectcss.all, sty.svg___3PCkF)}
+                  role={"img"}
+                />
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__v5Qv2)} />
@@ -15177,6 +15434,8 @@ const PlasmicDescendants = {
     "internet7",
     "internet8",
     "services8",
+    "button",
+    "button2",
     "wallet",
     "tooltip",
     "swiperContainer",
@@ -15197,6 +15456,7 @@ const PlasmicDescendants = {
     "input",
     "operators4",
     "boxselect4",
+    "button3",
     "modal2",
     "wallet3",
     "inventoryIncrease",
@@ -15205,6 +15465,7 @@ const PlasmicDescendants = {
     "newPass2",
     "progress",
     "reoeatNewPass2",
+    "button4",
     "modal7",
     "header",
     "footer",
@@ -15236,6 +15497,8 @@ const PlasmicDescendants = {
     "internet7",
     "internet8",
     "services8",
+    "button",
+    "button2",
     "wallet",
     "tooltip",
     "swiperContainer",
@@ -15263,6 +15526,8 @@ const PlasmicDescendants = {
   internet7: ["internet7"],
   internet8: ["internet8"],
   services8: ["services8"],
+  button: ["button"],
+  button2: ["button2"],
   wallet: ["wallet"],
   tooltip: ["tooltip"],
   swiperContainer: [
@@ -15314,19 +15579,21 @@ const PlasmicDescendants = {
   comingSoon9: ["comingSoon9"],
   comingSoon11: ["comingSoon11"],
   services4: ["services4"],
-  modal: ["modal", "wallet2", "input", "operators4", "boxselect4"],
+  modal: ["modal", "wallet2", "input", "operators4", "boxselect4", "button3"],
   wallet2: ["wallet2", "input"],
   input: ["input"],
   operators4: ["operators4", "boxselect4"],
   boxselect4: ["boxselect4"],
+  button3: ["button3"],
   modal2: ["modal2", "wallet3"],
   wallet3: ["wallet3"],
   inventoryIncrease: ["inventoryIncrease"],
   timer: ["timer"],
-  modal6: ["modal6", "newPass2", "progress", "reoeatNewPass2"],
+  modal6: ["modal6", "newPass2", "progress", "reoeatNewPass2", "button4"],
   newPass2: ["newPass2"],
   progress: ["progress"],
   reoeatNewPass2: ["reoeatNewPass2"],
+  button4: ["button4"],
   modal7: ["modal7"],
   header: ["header"],
   footer: [
@@ -15368,6 +15635,8 @@ type NodeDefaultElementType = {
   internet7: "div";
   internet8: "div";
   services8: "div";
+  button: typeof Button;
+  button2: typeof Button;
   wallet: "div";
   tooltip: typeof AntdTooltip;
   swiperContainer: "div";
@@ -15388,6 +15657,7 @@ type NodeDefaultElementType = {
   input: typeof Input;
   operators4: "div";
   boxselect4: typeof Boxselect3;
+  button3: typeof Button;
   modal2: typeof AntdModal;
   wallet3: "div";
   inventoryIncrease: typeof AntdModal;
@@ -15396,6 +15666,7 @@ type NodeDefaultElementType = {
   newPass2: typeof Input;
   progress: typeof AntdProgress;
   reoeatNewPass2: typeof Input;
+  button4: typeof Button;
   modal7: typeof AntdModal;
   header: typeof Header;
   footer: "div";
@@ -15512,6 +15783,8 @@ export const PlasmicHomepage = Object.assign(
     internet7: makeNodeComponent("internet7"),
     internet8: makeNodeComponent("internet8"),
     services8: makeNodeComponent("services8"),
+    button: makeNodeComponent("button"),
+    button2: makeNodeComponent("button2"),
     wallet: makeNodeComponent("wallet"),
     tooltip: makeNodeComponent("tooltip"),
     swiperContainer: makeNodeComponent("swiperContainer"),
@@ -15532,6 +15805,7 @@ export const PlasmicHomepage = Object.assign(
     input: makeNodeComponent("input"),
     operators4: makeNodeComponent("operators4"),
     boxselect4: makeNodeComponent("boxselect4"),
+    button3: makeNodeComponent("button3"),
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
     inventoryIncrease: makeNodeComponent("inventoryIncrease"),
@@ -15540,6 +15814,7 @@ export const PlasmicHomepage = Object.assign(
     newPass2: makeNodeComponent("newPass2"),
     progress: makeNodeComponent("progress"),
     reoeatNewPass2: makeNodeComponent("reoeatNewPass2"),
+    button4: makeNodeComponent("button4"),
     modal7: makeNodeComponent("modal7"),
     header: makeNodeComponent("header"),
     footer: makeNodeComponent("footer"),

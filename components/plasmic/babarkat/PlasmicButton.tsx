@@ -69,6 +69,7 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicButton.module.css"; // plasmic-import: _5H7Xe2DiXqI/css
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 
 createPlasmicElementProxy;
@@ -94,6 +95,7 @@ export type PlasmicButton__VariantMembers = {
     | "clear"
     | "link"
     | "black";
+  loadingviow: "loadingviow";
 };
 export type PlasmicButton__VariantsArgs = {
   showStartIcon?: SingleBooleanChoiceArg<"showStartIcon">;
@@ -117,6 +119,7 @@ export type PlasmicButton__VariantsArgs = {
     | "link"
     | "black"
   >;
+  loadingviow?: SingleBooleanChoiceArg<"loadingviow">;
 };
 type VariantPropType = keyof PlasmicButton__VariantsArgs;
 export const PlasmicButton__VariantProps = new Array<VariantPropType>(
@@ -125,37 +128,42 @@ export const PlasmicButton__VariantProps = new Array<VariantPropType>(
   "isDisabled",
   "shape",
   "size",
-  "color"
+  "color",
+  "loadingviow"
 );
 
 export type PlasmicButton__ArgsType = {
-  children?: React.ReactNode;
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
   link?: string;
   submitsForm?: boolean;
   target?: boolean;
+  onLoadingviowChange?: (val: any) => void;
+  startIcon?: React.ReactNode;
+  children?: React.ReactNode;
+  endIcon?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicButton__ArgsType;
 export const PlasmicButton__ArgProps = new Array<ArgPropType>(
-  "children",
-  "startIcon",
-  "endIcon",
   "link",
   "submitsForm",
-  "target"
+  "target",
+  "onLoadingviowChange",
+  "startIcon",
+  "children",
+  "endIcon"
 );
 
 export type PlasmicButton__OverridesType = {
   root?: Flex__<"button">;
   startIconContainer?: Flex__<"div">;
   contentContainer?: Flex__<"div">;
+  svg?: Flex__<"svg">;
   endIconContainer?: Flex__<"div">;
 };
 
 export interface DefaultButtonProps extends pp.BaseButtonProps {
   submitsForm?: boolean;
   target?: boolean;
+  onLoadingviowChange?: (val: any) => void;
   shape?: SingleChoiceArg<"rounded" | "round" | "sharp">;
   size?: SingleChoiceArg<"compact" | "minimal">;
   color?: SingleChoiceArg<
@@ -174,6 +182,7 @@ export interface DefaultButtonProps extends pp.BaseButtonProps {
     | "link"
     | "black"
   >;
+  loadingviow?: SingleBooleanChoiceArg<"loadingviow">;
 }
 
 const $$ = {};
@@ -253,6 +262,14 @@ function PlasmicButton__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+      },
+      {
+        path: "loadingviow",
+        type: "writable",
+        variableType: "variant",
+
+        valueProp: "loadingviow",
+        onChangeProp: "onLoadingviowChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -313,6 +330,11 @@ function PlasmicButton__RenderFunc(props: {
           [sty.rootcolor_white]: hasVariant($state, "color", "white"),
           [sty.rootcolor_yellow]: hasVariant($state, "color", "yellow"),
           [sty.rootisDisabled]: hasVariant($state, "isDisabled", "isDisabled"),
+          [sty.rootloadingviow]: hasVariant(
+            $state,
+            "loadingviow",
+            "loadingviow"
+          ),
           [sty.rootshape_round]: hasVariant($state, "shape", "round"),
           [sty.rootshape_round_size_compact]:
             hasVariant($state, "shape", "round") &&
@@ -451,9 +473,11 @@ function PlasmicButton__RenderFunc(props: {
           })}
         </div>
       ) : null}
-      <div
+      <Stack__
+        as={"div"}
         data-plasmic-name={"contentContainer"}
         data-plasmic-override={overrides.contentContainer}
+        hasGap={true}
         className={classNames(projectcss.all, sty.contentContainer, {
           [sty.contentContainer___focusVisibleWithin]:
             triggers.focusVisibleWithin_root,
@@ -466,6 +490,11 @@ function PlasmicButton__RenderFunc(props: {
             $state,
             "isDisabled",
             "isDisabled"
+          ),
+          [sty.contentContainerloadingviow]: hasVariant(
+            $state,
+            "loadingviow",
+            "loadingviow"
           ),
           [sty.contentContainershape_rounded]: hasVariant(
             $state,
@@ -566,6 +595,14 @@ function PlasmicButton__RenderFunc(props: {
               "isDisabled",
               "isDisabled"
             ),
+            [sty.slotTargetChildrenloadingviow]: hasVariant(
+              $state,
+              "loadingviow",
+              "loadingviow"
+            ),
+            [sty.slotTargetChildrenloadingviow_isDisabled]:
+              hasVariant($state, "loadingviow", "loadingviow") &&
+              hasVariant($state, "isDisabled", "isDisabled"),
             [sty.slotTargetChildrenshape_rounded]: hasVariant(
               $state,
               "shape",
@@ -591,7 +628,19 @@ function PlasmicButton__RenderFunc(props: {
               hasVariant($state, "size", "minimal")
           })
         })}
-      </div>
+        <IconIcon
+          data-plasmic-name={"svg"}
+          data-plasmic-override={overrides.svg}
+          className={classNames(projectcss.all, sty.svg, {
+            [sty.svgloadingviow]: hasVariant(
+              $state,
+              "loadingviow",
+              "loadingviow"
+            )
+          })}
+          role={"img"}
+        />
+      </Stack__>
       {(hasVariant($state, "showEndIcon", "showEndIcon") ? true : false) ? (
         <div
           data-plasmic-name={"endIconContainer"}
@@ -712,9 +761,16 @@ function useBehavior<P extends pp.PlumeButtonProps>(
 }
 
 const PlasmicDescendants = {
-  root: ["root", "startIconContainer", "contentContainer", "endIconContainer"],
+  root: [
+    "root",
+    "startIconContainer",
+    "contentContainer",
+    "svg",
+    "endIconContainer"
+  ],
   startIconContainer: ["startIconContainer"],
-  contentContainer: ["contentContainer"],
+  contentContainer: ["contentContainer", "svg"],
+  svg: ["svg"],
   endIconContainer: ["endIconContainer"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -724,6 +780,7 @@ type NodeDefaultElementType = {
   root: "button";
   startIconContainer: "div";
   contentContainer: "div";
+  svg: "svg";
   endIconContainer: "div";
 };
 
@@ -789,6 +846,7 @@ export const PlasmicButton = Object.assign(
     // Helper components rendering sub-elements
     startIconContainer: makeNodeComponent("startIconContainer"),
     contentContainer: makeNodeComponent("contentContainer"),
+    svg: makeNodeComponent("svg"),
     endIconContainer: makeNodeComponent("endIconContainer"),
 
     // Metadata about props expected for PlasmicButton

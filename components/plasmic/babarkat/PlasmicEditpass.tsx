@@ -250,6 +250,25 @@ function PlasmicEditpass__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -769,6 +788,10 @@ function PlasmicEditpass__RenderFunc(props: {
                   }
                 })()
           }
+          loadingviow={generateStateValueProp($state, [
+            "button",
+            "loadingviow"
+          ])}
           onClick={async event => {
             const $steps = {};
 
@@ -943,6 +966,21 @@ function PlasmicEditpass__RenderFunc(props: {
               typeof $steps["goToHomepage"].then === "function"
             ) {
               $steps["goToHomepage"] = await $steps["goToHomepage"];
+            }
+          }}
+          onLoadingviowChange={async (...eventArgs: any) => {
+            ((...eventArgs) => {
+              generateStateOnChangeProp($state, ["button", "loadingviow"])(
+                eventArgs[0]
+              );
+            }).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
             }
           }}
           showEndIcon={

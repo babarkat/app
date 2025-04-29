@@ -128,14 +128,19 @@ export type PlasmicTransaction__OverridesType = {
   header?: Flex__<typeof Header>;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
+  button?: Flex__<typeof Button>;
   tabsContainer?: Flex__<typeof TabsContainer>;
   tabUnderline?: Flex__<typeof TabUnderline>;
+  button2?: Flex__<typeof Button>;
+  button3?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
   transaction2?: Flex__<typeof Transaction2>;
+  button4?: Flex__<typeof Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
   modal2?: Flex__<typeof AntdModal>;
   radioGroup2?: Flex__<typeof AntdRadioGroup>;
   radioGroup?: Flex__<typeof AntdRadioGroup>;
+  button5?: Flex__<typeof Button>;
   footer2?: Flex__<"div">;
   snapp3?: Flex__<"div">;
   vuesaxBoldHome2?: Flex__<"div">;
@@ -403,6 +408,101 @@ function PlasmicTransaction__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button5.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -538,8 +638,10 @@ function PlasmicTransaction__RenderFunc(props: {
                   }
                 </div>
                 <Button
-                  className={classNames("__wab_instance", sty.button__hp9E2, {
-                    [sty.buttonno__hp9E27Cleb]: hasVariant($state, "no", "no")
+                  data-plasmic-name={"button"}
+                  data-plasmic-override={overrides.button}
+                  className={classNames("__wab_instance", sty.button, {
+                    [sty.buttonno]: hasVariant($state, "no", "no")
                   })}
                   color={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -558,6 +660,10 @@ function PlasmicTransaction__RenderFunc(props: {
                     />
                   }
                   isDisabled={hasVariant($state, "no", "no") ? true : undefined}
+                  loadingviow={generateStateValueProp($state, [
+                    "button",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -595,6 +701,22 @@ function PlasmicTransaction__RenderFunc(props: {
                       $steps["updateModal2Open"] = await $steps[
                         "updateModal2Open"
                       ];
+                    }
+                  }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
                     }
                   }}
                   showEndIcon={
@@ -2477,8 +2599,14 @@ function PlasmicTransaction__RenderFunc(props: {
                   className={classNames(projectcss.all, sty.freeBox___5MnOu)}
                 >
                   <Button
-                    className={classNames("__wab_instance", sty.button__otIeN)}
+                    data-plasmic-name={"button2"}
+                    data-plasmic-override={overrides.button2}
+                    className={classNames("__wab_instance", sty.button2)}
                     color={"sand"}
+                    loadingviow={generateStateValueProp($state, [
+                      "button2",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -2539,6 +2667,22 @@ function PlasmicTransaction__RenderFunc(props: {
                         $steps["refreshData"] = await $steps["refreshData"];
                       }
                     }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button2",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
                     shape={"rounded"}
                     showStartIcon={true}
                     size={"compact"}
@@ -2583,7 +2727,9 @@ function PlasmicTransaction__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                   <Button
-                    className={classNames("__wab_instance", sty.button___3XA3J)}
+                    data-plasmic-name={"button3"}
+                    data-plasmic-override={overrides.button3}
+                    className={classNames("__wab_instance", sty.button3)}
                     color={"sand"}
                     endIcon={
                       <Icon26Icon
@@ -2591,6 +2737,10 @@ function PlasmicTransaction__RenderFunc(props: {
                         role={"img"}
                       />
                     }
+                    loadingviow={generateStateValueProp($state, [
+                      "button3",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -2653,6 +2803,22 @@ function PlasmicTransaction__RenderFunc(props: {
                         typeof $steps["refreshData"].then === "function"
                       ) {
                         $steps["refreshData"] = await $steps["refreshData"];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button3",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                     shape={"rounded"}
@@ -4596,8 +4762,30 @@ function PlasmicTransaction__RenderFunc(props: {
                   ) : null}
                 </Transaction2>
                 <Button
-                  className={classNames("__wab_instance", sty.button__sqdp8)}
+                  data-plasmic-name={"button4"}
+                  data-plasmic-override={overrides.button4}
+                  className={classNames("__wab_instance", sty.button4)}
                   color={"softGreen"}
+                  loadingviow={generateStateValueProp($state, [
+                    "button4",
+                    "loadingviow"
+                  ])}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button4",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                 >
                   {"\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"}
                 </Button>
@@ -5062,8 +5250,14 @@ function PlasmicTransaction__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox___73HFh)}>
               <Button
-                className={classNames("__wab_instance", sty.button___9Sdsp)}
+                data-plasmic-name={"button5"}
+                data-plasmic-override={overrides.button5}
+                className={classNames("__wab_instance", sty.button5)}
                 color={"green"}
+                loadingviow={generateStateValueProp($state, [
+                  "button5",
+                  "loadingviow"
+                ])}
                 onClick={async event => {
                   const $steps = {};
 
@@ -5213,6 +5407,22 @@ function PlasmicTransaction__RenderFunc(props: {
                     typeof $steps["updateFiterlist"].then === "function"
                   ) {
                     $steps["updateFiterlist"] = await $steps["updateFiterlist"];
+                  }
+                }}
+                onLoadingviowChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "button5",
+                      "loadingviow"
+                    ])(eventArgs[0]);
+                  }).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
                   }
                 }}
               >
@@ -5424,14 +5634,19 @@ const PlasmicDescendants = {
     "header",
     "reveal",
     "wallet",
+    "button",
     "tabsContainer",
     "tabUnderline",
+    "button2",
+    "button3",
     "modal",
     "transaction2",
+    "button4",
     "apiRequest",
     "modal2",
     "radioGroup2",
     "radioGroup",
+    "button5",
     "footer2",
     "snapp3",
     "vuesaxBoldHome2",
@@ -5442,16 +5657,36 @@ const PlasmicDescendants = {
   ],
   embedHtml: ["embedHtml"],
   header: ["header"],
-  reveal: ["reveal", "wallet", "tabsContainer", "tabUnderline"],
-  wallet: ["wallet", "tabsContainer", "tabUnderline"],
+  reveal: [
+    "reveal",
+    "wallet",
+    "button",
+    "tabsContainer",
+    "tabUnderline",
+    "button2",
+    "button3"
+  ],
+  wallet: [
+    "wallet",
+    "button",
+    "tabsContainer",
+    "tabUnderline",
+    "button2",
+    "button3"
+  ],
+  button: ["button"],
   tabsContainer: ["tabsContainer", "tabUnderline"],
   tabUnderline: ["tabUnderline"],
-  modal: ["modal", "transaction2"],
+  button2: ["button2"],
+  button3: ["button3"],
+  modal: ["modal", "transaction2", "button4"],
   transaction2: ["transaction2"],
+  button4: ["button4"],
   apiRequest: ["apiRequest"],
-  modal2: ["modal2", "radioGroup2", "radioGroup"],
+  modal2: ["modal2", "radioGroup2", "radioGroup", "button5"],
   radioGroup2: ["radioGroup2"],
   radioGroup: ["radioGroup"],
+  button5: ["button5"],
   footer2: [
     "footer2",
     "snapp3",
@@ -5475,14 +5710,19 @@ type NodeDefaultElementType = {
   header: typeof Header;
   reveal: typeof Reveal;
   wallet: "div";
+  button: typeof Button;
   tabsContainer: typeof TabsContainer;
   tabUnderline: typeof TabUnderline;
+  button2: typeof Button;
+  button3: typeof Button;
   modal: typeof AntdModal;
   transaction2: typeof Transaction2;
+  button4: typeof Button;
   apiRequest: typeof ApiRequest;
   modal2: typeof AntdModal;
   radioGroup2: typeof AntdRadioGroup;
   radioGroup: typeof AntdRadioGroup;
+  button5: typeof Button;
   footer2: "div";
   snapp3: "div";
   vuesaxBoldHome2: "div";
@@ -5581,14 +5821,19 @@ export const PlasmicTransaction = Object.assign(
     header: makeNodeComponent("header"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
+    button: makeNodeComponent("button"),
     tabsContainer: makeNodeComponent("tabsContainer"),
     tabUnderline: makeNodeComponent("tabUnderline"),
+    button2: makeNodeComponent("button2"),
+    button3: makeNodeComponent("button3"),
     modal: makeNodeComponent("modal"),
     transaction2: makeNodeComponent("transaction2"),
+    button4: makeNodeComponent("button4"),
     apiRequest: makeNodeComponent("apiRequest"),
     modal2: makeNodeComponent("modal2"),
     radioGroup2: makeNodeComponent("radioGroup2"),
     radioGroup: makeNodeComponent("radioGroup"),
+    button5: makeNodeComponent("button5"),
     footer2: makeNodeComponent("footer2"),
     snapp3: makeNodeComponent("snapp3"),
     vuesaxBoldHome2: makeNodeComponent("vuesaxBoldHome2"),

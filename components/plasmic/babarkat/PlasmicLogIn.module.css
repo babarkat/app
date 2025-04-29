@@ -438,11 +438,11 @@
 .textloginByPassword__zL7Oq0DikB {
   font-size: 18px;
 }
-.button__oyrKw:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
   display: none;
 }
-.buttonunnamedVariant__oyrKwDv9B5:global(.__wab_instance) {
+.buttonunnamedVariant:global(.__wab_instance) {
   display: flex;
 }
 .svg__feFJo {
@@ -1126,23 +1126,23 @@
   width: 20px;
   height: 20px;
 }
-.button__smPmc:global(.__wab_instance) {
+.button2:global(.__wab_instance) {
   max-width: 90%;
   width: 100%;
   height: auto;
   min-width: 0;
   display: none;
 }
-.buttonunnamedVariant__smPmcDv9B5:global(.__wab_instance) {
+.button2unnamedVariant:global(.__wab_instance) {
   display: none;
 }
-.buttonunnamedVariant2__smPmcJmKha:global(.__wab_instance) {
+.button2unnamedVariant2:global(.__wab_instance) {
   display: none;
 }
-.buttonpassword__smPmc8PqF9:global(.__wab_instance) {
+.button2password:global(.__wab_instance) {
   display: flex;
 }
-.buttonloginByPassword__smPmc0DikB:global(.__wab_instance) {
+.button2loginByPassword:global(.__wab_instance) {
   display: none;
 }
 .svg__j6Yrp {
@@ -1167,23 +1167,23 @@
   width: 20px;
   height: 20px;
 }
-.button__rMmn:global(.__wab_instance) {
+.button3:global(.__wab_instance) {
   max-width: 90%;
   width: 100%;
   height: auto;
   min-width: 0;
   display: none;
 }
-.buttonunnamedVariant__rMmnDv9B5:global(.__wab_instance) {
+.button3unnamedVariant:global(.__wab_instance) {
   display: none;
 }
-.buttonunnamedVariant2__rMmnJmKha:global(.__wab_instance) {
+.button3unnamedVariant2:global(.__wab_instance) {
   display: none;
 }
-.buttonpassword__rMmn8PqF9:global(.__wab_instance) {
+.button3password:global(.__wab_instance) {
   display: none;
 }
-.buttonloginByPassword__rMmn0DikB:global(.__wab_instance) {
+.button3loginByPassword:global(.__wab_instance) {
   display: flex;
 }
 .svg__wfItZ {
@@ -1763,7 +1763,7 @@
   object-fit: cover;
   max-width: 100%;
   width: 150px;
-  display: none !important;
+  display: none;
 }
 .img___6WuZh > picture > img {
   object-fit: cover;

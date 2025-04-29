@@ -131,6 +131,7 @@ export const PlasmicLogIn__ArgProps = new Array<ArgPropType>("disabled");
 export type PlasmicLogIn__OverridesType = {
   root?: Flex__<"div">;
   reveal?: Flex__<typeof Reveal>;
+  button?: Flex__<typeof Button>;
   fragmentInput?: Flex__<typeof Input>;
   select2?: Flex__<typeof AntdSelect>;
   fragmentInput3?: Flex__<typeof Input>;
@@ -138,6 +139,8 @@ export type PlasmicLogIn__OverridesType = {
   timer?: Flex__<typeof Timer>;
   select?: Flex__<typeof AntdSelect>;
   btnNumber?: Flex__<typeof Button>;
+  button2?: Flex__<typeof Button>;
+  button3?: Flex__<typeof Button>;
   btnSaraf?: Flex__<typeof Button>;
   sendcode?: Flex__<typeof Button>;
   figmaPaste?: Flex__<"div">;
@@ -437,6 +440,120 @@ function PlasmicLogIn__RenderFunc(props: {
           (() => {
             try {
               return $state.select2.value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "btnNumber.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "btnSaraf.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sendcode.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -979,41 +1096,43 @@ function PlasmicLogIn__RenderFunc(props: {
                       : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                   </div>
                   <Button
-                    className={classNames("__wab_instance", sty.button__oyrKw, {
-                      [sty.buttonloginByPassword__oyrKw0DikB]: hasVariant(
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button, {
+                      [sty.buttonloginByPassword]: hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
                       ),
-                      [sty.buttonloginByPassword_password__oyrKw0DikB8PqF9]:
+                      [sty.buttonloginByPassword_password]:
                         hasVariant($state, "password", "password") &&
                         hasVariant(
                           $state,
                           "loginByPassword",
                           "loginByPassword"
                         ),
-                      [sty.buttonpassword__oyrKw8PqF9]: hasVariant(
+                      [sty.buttonpassword]: hasVariant(
                         $state,
                         "password",
                         "password"
                       ),
-                      [sty.buttonpassword_unnamedVariant2__oyrKw8PqF9JmKha]:
+                      [sty.buttonpassword_unnamedVariant2]:
                         hasVariant(
                           $state,
                           "unnamedVariant2",
                           "unnamedVariant2"
                         ) && hasVariant($state, "password", "password"),
-                      [sty.buttonunnamedVariant2__oyrKwJmKha]: hasVariant(
+                      [sty.buttonunnamedVariant2]: hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ),
-                      [sty.buttonunnamedVariant__oyrKwDv9B5]: hasVariant(
+                      [sty.buttonunnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
                         "unnamedVariant"
                       ),
-                      [sty.buttonunnamedVariant_unnamedVariant2__oyrKwDv9B5JmKha]:
+                      [sty.buttonunnamedVariant_unnamedVariant2]:
                         hasVariant(
                           $state,
                           "unnamedVariant",
@@ -1026,6 +1145,10 @@ function PlasmicLogIn__RenderFunc(props: {
                         ? "softGreen"
                         : undefined
                     }
+                    loadingviow={generateStateValueProp($state, [
+                      "button",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1054,6 +1177,22 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["updateUnnamedVariant"] = await $steps[
                           "updateUnnamedVariant"
                         ];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -2412,6 +2551,10 @@ function PlasmicLogIn__RenderFunc(props: {
                       throw e;
                     }
                   })()}
+                  loadingviow={generateStateValueProp($state, [
+                    "btnNumber",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2664,6 +2807,22 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
                   }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "btnNumber",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   showEndIcon={(() => {
                     try {
                       return $state.loadedbtn;
@@ -2691,31 +2850,33 @@ function PlasmicLogIn__RenderFunc(props: {
                   </div>
                 </Button>
                 <Button
-                  className={classNames("__wab_instance", sty.button__smPmc, {
-                    [sty.buttonloginByPassword__smPmc0DikB]: hasVariant(
+                  data-plasmic-name={"button2"}
+                  data-plasmic-override={overrides.button2}
+                  className={classNames("__wab_instance", sty.button2, {
+                    [sty.button2loginByPassword]: hasVariant(
                       $state,
                       "loginByPassword",
                       "loginByPassword"
                     ),
-                    [sty.buttonloginByPassword_password__smPmc0DikB8PqF9]:
+                    [sty.button2loginByPassword_password]:
                       hasVariant($state, "password", "password") &&
                       hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.buttonpassword__smPmc8PqF9]: hasVariant(
+                    [sty.button2password]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
-                    [sty.buttonunnamedVariant2__smPmcJmKha]: hasVariant(
+                    [sty.button2unnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
                       "unnamedVariant2"
                     ),
-                    [sty.buttonunnamedVariant__smPmcDv9B5]: hasVariant(
+                    [sty.button2unnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant_unnamedVariant2__smPmcDv9B5JmKha]:
+                    [sty.button2unnamedVariant_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -2783,6 +2944,10 @@ function PlasmicLogIn__RenderFunc(props: {
                           }
                         })()
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "button2",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3049,6 +3214,22 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
                   }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button2",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   showEndIcon={(() => {
                     try {
                       return $state.loadedbtn;
@@ -3090,19 +3271,21 @@ function PlasmicLogIn__RenderFunc(props: {
                   </div>
                 </Button>
                 <Button
-                  className={classNames("__wab_instance", sty.button__rMmn, {
-                    [sty.buttonloginByPassword__rMmn0DikB]: hasVariant(
+                  data-plasmic-name={"button3"}
+                  data-plasmic-override={overrides.button3}
+                  className={classNames("__wab_instance", sty.button3, {
+                    [sty.button3loginByPassword]: hasVariant(
                       $state,
                       "loginByPassword",
                       "loginByPassword"
                     ),
-                    [sty.buttonloginByPassword_password__rMmn0DikB8PqF9]:
+                    [sty.button3loginByPassword_password]:
                       hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
                       ) && hasVariant($state, "password", "password"),
-                    [sty.buttonloginByPassword_password_unnamedVariant2__rMmn0DikB8PqF9JmKha]:
+                    [sty.button3loginByPassword_password_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "loginByPassword",
@@ -3114,35 +3297,35 @@ function PlasmicLogIn__RenderFunc(props: {
                         "unnamedVariant2"
                       ) &&
                       hasVariant($state, "password", "password"),
-                    [sty.buttonloginByPassword_unnamedVariant2__rMmn0DikBJmKha]:
+                    [sty.button3loginByPassword_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
                       ) &&
                       hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.buttonpassword__rMmn8PqF9]: hasVariant(
+                    [sty.button3password]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
-                    [sty.buttonpassword_unnamedVariant2__rMmn8PqF9JmKha]:
+                    [sty.button3password_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "unnamedVariant2",
                         "unnamedVariant2"
                       ) && hasVariant($state, "password", "password"),
-                    [sty.buttonunnamedVariant2__rMmnJmKha]: hasVariant(
+                    [sty.button3unnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
                       "unnamedVariant2"
                     ),
-                    [sty.buttonunnamedVariant__rMmnDv9B5]: hasVariant(
+                    [sty.button3unnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
                       "unnamedVariant"
                     ),
-                    [sty.buttonunnamedVariant_unnamedVariant2__rMmnDv9B5JmKha]:
+                    [sty.button3unnamedVariant_unnamedVariant2]:
                       hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -3233,6 +3416,10 @@ function PlasmicLogIn__RenderFunc(props: {
                           }
                         })()
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "button3",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3578,6 +3765,22 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
                   }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button3",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   showEndIcon={(() => {
                     try {
                       return $state.loadedbtn;
@@ -3714,6 +3917,10 @@ function PlasmicLogIn__RenderFunc(props: {
                           }
                         })()
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "btnSaraf",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -4021,6 +4228,22 @@ function PlasmicLogIn__RenderFunc(props: {
                       ];
                     }
                   }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "btnSaraf",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   showEndIcon={
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
                     hasVariant($state, "unnamedVariant", "unnamedVariant")
@@ -4212,6 +4435,10 @@ function PlasmicLogIn__RenderFunc(props: {
                             }
                           })()
                     }
+                    loadingviow={generateStateValueProp($state, [
+                      "sendcode",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -4598,6 +4825,22 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["updateLoadedbtn2"] = await $steps[
                           "updateLoadedbtn2"
                         ];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "sendcode",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                     showEndIcon={(() => {
@@ -5405,6 +5648,7 @@ const PlasmicDescendants = {
   root: [
     "root",
     "reveal",
+    "button",
     "fragmentInput",
     "select2",
     "fragmentInput3",
@@ -5412,6 +5656,8 @@ const PlasmicDescendants = {
     "timer",
     "select",
     "btnNumber",
+    "button2",
+    "button3",
     "btnSaraf",
     "sendcode",
     "figmaPaste",
@@ -5435,6 +5681,7 @@ const PlasmicDescendants = {
   ],
   reveal: [
     "reveal",
+    "button",
     "fragmentInput",
     "select2",
     "fragmentInput3",
@@ -5442,6 +5689,8 @@ const PlasmicDescendants = {
     "timer",
     "select",
     "btnNumber",
+    "button2",
+    "button3",
     "btnSaraf",
     "sendcode",
     "figmaPaste",
@@ -5461,6 +5710,7 @@ const PlasmicDescendants = {
     "group9",
     "group10"
   ],
+  button: ["button"],
   fragmentInput: ["fragmentInput"],
   select2: ["select2"],
   fragmentInput3: ["fragmentInput3"],
@@ -5468,6 +5718,8 @@ const PlasmicDescendants = {
   timer: ["timer"],
   select: ["select"],
   btnNumber: ["btnNumber"],
+  button2: ["button2"],
+  button3: ["button3"],
   btnSaraf: ["btnSaraf"],
   sendcode: ["sendcode"],
   figmaPaste: [
@@ -5533,6 +5785,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   reveal: typeof Reveal;
+  button: typeof Button;
   fragmentInput: typeof Input;
   select2: typeof AntdSelect;
   fragmentInput3: typeof Input;
@@ -5540,6 +5793,8 @@ type NodeDefaultElementType = {
   timer: typeof Timer;
   select: typeof AntdSelect;
   btnNumber: typeof Button;
+  button2: typeof Button;
+  button3: typeof Button;
   btnSaraf: typeof Button;
   sendcode: typeof Button;
   figmaPaste: "div";
@@ -5648,6 +5903,7 @@ export const PlasmicLogIn = Object.assign(
   {
     // Helper components rendering sub-elements
     reveal: makeNodeComponent("reveal"),
+    button: makeNodeComponent("button"),
     fragmentInput: makeNodeComponent("fragmentInput"),
     select2: makeNodeComponent("select2"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
@@ -5655,6 +5911,8 @@ export const PlasmicLogIn = Object.assign(
     timer: makeNodeComponent("timer"),
     select: makeNodeComponent("select"),
     btnNumber: makeNodeComponent("btnNumber"),
+    button2: makeNodeComponent("button2"),
+    button3: makeNodeComponent("button3"),
     btnSaraf: makeNodeComponent("btnSaraf"),
     sendcode: makeNodeComponent("sendcode"),
     figmaPaste: makeNodeComponent("figmaPaste"),

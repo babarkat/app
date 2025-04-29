@@ -148,6 +148,7 @@ export type PlasmicHeader__OverridesType = {
   fathername?: Flex__<typeof Input>;
   city?: Flex__<typeof Input>;
   location?: Flex__<typeof Input>;
+  button3?: Flex__<typeof Button>;
   editSaraf?: Flex__<typeof AntdModal>;
   wallet6?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
@@ -183,8 +184,11 @@ export type PlasmicHeader__OverridesType = {
   newPass?: Flex__<typeof Input>;
   progress?: Flex__<typeof AntdProgress>;
   reoeatNewPass?: Flex__<typeof Input>;
+  button4?: Flex__<typeof Button>;
   drawer?: Flex__<typeof AntdDrawer>;
   exitModal?: Flex__<typeof AntdModal>;
+  button5?: Flex__<typeof Button>;
+  button6?: Flex__<typeof Button>;
 };
 
 export interface DefaultHeaderProps {
@@ -457,6 +461,177 @@ function PlasmicHeader__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "btnNumber.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "btnSaraf.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "sendcode.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button5.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button6.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -793,12 +968,18 @@ function PlasmicHeader__RenderFunc(props: {
               />
             </div>
             <Button
-              className={classNames("__wab_instance", sty.button__pF7Mx)}
+              data-plasmic-name={"button3"}
+              data-plasmic-override={overrides.button3}
+              className={classNames("__wab_instance", sty.button3)}
               color={
                 hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "green"
                   : "green"
               }
+              loadingviow={generateStateValueProp($state, [
+                "button3",
+                "loadingviow"
+              ])}
               onClick={async event => {
                 const $steps = {};
 
@@ -959,6 +1140,21 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["refreshData"].then === "function"
                 ) {
                   $steps["refreshData"] = await $steps["refreshData"];
+                }
+              }}
+              onLoadingviowChange={async (...eventArgs: any) => {
+                ((...eventArgs) => {
+                  generateStateOnChangeProp($state, ["button3", "loadingviow"])(
+                    eventArgs[0]
+                  );
+                }).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
                 }
               }}
             >
@@ -1358,6 +1554,26 @@ function PlasmicHeader__RenderFunc(props: {
                       role={"img"}
                     />
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "btnNumber",
+                    "loadingviow"
+                  ])}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "btnNumber",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                 >
                   <div
                     className={classNames(
@@ -1381,6 +1597,26 @@ function PlasmicHeader__RenderFunc(props: {
                       role={"img"}
                     />
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "button",
+                    "loadingviow"
+                  ])}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                 >
                   <div
                     className={classNames(
@@ -1404,6 +1640,26 @@ function PlasmicHeader__RenderFunc(props: {
                       role={"img"}
                     />
                   }
+                  loadingviow={generateStateValueProp($state, [
+                    "button2",
+                    "loadingviow"
+                  ])}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button2",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                 >
                   <div
                     className={classNames(
@@ -1441,6 +1697,10 @@ function PlasmicHeader__RenderFunc(props: {
                       throw e;
                     }
                   })()}
+                  loadingviow={generateStateValueProp($state, [
+                    "btnSaraf",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -1737,6 +1997,22 @@ function PlasmicHeader__RenderFunc(props: {
                       ];
                     }
                   }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "btnSaraf",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   showEndIcon={(() => {
                     try {
                       return $state.loadedbtn;
@@ -1772,6 +2048,26 @@ function PlasmicHeader__RenderFunc(props: {
                         role={"img"}
                       />
                     }
+                    loadingviow={generateStateValueProp($state, [
+                      "sendcode",
+                      "loadingviow"
+                    ])}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "sendcode",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
                   >
                     <div
                       className={classNames(
@@ -2896,7 +3192,9 @@ function PlasmicHeader__RenderFunc(props: {
               ) : null}
             </div>
             <Button
-              className={classNames("__wab_instance", sty.button__rJ17O)}
+              data-plasmic-name={"button4"}
+              data-plasmic-override={overrides.button4}
+              className={classNames("__wab_instance", sty.button4)}
               color={
                 hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "green"
@@ -2949,6 +3247,10 @@ function PlasmicHeader__RenderFunc(props: {
                       }
                     })()
               }
+              loadingviow={generateStateValueProp($state, [
+                "button4",
+                "loadingviow"
+              ])}
               onClick={async event => {
                 const $steps = {};
 
@@ -3215,6 +3517,21 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["updateLoadedbtn2"].then === "function"
                 ) {
                   $steps["updateLoadedbtn2"] = await $steps["updateLoadedbtn2"];
+                }
+              }}
+              onLoadingviowChange={async (...eventArgs: any) => {
+                ((...eventArgs) => {
+                  generateStateOnChangeProp($state, ["button4", "loadingviow"])(
+                    eventArgs[0]
+                  );
+                }).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
                 }
               }}
               showEndIcon={
@@ -3912,8 +4229,14 @@ function PlasmicHeader__RenderFunc(props: {
           className={classNames(projectcss.all, sty.freeBox__rolc8)}
         >
           <Button
-            className={classNames("__wab_instance", sty.button__mZa3)}
+            data-plasmic-name={"button5"}
+            data-plasmic-override={overrides.button5}
+            className={classNames("__wab_instance", sty.button5)}
             color={"red"}
+            loadingviow={generateStateValueProp($state, [
+              "button5",
+              "loadingviow"
+            ])}
             onClick={async event => {
               const $steps = {};
 
@@ -3991,12 +4314,33 @@ function PlasmicHeader__RenderFunc(props: {
                 $steps["updateModal3Open"] = await $steps["updateModal3Open"];
               }
             }}
+            onLoadingviowChange={async (...eventArgs: any) => {
+              ((...eventArgs) => {
+                generateStateOnChangeProp($state, ["button5", "loadingviow"])(
+                  eventArgs[0]
+                );
+              }).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
           >
             {"\u0628\u0644\u0647"}
           </Button>
           <Button
-            className={classNames("__wab_instance", sty.button__jbPva)}
+            data-plasmic-name={"button6"}
+            data-plasmic-override={overrides.button6}
+            className={classNames("__wab_instance", sty.button6)}
             color={"sand"}
+            loadingviow={generateStateValueProp($state, [
+              "button6",
+              "loadingviow"
+            ])}
             onClick={async event => {
               const $steps = {};
 
@@ -4029,6 +4373,21 @@ function PlasmicHeader__RenderFunc(props: {
                 $steps["updateModal3Open"] = await $steps["updateModal3Open"];
               }
             }}
+            onLoadingviowChange={async (...eventArgs: any) => {
+              ((...eventArgs) => {
+                generateStateOnChangeProp($state, ["button6", "loadingviow"])(
+                  eventArgs[0]
+                );
+              }).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
           >
             {"\u0627\u0646\u0635\u0631\u0627\u0641"}
           </Button>
@@ -4049,6 +4408,7 @@ const PlasmicDescendants = {
     "fathername",
     "city",
     "location",
+    "button3",
     "editSaraf",
     "wallet6",
     "img",
@@ -4084,8 +4444,11 @@ const PlasmicDescendants = {
     "newPass",
     "progress",
     "reoeatNewPass",
+    "button4",
     "drawer",
-    "exitModal"
+    "exitModal",
+    "button5",
+    "button6"
   ],
   percentageBox: ["percentageBox"],
   editProfile: [
@@ -4095,7 +4458,8 @@ const PlasmicDescendants = {
     "lastname",
     "fathername",
     "city",
-    "location"
+    "location",
+    "button3"
   ],
   wallet4: ["wallet4"],
   name: ["name"],
@@ -4103,6 +4467,7 @@ const PlasmicDescendants = {
   fathername: ["fathername"],
   city: ["city"],
   location: ["location"],
+  button3: ["button3"],
   editSaraf: [
     "editSaraf",
     "wallet6",
@@ -4204,15 +4569,19 @@ const PlasmicDescendants = {
     "nowPass",
     "newPass",
     "progress",
-    "reoeatNewPass"
+    "reoeatNewPass",
+    "button4"
   ],
   wallet5: ["wallet5"],
   nowPass: ["nowPass"],
   newPass: ["newPass"],
   progress: ["progress"],
   reoeatNewPass: ["reoeatNewPass"],
+  button4: ["button4"],
   drawer: ["drawer"],
-  exitModal: ["exitModal"]
+  exitModal: ["exitModal", "button5", "button6"],
+  button5: ["button5"],
+  button6: ["button6"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4227,6 +4596,7 @@ type NodeDefaultElementType = {
   fathername: typeof Input;
   city: typeof Input;
   location: typeof Input;
+  button3: typeof Button;
   editSaraf: typeof AntdModal;
   wallet6: "div";
   img: typeof PlasmicImg__;
@@ -4262,8 +4632,11 @@ type NodeDefaultElementType = {
   newPass: typeof Input;
   progress: typeof AntdProgress;
   reoeatNewPass: typeof Input;
+  button4: typeof Button;
   drawer: typeof AntdDrawer;
   exitModal: typeof AntdModal;
+  button5: typeof Button;
+  button6: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4334,6 +4707,7 @@ export const PlasmicHeader = Object.assign(
     fathername: makeNodeComponent("fathername"),
     city: makeNodeComponent("city"),
     location: makeNodeComponent("location"),
+    button3: makeNodeComponent("button3"),
     editSaraf: makeNodeComponent("editSaraf"),
     wallet6: makeNodeComponent("wallet6"),
     img: makeNodeComponent("img"),
@@ -4369,8 +4743,11 @@ export const PlasmicHeader = Object.assign(
     newPass: makeNodeComponent("newPass"),
     progress: makeNodeComponent("progress"),
     reoeatNewPass: makeNodeComponent("reoeatNewPass"),
+    button4: makeNodeComponent("button4"),
     drawer: makeNodeComponent("drawer"),
     exitModal: makeNodeComponent("exitModal"),
+    button5: makeNodeComponent("button5"),
+    button6: makeNodeComponent("button6"),
 
     // Metadata about props expected for PlasmicHeader
     internalVariantProps: PlasmicHeader__VariantProps,

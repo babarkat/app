@@ -134,7 +134,9 @@ export type PlasmicInternet3__OverridesType = {
   boxselect2?: Flex__<typeof Boxselect2>;
   tabsContainer?: Flex__<typeof TabsContainer>;
   tabButton?: Flex__<typeof TabButton>;
+  button?: Flex__<typeof Button>;
   tabContent?: Flex__<typeof TabContent>;
+  button2?: Flex__<typeof Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
   step1Next?: Flex__<typeof Button>;
   step1Next2?: Flex__<typeof Button>;
@@ -144,8 +146,10 @@ export type PlasmicInternet3__OverridesType = {
   اپراتور?: Flex__<"div">;
   اپراتور2?: Flex__<"div">;
   اپراتور3?: Flex__<"div">;
+  button3?: Flex__<typeof Button>;
   modal3?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
+  button4?: Flex__<typeof Button>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
@@ -598,6 +602,111 @@ function PlasmicInternet3__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "button[].loadingviow",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "button2[][].loadingviow",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "step1Next.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step1Next2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step1Next3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -2250,70 +2359,142 @@ function PlasmicInternet3__RenderFunc(props: {
                                       }
                                     })()}
                                   >
-                                    <Button
-                                      className={classNames(
-                                        "__wab_instance",
-                                        sty.button___95D4X,
-                                        {
-                                          [sty.buttonsteps2_step2___95D4XoGK8]:
-                                            hasVariant(
-                                              $state,
-                                              "steps2",
-                                              "step2"
-                                            )
-                                        }
-                                      )}
-                                      color={
-                                        hasVariant($state, "steps2", "step2")
-                                          ? "clear"
-                                          : "sand"
-                                      }
-                                      shape={"rounded"}
-                                      size={
-                                        hasVariant($state, "steps2", "step2") &&
-                                        hasVariant(
-                                          globalVariants,
-                                          "screen",
-                                          "mobileOnly"
-                                        )
-                                          ? "compact"
-                                          : "compact"
-                                      }
-                                      submitsForm={false}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__mTt16,
+                                    {(() => {
+                                      const child$Props = {
+                                        className: classNames(
+                                          "__wab_instance",
+                                          sty.button,
                                           {
-                                            [sty.textsteps2_step2__mTt16OGK8]:
+                                            [sty.buttonsteps2_step2]:
                                               hasVariant(
                                                 $state,
                                                 "steps2",
                                                 "step2"
                                               )
                                           }
-                                        )}
-                                      >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return currentItem.periodicityFa;
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "Button";
+                                        ),
+                                        color: hasVariant(
+                                          $state,
+                                          "steps2",
+                                          "step2"
+                                        )
+                                          ? "clear"
+                                          : "sand",
+                                        loadingviow: generateStateValueProp(
+                                          $state,
+                                          [
+                                            "button",
+                                            __plasmic_idx_0,
+                                            "loadingviow"
+                                          ]
+                                        ),
+                                        onLoadingviowChange: async (
+                                          ...eventArgs: any
+                                        ) => {
+                                          ((...eventArgs) => {
+                                            generateStateOnChangeProp($state, [
+                                              "button",
+                                              __plasmic_idx_0,
+                                              "loadingviow"
+                                            ])(eventArgs[0]);
+                                          }).apply(null, eventArgs);
+
+                                          if (
+                                            eventArgs.length > 1 &&
+                                            eventArgs[1] &&
+                                            eventArgs[1]._plasmic_state_init_
+                                          ) {
+                                            return;
+                                          }
+                                        },
+                                        shape: "rounded",
+                                        size:
+                                          hasVariant(
+                                            $state,
+                                            "steps2",
+                                            "step2"
+                                          ) &&
+                                          hasVariant(
+                                            globalVariants,
+                                            "screen",
+                                            "mobileOnly"
+                                          )
+                                            ? "compact"
+                                            : "compact",
+                                        submitsForm: false
+                                      };
+
+                                      initializePlasmicStates(
+                                        $state,
+                                        [
+                                          {
+                                            name: "button[].loadingviow",
+                                            initFunc: ({
+                                              $props,
+                                              $state,
+                                              $queries
+                                            }) =>
+                                              (() => {
+                                                try {
+                                                  return $state.loadingviow;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                          }
+                                        ],
+                                        [__plasmic_idx_0]
+                                      );
+                                      return (
+                                        <Button
+                                          data-plasmic-name={"button"}
+                                          data-plasmic-override={
+                                            overrides.button
+                                          }
+                                          {...child$Props}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__mTt16,
+                                              {
+                                                [sty.textsteps2_step2__mTt16OGK8]:
+                                                  hasVariant(
+                                                    $state,
+                                                    "steps2",
+                                                    "step2"
+                                                  )
                                               }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
-                                      </div>
-                                    </Button>
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return currentItem.periodicityFa;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "Button";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        </Button>
+                                      );
+                                    })()}
                                   </TabButton>
                                 );
                               })}
@@ -2519,17 +2700,29 @@ function PlasmicInternet3__RenderFunc(props: {
                                                     })()}
                                                   </React.Fragment>
                                                 </div>
-                                                <Button
-                                                  className={classNames(
-                                                    "__wab_instance",
-                                                    sty.button__dks2S
-                                                  )}
-                                                  color={"softGreen"}
-                                                  onClick={async event => {
-                                                    const $steps = {};
+                                                {(() => {
+                                                  const child$Props = {
+                                                    className: classNames(
+                                                      "__wab_instance",
+                                                      sty.button2
+                                                    ),
+                                                    color: "softGreen",
+                                                    loadingviow:
+                                                      generateStateValueProp(
+                                                        $state,
+                                                        [
+                                                          "button2",
+                                                          __plasmic_idx_0,
+                                                          __plasmic_idx_1,
+                                                          "loadingviow"
+                                                        ]
+                                                      ),
+                                                    onClick: async event => {
+                                                      const $steps = {};
 
-                                                    $steps["updateSelectpack"] =
-                                                      true
+                                                      $steps[
+                                                        "updateSelectpack"
+                                                      ] = true
                                                         ? (() => {
                                                             const actionArgs = {
                                                               variable: {
@@ -2567,84 +2760,158 @@ function PlasmicInternet3__RenderFunc(props: {
                                                             ]);
                                                           })()
                                                         : undefined;
-                                                    if (
-                                                      $steps[
-                                                        "updateSelectpack"
-                                                      ] != null &&
-                                                      typeof $steps[
-                                                        "updateSelectpack"
-                                                      ] === "object" &&
-                                                      typeof $steps[
-                                                        "updateSelectpack"
-                                                      ].then === "function"
-                                                    ) {
-                                                      $steps[
-                                                        "updateSelectpack"
-                                                      ] = await $steps[
-                                                        "updateSelectpack"
-                                                      ];
-                                                    }
+                                                      if (
+                                                        $steps[
+                                                          "updateSelectpack"
+                                                        ] != null &&
+                                                        typeof $steps[
+                                                          "updateSelectpack"
+                                                        ] === "object" &&
+                                                        typeof $steps[
+                                                          "updateSelectpack"
+                                                        ].then === "function"
+                                                      ) {
+                                                        $steps[
+                                                          "updateSelectpack"
+                                                        ] = await $steps[
+                                                          "updateSelectpack"
+                                                        ];
+                                                      }
 
-                                                    $steps["updateSteps2"] =
-                                                      true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              vgroup: "steps2",
-                                                              operation: 0,
-                                                              value: "step3"
-                                                            };
-                                                            return (({
-                                                              vgroup,
-                                                              value
-                                                            }) => {
-                                                              if (
-                                                                typeof value ===
-                                                                "string"
-                                                              ) {
-                                                                value = [value];
-                                                              }
-
-                                                              $stateSet(
-                                                                $state,
+                                                      $steps["updateSteps2"] =
+                                                        true
+                                                          ? (() => {
+                                                              const actionArgs =
+                                                                {
+                                                                  vgroup:
+                                                                    "steps2",
+                                                                  operation: 0,
+                                                                  value: "step3"
+                                                                };
+                                                              return (({
                                                                 vgroup,
                                                                 value
-                                                              );
-                                                              return value;
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                    if (
-                                                      $steps["updateSteps2"] !=
-                                                        null &&
-                                                      typeof $steps[
-                                                        "updateSteps2"
-                                                      ] === "object" &&
-                                                      typeof $steps[
-                                                        "updateSteps2"
-                                                      ].then === "function"
-                                                    ) {
-                                                      $steps["updateSteps2"] =
-                                                        await $steps[
+                                                              }) => {
+                                                                if (
+                                                                  typeof value ===
+                                                                  "string"
+                                                                ) {
+                                                                  value = [
+                                                                    value
+                                                                  ];
+                                                                }
+
+                                                                $stateSet(
+                                                                  $state,
+                                                                  vgroup,
+                                                                  value
+                                                                );
+                                                                return value;
+                                                              })?.apply(null, [
+                                                                actionArgs
+                                                              ]);
+                                                            })()
+                                                          : undefined;
+                                                      if (
+                                                        $steps[
                                                           "updateSteps2"
-                                                        ];
-                                                    }
-                                                  }}
-                                                  size={"minimal"}
-                                                >
-                                                  <div
-                                                    className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
-                                                      sty.text__eYZsL
-                                                    )}
-                                                  >
-                                                    {
-                                                      "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
-                                                    }
-                                                  </div>
-                                                </Button>
+                                                        ] != null &&
+                                                        typeof $steps[
+                                                          "updateSteps2"
+                                                        ] === "object" &&
+                                                        typeof $steps[
+                                                          "updateSteps2"
+                                                        ].then === "function"
+                                                      ) {
+                                                        $steps["updateSteps2"] =
+                                                          await $steps[
+                                                            "updateSteps2"
+                                                          ];
+                                                      }
+                                                    },
+                                                    onLoadingviowChange: async (
+                                                      ...eventArgs: any
+                                                    ) => {
+                                                      ((...eventArgs) => {
+                                                        generateStateOnChangeProp(
+                                                          $state,
+                                                          [
+                                                            "button2",
+                                                            __plasmic_idx_0,
+                                                            __plasmic_idx_1,
+                                                            "loadingviow"
+                                                          ]
+                                                        )(eventArgs[0]);
+                                                      }).apply(null, eventArgs);
+
+                                                      if (
+                                                        eventArgs.length > 1 &&
+                                                        eventArgs[1] &&
+                                                        eventArgs[1]
+                                                          ._plasmic_state_init_
+                                                      ) {
+                                                        return;
+                                                      }
+                                                    },
+                                                    size: "minimal"
+                                                  };
+
+                                                  initializePlasmicStates(
+                                                    $state,
+                                                    [
+                                                      {
+                                                        name: "button2[][].loadingviow",
+                                                        initFunc: ({
+                                                          $props,
+                                                          $state,
+                                                          $queries
+                                                        }) =>
+                                                          (() => {
+                                                            try {
+                                                              return $state.loadingviow;
+                                                            } catch (e) {
+                                                              if (
+                                                                e instanceof
+                                                                  TypeError ||
+                                                                e?.plasmicType ===
+                                                                  "PlasmicUndefinedDataError"
+                                                              ) {
+                                                                return undefined;
+                                                              }
+                                                              throw e;
+                                                            }
+                                                          })()
+                                                      }
+                                                    ],
+                                                    [
+                                                      __plasmic_idx_0,
+                                                      __plasmic_idx_1
+                                                    ]
+                                                  );
+                                                  return (
+                                                    <Button
+                                                      data-plasmic-name={
+                                                        "button2"
+                                                      }
+                                                      data-plasmic-override={
+                                                        overrides.button2
+                                                      }
+                                                      {...child$Props}
+                                                    >
+                                                      <div
+                                                        className={classNames(
+                                                          projectcss.all,
+                                                          projectcss.__wab_text,
+                                                          sty.text__eYZsL
+                                                        )}
+                                                      >
+                                                        {
+                                                          "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
+                                                        }
+                                                      </div>
+                                                    </Button>
+                                                  );
+                                                })()}
                                               </div>
                                               <div
                                                 className={classNames(
@@ -2840,6 +3107,10 @@ function PlasmicInternet3__RenderFunc(props: {
                         throw e;
                       }
                     })()}
+                    loadingviow={generateStateValueProp($state, [
+                      "step1Next",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -2933,6 +3204,22 @@ function PlasmicInternet3__RenderFunc(props: {
                         ];
                       }
                     }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "step1Next",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
                   >
                     <div
                       className={classNames(
@@ -2980,6 +3267,10 @@ function PlasmicInternet3__RenderFunc(props: {
                         throw e;
                       }
                     })()}
+                    loadingviow={generateStateValueProp($state, [
+                      "step1Next2",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3006,6 +3297,22 @@ function PlasmicInternet3__RenderFunc(props: {
                         typeof $steps["updateSteps2"].then === "function"
                       ) {
                         $steps["updateSteps2"] = await $steps["updateSteps2"];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "step1Next2",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -3055,6 +3362,10 @@ function PlasmicInternet3__RenderFunc(props: {
                         throw e;
                       }
                     })()}
+                    loadingviow={generateStateValueProp($state, [
+                      "step1Next3",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3081,6 +3392,22 @@ function PlasmicInternet3__RenderFunc(props: {
                         typeof $steps["updateSteps2"].then === "function"
                       ) {
                         $steps["updateSteps2"] = await $steps["updateSteps2"];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "step1Next3",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -3284,8 +3611,14 @@ function PlasmicInternet3__RenderFunc(props: {
                     </li>
                   </Stack__>
                   <Button
-                    className={classNames("__wab_instance", sty.button___928Cv)}
+                    data-plasmic-name={"button3"}
+                    data-plasmic-override={overrides.button3}
+                    className={classNames("__wab_instance", sty.button3)}
                     color={"green"}
+                    loadingviow={generateStateValueProp($state, [
+                      "button3",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3323,6 +3656,22 @@ function PlasmicInternet3__RenderFunc(props: {
                         $steps["updateModalOpen"] = await $steps[
                           "updateModalOpen"
                         ];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button3",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -4642,8 +4991,14 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                   </div>
                   <Button
-                    className={classNames("__wab_instance", sty.button__b8RSo)}
+                    data-plasmic-name={"button4"}
+                    data-plasmic-override={overrides.button4}
+                    className={classNames("__wab_instance", sty.button4)}
                     color={"green"}
+                    loadingviow={generateStateValueProp($state, [
+                      "button4",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -4670,6 +5025,22 @@ function PlasmicInternet3__RenderFunc(props: {
                         typeof $steps["goToHomepage"].then === "function"
                       ) {
                         $steps["goToHomepage"] = await $steps["goToHomepage"];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button4",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -4809,7 +5180,9 @@ const PlasmicDescendants = {
     "boxselect2",
     "tabsContainer",
     "tabButton",
+    "button",
     "tabContent",
+    "button2",
     "apiRequest",
     "step1Next",
     "step1Next2",
@@ -4819,8 +5192,10 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
+    "button3",
     "modal3",
     "lottie",
+    "button4",
     "commissionBabarkat",
     "sideEffect"
   ],
@@ -4842,7 +5217,9 @@ const PlasmicDescendants = {
     "boxselect2",
     "tabsContainer",
     "tabButton",
-    "tabContent"
+    "button",
+    "tabContent",
+    "button2"
   ],
   wallet: [
     "wallet",
@@ -4878,9 +5255,17 @@ const PlasmicDescendants = {
   boxselect: ["boxselect"],
   chargeType: ["chargeType", "boxselect2"],
   boxselect2: ["boxselect2"],
-  tabsContainer: ["tabsContainer", "tabButton", "tabContent"],
-  tabButton: ["tabButton"],
-  tabContent: ["tabContent"],
+  tabsContainer: [
+    "tabsContainer",
+    "tabButton",
+    "button",
+    "tabContent",
+    "button2"
+  ],
+  tabButton: ["tabButton", "button"],
+  button: ["button"],
+  tabContent: ["tabContent", "button2"],
+  button2: ["button2"],
   apiRequest: ["apiRequest"],
   step1Next: ["step1Next"],
   step1Next2: ["step1Next2"],
@@ -4890,7 +5275,8 @@ const PlasmicDescendants = {
     "ul",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
+    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
+    "button3"
   ],
   ul: [
     "ul",
@@ -4901,8 +5287,10 @@ const PlasmicDescendants = {
   اپراتور: ["\u0627\u067e\u0631\u0627\u062a\u0648\u0631"],
   اپراتور2: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06312"],
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
-  modal3: ["modal3", "lottie"],
+  button3: ["button3"],
+  modal3: ["modal3", "lottie", "button4"],
   lottie: ["lottie"],
+  button4: ["button4"],
   commissionBabarkat: ["commissionBabarkat"],
   sideEffect: ["sideEffect"]
 } as const;
@@ -4928,7 +5316,9 @@ type NodeDefaultElementType = {
   boxselect2: typeof Boxselect2;
   tabsContainer: typeof TabsContainer;
   tabButton: typeof TabButton;
+  button: typeof Button;
   tabContent: typeof TabContent;
+  button2: typeof Button;
   apiRequest: typeof ApiRequest;
   step1Next: typeof Button;
   step1Next2: typeof Button;
@@ -4938,8 +5328,10 @@ type NodeDefaultElementType = {
   اپراتور: "div";
   اپراتور2: "div";
   اپراتور3: "div";
+  button3: typeof Button;
   modal3: typeof AntdModal;
   lottie: typeof LottieWrapper;
+  button4: typeof Button;
   commissionBabarkat: typeof ApiRequest;
   sideEffect: typeof SideEffect;
 };
@@ -5050,7 +5442,9 @@ export const PlasmicInternet3 = Object.assign(
     boxselect2: makeNodeComponent("boxselect2"),
     tabsContainer: makeNodeComponent("tabsContainer"),
     tabButton: makeNodeComponent("tabButton"),
+    button: makeNodeComponent("button"),
     tabContent: makeNodeComponent("tabContent"),
+    button2: makeNodeComponent("button2"),
     apiRequest: makeNodeComponent("apiRequest"),
     step1Next: makeNodeComponent("step1Next"),
     step1Next2: makeNodeComponent("step1Next2"),
@@ -5060,8 +5454,10 @@ export const PlasmicInternet3 = Object.assign(
     اپراتور: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u0631"),
     اپراتور2: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06312"),
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
+    button3: makeNodeComponent("button3"),
     modal3: makeNodeComponent("modal3"),
     lottie: makeNodeComponent("lottie"),
+    button4: makeNodeComponent("button4"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     sideEffect: makeNodeComponent("sideEffect"),
 

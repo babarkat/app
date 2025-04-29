@@ -136,8 +136,10 @@ export type PlasmicChargingAfg__OverridesType = {
   step1Next?: Flex__<typeof Button>;
   step2Next?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
+  button?: Flex__<typeof Button>;
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
+  button2?: Flex__<typeof Button>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   exchangeRate?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
@@ -522,6 +524,120 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "backstep2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "backstep3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step1Next.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step2Next.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -3281,6 +3397,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ? "softGreen"
                           : "green"
                       }
+                      loadingviow={generateStateValueProp($state, [
+                        "backstep2",
+                        "loadingviow"
+                      ])}
                       onClick={async event => {
                         const $steps = {};
 
@@ -3309,6 +3429,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           $steps["updateUnnamedVariant"] = await $steps[
                             "updateUnnamedVariant"
                           ];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "backstep2",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
                         }
                       }}
                     >
@@ -3361,6 +3497,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ? "softGreen"
                           : "softGreen"
                       }
+                      loadingviow={generateStateValueProp($state, [
+                        "backstep3",
+                        "loadingviow"
+                      ])}
                       onClick={async event => {
                         const $steps = {};
 
@@ -3390,6 +3530,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           $steps["updateUnnamedVariant2"] = await $steps[
                             "updateUnnamedVariant2"
                           ];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "backstep3",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
                         }
                       }}
                     >
@@ -3445,6 +3601,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         throw e;
                       }
                     })()}
+                    loadingviow={generateStateValueProp($state, [
+                      "step1Next",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3541,6 +3701,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         ];
                       }
                     }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "step1Next",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
                   >
                     <div
                       className={classNames(
@@ -3604,6 +3780,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                               }
                             })()
                       }
+                      loadingviow={generateStateValueProp($state, [
+                        "step2Next",
+                        "loadingviow"
+                      ])}
                       onClick={async event => {
                         const $steps = {};
 
@@ -3670,6 +3850,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           $steps["updateUnnamedVariant2"] = await $steps[
                             "updateUnnamedVariant2"
                           ];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "step2Next",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
                         }
                       }}
                     >
@@ -3837,19 +4033,25 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       : "Enter some text"}
                   </div>
                   <Button
-                    className={classNames("__wab_instance", sty.button__vleie, {
-                      [sty.buttonstepscharg_step2__vleie1Oc4H]: hasVariant(
+                    data-plasmic-name={"button"}
+                    data-plasmic-override={overrides.button}
+                    className={classNames("__wab_instance", sty.button, {
+                      [sty.buttonstepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
                         "step2"
                       ),
-                      [sty.buttonstepscharg_step3__vleieq2TCe]: hasVariant(
+                      [sty.buttonstepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
                         "step3"
                       )
                     })}
                     color={"green"}
+                    loadingviow={generateStateValueProp($state, [
+                      "button",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -3887,6 +4089,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         $steps["updateModalOpen"] = await $steps[
                           "updateModalOpen"
                         ];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -4498,14 +4716,20 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     </div>
                   </div>
                   <Button
-                    className={classNames("__wab_instance", sty.button__xhJbE, {
-                      [sty.buttonstepscharg_step3__xhJbEq2TCe]: hasVariant(
+                    data-plasmic-name={"button2"}
+                    data-plasmic-override={overrides.button2}
+                    className={classNames("__wab_instance", sty.button2, {
+                      [sty.button2stepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
                         "step3"
                       )
                     })}
                     color={"green"}
+                    loadingviow={generateStateValueProp($state, [
+                      "button2",
+                      "loadingviow"
+                    ])}
                     onClick={async event => {
                       const $steps = {};
 
@@ -4568,6 +4792,22 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         typeof $steps["goToHomepage"].then === "function"
                       ) {
                         $steps["goToHomepage"] = await $steps["goToHomepage"];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "button2",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
                     }}
                   >
@@ -4776,8 +5016,10 @@ const PlasmicDescendants = {
     "step1Next",
     "step2Next",
     "modal",
+    "button",
     "modal2",
     "lottie",
+    "button2",
     "commissionBabarkat",
     "exchangeRate",
     "sideEffect"
@@ -4844,9 +5086,11 @@ const PlasmicDescendants = {
   backstep3: ["backstep3"],
   step1Next: ["step1Next"],
   step2Next: ["step2Next"],
-  modal: ["modal"],
-  modal2: ["modal2", "lottie"],
+  modal: ["modal", "button"],
+  button: ["button"],
+  modal2: ["modal2", "lottie", "button2"],
   lottie: ["lottie"],
+  button2: ["button2"],
   commissionBabarkat: ["commissionBabarkat"],
   exchangeRate: ["exchangeRate"],
   sideEffect: ["sideEffect"]
@@ -4879,8 +5123,10 @@ type NodeDefaultElementType = {
   step1Next: typeof Button;
   step2Next: typeof Button;
   modal: typeof AntdModal;
+  button: typeof Button;
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
+  button2: typeof Button;
   commissionBabarkat: typeof ApiRequest;
   exchangeRate: typeof ApiRequest;
   sideEffect: typeof SideEffect;
@@ -4998,8 +5244,10 @@ export const PlasmicChargingAfg = Object.assign(
     step1Next: makeNodeComponent("step1Next"),
     step2Next: makeNodeComponent("step2Next"),
     modal: makeNodeComponent("modal"),
+    button: makeNodeComponent("button"),
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
+    button2: makeNodeComponent("button2"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     exchangeRate: makeNodeComponent("exchangeRate"),
     sideEffect: makeNodeComponent("sideEffect"),

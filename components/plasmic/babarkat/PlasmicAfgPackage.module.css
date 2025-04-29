@@ -767,10 +767,10 @@
   object-fit: contain;
 }
 .imgstepscharg_step2___9LkiFzwaj5 {
-  display: none !important;
+  display: none;
 }
 .imgstepscharg_step3___9LkiFtDnBg {
-  display: none !important;
+  display: none;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;
@@ -1117,7 +1117,7 @@
 .img__vWpXx {
   object-fit: cover;
   max-width: 100%;
-  display: none !important;
+  display: none;
 }
 .img__vWpXx > picture > img {
   object-fit: cover;
@@ -1168,7 +1168,7 @@
   text-overflow: clip;
   min-width: 0;
 }
-.button__tHy7L:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg___3RypR {
@@ -1465,7 +1465,7 @@
   object-fit: cover;
 }
 .imgstepscharg_step3__hxSe5TDnBg {
-  display: none !important;
+  display: none;
 }
 .freeBox__cb7Uz {
   display: flex;
@@ -1563,7 +1563,7 @@
   object-fit: cover;
 }
 .imgstepscharg_step3__w23VDtDnBg {
-  display: none !important;
+  display: none;
 }
 .freeBox__vlv09 {
   display: flex;
@@ -2047,7 +2047,7 @@
     padding-top: 0px;
   }
 }
-.button__umDl2:global(.__wab_instance) {
+.button2:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   min-width: 0;
@@ -2169,7 +2169,7 @@
   font-size: 16px;
   min-width: 0;
 }
-.button__bumnZ:global(.__wab_instance) {
+.button3:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   min-width: 0;

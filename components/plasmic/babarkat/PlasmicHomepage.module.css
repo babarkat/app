@@ -719,7 +719,7 @@
     text-align: justify;
   }
 }
-.button__swqBc:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg___9Yi8J {
@@ -823,7 +823,7 @@
     text-align: justify;
   }
 }
-.button___8Z2Am:global(.__wab_instance) {
+.button2:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__m3JxR {
@@ -1196,7 +1196,7 @@
   object-fit: cover;
   position: absolute;
   left: auto;
-  top: 239px;
+  top: 227px;
   align-self: center;
   z-index: 50;
   right: auto;
@@ -1204,15 +1204,15 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .tooltip:global(.__wab_instance) {
-    top: 184px;
+    top: 168px;
     display: flex;
   }
 }
 .freeBox__z7W8B {
   display: flex;
   position: relative;
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   max-width: 100%;
   left: auto;
   top: auto;
@@ -1222,12 +1222,13 @@
   justify-content: center;
   box-shadow: 0px 0px 0px 8px #ffffff66;
   border-radius: 50%;
-  padding: 12px;
+  padding: 8px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__z7W8B {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
+    box-shadow: 0px 0px 0px 4px #ffffff66;
   }
 }
 .svg__sMir1 {
@@ -1314,18 +1315,27 @@
   background: var(--token-CNOGPdS04rVH);
   padding: 8px 8px 8px 16px;
 }
-.svg__uhTSv {
-  object-fit: cover;
+.img__rpyd {
+  object-fit: contain;
   max-width: 100%;
   width: 60px;
   height: 60px;
   flex-shrink: 0;
 }
+.img__rpyd > picture > img {
+  object-fit: contain;
+}
 @media (min-width: 0px) and (max-width: 768px) {
-  .svg__uhTSv {
+  .img__rpyd {
     width: 40px;
     height: 40px;
+    object-fit: contain;
     flex-shrink: 0;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .img__rpyd > picture > img {
+    object-fit: contain;
   }
 }
 .swiperContainer {
@@ -2801,7 +2811,7 @@
     align-items: center;
   }
 }
-.button__dLo8Z:global(.__wab_instance) {
+.button3:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   min-width: 0;
@@ -3803,14 +3813,14 @@
   padding-top: 8px;
   min-width: 0;
 }
-.button___5GhRl:global(.__wab_instance) {
+.button4:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   opacity: 1;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .button___5GhRl:global(.__wab_instance) {
+  .button4:global(.__wab_instance) {
     opacity: 1;
     width: 100%;
     min-width: 0;
@@ -4481,7 +4491,7 @@
   background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
   overflow: hidden;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 1;
   min-width: 0;
   border-radius: 10px;
   padding: 10px;
@@ -4544,6 +4554,24 @@
     font-size: 14px;
   }
 }
+.svg___5UAkA {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-7EicNAKGWsev);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg___5UAkA {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+}
 .comingSoon7 {
   display: flex;
   flex-direction: column;
@@ -4556,7 +4584,7 @@
   background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
   overflow: hidden;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 1;
   min-width: 0;
   border-radius: 10px;
   padding: 10px;
@@ -4619,9 +4647,27 @@
     font-size: 14px;
   }
 }
+.svg__yVhm4 {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-7EicNAKGWsev);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__yVhm4 {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+}
 .comingSoon8 {
   position: relative;
-  opacity: 0.5;
+  opacity: 1;
   cursor: pointer;
   overflow: hidden;
   background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
@@ -4692,6 +4738,24 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__v5BFi {
     font-size: 14px;
+  }
+}
+.svg___3PCkF {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-7EicNAKGWsev);
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg___3PCkF {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
   }
 }
 .freeBox__v5Qv2 {

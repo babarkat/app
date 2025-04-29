@@ -135,8 +135,10 @@ export type PlasmicCall__OverridesType = {
   boxselect2?: Flex__<typeof Boxselect2>;
   tabsContainer?: Flex__<typeof TabsContainer>;
   tabButton?: Flex__<typeof TabButton>;
+  button?: Flex__<typeof Button>;
   tabUnderline?: Flex__<typeof TabUnderline>;
   tabContent?: Flex__<typeof TabContent>;
+  button2?: Flex__<typeof Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
   step1Next?: Flex__<typeof Button>;
   step1Next2?: Flex__<typeof Button>;
@@ -146,8 +148,10 @@ export type PlasmicCall__OverridesType = {
   اپراتور?: Flex__<"div">;
   اپراتور2?: Flex__<"div">;
   اپراتور3?: Flex__<"div">;
+  button3?: Flex__<typeof Button>;
   modal3?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
+  button4?: Flex__<typeof Button>;
   timer?: Flex__<typeof Timer>;
   embedHtml?: Flex__<typeof Embed>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
@@ -599,6 +603,111 @@ function PlasmicCall__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "button[].loadingviow",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "button2[][].loadingviow",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "step1Next.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step1Next2.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "step1Next3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button3.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "button4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -2162,66 +2271,135 @@ function PlasmicCall__RenderFunc(props: {
                                     }
                                   })()}
                                 >
-                                  <Button
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.button___9Gq5,
-                                      {
-                                        [sty.buttonsteps2_step2___9Gq5Wr9V]:
-                                          hasVariant($state, "steps2", "step2")
-                                      }
-                                    )}
-                                    color={
-                                      hasVariant($state, "steps2", "step2")
-                                        ? "clear"
-                                        : "sand"
-                                    }
-                                    shape={"rounded"}
-                                    size={
-                                      hasVariant($state, "steps2", "step2") &&
-                                      hasVariant(
-                                        globalVariants,
-                                        "screen",
-                                        "mobileOnly"
-                                      )
-                                        ? "compact"
-                                        : undefined
-                                    }
-                                    submitsForm={false}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__wSnzw,
+                                  {(() => {
+                                    const child$Props = {
+                                      className: classNames(
+                                        "__wab_instance",
+                                        sty.button,
                                         {
-                                          [sty.textsteps2_step2__wSnzwWr9V]:
-                                            hasVariant(
-                                              $state,
-                                              "steps2",
-                                              "step2"
-                                            )
+                                          [sty.buttonsteps2_step2]: hasVariant(
+                                            $state,
+                                            "steps2",
+                                            "step2"
+                                          )
                                         }
-                                      )}
-                                    >
-                                      <React.Fragment>
-                                        {(() => {
-                                          try {
-                                            return currentItem.periodicityFa;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return "Button";
+                                      ),
+                                      color: hasVariant(
+                                        $state,
+                                        "steps2",
+                                        "step2"
+                                      )
+                                        ? "clear"
+                                        : "sand",
+                                      loadingviow: generateStateValueProp(
+                                        $state,
+                                        [
+                                          "button",
+                                          __plasmic_idx_0,
+                                          "loadingviow"
+                                        ]
+                                      ),
+                                      onLoadingviowChange: async (
+                                        ...eventArgs: any
+                                      ) => {
+                                        ((...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "button",
+                                            __plasmic_idx_0,
+                                            "loadingviow"
+                                          ])(eventArgs[0]);
+                                        }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
+                                      },
+                                      shape: "rounded",
+                                      size:
+                                        hasVariant($state, "steps2", "step2") &&
+                                        hasVariant(
+                                          globalVariants,
+                                          "screen",
+                                          "mobileOnly"
+                                        )
+                                          ? "compact"
+                                          : undefined,
+                                      submitsForm: false
+                                    };
+
+                                    initializePlasmicStates(
+                                      $state,
+                                      [
+                                        {
+                                          name: "button[].loadingviow",
+                                          initFunc: ({
+                                            $props,
+                                            $state,
+                                            $queries
+                                          }) =>
+                                            (() => {
+                                              try {
+                                                return $state.loadingviow;
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return undefined;
+                                                }
+                                                throw e;
+                                              }
+                                            })()
+                                        }
+                                      ],
+                                      [__plasmic_idx_0]
+                                    );
+                                    return (
+                                      <Button
+                                        data-plasmic-name={"button"}
+                                        data-plasmic-override={overrides.button}
+                                        {...child$Props}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__wSnzw,
+                                            {
+                                              [sty.textsteps2_step2__wSnzwWr9V]:
+                                                hasVariant(
+                                                  $state,
+                                                  "steps2",
+                                                  "step2"
+                                                )
                                             }
-                                            throw e;
-                                          }
-                                        })()}
-                                      </React.Fragment>
-                                    </div>
-                                  </Button>
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return currentItem.periodicityFa;
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "Button";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                      </Button>
+                                    );
+                                  })()}
                                 </TabButton>
                               );
                             })}
@@ -2442,46 +2620,103 @@ function PlasmicCall__RenderFunc(props: {
                                                 })()}
                                               </React.Fragment>
                                             </div>
-                                            <Button
-                                              className={classNames(
-                                                "__wab_instance",
-                                                sty.button__giKUx
-                                              )}
-                                              color={"softGreen"}
-                                              onClick={async event => {
-                                                const $steps = {};
+                                            {(() => {
+                                              const child$Props = {
+                                                className: classNames(
+                                                  "__wab_instance",
+                                                  sty.button2
+                                                ),
+                                                color: "softGreen",
+                                                loadingviow:
+                                                  generateStateValueProp(
+                                                    $state,
+                                                    [
+                                                      "button2",
+                                                      __plasmic_idx_0,
+                                                      __plasmic_idx_1,
+                                                      "loadingviow"
+                                                    ]
+                                                  ),
+                                                onClick: async event => {
+                                                  const $steps = {};
 
-                                                $steps["updateSelectpack"] =
-                                                  true
+                                                  $steps["updateSelectpack"] =
+                                                    true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            variable: {
+                                                              objRoot: $state,
+                                                              variablePath: [
+                                                                "selectpack"
+                                                              ]
+                                                            },
+                                                            operation: 0,
+                                                            value:
+                                                              currentItem.json
+                                                          };
+                                                          return (({
+                                                            variable,
+                                                            value,
+                                                            startIndex,
+                                                            deleteCount
+                                                          }) => {
+                                                            if (!variable) {
+                                                              return;
+                                                            }
+                                                            const {
+                                                              objRoot,
+                                                              variablePath
+                                                            } = variable;
+
+                                                            $stateSet(
+                                                              objRoot,
+                                                              variablePath,
+                                                              value
+                                                            );
+                                                            return value;
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                  if (
+                                                    $steps[
+                                                      "updateSelectpack"
+                                                    ] != null &&
+                                                    typeof $steps[
+                                                      "updateSelectpack"
+                                                    ] === "object" &&
+                                                    typeof $steps[
+                                                      "updateSelectpack"
+                                                    ].then === "function"
+                                                  ) {
+                                                    $steps["updateSelectpack"] =
+                                                      await $steps[
+                                                        "updateSelectpack"
+                                                      ];
+                                                  }
+
+                                                  $steps["updateSteps2"] = true
                                                     ? (() => {
                                                         const actionArgs = {
-                                                          variable: {
-                                                            objRoot: $state,
-                                                            variablePath: [
-                                                              "selectpack"
-                                                            ]
-                                                          },
+                                                          vgroup: "steps2",
                                                           operation: 0,
-                                                          value:
-                                                            currentItem.json
+                                                          value: "step3"
                                                         };
                                                         return (({
-                                                          variable,
-                                                          value,
-                                                          startIndex,
-                                                          deleteCount
+                                                          vgroup,
+                                                          value
                                                         }) => {
-                                                          if (!variable) {
-                                                            return;
+                                                          if (
+                                                            typeof value ===
+                                                            "string"
+                                                          ) {
+                                                            value = [value];
                                                           }
-                                                          const {
-                                                            objRoot,
-                                                            variablePath
-                                                          } = variable;
 
                                                           $stateSet(
-                                                            objRoot,
-                                                            variablePath,
+                                                            $state,
+                                                            vgroup,
                                                             value
                                                           );
                                                           return value;
@@ -2490,80 +2725,103 @@ function PlasmicCall__RenderFunc(props: {
                                                         ]);
                                                       })()
                                                     : undefined;
-                                                if (
-                                                  $steps["updateSelectpack"] !=
-                                                    null &&
-                                                  typeof $steps[
-                                                    "updateSelectpack"
-                                                  ] === "object" &&
-                                                  typeof $steps[
-                                                    "updateSelectpack"
-                                                  ].then === "function"
-                                                ) {
-                                                  $steps["updateSelectpack"] =
-                                                    await $steps[
-                                                      "updateSelectpack"
-                                                    ];
-                                                }
-
-                                                $steps["updateSteps2"] = true
-                                                  ? (() => {
-                                                      const actionArgs = {
-                                                        vgroup: "steps2",
-                                                        operation: 0,
-                                                        value: "step3"
-                                                      };
-                                                      return (({
-                                                        vgroup,
-                                                        value
-                                                      }) => {
-                                                        if (
-                                                          typeof value ===
-                                                          "string"
-                                                        ) {
-                                                          value = [value];
-                                                        }
-
-                                                        $stateSet(
-                                                          $state,
-                                                          vgroup,
-                                                          value
-                                                        );
-                                                        return value;
-                                                      })?.apply(null, [
-                                                        actionArgs
-                                                      ]);
-                                                    })()
-                                                  : undefined;
-                                                if (
-                                                  $steps["updateSteps2"] !=
-                                                    null &&
-                                                  typeof $steps[
-                                                    "updateSteps2"
-                                                  ] === "object" &&
-                                                  typeof $steps["updateSteps2"]
-                                                    .then === "function"
-                                                ) {
-                                                  $steps["updateSteps2"] =
-                                                    await $steps[
+                                                  if (
+                                                    $steps["updateSteps2"] !=
+                                                      null &&
+                                                    typeof $steps[
                                                       "updateSteps2"
-                                                    ];
-                                                }
-                                              }}
-                                              size={"minimal"}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text___908Hf
-                                                )}
-                                              >
-                                                {
-                                                  "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
-                                                }
-                                              </div>
-                                            </Button>
+                                                    ] === "object" &&
+                                                    typeof $steps[
+                                                      "updateSteps2"
+                                                    ].then === "function"
+                                                  ) {
+                                                    $steps["updateSteps2"] =
+                                                      await $steps[
+                                                        "updateSteps2"
+                                                      ];
+                                                  }
+                                                },
+                                                onLoadingviowChange: async (
+                                                  ...eventArgs: any
+                                                ) => {
+                                                  ((...eventArgs) => {
+                                                    generateStateOnChangeProp(
+                                                      $state,
+                                                      [
+                                                        "button2",
+                                                        __plasmic_idx_0,
+                                                        __plasmic_idx_1,
+                                                        "loadingviow"
+                                                      ]
+                                                    )(eventArgs[0]);
+                                                  }).apply(null, eventArgs);
+
+                                                  if (
+                                                    eventArgs.length > 1 &&
+                                                    eventArgs[1] &&
+                                                    eventArgs[1]
+                                                      ._plasmic_state_init_
+                                                  ) {
+                                                    return;
+                                                  }
+                                                },
+                                                size: "minimal"
+                                              };
+
+                                              initializePlasmicStates(
+                                                $state,
+                                                [
+                                                  {
+                                                    name: "button2[][].loadingviow",
+                                                    initFunc: ({
+                                                      $props,
+                                                      $state,
+                                                      $queries
+                                                    }) =>
+                                                      (() => {
+                                                        try {
+                                                          return $state.loadingviow;
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return undefined;
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()
+                                                  }
+                                                ],
+                                                [
+                                                  __plasmic_idx_0,
+                                                  __plasmic_idx_1
+                                                ]
+                                              );
+                                              return (
+                                                <Button
+                                                  data-plasmic-name={"button2"}
+                                                  data-plasmic-override={
+                                                    overrides.button2
+                                                  }
+                                                  {...child$Props}
+                                                >
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text___908Hf
+                                                    )}
+                                                  >
+                                                    {
+                                                      "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
+                                                    }
+                                                  </div>
+                                                </Button>
+                                              );
+                                            })()}
                                           </div>
                                           <div
                                             className={classNames(
@@ -2754,6 +3012,10 @@ function PlasmicCall__RenderFunc(props: {
                     throw e;
                   }
                 })()}
+                loadingviow={generateStateValueProp($state, [
+                  "step1Next",
+                  "loadingviow"
+                ])}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2847,6 +3109,22 @@ function PlasmicCall__RenderFunc(props: {
                     ];
                   }
                 }}
+                onLoadingviowChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "step1Next",
+                      "loadingviow"
+                    ])(eventArgs[0]);
+                  }).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
+                  }
+                }}
               >
                 <div
                   className={classNames(
@@ -2894,6 +3172,10 @@ function PlasmicCall__RenderFunc(props: {
                     throw e;
                   }
                 })()}
+                loadingviow={generateStateValueProp($state, [
+                  "step1Next2",
+                  "loadingviow"
+                ])}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2920,6 +3202,22 @@ function PlasmicCall__RenderFunc(props: {
                     typeof $steps["updateSteps2"].then === "function"
                   ) {
                     $steps["updateSteps2"] = await $steps["updateSteps2"];
+                  }
+                }}
+                onLoadingviowChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "step1Next2",
+                      "loadingviow"
+                    ])(eventArgs[0]);
+                  }).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
                   }
                 }}
               >
@@ -2969,6 +3267,10 @@ function PlasmicCall__RenderFunc(props: {
                     throw e;
                   }
                 })()}
+                loadingviow={generateStateValueProp($state, [
+                  "step1Next3",
+                  "loadingviow"
+                ])}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2995,6 +3297,22 @@ function PlasmicCall__RenderFunc(props: {
                     typeof $steps["updateSteps2"].then === "function"
                   ) {
                     $steps["updateSteps2"] = await $steps["updateSteps2"];
+                  }
+                }}
+                onLoadingviowChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "step1Next3",
+                      "loadingviow"
+                    ])(eventArgs[0]);
+                  }).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
                   }
                 }}
               >
@@ -3181,8 +3499,14 @@ function PlasmicCall__RenderFunc(props: {
                   </li>
                 </Stack__>
                 <Button
-                  className={classNames("__wab_instance", sty.button__sAsFu)}
+                  data-plasmic-name={"button3"}
+                  data-plasmic-override={overrides.button3}
+                  className={classNames("__wab_instance", sty.button3)}
                   color={"green"}
+                  loadingviow={generateStateValueProp($state, [
+                    "button3",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3220,6 +3544,22 @@ function PlasmicCall__RenderFunc(props: {
                       $steps["updateModalOpen"] = await $steps[
                         "updateModalOpen"
                       ];
+                    }
+                  }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button3",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
                     }
                   }}
                 >
@@ -4547,8 +4887,14 @@ function PlasmicCall__RenderFunc(props: {
                   </div>
                 </div>
                 <Button
-                  className={classNames("__wab_instance", sty.button__usYej)}
+                  data-plasmic-name={"button4"}
+                  data-plasmic-override={overrides.button4}
+                  className={classNames("__wab_instance", sty.button4)}
                   color={"green"}
+                  loadingviow={generateStateValueProp($state, [
+                    "button4",
+                    "loadingviow"
+                  ])}
                   onClick={async event => {
                     const $steps = {};
 
@@ -4575,6 +4921,22 @@ function PlasmicCall__RenderFunc(props: {
                       typeof $steps["goToHomepage"].then === "function"
                     ) {
                       $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    }
+                  }}
+                  onLoadingviowChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "button4",
+                        "loadingviow"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
                     }
                   }}
                 >
@@ -4772,8 +5134,10 @@ const PlasmicDescendants = {
     "boxselect2",
     "tabsContainer",
     "tabButton",
+    "button",
     "tabUnderline",
     "tabContent",
+    "button2",
     "apiRequest",
     "step1Next",
     "step1Next2",
@@ -4783,8 +5147,10 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
+    "button3",
     "modal3",
     "lottie",
+    "button4",
     "timer",
     "embedHtml",
     "commissionBabarkat",
@@ -4808,8 +5174,10 @@ const PlasmicDescendants = {
     "boxselect2",
     "tabsContainer",
     "tabButton",
+    "button",
     "tabUnderline",
-    "tabContent"
+    "tabContent",
+    "button2"
   ],
   wallet: [
     "wallet",
@@ -4845,10 +5213,19 @@ const PlasmicDescendants = {
   boxselect: ["boxselect"],
   chargeType: ["chargeType", "boxselect2"],
   boxselect2: ["boxselect2"],
-  tabsContainer: ["tabsContainer", "tabButton", "tabUnderline", "tabContent"],
-  tabButton: ["tabButton"],
+  tabsContainer: [
+    "tabsContainer",
+    "tabButton",
+    "button",
+    "tabUnderline",
+    "tabContent",
+    "button2"
+  ],
+  tabButton: ["tabButton", "button"],
+  button: ["button"],
   tabUnderline: ["tabUnderline"],
-  tabContent: ["tabContent"],
+  tabContent: ["tabContent", "button2"],
+  button2: ["button2"],
   apiRequest: ["apiRequest"],
   step1Next: ["step1Next"],
   step1Next2: ["step1Next2"],
@@ -4858,7 +5235,8 @@ const PlasmicDescendants = {
     "ul",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06312",
-    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
+    "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
+    "button3"
   ],
   ul: [
     "ul",
@@ -4869,8 +5247,10 @@ const PlasmicDescendants = {
   اپراتور: ["\u0627\u067e\u0631\u0627\u062a\u0648\u0631"],
   اپراتور2: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06312"],
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
-  modal3: ["modal3", "lottie"],
+  button3: ["button3"],
+  modal3: ["modal3", "lottie", "button4"],
   lottie: ["lottie"],
+  button4: ["button4"],
   timer: ["timer"],
   embedHtml: ["embedHtml"],
   commissionBabarkat: ["commissionBabarkat"],
@@ -4898,8 +5278,10 @@ type NodeDefaultElementType = {
   boxselect2: typeof Boxselect2;
   tabsContainer: typeof TabsContainer;
   tabButton: typeof TabButton;
+  button: typeof Button;
   tabUnderline: typeof TabUnderline;
   tabContent: typeof TabContent;
+  button2: typeof Button;
   apiRequest: typeof ApiRequest;
   step1Next: typeof Button;
   step1Next2: typeof Button;
@@ -4909,8 +5291,10 @@ type NodeDefaultElementType = {
   اپراتور: "div";
   اپراتور2: "div";
   اپراتور3: "div";
+  button3: typeof Button;
   modal3: typeof AntdModal;
   lottie: typeof LottieWrapper;
+  button4: typeof Button;
   timer: typeof Timer;
   embedHtml: typeof Embed;
   commissionBabarkat: typeof ApiRequest;
@@ -5023,8 +5407,10 @@ export const PlasmicCall = Object.assign(
     boxselect2: makeNodeComponent("boxselect2"),
     tabsContainer: makeNodeComponent("tabsContainer"),
     tabButton: makeNodeComponent("tabButton"),
+    button: makeNodeComponent("button"),
     tabUnderline: makeNodeComponent("tabUnderline"),
     tabContent: makeNodeComponent("tabContent"),
+    button2: makeNodeComponent("button2"),
     apiRequest: makeNodeComponent("apiRequest"),
     step1Next: makeNodeComponent("step1Next"),
     step1Next2: makeNodeComponent("step1Next2"),
@@ -5034,8 +5420,10 @@ export const PlasmicCall = Object.assign(
     اپراتور: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u0631"),
     اپراتور2: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06312"),
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
+    button3: makeNodeComponent("button3"),
     modal3: makeNodeComponent("modal3"),
     lottie: makeNodeComponent("lottie"),
+    button4: makeNodeComponent("button4"),
     timer: makeNodeComponent("timer"),
     embedHtml: makeNodeComponent("embedHtml"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),

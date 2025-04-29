@@ -1608,7 +1608,7 @@
           "projectId": "sZQMbqXz9utLNaTnNb3uss",
           "renderModuleFilePath": "plasmic/babarkat/PlasmicBill.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/charging-3.tsx"
+            "modulePath": "../src/pages/Bill.tsx"
           },
           "cssFilePath": "plasmic/babarkat/PlasmicBill.module.css",
           "scheme": "blackbox",
@@ -2414,6 +2414,41 @@
           "id": "spxNL7aXl4b7",
           "name": "Icon107Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon107.tsx"
+        },
+        {
+          "id": "tptDKswn1-8W",
+          "name": "Icon108Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon108.tsx"
+        },
+        {
+          "id": "LIgkphYcL9vu",
+          "name": "Icon109Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon109.tsx"
+        },
+        {
+          "id": "aq88MiXmlJWv",
+          "name": "Icon110Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon110.tsx"
+        },
+        {
+          "id": "ZQs8iNj46bRk",
+          "name": "Icon111Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon111.tsx"
+        },
+        {
+          "id": "n9IddAjxlxU9",
+          "name": "Icon112Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon112.tsx"
+        },
+        {
+          "id": "G2o3PwB6SKLN",
+          "name": "Icon113Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon113.tsx"
+        },
+        {
+          "id": "TMIYL_YcSO8V",
+          "name": "Icon114Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon114.tsx"
         }
       ],
       "images": [
@@ -3338,8 +3373,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {

@@ -616,7 +616,7 @@
   object-fit: contain;
 }
 .imgstepscharg_step3__jiteRzZ317 {
-  display: none !important;
+  display: none;
 }
 .fragmentInput2:global(.__wab_instance) {
   width: 100%;
@@ -1040,7 +1040,7 @@
   object-fit: cover;
 }
 .imgstepscharg_step3__i1YqpzZ317 {
-  display: none !important;
+  display: none;
 }
 .freeBox__ohF6B {
   display: flex;
@@ -1138,7 +1138,7 @@
   object-fit: cover;
 }
 .imgstepscharg_step3__aEs3ZZ317 {
-  display: none !important;
+  display: none;
 }
 .freeBox__dk0Cg {
   display: flex;
@@ -1282,9 +1282,9 @@
   }
 }
 .imgstepscharg_step3__yQ6GgzZ317 {
-  display: none !important;
+  display: none;
 }
-.button__jNLsb:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
   position: absolute;
   left: auto;
@@ -1598,7 +1598,7 @@
   color: var(--token-jgohepLVeKvh);
   text-align: justify;
 }
-.button__kYb2A:global(.__wab_instance) {
+.button2:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   min-width: 0;
@@ -1727,16 +1727,16 @@
 .textstepscharg_step3__pHzGzZ317 {
   text-align: left;
 }
-.button___31MXm:global(.__wab_instance) {
+.button3:global(.__wab_instance) {
   max-width: 100%;
   width: 100%;
   min-width: 0;
 }
-.buttonstepscharg_step3___31MXMzZ317:global(.__wab_instance) {
+.button3stepscharg_step3:global(.__wab_instance) {
   margin-top: 20px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .buttonstepscharg_step3___31MXMzZ317:global(.__wab_instance) {
+  .button3stepscharg_step3:global(.__wab_instance) {
     margin-top: 30px;
   }
 }
