@@ -948,7 +948,9 @@ function PlasmicPubg__RenderFunc(props: {
                     sty.text__asuJq
                   )}
                 >
-                  {"\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 UC"}
+                  {
+                    "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 \u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc \u0647\u0627"
+                  }
                 </div>
                 <PlasmicIcon__
                   PlasmicIconType={

@@ -1811,32 +1811,39 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["goToAfgPackage"] = true
+                        $steps["updateGameOpen"] = true
                           ? (() => {
                               const actionArgs = {
-                                destination: `/package-AFG`
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["game", "open"]
+                                },
+                                operation: 0,
+                                value: true
                               };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
                                 }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["goToAfgPackage"] != null &&
-                          typeof $steps["goToAfgPackage"] === "object" &&
-                          typeof $steps["goToAfgPackage"].then === "function"
+                          $steps["updateGameOpen"] != null &&
+                          typeof $steps["updateGameOpen"] === "object" &&
+                          typeof $steps["updateGameOpen"].then === "function"
                         ) {
-                          $steps["goToAfgPackage"] = await $steps[
-                            "goToAfgPackage"
+                          $steps["updateGameOpen"] = await $steps[
+                            "updateGameOpen"
                           ];
                         }
                       }}
@@ -1867,7 +1874,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u062e\u0631\u06cc\u062f \u0622\u0646\u0644\u0627\u06cc\u0646 \u0628\u0633\u062a\u0647 \u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0647\u0627\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+                          "\u062e\u0631\u06cc\u062f \u0622\u0646\u0644\u0627\u06cc\u0646 \u0628\u0633\u062a\u0647 \u0647\u0627\u06cc \u0627\u0644\u0645\u0627\u0633 likee \u060c imo \u0648 ..."
                         }
                       </div>
                       <div
