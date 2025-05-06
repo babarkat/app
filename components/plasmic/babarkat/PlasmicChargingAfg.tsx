@@ -185,6 +185,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -370,7 +371,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? true : false
+          hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "variable",
@@ -1399,7 +1400,13 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     </div>
                   </Stack__>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__zHIi4)}
+                    className={classNames(projectcss.all, sty.freeBox__zHIi4, {
+                      [sty.freeBoxstepscharg_step2__zHIi41Oc4H]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step2"
+                      )
+                    })}
                   >
                     <Input
                       data-plasmic-name={"fragmentInput"}
@@ -1653,8 +1660,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       )}
                       disabled={
                         hasVariant($state, "stepscharg", "step2")
-                          ? true
-                          : undefined
+                          ? false
+                          : false
                       }
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
@@ -1665,12 +1672,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         (async value => {
                           const $steps = {};
 
-                          $steps["updateAmont"] = true
+                          $steps["updateAmontAfg"] = true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["amont"]
+                                    variablePath: ["amontAfg"]
                                   },
                                   operation: 0,
                                   value: parseInt($state.fragmentInput2.value)
@@ -1692,11 +1699,13 @@ function PlasmicChargingAfg__RenderFunc(props: {
                               })()
                             : undefined;
                           if (
-                            $steps["updateAmont"] != null &&
-                            typeof $steps["updateAmont"] === "object" &&
-                            typeof $steps["updateAmont"].then === "function"
+                            $steps["updateAmontAfg"] != null &&
+                            typeof $steps["updateAmontAfg"] === "object" &&
+                            typeof $steps["updateAmontAfg"].then === "function"
                           ) {
-                            $steps["updateAmont"] = await $steps["updateAmont"];
+                            $steps["updateAmontAfg"] = await $steps[
+                              "updateAmontAfg"
+                            ];
                           }
                         }).apply(null, eventArgs);
                       }}
@@ -3768,7 +3777,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             })()
                           : (() => {
                               try {
-                                return $state.amont == 0;
+                                return $state.amontAfg == 0;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -3787,34 +3796,35 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["updateAmont"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["amont"]
-                                },
-                                operation: 0,
-                                value:
-                                  parseInt($state.amontAfg) *
-                                  $state.exchangeRate.data.rate
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                        $steps["updateAmont"] =
+                          $state.amontAfg >= 5 && $state.amontAfg <= 1000
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["amont"]
+                                  },
+                                  operation: 0,
+                                  value:
+                                    parseInt($state.amontAfg) *
+                                    $state.exchangeRate.data.rate
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
                         if (
                           $steps["updateAmont"] != null &&
                           typeof $steps["updateAmont"] === "object" &&
@@ -3823,8 +3833,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           $steps["updateAmont"] = await $steps["updateAmont"];
                         }
 
-                        $steps["updateUnnamedVariant2"] =
-                          $state.amont != 0
+                        $steps["updateStepscharg"] =
+                          $state.amontAfg >= 5 && $state.amontAfg <= 1000
                             ? (() => {
                                 const actionArgs = {
                                   vgroup: "stepscharg",
@@ -3839,6 +3849,32 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                   $stateSet($state, vgroup, value);
                                   return value;
                                 })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateStepscharg"] != null &&
+                          typeof $steps["updateStepscharg"] === "object" &&
+                          typeof $steps["updateStepscharg"].then === "function"
+                        ) {
+                          $steps["updateStepscharg"] = await $steps[
+                            "updateStepscharg"
+                          ];
+                        }
+
+                        $steps["updateUnnamedVariant2"] =
+                          $state.amontAfg < 5 || $state.amontAfg > 1000
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "\u0645\u0628\u0644\u063a \u0628\u0627\u06cc\u062f \u0628\u06cc\u0646 5 \u062a\u0627 1000 \u0627\u0641\u063a\u0627\u0646\u06cc \u0628\u0627\u0634\u062f.",
+                                    undefined,
+                                    5
+                                  ]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
                               })()
                             : undefined;
                         if (

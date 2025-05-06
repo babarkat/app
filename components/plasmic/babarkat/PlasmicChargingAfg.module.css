@@ -248,6 +248,9 @@
   right: 0;
   min-height: 0;
 }
+.svgstepscharg_step2__xlfYo1Oc4H {
+  z-index: 0;
+}
 .steps {
   display: flex;
   flex-direction: row;
@@ -779,6 +782,9 @@
   .fragmentInput2:global(.__wab_instance) {
     z-index: 5;
   }
+}
+.fragmentInput2stepscharg_step2:global(.__wab_instance) {
+  z-index: 1;
 }
 .text__od3Ng {
   position: relative;
