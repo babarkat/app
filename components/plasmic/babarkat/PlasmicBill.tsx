@@ -6434,6 +6434,8 @@ function PlasmicBill__RenderFunc(props: {
                                         }
                                         if ($state.operatorselect == -1)
                                           $state.buttonHasError = true;
+                                        if ($state.operatorselect == 2)
+                                          $state.buttonHasError = true;
                                         break;
                                       case "phone":
                                         if (

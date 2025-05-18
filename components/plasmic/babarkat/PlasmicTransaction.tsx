@@ -1485,6 +1485,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "package"
                                                     ):
                                                       return "pubg";
+                                                    case currentItem.type.includes(
+                                                      "bill"
+                                                    ):
+                                                      return "bill";
                                                     default:
                                                       return "";
                                                   }
@@ -1548,6 +1552,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "package_bigo-live"
                                                     ):
                                                       return "خرید الماس Bigo live";
+                                                    case currentItem.type.includes(
+                                                      "bill"
+                                                    ):
+                                                      return "پرداخت قبض";
                                                     default:
                                                       return "نوع ناشناخته";
                                                   }

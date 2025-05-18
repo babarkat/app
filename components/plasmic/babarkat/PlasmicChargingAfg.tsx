@@ -2885,6 +2885,68 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
+                        $steps["invokeGlobalAction3"] =
+                          $steps.invokeGlobalAction4?.data[0]?.success == true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    "https://n8n.babarkat.com/webhook/telegram_Bot",
+                                    (() => {
+                                      try {
+                                        return {
+                                          text:
+                                            "\n ✅ خرید موفق شارژ  \nکاربر: " +
+                                            $state.userinfo.last_name +
+                                            "\nشماره کاربر: " +
+                                            $state.userinfo.mobile +
+                                            "\n......................" +
+                                            "\nاپراتور: " +
+                                            $state.operators2[
+                                              $state.operatorselect
+                                            ].description +
+                                            "\nقیمت به تومان: " +
+                                            $state.amont +
+                                            "\nقیمت به افغانی: " +
+                                            $state.amontAfg +
+                                            "\nشماره: " +
+                                            $state.number +
+                                            "\nکپی کردن شماره: " +
+                                            "`" +
+                                            $state.number +
+                                            "`" +
+                                            "\nشناسه تراکنش: " +
+                                            $state.infopardakt.ref_code
+                                        };
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["invokeGlobalAction3"] != null &&
+                          typeof $steps["invokeGlobalAction3"] === "object" &&
+                          typeof $steps["invokeGlobalAction3"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction3"] = await $steps[
+                            "invokeGlobalAction3"
+                          ];
+                        }
+
                         $steps["invokeGlobalAction5"] = $steps
                           .invokeGlobalAction4?.data
                           ? (() => {

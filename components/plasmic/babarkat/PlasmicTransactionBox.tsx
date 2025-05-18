@@ -71,7 +71,8 @@ import sty from "./PlasmicTransactionBox.module.css"; // plasmic-import: 9xs0oaO
 import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; // plasmic-import: aoPueH94YLGd/icon
 import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3UQ7U7/icon
 import Icon58Icon from "./icons/PlasmicIcon__Icon58"; // plasmic-import: b6_fsTkPhz_-/icon
-import Icon70Icon from "./icons/PlasmicIcon__Icon70"; // plasmic-import: I0oI14s4oqbt/icon
+import Icon129Icon from "./icons/PlasmicIcon__Icon129"; // plasmic-import: 2rxYPp6upTUU/icon
+import Icon104Icon from "./icons/PlasmicIcon__Icon104"; // plasmic-import: 3o5IGmXy7oW3/icon
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
 import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
 
@@ -86,12 +87,20 @@ export type PlasmicTransactionBox__VariantMembers = {
     | "panel"
     | "unnamedVariant"
     | "snap"
-    | "pubg";
+    | "pubg"
+    | "bill";
 };
 export type PlasmicTransactionBox__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap" | "pubg"
+    | "intenet"
+    | "walet"
+    | "sim"
+    | "panel"
+    | "unnamedVariant"
+    | "snap"
+    | "pubg"
+    | "bill"
   >;
 };
 type VariantPropType = keyof PlasmicTransactionBox__VariantsArgs;
@@ -121,7 +130,14 @@ export interface DefaultTransactionBoxProps {
   onClick?: (event: any) => void;
   filed?: SingleBooleanChoiceArg<"filed">;
   unnamedGroupOfVariants?: SingleChoiceArg<
-    "intenet" | "walet" | "sim" | "panel" | "unnamedVariant" | "snap" | "pubg"
+    | "intenet"
+    | "walet"
+    | "sim"
+    | "panel"
+    | "unnamedVariant"
+    | "snap"
+    | "pubg"
+    | "bill"
   >;
   className?: string;
 }
@@ -225,6 +241,11 @@ function PlasmicTransactionBox__RenderFunc(props: {
           [sty.rootfiled_unnamedGroupOfVariants_walet]:
             hasVariant($state, "unnamedGroupOfVariants", "walet") &&
             hasVariant($state, "filed", "filed"),
+          [sty.rootunnamedGroupOfVariants_bill]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "bill"
+          ),
           [sty.rootunnamedGroupOfVariants_intenet]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
@@ -283,8 +304,10 @@ function PlasmicTransactionBox__RenderFunc(props: {
       >
         <PlasmicIcon__
           PlasmicIconType={
-            hasVariant($state, "unnamedGroupOfVariants", "pubg")
-              ? Icon70Icon
+            hasVariant($state, "unnamedGroupOfVariants", "bill")
+              ? Icon104Icon
+              : hasVariant($state, "unnamedGroupOfVariants", "pubg")
+              ? Icon129Icon
               : hasVariant($state, "unnamedGroupOfVariants", "snap")
               ? Icon58Icon
               : hasVariant($state, "unnamedGroupOfVariants", "panel")
@@ -293,6 +316,11 @@ function PlasmicTransactionBox__RenderFunc(props: {
           }
           className={classNames(projectcss.all, sty.svg__iNIji, {
             [sty.svgfiled__iNIjiL0Vgk]: hasVariant($state, "filed", "filed"),
+            [sty.svgunnamedGroupOfVariants_bill__iNIjiXThC]: hasVariant(
+              $state,
+              "unnamedGroupOfVariants",
+              "bill"
+            ),
             [sty.svgunnamedGroupOfVariants_intenet__iNIjiwRMn1]: hasVariant(
               $state,
               "unnamedGroupOfVariants",

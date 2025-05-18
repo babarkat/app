@@ -2714,32 +2714,35 @@ function PlasmicHomepage__RenderFunc(props: {
                               onClick={async event => {
                                 const $steps = {};
 
-                                $steps["invokeGlobalAction"] = true
+                                $steps["goToBill"] = true
                                   ? (() => {
                                       const actionArgs = {
-                                        args: [
-                                          undefined,
-                                          "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                                          undefined,
-                                          3,
-                                          "bottom"
-                                        ]
+                                        destination: `/Bill`
                                       };
-                                      return $globalActions[
-                                        "plasmic-antd5-config-provider.showNotification"
-                                      ]?.apply(null, [...actionArgs.args]);
+                                      return (({ destination }) => {
+                                        if (
+                                          typeof destination === "string" &&
+                                          destination.startsWith("#")
+                                        ) {
+                                          document
+                                            .getElementById(
+                                              destination.substr(1)
+                                            )
+                                            .scrollIntoView({
+                                              behavior: "smooth"
+                                            });
+                                        } else {
+                                          __nextRouter?.push(destination);
+                                        }
+                                      })?.apply(null, [actionArgs]);
                                     })()
                                   : undefined;
                                 if (
-                                  $steps["invokeGlobalAction"] != null &&
-                                  typeof $steps["invokeGlobalAction"] ===
-                                    "object" &&
-                                  typeof $steps["invokeGlobalAction"].then ===
-                                    "function"
+                                  $steps["goToBill"] != null &&
+                                  typeof $steps["goToBill"] === "object" &&
+                                  typeof $steps["goToBill"].then === "function"
                                 ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
-                                  ];
+                                  $steps["goToBill"] = await $steps["goToBill"];
                                 }
                               }}
                             >

@@ -2026,7 +2026,7 @@
   background: linear-gradient(0deg, #2e3f50cc 25%, #5ed58a26 100%);
   overflow: hidden;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 1;
   min-width: 0;
   border-radius: 10px;
   padding: 10px;

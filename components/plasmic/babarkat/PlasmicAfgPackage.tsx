@@ -361,7 +361,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "stepscharg", "step3")
-            ? true
+            ? false
             : hasVariant($state, "stepscharg", "step2")
             ? false
             : false
