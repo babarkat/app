@@ -82,6 +82,7 @@ import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51h
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
+import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import Icon122Icon from "./icons/PlasmicIcon__Icon122"; // plasmic-import: FlYgkUghZC6o/icon
 
@@ -101,7 +102,7 @@ export type PlasmicProfile__OverridesType = {
   button?: Flex__<typeof Button>;
   button2?: Flex__<typeof Button>;
   section?: Flex__<"section">;
-  wallet7?: Flex__<"div">;
+  header?: Flex__<"div">;
   add?: Flex__<typeof AntdModal>;
   valueAdd?: Flex__<typeof Input>;
   select?: Flex__<typeof AntdSelect>;
@@ -520,7 +521,9 @@ function PlasmicProfile__RenderFunc(props: {
                       key={currentIndex}
                       style={(() => {
                         try {
-                          return { "background-color": currentItem.color };
+                          return {
+                            "background-color": currentItem.color + "b1"
+                          };
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -734,59 +737,68 @@ function PlasmicProfile__RenderFunc(props: {
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"wallet7"}
-              data-plasmic-override={overrides.wallet7}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.wallet7)}
+            <div
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames(projectcss.all, sty.header)}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__pNrtL)}
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon10Icon
+                    : Icon3Icon
+                }
+                className={classNames(projectcss.all, sty.svg__mFryk)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["goToCustomer"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/customer` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToCustomer"] != null &&
+                    typeof $steps["goToCustomer"] === "object" &&
+                    typeof $steps["goToCustomer"].then === "function"
+                  ) {
+                    $steps["goToCustomer"] = await $steps["goToCustomer"];
+                  }
+                }}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__uLr5Z
+                )}
               >
-                <Icon10Icon
-                  className={classNames(projectcss.all, sty.svg__h7Fnr)}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {
-                                return window.history.back();
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__fNiBx
-                  )}
-                >
-                  {"\u067e\u0631\u0648\u0641\u0627\u06cc\u0644"}
-                </div>
-              </Stack__>
-            </Stack__>
+                {"\u067e\u0631\u0648\u0641\u0627\u06cc\u0644"}
+              </div>
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon9Icon
+                    : Icon9Icon
+                }
+                className={classNames(projectcss.all, sty.svg___9Bc7N)}
+                role={"img"}
+              />
+            </div>
           </section>
           <AntdModal
             data-plasmic-name={"add"}
@@ -1068,6 +1080,41 @@ function PlasmicProfile__RenderFunc(props: {
                     $steps["invokeGlobalAction3"] = await $steps[
                       "invokeGlobalAction3"
                     ];
+                  }
+
+                  $steps["updateAddOpen"] = $steps.invokeGlobalAction?.data
+                    ?.success
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["add", "open"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateAddOpen"] != null &&
+                    typeof $steps["updateAddOpen"] === "object" &&
+                    typeof $steps["updateAddOpen"].then === "function"
+                  ) {
+                    $steps["updateAddOpen"] = await $steps["updateAddOpen"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -1384,6 +1431,43 @@ function PlasmicProfile__RenderFunc(props: {
                       "invokeGlobalAction3"
                     ];
                   }
+
+                  $steps["updateRemoveOpen"] = $steps.invokeGlobalAction?.data
+                    ?.success
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["remove", "open"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateRemoveOpen"] != null &&
+                    typeof $steps["updateRemoveOpen"] === "object" &&
+                    typeof $steps["updateRemoveOpen"].then === "function"
+                  ) {
+                    $steps["updateRemoveOpen"] = await $steps[
+                      "updateRemoveOpen"
+                    ];
+                  }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
                   ((...eventArgs) => {
@@ -1428,7 +1512,7 @@ const PlasmicDescendants = {
     "button",
     "button2",
     "section",
-    "wallet7",
+    "header",
     "add",
     "valueAdd",
     "select",
@@ -1442,8 +1526,8 @@ const PlasmicDescendants = {
   ],
   button: ["button"],
   button2: ["button2"],
-  section: ["section", "wallet7"],
-  wallet7: ["wallet7"],
+  section: ["section", "header"],
+  header: ["header"],
   add: ["add", "valueAdd", "select", "info", "button3"],
   valueAdd: ["valueAdd"],
   select: ["select"],
@@ -1463,7 +1547,7 @@ type NodeDefaultElementType = {
   button: typeof Button;
   button2: typeof Button;
   section: "section";
-  wallet7: "div";
+  header: "div";
   add: typeof AntdModal;
   valueAdd: typeof Input;
   select: typeof AntdSelect;
@@ -1564,7 +1648,7 @@ export const PlasmicProfile = Object.assign(
     button: makeNodeComponent("button"),
     button2: makeNodeComponent("button2"),
     section: makeNodeComponent("section"),
-    wallet7: makeNodeComponent("wallet7"),
+    header: makeNodeComponent("header"),
     add: makeNodeComponent("add"),
     valueAdd: makeNodeComponent("valueAdd"),
     select: makeNodeComponent("select"),

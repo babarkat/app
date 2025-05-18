@@ -1556,6 +1556,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       "bill"
                                                     ):
                                                       return "پرداخت قبض";
+                                                    case currentItem.type.includes(
+                                                      "afghanistan_contact"
+                                                    ):
+                                                      return "بسته مکاله افغانستان";
                                                     default:
                                                       return "نوع ناشناخته";
                                                   }

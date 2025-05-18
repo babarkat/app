@@ -2812,7 +2812,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                       try {
                                         return {
                                           phone: $state.number,
-                                          amount: $state.amont,
+                                          amount: $state.amontAfg,
                                           userToken: $state.token
                                         };
                                       } catch (e) {
@@ -2844,7 +2844,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["updateInfopardakt"] = true
+                        $steps["updateInfopardakt"] = $steps.invokeGlobalAction
+                          ?.data?.data
                           ? (() => {
                               const actionArgs = {
                                 variable: {

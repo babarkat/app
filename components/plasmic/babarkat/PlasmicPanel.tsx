@@ -70,7 +70,7 @@ import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/compo
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
-import Header from "../../Header"; // plasmic-import: guZRqy1VG4VR/component
+import Header2 from "../../Header2"; // plasmic-import: vtwl99Nd1npi/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
@@ -110,6 +110,7 @@ import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fh
 import Icon78Icon from "./icons/PlasmicIcon__Icon78"; // plasmic-import: Yub8sXrIQi2p/icon
 import Icon89Icon from "./icons/PlasmicIcon__Icon89"; // plasmic-import: 1mHusOdupjsZ/icon
 import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mgaWEpMQ/icon
+import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
@@ -150,7 +151,7 @@ export type PlasmicPanel__OverridesType = {
   reoeatNewPass2?: Flex__<typeof Input>;
   button4?: Flex__<typeof Button>;
   modal7?: Flex__<typeof AntdModal>;
-  header?: Flex__<typeof Header>;
+  header2?: Flex__<typeof Header2>;
   footer?: Flex__<"div">;
   snapp2?: Flex__<"div">;
   vuesaxBoldHome?: Flex__<"div">;
@@ -858,102 +859,141 @@ function PlasmicPanel__RenderFunc(props: {
                     <Stack__
                       as={"div"}
                       hasGap={true}
+                      className={classNames(projectcss.all, sty.freeBox__pdj2P)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__aCuPr
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return ` موجودی پنل پیامک : ${$state.profile.data.sms}`;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631 : ";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                    </Stack__>
+                    <Stack__
+                      as={"div"}
+                      hasGap={true}
                       className={classNames(projectcss.all, sty.freeBox__h7SLs)}
                     >
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return $state.cards;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                        const currentItem = __plasmic_item_0;
-                        const currentIndex = __plasmic_idx_0;
-                        return (
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__b8N07
-                            )}
-                            key={currentIndex}
-                            style={(() => {
-                              try {
-                                return {
-                                  "background-color": currentItem.color
-                                };
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ojvjD
+                        )}
+                      >
+                        {(_par =>
+                          !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                          (() => {
+                            try {
+                              return $state.cards;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
                               }
-                            })()}
-                          >
-                            <div
+                              throw e;
+                            }
+                          })()
+                        ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                          const currentItem = __plasmic_item_0;
+                          const currentIndex = __plasmic_idx_0;
+                          return (
+                            <Stack__
+                              as={"div"}
+                              hasGap={true}
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__hsUgW
+                                sty.freeBox__b8N07
                               )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return `(${currentItem.name}) موجودی`;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__zgMXh
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
+                              key={currentIndex}
+                              style={(() => {
+                                try {
+                                  return {
+                                    "background-color": currentItem.color + "a1"
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
                                     return undefined;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "";
-                                    }
-                                    throw e;
                                   }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                          </Stack__>
-                        );
-                      })}
+                                  throw e;
+                                }
+                              })()}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__hsUgW
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return `موجودی (${currentItem.name})`;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__zgMXh
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return $state.profile.data[
+                                        currentItem.id
+                                      ].toFixed(3);
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                            </Stack__>
+                          );
+                        })}
+                      </div>
                     </Stack__>
                   </Stack__>
                   <Icon61Icon
@@ -1046,7 +1086,7 @@ function PlasmicPanel__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u062e\u062f\u0645\u0627\u062a \u0645\u0634\u062a\u0631\u06cc"
+                      "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627\u06cc \u0634\u0645\u0627"
                     }
                   </div>
                 </Button>
@@ -12601,40 +12641,10 @@ function PlasmicPanel__RenderFunc(props: {
             </div>
           </AntdModal>
           <section className={classNames(projectcss.all, sty.section__cwGyG)}>
-            <Header
-              data-plasmic-name={"header"}
-              data-plasmic-override={overrides.header}
-              className={classNames("__wab_instance", sty.header)}
-              level={(() => {
-                try {
-                  return $state.userbabarcat.level;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-              lodingbtn={$state.lodingbtn}
-              newPassValue={$state.newPassValue}
-              reoeatNewPassValue={$state.reoeatNewPassValue}
-              token={(() => {
-                try {
-                  return $state.token;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return undefined;
-                  }
-                  throw e;
-                }
-              })()}
-              userbabarcat={$state.userbabarcat}
+            <Header2
+              data-plasmic-name={"header2"}
+              data-plasmic-override={overrides.header2}
+              className={classNames("__wab_instance", sty.header2)}
             />
           </section>
           <section className={classNames(projectcss.all, sty.section__dSDfV)}>
@@ -13609,6 +13619,87 @@ function PlasmicPanel__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__gSwD5)} />
           </AntdModal>
+          <section className={classNames(projectcss.all, sty.section__cZeqE)}>
+            <div className={classNames(projectcss.all, sty.freeBox__hd8Kc)}>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__r0QU8)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return Android.onElementClicked(
+                              "https://wa.me/+989202116750"
+                            );
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+              >
+                <Icon69Icon
+                  className={classNames(projectcss.all, sty.svg__cp5Jj)}
+                  role={"img"}
+                />
+              </Stack__>
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__vh8L)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return Android.onElementClicked(
+                              "https://wa.me/+989202116750"
+                            );
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bJm9H
+                  )}
+                >
+                  {
+                    "\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0645\u0627 \u060c \u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 ..."
+                  }
+                </div>
+              </Stack__>
+            </div>
+          </section>
         </div>
       </div>
     </React.Fragment>
@@ -13642,7 +13733,7 @@ const PlasmicDescendants = {
     "reoeatNewPass2",
     "button4",
     "modal7",
-    "header",
+    "header2",
     "footer",
     "snapp2",
     "vuesaxBoldHome",
@@ -13682,7 +13773,7 @@ const PlasmicDescendants = {
   reoeatNewPass2: ["reoeatNewPass2"],
   button4: ["button4"],
   modal7: ["modal7"],
-  header: ["header"],
+  header2: ["header2"],
   footer: [
     "footer",
     "snapp2",
@@ -13733,7 +13824,7 @@ type NodeDefaultElementType = {
   reoeatNewPass2: typeof Input;
   button4: typeof Button;
   modal7: typeof AntdModal;
-  header: typeof Header;
+  header2: typeof Header2;
   footer: "div";
   snapp2: "div";
   vuesaxBoldHome: "div";
@@ -13859,7 +13950,7 @@ export const PlasmicPanel = Object.assign(
     reoeatNewPass2: makeNodeComponent("reoeatNewPass2"),
     button4: makeNodeComponent("button4"),
     modal7: makeNodeComponent("modal7"),
-    header: makeNodeComponent("header"),
+    header2: makeNodeComponent("header2"),
     footer: makeNodeComponent("footer"),
     snapp2: makeNodeComponent("snapp2"),
     vuesaxBoldHome: makeNodeComponent("vuesaxBoldHome"),

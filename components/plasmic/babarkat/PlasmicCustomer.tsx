@@ -107,7 +107,7 @@ export type PlasmicCustomer__OverridesType = {
   popover2?: Flex__<typeof AntdPopover>;
   button4?: Flex__<typeof Button>;
   button3?: Flex__<typeof Button>;
-  wallet7?: Flex__<"div">;
+  header?: Flex__<"div">;
   button?: Flex__<typeof Button>;
   no?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
@@ -1316,58 +1316,60 @@ function PlasmicCustomer__RenderFunc(props: {
             </Stack__>
           </div>
           <section className={classNames(projectcss.all, sty.section__wd83I)}>
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"wallet7"}
-              data-plasmic-override={overrides.wallet7}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.wallet7)}
+            <div
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames(projectcss.all, sty.header)}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox___1S1Dz)}
-              >
-                <Icon10Icon
-                  className={classNames(projectcss.all, sty.svg__mBzhZ)}
-                  onClick={async event => {
-                    const $steps = {};
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon10Icon
+                    : Icon3Icon
+                }
+                className={classNames(projectcss.all, sty.svg__pTyVw)}
+                onClick={async event => {
+                  const $steps = {};
 
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return window.history.back();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__hNb58
-                  )}
-                >
-                  {
-                    "\u0645\u0634\u062a\u0631\u06cc\u0627\u0646 \u0634\u0645\u0627"
+                  $steps["goToHomepage"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToHomepage"] != null &&
+                    typeof $steps["goToHomepage"] === "object" &&
+                    typeof $steps["goToHomepage"].then === "function"
+                  ) {
+                    $steps["goToHomepage"] = await $steps["goToHomepage"];
                   }
-                </div>
-              </Stack__>
+                }}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__jUy1I
+                )}
+              >
+                {
+                  "\u0645\u0634\u062a\u0631\u06cc\u0627\u0646 \u0634\u0645\u0627"
+                }
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__xDrlR)}>
                 <Button
                   data-plasmic-name={"button"}
@@ -1445,7 +1447,7 @@ function PlasmicCustomer__RenderFunc(props: {
                   </div>
                 </Button>
               </div>
-            </Stack__>
+            </div>
           </section>
           <div className={classNames(projectcss.all, sty.freeBox__xOtrX)} />
 
@@ -1779,7 +1781,7 @@ const PlasmicDescendants = {
     "popover2",
     "button4",
     "button3",
-    "wallet7",
+    "header",
     "button",
     "no",
     "img",
@@ -1794,7 +1796,7 @@ const PlasmicDescendants = {
   popover2: ["popover2", "button4", "button3"],
   button4: ["button4"],
   button3: ["button3"],
-  wallet7: ["wallet7", "button"],
+  header: ["header", "button"],
   button: ["button"],
   no: ["no", "img"],
   img: ["img"],
@@ -1814,7 +1816,7 @@ type NodeDefaultElementType = {
   popover2: typeof AntdPopover;
   button4: typeof Button;
   button3: typeof Button;
-  wallet7: "div";
+  header: "div";
   button: typeof Button;
   no: "div";
   img: typeof PlasmicImg__;
@@ -1915,7 +1917,7 @@ export const PlasmicCustomer = Object.assign(
     popover2: makeNodeComponent("popover2"),
     button4: makeNodeComponent("button4"),
     button3: makeNodeComponent("button3"),
-    wallet7: makeNodeComponent("wallet7"),
+    header: makeNodeComponent("header"),
     button: makeNodeComponent("button"),
     no: makeNodeComponent("no"),
     img: makeNodeComponent("img"),

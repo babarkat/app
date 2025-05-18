@@ -86,6 +86,7 @@ import Icon126Icon from "./icons/PlasmicIcon__Icon126"; // plasmic-import: FYscF
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
+import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import Icon122Icon from "./icons/PlasmicIcon__Icon122"; // plasmic-import: FlYgkUghZC6o/icon
 
@@ -109,7 +110,7 @@ export type PlasmicCustomerAdd__OverridesType = {
   location?: Flex__<typeof TextArea>;
   button5?: Flex__<typeof Button>;
   section?: Flex__<"section">;
-  wallet7?: Flex__<"div">;
+  header?: Flex__<"div">;
   add?: Flex__<typeof AntdModal>;
   valueAdd?: Flex__<typeof Input>;
   select?: Flex__<typeof AntdSelect>;
@@ -837,61 +838,70 @@ function PlasmicCustomerAdd__RenderFunc(props: {
             data-plasmic-override={overrides.section}
             className={classNames(projectcss.all, sty.section)}
           >
-            <Stack__
-              as={"div"}
-              data-plasmic-name={"wallet7"}
-              data-plasmic-override={overrides.wallet7}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.wallet7)}
+            <div
+              data-plasmic-name={"header"}
+              data-plasmic-override={overrides.header}
+              className={classNames(projectcss.all, sty.header)}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__l1Z5C)}
-              >
-                <Icon10Icon
-                  className={classNames(projectcss.all, sty.svg__k2GOg)}
-                  onClick={async event => {
-                    const $steps = {};
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon10Icon
+                    : Icon3Icon
+                }
+                className={classNames(projectcss.all, sty.svg___1RgRx)}
+                onClick={async event => {
+                  const $steps = {};
 
-                    $steps["runCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {
-                                return window.history.back();
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__fGZ
-                  )}
-                >
-                  {
-                    "\u0627\u0641\u0632\u0648\u062f\u0646 \u0645\u0634\u062a\u0631\u06cc"
+                  $steps["goToCustomer"] = true
+                    ? (() => {
+                        const actionArgs = { destination: `/customer` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["goToCustomer"] != null &&
+                    typeof $steps["goToCustomer"] === "object" &&
+                    typeof $steps["goToCustomer"].then === "function"
+                  ) {
+                    $steps["goToCustomer"] = await $steps["goToCustomer"];
                   }
-                </div>
-              </Stack__>
-            </Stack__>
+                }}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__yCft
+                )}
+              >
+                {
+                  "\u0627\u0641\u0632\u0648\u062f\u0646 \u0645\u0634\u062a\u0631\u06cc"
+                }
+              </div>
+              <PlasmicIcon__
+                PlasmicIconType={
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? Icon9Icon
+                    : Icon9Icon
+                }
+                className={classNames(projectcss.all, sty.svg__sVjmo)}
+                role={"img"}
+              />
+            </div>
           </section>
           <AntdModal
             data-plasmic-name={"add"}
@@ -1537,7 +1547,7 @@ const PlasmicDescendants = {
     "location",
     "button5",
     "section",
-    "wallet7",
+    "header",
     "add",
     "valueAdd",
     "select",
@@ -1555,8 +1565,8 @@ const PlasmicDescendants = {
   customerId: ["customerId"],
   location: ["location"],
   button5: ["button5"],
-  section: ["section", "wallet7"],
-  wallet7: ["wallet7"],
+  section: ["section", "header"],
+  header: ["header"],
   add: ["add", "valueAdd", "select", "info", "button3"],
   valueAdd: ["valueAdd"],
   select: ["select"],
@@ -1580,7 +1590,7 @@ type NodeDefaultElementType = {
   location: typeof TextArea;
   button5: typeof Button;
   section: "section";
-  wallet7: "div";
+  header: "div";
   add: typeof AntdModal;
   valueAdd: typeof Input;
   select: typeof AntdSelect;
@@ -1685,7 +1695,7 @@ export const PlasmicCustomerAdd = Object.assign(
     location: makeNodeComponent("location"),
     button5: makeNodeComponent("button5"),
     section: makeNodeComponent("section"),
-    wallet7: makeNodeComponent("wallet7"),
+    header: makeNodeComponent("header"),
     add: makeNodeComponent("add"),
     valueAdd: makeNodeComponent("valueAdd"),
     select: makeNodeComponent("select"),
