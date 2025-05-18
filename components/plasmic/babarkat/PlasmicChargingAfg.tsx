@@ -867,6 +867,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     $state,
                     "stepscharg",
                     "step2"
+                  ),
+                  [sty.revealstepscharg_step3]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step3"
                   )
                 })}
                 duration={
@@ -2679,12 +2684,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                   variablePath: ["uuid"]
                                 },
                                 operation: 0,
-                                value: (() => {
-                                  return $$.uuid
-                                    .v4()
-                                    .replace(/[^0-9]/g, "")
-                                    .slice(0, 10);
-                                })()
+                                value: $$.uuid
+                                  .v4()
+                                  .replace(/[^0-9]/g, "")
+                                  .slice(0, 10)
                               };
                               return (({
                                 variable,
@@ -2802,77 +2805,14 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             ? (() => {
                                 const actionArgs = {
                                   args: [
-                                    "GET",
-                                    "https://n8n.babarkat.com/webhook/telegram_Bot",
-                                    (() => {
-                                      try {
-                                        return {
-                                          text:
-                                            "\n ✅ خرید موفق شارژ افغانستان \nکاربر: " +
-                                            $state.userinfo.last_name +
-                                            "\nشماره کاربر: " +
-                                            $state.userinfo.mobile +
-                                            "\n......................" +
-                                            "\nاپراتور: " +
-                                            $state.operators2[
-                                              $state.operatorselect
-                                            ].description +
-                                            "\nقیمت به تومان: " +
-                                            $state.amont +
-                                            "\nقیمت به افغانی: " +
-                                            $state.amontAfg +
-                                            "\nشماره: " +
-                                            $state.number +
-                                            "\nکپی کردن شماره: " +
-                                            "`" +
-                                            $state.number.slice(5) +
-                                            "`" +
-                                            "\nشناسه تراکنش: " +
-                                            $state.uuid
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })(),
-                                    undefined
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction5"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "PUT",
-                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                    "POST",
+                                    "https://n8n.babarkat.com/webhook/sendAf/buy",
                                     undefined,
                                     (() => {
                                       try {
                                         return {
-                                          id: $state.pardakhtid,
-                                          trackingId: $state.uuid,
+                                          phone: $state.number,
+                                          amount: $state.amont,
                                           userToken: $state.token
                                         };
                                       } catch (e) {
@@ -2894,6 +2834,94 @@ function PlasmicChargingAfg__RenderFunc(props: {
                               })()
                             : undefined;
                         if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+
+                        $steps["updateInfopardakt"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["infopardakt"]
+                                },
+                                operation: 0,
+                                value: {
+                                  ref_code:
+                                    $steps.invokeGlobalAction?.data.data.split(
+                                      "|"
+                                    )[1]
+                                }
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateInfopardakt"] != null &&
+                          typeof $steps["updateInfopardakt"] === "object" &&
+                          typeof $steps["updateInfopardakt"].then === "function"
+                        ) {
+                          $steps["updateInfopardakt"] = await $steps[
+                            "updateInfopardakt"
+                          ];
+                        }
+
+                        $steps["invokeGlobalAction5"] = $steps
+                          .invokeGlobalAction4?.data
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "PUT",
+                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        id: $state.pardakhtid,
+                                        trackingId: $steps.invokeGlobalAction
+                                          ?.data.success
+                                          ? $state.infopardakt.ref_code
+                                          : -1,
+                                        userToken: $state.token
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
                           $steps["invokeGlobalAction5"] != null &&
                           typeof $steps["invokeGlobalAction5"] === "object" &&
                           typeof $steps["invokeGlobalAction5"].then ===
@@ -2905,7 +2933,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateModal2Open"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
+                          $steps.invokeGlobalAction?.data?.success == true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -2938,6 +2966,31 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         ) {
                           $steps["updateModal2Open"] = await $steps[
                             "updateModal2Open"
+                          ];
+                        }
+
+                        $steps["invokeGlobalAction2"] =
+                          $steps.invokeGlobalAction?.data?.success == false
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "error",
+                                    "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f."
+                                  ]
+                                };
+                                return $globalActions[
+                                  "plasmic-antd5-config-provider.showNotification"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["invokeGlobalAction2"] != null &&
+                          typeof $steps["invokeGlobalAction2"] === "object" &&
+                          typeof $steps["invokeGlobalAction2"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction2"] = await $steps[
+                            "invokeGlobalAction2"
                           ];
                         }
 
@@ -3625,7 +3678,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                 variablePath: ["number"]
                               },
                               operation: 0,
-                              value: "0093" + $state.fragmentInput.value
+                              value: "0" + $state.fragmentInput.value
                             };
                             return (({
                               variable,
@@ -3651,10 +3704,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         $steps["updateNumber"] = await $steps["updateNumber"];
                       }
 
-                      $steps["updateUnnamedVariant"] = (() => {
-                        const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
-                        return phoneRegex.test($state.number);
-                      })()
+                      $steps["updateUnnamedVariant"] = true
                         ? (() => {
                             const actionArgs = {
                               vgroup: "stepscharg",
@@ -3682,10 +3732,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction"] = (() => {
-                        const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
-                        return !phoneRegex.test($state.number);
-                      })()
+                      $steps["invokeGlobalAction"] = false
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -3797,7 +3844,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         const $steps = {};
 
                         $steps["updateAmont"] =
-                          $state.amontAfg >= 5 && $state.amontAfg <= 1000
+                          $state.amontAfg >= 50 && $state.amontAfg <= 1000
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -3834,7 +3881,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateStepscharg"] =
-                          $state.amontAfg >= 5 && $state.amontAfg <= 1000
+                          $state.amontAfg >= 50 && $state.amontAfg <= 1000
                             ? (() => {
                                 const actionArgs = {
                                   vgroup: "stepscharg",
@@ -3862,12 +3909,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateUnnamedVariant2"] =
-                          $state.amontAfg < 5 || $state.amontAfg > 1000
+                          $state.amontAfg < 50 || $state.amontAfg > 1000
                             ? (() => {
                                 const actionArgs = {
                                   args: [
                                     "error",
-                                    "\u0645\u0628\u0644\u063a \u0628\u0627\u06cc\u062f \u0628\u06cc\u0646 5 \u062a\u0627 1000 \u0627\u0641\u063a\u0627\u0646\u06cc \u0628\u0627\u0634\u062f.",
+                                    "\u0645\u0628\u0644\u063a \u0628\u0627\u06cc\u062f \u0628\u06cc\u0646 50  \u062a\u0627 1000 \u0627\u0641\u063a\u0627\u0646\u06cc \u0628\u0627\u0634\u062f.",
                                     undefined,
                                     5
                                   ]
@@ -4734,7 +4781,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.uuid;
+                              return $state.infopardakt.ref_code;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||

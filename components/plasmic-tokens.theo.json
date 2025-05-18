@@ -293,7 +293,7 @@
     {
       "name": "Muted/Muted-Foreground",
       "type": "color",
-      "value": "#E5E7EB",
+      "value": "#E5E7EB33",
       "category": "color",
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -2641,6 +2641,16 @@
       }
     },
     {
+      "name": "purple",
+      "type": "color",
+      "value": "#8254C6",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "oBW_djHNjXv4"
+      }
+    },
+    {
       "name": "small",
       "type": "fontsize",
       "value": "0.875rem",
@@ -2648,6 +2658,16 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "nMbfJzF0Fhmf"
+      }
+    },
+    {
+      "name": "task-text-dark",
+      "type": "color",
+      "value": "rgb(234,234,234)",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "3WpmNcP_VIln"
       }
     }
   ],

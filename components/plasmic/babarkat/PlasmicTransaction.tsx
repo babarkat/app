@@ -1482,7 +1482,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                     ):
                                                       return "snap";
                                                     case currentItem.type.includes(
-                                                      "uc_pubg"
+                                                      "package"
                                                     ):
                                                       return "pubg";
                                                     default:
@@ -1533,9 +1533,21 @@ function PlasmicTransaction__RenderFunc(props: {
                                                     ):
                                                       return "خرید بسته اسنپ";
                                                     case currentItem.type.includes(
-                                                      "uc_pubg"
+                                                      "package_UC"
                                                     ):
                                                       return "خرید بسته UC PUBG";
+                                                    case currentItem.type.includes(
+                                                      "package_likee"
+                                                    ):
+                                                      return "خرید الماس Likee";
+                                                    case currentItem.type.includes(
+                                                      "package_imo"
+                                                    ):
+                                                      return "خرید الماس imo";
+                                                    case currentItem.type.includes(
+                                                      "package_bigo-live"
+                                                    ):
+                                                      return "خرید الماس Bigo live";
                                                     default:
                                                       return "نوع ناشناخته";
                                                   }
@@ -1600,38 +1612,23 @@ function PlasmicTransaction__RenderFunc(props: {
                                             {(() => {
                                               try {
                                                 return (() => {
-                                                  let date =
-                                                    currentItem.createdAt.split(
-                                                      " "
-                                                    )[0];
-                                                  let time =
-                                                    currentItem.createdAt.split(
-                                                      " "
-                                                    )[1];
-                                                  let gy = parseInt(
-                                                    date.split("-")[0]
+                                                  let createdAt = new Date(
+                                                    currentItem.createdAt
                                                   );
-                                                  let gm = parseInt(
-                                                    date.split("-")[1]
-                                                  );
-                                                  let gd = parseInt(
-                                                    date.split("-")[2]
-                                                  );
-                                                  var { jy, jm, jd } =
-                                                    window.jalaali.toJalaali(
-                                                      gy,
-                                                      gm,
-                                                      gd
+                                                  let options = {
+                                                    year: "numeric",
+                                                    month: "2-digit",
+                                                    day: "2-digit",
+                                                    hour: "2-digit",
+                                                    minute: "2-digit",
+                                                    hour12: false
+                                                  };
+                                                  let faDateTime =
+                                                    createdAt.toLocaleString(
+                                                      "fa-IR-u-ca-persian",
+                                                      options
                                                     );
-                                                  return (
-                                                    jy +
-                                                    "/" +
-                                                    jm +
-                                                    "/" +
-                                                    jd +
-                                                    "   " +
-                                                    time
-                                                  );
+                                                  return faDateTime;
                                                 })();
                                               } catch (e) {
                                                 if (

@@ -1235,6 +1235,7 @@
 .svgstepscharg_step3___0Tdoaq2TCe {
   height: 60px;
   width: 60px;
+  align-self: center;
   flex-shrink: 0;
 }
 .img__iPnpg {
@@ -1854,6 +1855,9 @@
 .modal2stepscharg_step3:global(.__wab_instance) {
   padding-left: 0px;
   padding-right: 0px;
+  right: 0;
+  bottom: 0px;
+  left: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .modal2stepscharg_step3:global(.__wab_instance) {

@@ -1627,6 +1627,89 @@
           "cssFilePath": "plasmic/babarkat/PlasmicRadioButton.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "zKFKE8oLJjW9",
+          "name": "Panel",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicPanel.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/panel.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicPanel.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/panel"
+        },
+        {
+          "id": "zWG0vJfqlRxX",
+          "name": "Customer",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCustomer.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/customer.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCustomer.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/customer"
+        },
+        {
+          "id": "aIeSdkpDfzhV",
+          "name": "Profile",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicProfile.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/profile.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicProfile.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/profile"
+        },
+        {
+          "id": "UmTKQn0WdwT-",
+          "name": "LoginPanel",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLoginPanel.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/login-panel.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLoginPanel.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/login-panel"
+        },
+        {
+          "id": "_sMX4BykvcLd",
+          "name": "LineClomp",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLineClomp.tsx",
+          "importSpec": {
+            "modulePath": "LineClomp.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLineClomp.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "sVd6zFOvmtg_",
+          "name": "CustomerAdd",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCustomerAdd.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/customer-add.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCustomerAdd.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/customer-add"
         }
       ],
       "icons": [
@@ -2449,6 +2532,86 @@
           "id": "TMIYL_YcSO8V",
           "name": "Icon114Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon114.tsx"
+        },
+        {
+          "id": "DF9LTdx2hxWx",
+          "name": "Icon115Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon115.tsx"
+        },
+        {
+          "id": "7m6l-uNDSK55",
+          "name": "Icon116Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon116.tsx"
+        },
+        {
+          "id": "0ufu6G7NWAwU",
+          "name": "Icon117Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon117.tsx"
+        },
+        {
+          "id": "6S9dD7mm1S5f",
+          "name": "Icon118Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon118.tsx"
+        },
+        {
+          "id": "T1l06LDc0-VK",
+          "name": "Icon119Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon119.tsx"
+        },
+        {
+          "id": "k0-UHimKPMTE",
+          "name": "Icon120Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon120.tsx"
+        },
+        {
+          "id": "ljBqiClcDFaC",
+          "name": "Icon121Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon121.tsx"
+        },
+        {
+          "id": "FlYgkUghZC6o",
+          "name": "Icon122Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon122.tsx"
+        },
+        {
+          "id": "H4FxHA2Py7b8",
+          "name": "Icon176Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon176.tsx"
+        },
+        {
+          "id": "dlXxDwNy6OP4",
+          "name": "Icon227Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon227.tsx"
+        },
+        {
+          "id": "XoiNjWGyNWHX",
+          "name": "XIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__X.tsx"
+        },
+        {
+          "id": "_zv4Q0EC6aSe",
+          "name": "Icon123Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon123.tsx"
+        },
+        {
+          "id": "P1Fs12YxYeJP",
+          "name": "Icon124Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon124.tsx"
+        },
+        {
+          "id": "YQy20jWydd0d",
+          "name": "Icon125Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon125.tsx"
+        },
+        {
+          "id": "FYscFmWJih1P",
+          "name": "Icon126Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon126.tsx"
+        },
+        {
+          "id": "cIU9xx5_awUn",
+          "name": "Icon127Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon127.tsx"
         }
       ],
       "images": [
@@ -2886,6 +3049,21 @@
           "id": "tLU3TjBtyt53",
           "name": "image 75",
           "filePath": "../public/plasmic/babarkat/images/image75.svg"
+        },
+        {
+          "id": "3om2ONyMs_MF",
+          "name": "mortgage-3d-icon-download-in-png-blend-fbx-gltf-file-formats--home-loan-housing-condo-plan-finance-hand-pack-business-icons-8049959.webp",
+          "filePath": "../public/plasmic/babarkat/images/mortgage3DIconDownloadInPngBlendFbxGltfFileFormatsHomeLoanHousingCondoPlanFinanceHandPackBusinessIcons8049959Webp.webp"
+        },
+        {
+          "id": "Pk6fuJMrX-bu",
+          "name": "image 76",
+          "filePath": "../public/plasmic/babarkat/images/image76.svg"
+        },
+        {
+          "id": "zdcnxUyNrLvF",
+          "name": "image 97",
+          "filePath": "../public/plasmic/babarkat/images/image97.svg"
         }
       ],
       "indirect": false,
