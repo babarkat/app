@@ -2191,7 +2191,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               onClick={async event => {
                                 const $steps = {};
 
-                                $steps["goToChargingAfg"] = false
+                                $steps["goToChargingAfg"] = true
                                   ? (() => {
                                       const actionArgs = {
                                         destination: `/charging-2`
@@ -2223,31 +2223,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                 ) {
                                   $steps["goToChargingAfg"] = await $steps[
                                     "goToChargingAfg"
-                                  ];
-                                }
-
-                                $steps["invokeGlobalAction"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        args: [
-                                          "info",
-                                          "\ufeff\u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f."
-                                        ]
-                                      };
-                                      return $globalActions[
-                                        "plasmic-antd5-config-provider.showNotification"
-                                      ]?.apply(null, [...actionArgs.args]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["invokeGlobalAction"] != null &&
-                                  typeof $steps["invokeGlobalAction"] ===
-                                    "object" &&
-                                  typeof $steps["invokeGlobalAction"].then ===
-                                    "function"
-                                ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
                                   ];
                                 }
                               }}
