@@ -416,7 +416,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
             ? false
             : hasVariant($state, "stepscharg", "step2")
             ? false
-            : true
+            : false
       },
       {
         path: "infopardakt",
@@ -4310,7 +4310,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                     ? "100vw"
                     : hasVariant($state, "stepscharg", "step3")
                     ? "55%"
-                    : undefined
+                    : "55%"
                 }
                 wrapClassName={classNames({
                   [sty["pcls_2bf90U0bK1hj"]]:
