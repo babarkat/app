@@ -2994,7 +2994,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateModal2Open"] =
-                          $steps.invokeGlobalAction?.data?.success == true
+                          $steps.invokeGlobalAction4?.data?.success == true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
