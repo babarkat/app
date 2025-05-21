@@ -143,7 +143,6 @@ export type PlasmicAfgPackage__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   button3?: Flex__<typeof Button>;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
-  exchangeRate?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
 
@@ -266,7 +265,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             ]
           },
           {
-            nameop: "Afghan Wireless",
+            nameop: "Afghan-Wireless",
             description:
               "\u0627\u0641\u063a\u0627\u0646 \u0628\u06cc\u0633\u06cc\u0645",
             logoUrl:
@@ -496,24 +495,6 @@ function PlasmicAfgPackage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "exchangeRate.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "amontAfg",
         type: "private",
         variableType: "number",
@@ -575,13 +556,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.loadingviow;
+              return $state.loadBtn;
             } catch (e) {
               if (
                 e instanceof TypeError ||
                 e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                return undefined;
+                return [];
               }
               throw e;
             }
@@ -643,6 +624,18 @@ function PlasmicAfgPackage__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "exchange",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "loadBtn",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2270,7 +2263,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                       (() => {
                         try {
-                          return $state.exchangeRate.data.filter(
+                          return $state.exchange.list.filter(
                             item =>
                               item.type == $state.typecharge &&
                               item.name ==
@@ -3082,7 +3075,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                       }`,
                                       originId: $state.uuid + "",
                                       priceType: "toman",
-                                      userToken: $state.token
+                                      userToken: $state.token,
+                                      otherData: {
+                                        namePack: $state.selectPack.image,
+                                        operators: $state.selectPack.name
+                                      }
                                     };
                                   } catch (e) {
                                     if (
@@ -3959,7 +3956,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     try {
                       return (
                         $state.fragmentInput.value.length != 9 &&
-                        $state.operatorselect == -1
+                        $state.operatorselect == -1 &&
+                        $state.loadBtn
                       );
                     } catch (e) {
                       if (
@@ -3977,6 +3975,40 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   ])}
                   onClick={async event => {
                     const $steps = {};
+
+                    $steps["updateLoadBtn"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadBtn"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateLoadBtn"] != null &&
+                      typeof $steps["updateLoadBtn"] === "object" &&
+                      typeof $steps["updateLoadBtn"].then === "function"
+                    ) {
+                      $steps["updateLoadBtn"] = await $steps["updateLoadBtn"];
+                    }
 
                     $steps["updateNumber"] = true
                       ? (() => {
@@ -4012,6 +4044,115 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       $steps["updateNumber"] = await $steps["updateNumber"];
                     }
 
+                    $steps["invokeGlobalAction"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
+                      return !phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction2"] = (() => {
+                      const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
+                      return phoneRegex.test($state.number);
+                    })()
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/transaction/exchange/list",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    userToken: $state.token,
+                                    name: $state.operators2[
+                                      $state.operatorselect
+                                    ].nameop
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction2"] != null &&
+                      typeof $steps["invokeGlobalAction2"] === "object" &&
+                      typeof $steps["invokeGlobalAction2"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction2"] = await $steps[
+                        "invokeGlobalAction2"
+                      ];
+                    }
+
+                    $steps["updateExchange"] = $steps.invokeGlobalAction2?.data
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["exchange"]
+                            },
+                            operation: 0,
+                            value: $steps.invokeGlobalAction2.data
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateExchange"] != null &&
+                      typeof $steps["updateExchange"] === "object" &&
+                      typeof $steps["updateExchange"].then === "function"
+                    ) {
+                      $steps["updateExchange"] = await $steps["updateExchange"];
+                    }
+
                     $steps["updateUnnamedVariant"] = (() => {
                       const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
                       return phoneRegex.test($state.number);
@@ -4042,32 +4183,38 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["invokeGlobalAction"] = (() => {
-                      const phoneRegex = /^\+?\d{2}\s?\d{13}$|^\d{13}$/;
-                      return !phoneRegex.test($state.number);
-                    })()
+                    $steps["updateLoadBtn2"] = true
                       ? (() => {
                           const actionArgs = {
-                            args: [
-                              "error",
-                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                              "top-left"
-                            ]
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["loadBtn"]
+                            },
+                            operation: 0,
+                            value: false
                           };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
+                      $steps["updateLoadBtn2"] != null &&
+                      typeof $steps["updateLoadBtn2"] === "object" &&
+                      typeof $steps["updateLoadBtn2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["updateLoadBtn2"] = await $steps["updateLoadBtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -4174,42 +4321,6 @@ function PlasmicAfgPackage__RenderFunc(props: {
                         $steps["updateAmontAfg"] = await $steps[
                           "updateAmontAfg"
                         ];
-                      }
-
-                      $steps["updateAmont"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["amont"]
-                              },
-                              operation: 0,
-                              value:
-                                parseInt($state.amont) *
-                                $state.exchangeRate.data.rate
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateAmont"] != null &&
-                        typeof $steps["updateAmont"] === "object" &&
-                        typeof $steps["updateAmont"].then === "function"
-                      ) {
-                        $steps["updateAmont"] = await $steps["updateAmont"];
                       }
 
                       $steps["updateUnnamedVariant2"] =
@@ -5257,49 +5368,6 @@ function PlasmicAfgPackage__RenderFunc(props: {
           url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
         />
 
-        <ApiRequest
-          data-plasmic-name={"exchangeRate"}
-          data-plasmic-override={overrides.exchangeRate}
-          className={classNames("__wab_instance", sty.exchangeRate, {
-            [sty.exchangeRatestepscharg_step2]: hasVariant(
-              $state,
-              "stepscharg",
-              "step2"
-            ),
-            [sty.exchangeRatestepscharg_step3]: hasVariant(
-              $state,
-              "stepscharg",
-              "step3"
-            )
-          })}
-          errorDisplay={null}
-          loadingDisplay={null}
-          method={hasVariant($state, "stepscharg", "step3") ? "GET" : "GET"}
-          onError={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["exchangeRate", "error"]).apply(
-              null,
-              eventArgs
-            );
-          }}
-          onLoading={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, [
-              "exchangeRate",
-              "loading"
-            ]).apply(null, eventArgs);
-          }}
-          onSuccess={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
-              null,
-              eventArgs
-            );
-          }}
-          url={
-            hasVariant($state, "stepscharg", "step3")
-              ? "https://n8n.babarkat.com/webhook/exchangeRate"
-              : "https://n8n.babarkat.com/webhook/Afg-package"
-          }
-        />
-
         <SideEffect
           data-plasmic-name={"sideEffect"}
           data-plasmic-override={overrides.sideEffect}
@@ -5379,7 +5447,6 @@ const PlasmicDescendants = {
     "lottie",
     "button3",
     "commissionBabarkat",
-    "exchangeRate",
     "sideEffect"
   ],
   header: ["header"],
@@ -5452,7 +5519,6 @@ const PlasmicDescendants = {
   lottie: ["lottie"],
   button3: ["button3"],
   commissionBabarkat: ["commissionBabarkat"],
-  exchangeRate: ["exchangeRate"],
   sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -5489,7 +5555,6 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   button3: typeof Button;
   commissionBabarkat: typeof ApiRequest;
-  exchangeRate: typeof ApiRequest;
   sideEffect: typeof SideEffect;
 };
 
@@ -5611,7 +5676,6 @@ export const PlasmicAfgPackage = Object.assign(
     lottie: makeNodeComponent("lottie"),
     button3: makeNodeComponent("button3"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
-    exchangeRate: makeNodeComponent("exchangeRate"),
     sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicAfgPackage
