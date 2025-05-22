@@ -1869,7 +1869,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639\u060c \u0622\u0633\u0627\u0646\u060c \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
+                          "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639 \u0648 \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
                         }
                       </div>
                       <div
@@ -1899,7 +1899,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           src={
                             hasVariant(globalVariants, "screen", "mobileOnly")
                               ? {
-                                  src: "/plasmic/babarkat/images/image59.svg",
+                                  src: "/plasmic/babarkat/images/image64.svg",
                                   fullWidth: 24,
                                   fullHeight: 24,
                                   aspectRatio: 1
