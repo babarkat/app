@@ -2645,6 +2645,16 @@
           "id": "mk8KWA0sV7w5",
           "name": "Icon131Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon131.tsx"
+        },
+        {
+          "id": "VvMM0H_Thk9A",
+          "name": "Icon132Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon132.tsx"
+        },
+        {
+          "id": "LREUbUcfpDpH",
+          "name": "Icon133Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon133.tsx"
         }
       ],
       "images": [

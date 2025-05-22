@@ -106,10 +106,10 @@ import Icon73Icon from "./icons/PlasmicIcon__Icon73"; // plasmic-import: MlBQyep
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
 import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
-import Icon91Icon from "./icons/PlasmicIcon__Icon91"; // plasmic-import: PSRFUgRGCh4X/icon
+import Icon133Icon from "./icons/PlasmicIcon__Icon133"; // plasmic-import: LREUbUcfpDpH/icon
 import Icon83Icon from "./icons/PlasmicIcon__Icon83"; // plasmic-import: IKXgjK7dwscd/icon
-import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mgaWEpMQ/icon
 import Icon80Icon from "./icons/PlasmicIcon__Icon80"; // plasmic-import: Z52gdMpS8UCn/icon
+import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mgaWEpMQ/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
@@ -1230,7 +1230,10 @@ function PlasmicHomepage__RenderFunc(props: {
                 ) : null}
                 {(() => {
                   try {
-                    return $state.profile?.data?.[0]?.user?.mobile !== "";
+                    return (
+                      $state.profile?.data?.[0]?.user?.mobile !== "" &&
+                      $state.profile?.data?.[0]?.user?.mobile != null
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1812,39 +1815,30 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["updateGameOpen"] = true
+                        $steps["goToChargingAfg"] = true
                           ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["game", "open"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
+                              const actionArgs = { destination: `/charging-2` };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
                                 }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["updateGameOpen"] != null &&
-                          typeof $steps["updateGameOpen"] === "object" &&
-                          typeof $steps["updateGameOpen"].then === "function"
+                          $steps["goToChargingAfg"] != null &&
+                          typeof $steps["goToChargingAfg"] === "object" &&
+                          typeof $steps["goToChargingAfg"].then === "function"
                         ) {
-                          $steps["updateGameOpen"] = await $steps[
-                            "updateGameOpen"
+                          $steps["goToChargingAfg"] = await $steps[
+                            "goToChargingAfg"
                           ];
                         }
                       }}
@@ -1862,7 +1856,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
                       })()}
                     >
-                      <Icon91Icon
+                      <Icon133Icon
                         className={classNames(projectcss.all, sty.svg__trZqr)}
                         role={"img"}
                       />
@@ -1875,7 +1869,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u062e\u0631\u06cc\u062f \u0622\u0646\u0644\u0627\u06cc\u0646 \u0628\u0633\u062a\u0647 \u0647\u0627\u06cc \u0627\u0644\u0645\u0627\u0633 likee \u060c imo \u0648 ..."
+                          "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639\u060c \u0622\u0633\u0627\u0646\u060c \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
                         }
                       </div>
                       <div
@@ -1911,7 +1905,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   aspectRatio: 1
                                 }
                               : {
-                                  src: "/plasmic/babarkat/images/image59.svg",
+                                  src: "/plasmic/babarkat/images/image64.svg",
                                   fullWidth: 24,
                                   fullHeight: 24,
                                   aspectRatio: 1
@@ -2285,7 +2279,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   "\u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
                                 }
                               </div>
-                              <Icon87Icon
+                              <Icon83Icon
                                 className={classNames(
                                   projectcss.all,
                                   sty.svg__kp444

@@ -1270,18 +1270,19 @@
 .svg__trZqr {
   object-fit: cover;
   max-width: 100%;
-  width: auto;
+  width: 150px;
   height: 150px;
   position: absolute;
   left: auto;
   top: 7px;
   right: 0px;
+  flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__trZqr {
     width: auto;
     height: 150%;
-    right: -31px;
+    right: -25px;
     top: 2px;
   }
 }
@@ -1656,9 +1657,9 @@
 .svg__kp444 {
   object-fit: cover;
   max-width: 100%;
-  color: var(--token-7EicNAKGWsev);
-  width: 30px;
-  height: 30px;
+  color: var(--token-s7Z9BN_B1gNc);
+  width: 25px;
+  height: 25px;
   position: absolute;
   left: 10px;
   top: 10px;

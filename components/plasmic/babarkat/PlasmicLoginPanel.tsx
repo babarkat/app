@@ -607,7 +607,22 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "fragmentInput5.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "loginByPassword", "loginByPassword")
+            ? (() => {
+                try {
+                  return $state.username2;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()
+            : ""
       },
       {
         path: "fragmentInput6.value",
@@ -667,7 +682,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "username2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(localStorage.getItem("userbabarcat"))?.username;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -1871,19 +1899,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     }
                     type={
                       hasVariant($state, "loginByPassword", "loginByPassword")
-                        ? (() => {
-                            try {
-                              return $state.username2;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "text";
-                              }
-                              throw e;
-                            }
-                          })()
+                        ? "text"
                         : hasVariant($state, "password", "password")
                         ? (() => {
                             try {
@@ -4800,28 +4816,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     />
                   }
                   isDisabled={
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return (
-                              !$state.fragmentInput.value.match(
-                                $state.contry.find(
-                                  item => item.value === $state.selectContry
-                                ).phoneFormats.regex
-                              ) || $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "loginByPassword", "loginByPassword")
+                    hasVariant($state, "loginByPassword", "loginByPassword")
                       ? (() => {
                           try {
                             return $state.fragmentInput5.value.length == 0;
@@ -6908,12 +6903,15 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 $steps["goToHomepage"] = await $steps["goToHomepage"];
               }
 
-              $steps["updatePassword"] =
+              $steps["updateLoginByPassword"] =
                 localStorage.getItem("userbabarcat") != null &&
                 sessionStorage.getItem("userbabarcatToken") == null &&
                 localStorage.getItem("userBabarkatPass") != null
                   ? (() => {
-                      const actionArgs = { vgroup: "password", operation: 4 };
+                      const actionArgs = {
+                        vgroup: "loginByPassword",
+                        operation: 4
+                      };
                       return (({ vgroup, value }) => {
                         if (typeof value === "string") {
                           value = [value];
@@ -6925,11 +6923,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["updatePassword"] != null &&
-                typeof $steps["updatePassword"] === "object" &&
-                typeof $steps["updatePassword"].then === "function"
+                $steps["updateLoginByPassword"] != null &&
+                typeof $steps["updateLoginByPassword"] === "object" &&
+                typeof $steps["updateLoginByPassword"].then === "function"
               ) {
-                $steps["updatePassword"] = await $steps["updatePassword"];
+                $steps["updateLoginByPassword"] = await $steps[
+                  "updateLoginByPassword"
+                ];
               }
             }).apply(null, eventArgs);
           }}
