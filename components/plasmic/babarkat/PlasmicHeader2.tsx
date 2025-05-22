@@ -2376,9 +2376,17 @@ function PlasmicHeader2__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return Android.onElementClicked(
-                            "https://wa.me/+989202116750"
-                          );
+                          return (() => {
+                            const whatsappUrl = "https://wa.me/+989202116750";
+                            if (
+                              typeof Android !== "undefined" &&
+                              Android.onElementClicked
+                            ) {
+                              return Android.onElementClicked(whatsappUrl);
+                            } else {
+                              return window.open(whatsappUrl, "_blank");
+                            }
+                          })();
                         }
                       };
                       return (({ customFunction }) => {

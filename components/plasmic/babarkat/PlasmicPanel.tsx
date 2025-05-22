@@ -68,7 +68,6 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import Header2 from "../../Header2"; // plasmic-import: vtwl99Nd1npi/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -144,7 +143,6 @@ export type PlasmicPanel__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   wallet3?: Flex__<"div">;
   inventoryIncrease?: Flex__<typeof AntdModal>;
-  timer?: Flex__<typeof Timer>;
   modal6?: Flex__<typeof AntdModal>;
   newPass2?: Flex__<typeof Input>;
   progress?: Flex__<typeof AntdProgress>;
@@ -299,7 +297,20 @@ function PlasmicPanel__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NDczODAxODR9.4X2h2AbXUdxkxrsVXHjyaCamtDSDAfa3P7qgCAaKEKo"
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "p1",
@@ -11562,52 +11573,6 @@ function PlasmicPanel__RenderFunc(props: {
               </div>
             </Stack__>
           </AntdModal>
-          <Timer
-            data-plasmic-name={"timer"}
-            data-plasmic-override={overrides.timer}
-            className={classNames("__wab_instance", sty.timer)}
-            intervalSeconds={1}
-            isRunning={true}
-            onTick={async () => {
-              const $steps = {};
-
-              $steps["runCode"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          const item = JSON.parse(
-                            sessionStorage.getItem("userbabarcatToken")
-                          );
-                          if (item == null) {
-                            return window.open("/login");
-                          } else {
-                            const currentTime = new Date().getTime();
-                            if (currentTime > item.expiration) {
-                              return sessionStorage.removeItem(
-                                "userbabarcatToken"
-                              );
-                            }
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode"] != null &&
-                typeof $steps["runCode"] === "object" &&
-                typeof $steps["runCode"].then === "function"
-              ) {
-                $steps["runCode"] = await $steps["runCode"];
-              }
-            }}
-            runWhileEditing={false}
-          />
-
           {(() => {
             const child$Props = {
               className: classNames("__wab_instance", sty.modal6),
@@ -13632,9 +13597,17 @@ function PlasmicPanel__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return Android.onElementClicked(
-                              "https://wa.me/+989202116750"
-                            );
+                            return (() => {
+                              const whatsappUrl = "https://wa.me/+989202116750";
+                              if (
+                                typeof Android !== "undefined" &&
+                                Android.onElementClicked
+                              ) {
+                                return Android.onElementClicked(whatsappUrl);
+                              } else {
+                                return window.open(whatsappUrl, "_blank");
+                              }
+                            })();
                           }
                         };
                         return (({ customFunction }) => {
@@ -13667,9 +13640,17 @@ function PlasmicPanel__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return Android.onElementClicked(
-                              "https://wa.me/+989202116750"
-                            );
+                            return (() => {
+                              const whatsappUrl = "https://wa.me/+989202116750";
+                              if (
+                                typeof Android !== "undefined" &&
+                                Android.onElementClicked
+                              ) {
+                                return Android.onElementClicked(whatsappUrl);
+                              } else {
+                                return window.open(whatsappUrl, "_blank");
+                              }
+                            })();
                           }
                         };
                         return (({ customFunction }) => {
@@ -13726,7 +13707,6 @@ const PlasmicDescendants = {
     "modal2",
     "wallet3",
     "inventoryIncrease",
-    "timer",
     "modal6",
     "newPass2",
     "progress",
@@ -13766,7 +13746,6 @@ const PlasmicDescendants = {
   modal2: ["modal2", "wallet3"],
   wallet3: ["wallet3"],
   inventoryIncrease: ["inventoryIncrease"],
-  timer: ["timer"],
   modal6: ["modal6", "newPass2", "progress", "reoeatNewPass2", "button4"],
   newPass2: ["newPass2"],
   progress: ["progress"],
@@ -13817,7 +13796,6 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   wallet3: "div";
   inventoryIncrease: typeof AntdModal;
-  timer: typeof Timer;
   modal6: typeof AntdModal;
   newPass2: typeof Input;
   progress: typeof AntdProgress;
@@ -13943,7 +13921,6 @@ export const PlasmicPanel = Object.assign(
     modal2: makeNodeComponent("modal2"),
     wallet3: makeNodeComponent("wallet3"),
     inventoryIncrease: makeNodeComponent("inventoryIncrease"),
-    timer: makeNodeComponent("timer"),
     modal6: makeNodeComponent("modal6"),
     newPass2: makeNodeComponent("newPass2"),
     progress: makeNodeComponent("progress"),

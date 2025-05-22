@@ -2142,10 +2142,6 @@
   top: 0px;
   flex-shrink: 0;
 }
-.timer:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .modal6:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;

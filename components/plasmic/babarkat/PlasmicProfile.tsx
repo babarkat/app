@@ -244,7 +244,20 @@ function PlasmicProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NDczODAxODR9.4X2h2AbXUdxkxrsVXHjyaCamtDSDAfa3P7qgCAaKEKo"
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "customerInfo",

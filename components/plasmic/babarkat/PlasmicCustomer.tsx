@@ -258,7 +258,20 @@ function PlasmicCustomer__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NDczODAxODR9.4X2h2AbXUdxkxrsVXHjyaCamtDSDAfa3P7qgCAaKEKo"
+          (() => {
+            try {
+              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
+                .value;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "customer",
@@ -1331,9 +1344,9 @@ function PlasmicCustomer__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["goToHomepage"] = true
+                  $steps["goToPanel"] = true
                     ? (() => {
-                        const actionArgs = { destination: `/` };
+                        const actionArgs = { destination: `/panel` };
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&
@@ -1349,11 +1362,11 @@ function PlasmicCustomer__RenderFunc(props: {
                       })()
                     : undefined;
                   if (
-                    $steps["goToHomepage"] != null &&
-                    typeof $steps["goToHomepage"] === "object" &&
-                    typeof $steps["goToHomepage"].then === "function"
+                    $steps["goToPanel"] != null &&
+                    typeof $steps["goToPanel"] === "object" &&
+                    typeof $steps["goToPanel"].then === "function"
                   ) {
-                    $steps["goToHomepage"] = await $steps["goToHomepage"];
+                    $steps["goToPanel"] = await $steps["goToPanel"];
                   }
                 }}
                 role={"img"}
