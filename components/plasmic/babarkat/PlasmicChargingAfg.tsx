@@ -712,7 +712,15 @@ function PlasmicChargingAfg__RenderFunc(props: {
             }
           )}
         >
-          <section className={classNames(projectcss.all, sty.section__vh1Sc)}>
+          <section
+            className={classNames(projectcss.all, sty.section__vh1Sc, {
+              [sty.sectionstepscharg_step3__vh1SCq2TCe]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+          >
             <div
               className={classNames(projectcss.all, sty.freeBox__cwbae, {
                 [sty.freeBoxstepscharg_step2__cwbae1Oc4H]: hasVariant(
@@ -2803,38 +2811,39 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["invokeGlobalAction"] = false
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/sendAf/buy",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        phone: $state.number,
-                                        amount: $state.amontAfg,
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
+                        $steps["invokeGlobalAction"] =
+                          $steps.invokeGlobalAction4?.data[0]?.success == true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "POST",
+                                    "https://n8n.babarkat.com/webhook/sendAf/buy",
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return {
+                                          phone: $state.number,
+                                          amount: $state.amontAfg,
+                                          userToken: $state.token
+                                        };
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
                         if (
                           $steps["invokeGlobalAction"] != null &&
                           typeof $steps["invokeGlobalAction"] === "object" &&
@@ -2846,7 +2855,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["updateInfopardakt"] = false
+                        $steps["updateInfopardakt"] = $steps.invokeGlobalAction
+                          ?.data?.data
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -2918,7 +2928,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                             $state.number +
                                             "`" +
                                             "\nشناسه تراکنش: " +
-                                            $state.uuid
+                                            $state.infopardakt.ref_code
                                         };
                                       } catch (e) {
                                         if (
@@ -2961,7 +2971,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                     try {
                                       return {
                                         id: $state.pardakhtid,
-                                        trackingId: $state.uuid,
+                                        trackingId: $steps.invokeGlobalAction
+                                          ?.data?.data
+                                          ? $state.infopardakt.ref_code
+                                          : -1,
                                         userToken: $state.token
                                       };
                                     } catch (e) {
@@ -2994,7 +3007,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateModal2Open"] =
-                          $steps.invokeGlobalAction4?.data?.success == true
+                          $state.infopardakt.ref_code != undefined
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -3765,7 +3778,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         $steps["updateNumber"] = await $steps["updateNumber"];
                       }
 
-                      $steps["updateUnnamedVariant"] = true
+                      $steps["updateUnnamedVariant"] = (() => {
+                        const phoneRegex = /^\d{10}$/;
+                        return phoneRegex.test($state.number);
+                      })()
                         ? (() => {
                             const actionArgs = {
                               vgroup: "stepscharg",
@@ -3793,7 +3809,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction"] = false
+                      $steps["invokeGlobalAction"] = (() => {
+                        const phoneRegex = /^\d{10}$/;
+                        return !phoneRegex.test($state.number);
+                      })()
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -4842,7 +4861,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.uuid;
+                              return $state.infopardakt.ref_code;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||

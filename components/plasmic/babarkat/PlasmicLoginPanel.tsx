@@ -2637,8 +2637,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       ? (() => {
                           const actionArgs = {
                             args: [
-                              "PUT",
-                              "https://n8n.babarkat.com/webhook/saraf/login",
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/saraf/login/username",
+                              undefined,
                               (() => {
                                 try {
                                   return { mobile: $state.number };
@@ -2652,8 +2653,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                                   }
                                   throw e;
                                 }
-                              })(),
-                              undefined
+                              })()
                             ]
                           };
                           return $globalActions["Fragment.apiRequest"]?.apply(
@@ -2672,25 +2672,22 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["invokeGlobalAction3"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success === false
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
+                    $steps["invokeGlobalAction3"] =
+                      $steps.invokeGlobalAction2?.data?.success == false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u0634\u0645\u0627\u0631\u0647\u200c\u06cc \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u06cc\u0633\u062a.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                     if (
                       $steps["invokeGlobalAction3"] != null &&
                       typeof $steps["invokeGlobalAction3"] === "object" &&
@@ -2701,26 +2698,23 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateUnnamedVariant"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success === true
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "unnamedVariant",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
+                    $steps["updateUnnamedVariant"] =
+                      $steps.invokeGlobalAction2?.data?.success == true
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "unnamedVariant",
+                              operation: 4
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
 
-                            $stateSet($state, vgroup, true);
-                            return true;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
+                              $stateSet($state, vgroup, true);
+                              return true;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                     if (
                       $steps["updateUnnamedVariant"] != null &&
                       typeof $steps["updateUnnamedVariant"] === "object" &&
@@ -4407,7 +4401,10 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         : hasVariant($state, "unnamedVariant", "unnamedVariant")
                         ? (() => {
                             try {
-                              return $state.fragmentInput2.value.length != 4;
+                              return (
+                                $state.fragmentInput2.value.length != 4 &&
+                                !$state.loadedbtn
+                              );
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -4514,7 +4511,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                             const actionArgs = {
                               args: [
                                 "POST",
-                                "https://api.babarkat.com/saraf/validate",
+                                "https://n8n.babarkat.com/webhook/saraf/login",
                                 undefined,
                                 (() => {
                                   try {
@@ -4551,26 +4548,21 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["invokeGlobalAction"] = (
-                        $steps.invokeGlobalAction2?.data
-                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
-                            false
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "error",
-                                "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                                "top-left"
-                              ]
-                            };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                      $steps["invokeGlobalAction"] =
+                        $steps.invokeGlobalAction2?.data[0]?.success == false
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                                  "top-left"
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                       if (
                         $steps["invokeGlobalAction"] != null &&
                         typeof $steps["invokeGlobalAction"] === "object" &&
@@ -4653,139 +4645,30 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["goToHomepage"] = (
-                        $steps.invokeGlobalAction2?.data
-                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
-                              true &&
-                            $steps.invokeGlobalAction2?.data[0]?.saraf.length <
-                              2
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = { destination: `/` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                      $steps["goToPanel"] =
+                        $steps.invokeGlobalAction2?.data[0]?.success == true
+                          ? (() => {
+                              const actionArgs = { destination: `/panel` };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
                       if (
-                        $steps["goToHomepage"] != null &&
-                        typeof $steps["goToHomepage"] === "object" &&
-                        typeof $steps["goToHomepage"].then === "function"
+                        $steps["goToPanel"] != null &&
+                        typeof $steps["goToPanel"] === "object" &&
+                        typeof $steps["goToPanel"].then === "function"
                       ) {
-                        $steps["goToHomepage"] = await $steps["goToHomepage"];
-                      }
-
-                      $steps["updateSaraf"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["saraf"]
-                              },
-                              operation: 0,
-                              value: (() => {
-                                const transformedArray =
-                                  $steps.invokeGlobalAction2.data[0].saraf.map(
-                                    item => ({
-                                      label: item.name,
-                                      value: item.id
-                                    })
-                                  );
-                                return transformedArray;
-                              })()
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateSaraf"] != null &&
-                        typeof $steps["updateSaraf"] === "object" &&
-                        typeof $steps["updateSaraf"].then === "function"
-                      ) {
-                        $steps["updateSaraf"] = await $steps["updateSaraf"];
-                      }
-
-                      $steps["updateUnnamedVariant2"] = (
-                        $steps.invokeGlobalAction2?.data
-                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
-                              true && $state.saraf.length > 1
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "unnamedVariant2",
-                              operation: 4
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
-
-                              $stateSet($state, vgroup, true);
-                              return true;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateUnnamedVariant2"] != null &&
-                        typeof $steps["updateUnnamedVariant2"] === "object" &&
-                        typeof $steps["updateUnnamedVariant2"].then ===
-                          "function"
-                      ) {
-                        $steps["updateUnnamedVariant2"] = await $steps[
-                          "updateUnnamedVariant2"
-                        ];
-                      }
-
-                      $steps["updateUnnamedVariant"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "unnamedVariant",
-                              operation: 6,
-                              value: "unnamedVariant"
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
-
-                              $stateSet($state, vgroup, false);
-                              return false;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateUnnamedVariant"] != null &&
-                        typeof $steps["updateUnnamedVariant"] === "object" &&
-                        typeof $steps["updateUnnamedVariant"].then ===
-                          "function"
-                      ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
+                        $steps["goToPanel"] = await $steps["goToPanel"];
                       }
 
                       $steps["updateLoadedbtn2"] = true
