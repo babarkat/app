@@ -269,7 +269,7 @@ function PlasmicBill__RenderFunc(props: {
               })()
             : (() => {
                 try {
-                  return undefined;
+                  return $state.id == "" ? "" : $state.id.toString();
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -548,8 +548,8 @@ function PlasmicBill__RenderFunc(props: {
       {
         path: "pardakhtid",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "token",
@@ -656,8 +656,8 @@ function PlasmicBill__RenderFunc(props: {
       {
         path: "id",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "info.open",
@@ -721,7 +721,9 @@ function PlasmicBill__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.pardakhtid == 0 ? "" : $state.pardakhtid.toString();
+              return $state.pardakhtid == ""
+                ? ""
+                : $state.pardakhtid.toString();
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -3158,7 +3160,7 @@ function PlasmicBill__RenderFunc(props: {
                                       variablePath: ["id"]
                                     },
                                     operation: 0,
-                                    value: parseInt($state.idinput.value)
+                                    value: $state.idinput.value
                                   };
                                   return (({
                                     variable,
@@ -3313,7 +3315,7 @@ function PlasmicBill__RenderFunc(props: {
                                       variablePath: ["pardakhtid"]
                                     },
                                     operation: 0,
-                                    value: parseInt($state.idinput3.value)
+                                    value: $state.idinput3.value
                                   };
                                   return (({
                                     variable,
@@ -6436,7 +6438,9 @@ function PlasmicBill__RenderFunc(props: {
                                         }
                                         break;
                                     }
-                                    return console.log($state.buttonHasError);
+                                    if ($state.type != "mobile")
+                                      return ($state.mobile =
+                                        $state.userinfo.mobile);
                                   })();
                                 }
                               };
@@ -7104,6 +7108,11 @@ function PlasmicBill__RenderFunc(props: {
                     data-plasmic-name={"step2Next"}
                     data-plasmic-override={overrides.step2Next}
                     className={classNames("__wab_instance", sty.step2Next, {
+                      [sty.step2Nextstepscharg_step1]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step1"
+                      ),
                       [sty.step2Nextstepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
