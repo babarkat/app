@@ -532,21 +532,6 @@ function PlasmicProfile__RenderFunc(props: {
                       hasGap={true}
                       className={classNames(projectcss.all, sty.freeBox___62KC)}
                       key={currentIndex}
-                      style={(() => {
-                        try {
-                          return {
-                            "background-color": currentItem.color + "b1"
-                          };
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
                     >
                       <div
                         className={classNames(
@@ -578,13 +563,26 @@ function PlasmicProfile__RenderFunc(props: {
                           sty.text__pbXTe,
                           "dateshow"
                         )}
+                        style={(() => {
+                          try {
+                            return { color: currentItem.color };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}
                       >
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.customerInfo[
-                                currentItem.id
-                              ].toFixed(3);
+                              return (
+                                $state.customerInfo[currentItem.id] * 1000
+                              ).toLocaleString();
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||

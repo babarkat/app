@@ -108,7 +108,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 4px;
 }
 .text__qAoP {
   width: 100%;
@@ -159,6 +159,8 @@
   height: auto;
   max-width: 100%;
   opacity: 1;
+  background: #2563eb40;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.2);
   min-width: 0;
   border-radius: 8px;
   padding: 8px;
@@ -205,6 +207,7 @@
   font-size: 14px;
   color: var(--token-aCLVKlB2IKxe);
   font-weight: 700;
+  filter: contrast(71%) brightness(200%);
 }
 .freeBox__rWdpk {
   display: flex;
@@ -467,9 +470,9 @@
   background: #161e26;
   color: var(--token-aCLVKlB2IKxe);
   height: 45px;
-  text-align: right;
+  text-align: center;
   min-width: 0;
-  padding: 16px 24px 16px 16px;
+  padding: 16px 0px 16px 16px;
   border-width: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -635,9 +638,9 @@
   background: #161e26;
   color: var(--token-aCLVKlB2IKxe);
   height: 45px;
-  text-align: right;
+  text-align: center;
   min-width: 0;
-  padding: 16px 24px 16px 16px;
+  padding: 16px 0px 16px 16px;
   border-width: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -679,6 +682,8 @@
   background: #161e26;
   height: 100px;
   color: var(--token-aCLVKlB2IKxe);
+  width: 100%;
+  min-width: 0;
   flex-shrink: 0;
   border-radius: 8px;
   border-width: 0px;

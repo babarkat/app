@@ -260,8 +260,10 @@ function PlasmicCustomer__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
+              return (
+                //JSON.parse(sessionStorage.getItem("userbabarcatToken")).value
+                "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NDczODAxODR9.4X2h2AbXUdxkxrsVXHjyaCamtDSDAfa3P7qgCAaKEKo"
+              );
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -908,7 +910,11 @@ function PlasmicCustomer__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return currentItem.customerNum;
+                                  return (
+                                    (
+                                      currentItem.toman * 1000
+                                    ).toLocaleString() + " تومان "
+                                  );
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||

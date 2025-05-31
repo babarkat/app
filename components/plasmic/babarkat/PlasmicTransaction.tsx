@@ -1424,87 +1424,45 @@ function PlasmicTransaction__RenderFunc(props: {
                                             await $steps["updateModalOpen2"];
                                         }
                                       }}
-                                      unnamedGroupOfVariants={
-                                        hasVariant(
-                                          globalVariants,
-                                          "screen",
-                                          "mobileOnly"
-                                        )
-                                          ? (() => {
-                                              try {
-                                                return (() => {
-                                                  switch (true) {
-                                                    case currentItem.type.includes(
-                                                      "argin"
-                                                    ):
-                                                      return "sim";
-                                                    case currentItem.type.includes(
-                                                      "inte"
-                                                    ):
-                                                      return "intenet";
-                                                    case currentItem.type.includes(
-                                                      "snap"
-                                                    ):
-                                                      return "snap";
-                                                    case currentItem.type.includes(
-                                                      "uc_pubg"
-                                                    ):
-                                                      return "pubg";
-                                                    default:
-                                                      return "";
-                                                  }
-                                                })();
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "sim";
-                                                }
-                                                throw e;
-                                              }
-                                            })()
-                                          : (() => {
-                                              try {
-                                                return (() => {
-                                                  switch (true) {
-                                                    case currentItem.type.includes(
-                                                      "argin"
-                                                    ):
-                                                      return "sim";
-                                                    case currentItem.type.includes(
-                                                      "inte"
-                                                    ):
-                                                      return "intenet";
-                                                    case currentItem.type.includes(
-                                                      "snap"
-                                                    ):
-                                                      return "snap";
-                                                    case currentItem.type.includes(
-                                                      "package"
-                                                    ):
-                                                      return "pubg";
-                                                    case currentItem.type.includes(
-                                                      "bill"
-                                                    ):
-                                                      return "bill";
-                                                    default:
-                                                      return "";
-                                                  }
-                                                })();
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "unnamedVariant";
-                                                }
-                                                throw e;
-                                              }
-                                            })()
-                                      }
+                                      unnamedGroupOfVariants={(() => {
+                                        try {
+                                          return (() => {
+                                            switch (true) {
+                                              case currentItem.type.includes(
+                                                "argin"
+                                              ):
+                                                return "sim";
+                                              case currentItem.type.includes(
+                                                "inte"
+                                              ):
+                                                return "intenet";
+                                              case currentItem.type.includes(
+                                                "snap"
+                                              ):
+                                                return "snap";
+                                              case currentItem.type.includes(
+                                                "package"
+                                              ):
+                                                return "pubg";
+                                              case currentItem.type.includes(
+                                                "bill"
+                                              ):
+                                                return "bill";
+                                              default:
+                                                return "";
+                                            }
+                                          })();
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "unnamedVariant";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
                                     >
                                       <div
                                         className={classNames(
@@ -4279,6 +4237,68 @@ function PlasmicTransaction__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
+                      {(() => {
+                        try {
+                          return (
+                            $state.transaction2.otherData &&
+                            JSON.parse($state.transaction2.otherData).priceAfg
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__lRleX
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__ke9Mr
+                            )}
+                          >
+                            {
+                              "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698:"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__vJnru
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    JSON.parse($state.transaction2.otherData)
+                                      .priceAfg + " افغانی "
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "--";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </div>
+                      ) : null}
                       <div
                         className={classNames(
                           projectcss.all,
@@ -4350,7 +4370,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                       case $state.transaction2.type.startsWith(
                                         "Afgan"
                                       ):
-                                        return "افقانستان";
+                                        return "اففانستان";
                                       default:
                                         return "نامشخص";
                                     }

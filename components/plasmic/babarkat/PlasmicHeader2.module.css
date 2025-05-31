@@ -3381,13 +3381,13 @@
   }
 }
 .freeBox__yUrpm {
-  display: flex;
   flex-direction: row;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
+  display: none;
   padding: 8px;
 }
 .freeBox__yUrpm > :global(.__wab_flex-container) {

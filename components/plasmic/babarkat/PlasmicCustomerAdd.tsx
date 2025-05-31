@@ -68,6 +68,7 @@ import { inputHelpers as TextArea_Helpers } from "@plasmicpkgs/antd/skinny/regis
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -121,6 +122,7 @@ export type PlasmicCustomerAdd__OverridesType = {
   select2?: Flex__<typeof AntdSelect>;
   info2?: Flex__<typeof TextArea>;
   button4?: Flex__<typeof Button>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultCustomerAddProps {}
@@ -386,7 +388,20 @@ function PlasmicCustomerAdd__RenderFunc(props: {
         path: "customerId.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.code;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "button5.loadingviow",
@@ -420,6 +435,18 @@ function PlasmicCustomerAdd__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "errror",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "code",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -608,6 +635,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                   data-plasmic-name={"customerId"}
                   data-plasmic-override={overrides.customerId}
                   className={classNames("__wab_instance", sty.customerId)}
+                  disabled={false}
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
                       "customerId",
@@ -791,20 +819,54 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                     ];
                   }
 
-                  $steps["invokeGlobalAction2"] = $steps.invokeGlobalAction
-                    ?.data
+                  $steps["updateErrror"] = true
                     ? (() => {
                         const actionArgs = {
-                          args: [
-                            "success",
-                            "\u0645\u0634\u062a\u0631\u06cc \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0636\u0627\u0641\u0647 \u0634\u062f."
-                          ]
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["errror"]
+                          },
+                          operation: 0,
+                          value: $steps.invokeGlobalAction?.data?.message
                         };
-                        return $globalActions[
-                          "plasmic-antd5-config-provider.showNotification"
-                        ]?.apply(null, [...actionArgs.args]);
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
+                  if (
+                    $steps["updateErrror"] != null &&
+                    typeof $steps["updateErrror"] === "object" &&
+                    typeof $steps["updateErrror"].then === "function"
+                  ) {
+                    $steps["updateErrror"] = await $steps["updateErrror"];
+                  }
+
+                  $steps["invokeGlobalAction2"] =
+                    $steps.invokeGlobalAction?.data?.success == true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "success",
+                              "\u0645\u0634\u062a\u0631\u06cc \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0636\u0627\u0641\u0647 \u0634\u062f."
+                            ]
+                          };
+                          return $globalActions[
+                            "plasmic-antd5-config-provider.showNotification"
+                          ]?.apply(null, [...actionArgs.args]);
+                        })()
+                      : undefined;
                   if (
                     $steps["invokeGlobalAction2"] != null &&
                     typeof $steps["invokeGlobalAction2"] === "object" &&
@@ -813,6 +875,70 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                     $steps["invokeGlobalAction2"] = await $steps[
                       "invokeGlobalAction2"
                     ];
+                  }
+
+                  $steps["invokeGlobalAction3"] =
+                    $steps.invokeGlobalAction?.data?.success == false
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              (() => {
+                                try {
+                                  return $state.errror;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions[
+                            "plasmic-antd5-config-provider.showNotification"
+                          ]?.apply(null, [...actionArgs.args]);
+                        })()
+                      : undefined;
+                  if (
+                    $steps["invokeGlobalAction3"] != null &&
+                    typeof $steps["invokeGlobalAction3"] === "object" &&
+                    typeof $steps["invokeGlobalAction3"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction3"] = await $steps[
+                      "invokeGlobalAction3"
+                    ];
+                  }
+
+                  $steps["runCode2"] =
+                    $steps.invokeGlobalAction?.data?.success == true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                $state.name.value = "";
+                                $state.lastname.value = "";
+                                $state.mobile.value = "";
+                                $state.location.value = "";
+                                return ($state.customerId.value = "");
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                  if (
+                    $steps["runCode2"] != null &&
+                    typeof $steps["runCode2"] === "object" &&
+                    typeof $steps["runCode2"].then === "function"
+                  ) {
+                    $steps["runCode2"] = await $steps["runCode2"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -1544,6 +1670,80 @@ function PlasmicCustomerAdd__RenderFunc(props: {
               </Button>
             </Stack__>
           </AntdModal>
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["invokeGlobalAction"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "PUT",
+                        "https://n8n.babarkat.com/webhook/saraf/login/username",
+                        undefined,
+                        (() => {
+                          try {
+                            return { userToken: $state.token };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction"] != null &&
+                typeof $steps["invokeGlobalAction"] === "object" &&
+                typeof $steps["invokeGlobalAction"].then === "function"
+              ) {
+                $steps["invokeGlobalAction"] = await $steps[
+                  "invokeGlobalAction"
+                ];
+              }
+
+              $steps["updateCode"] = $steps.invokeGlobalAction?.data?.success
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["code"]
+                      },
+                      operation: 0,
+                      value: $steps.invokeGlobalAction.data.customerId
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateCode"] != null &&
+                typeof $steps["updateCode"] === "object" &&
+                typeof $steps["updateCode"].then === "function"
+              ) {
+                $steps["updateCode"] = await $steps["updateCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1570,7 +1770,8 @@ const PlasmicDescendants = {
     "valueAdd2",
     "select2",
     "info2",
-    "button4"
+    "button4",
+    "sideEffect"
   ],
   name: ["name"],
   lastname: ["lastname"],
@@ -1589,7 +1790,8 @@ const PlasmicDescendants = {
   valueAdd2: ["valueAdd2"],
   select2: ["select2"],
   info2: ["info2"],
-  button4: ["button4"]
+  button4: ["button4"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1614,6 +1816,7 @@ type NodeDefaultElementType = {
   select2: typeof AntdSelect;
   info2: typeof TextArea;
   button4: typeof Button;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1719,6 +1922,7 @@ export const PlasmicCustomerAdd = Object.assign(
     select2: makeNodeComponent("select2"),
     info2: makeNodeComponent("info2"),
     button4: makeNodeComponent("button4"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicCustomerAdd
     internalVariantProps: PlasmicCustomerAdd__VariantProps,

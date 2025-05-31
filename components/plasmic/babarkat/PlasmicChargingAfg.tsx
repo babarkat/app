@@ -2811,39 +2811,38 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["invokeGlobalAction"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "POST",
-                                    "https://n8n.babarkat.com/webhook/sendAf/buy",
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          phone: $state.number,
-                                          amount: $state.amontAfg,
-                                          userToken: $state.token
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
+                        $steps["invokeGlobalAction"] = false
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://n8n.babarkat.com/webhook/sendAf/buy",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        phone: $state.number,
+                                        amount: $state.amontAfg,
+                                        userToken: $state.token
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
                                       }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                         if (
                           $steps["invokeGlobalAction"] != null &&
                           typeof $steps["invokeGlobalAction"] === "object" &&
@@ -2855,8 +2854,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["updateInfopardakt"] = $steps.invokeGlobalAction
-                          ?.data?.data
+                        $steps["updateInfopardakt"] = false
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -2928,7 +2926,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                             $state.number +
                                             "`" +
                                             "\nشناسه تراکنش: " +
-                                            $state.infopardakt.ref_code
+                                            $state.uuid
                                         };
                                       } catch (e) {
                                         if (
@@ -2971,10 +2969,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                     try {
                                       return {
                                         id: $state.pardakhtid,
-                                        trackingId: $steps.invokeGlobalAction
-                                          ?.data?.data
-                                          ? $state.infopardakt.ref_code
-                                          : -1,
+                                        // "trackingId":  $steps.invokeGlobalAction?.data?.data?$state.infopardakt.ref_code:-1,
+                                        trackingId: $state.uuid,
                                         userToken: $state.token
                                       };
                                     } catch (e) {
@@ -3007,7 +3003,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["updateModal2Open"] =
-                          $state.infopardakt.ref_code != undefined
+                          // $state.infopardakt.ref_code!=undefined
+
+                          $steps.invokeGlobalAction4?.data[0]?.success == true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -4861,7 +4859,10 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.infopardakt.ref_code;
+                              return (
+                                // $state.infopardakt.ref_code
+                                $state.uuid
+                              );
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
