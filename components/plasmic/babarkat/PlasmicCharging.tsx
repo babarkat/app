@@ -2696,7 +2696,13 @@ function PlasmicCharging__RenderFunc(props: {
                                           ].nameop + "_charge",
                                         originId: $state.uuid + "",
                                         priceType: "toman",
-                                        userToken: $state.token
+                                        userToken: $state.token,
+                                        otherData: {
+                                          operator:
+                                            $state.operators2[
+                                              $state.operatorselect
+                                            ].description
+                                        }
                                       };
                                     } catch (e) {
                                       if (

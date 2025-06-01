@@ -200,6 +200,10 @@ export type PlasmicHomepage__OverridesType = {
   comingSoon12?: Flex__<"div">;
   comingSoon15?: Flex__<"div">;
   comingSoon13?: Flex__<"div">;
+  afg?: Flex__<typeof AntdModal>;
+  comingSoon14?: Flex__<"div">;
+  comingSoon16?: Flex__<"div">;
+  comingSoon17?: Flex__<"div">;
 };
 
 export interface DefaultHomepageProps {}
@@ -598,6 +602,12 @@ function PlasmicHomepage__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "afg.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -15417,6 +15427,368 @@ function PlasmicHomepage__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__gtZ6R)} />
           </AntdModal>
+          <AntdModal
+            data-plasmic-name={"afg"}
+            data-plasmic-override={overrides.afg}
+            className={classNames("__wab_instance", sty.afg)}
+            closeButtonClassName={classNames({
+              [sty["pcls_klIhyobqtyeZ"]]: true
+            })}
+            closeIcon={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__yxXIr
+                )}
+              >
+                {"\n"}
+              </div>
+            }
+            defaultStylesClassName={classNames(
+              projectcss.root_reset,
+              projectcss.plasmic_default_styles,
+              projectcss.plasmic_mixins,
+              projectcss.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens
+            )}
+            hideFooter={true}
+            modalContentClassName={classNames({
+              [sty["pcls__emJyUbZ64Ux"]]: true
+            })}
+            modalScopeClassName={sty["afg__modal"]}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["afg", "open"]).apply(
+                null,
+                eventArgs
+              );
+            }}
+            open={generateStateValueProp($state, ["afg", "open"])}
+            title={null}
+            trigger={null}
+            width={
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? "100%"
+                : "700"
+            }
+          >
+            <Stack__
+              as={"div"}
+              hasGap={true}
+              className={classNames(projectcss.all, sty.freeBox__zb8Jh)}
+            >
+              <Stack__
+                as={"div"}
+                hasGap={true}
+                className={classNames(projectcss.all, sty.freeBox__dwMeN)}
+              >
+                <Icon78Icon
+                  className={classNames(projectcss.all, sty.svg___3Rvxb)}
+                  role={"img"}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__eEWwG
+                  )}
+                >
+                  {"\u062e\u062f\u0645\u0627\u062a \u062a\u0645\u0627\u0633"}
+                </div>
+              </Stack__>
+              <Icon89Icon
+                className={classNames(projectcss.all, sty.svg__ky26U)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateModal3Open"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["afg", "open"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateModal3Open"] != null &&
+                    typeof $steps["updateModal3Open"] === "object" &&
+                    typeof $steps["updateModal3Open"].then === "function"
+                  ) {
+                    $steps["updateModal3Open"] = await $steps[
+                      "updateModal3Open"
+                    ];
+                  }
+                }}
+                role={"img"}
+              />
+            </Stack__>
+            <div className={classNames(projectcss.all, sty.freeBox__nsz7)}>
+              <div
+                data-plasmic-name={"comingSoon14"}
+                data-plasmic-override={overrides.comingSoon14}
+                className={classNames(projectcss.all, sty.comingSoon14)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            undefined,
+                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                            undefined,
+                            3,
+                            "bottom"
+                          ]
+                        };
+                        return $globalActions[
+                          "plasmic-antd5-config-provider.showNotification"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__on6Rb)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  loading={"lazy"}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          src: "/plasmic/babarkat/images/image70.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                      : {
+                          src: "/plasmic/babarkat/images/image70.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                  }
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aJ6MJ
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0645\u06cc\u0632\u0628\u0627\u0646"
+                    : "\u0645\u06cc\u0632\u0628\u0627\u0646"}
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"comingSoon16"}
+                data-plasmic-override={overrides.comingSoon16}
+                className={classNames(projectcss.all, sty.comingSoon16)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            undefined,
+                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                            undefined,
+                            3,
+                            "bottom"
+                          ]
+                        };
+                        return $globalActions[
+                          "plasmic-antd5-config-provider.showNotification"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__foa)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  loading={"lazy"}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          src: "/plasmic/babarkat/images/image71.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                      : {
+                          src: "/plasmic/babarkat/images/image71.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                  }
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__z9Dy0
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0633\u06cc\u0633\u062a\u0645 \u0631\u062e"
+                    : "\u0633\u06cc\u0633\u062a\u0645 \u0631\u062e"}
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"comingSoon17"}
+                data-plasmic-override={overrides.comingSoon17}
+                className={classNames(projectcss.all, sty.comingSoon17)}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["invokeGlobalAction"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            undefined,
+                            "\u0627\u06cc\u0646 \u0633\u0631\u0648\u06cc\u0633 \u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0636\u0631 \u062f\u0631 \u062f\u0633\u062a\u0631\u0633 \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                            undefined,
+                            3,
+                            "bottom"
+                          ]
+                        };
+                        return $globalActions[
+                          "plasmic-antd5-config-provider.showNotification"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction"] != null &&
+                    typeof $steps["invokeGlobalAction"] === "object" &&
+                    typeof $steps["invokeGlobalAction"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction"] = await $steps[
+                      "invokeGlobalAction"
+                    ];
+                  }
+                }}
+              >
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img___4IRoX)}
+                  displayHeight={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "40px"
+                      : "60px"
+                  }
+                  loading={"lazy"}
+                  src={
+                    hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? {
+                          src: "/plasmic/babarkat/images/image73.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                      : {
+                          src: "/plasmic/babarkat/images/image73.svg",
+                          fullWidth: 24,
+                          fullHeight: 24,
+                          aspectRatio: 1
+                        }
+                  }
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__huOrO
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0627\u0631\u062a\u0628\u0627\u0637"
+                    : "\u0627\u0631\u062a\u0628\u0627\u0637"}
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__cezNi)} />
+          </AntdModal>
         </div>
       </div>
     </React.Fragment>
@@ -15486,7 +15858,11 @@ const PlasmicDescendants = {
     "call",
     "comingSoon12",
     "comingSoon15",
-    "comingSoon13"
+    "comingSoon13",
+    "afg",
+    "comingSoon14",
+    "comingSoon16",
+    "comingSoon17"
   ],
   sideEffect: ["sideEffect"],
   profile: [
@@ -15620,7 +15996,11 @@ const PlasmicDescendants = {
   call: ["call", "comingSoon12", "comingSoon15", "comingSoon13"],
   comingSoon12: ["comingSoon12"],
   comingSoon15: ["comingSoon15"],
-  comingSoon13: ["comingSoon13"]
+  comingSoon13: ["comingSoon13"],
+  afg: ["afg", "comingSoon14", "comingSoon16", "comingSoon17"],
+  comingSoon14: ["comingSoon14"],
+  comingSoon16: ["comingSoon16"],
+  comingSoon17: ["comingSoon17"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -15688,6 +16068,10 @@ type NodeDefaultElementType = {
   comingSoon12: "div";
   comingSoon15: "div";
   comingSoon13: "div";
+  afg: typeof AntdModal;
+  comingSoon14: "div";
+  comingSoon16: "div";
+  comingSoon17: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -15836,6 +16220,10 @@ export const PlasmicHomepage = Object.assign(
     comingSoon12: makeNodeComponent("comingSoon12"),
     comingSoon15: makeNodeComponent("comingSoon15"),
     comingSoon13: makeNodeComponent("comingSoon13"),
+    afg: makeNodeComponent("afg"),
+    comingSoon14: makeNodeComponent("comingSoon14"),
+    comingSoon16: makeNodeComponent("comingSoon16"),
+    comingSoon17: makeNodeComponent("comingSoon17"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,

@@ -213,8 +213,7 @@ function PlasmicInternet3__RenderFunc(props: {
           {
             name: "MTN",
             nameop: "Irancell",
-            description:
-              "\u0634\u0627\u0631\u0698 \u0627\u06cc\u0631\u0627\u0646\u0633\u0644",
+            description: " \u0627\u06cc\u0631\u0627\u0646\u0633\u0644",
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image19.svg",
             codes: [
@@ -245,8 +244,7 @@ function PlasmicInternet3__RenderFunc(props: {
           {
             name: "MCI",
             nameop: "hamrah_Aval",
-            description:
-              "\u0634\u0627\u0631\u0698 \u0647\u0645\u0631\u0627\u0647 \u0627\u0648\u0644",
+            description: " \u0647\u0645\u0631\u0627\u0647 \u0627\u0648\u0644",
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image20.svg",
             codes: [
@@ -284,8 +282,7 @@ function PlasmicInternet3__RenderFunc(props: {
           {
             name: "RTL",
             nameop: "RighTel",
-            description:
-              "\u0634\u0627\u0631\u0698 \u0631\u0627\u06cc\u062a\u0644",
+            description: " \u0631\u0627\u06cc\u062a\u0644",
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
             codes: ["0920", "0921", "0922", "0923"],
@@ -302,7 +299,7 @@ function PlasmicInternet3__RenderFunc(props: {
             name: "SHT",
             nameop: "Shatel",
             description:
-              "\u0634\u0627\u0631\u0698 \u0634\u0627\u062a\u0644 \u0645\u0648\u0628\u0627\u06cc\u0644",
+              " \u0634\u0627\u062a\u0644 \u0645\u0648\u0628\u0627\u06cc\u0644",
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image21.svg",
             codes: ["0998", "0999"],
@@ -770,7 +767,15 @@ function PlasmicInternet3__RenderFunc(props: {
             }
           )}
         >
-          <section className={classNames(projectcss.all, sty.section___8YWeq)}>
+          <section
+            className={classNames(projectcss.all, sty.section___8YWeq, {
+              [sty.sectionsteps2_step3___8YWeqYl49R]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
+          >
             <div
               className={classNames(projectcss.all, sty.freeBox__dZ0U, {
                 [sty.freeBoxsteps2_step3__dZ0UYl49R]: hasVariant(
@@ -954,6 +959,11 @@ function PlasmicInternet3__RenderFunc(props: {
                         $state,
                         "steps2",
                         "step2"
+                      ),
+                      [sty.svgsteps2_step3__ztYdhYl49R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
                       )
                     })}
                     role={"img"}
@@ -3814,7 +3824,14 @@ function PlasmicInternet3__RenderFunc(props: {
                                           ].nameop + "internet",
                                         originId: $state.uuid + "",
                                         priceType: "toman",
-                                        userToken: $state.token
+                                        userToken: $state.token,
+                                        otherData: {
+                                          namePack: $state.selectpack.name,
+                                          operator:
+                                            $state.operators2[
+                                              $state.operatorselect
+                                            ].description
+                                        }
                                       };
                                     } catch (e) {
                                       if (
@@ -4243,7 +4260,14 @@ function PlasmicInternet3__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__zp1Hn
+                            sty.text__zp1Hn,
+                            {
+                              [sty.textsteps2_step3__zp1HnYl49R]: hasVariant(
+                                $state,
+                                "steps2",
+                                "step3"
+                              )
+                            }
                           )}
                         >
                           {

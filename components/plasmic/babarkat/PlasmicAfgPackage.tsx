@@ -869,6 +869,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   $state,
                   "stepscharg",
                   "step2"
+                ),
+                [sty.revealstepscharg_step3]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step3"
                 )
               })}
               duration={
@@ -3078,7 +3083,10 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                       userToken: $state.token,
                                       otherData: {
                                         namePack: $state.selectPack.image,
-                                        operators: $state.selectPack.name
+                                        operators:
+                                          $state.operators2[
+                                            $state.operatorselect
+                                          ].description
                                       }
                                     };
                                   } catch (e) {
