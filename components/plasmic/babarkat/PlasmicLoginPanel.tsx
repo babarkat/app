@@ -67,8 +67,8 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -92,14 +92,14 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLoginPanel.module.css"; // plasmic-import: UmTKQn0WdwT-/css
 
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
-import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: CbXhIHUxIzPz/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon153Icon from "./icons/PlasmicIcon__Icon153"; // plasmic-import: 0QI_dVUCt1kX/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
 
 createPlasmicElementProxy;
@@ -149,6 +149,7 @@ export type PlasmicLoginPanel__OverridesType = {
   button3?: Flex__<typeof Button>;
   btnSaraf?: Flex__<typeof Button>;
   sendcode?: Flex__<typeof Button>;
+  button5?: Flex__<typeof Button>;
   figmaPaste?: Flex__<"div">;
   group?: Flex__<"div">;
   group2?: Flex__<"div">;
@@ -166,7 +167,6 @@ export type PlasmicLoginPanel__OverridesType = {
   group9?: Flex__<"div">;
   group10?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
-  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultLoginPanelProps {}
@@ -696,6 +696,25 @@ function PlasmicLoginPanel__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "button5.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -1005,6 +1024,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     "unnamedVariant",
                     "unnamedVariant"
                   ),
+                  [sty.freeBoxunnamedVariant_loginByPassword___6HvRdBNaryGqb7]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
                   [sty.freeBoxunnamedVariant_password___6HvRdBNaryVrixq]:
                     hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant($state, "password", "password"),
@@ -1021,11 +1043,17 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     "loginByPassword",
                     "loginByPassword"
                   ),
+                  [sty.freeBoxloginByPassword_password___5PujSgqb7Vrixq]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
                   [sty.freeBoxpassword___5PujSvrixq]: hasVariant(
                     $state,
                     "password",
                     "password"
                   ),
+                  [sty.freeBoxpassword_unnamedVariant2___5PujSvrixqTCajl]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "password", "password"),
                   [sty.freeBoxunnamedVariant2___5PujStCajl]: hasVariant(
                     $state,
                     "unnamedVariant2",
@@ -1035,14 +1063,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     $state,
                     "unnamedVariant",
                     "unnamedVariant"
-                  )
+                  ),
+                  [sty.freeBoxunnamedVariant_loginByPassword___5PujSbNaryGqb7]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant"),
+                  [sty.freeBoxunnamedVariant_unnamedVariant2___5PujSbNaryTCajl]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                 })}
               >
                 <PlasmicIcon__
                   PlasmicIconType={
                     hasVariant($state, "password", "password")
-                      ? Icon56Icon
-                      : BabarkatlogoCopy2SvgIcon
+                      ? Icon154Icon
+                      : Icon154Icon
                   }
                   className={classNames(projectcss.all, sty.svg__o73GI, ``, {
                     [sty.svgloginByPassword__o73GIgqb7]: hasVariant(
@@ -1077,6 +1111,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       "unnamedVariant",
                       "unnamedVariant"
                     ),
+                    [sty.svgunnamedVariant_loginByPassword__o73GIbNaryGqb7]:
+                      hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant"),
                     [sty.svgunnamedVariant_loginByPassword_password_unnamedVariant2__o73GIbNaryGqb7VrixqTCajl]:
                       hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                       hasVariant(
@@ -1102,31 +1143,24 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   role={"img"}
                 />
 
-                {false ? (
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__t5UCa, {
-                      [sty.imgpassword__t5UCavrixq]: hasVariant(
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__iAtsS,
+                    {
+                      [sty.textloginByPassword__iAtsSgqb7]: hasVariant(
                         $state,
-                        "password",
-                        "password"
+                        "loginByPassword",
+                        "loginByPassword"
                       )
-                    })}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/babarkat/images/image10.svg",
-                      fullWidth: 100,
-                      fullHeight: 100,
-                      aspectRatio: 1
-                    }}
-                  />
-                ) : null}
+                    }
+                  )}
+                >
+                  {
+                    " \u0627\u067e\u0644\u06cc\u06a9\u0634\u0646 \u0645\u062e\u0635\u0648\u0635 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631"
+                  }
+                </div>
               </div>
               <Stack__
                 as={"div"}
@@ -2894,86 +2928,6 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       ])}
                     />
                   </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___5MFkv,
-                    {
-                      [sty.textloginByPassword___5MFkvGqb7]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textloginByPassword_unnamedVariant2___5MFkvGqb7TCajl]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.textpassword___5MFkvVrixq]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textunnamedVariant2___5MFkvtCajl]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant___5MFkvBNary]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.textunnamedVariant_unnamedVariant2___5MFkvBNaryTCajl]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant",
-                          "unnamedVariant"
-                        ) &&
-                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    }
-                  )}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateLoginByPassword"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "loginByPassword",
-                            operation: 4
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
-
-                            $stateSet($state, vgroup, true);
-                            return true;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoginByPassword"] != null &&
-                      typeof $steps["updateLoginByPassword"] === "object" &&
-                      typeof $steps["updateLoginByPassword"].then === "function"
-                    ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
-                    }
-                  }}
-                >
-                  {
-                    "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 >"
-                  }
                 </div>
                 <div
                   className={classNames(
@@ -6086,6 +6040,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         ];
                       }
 
+                      $steps["runCode2"] =
+                        $steps.invokeGlobalAction2?.data?.success == true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    return localStorage.setItem(
+                                      "userBabarkatPass",
+                                      "true"
+                                    );
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["runCode2"] != null &&
+                        typeof $steps["runCode2"] === "object" &&
+                        typeof $steps["runCode2"].then === "function"
+                      ) {
+                        $steps["runCode2"] = await $steps["runCode2"];
+                      }
+
                       $steps["goToPanel"] =
                         $steps.invokeGlobalAction2?.data?.success == true
                           ? (() => {
@@ -6197,6 +6177,195 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   </Button>
                 ) : null}
               </div>
+              <div
+                className={classNames(projectcss.all, sty.freeBox__yJ1Ps, {
+                  [sty.freeBoxloginByPassword__yJ1PsGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.freeBoxloginByPassword_unnamedVariant2__yJ1PsGqb7TCajl]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
+                  [sty.freeBoxpassword__yJ1PsVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.freeBoxunnamedVariant2__yJ1PstCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.freeBoxunnamedVariant__yJ1PsBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
+              >
+                <Embed
+                  className={classNames("__wab_instance", sty.embedHtml__y7OGn)}
+                  code={"<hr></hr>"}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__xHt3Y
+                  )}
+                >
+                  {
+                    "\u0648\u0631\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642"
+                  }
+                </div>
+                <Embed
+                  className={classNames(
+                    "__wab_instance",
+                    sty.embedHtml___2402E
+                  )}
+                  code={"<hr></hr>"}
+                />
+              </div>
+              <Button
+                data-plasmic-name={"button5"}
+                data-plasmic-override={overrides.button5}
+                className={classNames("__wab_instance", sty.button5, {
+                  [sty.button5loginByPassword]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.button5password]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.button5unnamedVariant2]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.button5unnamedVariant]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.button5unnamedVariant_unnamedVariant2]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                })}
+                color={"softGreen"}
+                endIcon={
+                  <Icon153Icon
+                    className={classNames(projectcss.all, sty.svg__qhxFs)}
+                    role={"img"}
+                  />
+                }
+                loadingviow={generateStateValueProp($state, [
+                  "button5",
+                  "loadingviow"
+                ])}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateLoginByPassword"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          vgroup: "loginByPassword",
+                          operation: 4
+                        };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, true);
+                          return true;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateLoginByPassword"] != null &&
+                    typeof $steps["updateLoginByPassword"] === "object" &&
+                    typeof $steps["updateLoginByPassword"].then === "function"
+                  ) {
+                    $steps["updateLoginByPassword"] = await $steps[
+                      "updateLoginByPassword"
+                    ];
+                  }
+                }}
+                onLoadingviowChange={async (...eventArgs: any) => {
+                  ((...eventArgs) => {
+                    generateStateOnChangeProp($state, [
+                      "button5",
+                      "loadingviow"
+                    ])(eventArgs[0]);
+                  }).apply(null, eventArgs);
+
+                  if (
+                    eventArgs.length > 1 &&
+                    eventArgs[1] &&
+                    eventArgs[1]._plasmic_state_init_
+                  ) {
+                    return;
+                  }
+                }}
+                showEndIcon={true}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___5MFkv,
+                    {
+                      [sty.textloginByPassword___5MFkvGqb7]: hasVariant(
+                        $state,
+                        "loginByPassword",
+                        "loginByPassword"
+                      ),
+                      [sty.textloginByPassword_unnamedVariant2___5MFkvGqb7TCajl]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant2",
+                          "unnamedVariant2"
+                        ) &&
+                        hasVariant(
+                          $state,
+                          "loginByPassword",
+                          "loginByPassword"
+                        ),
+                      [sty.textpassword___5MFkvVrixq]: hasVariant(
+                        $state,
+                        "password",
+                        "password"
+                      ),
+                      [sty.textunnamedVariant2___5MFkvtCajl]: hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ),
+                      [sty.textunnamedVariant___5MFkvBNary]: hasVariant(
+                        $state,
+                        "unnamedVariant",
+                        "unnamedVariant"
+                      ),
+                      [sty.textunnamedVariant_unnamedVariant2___5MFkvBNaryTCajl]:
+                        hasVariant(
+                          $state,
+                          "unnamedVariant",
+                          "unnamedVariant"
+                        ) &&
+                        hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                    }
+                  )}
+                >
+                  {
+                    "\u0648\u0631\u0648\u062f \u0628\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 "
+                  }
+                </div>
+              </Button>
               {(
                 hasVariant($state, "unnamedVariant", "unnamedVariant")
                   ? true
@@ -6490,6 +6659,27 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     $steps["updateLoginByPassword"] = await $steps[
                       "updateLoginByPassword"
                     ];
+                  }
+
+                  $steps["updatePassword"] = true
+                    ? (() => {
+                        const actionArgs = { vgroup: "password", operation: 6 };
+                        return (({ vgroup, value }) => {
+                          if (typeof value === "string") {
+                            value = [value];
+                          }
+
+                          $stateSet($state, vgroup, false);
+                          return false;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updatePassword"] != null &&
+                    typeof $steps["updatePassword"] === "object" &&
+                    typeof $steps["updatePassword"].then === "function"
+                  ) {
+                    $steps["updatePassword"] = await $steps["updatePassword"];
                   }
                 }}
               >
@@ -6943,15 +7133,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
         />
 
         <Embed
-          data-plasmic-name={"embedHtml"}
-          data-plasmic-override={overrides.embedHtml}
-          className={classNames("__wab_instance", sty.embedHtml, {
-            [sty.embedHtmlloginByPassword]: hasVariant(
+          className={classNames("__wab_instance", sty.embedHtml__e0PYz, {
+            [sty.embedHtmlloginByPassword__e0PYzGqb7]: hasVariant(
               $state,
               "loginByPassword",
               "loginByPassword"
             ),
-            [sty.embedHtmlunnamedVariant]: hasVariant(
+            [sty.embedHtmlunnamedVariant__e0PYzBNary]: hasVariant(
               $state,
               "unnamedVariant",
               "unnamedVariant"
@@ -6992,6 +7180,7 @@ const PlasmicDescendants = {
     "button3",
     "btnSaraf",
     "sendcode",
+    "button5",
     "figmaPaste",
     "group",
     "group2",
@@ -7008,8 +7197,7 @@ const PlasmicDescendants = {
     "group8",
     "group9",
     "group10",
-    "apiRequest",
-    "embedHtml"
+    "apiRequest"
   ],
   reveal: [
     "reveal",
@@ -7031,6 +7219,7 @@ const PlasmicDescendants = {
     "button3",
     "btnSaraf",
     "sendcode",
+    "button5",
     "figmaPaste",
     "group",
     "group2",
@@ -7074,6 +7263,7 @@ const PlasmicDescendants = {
   button3: ["button3"],
   btnSaraf: ["btnSaraf"],
   sendcode: ["sendcode"],
+  button5: ["button5"],
   figmaPaste: [
     "figmaPaste",
     "group",
@@ -7128,8 +7318,7 @@ const PlasmicDescendants = {
   group8: ["group8"],
   group9: ["group9"],
   group10: ["group10"],
-  apiRequest: ["apiRequest"],
-  embedHtml: ["embedHtml"]
+  apiRequest: ["apiRequest"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7155,6 +7344,7 @@ type NodeDefaultElementType = {
   button3: typeof Button;
   btnSaraf: typeof Button;
   sendcode: typeof Button;
+  button5: typeof Button;
   figmaPaste: "div";
   group: "div";
   group2: "div";
@@ -7172,7 +7362,6 @@ type NodeDefaultElementType = {
   group9: "div";
   group10: "div";
   apiRequest: typeof ApiRequest;
-  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7279,6 +7468,7 @@ export const PlasmicLoginPanel = Object.assign(
     button3: makeNodeComponent("button3"),
     btnSaraf: makeNodeComponent("btnSaraf"),
     sendcode: makeNodeComponent("sendcode"),
+    button5: makeNodeComponent("button5"),
     figmaPaste: makeNodeComponent("figmaPaste"),
     group: makeNodeComponent("group"),
     group2: makeNodeComponent("group2"),
@@ -7296,7 +7486,6 @@ export const PlasmicLoginPanel = Object.assign(
     group9: makeNodeComponent("group9"),
     group10: makeNodeComponent("group10"),
     apiRequest: makeNodeComponent("apiRequest"),
-    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicLoginPanel
     internalVariantProps: PlasmicLoginPanel__VariantProps,

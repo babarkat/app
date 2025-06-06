@@ -173,7 +173,7 @@
 }
 .freeBox___5PujS {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -192,6 +192,7 @@
     justify-content: center;
     align-items: center;
     width: auto;
+    padding-top: 32px;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -199,12 +200,7 @@
     position: absolute;
     top: 0px;
     left: auto;
-    width: 100%;
-    min-width: 0;
   }
-}
-.freeBoxunnamedVariant2___5PujStCajl {
-  padding-bottom: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBoxunnamedVariant2___5PujStCajl {
@@ -214,56 +210,72 @@
     right: auto;
   }
 }
+.freeBoxpassword___5PujSvrixq {
+  width: 100%;
+  min-width: 0;
+}
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBoxpassword___5PujSvrixq {
     position: absolute;
     left: auto;
     top: 0;
-    width: auto;
     right: auto;
   }
 }
+.freeBoxloginByPassword___5PujSgqb7 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+}
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBoxloginByPassword___5PujSgqb7 {
-    left: auto;
-    position: relative;
-    top: auto;
+    left: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
 .svg__o73GI {
   object-fit: cover;
   max-width: 100%;
-  width: 250px;
-  height: 250px;
-  flex-shrink: 0;
+  width: 150px;
+  height: 100%;
+  min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__o73GI {
-    width: auto;
-    height: 200px;
+    width: 120px;
+    height: 100%;
+    min-height: 0;
   }
 }
 .svgpassword__o73GIvrixq {
   color: #2dc57b;
-  width: 250px;
-  height: 250px;
-  flex-shrink: 0;
+  width: 150px;
+  height: 100%;
+  min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svgpassword__o73GIvrixq {
     position: relative;
     left: auto;
     top: auto;
-    height: 200px;
-    opacity: 1;
+    width: 120px;
+    height: 100%;
+    min-height: 0;
   }
 }
-.img__t5UCa {
-  object-fit: cover;
+.text__iAtsS {
+  position: relative;
+  width: 100%;
+  height: auto;
   max-width: 100%;
-}
-.img__t5UCa > picture > img {
-  object-fit: cover;
+  color: var(--token-rrSDs4ZUYTcU);
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  min-width: 0;
 }
 .username {
   flex-direction: column;
@@ -1361,34 +1373,6 @@
 .select2password:global(.__wab_instance) {
   display: none;
 }
-.text___5MFkv {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  color: var(--token-s7Z9BN_B1gNc);
-  text-decoration-line: underline;
-  font-size: 16px;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text___5MFkv {
-    font-size: 14px;
-  }
-}
-.textunnamedVariant___5MFkvBNary {
-  display: none;
-}
-.textunnamedVariant2___5MFkvtCajl {
-  display: none;
-}
-.textpassword___5MFkvVrixq {
-  display: none;
-}
-.textloginByPassword___5MFkvGqb7 {
-  display: none;
-}
 .text___0Fcc8 {
   font-size: 24px;
   text-align: right;
@@ -1795,6 +1779,11 @@
   display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
+  .text__i4UMq {
+    display: none;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
   .textunnamedVariant__i4UMqBNary {
     position: sticky;
     left: 0px;
@@ -1833,11 +1822,12 @@
   text-decoration-line: underline;
   min-width: 0;
   min-height: 0;
-  display: block;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .textloginByPassword__i4UMqGqb7 {
     height: auto;
+    display: none;
   }
 }
 .freeBox__kpVY {
@@ -1861,6 +1851,7 @@
   .freeBox__kpVY {
     padding-right: 0px;
     padding-left: 0px;
+    padding-top: 32px;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -2055,6 +2046,113 @@
 }
 .svgunnamedVariant___8TpxBNary {
   color: #ededec;
+}
+.freeBox__yJ1Ps {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  opacity: 0.4;
+  min-width: 0;
+  padding: 16px 8px;
+}
+.freeBoxunnamedVariant__yJ1PsBNary {
+  display: none;
+}
+.freeBoxunnamedVariant2__yJ1PstCajl {
+  display: none;
+}
+.freeBoxpassword__yJ1PsVrixq {
+  display: none;
+}
+.freeBoxloginByPassword__yJ1PsGqb7 {
+  display: none;
+}
+.embedHtml__y7OGn:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  align-self: center;
+  min-width: 0;
+}
+.text__xHt3Y {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding-right: 8px;
+  padding-left: 8px;
+  color: var(--token-aCLVKlB2IKxe);
+  white-space: pre;
+  font-weight: 700;
+}
+.embedHtml___2402E:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  align-self: center;
+  min-width: 0;
+}
+.button5:global(.__wab_instance) {
+  max-width: 100%;
+  width: 90%;
+}
+.button5unnamedVariant:global(.__wab_instance) {
+  display: none;
+}
+.button5unnamedVariant2:global(.__wab_instance) {
+  display: none;
+}
+.button5password:global(.__wab_instance) {
+  display: none;
+}
+.button5loginByPassword:global(.__wab_instance) {
+  display: none;
+}
+.svg___7TFnQ {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text___5MFkv {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  color: var(--token-s7Z9BN_B1gNc);
+  text-decoration-line: none !important;
+  font-size: 16px;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___5MFkv {
+    font-size: 14px;
+  }
+}
+.textunnamedVariant___5MFkvBNary {
+  display: none;
+}
+.textunnamedVariant2___5MFkvtCajl {
+  display: none;
+}
+.textpassword___5MFkvVrixq {
+  display: none;
+}
+.textloginByPassword___5MFkvGqb7 {
+  display: none;
+}
+.svg__qhxFs {
+  position: relative;
+  object-fit: cover;
+  width: 25px;
+  height: 25px;
+  color: #bbffde;
 }
 .figmaPaste {
   position: relative;
@@ -2566,7 +2664,7 @@
   max-width: 100%;
   object-fit: cover;
 }
-.embedHtml:global(.__wab_instance) {
+.embedHtml__e0PYz:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }
