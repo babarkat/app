@@ -1120,7 +1120,9 @@ function PlasmicPanel__RenderFunc(props: {
                           sty.text__uw2L3
                         )}
                       >
-                        {"\u06a9\u0627\u0631\u0645\u0632\u062f"}
+                        {
+                          "\u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646"
+                        }
                       </div>
                     </div>
                     <div
@@ -13037,7 +13039,6 @@ function PlasmicPanel__RenderFunc(props: {
                 );
               })}
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__i04Fa)} />
           </AntdModal>
           <AntdModal
             data-plasmic-name={"call"}

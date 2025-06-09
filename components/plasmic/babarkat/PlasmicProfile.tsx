@@ -1127,6 +1127,44 @@ function PlasmicProfile__RenderFunc(props: {
                   ) {
                     $steps["updateAddOpen"] = await $steps["updateAddOpen"];
                   }
+
+                  $steps["invokeGlobalAction4"] = true
+                    ? (() => {
+                        const actionArgs = { args: [1000] };
+                        return $globalActions["Fragment.wait"]?.apply(null, [
+                          ...actionArgs.args
+                        ]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction4"] != null &&
+                    typeof $steps["invokeGlobalAction4"] === "object" &&
+                    typeof $steps["invokeGlobalAction4"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction4"] = await $steps[
+                      "invokeGlobalAction4"
+                    ];
+                  }
+
+                  $steps["runCode"] = $steps.invokeGlobalAction?.data?.success
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return window.location.reload();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
                   ((...eventArgs) => {
@@ -1478,6 +1516,45 @@ function PlasmicProfile__RenderFunc(props: {
                     $steps["updateRemoveOpen"] = await $steps[
                       "updateRemoveOpen"
                     ];
+                  }
+
+                  $steps["invokeGlobalAction4"] = $steps.invokeGlobalAction
+                    ?.data?.success
+                    ? (() => {
+                        const actionArgs = { args: [1000] };
+                        return $globalActions["Fragment.wait"]?.apply(null, [
+                          ...actionArgs.args
+                        ]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction4"] != null &&
+                    typeof $steps["invokeGlobalAction4"] === "object" &&
+                    typeof $steps["invokeGlobalAction4"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction4"] = await $steps[
+                      "invokeGlobalAction4"
+                    ];
+                  }
+
+                  $steps["runCode"] = $steps.invokeGlobalAction?.data?.success
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return window.location.reload();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
