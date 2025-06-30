@@ -268,8 +268,9 @@
   opacity: 0.15;
   width: auto;
   height: 100%;
-  filter: contrast(200%);
-  right: 0;
+  filter: brightness(60%);
+  right: auto;
+  bottom: 0;
   min-height: 0;
 }
 .svgsteps2_step3__ztYdhYl49R {

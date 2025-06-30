@@ -84,7 +84,7 @@ import sty from "./PlasmicCharging.module.css"; // plasmic-import: 9ozBjyq1SCcU/
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
-import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
@@ -899,7 +899,7 @@ function PlasmicCharging__RenderFunc(props: {
                     )
                   })}
                 >
-                  <Icon61Icon
+                  <Icon154Icon
                     className={classNames(projectcss.all, sty.svg__gsqLs, {
                       [sty.svgstepscharg_step2__gsqLsTtIk]: hasVariant(
                         $state,

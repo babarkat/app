@@ -45,8 +45,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -104,8 +103,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -139,8 +137,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "a3pmZtcpA5asHkNtN3SGoF",
@@ -222,8 +219,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "58GpZjZCWTaJ8AUhpCwt2K",
@@ -245,8 +241,7 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -274,8 +269,7 @@
           "componentImportPath": "@plasmicpkgs/lottie-react"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "mqxdhm5p6WHAt7hW1mdcCX",
@@ -313,8 +307,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "28Ba3BDvRe7EiWdfFNnLB6",
@@ -524,8 +517,7 @@
           "componentImportPath": "@plasmicpkgs/antd/skinny/registerTable"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -553,8 +545,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "9Vr5YWkf3w7jj6SsTcCEta",
@@ -576,8 +567,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -631,8 +621,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1032,8 +1021,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -3212,6 +3200,16 @@
           "id": "zdcnxUyNrLvF",
           "name": "image 97",
           "filePath": "../public/plasmic/babarkat/images/image97.svg"
+        },
+        {
+          "id": "LX6nPfvHw8E2",
+          "name": "image 77",
+          "filePath": "../public/plasmic/babarkat/images/image77.svg"
+        },
+        {
+          "id": "ycomcxReNMMi",
+          "name": "image 78",
+          "filePath": "../public/plasmic/babarkat/images/image78.svg"
         }
       ],
       "indirect": false,
@@ -3415,8 +3413,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -3474,8 +3471,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-cms"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "cAAqA2dcbTMWwuLSmjs7ss",
@@ -3699,8 +3695,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {

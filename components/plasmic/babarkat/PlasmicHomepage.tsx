@@ -167,6 +167,7 @@ export type PlasmicHomepage__OverridesType = {
   comingSoon3?: Flex__<"div">;
   comingSoon10?: Flex__<"div">;
   comingSoon9?: Flex__<"div">;
+  comingSoon18?: Flex__<"div">;
   comingSoon11?: Flex__<"div">;
   services4?: Flex__<"div">;
   modal?: Flex__<typeof AntdModal>;
@@ -1820,108 +1821,143 @@ function PlasmicHomepage__RenderFunc(props: {
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___8TwDs
+                        sty.freeBox__foOol,
+                        "swiper"
                       )}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToChargingAfg"] = true
-                          ? (() => {
-                              const actionArgs = { destination: `/charging-2` };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToChargingAfg"] != null &&
-                          typeof $steps["goToChargingAfg"] === "object" &&
-                          typeof $steps["goToChargingAfg"].then === "function"
-                        ) {
-                          $steps["goToChargingAfg"] = await $steps[
-                            "goToChargingAfg"
-                          ];
-                        }
-                      }}
-                      style={(() => {
-                        try {
-                          return { overflow: "hidden" };
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
+                      id={"image-slider"}
                     >
-                      <Icon133Icon
-                        className={classNames(projectcss.all, sty.svg__trZqr)}
-                        role={"img"}
-                      />
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__obqSj,
+                          "swiper-wrapper"
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__hd0VR
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
 
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__kYk0K
-                        )}
-                      >
-                        {
-                          "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639 \u0648 \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__em9Jf
-                        )}
-                      >
-                        <PlasmicImg__
-                          alt={""}
-                          className={classNames(sty.img__rpyd)}
-                          displayHeight={
-                            hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "40px"
-                              : "60px"
-                          }
-                          displayMaxHeight={"none"}
-                          displayMaxWidth={"100%"}
-                          displayMinHeight={"0"}
-                          displayMinWidth={"0"}
-                          displayWidth={
-                            hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "40px"
-                              : "60px"
-                          }
-                          loading={"lazy"}
-                          src={
-                            hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? {
-                                  src: "/plasmic/babarkat/images/image64.svg",
-                                  fullWidth: 24,
-                                  fullHeight: 24,
-                                  aspectRatio: 1
-                                }
-                              : {
-                                  src: "/plasmic/babarkat/images/image64.svg",
-                                  fullWidth: 24,
-                                  fullHeight: 24,
-                                  aspectRatio: 1
-                                }
-                          }
-                        />
+                            $steps["goToChargingAfg"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    destination: `/charging-2`
+                                  };
+                                  return (({ destination }) => {
+                                    if (
+                                      typeof destination === "string" &&
+                                      destination.startsWith("#")
+                                    ) {
+                                      document
+                                        .getElementById(destination.substr(1))
+                                        .scrollIntoView({ behavior: "smooth" });
+                                    } else {
+                                      __nextRouter?.push(destination);
+                                    }
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["goToChargingAfg"] != null &&
+                              typeof $steps["goToChargingAfg"] === "object" &&
+                              typeof $steps["goToChargingAfg"].then ===
+                                "function"
+                            ) {
+                              $steps["goToChargingAfg"] = await $steps[
+                                "goToChargingAfg"
+                              ];
+                            }
+                          }}
+                          style={(() => {
+                            try {
+                              return { overflow: "hidden" };
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()}
+                        >
+                          <Icon133Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__ufLi
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__jHsVn
+                            )}
+                          >
+                            {
+                              "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639 \u0648 \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__jNwFy
+                            )}
+                          >
+                            <PlasmicImg__
+                              alt={""}
+                              className={classNames(sty.img__lxzwR)}
+                              displayHeight={
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? "40px"
+                                  : "60px"
+                              }
+                              displayMaxHeight={"none"}
+                              displayMaxWidth={"100%"}
+                              displayMinHeight={"0"}
+                              displayMinWidth={"0"}
+                              displayWidth={
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? "40px"
+                                  : "60px"
+                              }
+                              loading={"lazy"}
+                              src={
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? {
+                                      src: "/plasmic/babarkat/images/image64.svg",
+                                      fullWidth: 24,
+                                      fullHeight: 24,
+                                      aspectRatio: 1
+                                    }
+                                  : {
+                                      src: "/plasmic/babarkat/images/image64.svg",
+                                      fullWidth: 24,
+                                      fullHeight: 24,
+                                      aspectRatio: 1
+                                    }
+                              }
+                            />
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <Stack__
@@ -2811,6 +2847,107 @@ function PlasmicHomepage__RenderFunc(props: {
                                 )
                                   ? "\u067e\u0631\u062f\u0627\u062e\u062a \u0642\u0628\u0636"
                                   : "\u067e\u0631\u062f\u0627\u062e\u062a \u0642\u0628\u0636"}
+                              </div>
+                            </div>
+                            <div
+                              data-plasmic-name={"comingSoon18"}
+                              data-plasmic-override={overrides.comingSoon18}
+                              className={classNames(
+                                projectcss.all,
+                                sty.comingSoon18
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["goToPage"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        destination: (() => {
+                                          try {
+                                            return `/Bill/?type=mobile`;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return `/Bill`;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      };
+                                      return (({ destination }) => {
+                                        if (
+                                          typeof destination === "string" &&
+                                          destination.startsWith("#")
+                                        ) {
+                                          document
+                                            .getElementById(
+                                              destination.substr(1)
+                                            )
+                                            .scrollIntoView({
+                                              behavior: "smooth"
+                                            });
+                                        } else {
+                                          __nextRouter?.push(destination);
+                                        }
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["goToPage"] != null &&
+                                  typeof $steps["goToPage"] === "object" &&
+                                  typeof $steps["goToPage"].then === "function"
+                                ) {
+                                  $steps["goToPage"] = await $steps["goToPage"];
+                                }
+                              }}
+                            >
+                              <PlasmicImg__
+                                alt={""}
+                                className={classNames(sty.img__ooMl1)}
+                                displayHeight={
+                                  hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  )
+                                    ? "40px"
+                                    : "60px"
+                                }
+                                displayMaxHeight={"none"}
+                                displayMaxWidth={"100%"}
+                                displayMinHeight={"0"}
+                                displayMinWidth={"0"}
+                                displayWidth={
+                                  hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  )
+                                    ? "40px"
+                                    : "60px"
+                                }
+                                loading={"lazy"}
+                                src={{
+                                  src: "/plasmic/babarkat/images/image77.svg",
+                                  fullWidth: 24,
+                                  fullHeight: 24,
+                                  aspectRatio: undefined
+                                }}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___3I4P
+                                )}
+                              >
+                                {
+                                  "\u0642\u0628\u0636 \u0645\u0648\u0628\u0627\u06cc\u0644"
+                                }
                               </div>
                             </div>
                             <div
@@ -15826,6 +15963,7 @@ const PlasmicDescendants = {
     "comingSoon3",
     "comingSoon10",
     "comingSoon9",
+    "comingSoon18",
     "comingSoon11",
     "services4",
     "modal",
@@ -15893,6 +16031,7 @@ const PlasmicDescendants = {
     "comingSoon3",
     "comingSoon10",
     "comingSoon9",
+    "comingSoon18",
     "comingSoon11",
     "services4"
   ],
@@ -15923,6 +16062,7 @@ const PlasmicDescendants = {
     "comingSoon3",
     "comingSoon10",
     "comingSoon9",
+    "comingSoon18",
     "comingSoon11"
   ],
   swiperWrapper: [
@@ -15936,6 +16076,7 @@ const PlasmicDescendants = {
     "comingSoon3",
     "comingSoon10",
     "comingSoon9",
+    "comingSoon18",
     "comingSoon11"
   ],
   swiperSlide: [
@@ -15948,6 +16089,7 @@ const PlasmicDescendants = {
     "comingSoon3",
     "comingSoon10",
     "comingSoon9",
+    "comingSoon18",
     "comingSoon11"
   ],
   internet3: ["internet3"],
@@ -15958,6 +16100,7 @@ const PlasmicDescendants = {
   comingSoon3: ["comingSoon3"],
   comingSoon10: ["comingSoon10"],
   comingSoon9: ["comingSoon9"],
+  comingSoon18: ["comingSoon18"],
   comingSoon11: ["comingSoon11"],
   services4: ["services4"],
   modal: ["modal", "wallet2", "input", "operators4", "boxselect4", "button3"],
@@ -16035,6 +16178,7 @@ type NodeDefaultElementType = {
   comingSoon3: "div";
   comingSoon10: "div";
   comingSoon9: "div";
+  comingSoon18: "div";
   comingSoon11: "div";
   services4: "div";
   modal: typeof AntdModal;
@@ -16187,6 +16331,7 @@ export const PlasmicHomepage = Object.assign(
     comingSoon3: makeNodeComponent("comingSoon3"),
     comingSoon10: makeNodeComponent("comingSoon10"),
     comingSoon9: makeNodeComponent("comingSoon9"),
+    comingSoon18: makeNodeComponent("comingSoon18"),
     comingSoon11: makeNodeComponent("comingSoon11"),
     services4: makeNodeComponent("services4"),
     modal: makeNodeComponent("modal"),

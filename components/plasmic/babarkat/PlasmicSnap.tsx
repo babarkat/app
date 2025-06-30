@@ -83,7 +83,7 @@ import sty from "./PlasmicSnap.module.css"; // plasmic-import: ZCvnmuylbYRk/css
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
@@ -883,7 +883,7 @@ function PlasmicSnap__RenderFunc(props: {
                     )
                   })}
                 >
-                  <BabarkatlogoCopy2SvgIcon
+                  <Icon154Icon
                     className={classNames(projectcss.all, sty.svg__p6Ujp, {
                       [sty.svgstepscharg_step3__p6UjpzZ317]: hasVariant(
                         $state,

@@ -85,8 +85,7 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicHeader.module.css"; // plasmic-import: guZRqy1VG4VR/css
 
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
-import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
+import Icon131Icon from "./icons/PlasmicIcon__Icon131"; // plasmic-import: mk8KWA0sV7w5/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
 import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
@@ -109,6 +108,8 @@ import Icon36Icon from "./icons/PlasmicIcon__Icon36"; // plasmic-import: Zi-CDKu
 import Icon57Icon from "./icons/PlasmicIcon__Icon57"; // plasmic-import: T9OBsfBXupjw/icon
 import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
+import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
+import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 import __lib_md5 from "md5";
@@ -151,7 +152,6 @@ export type PlasmicHeader__OverridesType = {
   button3?: Flex__<typeof Button>;
   editSaraf?: Flex__<typeof AntdModal>;
   wallet6?: Flex__<"div">;
-  img?: Flex__<typeof PlasmicImg__>;
   fragmentInput?: Flex__<typeof Input>;
   fragmentInput3?: Flex__<typeof Input>;
   fragmentInput2?: Flex__<typeof Input>;
@@ -667,18 +667,13 @@ function PlasmicHeader__RenderFunc(props: {
         sty.header
       )}
     >
-      <BabarkatlogoCopy2SvgIcon
-        className={classNames(projectcss.all, sty.svg__mvySp)}
-        role={"img"}
-      />
-
       <Stack__
         as={"div"}
         hasGap={true}
         className={classNames(projectcss.all, sty.freeBox__nBoJs)}
       >
         <div className={classNames(projectcss.all, sty.freeBox__h41B6)}>
-          <GroupSvgIcon
+          <Icon131Icon
             className={classNames(projectcss.all, sty.svg__bVNe)}
             onClick={async event => {
               const $steps = {};
@@ -775,6 +770,25 @@ function PlasmicHeader__RenderFunc(props: {
           </div>
         </PercentageBox>
       </Stack__>
+      <div className={classNames(projectcss.all, sty.freeBox__zrghs)}>
+        <PlasmicImg__
+          alt={""}
+          className={classNames(sty.img__utyQr)}
+          displayHeight={"40px"}
+          displayMaxHeight={"none"}
+          displayMaxWidth={"100%"}
+          displayMinHeight={"0"}
+          displayMinWidth={"0"}
+          displayWidth={"auto"}
+          loading={"lazy"}
+          src={{
+            src: "/plasmic/babarkat/images/image78.svg",
+            fullWidth: 512,
+            fullHeight: 512,
+            aspectRatio: 1
+          }}
+        />
+      </div>
       <Icon4Icon
         className={classNames(projectcss.all, sty.svg___4Y1Ns)}
         role={"img"}
@@ -1267,10 +1281,8 @@ function PlasmicHeader__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__wLrkG)}>
                 {false ? (
                   <PlasmicImg__
-                    data-plasmic-name={"img"}
-                    data-plasmic-override={overrides.img}
                     alt={""}
-                    className={classNames(sty.img)}
+                    className={classNames(sty.img__zhN5)}
                     displayHeight={"auto"}
                     displayMaxHeight={"none"}
                     displayMaxWidth={"100%"}
@@ -4412,7 +4424,6 @@ const PlasmicDescendants = {
     "button3",
     "editSaraf",
     "wallet6",
-    "img",
     "fragmentInput",
     "fragmentInput3",
     "fragmentInput2",
@@ -4472,7 +4483,6 @@ const PlasmicDescendants = {
   editSaraf: [
     "editSaraf",
     "wallet6",
-    "img",
     "fragmentInput",
     "fragmentInput3",
     "fragmentInput2",
@@ -4499,7 +4509,6 @@ const PlasmicDescendants = {
     "group8"
   ],
   wallet6: ["wallet6"],
-  img: ["img"],
   fragmentInput: ["fragmentInput"],
   fragmentInput3: ["fragmentInput3"],
   fragmentInput2: ["fragmentInput2"],
@@ -4600,7 +4609,6 @@ type NodeDefaultElementType = {
   button3: typeof Button;
   editSaraf: typeof AntdModal;
   wallet6: "div";
-  img: typeof PlasmicImg__;
   fragmentInput: typeof Input;
   fragmentInput3: typeof Input;
   fragmentInput2: typeof Input;
@@ -4711,7 +4719,6 @@ export const PlasmicHeader = Object.assign(
     button3: makeNodeComponent("button3"),
     editSaraf: makeNodeComponent("editSaraf"),
     wallet6: makeNodeComponent("wallet6"),
-    img: makeNodeComponent("img"),
     fragmentInput: makeNodeComponent("fragmentInput"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
     fragmentInput2: makeNodeComponent("fragmentInput2"),

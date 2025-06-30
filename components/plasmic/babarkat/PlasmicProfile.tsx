@@ -883,9 +883,72 @@ function PlasmicProfile__RenderFunc(props: {
                       "valueAdd",
                       "value"
                     ]).apply(null, eventArgs);
+
+                    (async value => {
+                      const $steps = {};
+
+                      $steps["updateValueAddValue"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["valueAdd", "value"]
+                              },
+                              operation: 0,
+                              value: (() => {
+                                function addCommas(numberString) {
+                                  numberString = numberString.replace(
+                                    /[^\d]/g,
+                                    ""
+                                  );
+                                  let result = "";
+                                  let count = 0;
+                                  for (
+                                    let i = numberString.length - 1;
+                                    i >= 0;
+                                    i--
+                                  ) {
+                                    result = numberString[i] + result;
+                                    count++;
+                                    if (count === 3 && i !== 0) {
+                                      result = "," + result;
+                                      count = 0;
+                                    }
+                                  }
+                                  return result;
+                                }
+                                return addCommas($state.valueAdd.value);
+                              })()
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateValueAddValue"] != null &&
+                        typeof $steps["updateValueAddValue"] === "object" &&
+                        typeof $steps["updateValueAddValue"].then === "function"
+                      ) {
+                        $steps["updateValueAddValue"] = await $steps[
+                          "updateValueAddValue"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   placeholder={"\u0645\u0628\u0644\u063a"}
-                  type={"number"}
+                  type={"text"}
                   value={generateStateValueProp($state, ["valueAdd", "value"])}
                 />
 
@@ -1003,7 +1066,8 @@ function PlasmicProfile__RenderFunc(props: {
                                   return {
                                     userToken: $state.token,
                                     _customer: $state.customerInfo.id,
-                                    value: parseInt($state.valueAdd.value),
+                                    value:
+                                      parseInt($state.valueAdd.value) / 1000,
                                     priceType: $state.select.value,
                                     type: "transmission",
                                     text: $state.info.value
@@ -1270,9 +1334,73 @@ function PlasmicProfile__RenderFunc(props: {
                       "valueAdd2",
                       "value"
                     ]).apply(null, eventArgs);
+
+                    (async value => {
+                      const $steps = {};
+
+                      $steps["updateValueAdd2Value"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["valueAdd2", "value"]
+                              },
+                              operation: 0,
+                              value: (() => {
+                                function addCommas(numberString) {
+                                  numberString = numberString.replace(
+                                    /[^\d]/g,
+                                    ""
+                                  );
+                                  let result = "";
+                                  let count = 0;
+                                  for (
+                                    let i = numberString.length - 1;
+                                    i >= 0;
+                                    i--
+                                  ) {
+                                    result = numberString[i] + result;
+                                    count++;
+                                    if (count === 3 && i !== 0) {
+                                      result = "," + result;
+                                      count = 0;
+                                    }
+                                  }
+                                  return result;
+                                }
+                                return addCommas($state.valueAdd2.value);
+                              })()
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateValueAdd2Value"] != null &&
+                        typeof $steps["updateValueAdd2Value"] === "object" &&
+                        typeof $steps["updateValueAdd2Value"].then ===
+                          "function"
+                      ) {
+                        $steps["updateValueAdd2Value"] = await $steps[
+                          "updateValueAdd2Value"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
                   }}
                   placeholder={"\u0645\u0628\u0644\u063a"}
-                  type={"number"}
+                  type={"text"}
                   value={generateStateValueProp($state, ["valueAdd2", "value"])}
                 />
 

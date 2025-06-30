@@ -73,6 +73,7 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -87,6 +88,7 @@ import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
@@ -195,6 +197,7 @@ export type PlasmicBill__OverridesType = {
   exitModal?: Flex__<typeof AntdModal>;
   button5?: Flex__<typeof Button>;
   button6?: Flex__<typeof Button>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultBillProps {}
@@ -1338,7 +1341,12 @@ function PlasmicBill__RenderFunc(props: {
                   )
                 })}
               >
-                <Icon61Icon
+                <PlasmicIcon__
+                  PlasmicIconType={
+                    hasVariant($state, "stepscharg", "step3")
+                      ? Icon154Icon
+                      : Icon61Icon
+                  }
                   className={classNames(projectcss.all, sty.svg__yjxOe, {
                     [sty.svgstepscharg_step1__yjxOeqKzi3]: hasVariant(
                       $state,
@@ -10646,6 +10654,84 @@ function PlasmicBill__RenderFunc(props: {
             </Button>
           </Stack__>
         </AntdModal>
+        <SideEffect
+          data-plasmic-name={"sideEffect"}
+          data-plasmic-override={overrides.sideEffect}
+          className={classNames("__wab_instance", sty.sideEffect, {
+            [sty.sideEffectstepscharg_step1]: hasVariant(
+              $state,
+              "stepscharg",
+              "step1"
+            ),
+            [sty.sideEffectstepscharg_step2]: hasVariant(
+              $state,
+              "stepscharg",
+              "step2"
+            )
+          })}
+          onMount={async () => {
+            const $steps = {};
+
+            $steps["updateType"] = true
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["type"]
+                    },
+                    operation: 0,
+                    value:
+                      $ctx.query.type ||
+                      new URLSearchParams(window.location.search).urlParams.get(
+                        "type"
+                      )
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateType"] != null &&
+              typeof $steps["updateType"] === "object" &&
+              typeof $steps["updateType"].then === "function"
+            ) {
+              $steps["updateType"] = await $steps["updateType"];
+            }
+
+            $steps["updateStepscharg"] =
+              $state.type != ""
+                ? (() => {
+                    const actionArgs = {
+                      vgroup: "stepscharg",
+                      operation: 0,
+                      value: "step1"
+                    };
+                    return (({ vgroup, value }) => {
+                      if (typeof value === "string") {
+                        value = [value];
+                      }
+
+                      $stateSet($state, vgroup, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+            if (
+              $steps["updateStepscharg"] != null &&
+              typeof $steps["updateStepscharg"] === "object" &&
+              typeof $steps["updateStepscharg"].then === "function"
+            ) {
+              $steps["updateStepscharg"] = await $steps["updateStepscharg"];
+            }
+          }}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -10718,7 +10804,8 @@ const PlasmicDescendants = {
     "loading",
     "exitModal",
     "button5",
-    "button6"
+    "button6",
+    "sideEffect"
   ],
   header: ["header"],
   reveal: [
@@ -10873,7 +10960,8 @@ const PlasmicDescendants = {
   loading: ["loading"],
   exitModal: ["exitModal", "button5", "button6"],
   button5: ["button5"],
-  button6: ["button6"]
+  button6: ["button6"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -10945,6 +11033,7 @@ type NodeDefaultElementType = {
   exitModal: typeof AntdModal;
   button5: typeof Button;
   button6: typeof Button;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -11101,6 +11190,7 @@ export const PlasmicBill = Object.assign(
     exitModal: makeNodeComponent("exitModal"),
     button5: makeNodeComponent("button5"),
     button6: makeNodeComponent("button6"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicBill
     internalVariantProps: PlasmicBill__VariantProps,

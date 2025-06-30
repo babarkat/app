@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" x="0" y="0" version="1.1" viewBox="0 0 512 512">
+  <linearGradient id="a" x1="194.922" x2="-21.212" y1="7.653" y2="190.549" gradientTransform="matrix(.9037 .0217 -.0552 .8824 134.734 100.119)" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#40b776"/>
+    <stop offset=".498" stop-color="#3eb576"/>
+    <stop offset=".751" stop-color="#36af76"/>
+    <stop offset=".949" stop-color="#29a476"/>
+    <stop offset="1" stop-color="#24a076"/>
+  </linearGradient>
+  <path fill="url(#a)" d="M340.46 168.11 110.8 299.75V197.98c1.19-18.67 14.45-27.99 24.76-33.96L365.2 31v96.18c0 23.4-4.29 29.42-24.74 40.93"/>
+  <linearGradient id="b" x1="119.769" x2="255.402" y1="318.688" y2="318.688" gradientTransform="matrix(.9978 -.0187 -.0275 1.0315 -1.897 -4.347)" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#40b776"/>
+    <stop offset="1" stop-color="#24a076"/>
+  </linearGradient>
+  <path fill="url(#b)" d="m119.04 322.13 123.17 70.99-.02-55.3c-.43-10.31-7.22-17.48-12.64-20.55L110.8 248.65l.26 54.73c-.01 5.35.59 14.83 7.98 18.75"/>
+  <linearGradient id="c" x1="207.264" x2="257.149" y1="381.558" y2="410.555" gradientTransform="rotate(9.032 717.115 670.935)" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#40b776"/>
+    <stop offset=".371" stop-color="#3bb376"/>
+    <stop offset=".823" stop-color="#2ca676"/>
+    <stop offset="1" stop-color="#24a076"/>
+  </linearGradient>
+  <path fill="url(#c)" d="m242.21 393.12.17-118.31 60.91-35.17v118.89z"/>
+  <linearGradient id="d" x1="276.294" x2="215.792" y1="434.711" y2="443.088" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#40b776"/>
+    <stop offset="1" stop-color="#24a076"/>
+  </linearGradient>
+  <ellipse cx="244.05" cy="439.17" fill="url(#d)" rx="28.87" ry="31.82"/>
+</svg>
