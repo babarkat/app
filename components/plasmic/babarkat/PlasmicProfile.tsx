@@ -227,13 +227,13 @@ function PlasmicProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return undefined;
+              return $state.loadingviow;
             } catch (e) {
               if (
                 e instanceof TypeError ||
                 e?.plasmicType === "PlasmicUndefinedDataError"
               ) {
-                return [];
+                return undefined;
               }
               throw e;
             }
@@ -380,6 +380,18 @@ function PlasmicProfile__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+      },
+      {
+        path: "textNumber",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "textNum2",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -887,37 +899,125 @@ function PlasmicProfile__RenderFunc(props: {
                     (async value => {
                       const $steps = {};
 
-                      $steps["updateValueAddValue"] = true
+                      $steps["updateTextNumber"] = true
                         ? (() => {
                             const actionArgs = {
                               variable: {
                                 objRoot: $state,
-                                variablePath: ["valueAdd", "value"]
+                                variablePath: ["textNumber"]
                               },
                               operation: 0,
                               value: (() => {
-                                function addCommas(numberString) {
-                                  numberString = numberString.replace(
-                                    /[^\d]/g,
-                                    ""
-                                  );
-                                  let result = "";
-                                  let count = 0;
-                                  for (
-                                    let i = numberString.length - 1;
-                                    i >= 0;
-                                    i--
-                                  ) {
-                                    result = numberString[i] + result;
-                                    count++;
-                                    if (count === 3 && i !== 0) {
-                                      result = "," + result;
-                                      count = 0;
+                                function numberToPersianText(number) {
+                                  const yekan = [
+                                    "",
+                                    "یک",
+                                    "دو",
+                                    "سه",
+                                    "چهار",
+                                    "پنج",
+                                    "شش",
+                                    "هفت",
+                                    "هشت",
+                                    "نه"
+                                  ];
+
+                                  const dahgan = [
+                                    "",
+                                    "ده",
+                                    "بیست",
+                                    "سی",
+                                    "چهل",
+                                    "پنجاه",
+                                    "شصت",
+                                    "هفتاد",
+                                    "هشتاد",
+                                    "نود"
+                                  ];
+
+                                  const sadgan = [
+                                    "",
+                                    "صد",
+                                    "دویست",
+                                    "سیصد",
+                                    "چهارصد",
+                                    "پانصد",
+                                    "ششصد",
+                                    "هفتصد",
+                                    "هشتصد",
+                                    "نهصد"
+                                  ];
+
+                                  const dahYek = [
+                                    "ده",
+                                    "یازده",
+                                    "دوازده",
+                                    "سیزده",
+                                    "چهارده",
+                                    "پانزده",
+                                    "شانزده",
+                                    "هفده",
+                                    "هجده",
+                                    "نوزده"
+                                  ];
+
+                                  const hazarha = [
+                                    "",
+                                    "هزار",
+                                    "میلیون",
+                                    "میلیارد",
+                                    "بیلیون"
+                                  ];
+
+                                  function threeDigitToText(num) {
+                                    num = parseInt(num, 10);
+                                    if (num === 0) return "";
+                                    let result = "";
+                                    if (Math.floor(num / 100) > 0) {
+                                      result += sadgan[Math.floor(num / 100)];
+                                    }
+                                    num %= 100;
+                                    if (num >= 10 && num <= 19) {
+                                      result +=
+                                        (result ? " و " : "") +
+                                        dahYek[num - 10];
+                                    } else {
+                                      if (Math.floor(num / 10) > 0) {
+                                        result +=
+                                          (result ? " و " : "") +
+                                          dahgan[Math.floor(num / 10)];
+                                      }
+                                      if (num % 10 > 0) {
+                                        result +=
+                                          (result ? " و " : "") +
+                                          yekan[num % 10];
+                                      }
+                                    }
+                                    return result;
+                                  }
+                                  if (number === 0) return "صفر";
+                                  let numStr = number.toString();
+                                  let chunks = [];
+                                  while (numStr.length > 0) {
+                                    chunks.push(numStr.slice(-3));
+                                    numStr = numStr.slice(0, -3);
+                                  }
+                                  let parts = [];
+                                  for (let i = 0; i < chunks.length; i++) {
+                                    let chunk = parseInt(chunks[i], 10);
+                                    if (chunk !== 0) {
+                                      let text = threeDigitToText(chunk);
+                                      if (hazarha[i]) {
+                                        text += " " + hazarha[i];
+                                      }
+                                      parts.unshift(text);
                                     }
                                   }
-                                  return result;
+                                  return parts.join(" و ");
                                 }
-                                return addCommas($state.valueAdd.value);
+                                return numberToPersianText(
+                                  $state.valueAdd.value
+                                );
                               })()
                             };
                             return (({
@@ -937,18 +1037,18 @@ function PlasmicProfile__RenderFunc(props: {
                           })()
                         : undefined;
                       if (
-                        $steps["updateValueAddValue"] != null &&
-                        typeof $steps["updateValueAddValue"] === "object" &&
-                        typeof $steps["updateValueAddValue"].then === "function"
+                        $steps["updateTextNumber"] != null &&
+                        typeof $steps["updateTextNumber"] === "object" &&
+                        typeof $steps["updateTextNumber"].then === "function"
                       ) {
-                        $steps["updateValueAddValue"] = await $steps[
-                          "updateValueAddValue"
+                        $steps["updateTextNumber"] = await $steps[
+                          "updateTextNumber"
                         ];
                       }
                     }).apply(null, eventArgs);
                   }}
                   placeholder={"\u0645\u0628\u0644\u063a"}
-                  type={"text"}
+                  type={"number"}
                   value={generateStateValueProp($state, ["valueAdd", "value"])}
                 />
 
@@ -1003,6 +1103,35 @@ function PlasmicProfile__RenderFunc(props: {
                   role={"img"}
                 />
               </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ne4H1
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (
+                        $state.textNumber +
+                        "   " +
+                        $state.carts.find(
+                          item => item.id == $state.select.value
+                        ).name
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </div>
               {(() => {
                 const child$Props = {
                   className: classNames("__wab_instance", sty.info),
@@ -1044,12 +1173,62 @@ function PlasmicProfile__RenderFunc(props: {
                 data-plasmic-override={overrides.button3}
                 className={classNames("__wab_instance", sty.button3)}
                 color={"green"}
+                isDisabled={(() => {
+                  try {
+                    return $state.button3.loadingviow;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()}
                 loadingviow={generateStateValueProp($state, [
                   "button3",
                   "loadingviow"
                 ])}
                 onClick={async event => {
                   const $steps = {};
+
+                  $steps["updateButton3Loadingviow"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["button3", "loadingviow"]
+                          },
+                          operation: 4
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateButton3Loadingviow"] != null &&
+                    typeof $steps["updateButton3Loadingviow"] === "object" &&
+                    typeof $steps["updateButton3Loadingviow"].then ===
+                      "function"
+                  ) {
+                    $steps["updateButton3Loadingviow"] = await $steps[
+                      "updateButton3Loadingviow"
+                    ];
+                  }
 
                   $steps["invokeGlobalAction"] =
                     $state.valueAdd.value != "" &&
@@ -1067,7 +1246,9 @@ function PlasmicProfile__RenderFunc(props: {
                                     userToken: $state.token,
                                     _customer: $state.customerInfo.id,
                                     value:
-                                      parseInt($state.valueAdd.value) / 1000,
+                                      $state.select.value == "toman"
+                                        ? parseInt($state.valueAdd.value) / 1000
+                                        : parseInt($state.valueAdd.value),
                                     priceType: $state.select.value,
                                     type: "transmission",
                                     text: $state.info.value
@@ -1229,6 +1410,43 @@ function PlasmicProfile__RenderFunc(props: {
                   ) {
                     $steps["runCode"] = await $steps["runCode"];
                   }
+
+                  $steps["updateButtonLoadingviow2"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["button3", "loadingviow"]
+                          },
+                          operation: 4
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateButtonLoadingviow2"] != null &&
+                    typeof $steps["updateButtonLoadingviow2"] === "object" &&
+                    typeof $steps["updateButtonLoadingviow2"].then ===
+                      "function"
+                  ) {
+                    $steps["updateButtonLoadingviow2"] = await $steps[
+                      "updateButtonLoadingviow2"
+                    ];
+                  }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
                   ((...eventArgs) => {
@@ -1338,37 +1556,125 @@ function PlasmicProfile__RenderFunc(props: {
                     (async value => {
                       const $steps = {};
 
-                      $steps["updateValueAdd2Value"] = true
+                      $steps["updateTextNum2"] = true
                         ? (() => {
                             const actionArgs = {
                               variable: {
                                 objRoot: $state,
-                                variablePath: ["valueAdd2", "value"]
+                                variablePath: ["textNum2"]
                               },
                               operation: 0,
                               value: (() => {
-                                function addCommas(numberString) {
-                                  numberString = numberString.replace(
-                                    /[^\d]/g,
-                                    ""
-                                  );
-                                  let result = "";
-                                  let count = 0;
-                                  for (
-                                    let i = numberString.length - 1;
-                                    i >= 0;
-                                    i--
-                                  ) {
-                                    result = numberString[i] + result;
-                                    count++;
-                                    if (count === 3 && i !== 0) {
-                                      result = "," + result;
-                                      count = 0;
+                                function numberToPersianText(number) {
+                                  const yekan = [
+                                    "",
+                                    "یک",
+                                    "دو",
+                                    "سه",
+                                    "چهار",
+                                    "پنج",
+                                    "شش",
+                                    "هفت",
+                                    "هشت",
+                                    "نه"
+                                  ];
+
+                                  const dahgan = [
+                                    "",
+                                    "ده",
+                                    "بیست",
+                                    "سی",
+                                    "چهل",
+                                    "پنجاه",
+                                    "شصت",
+                                    "هفتاد",
+                                    "هشتاد",
+                                    "نود"
+                                  ];
+
+                                  const sadgan = [
+                                    "",
+                                    "صد",
+                                    "دویست",
+                                    "سیصد",
+                                    "چهارصد",
+                                    "پانصد",
+                                    "ششصد",
+                                    "هفتصد",
+                                    "هشتصد",
+                                    "نهصد"
+                                  ];
+
+                                  const dahYek = [
+                                    "ده",
+                                    "یازده",
+                                    "دوازده",
+                                    "سیزده",
+                                    "چهارده",
+                                    "پانزده",
+                                    "شانزده",
+                                    "هفده",
+                                    "هجده",
+                                    "نوزده"
+                                  ];
+
+                                  const hazarha = [
+                                    "",
+                                    "هزار",
+                                    "میلیون",
+                                    "میلیارد",
+                                    "بیلیون"
+                                  ];
+
+                                  function threeDigitToText(num) {
+                                    num = parseInt(num, 10);
+                                    if (num === 0) return "";
+                                    let result = "";
+                                    if (Math.floor(num / 100) > 0) {
+                                      result += sadgan[Math.floor(num / 100)];
+                                    }
+                                    num %= 100;
+                                    if (num >= 10 && num <= 19) {
+                                      result +=
+                                        (result ? " و " : "") +
+                                        dahYek[num - 10];
+                                    } else {
+                                      if (Math.floor(num / 10) > 0) {
+                                        result +=
+                                          (result ? " و " : "") +
+                                          dahgan[Math.floor(num / 10)];
+                                      }
+                                      if (num % 10 > 0) {
+                                        result +=
+                                          (result ? " و " : "") +
+                                          yekan[num % 10];
+                                      }
+                                    }
+                                    return result;
+                                  }
+                                  if (number === 0) return "صفر";
+                                  let numStr = number.toString();
+                                  let chunks = [];
+                                  while (numStr.length > 0) {
+                                    chunks.push(numStr.slice(-3));
+                                    numStr = numStr.slice(0, -3);
+                                  }
+                                  let parts = [];
+                                  for (let i = 0; i < chunks.length; i++) {
+                                    let chunk = parseInt(chunks[i], 10);
+                                    if (chunk !== 0) {
+                                      let text = threeDigitToText(chunk);
+                                      if (hazarha[i]) {
+                                        text += " " + hazarha[i];
+                                      }
+                                      parts.unshift(text);
                                     }
                                   }
-                                  return result;
+                                  return parts.join(" و ");
                                 }
-                                return addCommas($state.valueAdd2.value);
+                                return numberToPersianText(
+                                  $state.valueAdd2.value
+                                );
                               })()
                             };
                             return (({
@@ -1388,19 +1694,18 @@ function PlasmicProfile__RenderFunc(props: {
                           })()
                         : undefined;
                       if (
-                        $steps["updateValueAdd2Value"] != null &&
-                        typeof $steps["updateValueAdd2Value"] === "object" &&
-                        typeof $steps["updateValueAdd2Value"].then ===
-                          "function"
+                        $steps["updateTextNum2"] != null &&
+                        typeof $steps["updateTextNum2"] === "object" &&
+                        typeof $steps["updateTextNum2"].then === "function"
                       ) {
-                        $steps["updateValueAdd2Value"] = await $steps[
-                          "updateValueAdd2Value"
+                        $steps["updateTextNum2"] = await $steps[
+                          "updateTextNum2"
                         ];
                       }
                     }).apply(null, eventArgs);
                   }}
                   placeholder={"\u0645\u0628\u0644\u063a"}
-                  type={"text"}
+                  type={"number"}
                   value={generateStateValueProp($state, ["valueAdd2", "value"])}
                 />
 
@@ -1455,6 +1760,35 @@ function PlasmicProfile__RenderFunc(props: {
                   role={"img"}
                 />
               </div>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___0GQa6
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return (
+                        $state.textNum2 +
+                        "   " +
+                        $state.carts.find(
+                          item => item.id == $state.select2.value
+                        ).name
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </div>
               {(() => {
                 const child$Props = {
                   className: classNames("__wab_instance", sty.info2),
@@ -1496,12 +1830,62 @@ function PlasmicProfile__RenderFunc(props: {
                 data-plasmic-override={overrides.button4}
                 className={classNames("__wab_instance", sty.button4)}
                 color={"red"}
+                isDisabled={(() => {
+                  try {
+                    return $state.button4.loadingviow;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
+                    }
+                    throw e;
+                  }
+                })()}
                 loadingviow={generateStateValueProp($state, [
                   "button4",
                   "loadingviow"
                 ])}
                 onClick={async event => {
                   const $steps = {};
+
+                  $steps["updateButton4Loadingviow"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["button4", "loadingviow"]
+                          },
+                          operation: 4
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateButton4Loadingviow"] != null &&
+                    typeof $steps["updateButton4Loadingviow"] === "object" &&
+                    typeof $steps["updateButton4Loadingviow"].then ===
+                      "function"
+                  ) {
+                    $steps["updateButton4Loadingviow"] = await $steps[
+                      "updateButton4Loadingviow"
+                    ];
+                  }
 
                   $steps["invokeGlobalAction"] =
                     $state.valueAdd2.value != "" &&
@@ -1519,10 +1903,14 @@ function PlasmicProfile__RenderFunc(props: {
                                     userToken: $state.token,
                                     _customer: $state.customerInfo.id,
                                     value:
-                                      -1 * parseInt($state.valueAdd2.value),
-                                    priceType: $state.select2.value,
+                                      -1 *
+                                      ($state.select.value == "toman"
+                                        ? parseInt($state.valueAdd2.value) /
+                                          1000
+                                        : parseInt($state.valueAdd2.value)),
+                                    priceType: $state.select.value,
                                     type: "transmission",
-                                    text: $state.info2.value
+                                    text: $state.info.value
                                   };
                                 } catch (e) {
                                   if (
@@ -1683,6 +2071,43 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["runCode"].then === "function"
                   ) {
                     $steps["runCode"] = await $steps["runCode"];
+                  }
+
+                  $steps["updateButtonLoadingviow2"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["button4", "loadingviow"]
+                          },
+                          operation: 4
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateButtonLoadingviow2"] != null &&
+                    typeof $steps["updateButtonLoadingviow2"] === "object" &&
+                    typeof $steps["updateButtonLoadingviow2"].then ===
+                      "function"
+                  ) {
+                    $steps["updateButtonLoadingviow2"] = await $steps[
+                      "updateButtonLoadingviow2"
+                    ];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {

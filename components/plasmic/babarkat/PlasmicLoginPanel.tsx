@@ -885,11 +885,11 @@ function PlasmicLoginPanel__RenderFunc(props: {
             $steps["updatePassword"] = await $steps["updatePassword"];
           }
 
-          $steps["goToHomepage"] =
+          $steps["goToPanel"] =
             localStorage.getItem("userbabarcat") != null &&
             sessionStorage.getItem("userbabarcatToken") != null
               ? (() => {
-                  const actionArgs = { destination: `/` };
+                  const actionArgs = { destination: `/panel` };
                   return (({ destination }) => {
                     if (
                       typeof destination === "string" &&
@@ -905,11 +905,11 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })()
               : undefined;
           if (
-            $steps["goToHomepage"] != null &&
-            typeof $steps["goToHomepage"] === "object" &&
-            typeof $steps["goToHomepage"].then === "function"
+            $steps["goToPanel"] != null &&
+            typeof $steps["goToPanel"] === "object" &&
+            typeof $steps["goToPanel"].then === "function"
           ) {
-            $steps["goToHomepage"] = await $steps["goToHomepage"];
+            $steps["goToPanel"] = await $steps["goToPanel"];
           }
         }}
       >

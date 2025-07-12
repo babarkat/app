@@ -75,6 +75,7 @@ import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -101,7 +102,6 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsF
 import Group3SvgIcon from "./icons/PlasmicIcon__Group3Svg"; // plasmic-import: 3nXrgMVaV7TW/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -167,6 +167,8 @@ export type PlasmicPubg__OverridesType = {
   button6?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
+  shopModal?: Flex__<typeof ShopModal>;
+  exchangeRate?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultPubgProps {}
@@ -792,6 +794,48 @@ function PlasmicPubg__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "shopModal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "shopModal.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "shopModal.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "exchangeRate.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchangeRate.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchangeRate.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "rate2",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -4750,8 +4794,61 @@ function PlasmicPubg__RenderFunc(props: {
                           )
                         }
                       )}
+                      id={
+                        hasVariant($state, "steps2", "step3")
+                          ? "pay"
+                          : undefined
+                      }
                       onClick={async event => {
                         const $steps = {};
+
+                        $steps["updateRate2"] = (
+                          $state.exchangeRate?.data?.rate ? true : false
+                        )
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["rate2"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  switch ($state.shopModal.type) {
+                                    case "toman":
+                                      return $state.selectpack.rate;
+                                    case "afghani":
+                                      return Math.round(
+                                        $state.selectpack.rate /
+                                          $state.exchangeRate.data.rate
+                                      );
+                                    default:
+                                      console.log("نوع ارز نامعتبر است");
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateRate2"] != null &&
+                          typeof $steps["updateRate2"] === "object" &&
+                          typeof $steps["updateRate2"].then === "function"
+                        ) {
+                          $steps["updateRate2"] = await $steps["updateRate2"];
+                        }
 
                         $steps["updateDisable"] = true
                           ? (() => {
@@ -4797,12 +4894,10 @@ function PlasmicPubg__RenderFunc(props: {
                                   variablePath: ["uuid"]
                                 },
                                 operation: 0,
-                                value: (() => {
-                                  return $$.uuid
-                                    .v4()
-                                    .replace(/[^0-9]/g, "")
-                                    .slice(0, 10);
-                                })()
+                                value: $$.uuid
+                                  .v4()
+                                  .replace(/[^0-9]/g, "")
+                                  .slice(0, 10)
                               };
                               return (({
                                 variable,
@@ -4828,43 +4923,44 @@ function PlasmicPubg__RenderFunc(props: {
                           $steps["updateUuid"] = await $steps["updateUuid"];
                         }
 
-                        $steps["invokeGlobalAction4"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        type: "package_" + $state.type,
-                                        mobile: $state.userinfo.mobile,
-                                        otherData: $state.otherData,
-                                        price: $state.selectpack.rate,
-                                        origin: $state.type,
-                                        originId: $state.uuid + "",
-                                        priceType: "toman",
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
+                        $steps["invokeGlobalAction4"] =
+                          $state.rate2 != ""
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "POST",
+                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return {
+                                          type: "package_" + $state.type,
+                                          mobile: $state.userinfo.mobile,
+                                          otherData: $state.otherData,
+                                          price: $state.rate2,
+                                          origin: $state.type,
+                                          originId: $state.uuid + "",
+                                          priceType: $state.shopModal.type,
+                                          userToken: $state.token
+                                        };
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
                         if (
                           $steps["invokeGlobalAction4"] != null &&
                           typeof $steps["invokeGlobalAction4"] === "object" &&
@@ -5281,19 +5377,116 @@ function PlasmicPubg__RenderFunc(props: {
                             "updateDisable2"
                           ];
                         }
-                      }}
-                    >
-                      <Group4SvgIcon
-                        className={classNames(projectcss.all, sty.svg__uqHjv)}
-                        role={"img"}
-                      />
 
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    $state.shopModal.load = false;
+                                    return ($state.shopModal.open = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+                      }}
+                    />
+                  ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dwWqa, {
+                      [sty.freeBoxsteps2_step2__dwWqAjQ3Ah]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step2"
+                      ),
+                      [sty.freeBoxsteps2_step3__dwWqaJpk3R]: hasVariant(
+                        $state,
+                        "steps2",
+                        "step3"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateShopModalOpen"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["shopModal", "open"]
+                              },
+                              operation: 4
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              const oldValue = $stateGet(objRoot, variablePath);
+                              $stateSet(objRoot, variablePath, !oldValue);
+                              return !oldValue;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateShopModalOpen"] != null &&
+                        typeof $steps["updateShopModalOpen"] === "object" &&
+                        typeof $steps["updateShopModalOpen"].then === "function"
+                      ) {
+                        $steps["updateShopModalOpen"] = await $steps[
+                          "updateShopModalOpen"
+                        ];
+                      }
+                    }}
+                  >
+                    <Group4SvgIcon
+                      className={classNames(projectcss.all, sty.svg___8ORn, {
+                        [sty.svgsteps2_step3___8ORnJpk3R]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step3"
+                        )
+                      })}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__beouC,
+                        {
+                          [sty.freeBoxsteps2_step3__beouCJpk3R]: hasVariant(
+                            $state,
+                            "steps2",
+                            "step3"
+                          )
+                        }
+                      )}
+                    >
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__d9QYf,
+                          projectcss.__wab_text,
+                          sty.text__ki7RA,
                           {
-                            [sty.freeBoxsteps2_step3__d9QYfJpk3R]: hasVariant(
+                            [sty.textsteps2_step3__ki7RAJpk3R]: hasVariant(
                               $state,
                               "steps2",
                               "step3"
@@ -5301,159 +5494,50 @@ function PlasmicPubg__RenderFunc(props: {
                           }
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zijLp,
-                            {
-                              [sty.textsteps2_step3__zijLpJpk3R]: hasVariant(
-                                $state,
-                                "steps2",
-                                "step3"
-                              )
-                            }
-                          )}
-                        >
-                          {
-                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___2QDia,
-                            hasVariant($state, "steps2", "step3")
-                              ? "dateshow"
-                              : undefined,
-                            {
-                              [sty.textsteps2_step3___2QDiaJpk3R]: hasVariant(
-                                $state,
-                                "steps2",
-                                "step3"
-                              )
-                            }
-                          )}
-                        >
-                          {hasVariant($state, "steps2", "step3") ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    "موجودی:" +
-                                    parseInt(
-                                      $state.mojodi.toFixed(0)
-                                    ).toLocaleString() +
-                                    " تومان"
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return "موجودی :" + $state.mojodi + " تومان ";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
+                        {
+                          "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
+                        }
                       </div>
-                      <Group7SvgIcon
-                        className={classNames(projectcss.all, sty.svg__ocuW7, {
-                          [sty.svgsteps2_step3__ocuW7Jpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.disable;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__agai8)}
-                    >
-                      <Group4SvgIcon
-                        className={classNames(projectcss.all, sty.svg__rn4M5)}
-                        role={"img"}
-                      />
-
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__lVaOe)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/babarkat/images/image6.svg",
-                          fullWidth: 58,
-                          fullHeight: 62,
-                          aspectRatio: 0.935484
-                        }}
-                      />
-
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox__xSijv
+                          projectcss.__wab_text,
+                          sty.text__qeApb,
+                          hasVariant($state, "steps2", "step3")
+                            ? "dateshow"
+                            : undefined,
+                          {
+                            [sty.textsteps2_step3__qeApbJpk3R]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step3"
+                            )
+                          }
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___6NMaL
-                          )}
-                        >
-                          {
-                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__qt1PM
-                          )}
-                        >
+                        {hasVariant($state, "steps2", "step3") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "موجودی:" +
+                                  parseInt(
+                                    $state.mojodi.toFixed(0)
+                                  ).toLocaleString() +
+                                  " تومان"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        ) : (
                           <React.Fragment>
                             {(() => {
                               try {
@@ -5469,32 +5553,20 @@ function PlasmicPubg__RenderFunc(props: {
                               }
                             })()}
                           </React.Fragment>
-                        </div>
-                      </div>
-                      <Group7SvgIcon
-                        className={classNames(projectcss.all, sty.svg__wgXkb, {
-                          [sty.svgsteps2_step3__wgXkbJpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1RSq7
                         )}
-                      >
-                        <IconIcon
-                          className={classNames(projectcss.all, sty.svg__xGgNm)}
-                          role={"img"}
-                        />
                       </div>
                     </div>
-                  ) : null}
+                    <Group7SvgIcon
+                      className={classNames(projectcss.all, sty.svg__od574, {
+                        [sty.svgsteps2_step3__od574Jpk3R]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step3"
+                        )
+                      })}
+                      role={"img"}
+                    />
+                  </div>
                 </Stack__>
               ) : null}
               <Stack__
@@ -6788,7 +6860,13 @@ function PlasmicPubg__RenderFunc(props: {
           <SideEffect
             data-plasmic-name={"sideEffect"}
             data-plasmic-override={overrides.sideEffect}
-            className={classNames("__wab_instance", sty.sideEffect)}
+            className={classNames("__wab_instance", sty.sideEffect, {
+              [sty.sideEffectsteps2_step3]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
             onMount={async () => {
               const $steps = {};
 
@@ -6860,6 +6938,181 @@ function PlasmicPubg__RenderFunc(props: {
               }
             }}
           />
+
+          <ShopModal
+            data-plasmic-name={"shopModal"}
+            data-plasmic-override={overrides.shopModal}
+            className={classNames("__wab_instance", sty.shopModal, {
+              [sty.shopModalsteps2_step3]: hasVariant($state, "steps2", "step3")
+            })}
+            data={
+              hasVariant($state, "steps2", "step3")
+                ? (() => {
+                    try {
+                      return {
+                        toman: {
+                          name: "تومان",
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: $state.userinfo.toman
+                        },
+                        afghani: {
+                          name: "افغانی",
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: $state.userinfo.afghani
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          toman: {
+                            name: "\u062a\u0648\u0645\u0627\u0646",
+                            symbol: "toman",
+                            isoCode: "IRR",
+                            amount: 200000
+                          },
+                          afghani: {
+                            name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            symbol: "afghani",
+                            isoCode: "AFN",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
+            load={generateStateValueProp($state, ["shopModal", "load"])}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return window.document.getElementById("pay").click();
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            open={generateStateValueProp($state, ["shopModal", "open"])}
+            type={generateStateValueProp($state, ["shopModal", "type"])}
+          />
+
+          <ApiRequest
+            data-plasmic-name={"exchangeRate"}
+            data-plasmic-override={overrides.exchangeRate}
+            className={classNames("__wab_instance", sty.exchangeRate, {
+              [sty.exchangeRatesteps2_step3]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__zEntH
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___03X9X
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={"GET"}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchangeRate",
+                "error"
+              ]).apply(null, eventArgs);
+            }}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchangeRate",
+                "loading"
+              ]).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
+                null,
+                eventArgs
+              );
+            }}
+            url={"https://n8n.babarkat.com/webhook/exchangeRate"}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -6913,7 +7166,9 @@ const PlasmicDescendants = {
     "rate",
     "button6",
     "embedHtml",
-    "sideEffect"
+    "sideEffect",
+    "shopModal",
+    "exchangeRate"
   ],
   header: ["header"],
   reveal: [
@@ -7031,7 +7286,9 @@ const PlasmicDescendants = {
   rate: ["rate", "button6"],
   button6: ["button6"],
   embedHtml: ["embedHtml"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  shopModal: ["shopModal"],
+  exchangeRate: ["exchangeRate"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7083,6 +7340,8 @@ type NodeDefaultElementType = {
   button6: typeof Button;
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
+  shopModal: typeof ShopModal;
+  exchangeRate: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7219,6 +7478,8 @@ export const PlasmicPubg = Object.assign(
     button6: makeNodeComponent("button6"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
+    shopModal: makeNodeComponent("shopModal"),
+    exchangeRate: makeNodeComponent("exchangeRate"),
 
     // Metadata about props expected for PlasmicPubg
     internalVariantProps: PlasmicPubg__VariantProps,

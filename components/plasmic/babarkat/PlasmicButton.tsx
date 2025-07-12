@@ -336,6 +336,9 @@ function PlasmicButton__RenderFunc(props: {
             "loadingviow",
             "loadingviow"
           ),
+          [sty.rootloadingviow_color_red]:
+            hasVariant($state, "color", "red") &&
+            hasVariant($state, "loadingviow", "loadingviow"),
           [sty.rootshape_round]: hasVariant($state, "shape", "round"),
           [sty.rootshape_round_size_compact]:
             hasVariant($state, "shape", "round") &&

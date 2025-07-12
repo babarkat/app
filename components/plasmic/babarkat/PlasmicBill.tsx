@@ -74,6 +74,7 @@ import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -94,7 +95,6 @@ import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrep
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon109Icon from "./icons/PlasmicIcon__Icon109"; // plasmic-import: LIgkphYcL9vu/icon
 import Icon110Icon from "./icons/PlasmicIcon__Icon110"; // plasmic-import: aq88MiXmlJWv/icon
 import Icon111Icon from "./icons/PlasmicIcon__Icon111"; // plasmic-import: ZQs8iNj46bRk/icon
@@ -198,6 +198,8 @@ export type PlasmicBill__OverridesType = {
   button5?: Flex__<typeof Button>;
   button6?: Flex__<typeof Button>;
   sideEffect?: Flex__<typeof SideEffect>;
+  shopModal?: Flex__<typeof ShopModal>;
+  exchangeRate?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultBillProps {}
@@ -1076,6 +1078,48 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "shopModal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "shopModal.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "shopModal.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "exchangeRate.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchangeRate.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchangeRate.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "rate",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -4163,103 +4207,140 @@ function PlasmicBill__RenderFunc(props: {
                   )
                 })}
               >
-                {(
-                  hasVariant($state, "stepscharg", "step3")
-                    ? (() => {
-                        try {
-                          return !$state.disable;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : true
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__nwPxR, {
-                      [sty.freeBoxstepscharg_step3__nwPxRTqZTv]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    })}
-                    onClick={async event => {
-                      const $steps = {};
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__nwPxR, {
+                    [sty.freeBoxstepscharg_step3__nwPxRTqZTv]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
+                  id={
+                    hasVariant($state, "stepscharg", "step3")
+                      ? "pay"
+                      : undefined
+                  }
+                  onClick={async event => {
+                    const $steps = {};
 
-                      $steps["updateDisable"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["disable"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
+                    $steps["updateRate"] = (
+                      $state.exchangeRate?.data?.rate ? true : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["rate"]
+                            },
+                            operation: 0,
+                            value: (() => {
+                              switch ($state.shopModal.type) {
+                                case "toman":
+                                  return $state.data.amount;
+                                case "afghani":
+                                  return Math.round(
+                                    $state.data.amount /
+                                      $state.exchangeRate.data.rate
+                                  );
+                                default:
+                                  console.log("نوع ارز نامعتبر است");
                               }
-                              const { objRoot, variablePath } = variable;
+                            })()
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateDisable"] != null &&
-                        typeof $steps["updateDisable"] === "object" &&
-                        typeof $steps["updateDisable"].then === "function"
-                      ) {
-                        $steps["updateDisable"] = await $steps["updateDisable"];
-                      }
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateRate"] != null &&
+                      typeof $steps["updateRate"] === "object" &&
+                      typeof $steps["updateRate"].then === "function"
+                    ) {
+                      $steps["updateRate"] = await $steps["updateRate"];
+                    }
 
-                      $steps["updateUuid"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["uuid"]
-                              },
-                              operation: 0,
-                              value: $$.uuid.v4().replace(/[^0-9]/g, "")
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
+                    $steps["updateDisable"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["disable"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateUuid"] != null &&
-                        typeof $steps["updateUuid"] === "object" &&
-                        typeof $steps["updateUuid"].then === "function"
-                      ) {
-                        $steps["updateUuid"] = await $steps["updateUuid"];
-                      }
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateDisable"] != null &&
+                      typeof $steps["updateDisable"] === "object" &&
+                      typeof $steps["updateDisable"].then === "function"
+                    ) {
+                      $steps["updateDisable"] = await $steps["updateDisable"];
+                    }
 
-                      $steps["invokeGlobalAction4"] = true
+                    $steps["updateUuid"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["uuid"]
+                            },
+                            operation: 0,
+                            value: $$.uuid.v4().replace(/[^0-9]/g, "")
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateUuid"] != null &&
+                      typeof $steps["updateUuid"] === "object" &&
+                      typeof $steps["updateUuid"].then === "function"
+                    ) {
+                      $steps["updateUuid"] = await $steps["updateUuid"];
+                    }
+
+                    $steps["invokeGlobalAction4"] =
+                      $state.rate != 0
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -4276,12 +4357,12 @@ function PlasmicBill__RenderFunc(props: {
                                         type: $state.data.type_en || $state.type
                                       },
                                       mobile: $state.number,
-                                      price: $state.data.amount,
+                                      price: $state.rate,
                                       origin:
                                         "bill_" +
                                         ($state.data.type_en || $state.type),
                                       originId: $state.uuid + "",
-                                      priceType: "toman",
+                                      priceType: $state.shopModal.type,
                                       userToken: $state.token
                                     };
                                   } catch (e) {
@@ -4303,110 +4384,26 @@ function PlasmicBill__RenderFunc(props: {
                             );
                           })()
                         : undefined;
-                      if (
-                        $steps["invokeGlobalAction4"] != null &&
-                        typeof $steps["invokeGlobalAction4"] === "object" &&
-                        typeof $steps["invokeGlobalAction4"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction4"] = await $steps[
-                          "invokeGlobalAction4"
-                        ];
-                      }
+                    if (
+                      $steps["invokeGlobalAction4"] != null &&
+                      typeof $steps["invokeGlobalAction4"] === "object" &&
+                      typeof $steps["invokeGlobalAction4"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction4"] = await $steps[
+                        "invokeGlobalAction4"
+                      ];
+                    }
 
-                      $steps["updatePardakhtid"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["pardakhtid"]
-                                },
-                                operation: 0,
-                                value: $steps.invokeGlobalAction4.data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updatePardakhtid"] != null &&
-                        typeof $steps["updatePardakhtid"] === "object" &&
-                        typeof $steps["updatePardakhtid"].then === "function"
-                      ) {
-                        $steps["updatePardakhtid"] = await $steps[
-                          "updatePardakhtid"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "PUT",
-                                  "https://n8n.babarkat.com/webhook/babarkat/bill",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        method: "bill",
-                                        bill_id: $state.data.bill_id,
-                                        pay_id: $state.data.pay_id,
-                                        mobile: $state.mobile,
-                                        order_id: $state.uuid,
-                                        pay_type: "credit"
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction"] != null &&
-                        typeof $steps["invokeGlobalAction"] === "object" &&
-                        typeof $steps["invokeGlobalAction"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
-                      }
-
-                      $steps["updateInfopardakt"] = (
-                        $steps.invokeGlobalAction?.data ? true : false
-                      )
+                    $steps["updatePardakhtid"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == true
                         ? (() => {
                             const actionArgs = {
                               variable: {
                                 objRoot: $state,
-                                variablePath: ["infopardakt"]
+                                variablePath: ["pardakhtid"]
                               },
                               operation: 0,
-                              value: $steps.invokeGlobalAction.data
+                              value: $steps.invokeGlobalAction4.data[0].id
                             };
                             return (({
                               variable,
@@ -4424,116 +4421,34 @@ function PlasmicBill__RenderFunc(props: {
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
-                      if (
-                        $steps["updateInfopardakt"] != null &&
-                        typeof $steps["updateInfopardakt"] === "object" &&
-                        typeof $steps["updateInfopardakt"].then === "function"
-                      ) {
-                        $steps["updateInfopardakt"] = await $steps[
-                          "updateInfopardakt"
-                        ];
-                      }
+                    if (
+                      $steps["updatePardakhtid"] != null &&
+                      typeof $steps["updatePardakhtid"] === "object" &&
+                      typeof $steps["updatePardakhtid"].then === "function"
+                    ) {
+                      $steps["updatePardakhtid"] = await $steps[
+                        "updatePardakhtid"
+                      ];
+                    }
 
-                      $steps["invokeGlobalAction5"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "PUT",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        id: $state.pardakhtid,
-                                        trackingId:
-                                          $state.infopardakt?.code == 1
-                                            ? $state.infopardakt.ref_code
-                                            : -1,
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction5"] != null &&
-                        typeof $steps["invokeGlobalAction5"] === "object" &&
-                        typeof $steps["invokeGlobalAction5"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction5"] = await $steps[
-                          "invokeGlobalAction5"
-                        ];
-                      }
-
-                      $steps["updateModal2Open"] = (
-                        $state.infopardakt?.code
-                          ? $state.infopardakt?.code == 1
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["modal2", "open"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateModal2Open"] != null &&
-                        typeof $steps["updateModal2Open"] === "object" &&
-                        typeof $steps["updateModal2Open"].then === "function"
-                      ) {
-                        $steps["updateModal2Open"] = await $steps[
-                          "updateModal2Open"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction3"] = (
-                        $state.infopardakt?.code
-                          ? $state.infopardakt?.code != 1
-                          : false
-                      )
+                    $steps["invokeGlobalAction"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == true
                         ? (() => {
                             const actionArgs = {
                               args: [
-                                "error",
+                                "PUT",
+                                "https://n8n.babarkat.com/webhook/babarkat/bill",
+                                undefined,
                                 (() => {
                                   try {
-                                    return $state.infopardakt.msg
-                                      ? $state.infopardakt.msg
-                                      : "مشکلی رخ داده است مجدد تلاش کنید.";
+                                    return {
+                                      method: "bill",
+                                      bill_id: $state.data.bill_id,
+                                      pay_id: $state.data.pay_id,
+                                      mobile: $state.mobile,
+                                      order_id: $state.uuid,
+                                      pay_type: "credit"
+                                    };
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -4544,119 +4459,357 @@ function PlasmicBill__RenderFunc(props: {
                                     }
                                     throw e;
                                   }
-                                })(),
-                                "top-left",
-                                5000
+                                })()
                               ]
                             };
-                            return $globalActions["Fragment.showToast"]?.apply(
+                            return $globalActions["Fragment.apiRequest"]?.apply(
                               null,
                               [...actionArgs.args]
                             );
                           })()
                         : undefined;
-                      if (
-                        $steps["invokeGlobalAction3"] != null &&
-                        typeof $steps["invokeGlobalAction3"] === "object" &&
-                        typeof $steps["invokeGlobalAction3"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction3"] = await $steps[
-                          "invokeGlobalAction3"
-                        ];
-                      }
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
 
-                      $steps["updateError"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                        $steps.invokeGlobalAction4?.data[0]?.message
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["error"]
-                                },
-                                operation: 0,
-                                value:
-                                  $steps.invokeGlobalAction4?.data[0].message
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                    $steps["updateInfopardakt"] = (
+                      $steps.invokeGlobalAction?.data ? true : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["infopardakt"]
+                            },
+                            operation: 0,
+                            value: $steps.invokeGlobalAction.data
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updateError"] != null &&
-                        typeof $steps["updateError"] === "object" &&
-                        typeof $steps["updateError"].then === "function"
-                      ) {
-                        $steps["updateError"] = await $steps["updateError"];
-                      }
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateInfopardakt"] != null &&
+                      typeof $steps["updateInfopardakt"] === "object" &&
+                      typeof $steps["updateInfopardakt"].then === "function"
+                    ) {
+                      $steps["updateInfopardakt"] = await $steps[
+                        "updateInfopardakt"
+                      ];
+                    }
 
-                      $steps["invokeGlobalAction6"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                        $steps.invokeGlobalAction4?.data[0]?.message
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  (() => {
-                                    try {
-                                      return (() => {
-                                        if ($state.error.includes("صراف")) {
-                                          return ($state.error =
-                                            $state.error.replace(
-                                              "صراف",
-                                              "امانتدار"
-                                            ));
-                                        } else return $state.error;
-                                      })();
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                    $steps["invokeGlobalAction5"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "PUT",
+                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                undefined,
+                                (() => {
+                                  try {
+                                    return {
+                                      id: $state.pardakhtid,
+                                      trackingId:
+                                        $state.infopardakt?.code == 1
+                                          ? $state.infopardakt.ref_code
+                                          : -1,
+                                      userToken: $state.token
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "plasmic-antd5-config-provider.showNotification"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction6"] != null &&
-                        typeof $steps["invokeGlobalAction6"] === "object" &&
-                        typeof $steps["invokeGlobalAction6"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction6"] = await $steps[
-                          "invokeGlobalAction6"
-                        ];
-                      }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                    if (
+                      $steps["invokeGlobalAction5"] != null &&
+                      typeof $steps["invokeGlobalAction5"] === "object" &&
+                      typeof $steps["invokeGlobalAction5"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction5"] = await $steps[
+                        "invokeGlobalAction5"
+                      ];
+                    }
+
+                    $steps["updateModal2Open"] = (
+                      $state.infopardakt?.code
+                        ? $state.infopardakt?.code == 1
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal2", "open"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateModal2Open"] != null &&
+                      typeof $steps["updateModal2Open"] === "object" &&
+                      typeof $steps["updateModal2Open"].then === "function"
+                    ) {
+                      $steps["updateModal2Open"] = await $steps[
+                        "updateModal2Open"
+                      ];
+                    }
+
+                    $steps["invokeGlobalAction3"] = (
+                      $state.infopardakt?.code
+                        ? $state.infopardakt?.code != 1
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              (() => {
+                                try {
+                                  return $state.infopardakt.msg
+                                    ? $state.infopardakt.msg
+                                    : "مشکلی رخ داده است مجدد تلاش کنید.";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })(),
+                              "top-left",
+                              5000
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
+                      ];
+                    }
+
+                    $steps["updateError"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                      $steps.invokeGlobalAction4?.data[0]?.message
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["error"]
+                              },
+                              operation: 0,
+                              value: $steps.invokeGlobalAction4?.data[0].message
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updateError"] != null &&
+                      typeof $steps["updateError"] === "object" &&
+                      typeof $steps["updateError"].then === "function"
+                    ) {
+                      $steps["updateError"] = await $steps["updateError"];
+                    }
+
+                    $steps["invokeGlobalAction6"] =
+                      $steps.invokeGlobalAction4?.data[0]?.success == false &&
+                      $steps.invokeGlobalAction4?.data[0]?.message
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                (() => {
+                                  try {
+                                    return (() => {
+                                      if ($state.error.includes("صراف")) {
+                                        return ($state.error =
+                                          $state.error.replace(
+                                            "صراف",
+                                            "امانتدار"
+                                          ));
+                                      } else return $state.error;
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions[
+                              "plasmic-antd5-config-provider.showNotification"
+                            ]?.apply(null, [...actionArgs.args]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["invokeGlobalAction6"] != null &&
+                      typeof $steps["invokeGlobalAction6"] === "object" &&
+                      typeof $steps["invokeGlobalAction6"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction6"] = await $steps[
+                        "invokeGlobalAction6"
+                      ];
+                    }
+
+                    $steps["updateDisable2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["disable"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateDisable2"] != null &&
+                      typeof $steps["updateDisable2"] === "object" &&
+                      typeof $steps["updateDisable2"].then === "function"
+                    ) {
+                      $steps["updateDisable2"] = await $steps["updateDisable2"];
+                    }
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                $state.shopModal.load = false;
+                                return ($state.shopModal.open = false);
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                />
+
+                {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__r5Ot9, {
+                      [sty.freeBoxstepscharg_step3__r5Ot9TqZTv]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
+                      )
+                    })}
+                    onClick={async event => {
+                      const $steps = {};
 
                       $steps["updateDisable2"] = true
                         ? (() => {
                             const actionArgs = {
                               variable: {
                                 objRoot: $state,
-                                variablePath: ["disable"]
+                                variablePath: ["shopModal", "open"]
                               },
                               operation: 0,
-                              value: false
+                              value: true
                             };
                             return (({
                               variable,
@@ -4686,8 +4839,8 @@ function PlasmicBill__RenderFunc(props: {
                     }}
                   >
                     <Group4SvgIcon
-                      className={classNames(projectcss.all, sty.svg__ah7QR, {
-                        [sty.svgstepscharg_step3__ah7QRTqZTv]: hasVariant(
+                      className={classNames(projectcss.all, sty.svg__hrbUd, {
+                        [sty.svgstepscharg_step3__hrbUdTqZTv]: hasVariant(
                           $state,
                           "stepscharg",
                           "step3"
@@ -4698,8 +4851,8 @@ function PlasmicBill__RenderFunc(props: {
 
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__g2MR, {
-                        [sty.imgstepscharg_step3__g2MRTqZTv]: hasVariant(
+                      className={classNames(sty.img__zFLaf, {
+                        [sty.imgstepscharg_step3__zFLafTqZTv]: hasVariant(
                           $state,
                           "stepscharg",
                           "step3"
@@ -4723,13 +4876,10 @@ function PlasmicBill__RenderFunc(props: {
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox__nrhnT,
+                        sty.freeBox___9IClx,
                         {
-                          [sty.freeBoxstepscharg_step3__nrhnTTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
+                          [sty.freeBoxstepscharg_step3___9IClxTqZTv]:
+                            hasVariant($state, "stepscharg", "step3")
                         }
                       )}
                     >
@@ -4737,9 +4887,9 @@ function PlasmicBill__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__sVxBl,
+                          sty.text__dhL8C,
                           {
-                            [sty.textstepscharg_step3__sVxBlTqZTv]: hasVariant(
+                            [sty.textstepscharg_step3__dhL8CTqZTv]: hasVariant(
                               $state,
                               "stepscharg",
                               "step3"
@@ -4755,14 +4905,14 @@ function PlasmicBill__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__j5Hde,
+                          sty.text__g4DR,
                           {
-                            [sty.textstepscharg_step2__j5HdeAvykh]: hasVariant(
+                            [sty.textstepscharg_step2__g4DRAvykh]: hasVariant(
                               $state,
                               "stepscharg",
                               "step2"
                             ),
-                            [sty.textstepscharg_step3__j5HdeTqZTv]: hasVariant(
+                            [sty.textstepscharg_step3__g4DRTqZTv]: hasVariant(
                               $state,
                               "stepscharg",
                               "step3"
@@ -4798,8 +4948,8 @@ function PlasmicBill__RenderFunc(props: {
                       </div>
                     </div>
                     <Group7SvgIcon
-                      className={classNames(projectcss.all, sty.svg__owa0Y, {
-                        [sty.svgstepscharg_step3__owa0YTqZTv]: hasVariant(
+                      className={classNames(projectcss.all, sty.svg__kVeo5, {
+                        [sty.svgstepscharg_step3__kVeo5TqZTv]: hasVariant(
                           $state,
                           "stepscharg",
                           "step3"
@@ -4807,178 +4957,6 @@ function PlasmicBill__RenderFunc(props: {
                       })}
                       role={"img"}
                     />
-                  </div>
-                ) : null}
-                {(
-                  hasVariant($state, "stepscharg", "step3")
-                    ? (() => {
-                        try {
-                          return $state.disable;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : false
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bWutK, {
-                      [sty.freeBoxstepscharg_step3__bWutKTqZTv]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    })}
-                    onClick={async event => {
-                      const $steps = {};
-                    }}
-                  >
-                    <Group4SvgIcon
-                      className={classNames(projectcss.all, sty.svg__sKdZf, {
-                        [sty.svgstepscharg_step3__sKdZfTqZTv]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      role={"img"}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__v1Auz, {
-                        [sty.imgstepscharg_step3__v1AuzTqZTv]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/babarkat/images/image6.svg",
-                        fullWidth: 58,
-                        fullHeight: 62,
-                        aspectRatio: 0.935484
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__wtxJh,
-                        {
-                          [sty.freeBoxstepscharg_step3__wtxJhTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8DpNg,
-                          {
-                            [sty.textstepscharg_step3___8DpNgTqZTv]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "stepscharg", "step3")
-                          ? "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                          : "Enter some text"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__jib07,
-                          {
-                            [sty.textstepscharg_step2__jib07Avykh]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step2"
-                            ),
-                            [sty.textstepscharg_step3__jib07TqZTv]: hasVariant(
-                              $state,
-                              "stepscharg",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "stepscharg", "step3") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return "موجودی :" + $state.mojody + " تومان ";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        ) : (
-                          "Enter some text"
-                        )}
-                      </div>
-                    </div>
-                    <Group7SvgIcon
-                      className={classNames(projectcss.all, sty.svg__mh5Dm, {
-                        [sty.svgstepscharg_step3__mh5DmTqZTv]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step3"
-                        )
-                      })}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__e4WiS,
-                        {
-                          [sty.freeBoxstepscharg_step3__e4WiSTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <IconIcon
-                        className={classNames(projectcss.all, sty.svg__fSVaq, {
-                          [sty.svgstepscharg_step3__fSVaqTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
-                    </div>
                   </div>
                 ) : null}
               </Stack__>
@@ -10732,6 +10710,181 @@ function PlasmicBill__RenderFunc(props: {
             }
           }}
         />
+
+        <ShopModal
+          data-plasmic-name={"shopModal"}
+          data-plasmic-override={overrides.shopModal}
+          className={classNames("__wab_instance", sty.shopModal, {
+            [sty.shopModalstepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          data={(() => {
+            try {
+              return {
+                toman: {
+                  name: "تومان",
+                  symbol: "toman",
+                  isoCode: "IRR",
+                  amount: $state.userinfo.toman
+                },
+                afghani: {
+                  name: "افغانی",
+                  symbol: "afghani",
+                  isoCode: "AFN",
+                  amount: $state.userinfo.afghani
+                }
+              };
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {
+                  toman: {
+                    name: "\u062a\u0648\u0645\u0627\u0646",
+                    symbol: "toman",
+                    isoCode: "IRR",
+                    amount: 200000
+                  },
+                  afghani: {
+                    name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                    symbol: "afghani",
+                    isoCode: "AFN",
+                    amount: 1000
+                  }
+                };
+              }
+              throw e;
+            }
+          })()}
+          load={generateStateValueProp($state, ["shopModal", "load"])}
+          onClick={async event => {
+            const $steps = {};
+
+            $steps["runCode"] = true
+              ? (() => {
+                  const actionArgs = {
+                    customFunction: async () => {
+                      return (() => {
+                        return window.document.getElementById("pay").click();
+                      })();
+                    }
+                  };
+                  return (({ customFunction }) => {
+                    return customFunction();
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["runCode"] != null &&
+              typeof $steps["runCode"] === "object" &&
+              typeof $steps["runCode"].then === "function"
+            ) {
+              $steps["runCode"] = await $steps["runCode"];
+            }
+          }}
+          onLoadChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["shopModal", "load"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["shopModal", "open"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTypeChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["shopModal", "type"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          open={generateStateValueProp($state, ["shopModal", "open"])}
+          type={generateStateValueProp($state, ["shopModal", "type"])}
+        />
+
+        <ApiRequest
+          data-plasmic-name={"exchangeRate"}
+          data-plasmic-override={overrides.exchangeRate}
+          className={classNames("__wab_instance", sty.exchangeRate, {
+            [sty.exchangeRatestepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          errorDisplay={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__xwTw
+              )}
+            >
+              {"Error fetching data"}
+            </div>
+          }
+          loadingDisplay={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__pXu3
+              )}
+            >
+              {"Loading..."}
+            </div>
+          }
+          method={"GET"}
+          onError={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchangeRate", "error"]).apply(
+              null,
+              eventArgs
+            );
+          }}
+          onLoading={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchangeRate",
+              "loading"
+            ]).apply(null, eventArgs);
+          }}
+          onSuccess={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
+              null,
+              eventArgs
+            );
+          }}
+          url={"https://n8n.babarkat.com/webhook/exchangeRate"}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -10805,7 +10958,9 @@ const PlasmicDescendants = {
     "exitModal",
     "button5",
     "button6",
-    "sideEffect"
+    "sideEffect",
+    "shopModal",
+    "exchangeRate"
   ],
   header: ["header"],
   reveal: [
@@ -10961,7 +11116,9 @@ const PlasmicDescendants = {
   exitModal: ["exitModal", "button5", "button6"],
   button5: ["button5"],
   button6: ["button6"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  shopModal: ["shopModal"],
+  exchangeRate: ["exchangeRate"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -11034,6 +11191,8 @@ type NodeDefaultElementType = {
   button5: typeof Button;
   button6: typeof Button;
   sideEffect: typeof SideEffect;
+  shopModal: typeof ShopModal;
+  exchangeRate: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -11191,6 +11350,8 @@ export const PlasmicBill = Object.assign(
     button5: makeNodeComponent("button5"),
     button6: makeNodeComponent("button6"),
     sideEffect: makeNodeComponent("sideEffect"),
+    shopModal: makeNodeComponent("shopModal"),
+    exchangeRate: makeNodeComponent("exchangeRate"),
 
     // Metadata about props expected for PlasmicBill
     internalVariantProps: PlasmicBill__VariantProps,

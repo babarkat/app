@@ -70,6 +70,7 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -89,7 +90,6 @@ import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrep
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
-import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
@@ -143,6 +143,7 @@ export type PlasmicChargingAfg__OverridesType = {
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   exchangeRate?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
+  shopModal?: Flex__<typeof ShopModal>;
 };
 
 export interface DefaultChargingAfgProps {}
@@ -639,6 +640,30 @@ function PlasmicChargingAfg__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "shopModal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "shopModal.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "shopModal.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "rate",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -2645,8 +2670,52 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           )
                         }
                       )}
+                      id={"pay"}
                       onClick={async event => {
                         const $steps = {};
+
+                        $steps["updateRate"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["rate"]
+                                },
+                                operation: 0,
+                                value: (() => {
+                                  switch ($state.shopModal.type) {
+                                    case "toman":
+                                      return $state.amont;
+                                    case "afghani":
+                                      return $state.amontAfg;
+                                    default:
+                                      console.log("نوع ارز نامعتبر است");
+                                  }
+                                })()
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateRate"] != null &&
+                          typeof $steps["updateRate"] === "object" &&
+                          typeof $steps["updateRate"].then === "function"
+                        ) {
+                          $steps["updateRate"] = await $steps["updateRate"];
+                        }
 
                         $steps["updateDisable"] = true
                           ? (() => {
@@ -2721,52 +2790,53 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           $steps["updateUuid"] = await $steps["updateUuid"];
                         }
 
-                        $steps["invokeGlobalAction4"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        type: "Afgan_charging",
-                                        mobile: $state.number,
-                                        price: $state.amont,
-                                        origin:
-                                          $state.operators2[
-                                            $state.operatorselect
-                                          ].nameop + "_charge",
-                                        originId: $state.uuid + "",
-                                        priceType: "toman",
-                                        userToken: $state.token,
-                                        otherData: {
-                                          priceAfg: $state.amontAfg,
-                                          operatorAfg:
+                        $steps["invokeGlobalAction4"] =
+                          $state.rate != 0
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "POST",
+                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return {
+                                          type: "Afgan_charging",
+                                          mobile: $state.number,
+                                          price: $state.rate,
+                                          origin:
                                             $state.operators2[
                                               $state.operatorselect
-                                            ].description
+                                            ].nameop + "_charge",
+                                          originId: $state.uuid + "",
+                                          priceType: $state.shopModal.type,
+                                          userToken: $state.token,
+                                          otherData: {
+                                            priceAfg: $state.amontAfg,
+                                            operatorAfg:
+                                              $state.operators2[
+                                                $state.operatorselect
+                                              ].description
+                                          }
+                                        };
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
                                         }
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
                         if (
                           $steps["invokeGlobalAction4"] != null &&
                           typeof $steps["invokeGlobalAction4"] === "object" &&
@@ -2912,7 +2982,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                                       try {
                                         return {
                                           text:
-                                            "\n ✅ خرید موفق شارژافغانستان \nکاربر: " +
+                                            "\n \u2705 خرید موفق شارژافغانستان \nکاربر: " +
                                             $state.userinfo.last_name +
                                             "\nشماره کاربر: " +
                                             $state.userinfo.mobile +
@@ -3193,11 +3263,96 @@ function PlasmicChargingAfg__RenderFunc(props: {
                             "updateDisable2"
                           ];
                         }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    $state.shopModal.load = false;
+                                    return ($state.shopModal.open = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+                      }}
+                    />
+                  ) : null}
+                  {(
+                    hasVariant($state, "stepscharg", "step3") ? true : false
+                  ) ? (
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__u6Vfx,
+                        {
+                          [sty.freeBoxstepscharg_step2__u6Vfx1Oc4H]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
+                          [sty.freeBoxstepscharg_step3__u6VfXq2TCe]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        }
+                      )}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateShopModalOpen"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["shopModal", "open"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateShopModalOpen"] != null &&
+                          typeof $steps["updateShopModalOpen"] === "object" &&
+                          typeof $steps["updateShopModalOpen"].then ===
+                            "function"
+                        ) {
+                          $steps["updateShopModalOpen"] = await $steps[
+                            "updateShopModalOpen"
+                          ];
+                        }
                       }}
                     >
                       <Group4SvgIcon
-                        className={classNames(projectcss.all, sty.svg___0Tdoa, {
-                          [sty.svgstepscharg_step3___0Tdoaq2TCe]: hasVariant(
+                        className={classNames(projectcss.all, sty.svg__gh3IH, {
+                          [sty.svgstepscharg_step3__gh3IHq2TCe]: hasVariant(
                             $state,
                             "stepscharg",
                             "step3"
@@ -3208,8 +3363,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
 
                       <PlasmicImg__
                         alt={""}
-                        className={classNames(sty.img__iPnpg, {
-                          [sty.imgstepscharg_step3__iPnpGq2TCe]: hasVariant(
+                        className={classNames(sty.img___2L70D, {
+                          [sty.imgstepscharg_step3___2L70Dq2TCe]: hasVariant(
                             $state,
                             "stepscharg",
                             "step3"
@@ -3233,9 +3388,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       <div
                         className={classNames(
                           projectcss.all,
-                          sty.freeBox___9ZMh,
+                          sty.freeBox__xhfpk,
                           {
-                            [sty.freeBoxstepscharg_step3___9ZMHq2TCe]:
+                            [sty.freeBoxstepscharg_step3__xhfpkq2TCe]:
                               hasVariant($state, "stepscharg", "step3")
                           }
                         )}
@@ -3244,9 +3399,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__gVuzZ,
+                            sty.text__ruc5Q,
                             {
-                              [sty.textstepscharg_step3__gVuzZq2TCe]:
+                              [sty.textstepscharg_step3__ruc5Qq2TCe]:
                                 hasVariant($state, "stepscharg", "step3")
                             }
                           )}
@@ -3259,18 +3414,12 @@ function PlasmicChargingAfg__RenderFunc(props: {
                           className={classNames(
                             projectcss.all,
                             projectcss.__wab_text,
-                            sty.text__trL4,
+                            sty.text___73BnS,
                             {
-                              [sty.textstepscharg_step2__trL41Oc4H]: hasVariant(
-                                $state,
-                                "stepscharg",
-                                "step2"
-                              ),
-                              [sty.textstepscharg_step3__trL4Q2TCe]: hasVariant(
-                                $state,
-                                "stepscharg",
-                                "step3"
-                              )
+                              [sty.textstepscharg_step2___73BnS1Oc4H]:
+                                hasVariant($state, "stepscharg", "step2"),
+                              [sty.textstepscharg_step3___73BnSq2TCe]:
+                                hasVariant($state, "stepscharg", "step3")
                             }
                           )}
                         >
@@ -3303,8 +3452,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         </div>
                       </div>
                       <Group7SvgIcon
-                        className={classNames(projectcss.all, sty.svg__vtmtR, {
-                          [sty.svgstepscharg_step3__vtmtRq2TCe]: hasVariant(
+                        className={classNames(projectcss.all, sty.svg___2YTip, {
+                          [sty.svgstepscharg_step3___2YTipq2TCe]: hasVariant(
                             $state,
                             "stepscharg",
                             "step3"
@@ -3312,175 +3461,6 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         })}
                         role={"img"}
                       />
-                    </div>
-                  ) : null}
-                  {(
-                    hasVariant($state, "stepscharg", "step3")
-                      ? (() => {
-                          try {
-                            return $state.disable;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : false
-                  ) ? (
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__e025U,
-                        {
-                          [sty.freeBoxstepscharg_step3__e025Uq2TCe]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
-                      onClick={async event => {
-                        const $steps = {};
-                      }}
-                    >
-                      <Group4SvgIcon
-                        className={classNames(projectcss.all, sty.svg___8C8Y, {
-                          [sty.svgstepscharg_step3___8C8Yq2TCe]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
-
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__ylV7G, {
-                          [sty.imgstepscharg_step3__ylV7Gq2TCe]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        })}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/babarkat/images/image6.svg",
-                          fullWidth: 58,
-                          fullHeight: 62,
-                          aspectRatio: 0.935484
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__sHlMr,
-                          {
-                            [sty.freeBoxstepscharg_step3__sHlMRq2TCe]:
-                              hasVariant($state, "stepscharg", "step3")
-                          }
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__vbdh9,
-                            {
-                              [sty.textstepscharg_step3__vbdh9Q2TCe]:
-                                hasVariant($state, "stepscharg", "step3")
-                            }
-                          )}
-                        >
-                          {hasVariant($state, "stepscharg", "step3")
-                            ? "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                            : "Enter some text"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__a2Cx,
-                            {
-                              [sty.textstepscharg_step2__a2Cx1Oc4H]: hasVariant(
-                                $state,
-                                "stepscharg",
-                                "step2"
-                              ),
-                              [sty.textstepscharg_step3__a2CXq2TCe]: hasVariant(
-                                $state,
-                                "stepscharg",
-                                "step3"
-                              )
-                            }
-                          )}
-                        >
-                          {hasVariant($state, "stepscharg", "step3") ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return "موجودی :" + $state.mojody + " تومان ";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            "Enter some text"
-                          )}
-                        </div>
-                      </div>
-                      <Group7SvgIcon
-                        className={classNames(projectcss.all, sty.svg___3SzvV, {
-                          [sty.svgstepscharg_step3___3SzvVq2TCe]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___9ZIkz,
-                          {
-                            [sty.freeBoxstepscharg_step3___9ZIkzq2TCe]:
-                              hasVariant($state, "stepscharg", "step3")
-                          }
-                        )}
-                      >
-                        <IconIcon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___0Yhez,
-                            {
-                              [sty.svgstepscharg_step3___0YheZq2TCe]:
-                                hasVariant($state, "stepscharg", "step3")
-                            }
-                          )}
-                          role={"img"}
-                        />
-                      </div>
                     </div>
                   ) : null}
                 </Stack__>
@@ -5151,6 +5131,127 @@ function PlasmicChargingAfg__RenderFunc(props: {
               }
             }}
           />
+
+          <ShopModal
+            data-plasmic-name={"shopModal"}
+            data-plasmic-override={overrides.shopModal}
+            className={classNames("__wab_instance", sty.shopModal, {
+              [sty.shopModalstepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+            data={(() => {
+              try {
+                return {
+                  toman: {
+                    name: "تومان",
+                    symbol: "toman",
+                    isoCode: "IRR",
+                    amount: $state.userinfo.toman
+                  },
+                  afghani: {
+                    name: "افغانی",
+                    symbol: "afghani",
+                    isoCode: "AFN",
+                    amount: $state.userinfo.afghani
+                  }
+                };
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return {
+                    toman: {
+                      name: "\u062a\u0648\u0645\u0627\u0646",
+                      symbol: "toman",
+                      isoCode: "IRR",
+                      amount: 200000
+                    },
+                    afghani: {
+                      name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                      symbol: "afghani",
+                      isoCode: "AFN",
+                      amount: 1000
+                    }
+                  };
+                }
+                throw e;
+              }
+            })()}
+            load={generateStateValueProp($state, ["shopModal", "load"])}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return window.document.getElementById("pay").click();
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["shopModal", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            open={generateStateValueProp($state, ["shopModal", "open"])}
+            type={generateStateValueProp($state, ["shopModal", "type"])}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5189,7 +5290,8 @@ const PlasmicDescendants = {
     "button2",
     "commissionBabarkat",
     "exchangeRate",
-    "sideEffect"
+    "sideEffect",
+    "shopModal"
   ],
   header: ["header"],
   reveal: [
@@ -5260,7 +5362,8 @@ const PlasmicDescendants = {
   button2: ["button2"],
   commissionBabarkat: ["commissionBabarkat"],
   exchangeRate: ["exchangeRate"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  shopModal: ["shopModal"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5297,6 +5400,7 @@ type NodeDefaultElementType = {
   commissionBabarkat: typeof ApiRequest;
   exchangeRate: typeof ApiRequest;
   sideEffect: typeof SideEffect;
+  shopModal: typeof ShopModal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5418,6 +5522,7 @@ export const PlasmicChargingAfg = Object.assign(
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     exchangeRate: makeNodeComponent("exchangeRate"),
     sideEffect: makeNodeComponent("sideEffect"),
+    shopModal: makeNodeComponent("shopModal"),
 
     // Metadata about props expected for PlasmicChargingAfg
     internalVariantProps: PlasmicChargingAfg__VariantProps,

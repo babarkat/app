@@ -2776,75 +2776,13 @@
   border-radius: 12px;
   padding: 8px;
 }
-.svg__uqHjv {
-  object-fit: cover;
-  max-width: 100%;
-  height: 60px;
-  width: 60px;
+.freeBoxsteps2_step3__fbJepJpk3R {
+  width: 0px;
+  height: 0px;
   flex-shrink: 0;
-}
-.freeBox__d9QYf {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  align-self: center;
-  min-width: 0;
   padding: 0px;
 }
-.text__zijLp {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--token-jgohepLVeKvh);
-  text-align: right;
-  padding-right: 15px;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-.text___2QDia {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-size: 12px;
-  font-weight: 400;
-  color: var(--token-jgohepLVeKvh);
-  text-align: right;
-  padding-right: 15px;
-  font-family: "Inter", sans-serif;
-  font-style: normal;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-.svg__ocuW7 {
-  object-fit: cover;
-  max-width: 100%;
-  width: 40px;
-  height: 40px;
-  opacity: 0.8;
-  flex-shrink: 0;
-}
-.freeBox__agai8 {
+.freeBox__dwWqa {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -2858,22 +2796,14 @@
   border-radius: 12px;
   padding: 8px;
 }
-.svg__rn4M5 {
+.svg___8ORn {
   object-fit: cover;
   max-width: 100%;
   height: 60px;
   width: 60px;
   flex-shrink: 0;
 }
-.img__lVaOe {
-  object-fit: cover;
-  max-width: 100%;
-  display: none;
-}
-.img__lVaOe > picture > img {
-  object-fit: cover;
-}
-.freeBox__xSijv {
+.freeBox__beouC {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -2886,7 +2816,7 @@
   min-width: 0;
   padding: 0px;
 }
-.text___6NMaL {
+.text__ki7RA {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -2906,7 +2836,7 @@
   text-overflow: clip;
   min-width: 0;
 }
-.text__qt1PM {
+.text__qeApb {
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -2926,40 +2856,12 @@
   text-overflow: clip;
   min-width: 0;
 }
-.svg__wgXkb {
+.svg__od574 {
   object-fit: cover;
   max-width: 100%;
   width: 40px;
   height: 40px;
   opacity: 0.8;
-  flex-shrink: 0;
-}
-.freeBox___1RSq7 {
-  display: flex;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  max-width: 100%;
-  left: 0px;
-  top: 0px;
-  background: #0000004d;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 0;
-  min-height: 0;
-  border-radius: 12px;
-  padding: 8px;
-}
-.svg__xGgNm {
-  object-fit: cover;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  color: #2dc57b;
-  width: 30px;
-  height: 30px;
   flex-shrink: 0;
 }
 .freeBox__aJznM {
@@ -3686,4 +3588,51 @@
 .sideEffect:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+}
+.shopModal:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.exchangeRate:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text___03X9X {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+  min-width: 0;
+}
+.text__zEntH {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  color: #535353;
+  text-align: left;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: clip !important;
+  min-width: 0;
 }

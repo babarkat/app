@@ -31,6 +31,26 @@
       }
     },
     {
+      "name": "3",
+      "type": "spacing",
+      "value": "0.75rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "l3ItR7R_AHRe"
+      }
+    },
+    {
+      "name": "4",
+      "type": "spacing",
+      "value": "1rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "V6iPUxl66F8R"
+      }
+    },
+    {
       "name": "Basic/Border",
       "type": "color",
       "value": "#D1D5DB",
@@ -2621,6 +2641,16 @@
       }
     },
     {
+      "name": "base",
+      "type": "fontsize",
+      "value": "1rem",
+      "category": "fontsize",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "-3UT6C2Na0g9"
+      }
+    },
+    {
       "name": "green",
       "type": "color",
       "value": "#2DC57B",
@@ -2641,6 +2671,16 @@
       }
     },
     {
+      "name": "primaryOrange",
+      "type": "color",
+      "value": "#405380",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "TuEOziIrLwCg"
+      }
+    },
+    {
       "name": "purple",
       "type": "color",
       "value": "#8254C6",
@@ -2648,6 +2688,16 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "oBW_djHNjXv4"
+      }
+    },
+    {
+      "name": "secondaryButton",
+      "type": "color",
+      "value": "#272738",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "7sYlx8O1Fy6E"
       }
     },
     {

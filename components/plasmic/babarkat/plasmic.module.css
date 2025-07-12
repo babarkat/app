@@ -129,6 +129,16 @@
   --plasmic-token-purple: var(--token-oBW_djHNjXv4);
   --token-3WpmNcP_VIln: rgb(234, 234, 234);
   --plasmic-token-task-text-dark: var(--token-3WpmNcP_VIln);
+  --token--3UT6C2Na0g9: 1rem;
+  --plasmic-token-base: var(--token--3UT6C2Na0g9);
+  --token-7sYlx8O1Fy6E: #272738;
+  --plasmic-token-secondary-button: var(--token-7sYlx8O1Fy6E);
+  --token-TuEOziIrLwCg: #405380;
+  --plasmic-token-primary-orange: var(--token-TuEOziIrLwCg);
+  --token-V6iPUxl66F8R: 1rem;
+  --plasmic-token-4: var(--token-V6iPUxl66F8R);
+  --token-l3ItR7R_AHRe: 0.75rem;
+  --plasmic-token-3: var(--token-l3ItR7R_AHRe);
 }
 
 .plasmic_tokens {
