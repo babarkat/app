@@ -5516,27 +5516,7 @@ function PlasmicPubg__RenderFunc(props: {
                         )}
                       >
                         {hasVariant($state, "steps2", "step3") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (
-                                  "موجودی:" +
-                                  parseInt(
-                                    $state.mojodi.toFixed(0)
-                                  ).toLocaleString() +
-                                  " تومان"
-                                );
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
+                          "\u0628\u0631 \u0627\u0633\u0627\u0633 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644  (\u062a\u0648\u0645\u0627\u0646 \u060c \u0627\u0641\u063a\u0627\u0646\u06cc)"
                         ) : (
                           <React.Fragment>
                             {(() => {

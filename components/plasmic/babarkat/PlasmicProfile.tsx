@@ -593,7 +593,8 @@ function PlasmicProfile__RenderFunc(props: {
                           {(() => {
                             try {
                               return (
-                                $state.customerInfo[currentItem.id] * 1000
+                                $state.customerInfo[currentItem.id] *
+                                (currentItem.id == "toman" ? 1000 : 1)
                               ).toLocaleString();
                             } catch (e) {
                               if (
@@ -1338,6 +1339,83 @@ function PlasmicProfile__RenderFunc(props: {
                     ];
                   }
 
+                  $steps["info"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            "POST",
+                            "https://n8n.babarkat.com/webhook/saraf/getCustomerById",
+                            undefined,
+                            (() => {
+                              try {
+                                return {
+                                  userToken: $state.token,
+                                  id: $state.customerInfo.id
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          ]
+                        };
+                        return $globalActions["Fragment.apiRequest"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                  if (
+                    $steps["info"] != null &&
+                    typeof $steps["info"] === "object" &&
+                    typeof $steps["info"].then === "function"
+                  ) {
+                    $steps["info"] = await $steps["info"];
+                  }
+
+                  $steps["updateCustomerInfo"] = (
+                    $steps.info?.data?.success ? true : false
+                  )
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["customerInfo"]
+                          },
+                          operation: 0,
+                          value: $steps.info.data.list
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateCustomerInfo"] != null &&
+                    typeof $steps["updateCustomerInfo"] === "object" &&
+                    typeof $steps["updateCustomerInfo"].then === "function"
+                  ) {
+                    $steps["updateCustomerInfo"] = await $steps[
+                      "updateCustomerInfo"
+                    ];
+                  }
+
                   $steps["updateAddOpen"] = $steps.invokeGlobalAction?.data
                     ?.success
                     ? (() => {
@@ -1371,44 +1449,6 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateAddOpen"].then === "function"
                   ) {
                     $steps["updateAddOpen"] = await $steps["updateAddOpen"];
-                  }
-
-                  $steps["invokeGlobalAction4"] = true
-                    ? (() => {
-                        const actionArgs = { args: [1000] };
-                        return $globalActions["Fragment.wait"]?.apply(null, [
-                          ...actionArgs.args
-                        ]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["invokeGlobalAction4"] != null &&
-                    typeof $steps["invokeGlobalAction4"] === "object" &&
-                    typeof $steps["invokeGlobalAction4"].then === "function"
-                  ) {
-                    $steps["invokeGlobalAction4"] = await $steps[
-                      "invokeGlobalAction4"
-                    ];
-                  }
-
-                  $steps["runCode"] = $steps.invokeGlobalAction?.data?.success
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return window.location.reload();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
                   }
 
                   $steps["updateButtonLoadingviow2"] = true
@@ -1997,6 +2037,83 @@ function PlasmicProfile__RenderFunc(props: {
                     ];
                   }
 
+                  $steps["info"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            "POST",
+                            "https://n8n.babarkat.com/webhook/saraf/getCustomerById",
+                            undefined,
+                            (() => {
+                              try {
+                                return {
+                                  userToken: $state.token,
+                                  id: $state.customerInfo.id
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          ]
+                        };
+                        return $globalActions["Fragment.apiRequest"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                  if (
+                    $steps["info"] != null &&
+                    typeof $steps["info"] === "object" &&
+                    typeof $steps["info"].then === "function"
+                  ) {
+                    $steps["info"] = await $steps["info"];
+                  }
+
+                  $steps["updateCustomerInfo"] = (
+                    $steps.info?.data?.success ? true : false
+                  )
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["customerInfo"]
+                          },
+                          operation: 0,
+                          value: $steps.info.data.list
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateCustomerInfo"] != null &&
+                    typeof $steps["updateCustomerInfo"] === "object" &&
+                    typeof $steps["updateCustomerInfo"].then === "function"
+                  ) {
+                    $steps["updateCustomerInfo"] = await $steps[
+                      "updateCustomerInfo"
+                    ];
+                  }
+
                   $steps["updateRemoveOpen"] = $steps.invokeGlobalAction?.data
                     ?.success
                     ? (() => {
@@ -2032,45 +2149,6 @@ function PlasmicProfile__RenderFunc(props: {
                     $steps["updateRemoveOpen"] = await $steps[
                       "updateRemoveOpen"
                     ];
-                  }
-
-                  $steps["invokeGlobalAction4"] = $steps.invokeGlobalAction
-                    ?.data?.success
-                    ? (() => {
-                        const actionArgs = { args: [1000] };
-                        return $globalActions["Fragment.wait"]?.apply(null, [
-                          ...actionArgs.args
-                        ]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["invokeGlobalAction4"] != null &&
-                    typeof $steps["invokeGlobalAction4"] === "object" &&
-                    typeof $steps["invokeGlobalAction4"].then === "function"
-                  ) {
-                    $steps["invokeGlobalAction4"] = await $steps[
-                      "invokeGlobalAction4"
-                    ];
-                  }
-
-                  $steps["runCode"] = $steps.invokeGlobalAction?.data?.success
-                    ? (() => {
-                        const actionArgs = {
-                          customFunction: async () => {
-                            return window.location.reload();
-                          }
-                        };
-                        return (({ customFunction }) => {
-                          return customFunction();
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["runCode"] != null &&
-                    typeof $steps["runCode"] === "object" &&
-                    typeof $steps["runCode"].then === "function"
-                  ) {
-                    $steps["runCode"] = await $steps["runCode"];
                   }
 
                   $steps["updateButtonLoadingviow2"] = true

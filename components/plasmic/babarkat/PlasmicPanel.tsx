@@ -987,7 +987,10 @@ function PlasmicPanel__RenderFunc(props: {
                                         ? (
                                             $state.profile.data[
                                               currentItem.id + "Deposit"
-                                            ] * 1000
+                                            ] *
+                                            (currentItem.id == "toman"
+                                              ? 1000
+                                              : 1)
                                           ).toLocaleString()
                                         : "0";
                                     } catch (e) {
@@ -13416,7 +13419,7 @@ function PlasmicPanel__RenderFunc(props: {
                         const actionArgs = {
                           customFunction: async () => {
                             return (() => {
-                              const whatsappUrl = "https://wa.me/+989202116750";
+                              const whatsappUrl = "https://wa.me/+989911530300";
                               if (
                                 typeof Android !== "undefined" &&
                                 Android.onElementClicked
@@ -13459,7 +13462,7 @@ function PlasmicPanel__RenderFunc(props: {
                         const actionArgs = {
                           customFunction: async () => {
                             return (() => {
-                              const whatsappUrl = "https://wa.me/+989202116750";
+                              const whatsappUrl = "https://wa.me/+989911530300";
                               if (
                                 typeof Android !== "undefined" &&
                                 Android.onElementClicked

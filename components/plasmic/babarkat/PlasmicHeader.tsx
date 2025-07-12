@@ -2448,7 +2448,7 @@ function PlasmicHeader__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return Android.onElementClicked(
-                            "https://wa.me/+989202116750"
+                            "https://wa.me/+989911530300"
                           );
                         }
                       };
@@ -2516,7 +2516,7 @@ function PlasmicHeader__RenderFunc(props: {
                     sty.text__jbkcX
                   )}
                 >
-                  {"09202116750"}
+                  {"09911530300"}
                 </div>
               </div>
             </Stack__>
