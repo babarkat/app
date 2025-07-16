@@ -2674,7 +2674,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["updateRate"] = true
+                        $steps["updateRate"] = (
+                          $state.exchangeRate?.data?.rate ? true : false
+                        )
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -2791,7 +2793,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                         }
 
                         $steps["invokeGlobalAction4"] =
-                          $state.rate != 0
+                          $state.rate !== 0 && $state.rate != null
                             ? (() => {
                                 const actionArgs = {
                                   args: [

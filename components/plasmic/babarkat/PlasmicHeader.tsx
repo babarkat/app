@@ -98,7 +98,6 @@ import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYh
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon60Icon from "./icons/PlasmicIcon__Icon60"; // plasmic-import: P52THJblgWka/icon
 import Icon63Icon from "./icons/PlasmicIcon__Icon63"; // plasmic-import: 3pIKdy4AyleH/icon
-import Icon64Icon from "./icons/PlasmicIcon__Icon64"; // plasmic-import: ikcgDOFGXPOS/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon46Icon from "./icons/PlasmicIcon__Icon46"; // plasmic-import: 4DyVfhKQ1yWx/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
@@ -111,7 +110,6 @@ import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
 
-import __lib_copyToClipboard from "copy-to-clipboard";
 import __lib_md5 from "md5";
 
 createPlasmicElementProxy;
@@ -202,7 +200,6 @@ export interface DefaultHeaderProps {
 }
 
 const $$ = {
-  copyToClipboard: __lib_copyToClipboard,
   md5: __lib_md5
 };
 
@@ -225,22 +222,35 @@ function PlasmicHeader__RenderFunc(props: {
     () =>
       Object.assign(
         {
-          userbabarcat: (() => {
-            try {
-              return (() => {
-                let userinfo = localStorage.getItem("userbabarcat");
-                return (userinfo = JSON.parse(userinfo));
-              })();
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return {};
+          userbabarcat: {
+            id: 834,
+            level: 1,
+            name: "\u0627\u0644\u0647\u0647",
+            last_name:
+              "\u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc",
+            mobile: "09228951264",
+            customerNum:
+              "\u0627\u0644\u0647\u0647.\u062d\u0633\u06cc\u0646.465",
+            afghani: 345.8092,
+            dollar: -4487,
+            toman: 59000,
+            _saraf: 1005,
+            lira: 1,
+            sarafName: "\u0645\u062c\u06cc\u0628\u0628",
+            hasPassword: true,
+            saraflist: [
+              {
+                mobile: "09037415754",
+                name: "\u0645\u062c\u06cc\u0628\u0628",
+                id: 1005
+              },
+              {
+                mobile: "",
+                name: "\u0635\u0631\u0627\u0641\u06cc \u0628\u0627\u0628\u0631\u06a9\u062a",
+                id: 1023
               }
-              throw e;
-            }
-          })(),
+            ]
+          },
           lodingbtn: false
         },
         Object.fromEntries(
@@ -2357,88 +2367,6 @@ function PlasmicHeader__RenderFunc(props: {
             <Stack__
               as={"div"}
               hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__ewOsF)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return $$.copyToClipboard("02171057159");
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
-                ) {
-                  $steps["runCode"] = await $steps["runCode"];
-                }
-
-                $steps["invokeGlobalAction"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          "\u0634\u0645\u0627\u0631\u0647 \u062a\u0645\u0627\u0633 \u06a9\u067e\u06cc \u0634\u062f.",
-                          "top-left",
-                          5000
-                        ]
-                      };
-                      return $globalActions["Fragment.showToast"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
-                }
-              }}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__agRs)}>
-                <Icon64Icon
-                  className={classNames(projectcss.all, sty.svg__ytc6G)}
-                  role={"img"}
-                />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__jsNhG)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__xt5Hf
-                  )}
-                >
-                  {
-                    "\u062a\u0645\u0627\u0633 \u0628\u0627 \u0648\u0627\u062d\u062f \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
-                  }
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__mk83
-                  )}
-                >
-                  {"02171057159"}
-                </div>
-              </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
               className={classNames(projectcss.all, sty.freeBox__uxnBp)}
               onClick={async event => {
                 const $steps = {};
@@ -2447,9 +2375,15 @@ function PlasmicHeader__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return Android.onElementClicked(
-                            "https://wa.me/+989911530300"
-                          );
+                          return (() => {
+                            let mobile = $props.userbabarcat.saraflist.find(
+                              i => i.id == $props.userbabarcat._saraf
+                            ).mobile;
+                            mobile = mobile.replace(/^0/, "");
+                            return Android.onElementClicked(
+                              `https://wa.me/+98${mobile}`
+                            );
+                          })();
                         }
                       };
                       return (({ customFunction }) => {
@@ -2516,7 +2450,23 @@ function PlasmicHeader__RenderFunc(props: {
                     sty.text__jbkcX
                   )}
                 >
-                  {"09911530300"}
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $props.userbabarcat.saraflist.find(
+                          i => i.id == $props.userbabarcat._saraf
+                        ).mobile;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "09911530300";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
                 </div>
               </div>
             </Stack__>

@@ -3888,7 +3888,7 @@ function PlasmicInternet3__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction4"] =
-                        $state.rate != 0
+                        $state.rate !== 0 && $state.rate != null
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -5269,7 +5269,9 @@ function PlasmicInternet3__RenderFunc(props: {
           <ShopModal
             data-plasmic-name={"shopModal"}
             data-plasmic-override={overrides.shopModal}
-            className={classNames("__wab_instance", sty.shopModal)}
+            className={classNames("__wab_instance", sty.shopModal, {
+              [sty.shopModalsteps2_step3]: hasVariant($state, "steps2", "step3")
+            })}
             data={(() => {
               try {
                 return {
