@@ -4924,7 +4924,7 @@ function PlasmicPubg__RenderFunc(props: {
                         }
 
                         $steps["invokeGlobalAction4"] =
-                          $state.rate !== 0 && $state.rate != null
+                          $state.rate2 !== 0 && $state.rate2 != null
                             ? (() => {
                                 const actionArgs = {
                                   args: [
