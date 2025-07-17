@@ -69,7 +69,6 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
 
@@ -146,10 +145,8 @@ export type PlasmicCharging__OverridesType = {
   lottie?: Flex__<typeof LottieWrapper>;
   button2?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
-  commissionBabarkat?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
-  exchangeRate?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultChargingProps {}
@@ -508,24 +505,6 @@ function PlasmicCharging__RenderFunc(props: {
           })()
       },
       {
-        path: "commissionBabarkat.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "error",
         type: "private",
         variableType: "text",
@@ -664,25 +643,57 @@ function PlasmicCharging__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "exchangeRate.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "rate",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(localStorage.getItem("exchange"));
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "commission",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(localStorage.getItem("comson"));
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "totalAfghani",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
@@ -1449,17 +1460,11 @@ function PlasmicCharging__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return (
-                                    (
-                                      parseInt($state.amont) +
-                                      parseInt($state.amont) *
-                                        (($state.commissionBabarkat.data
-                                          .babrkat +
-                                          $state.commissionBabarkat.data
-                                            .saraf) /
-                                          100)
-                                    ).toLocaleString("en") + " تومان "
-                                  );
+                                  return `${$state.totalToman.toLocaleString(
+                                    "en"
+                                  )} تومان \n${$state.totalAfghani.toLocaleString(
+                                    "en"
+                                  )} افغانی`;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -2659,6 +2664,11 @@ function PlasmicCharging__RenderFunc(props: {
                         projectcss.all,
                         sty.freeBox__gvMro,
                         {
+                          [sty.freeBoxstepscharg_step2__gvMroTtIk]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
                           [sty.freeBoxstepscharg_step3__gvMroWug5H]: hasVariant(
                             $state,
                             "stepscharg",
@@ -2675,7 +2685,7 @@ function PlasmicCharging__RenderFunc(props: {
                         const $steps = {};
 
                         $steps["updateRate"] = (
-                          $state.exchangeRate?.data?.rate ? true : false
+                          $state.exchange.rate ? true : false
                         )
                           ? (() => {
                               const actionArgs = {
@@ -2690,8 +2700,7 @@ function PlasmicCharging__RenderFunc(props: {
                                       return $state.amont;
                                     case "afghani":
                                       return Math.round(
-                                        $state.amont /
-                                          $state.exchangeRate.data.rate
+                                        $state.amont / $state.exchange.rate
                                       );
                                     default:
                                       console.log("نوع ارز نامعتبر است");
@@ -3992,6 +4001,41 @@ function PlasmicCharging__RenderFunc(props: {
                             "invokeGlobalAction"
                           ];
                         }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    var amount = $state.amont;
+                                    var rate = $state.exchange.rate;
+                                    var commissionBabrkat =
+                                      $state.commission.babrkat;
+                                    var commissionSaraf =
+                                      $state.commission.saraf;
+                                    var totalCommissionPercent =
+                                      commissionBabrkat + commissionSaraf;
+                                    $state.totalToman =
+                                      amount +
+                                      (amount * totalCommissionPercent) / 100;
+                                    return ($state.totalAfghani = Math.round(
+                                      $state.totalToman / rate
+                                    ));
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
                       }}
                       onLoadingviowChange={async (...eventArgs: any) => {
                         ((...eventArgs) => {
@@ -5091,64 +5135,16 @@ function PlasmicCharging__RenderFunc(props: {
             }
           />
 
-          <ApiRequest
-            data-plasmic-name={"commissionBabarkat"}
-            data-plasmic-override={overrides.commissionBabarkat}
-            className={classNames("__wab_instance", sty.commissionBabarkat, {
-              [sty.commissionBabarkatstepscharg_step3]: hasVariant(
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect, {
+              [sty.sideEffectstepscharg_step3]: hasVariant(
                 $state,
                 "stepscharg",
                 "step3"
               )
             })}
-            errorDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__gie0
-                )}
-              >
-                {"Error fetching data"}
-              </div>
-            }
-            loadingDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__wWpbW
-                )}
-              >
-                {"Loading..."}
-              </div>
-            }
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "error"
-              ]).apply(null, eventArgs);
-            }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "data"
-              ]).apply(null, eventArgs);
-            }}
-            url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
-          />
-
-          <SideEffect
-            data-plasmic-name={"sideEffect"}
-            data-plasmic-override={overrides.sideEffect}
-            className={classNames("__wab_instance", sty.sideEffect)}
             onMount={async () => {
               const $steps = {};
 
@@ -5198,45 +5194,87 @@ function PlasmicCharging__RenderFunc(props: {
                 "step3"
               )
             })}
-            data={(() => {
-              try {
-                return {
-                  toman: {
-                    name: "تومان",
-                    symbol: "toman",
-                    isoCode: "IRR",
-                    amount: $state.userinfo.toman
-                  },
-                  afghani: {
-                    name: "افغانی",
-                    symbol: "afghani",
-                    isoCode: "AFN",
-                    amount: $state.userinfo.afghani
-                  }
-                };
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return {
-                    toman: {
-                      name: "\u062a\u0648\u0645\u0627\u0646",
-                      symbol: "toman",
-                      isoCode: "IRR",
-                      amount: 200000
-                    },
-                    afghani: {
-                      name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
-                      symbol: "afghani",
-                      isoCode: "AFN",
-                      amount: 1000
+            data={
+              hasVariant($state, "stepscharg", "step3")
+                ? (() => {
+                    try {
+                      return {
+                        toman: {
+                          name: `${$state.totalToman.toLocaleString()} تومان`,
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: $state.userinfo.toman
+                        },
+                        afghani: {
+                          name: `${$state.totalAfghani.toLocaleString()} افغانی`,
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: $state.userinfo.afghani
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          toman: {
+                            name: "\u062a\u0648\u0645\u0627\u0646",
+                            symbol: "toman",
+                            isoCode: "IRR",
+                            amount: 200000
+                          },
+                          afghani: {
+                            name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            symbol: "afghani",
+                            isoCode: "AFN",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
                     }
-                  };
-                }
-                throw e;
-              }
-            })()}
+                  })()
+                : (() => {
+                    try {
+                      return {
+                        toman: {
+                          name: "تومان",
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: $state.userinfo.toman
+                        },
+                        afghani: {
+                          name: "افغانی",
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: $state.userinfo.afghani
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          toman: {
+                            name: "\u062a\u0648\u0645\u0627\u0646",
+                            symbol: "toman",
+                            isoCode: "IRR",
+                            amount: 200000
+                          },
+                          afghani: {
+                            name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            symbol: "afghani",
+                            isoCode: "AFN",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
+            }
             load={generateStateValueProp($state, ["shopModal", "load"])}
             onClick={async event => {
               const $steps = {};
@@ -5308,54 +5346,6 @@ function PlasmicCharging__RenderFunc(props: {
             open={generateStateValueProp($state, ["shopModal", "open"])}
             type={generateStateValueProp($state, ["shopModal", "type"])}
           />
-
-          <ApiRequest
-            data-plasmic-name={"exchangeRate"}
-            data-plasmic-override={overrides.exchangeRate}
-            className={classNames("__wab_instance", sty.exchangeRate)}
-            errorDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__rRxUu
-                )}
-              >
-                {"Error fetching data"}
-              </div>
-            }
-            loadingDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__fXCnE
-                )}
-              >
-                {"Loading..."}
-              </div>
-            }
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "error"
-              ]).apply(null, eventArgs);
-            }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
-                null,
-                eventArgs
-              );
-            }}
-            url={"https://n8n.babarkat.com/webhook/exchangeRate"}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -5397,10 +5387,8 @@ const PlasmicDescendants = {
     "lottie",
     "button2",
     "embedHtml",
-    "commissionBabarkat",
     "sideEffect",
-    "shopModal",
-    "exchangeRate"
+    "shopModal"
   ],
   header: ["header"],
   reveal: [
@@ -5486,10 +5474,8 @@ const PlasmicDescendants = {
   lottie: ["lottie"],
   button2: ["button2"],
   embedHtml: ["embedHtml"],
-  commissionBabarkat: ["commissionBabarkat"],
   sideEffect: ["sideEffect"],
-  shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"]
+  shopModal: ["shopModal"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5528,10 +5514,8 @@ type NodeDefaultElementType = {
   lottie: typeof LottieWrapper;
   button2: typeof Button;
   embedHtml: typeof Embed;
-  commissionBabarkat: typeof ApiRequest;
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
-  exchangeRate: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5655,10 +5639,8 @@ export const PlasmicCharging = Object.assign(
     lottie: makeNodeComponent("lottie"),
     button2: makeNodeComponent("button2"),
     embedHtml: makeNodeComponent("embedHtml"),
-    commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
-    exchangeRate: makeNodeComponent("exchangeRate"),
 
     // Metadata about props expected for PlasmicCharging
     internalVariantProps: PlasmicCharging__VariantProps,
