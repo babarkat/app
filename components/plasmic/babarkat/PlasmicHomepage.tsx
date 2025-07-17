@@ -1094,6 +1094,43 @@ function PlasmicHomepage__RenderFunc(props: {
                     ) {
                       $steps["runCode"] = await $steps["runCode"];
                     }
+
+                    $steps["runCode2"] = (
+                      $state.profile?.data
+                        ? $state.profile.data[0].success
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                localStorage.setItem(
+                                  "comson",
+                                  JSON.stringify(
+                                    $state.profile.data[0].commission
+                                  )
+                                );
+                                return localStorage.setItem(
+                                  "exchange",
+                                  JSON.stringify(
+                                    $state.profile.data[0].exchange
+                                  )
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode2"] != null &&
+                      typeof $steps["runCode2"] === "object" &&
+                      typeof $steps["runCode2"].then === "function"
+                    ) {
+                      $steps["runCode2"] = await $steps["runCode2"];
+                    }
                   }).apply(null, eventArgs);
                 }}
                 params={(() => {
