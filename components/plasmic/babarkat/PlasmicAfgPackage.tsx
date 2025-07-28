@@ -219,7 +219,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Etisalat",
             description: "\u0627\u062a\u0635\u0627\u0644\u0627\u062a",
             logoUrl:
-              "https://api.mizban.exchange/assets/images/image-97d39e98-d656-4c75-b939-05bf762cc4a3.png?_ts=1685280750.0366116",
+              "https://site-assets.plasmic.app/49c4b9f5e3ace2592fbdbfeba58b7bf7.png",
             codes: ["78", "73"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -233,7 +233,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Roshan",
             description: "\u0631\u0648\u0634\u0646",
             logoUrl:
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6QMcI-cMZH4PIVOwCRKoiTgFF9oN45hEJMQ&s",
+              "https://site-assets.plasmic.app/564f6cb5db594588c8728f3987415019.png",
             codes: ["72", "79"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -247,7 +247,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Salam",
             description: "\u0633\u0644\u0627\u0645",
             logoUrl:
-              "https://api.mizban.exchange/assets/images/image-f32300cb-f9b0-4104-8650-8fbf13ccdb56.png?_ts=1685280911.6977296",
+              "https://site-assets.plasmic.app/42c08a31e52cc321ef4bb96d99c60025.png",
             codes: ["74"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -261,7 +261,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "MTN",
             description: "\u0627\u0645.\u062a\u06cc.\u0627\u0646",
             logoUrl:
-              "https://api.mizban.exchange/assets/images/image-1f998bcd-eedb-4e85-b99a-9529c3b4c8fc.png?_ts=1685280687.4036922",
+              "https://site-assets.plasmic.app/3b99d8471843332dad6da7bd3e878fd4.jpg",
             codes: ["76", "77"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -276,7 +276,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             description:
               "\u0627\u0641\u063a\u0627\u0646 \u0628\u06cc\u0633\u06cc\u0645",
             logoUrl:
-              "https://api.mizban.exchange/assets/images/image-65a1fffb-c5bf-485d-b23b-bf89bdaf8abd.png?_ts=1685280774.3700302",
+              "https://site-assets.plasmic.app/67ae67ae2c23ec069cd0a518f1e467f7.png",
             codes: ["70", "71"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },

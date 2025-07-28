@@ -135,8 +135,8 @@ export const PlasmicDialog__ArgProps = new Array<ArgPropType>(
 export type PlasmicDialog__OverridesType = {
   dialog?: Flex__<typeof Dialog>;
   dialogContent?: Flex__<typeof DialogContent>;
-  button2?: Flex__<typeof Button>;
   button3?: Flex__<typeof Button>;
+  button2?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
   dialogClose?: Flex__<typeof DialogClose>;
 };
@@ -671,6 +671,70 @@ function PlasmicDialog__RenderFunc(props: {
             className={classNames(projectcss.all, sty.freeBox__x0D8S)}
           >
             <Button
+              data-plasmic-name={"button3"}
+              data-plasmic-override={overrides.button3}
+              className={classNames("__wab_instance", sty.button3)}
+              color={"green"}
+              loadingviow={generateStateValueProp($state, [
+                "button3",
+                "loadingviow"
+              ])}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["goToHomepage"] = true
+                  ? (() => {
+                      const actionArgs = { destination: `/` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["goToHomepage"] != null &&
+                  typeof $steps["goToHomepage"] === "object" &&
+                  typeof $steps["goToHomepage"].then === "function"
+                ) {
+                  $steps["goToHomepage"] = await $steps["goToHomepage"];
+                }
+              }}
+              onLoadingviowChange={async (...eventArgs: any) => {
+                ((...eventArgs) => {
+                  generateStateOnChangeProp($state, ["button3", "loadingviow"])(
+                    eventArgs[0]
+                  );
+                }).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              }}
+              size={"compact"}
+            >
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__nuOj
+                )}
+              >
+                {"\u062a\u0627\u06cc\u06cc\u062f"}
+              </div>
+            </Button>
+            <Button
               data-plasmic-name={"button2"}
               data-plasmic-override={overrides.button2}
               className={classNames("__wab_instance", sty.button2)}
@@ -777,43 +841,6 @@ function PlasmicDialog__RenderFunc(props: {
                 }
               </div>
             </Button>
-            <Button
-              data-plasmic-name={"button3"}
-              data-plasmic-override={overrides.button3}
-              className={classNames("__wab_instance", sty.button3)}
-              color={"green"}
-              loadingviow={generateStateValueProp($state, [
-                "button3",
-                "loadingviow"
-              ])}
-              onClick={args.onClick2}
-              onLoadingviowChange={async (...eventArgs: any) => {
-                ((...eventArgs) => {
-                  generateStateOnChangeProp($state, ["button3", "loadingviow"])(
-                    eventArgs[0]
-                  );
-                }).apply(null, eventArgs);
-
-                if (
-                  eventArgs.length > 1 &&
-                  eventArgs[1] &&
-                  eventArgs[1]._plasmic_state_init_
-                ) {
-                  return;
-                }
-              }}
-              size={"compact"}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__nuOj
-                )}
-              >
-                {"\u062a\u0627\u06cc\u06cc\u062f"}
-              </div>
-            </Button>
           </Stack__>
           <Embed
             data-plasmic-name={"embedHtml"}
@@ -906,20 +933,20 @@ const PlasmicDescendants = {
   dialog: [
     "dialog",
     "dialogContent",
-    "button2",
     "button3",
+    "button2",
     "embedHtml",
     "dialogClose"
   ],
   dialogContent: [
     "dialogContent",
-    "button2",
     "button3",
+    "button2",
     "embedHtml",
     "dialogClose"
   ],
-  button2: ["button2"],
   button3: ["button3"],
+  button2: ["button2"],
   embedHtml: ["embedHtml"],
   dialogClose: ["dialogClose"]
 } as const;
@@ -929,8 +956,8 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   dialog: typeof Dialog;
   dialogContent: typeof DialogContent;
-  button2: typeof Button;
   button3: typeof Button;
+  button2: typeof Button;
   embedHtml: typeof Embed;
   dialogClose: typeof DialogClose;
 };
@@ -996,8 +1023,8 @@ export const PlasmicDialog = Object.assign(
   {
     // Helper components rendering sub-elements
     dialogContent: makeNodeComponent("dialogContent"),
-    button2: makeNodeComponent("button2"),
     button3: makeNodeComponent("button3"),
+    button2: makeNodeComponent("button2"),
     embedHtml: makeNodeComponent("embedHtml"),
     dialogClose: makeNodeComponent("dialogClose"),
 
