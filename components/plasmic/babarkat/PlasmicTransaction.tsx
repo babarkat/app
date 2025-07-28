@@ -76,13 +76,13 @@ import { TabButton } from "@plasmicpkgs/plasmic-tabs";
 import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import TransactionBox from "../../TransactionBox"; // plasmic-import: 9xs0oaOWmddY/component
-import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
-import Transaction2 from "../../Transaction2"; // plasmic-import: KdLckjkHArJ8/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { AntdRadioButton } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import Dialog2 from "../../Dialog2"; // plasmic-import: hyFNHR4bCLIY/component
 
 import {
   ExperimentValue,
@@ -133,9 +133,6 @@ export type PlasmicTransaction__OverridesType = {
   tabUnderline?: Flex__<typeof TabUnderline>;
   button2?: Flex__<typeof Button>;
   button3?: Flex__<typeof Button>;
-  modal?: Flex__<typeof AntdModal>;
-  transaction2?: Flex__<typeof Transaction2>;
-  button4?: Flex__<typeof Button>;
   apiRequest?: Flex__<typeof ApiRequest>;
   modal2?: Flex__<typeof AntdModal>;
   radioGroup2?: Flex__<typeof AntdRadioGroup>;
@@ -148,6 +145,7 @@ export type PlasmicTransaction__OverridesType = {
   vuesaxBoldReceipt3?: Flex__<"div">;
   timer?: Flex__<typeof Timer>;
   sideEffect?: Flex__<typeof SideEffect>;
+  dialog2?: Flex__<typeof Dialog2>;
 };
 
 export interface DefaultTransactionProps {}
@@ -191,17 +189,12 @@ function PlasmicTransaction__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const currentUser = useCurrentUser?.() || {};
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
-      {
-        path: "modal.open",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
-      },
       {
         path: "no",
         type: "private",
@@ -468,7 +461,7 @@ function PlasmicTransaction__RenderFunc(props: {
           })()
       },
       {
-        path: "button4.loadingviow",
+        path: "button5.loadingviow",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -487,23 +480,46 @@ function PlasmicTransaction__RenderFunc(props: {
           })()
       },
       {
-        path: "button5.loadingviow",
+        path: "variable2",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "hasMore",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.loadingviow;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "isLoading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "scroll",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog2.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog2.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "dialog2.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -779,6 +795,119 @@ function PlasmicTransaction__RenderFunc(props: {
                             onMouseDown={async event => {
                               const $steps = {};
 
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -818,34 +947,159 @@ function PlasmicTransaction__RenderFunc(props: {
                                 ];
                               }
 
-                              $steps["refreshData"] = true
+                              $steps["updatePage"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
                                     };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
                                         return;
                                       }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
                                     })?.apply(null, [actionArgs]);
                                   })()
                                 : undefined;
                               if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
                                 ];
                               }
                             }}
                             onTouchStart={async event => {
                               const $steps = {};
 
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -885,28 +1139,40 @@ function PlasmicTransaction__RenderFunc(props: {
                                 ];
                               }
 
-                              $steps["refreshData"] = true
+                              $steps["updatePage"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
                                     };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
                                         return;
                                       }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
                                     })?.apply(null, [actionArgs]);
                                   })()
                                 : undefined;
                               if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
                                 ];
                               }
                             }}
@@ -939,6 +1205,156 @@ function PlasmicTransaction__RenderFunc(props: {
                             onMouseDown={async event => {
                               const $steps = {};
 
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updatePage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
+                              ) {
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -975,37 +1391,162 @@ function PlasmicTransaction__RenderFunc(props: {
                               ) {
                                 $steps["updateTransaction"] = await $steps[
                                   "updateTransaction"
-                                ];
-                              }
-
-                              $steps["refreshData"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
-                                    };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
-                                        return;
-                                      }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
-                              ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
                                 ];
                               }
                             }}
                             onTouchStart={async event => {
                               const $steps = {};
 
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updatePage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
+                              ) {
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -1042,31 +1583,6 @@ function PlasmicTransaction__RenderFunc(props: {
                               ) {
                                 $steps["updateTransaction"] = await $steps[
                                   "updateTransaction"
-                                ];
-                              }
-
-                              $steps["refreshData"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
-                                    };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
-                                        return;
-                                      }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
-                              ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
                                 ];
                               }
                             }}
@@ -1097,6 +1613,119 @@ function PlasmicTransaction__RenderFunc(props: {
                             onMouseDown={async event => {
                               const $steps = {};
 
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -1136,34 +1765,159 @@ function PlasmicTransaction__RenderFunc(props: {
                                 ];
                               }
 
-                              $steps["refreshData"] = true
+                              $steps["updatePage"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
                                     };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
                                         return;
                                       }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
                                     })?.apply(null, [actionArgs]);
                                   })()
                                 : undefined;
                               if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
                                 ];
                               }
                             }}
                             onTouchStart={async event => {
                               const $steps = {};
 
+                              $steps["updateHasMore"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["hasMore"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateHasMore"] != null &&
+                                typeof $steps["updateHasMore"] === "object" &&
+                                typeof $steps["updateHasMore"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateHasMore"] = await $steps[
+                                  "updateHasMore"
+                                ];
+                              }
+
+                              $steps["updateList"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["list"]
+                                      },
+                                      operation: 0,
+                                      value: []
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateList"] != null &&
+                                typeof $steps["updateList"] === "object" &&
+                                typeof $steps["updateList"].then === "function"
+                              ) {
+                                $steps["updateList"] = await $steps[
+                                  "updateList"
+                                ];
+                              }
+
+                              $steps["updateScroll"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["scroll"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateScroll"] != null &&
+                                typeof $steps["updateScroll"] === "object" &&
+                                typeof $steps["updateScroll"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateScroll"] = await $steps[
+                                  "updateScroll"
+                                ];
+                              }
+
                               $steps["updateTransaction"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -1203,28 +1957,40 @@ function PlasmicTransaction__RenderFunc(props: {
                                 ];
                               }
 
-                              $steps["refreshData"] = true
+                              $steps["updatePage"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      queryInvalidation: ["plasmic_refresh_all"]
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["page"]
+                                      },
+                                      operation: 0,
+                                      value: 0
                                     };
-                                    return (async ({ queryInvalidation }) => {
-                                      if (!queryInvalidation) {
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
                                         return;
                                       }
-                                      await plasmicInvalidate(
-                                        queryInvalidation
-                                      );
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
                                     })?.apply(null, [actionArgs]);
                                   })()
                                 : undefined;
                               if (
-                                $steps["refreshData"] != null &&
-                                typeof $steps["refreshData"] === "object" &&
-                                typeof $steps["refreshData"].then === "function"
+                                $steps["updatePage"] != null &&
+                                typeof $steps["updatePage"] === "object" &&
+                                typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["refreshData"] = await $steps[
-                                  "refreshData"
+                                $steps["updatePage"] = await $steps[
+                                  "updatePage"
                                 ];
                               }
                             }}
@@ -1269,8 +2035,62 @@ function PlasmicTransaction__RenderFunc(props: {
                             hasGap={true}
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__mJaif
+                              sty.freeBox__mJaif,
+                              "your-scroll-box"
                             )}
+                            onScroll={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] =
+                                $state.hasMore && $state.scroll
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            var scrollTop =
+                                              event.currentTarget.scrollTop;
+                                            var list = event.currentTarget;
+                                            window.list = list;
+                                            if (
+                                              scrollTop + list.clientHeight >=
+                                              list.scrollHeight - 10
+                                            ) {
+                                              list.style.overflow = "hidden";
+                                              $state.page++;
+                                              return ($state.isLoading = true);
+                                            }
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                            style={(() => {
+                              try {
+                                return {
+                                  "overflow-y": "auto",
+                                  "scroll-behavior": "smooth"
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
                           >
                             {(
                               hasVariant($state, "no", "no")
@@ -1333,13 +2153,13 @@ function PlasmicTransaction__RenderFunc(props: {
                                       onClick={async event => {
                                         const $steps = {};
 
-                                        $steps["updateModalOpen"] = true
+                                        $steps["updateDialog2Open"] = true
                                           ? (() => {
                                               const actionArgs = {
                                                 variable: {
                                                   objRoot: $state,
                                                   variablePath: [
-                                                    "modal",
+                                                    "dialog2",
                                                     "open"
                                                   ]
                                                 },
@@ -1370,14 +2190,14 @@ function PlasmicTransaction__RenderFunc(props: {
                                             })()
                                           : undefined;
                                         if (
-                                          $steps["updateModalOpen"] != null &&
-                                          typeof $steps["updateModalOpen"] ===
+                                          $steps["updateDialog2Open"] != null &&
+                                          typeof $steps["updateDialog2Open"] ===
                                             "object" &&
-                                          typeof $steps["updateModalOpen"]
+                                          typeof $steps["updateDialog2Open"]
                                             .then === "function"
                                         ) {
-                                          $steps["updateModalOpen"] =
-                                            await $steps["updateModalOpen"];
+                                          $steps["updateDialog2Open"] =
+                                            await $steps["updateDialog2Open"];
                                         }
 
                                         $steps["updateModalOpen2"] = true
@@ -1483,6 +2303,10 @@ function PlasmicTransaction__RenderFunc(props: {
                                                 return (() => {
                                                   switch (true) {
                                                     case currentItem.type.includes(
+                                                      "afghanistan_internet"
+                                                    ):
+                                                      return "بسته اینترنت افغانستان";
+                                                    case currentItem.type.includes(
                                                       "argin"
                                                     ):
                                                       return "شارژ سیم کارت";
@@ -1545,11 +2369,30 @@ function PlasmicTransaction__RenderFunc(props: {
                                           <React.Fragment>
                                             {(() => {
                                               try {
-                                                return (
-                                                  (
-                                                    currentItem.price * 1000
-                                                  ).toLocaleString() + " تومان "
-                                                );
+                                                return (() => {
+                                                  switch (
+                                                    currentItem.priceType
+                                                  ) {
+                                                    case "toman":
+                                                      return (
+                                                        (
+                                                          currentItem.price *
+                                                          1000
+                                                        ).toLocaleString() +
+                                                        " تومان "
+                                                      );
+                                                    case "dollar":
+                                                      return (
+                                                        currentItem.price.toLocaleString() +
+                                                        " دلار "
+                                                      );
+                                                    case "afghani":
+                                                      return (
+                                                        currentItem.price.toLocaleString() +
+                                                        " اففانی "
+                                                      );
+                                                  }
+                                                })();
                                               } catch (e) {
                                                 if (
                                                   e instanceof TypeError ||
@@ -1736,8 +2579,62 @@ function PlasmicTransaction__RenderFunc(props: {
                             hasGap={true}
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__c5S4T
+                              sty.freeBox__oKkyj,
+                              "your-scroll-box"
                             )}
+                            onScroll={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] =
+                                $state.hasMore && $state.scroll
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            var scrollTop =
+                                              event.currentTarget.scrollTop;
+                                            var list = event.currentTarget;
+                                            window.list = list;
+                                            if (
+                                              scrollTop + list.clientHeight >=
+                                              list.scrollHeight - 10
+                                            ) {
+                                              list.style.overflow = "hidden";
+                                              $state.page++;
+                                              return ($state.isLoading = true);
+                                            }
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                            style={(() => {
+                              try {
+                                return {
+                                  "overflow-y": "auto",
+                                  "scroll-behavior": "smooth"
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
                           >
                             {(
                               hasVariant($state, "no", "no")
@@ -1800,13 +2697,13 @@ function PlasmicTransaction__RenderFunc(props: {
                                       onClick={async event => {
                                         const $steps = {};
 
-                                        $steps["updateModalOpen"] = true
+                                        $steps["updateDialog2Open"] = true
                                           ? (() => {
                                               const actionArgs = {
                                                 variable: {
                                                   objRoot: $state,
                                                   variablePath: [
-                                                    "modal",
+                                                    "dialog2",
                                                     "open"
                                                   ]
                                                 },
@@ -1837,14 +2734,14 @@ function PlasmicTransaction__RenderFunc(props: {
                                             })()
                                           : undefined;
                                         if (
-                                          $steps["updateModalOpen"] != null &&
-                                          typeof $steps["updateModalOpen"] ===
+                                          $steps["updateDialog2Open"] != null &&
+                                          typeof $steps["updateDialog2Open"] ===
                                             "object" &&
-                                          typeof $steps["updateModalOpen"]
+                                          typeof $steps["updateDialog2Open"]
                                             .then === "function"
                                         ) {
-                                          $steps["updateModalOpen"] =
-                                            await $steps["updateModalOpen"];
+                                          $steps["updateDialog2Open"] =
+                                            await $steps["updateDialog2Open"];
                                         }
 
                                         $steps["updateModalOpen2"] = true
@@ -1953,19 +2850,13 @@ function PlasmicTransaction__RenderFunc(props: {
                                                       );
                                                     case "dollar":
                                                       return (
-                                                        (
-                                                          currentItem.amount *
-                                                          1000
-                                                        ).toLocaleString() +
+                                                        currentItem.amount.toLocaleString() +
                                                         " دلار "
                                                       );
                                                     case "afghani":
                                                       return (
-                                                        (
-                                                          currentItem.amount *
-                                                          1000
-                                                        ).toLocaleString() +
-                                                        " افقانی "
+                                                        currentItem.amount.toLocaleString() +
+                                                        " اففانی "
                                                       );
                                                   }
                                                 })();
@@ -2139,8 +3030,62 @@ function PlasmicTransaction__RenderFunc(props: {
                             hasGap={true}
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__s4B1U
+                              sty.freeBox__nJfBg,
+                              "your-scroll-box"
                             )}
+                            onScroll={async event => {
+                              const $steps = {};
+
+                              $steps["runCode"] =
+                                $state.hasMore && $state.scroll
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            var scrollTop =
+                                              event.currentTarget.scrollTop;
+                                            var list = event.currentTarget;
+                                            window.list = list;
+                                            if (
+                                              scrollTop + list.clientHeight >=
+                                              list.scrollHeight - 10
+                                            ) {
+                                              list.style.overflow = "hidden";
+                                              $state.page++;
+                                              return ($state.isLoading = true);
+                                            }
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["runCode"] != null &&
+                                typeof $steps["runCode"] === "object" &&
+                                typeof $steps["runCode"].then === "function"
+                              ) {
+                                $steps["runCode"] = await $steps["runCode"];
+                              }
+                            }}
+                            style={(() => {
+                              try {
+                                return {
+                                  "overflow-y": "auto",
+                                  "scroll-behavior": "smooth"
+                                };
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()}
                           >
                             {(
                               hasVariant($state, "no", "no")
@@ -2203,53 +3148,6 @@ function PlasmicTransaction__RenderFunc(props: {
                                       onClick={async event => {
                                         const $steps = {};
 
-                                        $steps["updateModalOpen"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "modal",
-                                                    "open"
-                                                  ]
-                                                },
-                                                operation: 0,
-                                                value: true
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["updateModalOpen"] != null &&
-                                          typeof $steps["updateModalOpen"] ===
-                                            "object" &&
-                                          typeof $steps["updateModalOpen"]
-                                            .then === "function"
-                                        ) {
-                                          $steps["updateModalOpen"] =
-                                            await $steps["updateModalOpen"];
-                                        }
-
                                         $steps["updateModalOpen2"] = true
                                           ? (() => {
                                               const actionArgs = {
@@ -2293,6 +3191,53 @@ function PlasmicTransaction__RenderFunc(props: {
                                           $steps["updateModalOpen2"] =
                                             await $steps["updateModalOpen2"];
                                         }
+
+                                        $steps["updateDialog2Open"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "dialog2",
+                                                    "open"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: true
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updateDialog2Open"] != null &&
+                                          typeof $steps["updateDialog2Open"] ===
+                                            "object" &&
+                                          typeof $steps["updateDialog2Open"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updateDialog2Open"] =
+                                            await $steps["updateDialog2Open"];
+                                        }
                                       }}
                                       unnamedGroupOfVariants={
                                         hasVariant(
@@ -2328,10 +3273,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                                   )
                                                     return "رسید" + " وجه";
                                                   else
-                                                    return (
-                                                      currentItem.transactionType +
-                                                      " وجه"
-                                                    );
+                                                    return currentItem.transactionType;
                                                 })();
                                               } catch (e) {
                                                 if (
@@ -2384,12 +3326,28 @@ function PlasmicTransaction__RenderFunc(props: {
                                             <React.Fragment>
                                               {(() => {
                                                 try {
-                                                  return (
-                                                    (
-                                                      currentItem.value * 1000
-                                                    ).toLocaleString() +
-                                                    " تومان "
-                                                  );
+                                                  return (() => {
+                                                    switch (currentItem.type) {
+                                                      case "toman":
+                                                        return (
+                                                          (
+                                                            currentItem.value *
+                                                            1000
+                                                          ).toLocaleString() +
+                                                          " تومان "
+                                                        );
+                                                      case "dollar":
+                                                        return (
+                                                          currentItem.value.toLocaleString() +
+                                                          " دلار "
+                                                        );
+                                                      case "afghani":
+                                                        return (
+                                                          currentItem.value.toLocaleString() +
+                                                          " اففانی "
+                                                        );
+                                                    }
+                                                  })();
                                                 } catch (e) {
                                                   if (
                                                     e instanceof TypeError ||
@@ -2549,12 +3507,6 @@ function PlasmicTransaction__RenderFunc(props: {
                             ) : null}
                           </Stack__>
                         </TabContent>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___1CjQh
-                          )}
-                        />
                       </div>
                     </div>
                   )}
@@ -2836,1992 +3788,6 @@ function PlasmicTransaction__RenderFunc(props: {
               />
             </div>
           </Reveal>
-          <AntdModal
-            data-plasmic-name={"modal"}
-            data-plasmic-override={overrides.modal}
-            className={classNames("__wab_instance", sty.modal)}
-            closeButtonClassName={classNames({
-              [sty["pcls_jZaReuFdvodW"]]: true
-            })}
-            defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
-              projectcss.plasmic_tokens,
-              plasmic_antd_5_hostless_css.plasmic_tokens,
-              plasmic_plasmic_rich_components_css.plasmic_tokens
-            )}
-            hideFooter={true}
-            modalContentClassName={classNames({
-              [sty["pcls_XsbJxDF7TlN3"]]: hasVariant(
-                globalVariants,
-                "screen",
-                "mobileOnly"
-              ),
-              [sty["pcls_nbIyKKb0bYr0"]]: true
-            })}
-            modalScopeClassName={sty["modal__modal"]}
-            onOpenChange={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["modal", "open"]).apply(
-                null,
-                eventArgs
-              );
-            }}
-            open={generateStateValueProp($state, ["modal", "open"])}
-            title={null}
-            trigger={null}
-            width={
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "100vw"
-                : "100vw"
-            }
-            wrapClassName={classNames({ [sty["pcls_meHaK8TAQRq_"]]: true })}
-          >
-            <div className={classNames(projectcss.all, sty.freeBox__v19T)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__aGz5Z
-                )}
-              >
-                {
-                  "\u0631\u0633\u06cc\u062f \u062a\u0631\u0627\u06a9\u0646\u0634"
-                }
-              </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__blzPa)}
-              >
-                <Transaction2
-                  data-plasmic-name={"transaction2"}
-                  data-plasmic-override={overrides.transaction2}
-                  className={classNames("__wab_instance", sty.transaction2)}
-                  slot={
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.transaction == "transaction";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__c3Rwd
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    if (
-                                      $state.transaction2.transactionType.includes(
-                                        "واریز"
-                                      )
-                                    ) {
-                                      return "رسید وجه";
-                                    } else {
-                                      return (
-                                        $state.transaction2.transactionType +
-                                        " وجه"
-                                      );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    if (
-                                      $state.transaction2.transactionType.includes(
-                                        "واریز"
-                                      )
-                                    ) {
-                                      return "رسید وجه";
-                                    } else {
-                                      return (
-                                        $state.transaction2.transactionType +
-                                        " وجه"
-                                      );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return $state.transaction == "remittance";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__wA4QJ
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return "حواله وجه";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      ) : null}
-                    </React.Fragment>
-                  }
-                  unnamedGroupOfVariants={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return (() => {
-                              switch (true) {
-                                case $state.transaction2.type.includes(
-                                  "charge"
-                                ):
-                                  return "sim";
-                                case $state.transaction2.type.includes("inte"):
-                                  return "intenet";
-                                case $state.transaction2.type.includes("snap"):
-                                  return "snap";
-                                case $state.transaction2.type.includes(
-                                  "uc_pubg"
-                                ):
-                                  return "pubg";
-                                case $state.transaction == "remittance":
-                                  return "walet";
-                                case $state.transaction == "transaction":
-                                  return "panel";
-                                default:
-                                  return "";
-                              }
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (() => {
-                              switch (true) {
-                                case $state.transaction2.type.includes(
-                                  "charge"
-                                ):
-                                  return "sim";
-                                case $state.transaction2.type.includes("inte"):
-                                  return "intenet";
-                                case $state.transaction2.type.includes("snap"):
-                                  return "snap";
-                                case $state.transaction2.type.includes(
-                                  "uc_pubg"
-                                ):
-                                  return "pubg";
-                                case $state.transaction == "remittance":
-                                  return "walet";
-                                case $state.transaction == "transaction":
-                                  return "panel";
-                                default:
-                                  return "";
-                              }
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
-                >
-                  {(() => {
-                    try {
-                      return $state.transaction == "transaction";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___1H4X)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__nsKl2
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__aqgJy
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    if (
-                                      $state.transaction2.transactionType.includes(
-                                        "واریز"
-                                      )
-                                    ) {
-                                      return "واریز کننده: ";
-                                    } else {
-                                      return "دریافت کننده: ";
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    if (
-                                      $state.transaction2.transactionType.includes(
-                                        "واریز"
-                                      )
-                                    ) {
-                                      return "واریز کننده: ";
-                                    } else {
-                                      return "دریافت کننده: ";
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u0646\u062f\u0647 :";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                        {(() => {
-                          try {
-                            return true;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__qMQft
-                            )}
-                          >
-                            {hasVariant(
-                              globalVariants,
-                              "screen",
-                              "mobileOnly"
-                            ) ? (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $state.transaction2.receiver;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $state.transaction2.receiver;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "--";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__uQxTh
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__a4FNw
-                          )}
-                        >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0645\u0628\u0644\u063a :"
-                            : "\u0645\u0628\u0644\u063a :"}
-                        </div>
-                        {(() => {
-                          try {
-                            return true;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__c8OJz
-                            )}
-                          >
-                            {hasVariant(
-                              globalVariants,
-                              "screen",
-                              "mobileOnly"
-                            ) ? (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (() => {
-                                      switch ($state.transaction2.type) {
-                                        case "toman":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                        case "dollar":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " دلار"
-                                          );
-                                        case "afghani":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " افقانی"
-                                          );
-                                      }
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (() => {
-                                      switch ($state.transaction2.type) {
-                                        case "toman":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                        case "dollar":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " دلار"
-                                          );
-                                        case "afghani":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " افقانی"
-                                          );
-                                      }
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "--";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__eqZl7
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__g0F7F
-                          )}
-                        >
-                          {
-                            "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
-                          }
-                        </div>
-                        {(
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? (() => {
-                                try {
-                                  return $state.transaction == "transaction";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            : true
-                        ) ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ca7Ry,
-                              hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? "dateshow"
-                                : undefined
-                            )}
-                          >
-                            {hasVariant(
-                              globalVariants,
-                              "screen",
-                              "mobileOnly"
-                            ) ? (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $state.transaction2.createdAtFa
-                                      .split("-")
-                                      .join("/");
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "1403/07/05 10:15:30";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return $state.transaction2.createdAtFa
-                                      .split("-")
-                                      .join("/");
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "1403/07/05 10:15:30";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
-                    </div>
-                  ) : null}
-                  {(() => {
-                    try {
-                      return $state.transaction == "remittance";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__o3DzC)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__isJh7
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lKdIw
-                          )}
-                        >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0641\u0631\u0633\u062a\u0646\u062f\u0647 :"
-                            : "\u0641\u0631\u0633\u062a\u0646\u062f\u0647 :"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ioVwb
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.transaction2.sender;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.transaction2.sender;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__sczyB
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__f67W
-                          )}
-                        >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0645\u0628\u0644\u063a \u0627\u0631\u0633\u0627\u0644\u06cc :"
-                            : "\u0645\u0628\u0644\u063a \u0627\u0631\u0633\u0627\u0644\u06cc :"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__bwCd1
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type_2) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " تومان"
-                                        );
-                                      case "dollar":
-                                        return (
-                                          $state.transaction2.amount.toLocaleString() +
-                                          " دلار"
-                                        );
-                                      case "afghani":
-                                        return (
-                                          $state.transaction2.amount.toLocaleString() +
-                                          " افقانی"
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type_2) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2.amount * 1000
-                                          ).toLocaleString() + " تومان "
-                                        );
-                                      case "dollar":
-                                        return (
-                                          $state.transaction2.amount.toLocaleString() +
-                                          " دلار "
-                                        );
-                                      case "afghani":
-                                        return (
-                                          $state.transaction2.amount.toLocaleString() +
-                                          " افقانی "
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__j8LlJ
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__r832Y
-                          )}
-                        >
-                          {
-                            "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__oDsv,
-                            hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "dateshow"
-                              : undefined
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.transaction2.createdAtFa
-                                    .split("-")
-                                    .join("/");
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.transaction2.createdAtFa
-                                    .split("-")
-                                    .join("/");
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/07/05 10:15:30";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___2OeGb
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__hC5Oe
-                          )}
-                        >
-                          {"\u0646\u0631\u062e \u0631\u0648\u0632:"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__q9XwP,
-                            hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "dateshow"
-                              : undefined
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " تومان "
-                                        );
-                                      case "dollar":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " دلار "
-                                        );
-                                      case "afghani":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " افقانی "
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " تومان "
-                                        );
-                                      case "dollar":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " دلار "
-                                        );
-                                      case "afghani":
-                                        return (
-                                          (
-                                            $state.transaction2
-                                              .today_value_rate * 1000
-                                          ).toLocaleString() + " افقانی "
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/07/05 10:15:30";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ndtpl
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__btHgD
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__cvYxC
-                          )}
-                        >
-                          {"\u0645\u0642\u0635\u062f :"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___3Ftp
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transaction2.state;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__rAOsi
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__apgDl
-                          )}
-                        >
-                          {
-                            "\u0645\u0628\u0644\u063a \u062f\u0631\u06cc\u0627\u0641\u062a\u06cc :"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__kv0QD
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " تومان"
-                                        );
-                                      case "dollar":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " دلار"
-                                        );
-                                      case "afghani":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " افقانی"
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction2.type) {
-                                      case "toman":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " تومان "
-                                        );
-                                      case "dollar":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " دلار "
-                                        );
-                                      case "afghani":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " افقانی "
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
-                  {(
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.transaction == "charge" &&
-                              $state.transaction2.type != "uc_pubg"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.transaction == "charge" &&
-                              $state.transaction2.type != "uc_pubg"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                  ) ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__agJjx)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hcdYd
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__lwX0M
-                          )}
-                        >
-                          {"\u0645\u0628\u0644\u063a :"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___1OfKn
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch ($state.transaction) {
-                                      case "charge":
-                                        return (
-                                          (
-                                            $state.transaction2.price * 1000
-                                          ).toLocaleString() + " تومان"
-                                        );
-                                      case "transaction":
-                                        return (
-                                          (
-                                            $state.transaction2.value * 1000
-                                          ).toLocaleString() + " تومان"
-                                        );
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    (
-                                      $state.transaction2.price * 1000
-                                    ).toLocaleString() + " تومان "
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__p8NLr
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fvYp0
-                          )}
-                        >
-                          {
-                            "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
-                          }
-                        </div>
-                        {(
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? true
-                            : (() => {
-                                try {
-                                  return true;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                        ) ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xFqeG,
-                              hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? "dateshow"
-                                : "dateshow"
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    let date =
-                                      $state.transaction2.createdAt.split(
-                                        " "
-                                      )[0];
-                                    let time =
-                                      $state.transaction2.createdAt.split(
-                                        " "
-                                      )[1];
-                                    let gy = parseInt(date.split("-")[0]);
-                                    let gm = parseInt(date.split("-")[1]);
-                                    let gd = parseInt(date.split("-")[2]);
-                                    var { jy, jm, jd } =
-                                      window.jalaali.toJalaali(gy, gm, gd);
-                                    return (
-                                      jy + "/" + jm + "/" + jd + "   " + time
-                                    );
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/07/05 10:15:30";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hca69
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__gByk
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__cD3Jk
-                          )}
-                        >
-                          {
-                            "\u0634\u0645\u0627\u0631\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647:"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__c1Jbz
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transaction2.mobile;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      </div>
-                      {(() => {
-                        try {
-                          return (
-                            $state.transaction2.otherData &&
-                            JSON.parse($state.transaction2.otherData).priceAfg
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__lRleX
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ke9Mr
-                            )}
-                          >
-                            {
-                              "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698:"
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__vJnru
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    JSON.parse($state.transaction2.otherData)
-                                      .priceAfg + " افغانی "
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "--";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      ) : null}
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__itDKv
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xB4L
-                          )}
-                        >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0646\u0648\u0639 \u0634\u0627\u0631\u0698 :"
-                            : "\u0646\u0648\u0639 \u0634\u0627\u0631\u0698 :"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___5Wbg5
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch (true) {
-                                      case $state.transaction2.type.startsWith(
-                                        "iran"
-                                      ):
-                                        return "ایران";
-                                      case $state.transaction2.type.startsWith(
-                                        "Afgan"
-                                      ):
-                                        return "افقانستان";
-                                      default:
-                                        return "نامشخص";
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0631\u0627\u06cc\u062a\u0644";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    switch (true) {
-                                      case $state.transaction2.type.startsWith(
-                                        "iran"
-                                      ):
-                                        return "ایران";
-                                      case $state.transaction2.type.startsWith(
-                                        "Afgan"
-                                      ):
-                                        return "اففانستان";
-                                      default:
-                                        return "نامشخص";
-                                    }
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0631\u0627\u06cc\u062a\u0644";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___63UJ8
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__twwA8
-                          )}
-                        >
-                          {
-                            "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634 :"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___0RnJk
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transaction2.originId;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
-                  {(
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.transaction2.type == "uc_pubg";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.transaction2.type == "uc_pubg";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
-                  ) ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xwf0E)}
-                    >
-                      {(
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? true
-                          : false
-                      ) ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___6YktH
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__oLuV2
-                            )}
-                          >
-                            {"\u0645\u0628\u0644\u063a :"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__c1Wox
-                            )}
-                          >
-                            {hasVariant(
-                              globalVariants,
-                              "screen",
-                              "mobileOnly"
-                            ) ? (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (() => {
-                                      switch ($state.transaction) {
-                                        case "charge":
-                                          return (
-                                            (
-                                              $state.transaction2.price * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                        case "transaction":
-                                          return (
-                                            (
-                                              $state.transaction2.value * 1000
-                                            ).toLocaleString() + " تومان"
-                                          );
-                                      }
-                                    })();
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "--";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            ) : (
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return (
-                                      (
-                                        $state.transaction2.price * 1000
-                                      ).toLocaleString() + " تومان "
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "100000 \u062a\u0648\u0645\u0627\u0646";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            )}
-                          </div>
-                        </div>
-                      ) : null}
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__fThqs
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__ob29N
-                          )}
-                        >
-                          {
-                            "\u062a\u0627\u0631\u06cc\u062e \u062a\u0631\u0627\u06a9\u0646\u0634:"
-                          }
-                        </div>
-                        {(
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? true
-                            : (() => {
-                                try {
-                                  return true;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                        ) ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___4CFmB,
-                              hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? "dateshow"
-                                : "dateshow"
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    let date =
-                                      $state.transaction2.createdAt.split(
-                                        " "
-                                      )[0];
-                                    let time =
-                                      $state.transaction2.createdAt.split(
-                                        " "
-                                      )[1];
-                                    let gy = parseInt(date.split("-")[0]);
-                                    let gm = parseInt(date.split("-")[1]);
-                                    let gd = parseInt(date.split("-")[2]);
-                                    var { jy, jm, jd } =
-                                      window.jalaali.toJalaali(gy, gm, gd);
-                                    return (
-                                      jy + "/" + jm + "/" + jd + "   " + time
-                                    );
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/07/05 10:15:30";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__j1WuS
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__k7V4
-                          )}
-                        >
-                          {"\u0645\u0628\u0644\u063a:"}
-                        </div>
-                        {(
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? true
-                            : (() => {
-                                try {
-                                  return true;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                        ) ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__qSib,
-                              hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? "dateshow"
-                                : "dateshow"
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    $state.transaction2.price.toLocaleString() +
-                                    " تومان "
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/07/05 10:15:30";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___7FAlt
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__mCfWj
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__aD04J
-                          )}
-                        >
-                          {
-                            "\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc:"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__dnr37
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transaction2.mobile;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__pnCnt
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__u3V4F
-                          )}
-                        >
-                          {
-                            "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634 :"
-                          }
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fhxiI
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transaction2.originId;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "--";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                      </div>
-                    </div>
-                  ) : null}
-                </Transaction2>
-                <Button
-                  data-plasmic-name={"button4"}
-                  data-plasmic-override={overrides.button4}
-                  className={classNames("__wab_instance", sty.button4)}
-                  color={"softGreen"}
-                  loadingviow={generateStateValueProp($state, [
-                    "button4",
-                    "loadingviow"
-                  ])}
-                  onLoadingviowChange={async (...eventArgs: any) => {
-                    ((...eventArgs) => {
-                      generateStateOnChangeProp($state, [
-                        "button4",
-                        "loadingviow"
-                      ])(eventArgs[0]);
-                    }).apply(null, eventArgs);
-
-                    if (
-                      eventArgs.length > 1 &&
-                      eventArgs[1] &&
-                      eventArgs[1]._plasmic_state_init_
-                    ) {
-                      return;
-                    }
-                  }}
-                >
-                  {"\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"}
-                </Button>
-              </Stack__>
-            </div>
-          </AntdModal>
           {(hasVariant($state, "no", "no") ? true : false) ? (
             <PlasmicImg__
               alt={""}
@@ -4864,40 +3830,6 @@ function PlasmicTransaction__RenderFunc(props: {
 
               (async loading => {
                 const $steps = {};
-
-                $steps["updateList"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["list"]
-                        },
-                        operation: 0,
-                        value: []
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateList"] != null &&
-                  typeof $steps["updateList"] === "object" &&
-                  typeof $steps["updateList"].then === "function"
-                ) {
-                  $steps["updateList"] = await $steps["updateList"];
-                }
               }).apply(null, eventArgs);
             }}
             onSuccess={async (...eventArgs: any) => {
@@ -4909,18 +3841,111 @@ function PlasmicTransaction__RenderFunc(props: {
               (async data => {
                 const $steps = {};
 
-                $steps["updateList"] = true
+                $steps["updateList"] =
+                  $state.apiRequest?.data?.[0] && $state.isLoading == false
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["list"]
+                          },
+                          operation: 0,
+                          value: $state.apiRequest.data[0].list
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateList"] != null &&
+                  typeof $steps["updateList"] === "object" &&
+                  typeof $steps["updateList"].then === "function"
+                ) {
+                  $steps["updateList"] = await $steps["updateList"];
+                }
+
+                $steps["runCode"] =
+                  $state.apiRequest?.data?.[0] && $state.isLoading == true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              $state.scroll = false;
+                              $state.isLoading = false;
+                              var newData = $state.apiRequest.data[0].list;
+                              if (!newData || newData.length == 0) {
+                                $state.hasMore = false;
+                              } else {
+                                $state.list = $state.list.concat(newData);
+                              }
+                              if (window.list) {
+                                window.list.style.overflow = "auto";
+                                return (window.list.scrollTop =
+                                  window.list.scrollTop + 200);
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["invokeGlobalAction"] =
+                  $state.hasMore == false
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            "error",
+                            "\u062a\u0631\u0627\u06a9\u0646\u0634 \u062f\u06cc\u06af\u0631\u06cc \u0628\u0631\u0627\u06cc \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f",
+                            "bottom-center"
+                          ]
+                        };
+                        return $globalActions["Fragment.showToast"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                if (
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
+                ) {
+                  $steps["invokeGlobalAction"] = await $steps[
+                    "invokeGlobalAction"
+                  ];
+                }
+
+                $steps["updateScroll"] = true
                   ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
-                          variablePath: ["list"]
+                          variablePath: ["scroll"]
                         },
                         operation: 0,
-                        value: (() => {
-                          if ($state.apiRequest.data != null)
-                            return $state.apiRequest.data[0].list;
-                        })()
+                        value: true
                       };
                       return (({
                         variable,
@@ -4939,11 +3964,11 @@ function PlasmicTransaction__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["updateList"] != null &&
-                  typeof $steps["updateList"] === "object" &&
-                  typeof $steps["updateList"].then === "function"
+                  $steps["updateScroll"] != null &&
+                  typeof $steps["updateScroll"] === "object" &&
+                  typeof $steps["updateScroll"].then === "function"
                 ) {
-                  $steps["updateList"] = await $steps["updateList"];
+                  $steps["updateScroll"] = await $steps["updateScroll"];
                 }
               }).apply(null, eventArgs);
             }}
@@ -5469,6 +4494,60 @@ function PlasmicTransaction__RenderFunc(props: {
             </div>
           </AntdModal>
           <section className={classNames(projectcss.all, sty.section__xjf2B)}>
+            {(() => {
+              try {
+                return $state.isLoading;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <section
+                className={classNames(projectcss.all, sty.section__q0ScM)}
+              >
+                <div className={classNames(projectcss.all, sty.freeBox__fm5Z6)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__bzzA
+                    )}
+                  >
+                    {
+                      "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0627\u0631\u06af\u0630\u0627\u0631\u06cc ..."
+                    }
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__mf21Q,
+                      "line-container"
+                    )}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__j05RL,
+                        "line line-1"
+                      )}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___2ORbZ,
+                        "line line-2"
+                      )}
+                    />
+                  </div>
+                </div>
+              </section>
+            ) : null}
             <div className={classNames(projectcss.all, sty.freeBox__goJzD)}>
               <div
                 data-plasmic-name={"footer2"}
@@ -5651,6 +4730,352 @@ function PlasmicTransaction__RenderFunc(props: {
               }
             }}
           />
+
+          <Dialog2
+            data-plasmic-name={"dialog2"}
+            data-plasmic-override={overrides.dialog2}
+            className={classNames("__wab_instance", sty.dialog2)}
+            data={(() => {
+              try {
+                return (() => {
+                  const input = $state.transaction2;
+                  function formatAmount(currency, value) {
+                    const result = {
+                      type: "",
+                      amount: value || 0
+                    };
+                    switch (currency) {
+                      case "toman":
+                        result.type = "تومان";
+                        result.amount = (value || 0) * 1000;
+                        break;
+                      case "dollar":
+                        result.type = "دلار";
+                        break;
+                      case "afghani":
+                        result.type = "افغانی";
+                        break;
+                      case "lir":
+                        result.type = "لیر";
+                        break;
+                      default:
+                        result.type = "مبلغ";
+                    }
+                    return result;
+                  }
+                  if ($state.transaction === "transaction") {
+                    const data = [];
+                    if (input.transactionType) {
+                      data.push({
+                        text: "نوع تراکنش",
+                        value: input.transactionType
+                      });
+                    }
+                    if (input.receiver) {
+                      data.push({
+                        text: "گیرنده",
+                        value: input.receiver
+                      });
+                    }
+                    if (input.createdAtFa) {
+                      data.push({
+                        text: "تاریخ",
+                        value: input.createdAtFa.trim()
+                      });
+                    }
+                    data.push({
+                      text: "نوع",
+                      value: input.transactionType?.includes("واریز")
+                        ? "رسید وجه"
+                        : input.transactionType
+                    });
+                    const { type, amount } = formatAmount(
+                      input.type,
+                      input.value
+                    );
+                    const output = {
+                      data,
+                      amount: {
+                        type,
+                        text: "مبلغ",
+                        value: amount.toLocaleString(),
+                        amount
+                      },
+                      type: "transaction"
+                    };
+                    return output;
+                  } else if ($state.transaction === "remittance") {
+                    const data = [
+                      {
+                        text: "نوع",
+                        value: "حواله وجه"
+                      },
+                      {
+                        text: "فرستنده",
+                        value: input.sender
+                      },
+                      {
+                        text: "شماره تراکنش",
+                        value: input.num?.toString()
+                      },
+                      {
+                        text: "نرخ روز",
+                        value: `${input.today_value_rate?.toString()} ${
+                          formatAmount(input.type_2).type
+                        }`
+                      },
+                      {
+                        text: "مبلغ ارسالی",
+                        value: `${input.amount?.toLocaleString()} ${
+                          formatAmount(input.type_2).type
+                        }`
+                      },
+                      {
+                        text: "تاریخ ارسال",
+                        value: input.createdAtFa
+                      },
+                      {
+                        text: "مقصد",
+                        value: input.state
+                      }
+                    ];
+
+                    const { type, amount } = formatAmount(
+                      input.type,
+                      input.amount
+                    );
+                    const output = {
+                      data,
+                      amount: {
+                        type,
+                        text: "مبلغ دریافتی",
+                        value: amount.toLocaleString(),
+                        amount
+                      },
+                      type: "remittance"
+                    };
+                    return output;
+                  } else if ($state.transaction === "charge") {
+                    const typeMap = [
+                      {
+                        key: "afghanistan_internet",
+                        label: "بسته اینترنت افغانستان"
+                      },
+                      {
+                        key: "argin",
+                        label: "شارژ سیم کارت"
+                      },
+                      {
+                        key: "inte",
+                        label: "خرید بسته اینترنت"
+                      },
+                      {
+                        key: "snap",
+                        label: "خرید بسته اسنپ"
+                      },
+                      {
+                        key: "package_UC",
+                        label: "خرید بسته UC PUBG"
+                      },
+                      {
+                        key: "package_likee",
+                        label: "خرید الماس Likee"
+                      },
+                      {
+                        key: "package_imo",
+                        label: "خرید الماس imo"
+                      },
+                      {
+                        key: "package_bigo-live",
+                        label: "خرید الماس Bigo live"
+                      },
+                      {
+                        key: "bill",
+                        label: "پرداخت قبض"
+                      },
+                      {
+                        key: "afghanistan_contact",
+                        label: "بسته مکاله افغانستان"
+                      }
+                    ];
+
+                    function getTypeLabel(typeStr) {
+                      const found = typeMap.find(t => typeStr?.includes(t.key));
+                      return found ? found.label : "نوع ناشناخته";
+                    }
+                    let other = {};
+                    try {
+                      if (input.otherData) {
+                        other = JSON.parse(input.otherData);
+                      }
+                    } catch (e) {
+                      console.warn("otherData is not valid JSON:", e);
+                    }
+                    let faDateTime = "";
+                    if (input.createdAt) {
+                      const createdAt = new Date(input.createdAt);
+                      faDateTime = createdAt.toLocaleString(
+                        "fa-IR-u-ca-persian",
+                        {
+                          year: "numeric",
+                          month: "2-digit",
+                          day: "2-digit",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: false
+                        }
+                      );
+                    }
+                    const data = [
+                      {
+                        text: "نوع",
+                        value: getTypeLabel(input.type)
+                      },
+                      {
+                        text: "موبایل",
+                        value: input.mobile
+                      },
+                      {
+                        text: "تاریخ",
+                        value: faDateTime
+                      }
+                    ];
+
+                    if (
+                      input.type?.includes("package_") &&
+                      other.userName &&
+                      other.userId
+                    ) {
+                      data.push({
+                        text: "نام کاربری",
+                        value: other.userName
+                      });
+                      data.push({
+                        text: "شناسه کاربر",
+                        value: other.userId
+                      });
+                    } else if (
+                      input.type?.includes("afghanistan_internet") &&
+                      other.operators &&
+                      other.namePack
+                    ) {
+                      data.push({
+                        text: "اپراتور",
+                        value: other.operators
+                      });
+                      data.push({
+                        text: "بسته",
+                        value: other.namePack
+                      });
+                    }
+                    if (input.originId) {
+                      data.push({
+                        text: "شناسه تراکنش",
+                        value: input.originId
+                      });
+                    }
+                    const { type, amount } = formatAmount(
+                      input.priceType,
+                      input.price
+                    );
+                    const output = {
+                      data,
+                      amount: {
+                        type,
+                        text: "مبلغ پرداخت شده",
+                        value: amount.toLocaleString(),
+                        amount
+                      },
+                      type: input.type
+                    };
+                    return output;
+                  }
+                })();
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return {
+                    data: [
+                      {
+                        text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                        value: 100
+                      },
+                      {
+                        text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                        value: 200
+                      },
+                      {
+                        text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                        value: 300
+                      },
+                      {
+                        text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                        value: 400
+                      },
+                      {
+                        text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                        value: 500
+                      }
+                    ],
+                    amount: {
+                      type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                      text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                      value: "500000",
+                      amount: 1000
+                    }
+                  };
+                }
+                throw e;
+              }
+            })()}
+            load={generateStateValueProp($state, ["dialog2", "load"])}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog2", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog2", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog2", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            open={generateStateValueProp($state, ["dialog2", "open"])}
+            type={generateStateValueProp($state, ["dialog2", "type"])}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5669,9 +5094,6 @@ const PlasmicDescendants = {
     "tabUnderline",
     "button2",
     "button3",
-    "modal",
-    "transaction2",
-    "button4",
     "apiRequest",
     "modal2",
     "radioGroup2",
@@ -5683,7 +5105,8 @@ const PlasmicDescendants = {
     "charge3",
     "vuesaxBoldReceipt3",
     "timer",
-    "sideEffect"
+    "sideEffect",
+    "dialog2"
   ],
   embedHtml: ["embedHtml"],
   header: ["header"],
@@ -5709,9 +5132,6 @@ const PlasmicDescendants = {
   tabUnderline: ["tabUnderline"],
   button2: ["button2"],
   button3: ["button3"],
-  modal: ["modal", "transaction2", "button4"],
-  transaction2: ["transaction2"],
-  button4: ["button4"],
   apiRequest: ["apiRequest"],
   modal2: ["modal2", "radioGroup2", "radioGroup", "button5"],
   radioGroup2: ["radioGroup2"],
@@ -5729,7 +5149,8 @@ const PlasmicDescendants = {
   charge3: ["charge3", "vuesaxBoldReceipt3"],
   vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"],
   timer: ["timer"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  dialog2: ["dialog2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5745,9 +5166,6 @@ type NodeDefaultElementType = {
   tabUnderline: typeof TabUnderline;
   button2: typeof Button;
   button3: typeof Button;
-  modal: typeof AntdModal;
-  transaction2: typeof Transaction2;
-  button4: typeof Button;
   apiRequest: typeof ApiRequest;
   modal2: typeof AntdModal;
   radioGroup2: typeof AntdRadioGroup;
@@ -5760,6 +5178,7 @@ type NodeDefaultElementType = {
   vuesaxBoldReceipt3: "div";
   timer: typeof Timer;
   sideEffect: typeof SideEffect;
+  dialog2: typeof Dialog2;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5856,9 +5275,6 @@ export const PlasmicTransaction = Object.assign(
     tabUnderline: makeNodeComponent("tabUnderline"),
     button2: makeNodeComponent("button2"),
     button3: makeNodeComponent("button3"),
-    modal: makeNodeComponent("modal"),
-    transaction2: makeNodeComponent("transaction2"),
-    button4: makeNodeComponent("button4"),
     apiRequest: makeNodeComponent("apiRequest"),
     modal2: makeNodeComponent("modal2"),
     radioGroup2: makeNodeComponent("radioGroup2"),
@@ -5871,6 +5287,7 @@ export const PlasmicTransaction = Object.assign(
     vuesaxBoldReceipt3: makeNodeComponent("vuesaxBoldReceipt3"),
     timer: makeNodeComponent("timer"),
     sideEffect: makeNodeComponent("sideEffect"),
+    dialog2: makeNodeComponent("dialog2"),
 
     // Metadata about props expected for PlasmicTransaction
     internalVariantProps: PlasmicTransaction__VariantProps,

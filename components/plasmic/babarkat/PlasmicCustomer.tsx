@@ -559,30 +559,31 @@ function PlasmicCustomer__RenderFunc(props: {
               onScroll={async event => {
                 const $steps = {};
 
-                $steps["runCode"] = $state.hasMore
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            var scrollTop = event.currentTarget.scrollTop;
-                            var list = event.currentTarget;
-                            window.list = list;
-                            if (
-                              scrollTop + list.clientHeight >=
-                              list.scrollHeight - 10
-                            ) {
-                              list.style.overflow = "hidden";
-                              $state.page++;
-                              return ($state.isLoading = true);
-                            }
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                $steps["runCode"] =
+                  $state.hasMore && $state.isLoading == false
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              var scrollTop = event.currentTarget.scrollTop;
+                              var list = event.currentTarget;
+                              window.list = list;
+                              if (
+                                scrollTop + list.clientHeight >=
+                                list.scrollHeight - 10
+                              ) {
+                                list.style.overflow = "hidden";
+                                $state.page++;
+                                return ($state.isLoading = true);
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
                   $steps["runCode"] != null &&
                   typeof $steps["runCode"] === "object" &&

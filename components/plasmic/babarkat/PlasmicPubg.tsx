@@ -71,11 +71,12 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
-import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
+import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
+import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -159,16 +160,15 @@ export type PlasmicPubg__OverridesType = {
   ul?: Flex__<"ul">;
   اپراتور3?: Flex__<"div">;
   button4?: Flex__<typeof Button>;
-  modal3?: Flex__<typeof AntdModal>;
-  lottie?: Flex__<typeof LottieWrapper>;
-  button5?: Flex__<typeof Button>;
+  pay?: Flex__<"div">;
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   rate?: Flex__<typeof ApiRequest>;
   button6?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
-  exchangeRate?: Flex__<typeof ApiRequest>;
+  exchange?: Flex__<typeof Exchange>;
+  dialog?: Flex__<typeof Dialog>;
 };
 
 export interface DefaultPubgProps {}
@@ -509,22 +509,6 @@ function PlasmicPubg__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "modal3.open",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "steps2", "step3")
-            ? false
-            : hasVariant($state, "steps2", "step2") &&
-              hasVariant(globalVariants, "screen", "mobileOnly")
-            ? false
-            : hasVariant($state, "steps2", "step2")
-            ? false
-            : hasVariant(globalVariants, "screen", "mobileOnly")
-            ? false
-            : false
-      },
-      {
         path: "userinfo",
         type: "private",
         variableType: "object",
@@ -724,25 +708,6 @@ function PlasmicPubg__RenderFunc(props: {
           })()
       },
       {
-        path: "button5.loadingviow",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.loadingviow;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
-      },
-      {
         path: "button6[].loadingviow",
         type: "private",
         variableType: "boolean"
@@ -814,28 +779,92 @@ function PlasmicPubg__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "exchangeRate.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "rate2",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange.totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.totalAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.amont",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "steps2", "step2")
+            ? (() => {
+                try {
+                  return undefined;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 50000;
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return $state.selectpack.rate;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 50000;
+                  }
+                  throw e;
+                }
+              })()
+      },
+      {
+        path: "exchange.afghaniWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.tomanWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "steps2", "step3") ? false : false
+      },
+      {
+        path: "dialog.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "dialog.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2001,17 +2030,9 @@ function PlasmicPubg__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (
-                                  Math.ceil(
-                                    $state.selectpack.rate +
-                                      $state.selectpack.rate *
-                                        (($state.commissionBabarkat.data
-                                          .babrkat +
-                                          $state.commissionBabarkat.data
-                                            .saraf) /
-                                          100)
-                                  ).toLocaleString("en") + " تومان "
-                                );
+                                return `${$state.exchange.totalToman.toLocaleString()} تومان 
+${$state.exchange.totalAfghani.toLocaleString()} افغانی
+`;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -4778,22 +4799,20 @@ function PlasmicPubg__RenderFunc(props: {
                     }
                   })() ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__fbJep,
-                        {
-                          [sty.freeBoxsteps2_step2__fbJePjQ3Ah]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step2"
-                          ),
-                          [sty.freeBoxsteps2_step3__fbJepJpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
+                      data-plasmic-name={"pay"}
+                      data-plasmic-override={overrides.pay}
+                      className={classNames(projectcss.all, sty.pay, {
+                        [sty.paysteps2_step2]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step2"
+                        ),
+                        [sty.paysteps2_step3]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step3"
+                        )
+                      })}
                       id={
                         hasVariant($state, "steps2", "step3")
                           ? "pay"
@@ -4802,9 +4821,7 @@ function PlasmicPubg__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["updateRate2"] = (
-                          $state.exchangeRate?.data?.rate ? true : false
-                        )
+                        $steps["updateRate2"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -4815,12 +4832,11 @@ function PlasmicPubg__RenderFunc(props: {
                                 value: (() => {
                                   switch ($state.shopModal.type) {
                                     case "toman":
-                                      return $state.selectpack.rate;
+                                      return $state.exchange
+                                        .tomanWithoutCommission;
                                     case "afghani":
-                                      return Math.round(
-                                        $state.selectpack.rate /
-                                          $state.exchangeRate.data.rate
-                                      );
+                                      return $state.exchange
+                                        .afghaniWithoutCommission;
                                     default:
                                       console.log("نوع ارز نامعتبر است");
                                   }
@@ -4923,182 +4939,77 @@ function PlasmicPubg__RenderFunc(props: {
                           $steps["updateUuid"] = await $steps["updateUuid"];
                         }
 
-                        $steps["invokeGlobalAction4"] =
+                        $steps["buy"] =
                           $state.rate2 !== 0 && $state.rate2 != null
                             ? (() => {
                                 const actionArgs = {
                                   args: [
                                     "POST",
-                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                    "https://n8n.babarkat.com/webhook/babarkat /shop/buy",
                                     undefined,
                                     (() => {
                                       try {
-                                        return {
-                                          type: "package_" + $state.type,
-                                          mobile: $state.userinfo.mobile,
-                                          otherData: $state.otherData,
-                                          price: $state.rate2,
-                                          origin: $state.type,
-                                          originId: $state.uuid + "",
-                                          priceType: $state.shopModal.type,
-                                          userToken: $state.token
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction4"] != null &&
-                          typeof $steps["invokeGlobalAction4"] === "object" &&
-                          typeof $steps["invokeGlobalAction4"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction4"] = await $steps[
-                            "invokeGlobalAction4"
-                          ];
-                        }
-
-                        $steps["updatePardakhtid"] = $steps.invokeGlobalAction4
-                          ?.data?.[0]?.id
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["pardakhtid"]
-                                },
-                                operation: 0,
-                                value: $steps.invokeGlobalAction4.data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updatePardakhtid"] != null &&
-                          typeof $steps["updatePardakhtid"] === "object" &&
-                          typeof $steps["updatePardakhtid"].then === "function"
-                        ) {
-                          $steps["updatePardakhtid"] = await $steps[
-                            "updatePardakhtid"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "GET",
-                                    "https://n8n.babarkat.com/webhook/telegram_Bot",
-                                    (() => {
-                                      try {
                                         return (() => {
-                                          if ($state.type == "UC")
-                                            return {
-                                              text:
-                                                "\n خرید موفق uc پابجی \nکاربر: " +
-                                                $state.userinfo.last_name +
-                                                "\nشماره کاربر: " +
-                                                $state.userinfo.mobile +
-                                                "\n......................" +
-                                                "\nقیمت به تومان: " +
-                                                $state.selectpack.rate +
-                                                "\nتعداد : " +
-                                                $state.selectpack.number +
-                                                "\nکپی کردن نام کاربری: " +
-                                                " `" +
-                                                $state.otherData.userName +
-                                                "` " +
-                                                "\nکپی کردن شناسه عددی: " +
-                                                " `" +
-                                                $state.otherData.userId +
-                                                "` " +
-                                                "\nشناسه تراکنش: " +
-                                                $state.uuid
-                                            };
-                                          else if ($state.type == "likee")
-                                            return {
-                                              text:
-                                                "\n خرید موفق Likee \nکاربر: " +
-                                                $state.userinfo.last_name +
-                                                "\nشماره کاربر: " +
-                                                $state.userinfo.mobile +
-                                                "\n......................" +
-                                                "\nقیمت به تومان: " +
-                                                $state.selectpack.rate +
-                                                "\nتعداد : " +
-                                                $state.selectpack.number +
-                                                "\nکپی کردن شناسه کاربر: " +
-                                                " `" +
-                                                $state.otherData.userId +
-                                                "` " +
-                                                "\nشناسه تراکنش: " +
-                                                $state.uuid
-                                            };
-                                          else if ($state.type == "imo")
-                                            return {
-                                              text:
-                                                "\n خرید موفق imo \nکاربر: " +
-                                                $state.userinfo.last_name +
-                                                "\nشماره کاربر: " +
-                                                $state.userinfo.mobile +
-                                                "\n......................" +
-                                                "\nقیمت به تومان: " +
-                                                $state.selectpack.rate +
-                                                "\nتعداد : " +
-                                                $state.selectpack.number +
-                                                "\nکپی کردن شماره کاربر: " +
-                                                " `" +
-                                                $state.otherData.mobile +
-                                                "` " +
-                                                "\nشناسه تراکنش: " +
-                                                $state.uuid
-                                            };
-                                          else if ($state.type == "bigo-live")
-                                            return {
-                                              text:
-                                                "\n خرید موفق bigo-live \nکاربر: " +
-                                                $state.userinfo.last_name +
-                                                "\nشماره کاربر: " +
-                                                $state.userinfo.mobile +
-                                                "\n......................" +
-                                                "\nقیمت به تومان: " +
-                                                $state.selectpack.rate +
-                                                "\nتعداد : " +
-                                                $state.selectpack.number +
-                                                "\nکپی کردن شناسه کاربر: " +
-                                                " `" +
-                                                $state.otherData.userId +
-                                                "` " +
-                                                "\nشناسه تراکنش: " +
-                                                $state.uuid
-                                            };
+                                          const payload = {
+                                            type: "package_" + $state.type,
+                                            mobile: $state.userinfo.mobile,
+                                            otherData: $state.otherData,
+                                            price: $state.rate2,
+                                            origin: $state.type,
+                                            originId: $state.uuid + "",
+                                            priceType: $state.shopModal.type,
+                                            userToken: $state.token,
+                                            buy: {}
+                                          };
+                                          if ($state.type === "UC") {
+                                            payload.buy.text = `
+ خرید موفق UC پابجی
+کاربر: ${$state.userinfo.last_name}
+شماره کاربر: ${$state.userinfo.mobile}
+......................
+قیمت به تومان: ${$state.selectpack.rate}
+تعداد: ${$state.selectpack.number}
+کپی کردن نام کاربری: \`${$state.otherData.userName}\`
+کپی کردن شناسه عددی: \`${$state.otherData.userId}\`
+شناسه تراکنش: ${$state.uuid}
+  `;
+                                          } else if ($state.type === "likee") {
+                                            payload.buy.text = `
+ خرید موفق Likee
+کاربر: ${$state.userinfo.last_name}
+شماره کاربر: ${$state.userinfo.mobile}
+......................
+قیمت به تومان: ${$state.selectpack.rate}
+تعداد: ${$state.selectpack.number}
+کپی کردن شناسه کاربر: \`${$state.otherData.userId}\`
+شناسه تراکنش: ${$state.uuid}
+  `;
+                                          } else if ($state.type === "imo") {
+                                            payload.buy.text = `
+ خرید موفق Imo
+کاربر: ${$state.userinfo.last_name}
+شماره کاربر: ${$state.userinfo.mobile}
+......................
+قیمت به تومان: ${$state.selectpack.rate}
+تعداد: ${$state.selectpack.number}
+کپی کردن شماره کاربر: \`${$state.otherData.mobile}\`
+شناسه تراکنش: ${$state.uuid}
+  `;
+                                          } else if (
+                                            $state.type === "bigo-live"
+                                          ) {
+                                            payload.buy.text = `
+ خرید موفق Bigo Live
+کاربر: ${$state.userinfo.last_name}
+شماره کاربر: ${$state.userinfo.mobile}
+......................
+قیمت به تومان: ${$state.selectpack.rate}
+تعداد: ${$state.selectpack.number}
+کپی کردن شناسه کاربر: \`${$state.otherData.userId}\`
+شناسه تراکنش: ${$state.uuid}
+  `;
+                                          }
+                                          return payload;
                                         })();
                                       } catch (e) {
                                         if (
@@ -5110,51 +5021,6 @@ function PlasmicPubg__RenderFunc(props: {
                                         }
                                         throw e;
                                       }
-                                    })(),
-                                    undefined
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction5"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "PUT",
-                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          id: $state.pardakhtid,
-                                          trackingId: $state.uuid,
-                                          userToken: $state.token
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
                                     })()
                                   ]
                                 };
@@ -5164,23 +5030,20 @@ function PlasmicPubg__RenderFunc(props: {
                               })()
                             : undefined;
                         if (
-                          $steps["invokeGlobalAction5"] != null &&
-                          typeof $steps["invokeGlobalAction5"] === "object" &&
-                          typeof $steps["invokeGlobalAction5"].then ===
-                            "function"
+                          $steps["buy"] != null &&
+                          typeof $steps["buy"] === "object" &&
+                          typeof $steps["buy"].then === "function"
                         ) {
-                          $steps["invokeGlobalAction5"] = await $steps[
-                            "invokeGlobalAction5"
-                          ];
+                          $steps["buy"] = await $steps["buy"];
                         }
 
-                        $steps["updateModal3Open"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
+                        $steps["updateDialogOpen"] =
+                          $steps.buy?.data?.success == true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["modal3", "open"]
+                                    variablePath: ["dialog", "open"]
                                   },
                                   operation: 0,
                                   value: true
@@ -5202,64 +5065,18 @@ function PlasmicPubg__RenderFunc(props: {
                               })()
                             : undefined;
                         if (
-                          $steps["updateModal3Open"] != null &&
-                          typeof $steps["updateModal3Open"] === "object" &&
-                          typeof $steps["updateModal3Open"].then === "function"
+                          $steps["updateDialogOpen"] != null &&
+                          typeof $steps["updateDialogOpen"] === "object" &&
+                          typeof $steps["updateDialogOpen"].then === "function"
                         ) {
-                          $steps["updateModal3Open"] = await $steps[
-                            "updateModal3Open"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction3"] = (
-                          $state.infopardakt?.code
-                            ? $state.infopardakt?.code != 1
-                            : false
-                        )
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  (() => {
-                                    try {
-                                      return $state.infopardakt.msg
-                                        ? $state.infopardakt.msg
-                                        : "مشکلی رخ داده است مجدد تلاش کنید.";
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })(),
-                                  "top-left",
-                                  5000
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["invokeGlobalAction3"] != null &&
-                          typeof $steps["invokeGlobalAction3"] === "object" &&
-                          typeof $steps["invokeGlobalAction3"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction3"] = await $steps[
-                            "invokeGlobalAction3"
+                          $steps["updateDialogOpen"] = await $steps[
+                            "updateDialogOpen"
                           ];
                         }
 
                         $steps["updateError"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success ==
-                            false &&
-                          $steps.invokeGlobalAction4?.data[0]?.message
+                          $steps.buy?.data?.success == false &&
+                          $steps.buy?.data?.error
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -5267,8 +5084,7 @@ function PlasmicPubg__RenderFunc(props: {
                                     variablePath: ["error"]
                                   },
                                   operation: 0,
-                                  value:
-                                    $steps.invokeGlobalAction4.data[0].message
+                                  value: $steps.buy.data.error
                                 };
                                 return (({
                                   variable,
@@ -5295,9 +5111,8 @@ function PlasmicPubg__RenderFunc(props: {
                         }
 
                         $steps["invokeGlobalAction6"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success ==
-                            false &&
-                          $steps.invokeGlobalAction4?.data[0]?.message
+                          $steps.buy?.data?.success == false &&
+                          $steps.buy?.data?.error
                             ? (() => {
                                 const actionArgs = {
                                   args: [
@@ -5599,674 +5414,6 @@ function PlasmicPubg__RenderFunc(props: {
                   </div>
                 </div>
               </Stack__>
-              <AntdModal
-                data-plasmic-name={"modal3"}
-                data-plasmic-override={overrides.modal3}
-                className={classNames("__wab_instance", sty.modal3, {
-                  [sty.modal3steps2_step2]: hasVariant(
-                    $state,
-                    "steps2",
-                    "step2"
-                  ),
-                  [sty.modal3steps2_step3]: hasVariant(
-                    $state,
-                    "steps2",
-                    "step3"
-                  )
-                })}
-                defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
-                  projectcss.plasmic_tokens,
-                  plasmic_antd_5_hostless_css.plasmic_tokens,
-                  plasmic_plasmic_rich_components_css.plasmic_tokens
-                )}
-                hideFooter={true}
-                modalContentClassName={classNames({
-                  [sty["pcls_ICzI0CbqJq2w"]]: hasVariant(
-                    globalVariants,
-                    "screen",
-                    "mobileOnly"
-                  ),
-                  [sty["pcls_lOL0PkE5XqEG"]]: true
-                })}
-                modalScopeClassName={sty["modal3__modal"]}
-                onOpenChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["modal3", "open"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                open={generateStateValueProp($state, ["modal3", "open"])}
-                title={null}
-                trigger={null}
-                width={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "100vw"
-                    : undefined
-                }
-                wrapClassName={classNames({ [sty["pcls_F0MnRGXsNZ14"]]: true })}
-              >
-                <div className={classNames(projectcss.all, sty.freeBox__rgrKk)}>
-                  <LottieWrapper
-                    data-plasmic-name={"lottie"}
-                    data-plasmic-override={overrides.lottie}
-                    animationData={{
-                      v: "4.10.1",
-                      fr: 30,
-                      ip: 0,
-                      op: 40,
-                      w: 80,
-                      h: 80,
-                      nm: "Success Checkmark",
-                      ddd: 0,
-                      assets: [],
-                      layers: [
-                        {
-                          ddd: 0,
-                          ind: 1,
-                          ty: 4,
-                          nm: "Check Mark",
-                          sr: 1,
-                          ks: {
-                            o: { a: 0, k: 100, ix: 11 },
-                            r: { a: 0, k: 0, ix: 10 },
-                            p: { a: 0, k: [40, 40, 0], ix: 2 },
-                            a: { a: 0, k: [-1.312, 6, 0], ix: 1 },
-                            s: { a: 0, k: [100, 100, 100], ix: 6 }
-                          },
-                          ao: 0,
-                          shapes: [
-                            {
-                              ty: "gr",
-                              it: [
-                                {
-                                  ind: 0,
-                                  ty: "sh",
-                                  ix: 1,
-                                  ks: {
-                                    a: 0,
-                                    k: {
-                                      i: [
-                                        [0, 0],
-                                        [0, 0],
-                                        [0, 0]
-                                      ],
-                                      o: [
-                                        [0, 0],
-                                        [0, 0],
-                                        [0, 0]
-                                      ],
-                                      v: [
-                                        [-15.75, 8],
-                                        [-8, 16],
-                                        [13.125, -4]
-                                      ],
-                                      c: false
-                                    },
-                                    ix: 2
-                                  },
-                                  nm: "Path 1",
-                                  mn: "ADBE Vector Shape - Group",
-                                  hd: false
-                                },
-                                {
-                                  ty: "tm",
-                                  s: {
-                                    a: 1,
-                                    k: [
-                                      {
-                                        i: { x: [0.667], y: [1] },
-                                        o: { x: [0.333], y: [0] },
-                                        n: ["0p667_1_0p333_0"],
-                                        t: 25,
-                                        s: [0],
-                                        e: [100]
-                                      },
-                                      { t: 33 }
-                                    ],
-                                    ix: 1
-                                  },
-                                  e: { a: 0, k: 0, ix: 2 },
-                                  o: { a: 0, k: 0, ix: 3 },
-                                  m: 1,
-                                  ix: 2,
-                                  nm: "Trim Paths 1",
-                                  mn: "ADBE Vector Filter - Trim",
-                                  hd: false
-                                },
-                                {
-                                  ty: "st",
-                                  c: { a: 0, k: [1, 1, 1, 1], ix: 3 },
-                                  o: { a: 0, k: 100, ix: 4 },
-                                  w: { a: 0, k: 3, ix: 5 },
-                                  lc: 2,
-                                  lj: 2,
-                                  nm: "Stroke 1",
-                                  mn: "ADBE Vector Graphic - Stroke",
-                                  hd: false
-                                },
-                                {
-                                  ty: "tr",
-                                  p: { a: 0, k: [0, 0], ix: 2 },
-                                  a: { a: 0, k: [0, 0], ix: 1 },
-                                  s: { a: 0, k: [100, 100], ix: 3 },
-                                  r: { a: 0, k: 0, ix: 6 },
-                                  o: { a: 0, k: 100, ix: 7 },
-                                  sk: { a: 0, k: 0, ix: 4 },
-                                  sa: { a: 0, k: 0, ix: 5 },
-                                  nm: "Transform"
-                                }
-                              ],
-                              nm: "Shape 1",
-                              np: 3,
-                              cix: 2,
-                              ix: 1,
-                              mn: "ADBE Vector Group",
-                              hd: false
-                            }
-                          ],
-                          ip: 0,
-                          op: 40,
-                          st: 0,
-                          bm: 0
-                        },
-                        {
-                          ddd: 0,
-                          ind: 2,
-                          ty: 4,
-                          nm: "Circle Flash",
-                          sr: 1,
-                          ks: {
-                            o: {
-                              a: 1,
-                              k: [
-                                {
-                                  i: { x: [0.833], y: [0.833] },
-                                  o: { x: [0.167], y: [0.167] },
-                                  n: ["0p833_0p833_0p167_0p167"],
-                                  t: 25,
-                                  s: [0],
-                                  e: [98]
-                                },
-                                {
-                                  i: { x: [0.833], y: [0.833] },
-                                  o: { x: [0.167], y: [0.167] },
-                                  n: ["0p833_0p833_0p167_0p167"],
-                                  t: 30,
-                                  s: [98],
-                                  e: [0]
-                                },
-                                { t: 38 }
-                              ],
-                              ix: 11
-                            },
-                            r: { a: 0, k: 0, ix: 10 },
-                            p: { a: 0, k: [40, 40, 0], ix: 2 },
-                            a: { a: 0, k: [0, 0, 0], ix: 1 },
-                            s: {
-                              a: 1,
-                              k: [
-                                {
-                                  i: { x: [0.667, 0.667, 0.667], y: [1, 1, 1] },
-                                  o: { x: [0.333, 0.333, 0.333], y: [0, 0, 0] },
-                                  n: [
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0"
-                                  ],
-                                  t: 25,
-                                  s: [0, 0, 100],
-                                  e: [100, 100, 100]
-                                },
-                                { t: 30 }
-                              ],
-                              ix: 6
-                            }
-                          },
-                          ao: 0,
-                          shapes: [
-                            {
-                              d: 1,
-                              ty: "el",
-                              s: { a: 0, k: [64, 64], ix: 2 },
-                              p: { a: 0, k: [0, 0], ix: 3 },
-                              nm: "Ellipse Path 1",
-                              mn: "ADBE Vector Shape - Ellipse",
-                              hd: false
-                            },
-                            {
-                              ty: "fl",
-                              c: {
-                                a: 0,
-                                k: [
-                                  0.529866635799, 0.961458325386,
-                                  0.448091417551, 1
-                                ],
-                                ix: 4
-                              },
-                              o: { a: 0, k: 100, ix: 5 },
-                              r: 1,
-                              nm: "Fill 1",
-                              mn: "ADBE Vector Graphic - Fill",
-                              hd: false
-                            }
-                          ],
-                          ip: 0,
-                          op: 40,
-                          st: 0,
-                          bm: 0
-                        },
-                        {
-                          ddd: 0,
-                          ind: 3,
-                          ty: 4,
-                          nm: "Circle Stroke",
-                          sr: 1,
-                          ks: {
-                            o: { a: 0, k: 100, ix: 11 },
-                            r: { a: 0, k: 0, ix: 10 },
-                            p: { a: 0, k: [39.022, 39.022, 0], ix: 2 },
-                            a: { a: 0, k: [0, 0, 0], ix: 1 },
-                            s: {
-                              a: 1,
-                              k: [
-                                {
-                                  i: { x: [0.667, 0.667, 0.667], y: [1, 1, 1] },
-                                  o: { x: [0.333, 0.333, 0.333], y: [0, 0, 0] },
-                                  n: [
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0"
-                                  ],
-                                  t: 16,
-                                  s: [100, 100, 100],
-                                  e: [80, 80, 100]
-                                },
-                                {
-                                  i: { x: [0.667, 0.667, 0.667], y: [1, 1, 1] },
-                                  o: { x: [0.333, 0.333, 0.333], y: [0, 0, 0] },
-                                  n: [
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0"
-                                  ],
-                                  t: 22,
-                                  s: [80, 80, 100],
-                                  e: [120, 120, 100]
-                                },
-                                {
-                                  i: { x: [0.667, 0.667, 0.667], y: [1, 1, 1] },
-                                  o: { x: [0.333, 0.333, 0.333], y: [0, 0, 0] },
-                                  n: [
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0"
-                                  ],
-                                  t: 25,
-                                  s: [120, 120, 100],
-                                  e: [100, 100, 100]
-                                },
-                                { t: 29 }
-                              ],
-                              ix: 6
-                            }
-                          },
-                          ao: 0,
-                          shapes: [
-                            {
-                              ty: "gr",
-                              it: [
-                                {
-                                  d: 1,
-                                  ty: "el",
-                                  s: { a: 0, k: [60, 60], ix: 2 },
-                                  p: { a: 0, k: [0, 0], ix: 3 },
-                                  nm: "Ellipse Path 1",
-                                  mn: "ADBE Vector Shape - Ellipse",
-                                  hd: false
-                                },
-                                {
-                                  ty: "tm",
-                                  s: {
-                                    a: 1,
-                                    k: [
-                                      {
-                                        i: { x: [0.667], y: [1] },
-                                        o: { x: [0.333], y: [0] },
-                                        n: ["0p667_1_0p333_0"],
-                                        t: 0,
-                                        s: [0],
-                                        e: [100]
-                                      },
-                                      { t: 16 }
-                                    ],
-                                    ix: 1
-                                  },
-                                  e: { a: 0, k: 0, ix: 2 },
-                                  o: { a: 0, k: 0, ix: 3 },
-                                  m: 1,
-                                  ix: 2,
-                                  nm: "Trim Paths 1",
-                                  mn: "ADBE Vector Filter - Trim",
-                                  hd: false
-                                },
-                                {
-                                  ty: "st",
-                                  c: {
-                                    a: 0,
-                                    k: [
-                                      0.427450984716, 0.800000011921,
-                                      0.35686275363, 1
-                                    ],
-                                    ix: 3
-                                  },
-                                  o: { a: 0, k: 100, ix: 4 },
-                                  w: { a: 0, k: 3, ix: 5 },
-                                  lc: 2,
-                                  lj: 2,
-                                  nm: "Stroke 1",
-                                  mn: "ADBE Vector Graphic - Stroke",
-                                  hd: false
-                                },
-                                {
-                                  ty: "tr",
-                                  p: { a: 0, k: [0.978, 0.978], ix: 2 },
-                                  a: { a: 0, k: [0, 0], ix: 1 },
-                                  s: { a: 0, k: [100, 100], ix: 3 },
-                                  r: { a: 0, k: 0, ix: 6 },
-                                  o: { a: 0, k: 100, ix: 7 },
-                                  sk: { a: 0, k: 0, ix: 4 },
-                                  sa: { a: 0, k: 0, ix: 5 },
-                                  nm: "Transform"
-                                }
-                              ],
-                              nm: "Ellipse 1",
-                              np: 3,
-                              cix: 2,
-                              ix: 1,
-                              mn: "ADBE Vector Group",
-                              hd: false
-                            }
-                          ],
-                          ip: 0,
-                          op: 40,
-                          st: 0,
-                          bm: 0
-                        },
-                        {
-                          ddd: 0,
-                          ind: 4,
-                          ty: 4,
-                          nm: "Circle Green Fill",
-                          sr: 1,
-                          ks: {
-                            o: {
-                              a: 1,
-                              k: [
-                                {
-                                  i: { x: [0.833], y: [0.833] },
-                                  o: { x: [0.167], y: [0.167] },
-                                  n: ["0p833_0p833_0p167_0p167"],
-                                  t: 21,
-                                  s: [0],
-                                  e: [98]
-                                },
-                                { t: 28 }
-                              ],
-                              ix: 11
-                            },
-                            r: { a: 0, k: 0, ix: 10 },
-                            p: { a: 0, k: [40, 40, 0], ix: 2 },
-                            a: { a: 0, k: [0, 0, 0], ix: 1 },
-                            s: {
-                              a: 1,
-                              k: [
-                                {
-                                  i: { x: [0.667, 0.667, 0.667], y: [1, 1, 1] },
-                                  o: { x: [0.333, 0.333, 0.333], y: [0, 0, 0] },
-                                  n: [
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0",
-                                    "0p667_1_0p333_0"
-                                  ],
-                                  t: 21,
-                                  s: [0, 0, 100],
-                                  e: [100, 100, 100]
-                                },
-                                { t: 28 }
-                              ],
-                              ix: 6
-                            }
-                          },
-                          ao: 0,
-                          shapes: [
-                            {
-                              d: 1,
-                              ty: "el",
-                              s: { a: 0, k: [64, 64], ix: 2 },
-                              p: { a: 0, k: [0, 0], ix: 3 },
-                              nm: "Ellipse Path 1",
-                              mn: "ADBE Vector Shape - Ellipse",
-                              hd: false
-                            },
-                            {
-                              ty: "fl",
-                              c: {
-                                a: 0,
-                                k: [
-                                  0.427450984716, 0.800000011921, 0.35686275363,
-                                  1
-                                ],
-                                ix: 4
-                              },
-                              o: { a: 0, k: 100, ix: 5 },
-                              r: 1,
-                              nm: "Fill 1",
-                              mn: "ADBE Vector Graphic - Fill",
-                              hd: false
-                            }
-                          ],
-                          ip: 0,
-                          op: 40,
-                          st: 0,
-                          bm: 0
-                        }
-                      ]
-                    }}
-                    className={classNames("__wab_instance", sty.lottie)}
-                    loop={true}
-                    preview={true}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fCfy9
-                    )}
-                  >
-                    {
-                      "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
-                    }
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__v1XOp, {
-                      [sty.freeBoxsteps2_step3__v1XOpJpk3R]: hasVariant(
-                        $state,
-                        "steps2",
-                        "step3"
-                      )
-                    })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wDNgA,
-                        {
-                          [sty.textsteps2_step3__wDNgAJpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return $state.infopardakt.ref_code;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0634\u0645\u0627\u0631\u0647 \u067e\u06cc\u06af\u06cc\u0631\u06cc";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ttcFu)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__fO2Zv,
-                        {
-                          [sty.textsteps2_step3__fO2ZvJpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      {
-                        "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
-                      }
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__v93Y,
-                        {
-                          [sty.textsteps2_step3__v93YJpk3R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      {hasVariant($state, "steps2", "step3") ? (
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.uuid;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.infopardakt.trans_id;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      )}
-                    </div>
-                  </div>
-                  <Button
-                    data-plasmic-name={"button5"}
-                    data-plasmic-override={overrides.button5}
-                    className={classNames("__wab_instance", sty.button5)}
-                    color={"green"}
-                    loadingviow={generateStateValueProp($state, [
-                      "button5",
-                      "loadingviow"
-                    ])}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["goToHomepage"] = true
-                        ? (() => {
-                            const actionArgs = { destination: `/` };
-                            return (({ destination }) => {
-                              if (
-                                typeof destination === "string" &&
-                                destination.startsWith("#")
-                              ) {
-                                document
-                                  .getElementById(destination.substr(1))
-                                  .scrollIntoView({ behavior: "smooth" });
-                              } else {
-                                __nextRouter?.push(destination);
-                              }
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["goToHomepage"] != null &&
-                        typeof $steps["goToHomepage"] === "object" &&
-                        typeof $steps["goToHomepage"].then === "function"
-                      ) {
-                        $steps["goToHomepage"] = await $steps["goToHomepage"];
-                      }
-                    }}
-                    onLoadingviowChange={async (...eventArgs: any) => {
-                      ((...eventArgs) => {
-                        generateStateOnChangeProp($state, [
-                          "button5",
-                          "loadingviow"
-                        ])(eventArgs[0]);
-                      }).apply(null, eventArgs);
-
-                      if (
-                        eventArgs.length > 1 &&
-                        eventArgs[1] &&
-                        eventArgs[1]._plasmic_state_init_
-                      ) {
-                        return;
-                      }
-                    }}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yX8Vu
-                      )}
-                    >
-                      {"\u062a\u0627\u06cc\u06cc\u062f"}
-                    </div>
-                  </Button>
-                </div>
-              </AntdModal>
             </div>
           </section>
           <ApiRequest
@@ -6923,6 +6070,11 @@ function PlasmicPubg__RenderFunc(props: {
             data-plasmic-name={"shopModal"}
             data-plasmic-override={overrides.shopModal}
             className={classNames("__wab_instance", sty.shopModal, {
+              [sty.shopModalsteps2_step2]: hasVariant(
+                $state,
+                "steps2",
+                "step2"
+              ),
               [sty.shopModalsteps2_step3]: hasVariant($state, "steps2", "step3")
             })}
             data={
@@ -6931,13 +6083,13 @@ function PlasmicPubg__RenderFunc(props: {
                     try {
                       return {
                         toman: {
-                          name: "تومان",
+                          name: `${$state.exchange.totalToman.toLocaleString()} تومان`,
                           symbol: "toman",
                           isoCode: "IRR",
                           amount: $state.userinfo.toman
                         },
                         afghani: {
-                          name: "افغانی",
+                          name: `${$state.exchange.totalAfghani.toLocaleString()} افغانی`,
                           symbol: "afghani",
                           isoCode: "AFN",
                           amount: $state.userinfo.afghani
@@ -6966,7 +6118,45 @@ function PlasmicPubg__RenderFunc(props: {
                       throw e;
                     }
                   })()
-                : undefined
+                : (() => {
+                    try {
+                      return {
+                        toman: {
+                          name: `${$state.exchange.totalToman.toLocaleString()} تومان`,
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: $state.userinfo.toman
+                        },
+                        afghani: {
+                          name: `${$state.exchange.totalAfghani.toLocaleString()} افغانی`,
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: $state.userinfo.afghani
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          toman: {
+                            name: "\u062a\u0648\u0645\u0627\u0646",
+                            symbol: "toman",
+                            isoCode: "IRR",
+                            amount: 200000
+                          },
+                          afghani: {
+                            name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            symbol: "afghani",
+                            isoCode: "AFN",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
             }
             load={generateStateValueProp($state, ["shopModal", "load"])}
             onClick={async event => {
@@ -7040,58 +6230,298 @@ function PlasmicPubg__RenderFunc(props: {
             type={generateStateValueProp($state, ["shopModal", "type"])}
           />
 
-          <ApiRequest
-            data-plasmic-name={"exchangeRate"}
-            data-plasmic-override={overrides.exchangeRate}
-            className={classNames("__wab_instance", sty.exchangeRate, {
-              [sty.exchangeRatesteps2_step3]: hasVariant(
-                $state,
-                "steps2",
-                "step3"
-              )
+          <Exchange
+            data-plasmic-name={"exchange"}
+            data-plasmic-override={overrides.exchange}
+            amont={generateStateValueProp($state, ["exchange", "amont"])}
+            className={classNames("__wab_instance", sty.exchange, {
+              [sty.exchangesteps2_step2]: hasVariant($state, "steps2", "step2"),
+              [sty.exchangesteps2_step3]: hasVariant($state, "steps2", "step3")
             })}
-            errorDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zEntH
-                )}
-              >
-                {"Error fetching data"}
-              </div>
-            }
-            loadingDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___03X9X
-                )}
-              >
-                {"Loading..."}
-              </div>
-            }
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
+            onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "error"
+                "exchange",
+                "afghaniWithoutCommission"
               ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
             }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
+            onAmontChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["exchange", "amont"]).apply(
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
             }}
-            url={"https://n8n.babarkat.com/webhook/exchangeRate"}
+            onTomanWithoutCommissionChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange",
+                "tomanWithoutCommission"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTotalAfghaniChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange",
+                "totalAfghani"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTotalTomanChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange",
+                "totalToman"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["exchange", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            type={generateStateValueProp($state, ["exchange", "type"])}
+          />
+
+          <Dialog
+            data-plasmic-name={"dialog"}
+            data-plasmic-override={overrides.dialog}
+            className={classNames("__wab_instance", sty.dialog, {
+              [sty.dialogsteps2_step3]: hasVariant($state, "steps2", "step3")
+            })}
+            data={
+              hasVariant($state, "steps2", "step3")
+                ? (() => {
+                    try {
+                      return {
+                        data: [
+                          {
+                            text: "کاربر",
+                            value: $state.userinfo.last_name
+                          },
+                          {
+                            text: "توضیحات",
+                            value:
+                              " بسته " +
+                              $state.selectpack.name +
+                              " _ " +
+                              $state.selectpack.number
+                          },
+                          {
+                            text: "تاریخ و زمان",
+                            value: (() => {
+                              const now = new Date();
+                              const date = now.toLocaleDateString("fa-IR");
+                              const time = now.toLocaleTimeString("fa-IR", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit"
+                              });
+                              return `${date} - ${time}`;
+                            })()
+                          },
+                          {
+                            text: "شناسه تراکنش",
+                            value: $state.uuid
+                          }
+                        ],
+
+                        amount: {
+                          type:
+                            $state.shopModal.type == "toman"
+                              ? "تومان"
+                              : "افغانی",
+                          text: "مبلغ پرداخت شده",
+                          value:
+                            $state.shopModal.type == "toman"
+                              ? $state.exchange.totalToman.toLocaleString()
+                              : $state.exchange.totalAfghani.toLocaleString()
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          data: [
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                              value: 100
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                              value: 200
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                              value: 300
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                              value: 400
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                              value: 500
+                            }
+                          ],
+                          amount: {
+                            type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                            value: "500000",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
+                : undefined
+            }
+            load={generateStateValueProp($state, ["dialog", "load"])}
+            onClick={async event => {
+              const $steps = {};
+
+              $steps["goToHomepage"] = true
+                ? (() => {
+                    const actionArgs = { destination: `/` };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToHomepage"] != null &&
+                typeof $steps["goToHomepage"] === "object" &&
+                typeof $steps["goToHomepage"].then === "function"
+              ) {
+                $steps["goToHomepage"] = await $steps["goToHomepage"];
+              }
+            }}
+            onClick2={async event => {
+              const $steps = {};
+
+              $steps["goToHomepage"] = true
+                ? (() => {
+                    const actionArgs = { destination: `/` };
+                    return (({ destination }) => {
+                      if (
+                        typeof destination === "string" &&
+                        destination.startsWith("#")
+                      ) {
+                        document
+                          .getElementById(destination.substr(1))
+                          .scrollIntoView({ behavior: "smooth" });
+                      } else {
+                        __nextRouter?.push(destination);
+                      }
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["goToHomepage"] != null &&
+                typeof $steps["goToHomepage"] === "object" &&
+                typeof $steps["goToHomepage"].then === "function"
+              ) {
+                $steps["goToHomepage"] = await $steps["goToHomepage"];
+              }
+            }}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            open={generateStateValueProp($state, ["dialog", "open"])}
+            type={generateStateValueProp($state, ["dialog", "type"])}
           />
         </div>
       </div>
@@ -7139,16 +6569,15 @@ const PlasmicDescendants = {
     "ul",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "button4",
-    "modal3",
-    "lottie",
-    "button5",
+    "pay",
     "commissionBabarkat",
     "rate",
     "button6",
     "embedHtml",
     "sideEffect",
     "shopModal",
-    "exchangeRate"
+    "exchange",
+    "dialog"
   ],
   header: ["header"],
   reveal: [
@@ -7259,16 +6688,15 @@ const PlasmicDescendants = {
   ul: ["ul", "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   button4: ["button4"],
-  modal3: ["modal3", "lottie", "button5"],
-  lottie: ["lottie"],
-  button5: ["button5"],
+  pay: ["pay"],
   commissionBabarkat: ["commissionBabarkat"],
   rate: ["rate", "button6"],
   button6: ["button6"],
   embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"]
+  exchange: ["exchange"],
+  dialog: ["dialog"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7312,16 +6740,15 @@ type NodeDefaultElementType = {
   ul: "ul";
   اپراتور3: "div";
   button4: typeof Button;
-  modal3: typeof AntdModal;
-  lottie: typeof LottieWrapper;
-  button5: typeof Button;
+  pay: "div";
   commissionBabarkat: typeof ApiRequest;
   rate: typeof ApiRequest;
   button6: typeof Button;
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
-  exchangeRate: typeof ApiRequest;
+  exchange: typeof Exchange;
+  dialog: typeof Dialog;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7450,16 +6877,15 @@ export const PlasmicPubg = Object.assign(
     ul: makeNodeComponent("ul"),
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     button4: makeNodeComponent("button4"),
-    modal3: makeNodeComponent("modal3"),
-    lottie: makeNodeComponent("lottie"),
-    button5: makeNodeComponent("button5"),
+    pay: makeNodeComponent("pay"),
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     rate: makeNodeComponent("rate"),
     button6: makeNodeComponent("button6"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
-    exchangeRate: makeNodeComponent("exchangeRate"),
+    exchange: makeNodeComponent("exchange"),
+    dialog: makeNodeComponent("dialog"),
 
     // Metadata about props expected for PlasmicPubg
     internalVariantProps: PlasmicPubg__VariantProps,

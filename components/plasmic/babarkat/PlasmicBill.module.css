@@ -1033,6 +1033,7 @@
   font-weight: 700;
   font-size: 14px;
   text-align: left;
+  line-height: 2;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .textstepscharg_step3___5AQQTqZTv {
@@ -1810,7 +1811,7 @@
   display: flex;
   padding: 0px 24px;
 }
-.freeBox__nwPxR {
+.pay {
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -1822,7 +1823,7 @@
   display: none;
   padding: 8px;
 }
-.freeBoxstepscharg_step3__nwPxRTqZTv {
+.paystepscharg_step3 {
   background: linear-gradient(90deg, #48665799 15%, #2dc57b80 100%);
   justify-content: center;
   align-items: center;
@@ -5075,4 +5076,14 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
   min-width: 0;
+}
+.exchange:global(.__wab_instance) {
+  max-width: 100%;
+  display: none;
+}
+.exchangestepscharg_step3:global(.__wab_instance) {
+  display: flex;
+}
+.dialog:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
 }

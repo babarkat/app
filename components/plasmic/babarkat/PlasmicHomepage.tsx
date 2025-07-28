@@ -104,7 +104,7 @@ import sty from "./PlasmicHomepage.module.css"; // plasmic-import: CKHzBo8fkmuJ/
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon73Icon from "./icons/PlasmicIcon__Icon73"; // plasmic-import: MlBQyepRtm17/icon
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
-import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
 import Icon133Icon from "./icons/PlasmicIcon__Icon133"; // plasmic-import: LREUbUcfpDpH/icon
 import Icon83Icon from "./icons/PlasmicIcon__Icon83"; // plasmic-import: IKXgjK7dwscd/icon
@@ -1094,6 +1094,43 @@ function PlasmicHomepage__RenderFunc(props: {
                     ) {
                       $steps["runCode"] = await $steps["runCode"];
                     }
+
+                    $steps["runCode2"] = (
+                      $state.profile?.data
+                        ? $state.profile.data[0].success
+                        : false
+                    )
+                      ? (() => {
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                localStorage.setItem(
+                                  "comson",
+                                  JSON.stringify(
+                                    $state.profile.data[0].commission
+                                  )
+                                );
+                                return localStorage.setItem(
+                                  "exchange",
+                                  JSON.stringify(
+                                    $state.profile.data[0].exchange
+                                  )
+                                );
+                              })();
+                            }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode2"] != null &&
+                      typeof $steps["runCode2"] === "object" &&
+                      typeof $steps["runCode2"].then === "function"
+                    ) {
+                      $steps["runCode2"] = await $steps["runCode2"];
+                    }
                   }).apply(null, eventArgs);
                 }}
                 params={(() => {
@@ -1705,7 +1742,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                 </React.Fragment>
                               )}
                             </div>
-                            <Icon61Icon
+                            <Icon154Icon
                               className={classNames(
                                 projectcss.all,
                                 sty.svg___7Xbq

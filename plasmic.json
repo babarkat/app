@@ -45,8 +45,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -104,8 +103,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -139,8 +137,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "a3pmZtcpA5asHkNtN3SGoF",
@@ -222,8 +219,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "58GpZjZCWTaJ8AUhpCwt2K",
@@ -245,8 +241,7 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -274,8 +269,7 @@
           "componentImportPath": "@plasmicpkgs/lottie-react"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "mqxdhm5p6WHAt7hW1mdcCX",
@@ -313,8 +307,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "28Ba3BDvRe7EiWdfFNnLB6",
@@ -524,8 +517,7 @@
           "componentImportPath": "@plasmicpkgs/antd/skinny/registerTable"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -553,8 +545,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "9Vr5YWkf3w7jj6SsTcCEta",
@@ -576,8 +567,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -631,8 +621,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1032,8 +1021,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -1747,6 +1735,97 @@
             "modulePath": "ShopModal.tsx"
           },
           "cssFilePath": "plasmic/babarkat/PlasmicShopModal.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "o18FzkeW7v5y",
+          "name": "Exchange",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicExchange.tsx",
+          "importSpec": {
+            "modulePath": "Exchange.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicExchange.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "CWHC2u7bLEm9",
+          "name": "Switch",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicSwitch.tsx",
+          "importSpec": {
+            "modulePath": "Switch.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicSwitch.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "cTlccEttIiby",
+          "name": "SliderThumb",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicSliderThumb.tsx",
+          "importSpec": {
+            "modulePath": "SliderThumb.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicSliderThumb.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "F8RXUtgDpowY",
+          "name": "Slider",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicSlider.tsx",
+          "importSpec": {
+            "modulePath": "Slider.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicSlider.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "2GQa6CZGhRDY",
+          "name": "Dialog",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicDialog.tsx",
+          "importSpec": {
+            "modulePath": "Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicDialog.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "hyFNHR4bCLIY",
+          "name": "Dialog2",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicDialog2.tsx",
+          "importSpec": {
+            "modulePath": "Dialog2.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicDialog2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "y9SwG9bN8mmR",
+          "name": "Icons",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicIcons.tsx",
+          "importSpec": {
+            "modulePath": "Icons.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicIcons.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -2791,6 +2870,51 @@
           "id": "CBEWn12gyZ9i",
           "name": "Icon155Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon155.tsx"
+        },
+        {
+          "id": "qbD7r-rlhqve",
+          "name": "SubtractIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Subtract.tsx"
+        },
+        {
+          "id": "FIWXkPGT-ZU8",
+          "name": "LineIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Line.tsx"
+        },
+        {
+          "id": "U3tOcEObUBAu",
+          "name": "IconBackgroundIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__IconBackground.tsx"
+        },
+        {
+          "id": "PaDfWDk2nA1C",
+          "name": "TickCircleIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__TickCircle.tsx"
+        },
+        {
+          "id": "wm-_iIiBGov1",
+          "name": "ImportIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Import.tsx"
+        },
+        {
+          "id": "H8T7ro_M_4sz",
+          "name": "Icon156Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon156.tsx"
+        },
+        {
+          "id": "U3N2_GSz6OTY",
+          "name": "Icon157Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon157.tsx"
+        },
+        {
+          "id": "2yx4OFTNc_lf",
+          "name": "BabrkatSvgIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__BabrkatSvg.tsx"
+        },
+        {
+          "id": "cFLeZQ_zS0Lq",
+          "name": "LogoApp2SvgIcon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__LogoApp2Svg.tsx"
         }
       ],
       "images": [
@@ -3263,6 +3387,21 @@
           "id": "tRG1pmAlearu",
           "name": "image 80",
           "filePath": "../public/plasmic/babarkat/images/image80.svg"
+        },
+        {
+          "id": "Nps7vhX0ostK",
+          "name": "image 81",
+          "filePath": "../public/plasmic/babarkat/images/image81.svg"
+        },
+        {
+          "id": "XFKZU7QR_bXc",
+          "name": "image 82",
+          "filePath": "../public/plasmic/babarkat/images/image82.svg"
+        },
+        {
+          "id": "vp491Oq20ef9",
+          "name": "image 83",
+          "filePath": "../public/plasmic/babarkat/images/image83.svg"
         }
       ],
       "indirect": false,
@@ -3466,8 +3605,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -3525,8 +3663,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-cms"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "cAAqA2dcbTMWwuLSmjs7ss",
@@ -3750,8 +3887,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {

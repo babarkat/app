@@ -68,10 +68,10 @@ import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/compone
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
+import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
+import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -132,6 +132,7 @@ export type PlasmicCharging__OverridesType = {
   boxselect3?: Flex__<typeof Boxselect>;
   chargeType?: Flex__<"div">;
   boxselect2?: Flex__<typeof Boxselect>;
+  pay?: Flex__<"div">;
   backstep2?: Flex__<typeof Button>;
   backstep3?: Flex__<typeof Button>;
   step1Next?: Flex__<typeof Button>;
@@ -145,11 +146,10 @@ export type PlasmicCharging__OverridesType = {
   modal2?: Flex__<typeof AntdModal>;
   lottie?: Flex__<typeof LottieWrapper>;
   button2?: Flex__<typeof Button>;
-  embedHtml?: Flex__<typeof Embed>;
-  commissionBabarkat?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
-  exchangeRate?: Flex__<typeof ApiRequest>;
+  exchange2?: Flex__<typeof Exchange>;
+  dialog?: Flex__<typeof Dialog>;
 };
 
 export interface DefaultChargingProps {}
@@ -508,24 +508,6 @@ function PlasmicCharging__RenderFunc(props: {
           })()
       },
       {
-        path: "commissionBabarkat.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "error",
         type: "private",
         variableType: "text",
@@ -664,28 +646,127 @@ function PlasmicCharging__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "exchangeRate.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "rate",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(localStorage.getItem("exchange"));
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "commission",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return JSON.parse(localStorage.getItem("comson"));
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "totalAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange2.totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.totalAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.amont",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.amont;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 0;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "exchange2.afghaniWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.tomanWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "dialog.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -1449,17 +1530,9 @@ function PlasmicCharging__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return (
-                                    (
-                                      parseInt($state.amont) +
-                                      parseInt($state.amont) *
-                                        (($state.commissionBabarkat.data
-                                          .babrkat +
-                                          $state.commissionBabarkat.data
-                                            .saraf) /
-                                          100)
-                                    ).toLocaleString("en") + " تومان "
-                                  );
+                                  return `${$state.exchange2.totalToman.toLocaleString()} تومان
+${$state.exchange2.totalAfghani.toLocaleString()} افغانی
+`;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -2655,17 +2728,20 @@ function PlasmicCharging__RenderFunc(props: {
                       : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__gvMro,
-                        {
-                          [sty.freeBoxstepscharg_step3__gvMroWug5H]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      data-plasmic-name={"pay"}
+                      data-plasmic-override={overrides.pay}
+                      className={classNames(projectcss.all, sty.pay, {
+                        [sty.paystepscharg_step2]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.paystepscharg_step3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                       id={
                         hasVariant($state, "stepscharg", "step3")
                           ? "pay"
@@ -2674,9 +2750,7 @@ function PlasmicCharging__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["updateRate"] = (
-                          $state.exchangeRate?.data?.rate ? true : false
-                        )
+                        $steps["updateRate"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -2687,12 +2761,11 @@ function PlasmicCharging__RenderFunc(props: {
                                 value: (() => {
                                   switch ($state.shopModal.type) {
                                     case "toman":
-                                      return $state.amont;
+                                      return $state.exchange2
+                                        .tomanWithoutCommission;
                                     case "afghani":
-                                      return Math.round(
-                                        $state.amont /
-                                          $state.exchangeRate.data.rate
-                                      );
+                                      return $state.exchange2
+                                        .afghaniWithoutCommission;
                                     default:
                                       console.log("نوع ارز نامعتبر است");
                                   }
@@ -2792,13 +2865,13 @@ function PlasmicCharging__RenderFunc(props: {
                           $steps["updateUuid"] = await $steps["updateUuid"];
                         }
 
-                        $steps["invokeGlobalAction4"] =
+                        $steps["buy"] =
                           $state.rate != 0 && $state.rate != null
                             ? (() => {
                                 const actionArgs = {
                                   args: [
                                     "POST",
-                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                    "https://n8n.babarkat.com/webhook/babarkat /shop/buy",
                                     undefined,
                                     (() => {
                                       try {
@@ -2818,6 +2891,22 @@ function PlasmicCharging__RenderFunc(props: {
                                               $state.operators2[
                                                 $state.operatorselect
                                               ].description
+                                          },
+                                          buy: {
+                                            method: "topup",
+                                            operator:
+                                              $state.operators2[
+                                                $state.operatorselect
+                                              ].name,
+                                            amount: $state.amont,
+                                            mobile: $state.number,
+                                            charge_type:
+                                              $state.operators2[
+                                                $state.operatorselect
+                                              ].services[$state.typecharge]
+                                                .type,
+                                            order_id: $state.uuid,
+                                            pay_type: "credit"
                                           }
                                         };
                                       } catch (e) {
@@ -2839,109 +2928,15 @@ function PlasmicCharging__RenderFunc(props: {
                               })()
                             : undefined;
                         if (
-                          $steps["invokeGlobalAction4"] != null &&
-                          typeof $steps["invokeGlobalAction4"] === "object" &&
-                          typeof $steps["invokeGlobalAction4"].then ===
-                            "function"
+                          $steps["buy"] != null &&
+                          typeof $steps["buy"] === "object" &&
+                          typeof $steps["buy"].then === "function"
                         ) {
-                          $steps["invokeGlobalAction4"] = await $steps[
-                            "invokeGlobalAction4"
-                          ];
-                        }
-
-                        $steps["updatePardakhtid"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["pardakhtid"]
-                                  },
-                                  operation: 0,
-                                  value: $steps.invokeGlobalAction4.data[0].id
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updatePardakhtid"] != null &&
-                          typeof $steps["updatePardakhtid"] === "object" &&
-                          typeof $steps["updatePardakhtid"].then === "function"
-                        ) {
-                          $steps["updatePardakhtid"] = await $steps[
-                            "updatePardakhtid"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "POST",
-                                    "https://n8n.babarkat.com/webhook/babarkat/service",
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          method: "topup",
-                                          operator:
-                                            $state.operators2[
-                                              $state.operatorselect
-                                            ].name,
-                                          amount: $state.amont,
-                                          mobile: $state.number,
-                                          charge_type:
-                                            $state.operators2[
-                                              $state.operatorselect
-                                            ].services[$state.typecharge].type,
-                                          order_id: $state.uuid,
-                                          pay_type: "credit"
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["buy"] = await $steps["buy"];
                         }
 
                         $steps["updateInfopardakt"] = (
-                          $steps.invokeGlobalAction?.data ? true : false
+                          $steps.buy?.data ? true : false
                         )
                           ? (() => {
                               const actionArgs = {
@@ -2950,7 +2945,7 @@ function PlasmicCharging__RenderFunc(props: {
                                   variablePath: ["infopardakt"]
                                 },
                                 operation: 0,
-                                value: $steps.invokeGlobalAction.data
+                                value: $steps.buy.data
                               };
                               return (({
                                 variable,
@@ -2978,151 +2973,16 @@ function PlasmicCharging__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["invokeGlobalAction5"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success == true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "PUT",
-                                    "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          id: $state.pardakhtid,
-                                          trackingId:
-                                            $state.infopardakt?.code == 1
-                                              ? $state.infopardakt.ref_code
-                                              : -1,
-                                          userToken: $state.token
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["invokeGlobalAction5"] != null &&
-                          typeof $steps["invokeGlobalAction5"] === "object" &&
-                          typeof $steps["invokeGlobalAction5"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction5"] = await $steps[
-                            "invokeGlobalAction5"
-                          ];
-                        }
-
-                        $steps["updateModal2Open"] = (
-                          $state.infopardakt?.code
-                            ? $state.infopardakt?.code == 1
-                            : false
-                        )
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["modal2", "open"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateModal2Open"] != null &&
-                          typeof $steps["updateModal2Open"] === "object" &&
-                          typeof $steps["updateModal2Open"].then === "function"
-                        ) {
-                          $steps["updateModal2Open"] = await $steps[
-                            "updateModal2Open"
-                          ];
-                        }
-
-                        $steps["invokeGlobalAction3"] = (
-                          $state.infopardakt?.code
-                            ? $state.infopardakt?.code != 1
-                            : false
-                        )
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "error",
-                                  (() => {
-                                    try {
-                                      return $state.infopardakt.msg
-                                        ? $state.infopardakt.msg
-                                        : "مشکلی رخ داده است مجدد تلاش کنید.";
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })(),
-                                  "top-left",
-                                  5000
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.showToast"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["invokeGlobalAction3"] != null &&
-                          typeof $steps["invokeGlobalAction3"] === "object" &&
-                          typeof $steps["invokeGlobalAction3"].then ===
-                            "function"
-                        ) {
-                          $steps["invokeGlobalAction3"] = await $steps[
-                            "invokeGlobalAction3"
-                          ];
-                        }
-
-                        $steps["updateError"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success ==
-                            false &&
-                          $steps.invokeGlobalAction4?.data[0]?.message
+                        $steps["updateDialogOpen"] =
+                          $steps.buy?.data?.success == true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["error"]
+                                    variablePath: ["dialog", "open"]
                                   },
                                   operation: 0,
-                                  value:
-                                    $steps.invokeGlobalAction4?.data[0].message
+                                  value: true
                                 };
                                 return (({
                                   variable,
@@ -3141,32 +3001,26 @@ function PlasmicCharging__RenderFunc(props: {
                               })()
                             : undefined;
                         if (
-                          $steps["updateError"] != null &&
-                          typeof $steps["updateError"] === "object" &&
-                          typeof $steps["updateError"].then === "function"
+                          $steps["updateDialogOpen"] != null &&
+                          typeof $steps["updateDialogOpen"] === "object" &&
+                          typeof $steps["updateDialogOpen"].then === "function"
                         ) {
-                          $steps["updateError"] = await $steps["updateError"];
+                          $steps["updateDialogOpen"] = await $steps[
+                            "updateDialogOpen"
+                          ];
                         }
 
-                        $steps["invokeGlobalAction6"] =
-                          $steps.invokeGlobalAction4?.data[0]?.success ==
-                            false &&
-                          $steps.invokeGlobalAction4?.data[0]?.message
+                        $steps["invokeGlobalAction3"] =
+                          $steps.buy?.data?.success == false
                             ? (() => {
                                 const actionArgs = {
                                   args: [
                                     "error",
                                     (() => {
                                       try {
-                                        return (() => {
-                                          if ($state.error.includes("صراف")) {
-                                            return ($state.error =
-                                              $state.error.replace(
-                                                "صراف",
-                                                "امانتدار"
-                                              ));
-                                          } else return $state.error;
-                                        })();
+                                        return $state.infopardakt.error
+                                          ? $state.infopardakt.error
+                                          : "مشکلی رخ داده است مجدد تلاش کنید.";
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
@@ -3177,22 +3031,24 @@ function PlasmicCharging__RenderFunc(props: {
                                         }
                                         throw e;
                                       }
-                                    })()
+                                    })(),
+                                    "top-left",
+                                    5000
                                   ]
                                 };
                                 return $globalActions[
-                                  "plasmic-antd5-config-provider.showNotification"
+                                  "Fragment.showToast"
                                 ]?.apply(null, [...actionArgs.args]);
                               })()
                             : undefined;
                         if (
-                          $steps["invokeGlobalAction6"] != null &&
-                          typeof $steps["invokeGlobalAction6"] === "object" &&
-                          typeof $steps["invokeGlobalAction6"].then ===
+                          $steps["invokeGlobalAction3"] != null &&
+                          typeof $steps["invokeGlobalAction3"] === "object" &&
+                          typeof $steps["invokeGlobalAction3"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction6"] = await $steps[
-                            "invokeGlobalAction6"
+                          $steps["invokeGlobalAction3"] = await $steps[
+                            "invokeGlobalAction3"
                           ];
                         }
 
@@ -3991,6 +3847,31 @@ function PlasmicCharging__RenderFunc(props: {
                           $steps["invokeGlobalAction"] = await $steps[
                             "invokeGlobalAction"
                           ];
+                        }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    $state.exchange2.amont = $state.amont;
+                                    return window.document
+                                      .getElementById("exchange")
+                                      .click();
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
                         }
                       }}
                       onLoadingviowChange={async (...eventArgs: any) => {
@@ -4881,7 +4762,14 @@ function PlasmicCharging__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___6Va6B
+                        sty.text___6Va6B,
+                        {
+                          [sty.textstepscharg_step3___6Va6BWug5H]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        }
                       )}
                     >
                       {
@@ -4930,7 +4818,14 @@ function PlasmicCharging__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text__phq8W
+                        sty.text__phq8W,
+                        {
+                          [sty.textstepscharg_step3__phq8WWug5H]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        }
                       )}
                     >
                       {
@@ -5082,73 +4977,16 @@ function PlasmicCharging__RenderFunc(props: {
               </AntdModal>
             </div>
           </section>
-          <Embed
-            data-plasmic-name={"embedHtml"}
-            data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml)}
-            code={
-              "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/charging\"\r\n        });\r\n    </script>"
-            }
-          />
-
-          <ApiRequest
-            data-plasmic-name={"commissionBabarkat"}
-            data-plasmic-override={overrides.commissionBabarkat}
-            className={classNames("__wab_instance", sty.commissionBabarkat, {
-              [sty.commissionBabarkatstepscharg_step3]: hasVariant(
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect, {
+              [sty.sideEffectstepscharg_step3]: hasVariant(
                 $state,
                 "stepscharg",
                 "step3"
               )
             })}
-            errorDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__gie0
-                )}
-              >
-                {"Error fetching data"}
-              </div>
-            }
-            loadingDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__wWpbW
-                )}
-              >
-                {"Loading..."}
-              </div>
-            }
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "error"
-              ]).apply(null, eventArgs);
-            }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "data"
-              ]).apply(null, eventArgs);
-            }}
-            url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
-          />
-
-          <SideEffect
-            data-plasmic-name={"sideEffect"}
-            data-plasmic-override={overrides.sideEffect}
-            className={classNames("__wab_instance", sty.sideEffect)}
             onMount={async () => {
               const $steps = {};
 
@@ -5202,13 +5040,13 @@ function PlasmicCharging__RenderFunc(props: {
               try {
                 return {
                   toman: {
-                    name: "تومان",
+                    name: `${$state.exchange2.totalToman.toLocaleString()} تومان`,
                     symbol: "toman",
                     isoCode: "IRR",
                     amount: $state.userinfo.toman
                   },
                   afghani: {
-                    name: "افغانی",
+                    name: `${$state.exchange2.totalAfghani.toLocaleString()} افغانی`,
                     symbol: "afghani",
                     isoCode: "AFN",
                     amount: $state.userinfo.afghani
@@ -5309,53 +5147,375 @@ function PlasmicCharging__RenderFunc(props: {
             type={generateStateValueProp($state, ["shopModal", "type"])}
           />
 
-          <ApiRequest
-            data-plasmic-name={"exchangeRate"}
-            data-plasmic-override={overrides.exchangeRate}
-            className={classNames("__wab_instance", sty.exchangeRate)}
-            errorDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__rRxUu
-                )}
-              >
-                {"Error fetching data"}
-              </div>
-            }
-            loadingDisplay={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__fXCnE
-                )}
-              >
-                {"Loading..."}
-              </div>
-            }
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
+          <Exchange
+            data-plasmic-name={"exchange2"}
+            data-plasmic-override={overrides.exchange2}
+            amont={generateStateValueProp($state, ["exchange2", "amont"])}
+            className={classNames("__wab_instance", sty.exchange2, {
+              [sty.exchange2stepscharg_step2]: hasVariant(
+                $state,
+                "stepscharg",
+                "step2"
+              ),
+              [sty.exchange2stepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+            onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "error"
+                "exchange2",
+                "afghaniWithoutCommission"
               ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
             }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "exchangeRate",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
+            onAmontChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["exchange2", "amont"]).apply(
                 null,
                 eventArgs
               );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
             }}
-            url={"https://n8n.babarkat.com/webhook/exchangeRate"}
+            onTomanWithoutCommissionChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange2",
+                "tomanWithoutCommission"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTotalAfghaniChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange2",
+                "totalAfghani"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTotalTomanChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange2",
+                "totalToman"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["exchange2", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            type={generateStateValueProp($state, ["exchange2", "type"])}
           />
+
+          <Dialog
+            data-plasmic-name={"dialog"}
+            data-plasmic-override={overrides.dialog}
+            className={classNames("__wab_instance", sty.dialog, {
+              [sty.dialogstepscharg_step3]: hasVariant(
+                $state,
+                "stepscharg",
+                "step3"
+              )
+            })}
+            data={
+              hasVariant($state, "stepscharg", "step3")
+                ? (() => {
+                    try {
+                      return {
+                        data: [
+                          {
+                            text: "کاربر",
+                            value: $state.userinfo.last_name
+                          },
+                          {
+                            text: "توضیحات",
+                            value: `${
+                              $state.operators2[$state.operatorselect]
+                                .description
+                            } ${
+                              $state.operators2[$state.operatorselect].services[
+                                $state.typecharge
+                              ].text
+                            } - ${$state.amont.toLocaleString()} تومان`
+                          },
+                          {
+                            text: "تاریخ و زمان",
+                            value: (() => {
+                              const now = new Date();
+                              const date = now.toLocaleDateString("fa-IR");
+                              const time = now.toLocaleTimeString("fa-IR", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit"
+                              });
+                              return `${date} - ${time}`;
+                            })()
+                          },
+                          {
+                            text: "شناسه تراکنش",
+                            value: $state.infopardakt.ref_code
+                          },
+                          {
+                            text: "شماره پیگیری",
+                            value: $state.infopardakt.trans_id
+                          }
+                        ],
+
+                        amount: {
+                          type:
+                            $state.shopModal.type == "toman"
+                              ? "تومان"
+                              : "افغانی",
+                          text: "مبلغ پرداخت شده",
+                          value:
+                            $state.shopModal.type == "toman"
+                              ? $state.exchange2.totalToman.toLocaleString()
+                              : $state.exchange2.totalAfghani.toLocaleString()
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          data: [
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                              value: 100
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                              value: 200
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                              value: 300
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                              value: 400
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                              value: 500
+                            }
+                          ],
+                          amount: {
+                            type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                            value: "500000",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
+                : (() => {
+                    try {
+                      return {
+                        data: [
+                          {
+                            text: "کاربر",
+                            value: $state.userinfo.last_name
+                          },
+                          {
+                            text: "توضیحات",
+                            value: `${
+                              $state.operators2[$state.operatorselect]
+                                .description
+                            } ${
+                              $state.operators2[$state.operatorselect].services[
+                                $state.typecharge
+                              ].text
+                            } - ${$state.amont.toLocaleString()} تومان`
+                          },
+                          {
+                            text: "تاریخ و زمان",
+                            value: (() => {
+                              const now = new Date();
+                              const date = now.toLocaleDateString("fa-IR");
+                              const time = now.toLocaleTimeString("fa-IR", {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit"
+                              });
+                              return `${date} - ${time}`;
+                            })()
+                          },
+                          {
+                            text: "شناسه تراکنش",
+                            value: $state.infopardakt.ref_code
+                          },
+                          {
+                            text: "شماره پیگیری",
+                            value: $state.infopardakt.trans_id
+                          }
+                        ],
+
+                        amount: {
+                          type:
+                            $state.shopModal.type == "toman"
+                              ? "تومان"
+                              : "افغانی",
+                          text: "مبلغ پرداخت شده",
+                          value:
+                            $state.shopModal.type == "toman"
+                              ? $state.exchange2.totalToman.toLocaleString()
+                              : $state.exchange2.totalAfghani.toLocaleString()
+                        }
+                      };
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return {
+                          data: [
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                              value: 100
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                              value: 200
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                              value: 300
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                              value: 400
+                            },
+                            {
+                              text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                              value: 500
+                            }
+                          ],
+                          amount: {
+                            type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                            text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                            value: "500000",
+                            amount: 1000
+                          }
+                        };
+                      }
+                      throw e;
+                    }
+                  })()
+            }
+            load={generateStateValueProp($state, ["dialog", "load"])}
+            onLoadChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "load"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onOpenChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onTypeChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["dialog", "type"]).apply(
+                null,
+                eventArgs
+              );
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            open={generateStateValueProp($state, ["dialog", "open"])}
+            type={generateStateValueProp($state, ["dialog", "type"])}
+          />
+
+          {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__wv2Oz,
+                {
+                  [sty.textstepscharg_step2__wv2OzTtIk]: hasVariant(
+                    $state,
+                    "stepscharg",
+                    "step2"
+                  )
+                }
+              )}
+            >
+              {
+                '$state.exchange.amont=$state.amont;\r\nwindow.document.getElementById("exchange").click()\r\n\r\n'
+              }
+            </div>
+          ) : null}
         </div>
       </div>
     </React.Fragment>
@@ -5383,6 +5543,7 @@ const PlasmicDescendants = {
     "boxselect3",
     "chargeType",
     "boxselect2",
+    "pay",
     "backstep2",
     "backstep3",
     "step1Next",
@@ -5396,11 +5557,10 @@ const PlasmicDescendants = {
     "modal2",
     "lottie",
     "button2",
-    "embedHtml",
-    "commissionBabarkat",
     "sideEffect",
     "shopModal",
-    "exchangeRate"
+    "exchange2",
+    "dialog"
   ],
   header: ["header"],
   reveal: [
@@ -5420,7 +5580,8 @@ const PlasmicDescendants = {
     "operators3",
     "boxselect3",
     "chargeType",
-    "boxselect2"
+    "boxselect2",
+    "pay"
   ],
   wallet: [
     "wallet",
@@ -5460,6 +5621,7 @@ const PlasmicDescendants = {
   boxselect3: ["boxselect3"],
   chargeType: ["chargeType", "boxselect2"],
   boxselect2: ["boxselect2"],
+  pay: ["pay"],
   backstep2: ["backstep2"],
   backstep3: ["backstep3"],
   step1Next: ["step1Next"],
@@ -5485,11 +5647,10 @@ const PlasmicDescendants = {
   modal2: ["modal2", "lottie", "button2"],
   lottie: ["lottie"],
   button2: ["button2"],
-  embedHtml: ["embedHtml"],
-  commissionBabarkat: ["commissionBabarkat"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"]
+  exchange2: ["exchange2"],
+  dialog: ["dialog"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5514,6 +5675,7 @@ type NodeDefaultElementType = {
   boxselect3: typeof Boxselect;
   chargeType: "div";
   boxselect2: typeof Boxselect;
+  pay: "div";
   backstep2: typeof Button;
   backstep3: typeof Button;
   step1Next: typeof Button;
@@ -5527,11 +5689,10 @@ type NodeDefaultElementType = {
   modal2: typeof AntdModal;
   lottie: typeof LottieWrapper;
   button2: typeof Button;
-  embedHtml: typeof Embed;
-  commissionBabarkat: typeof ApiRequest;
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
-  exchangeRate: typeof ApiRequest;
+  exchange2: typeof Exchange;
+  dialog: typeof Dialog;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5641,6 +5802,7 @@ export const PlasmicCharging = Object.assign(
     boxselect3: makeNodeComponent("boxselect3"),
     chargeType: makeNodeComponent("chargeType"),
     boxselect2: makeNodeComponent("boxselect2"),
+    pay: makeNodeComponent("pay"),
     backstep2: makeNodeComponent("backstep2"),
     backstep3: makeNodeComponent("backstep3"),
     step1Next: makeNodeComponent("step1Next"),
@@ -5654,11 +5816,10 @@ export const PlasmicCharging = Object.assign(
     modal2: makeNodeComponent("modal2"),
     lottie: makeNodeComponent("lottie"),
     button2: makeNodeComponent("button2"),
-    embedHtml: makeNodeComponent("embedHtml"),
-    commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
-    exchangeRate: makeNodeComponent("exchangeRate"),
+    exchange2: makeNodeComponent("exchange2"),
+    dialog: makeNodeComponent("dialog"),
 
     // Metadata about props expected for PlasmicCharging
     internalVariantProps: PlasmicCharging__VariantProps,

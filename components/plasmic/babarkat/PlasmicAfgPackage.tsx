@@ -71,6 +71,8 @@ import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
+import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
+import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -133,6 +135,7 @@ export type PlasmicAfgPackage__OverridesType = {
   button?: Flex__<typeof Button>;
   chargeType?: Flex__<"div">;
   boxselect2?: Flex__<typeof Boxselect>;
+  pay?: Flex__<"div">;
   backstep2?: Flex__<typeof Button>;
   backstep3?: Flex__<typeof Button>;
   step1Next?: Flex__<typeof Button>;
@@ -146,6 +149,8 @@ export type PlasmicAfgPackage__OverridesType = {
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
   exchangeRate?: Flex__<typeof ApiRequest>;
+  dialog?: Flex__<typeof Dialog>;
+  exchange2?: Flex__<typeof Exchange>;
 };
 
 export interface DefaultAfgPackageProps {}
@@ -680,6 +685,87 @@ function PlasmicAfgPackage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "dialog.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "exchange2.totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.totalAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.amont",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "stepscharg", "step3")
+            ? (() => {
+                try {
+                  return $state.selectPack.rate;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 50000;
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return $state.selectpack.rate;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return 50000;
+                  }
+                  throw e;
+                }
+              })()
+      },
+      {
+        path: "exchange2.afghaniWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.tomanWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange2.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
       }
     ],
     [$props, $ctx, $refs]
@@ -758,6 +844,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
               $state,
               "stepscharg",
               "step2"
+            ),
+            [sty.sectionstepscharg_step3__ihAzxTDnBg]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
             )
           })}
         >
@@ -1415,16 +1506,9 @@ function PlasmicAfgPackage__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (() => {
-                                  const totalAmount = (
-                                    parseInt($state.selectPack.rate) +
-                                    parseInt($state.selectPack.rate) *
-                                      (($state.commissionBabarkat.data.babrkat +
-                                        $state.commissionBabarkat.data.saraf) /
-                                        100)
-                                  ).toLocaleString("en");
-                                  return totalAmount + " تومان ";
-                                })();
+                                return `${$state.exchange2.totalToman.toLocaleString()} تومان 
+${$state.exchange2.totalAfghani.toLocaleString()} افغانی
+`;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -1451,6 +1535,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       $state,
                       "stepscharg",
                       "step2"
+                    ),
+                    [sty.freeBoxstepscharg_step3__aQf5HtDnBg]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
                     )
                   })}
                 >
@@ -1805,6 +1894,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                         $state,
                         "stepscharg",
                         "step2"
+                      ),
+                      [sty.textstepscharg_step3__jLzz7TDnBg]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step3"
                       )
                     }
                   )}
@@ -2411,6 +2505,27 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                 "updateStepscharg"
                               ];
                             }
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.exchange2.amont =
+                                        currentItem.rate);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
                           }}
                         >
                           <PlasmicImg__
@@ -2444,7 +2559,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             <div
                               className={classNames(
                                 projectcss.all,
-                                sty.freeBox__f9NTu
+                                sty.freeBox__f9NTu,
+                                {
+                                  [sty.freeBoxstepscharg_step2__f9NTuzwaj5]:
+                                    hasVariant($state, "stepscharg", "step2")
+                                }
                               )}
                             >
                               <div
@@ -2566,6 +2685,30 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                     ) {
                                       $steps["updateStepscharg"] = await $steps[
                                         "updateStepscharg"
+                                      ];
+                                    }
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return ($state.exchange2.amont =
+                                                currentItem.rate);
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
                                       ];
                                     }
                                   },
@@ -2994,13 +3137,15 @@ function PlasmicAfgPackage__RenderFunc(props: {
               >
                 {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__eu8Wy, {
-                      [sty.freeBoxstepscharg_step2__eu8WYzwaj5]: hasVariant(
+                    data-plasmic-name={"pay"}
+                    data-plasmic-override={overrides.pay}
+                    className={classNames(projectcss.all, sty.pay, {
+                      [sty.paystepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
                         "step2"
                       ),
-                      [sty.freeBoxstepscharg_step3__eu8WytDnBg]: hasVariant(
+                      [sty.paystepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
                         "step3"
@@ -3014,9 +3159,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     onClick={async event => {
                       const $steps = {};
 
-                      $steps["updateRate"] = (
-                        $state.exchangeRate?.data?.rate ? true : false
-                      )
+                      $steps["updateRate"] = true
                         ? (() => {
                             const actionArgs = {
                               variable: {
@@ -3027,12 +3170,11 @@ function PlasmicAfgPackage__RenderFunc(props: {
                               value: (() => {
                                 switch ($state.shopModal.type) {
                                   case "toman":
-                                    return $state.selectPack.rate;
+                                    return $state.exchange2
+                                      .tomanWithoutCommission;
                                   case "afghani":
-                                    return Math.round(
-                                      $state.selectPack.rate /
-                                        $state.exchangeRate.data.rate
-                                    );
+                                    return $state.exchange2
+                                      .afghaniWithoutCommission;
                                   default:
                                     console.log("نوع ارز نامعتبر است");
                                 }
@@ -3133,13 +3275,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
                         $steps["updateUuid"] = await $steps["updateUuid"];
                       }
 
-                      $steps["invokeGlobalAction4"] =
+                      $steps["buy"] =
                         $state.rate !== 0 && $state.rate != null
                           ? (() => {
                               const actionArgs = {
                                 args: [
                                   "POST",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                  "https://n8n.babarkat.com/webhook/babarkat /shop/buy",
                                   undefined,
                                   (() => {
                                     try {
@@ -3168,6 +3310,30 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                             $state.operators2[
                                               $state.operatorselect
                                             ].description
+                                        },
+                                        buy: {
+                                          text:
+                                            "\n \u2705 خرید موفق بسته افغانستان \nکاربر: " +
+                                            $state.userinfo.last_name +
+                                            "\nشماره کاربر: " +
+                                            $state.userinfo.mobile +
+                                            "\n......................" +
+                                            "\nاپراتور: " +
+                                            $state.operators2[
+                                              $state.operatorselect
+                                            ].description +
+                                            "\nقیمت به تومان: " +
+                                            $state.selectPack.rate +
+                                            "\nنام بسته: " +
+                                            $state.selectPack.image +
+                                            "\nشماره: " +
+                                            $state.number +
+                                            "\nکپی کردن شماره: " +
+                                            "`" +
+                                            $state.number.slice(5) +
+                                            "`" +
+                                            "\nشناسه تراکنش: " +
+                                            $state.uuid
                                         }
                                       };
                                     } catch (e) {
@@ -3189,164 +3355,20 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             })()
                           : undefined;
                       if (
-                        $steps["invokeGlobalAction4"] != null &&
-                        typeof $steps["invokeGlobalAction4"] === "object" &&
-                        typeof $steps["invokeGlobalAction4"].then === "function"
+                        $steps["buy"] != null &&
+                        typeof $steps["buy"] === "object" &&
+                        typeof $steps["buy"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction4"] = await $steps[
-                          "invokeGlobalAction4"
-                        ];
+                        $steps["buy"] = await $steps["buy"];
                       }
 
-                      $steps["updatePardakhtid"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
+                      $steps["updateDialogOpen"] =
+                        $steps.buy?.data?.success == true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
                                   objRoot: $state,
-                                  variablePath: ["pardakhtid"]
-                                },
-                                operation: 0,
-                                value: $steps.invokeGlobalAction4.data[0].id
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updatePardakhtid"] != null &&
-                        typeof $steps["updatePardakhtid"] === "object" &&
-                        typeof $steps["updatePardakhtid"].then === "function"
-                      ) {
-                        $steps["updatePardakhtid"] = await $steps[
-                          "updatePardakhtid"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "GET",
-                                  "https://n8n.babarkat.com/webhook/telegram_Bot",
-                                  (() => {
-                                    try {
-                                      return {
-                                        text:
-                                          "\n \u2705 خرید موفق بسته افغانستان \nکاربر: " +
-                                          $state.userinfo.last_name +
-                                          "\nشماره کاربر: " +
-                                          $state.userinfo.mobile +
-                                          "\n......................" +
-                                          "\nاپراتور: " +
-                                          $state.operators2[
-                                            $state.operatorselect
-                                          ].description +
-                                          "\nقیمت به تومان: " +
-                                          $state.selectPack.rate +
-                                          "\nنام بسته: " +
-                                          $state.selectPack.image +
-                                          "\nشماره: " +
-                                          $state.number +
-                                          "\nکپی کردن شماره: " +
-                                          "`" +
-                                          $state.number.slice(5) +
-                                          "`" +
-                                          "\nشناسه تراکنش: " +
-                                          $state.uuid
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })(),
-                                  undefined
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction"] != null &&
-                        typeof $steps["invokeGlobalAction"] === "object" &&
-                        typeof $steps["invokeGlobalAction"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
-                      }
-
-                      $steps["invokeGlobalAction5"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "PUT",
-                                  "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        id: $state.pardakhtid,
-                                        trackingId: $state.uuid,
-                                        userToken: $state.token
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["invokeGlobalAction5"] != null &&
-                        typeof $steps["invokeGlobalAction5"] === "object" &&
-                        typeof $steps["invokeGlobalAction5"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction5"] = await $steps[
-                          "invokeGlobalAction5"
-                        ];
-                      }
-
-                      $steps["updateModal2Open"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["modal2", "open"]
+                                  variablePath: ["dialog", "open"]
                                 },
                                 operation: 0,
                                 value: true
@@ -3368,18 +3390,18 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             })()
                           : undefined;
                       if (
-                        $steps["updateModal2Open"] != null &&
-                        typeof $steps["updateModal2Open"] === "object" &&
-                        typeof $steps["updateModal2Open"].then === "function"
+                        $steps["updateDialogOpen"] != null &&
+                        typeof $steps["updateDialogOpen"] === "object" &&
+                        typeof $steps["updateDialogOpen"].then === "function"
                       ) {
-                        $steps["updateModal2Open"] = await $steps[
-                          "updateModal2Open"
+                        $steps["updateDialogOpen"] = await $steps[
+                          "updateDialogOpen"
                         ];
                       }
 
                       $steps["updateError"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                        $steps.invokeGlobalAction4?.data[0]?.message
+                        $steps.buy?.data?.success == false &&
+                        $steps.buy?.data?.error
                           ? (() => {
                               const actionArgs = {
                                 variable: {
@@ -3387,8 +3409,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                                   variablePath: ["error"]
                                 },
                                 operation: 0,
-                                value:
-                                  $steps.invokeGlobalAction4?.data[0].message
+                                value: $steps.buy?.data?.error
                               };
                               return (({
                                 variable,
@@ -3415,8 +3436,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       }
 
                       $steps["invokeGlobalAction6"] =
-                        $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                        $steps.invokeGlobalAction4?.data[0]?.message
+                        $steps.buy?.data?.success == false &&
+                        $steps.buy?.data?.error
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -5399,45 +5420,87 @@ function PlasmicAfgPackage__RenderFunc(props: {
               "step3"
             )
           })}
-          data={(() => {
-            try {
-              return {
-                toman: {
-                  name: "تومان",
-                  symbol: "toman",
-                  isoCode: "IRR",
-                  amount: $state.userinfo.toman
-                },
-                afghani: {
-                  name: "افغانی",
-                  symbol: "afghani",
-                  isoCode: "AFN",
-                  amount: $state.userinfo.afghani
-                }
-              };
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return {
-                  toman: {
-                    name: "\u062a\u0648\u0645\u0627\u0646",
-                    symbol: "toman",
-                    isoCode: "IRR",
-                    amount: 200000
-                  },
-                  afghani: {
-                    name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
-                    symbol: "afghani",
-                    isoCode: "AFN",
-                    amount: 1000
+          data={
+            hasVariant($state, "stepscharg", "step3")
+              ? (() => {
+                  try {
+                    return {
+                      toman: {
+                        name: `${$state.exchange2.totalToman.toLocaleString()} تومان`,
+                        symbol: "toman",
+                        isoCode: "IRR",
+                        amount: $state.userinfo.toman
+                      },
+                      afghani: {
+                        name: `${$state.exchange2.totalAfghani.toLocaleString()} افغانی`,
+                        symbol: "afghani",
+                        isoCode: "AFN",
+                        amount: $state.userinfo.afghani
+                      }
+                    };
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return {
+                        toman: {
+                          name: "\u062a\u0648\u0645\u0627\u0646",
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: 200000
+                        },
+                        afghani: {
+                          name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: 1000
+                        }
+                      };
+                    }
+                    throw e;
                   }
-                };
-              }
-              throw e;
-            }
-          })()}
+                })()
+              : (() => {
+                  try {
+                    return {
+                      toman: {
+                        name: "تومان",
+                        symbol: "toman",
+                        isoCode: "IRR",
+                        amount: $state.userinfo.toman
+                      },
+                      afghani: {
+                        name: "افغانی",
+                        symbol: "afghani",
+                        isoCode: "AFN",
+                        amount: $state.userinfo.afghani
+                      }
+                    };
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return {
+                        toman: {
+                          name: "\u062a\u0648\u0645\u0627\u0646",
+                          symbol: "toman",
+                          isoCode: "IRR",
+                          amount: 200000
+                        },
+                        afghani: {
+                          name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                          symbol: "afghani",
+                          isoCode: "AFN",
+                          amount: 1000
+                        }
+                      };
+                    }
+                    throw e;
+                  }
+                })()
+          }
           load={generateStateValueProp($state, ["shopModal", "load"])}
           onClick={async event => {
             const $steps = {};
@@ -5563,6 +5626,254 @@ function PlasmicAfgPackage__RenderFunc(props: {
           }}
           url={"https://n8n.babarkat.com/webhook/exchangeRate"}
         />
+
+        <Dialog
+          data-plasmic-name={"dialog"}
+          data-plasmic-override={overrides.dialog}
+          className={classNames("__wab_instance", sty.dialog, {
+            [sty.dialogstepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          data={
+            hasVariant($state, "stepscharg", "step3")
+              ? (() => {
+                  try {
+                    return {
+                      data: [
+                        {
+                          text: "کاربر",
+                          value: $state.userinfo.last_name
+                        },
+                        {
+                          text: "توضیحات",
+                          value:
+                            $state.operators2[$state.operatorselect]
+                              .description +
+                            " " +
+                            $state.selectPack.image
+                        },
+                        {
+                          text: "تاریخ و زمان",
+                          value: (() => {
+                            const now = new Date();
+                            const date = now.toLocaleDateString("fa-IR");
+                            const time = now.toLocaleTimeString("fa-IR", {
+                              hour: "2-digit",
+                              minute: "2-digit",
+                              second: "2-digit"
+                            });
+                            return `${date} - ${time}`;
+                          })()
+                        },
+                        {
+                          text: "شناسه تراکنش",
+                          value: $state.uuid
+                        }
+                      ],
+
+                      amount: {
+                        type:
+                          $state.shopModal.type == "toman" ? "تومان" : "افغانی",
+                        text: "مبلغ پرداخت شده",
+                        value:
+                          $state.shopModal.type == "toman"
+                            ? $state.exchange2.totalToman.toLocaleString()
+                            : $state.exchange2.totalAfghani.toLocaleString()
+                      }
+                    };
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return {
+                        data: [
+                          {
+                            text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                            value: 100
+                          },
+                          {
+                            text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                            value: 200
+                          },
+                          {
+                            text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                            value: 300
+                          },
+                          {
+                            text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                            value: 400
+                          },
+                          {
+                            text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                            value: 500
+                          }
+                        ],
+                        amount: {
+                          type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                          text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                          value: "500000",
+                          amount: 1000
+                        }
+                      };
+                    }
+                    throw e;
+                  }
+                })()
+              : undefined
+          }
+          load={generateStateValueProp($state, ["dialog", "load"])}
+          onLoadChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "load"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTypeChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "type"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          open={generateStateValueProp($state, ["dialog", "open"])}
+          type={generateStateValueProp($state, ["dialog", "type"])}
+        />
+
+        <Exchange
+          data-plasmic-name={"exchange2"}
+          data-plasmic-override={overrides.exchange2}
+          amont={generateStateValueProp($state, ["exchange2", "amont"])}
+          className={classNames("__wab_instance", sty.exchange2, {
+            [sty.exchange2stepscharg_step2]: hasVariant(
+              $state,
+              "stepscharg",
+              "step2"
+            ),
+            [sty.exchange2stepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange2",
+              "afghaniWithoutCommission"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onAmontChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchange2", "amont"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTomanWithoutCommissionChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange2",
+              "tomanWithoutCommission"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTotalAfghaniChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange2",
+              "totalAfghani"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTotalTomanChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange2",
+              "totalToman"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTypeChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchange2", "type"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          type={generateStateValueProp($state, ["exchange2", "type"])}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -5590,6 +5901,7 @@ const PlasmicDescendants = {
     "button",
     "chargeType",
     "boxselect2",
+    "pay",
     "backstep2",
     "backstep3",
     "step1Next",
@@ -5602,7 +5914,9 @@ const PlasmicDescendants = {
     "commissionBabarkat",
     "sideEffect",
     "shopModal",
-    "exchangeRate"
+    "exchangeRate",
+    "dialog",
+    "exchange2"
   ],
   header: ["header"],
   reveal: [
@@ -5623,7 +5937,8 @@ const PlasmicDescendants = {
     "boxselect3",
     "button",
     "chargeType",
-    "boxselect2"
+    "boxselect2",
+    "pay"
   ],
   wallet: [
     "wallet",
@@ -5664,6 +5979,7 @@ const PlasmicDescendants = {
   button: ["button"],
   chargeType: ["chargeType", "boxselect2"],
   boxselect2: ["boxselect2"],
+  pay: ["pay"],
   backstep2: ["backstep2"],
   backstep3: ["backstep3"],
   step1Next: ["step1Next"],
@@ -5676,7 +5992,9 @@ const PlasmicDescendants = {
   commissionBabarkat: ["commissionBabarkat"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"]
+  exchangeRate: ["exchangeRate"],
+  dialog: ["dialog"],
+  exchange2: ["exchange2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5702,6 +6020,7 @@ type NodeDefaultElementType = {
   button: typeof Button;
   chargeType: "div";
   boxselect2: typeof Boxselect;
+  pay: "div";
   backstep2: typeof Button;
   backstep3: typeof Button;
   step1Next: typeof Button;
@@ -5715,6 +6034,8 @@ type NodeDefaultElementType = {
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
   exchangeRate: typeof ApiRequest;
+  dialog: typeof Dialog;
+  exchange2: typeof Exchange;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5825,6 +6146,7 @@ export const PlasmicAfgPackage = Object.assign(
     button: makeNodeComponent("button"),
     chargeType: makeNodeComponent("chargeType"),
     boxselect2: makeNodeComponent("boxselect2"),
+    pay: makeNodeComponent("pay"),
     backstep2: makeNodeComponent("backstep2"),
     backstep3: makeNodeComponent("backstep3"),
     step1Next: makeNodeComponent("step1Next"),
@@ -5838,6 +6160,8 @@ export const PlasmicAfgPackage = Object.assign(
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
     exchangeRate: makeNodeComponent("exchangeRate"),
+    dialog: makeNodeComponent("dialog"),
+    exchange2: makeNodeComponent("exchange2"),
 
     // Metadata about props expected for PlasmicAfgPackage
     internalVariantProps: PlasmicAfgPackage__VariantProps,

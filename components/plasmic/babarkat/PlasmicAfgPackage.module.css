@@ -40,6 +40,9 @@
 .sectionstepscharg_step2__ihAzxzwaj5 > * {
   grid-column: 4;
 }
+.sectionstepscharg_step3__ihAzxTDnBg > * {
+  grid-column: 4;
+}
 .freeBox__erD9F {
   display: flex;
   flex-direction: column;
@@ -264,6 +267,7 @@
 .walletstepscharg_step3 {
   background: #2dc57b;
   margin-top: 0px;
+  margin-bottom: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .walletstepscharg_step3 {
@@ -689,6 +693,7 @@
   font-weight: 700;
   font-size: 14px;
   text-align: left;
+  line-height: 2;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .textstepscharg_step3__mSgC8TDnBg {
@@ -1427,7 +1432,7 @@
   display: flex;
   padding: 0px 24px;
 }
-.freeBox__eu8Wy {
+.pay {
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -1438,7 +1443,7 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBoxstepscharg_step3__eu8WytDnBg {
+.paystepscharg_step3 {
   background: linear-gradient(90deg, #48665799 15%, #2dc57b80 100%);
   justify-content: center;
   align-items: center;
@@ -2100,4 +2105,10 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
+}
+.dialog:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.exchange2:global(.__wab_instance) {
+  max-width: 100%;
 }

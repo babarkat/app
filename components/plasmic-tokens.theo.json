@@ -71,6 +71,16 @@
       }
     },
     {
+      "name": "Basic/Input-Background",
+      "type": "color",
+      "value": "#E5E7EB",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "HYofCA0lhstX"
+      }
+    },
+    {
       "name": "Basic/Overlay-Background",
       "type": "color",
       "value": "#0A0A0A80",
@@ -438,6 +448,16 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "jrI4hhAJj90H"
+      }
+    },
+    {
+      "name": "Size-20",
+      "type": "spacing",
+      "value": "1.25rem",
+      "category": "spacing",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "Dz1x6wVj7GTW"
       }
     },
     {

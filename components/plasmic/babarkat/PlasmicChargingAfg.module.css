@@ -245,11 +245,12 @@
   left: 0;
   top: 0;
   opacity: 0.15;
-  width: auto;
+  width: 100%;
   height: 100%;
   filter: brightness(60%);
   right: auto;
   bottom: 0;
+  min-width: 0;
   min-height: 0;
 }
 .svgstepscharg_step2__xlfYo1Oc4H {
@@ -681,6 +682,7 @@
   font-weight: 700;
   font-size: 14px;
   text-align: left;
+  line-height: 2;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .textstepscharg_step3__nXnSCq2TCe {
@@ -1211,7 +1213,7 @@
   display: flex;
   padding: 0px 24px;
 }
-.freeBox__nbeBs {
+.pay {
   flex-direction: row;
   position: relative;
   align-items: stretch;
@@ -1223,7 +1225,7 @@
   display: none;
   padding: 8px;
 }
-.freeBoxstepscharg_step3__nbeBSq2TCe {
+.paystepscharg_step3 {
   background: linear-gradient(90deg, #48665799 15%, #2dc57b80 100%);
   justify-content: center;
   align-items: center;
@@ -1846,6 +1848,9 @@
   width: auto;
   height: 1em;
 }
+.exchange2:global(.__wab_instance) {
+  max-width: 100%;
+}
 .commissionBabarkat:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
@@ -1887,5 +1892,8 @@
   object-fit: cover;
 }
 .shopModal:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.dialog:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }

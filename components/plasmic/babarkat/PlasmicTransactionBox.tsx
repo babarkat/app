@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Icons from "../../Icons"; // plasmic-import: y9SwG9bN8mmR/component
+
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -67,14 +69,6 @@ import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css";
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicTransactionBox.module.css"; // plasmic-import: 9xs0oaOWmddY/css
-
-import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; // plasmic-import: aoPueH94YLGd/icon
-import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3UQ7U7/icon
-import Icon58Icon from "./icons/PlasmicIcon__Icon58"; // plasmic-import: b6_fsTkPhz_-/icon
-import Icon129Icon from "./icons/PlasmicIcon__Icon129"; // plasmic-import: 2rxYPp6upTUU/icon
-import Icon104Icon from "./icons/PlasmicIcon__Icon104"; // plasmic-import: 3o5IGmXy7oW3/icon
-import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
-import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
 
 createPlasmicElementProxy;
 
@@ -121,7 +115,7 @@ export const PlasmicTransactionBox__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicTransactionBox__OverridesType = {
   root?: Flex__<"div">;
-  frame?: Flex__<"div">;
+  icons?: Flex__<typeof Icons>;
   freeBox?: Flex__<"div">;
 };
 
@@ -280,104 +274,82 @@ function PlasmicTransactionBox__RenderFunc(props: {
       )}
       onClick={args.onClick}
     >
-      <div
-        data-plasmic-name={"frame"}
-        data-plasmic-override={overrides.frame}
-        className={classNames(projectcss.all, sty.frame, {
-          [sty.framefiled]: hasVariant($state, "filed", "filed"),
-          [sty.frameunnamedGroupOfVariants_intenet]: hasVariant(
+      <Icons
+        data-plasmic-name={"icons"}
+        data-plasmic-override={overrides.icons}
+        className={classNames("__wab_instance", sty.icons, {
+          [sty.iconsfiled]: hasVariant($state, "filed", "filed"),
+          [sty.iconsfiled_unnamedGroupOfVariants_intenet]:
+            hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
+            hasVariant($state, "filed", "filed"),
+          [sty.iconsfiled_unnamedGroupOfVariants_walet]:
+            hasVariant($state, "filed", "filed") &&
+            hasVariant($state, "unnamedGroupOfVariants", "walet"),
+          [sty.iconsunnamedGroupOfVariants_bill]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "bill"
+          ),
+          [sty.iconsunnamedGroupOfVariants_intenet]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
             "intenet"
           ),
-          [sty.frameunnamedGroupOfVariants_snap]: hasVariant(
+          [sty.iconsunnamedGroupOfVariants_panel]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "panel"
+          ),
+          [sty.iconsunnamedGroupOfVariants_pubg]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "pubg"
+          ),
+          [sty.iconsunnamedGroupOfVariants_snap]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
             "snap"
           ),
-          [sty.frameunnamedGroupOfVariants_walet]: hasVariant(
+          [sty.iconsunnamedGroupOfVariants_walet]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
             "walet"
           )
         })}
-      >
-        <PlasmicIcon__
-          PlasmicIconType={
-            hasVariant($state, "unnamedGroupOfVariants", "bill")
-              ? Icon104Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "pubg")
-              ? Icon129Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "snap")
-              ? Icon58Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "panel")
-              ? Icon14Icon
-              : SvgRepoIconCarrier2Icon
-          }
-          className={classNames(projectcss.all, sty.svg__iNIji, {
-            [sty.svgfiled__iNIjiL0Vgk]: hasVariant($state, "filed", "filed"),
-            [sty.svgunnamedGroupOfVariants_bill__iNIjiXThC]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "bill"
-            ),
-            [sty.svgunnamedGroupOfVariants_intenet__iNIjiwRMn1]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "intenet"
-            ),
-            [sty.svgunnamedGroupOfVariants_panel__iNIjiV8M9W]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "panel"
-            ),
-            [sty.svgunnamedGroupOfVariants_pubg__iNIjiOa6AJ]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "pubg"
-            ),
-            [sty.svgunnamedGroupOfVariants_snap__iNIjiPkiCr]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "snap"
-            ),
-            [sty.svgunnamedGroupOfVariants_walet__iNIjiOAnW8]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "walet"
-            )
-          })}
-          role={"img"}
-        />
+        filed={
+          hasVariant($state, "filed", "filed") &&
+          hasVariant($state, "unnamedGroupOfVariants", "walet")
+            ? true
+            : hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
+              hasVariant($state, "filed", "filed")
+            ? true
+            : hasVariant($state, "filed", "filed")
+            ? true
+            : undefined
+        }
+        unnamedGroupOfVariants={
+          hasVariant($state, "filed", "filed") &&
+          hasVariant($state, "unnamedGroupOfVariants", "walet")
+            ? "walet"
+            : hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
+              hasVariant($state, "filed", "filed")
+            ? "intenet"
+            : hasVariant($state, "unnamedGroupOfVariants", "bill")
+            ? "bill"
+            : hasVariant($state, "unnamedGroupOfVariants", "pubg")
+            ? "pubg"
+            : hasVariant($state, "unnamedGroupOfVariants", "snap")
+            ? "snap"
+            : hasVariant($state, "unnamedGroupOfVariants", "panel")
+            ? "panel"
+            : hasVariant($state, "unnamedGroupOfVariants", "walet")
+            ? "walet"
+            : hasVariant($state, "unnamedGroupOfVariants", "intenet")
+            ? "intenet"
+            : undefined
+        }
+      />
 
-        <SvgRepoIconCarrier3Icon
-          className={classNames(projectcss.all, sty.svg__hoPkp, {
-            [sty.svgfiled_unnamedGroupOfVariants_intenet__hoPkpL0VgkWRMn1]:
-              hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
-              hasVariant($state, "filed", "filed"),
-            [sty.svgunnamedGroupOfVariants_intenet__hoPkpwRMn1]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "intenet"
-            )
-          })}
-          role={"img"}
-        />
-
-        <SvgRepoIconCarrier4Icon
-          className={classNames(projectcss.all, sty.svg__acdH9, {
-            [sty.svgfiled_unnamedGroupOfVariants_walet__acdH9L0VgkOAnW8]:
-              hasVariant($state, "filed", "filed") &&
-              hasVariant($state, "unnamedGroupOfVariants", "walet"),
-            [sty.svgunnamedGroupOfVariants_walet__acdH9OAnW8]: hasVariant(
-              $state,
-              "unnamedGroupOfVariants",
-              "walet"
-            )
-          })}
-          role={"img"}
-        />
-      </div>
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
@@ -429,8 +401,8 @@ function PlasmicTransactionBox__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "frame", "freeBox"],
-  frame: ["frame"],
+  root: ["root", "icons", "freeBox"],
+  icons: ["icons"],
   freeBox: ["freeBox"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -438,7 +410,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  frame: "div";
+  icons: typeof Icons;
   freeBox: "div";
 };
 
@@ -502,7 +474,7 @@ export const PlasmicTransactionBox = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    frame: makeNodeComponent("frame"),
+    icons: makeNodeComponent("icons"),
     freeBox: makeNodeComponent("freeBox"),
 
     // Metadata about props expected for PlasmicTransactionBox

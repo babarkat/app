@@ -75,6 +75,8 @@ import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-impor
 import Loading from "../../Loading"; // plasmic-import: LqAqGtGaA2Da/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
+import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
+import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
 
 import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
@@ -157,6 +159,7 @@ export type PlasmicBill__OverridesType = {
   boxselect?: Flex__<typeof Boxselect>;
   operators3?: Flex__<"div">;
   boxselect3?: Flex__<typeof Boxselect>;
+  pay?: Flex__<"div">;
   nobill?: Flex__<"div">;
   bills?: Flex__<"div">;
   popover?: Flex__<typeof AntdPopover>;
@@ -200,6 +203,8 @@ export type PlasmicBill__OverridesType = {
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
   exchangeRate?: Flex__<typeof ApiRequest>;
+  exchange?: Flex__<typeof Exchange>;
+  dialog?: Flex__<typeof Dialog>;
 };
 
 export interface DefaultBillProps {}
@@ -1120,6 +1125,73 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange.totalToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.totalAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.amont",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.data.amount;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return 50000;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "exchange.afghaniWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.tomanWithoutCommission",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "exchange.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog.type",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "dialog.load",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2362,10 +2434,9 @@ function PlasmicBill__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (
-                                  $state.data.amount.toLocaleString("en") +
-                                  " تومان "
-                                );
+                                return `${$state.exchange.totalToman.toLocaleString()} تومان
+${$state.exchange.totalAfghani.toLocaleString()} افغانی
+`;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -4208,8 +4279,10 @@ function PlasmicBill__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__nwPxR, {
-                    [sty.freeBoxstepscharg_step3__nwPxRTqZTv]: hasVariant(
+                  data-plasmic-name={"pay"}
+                  data-plasmic-override={overrides.pay}
+                  className={classNames(projectcss.all, sty.pay, {
+                    [sty.paystepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
@@ -4223,9 +4296,7 @@ function PlasmicBill__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["updateRate"] = (
-                      $state.exchangeRate?.data?.rate ? true : false
-                    )
+                    $steps["updateRate"] = true
                       ? (() => {
                           const actionArgs = {
                             variable: {
@@ -4236,12 +4307,10 @@ function PlasmicBill__RenderFunc(props: {
                             value: (() => {
                               switch ($state.shopModal.type) {
                                 case "toman":
-                                  return $state.data.amount;
+                                  return $state.exchange.tomanWithoutCommission;
                                 case "afghani":
-                                  return Math.round(
-                                    $state.data.amount /
-                                      $state.exchangeRate.data.rate
-                                  );
+                                  return $state.exchange
+                                    .afghaniWithoutCommission;
                                 default:
                                   console.log("نوع ارز نامعتبر است");
                               }
@@ -4339,13 +4408,13 @@ function PlasmicBill__RenderFunc(props: {
                       $steps["updateUuid"] = await $steps["updateUuid"];
                     }
 
-                    $steps["invokeGlobalAction4"] =
+                    $steps["buy"] =
                       $state.rate !== 0 && $state.rate != null
                         ? (() => {
                             const actionArgs = {
                               args: [
                                 "POST",
-                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
+                                "https://n8n.babarkat.com/webhook/babarkat /shop/buy",
                                 undefined,
                                 (() => {
                                   try {
@@ -4363,7 +4432,15 @@ function PlasmicBill__RenderFunc(props: {
                                         ($state.data.type_en || $state.type),
                                       originId: $state.uuid + "",
                                       priceType: $state.shopModal.type,
-                                      userToken: $state.token
+                                      userToken: $state.token,
+                                      buy: {
+                                        method: "bill",
+                                        pay_id: $state.data.pay_id,
+                                        bill_id: $state.data.bill_id,
+                                        mobile: $state.mobile,
+                                        order_id: $state.uuid,
+                                        pay_type: "credit"
+                                      }
                                     };
                                   } catch (e) {
                                     if (
@@ -4385,101 +4462,15 @@ function PlasmicBill__RenderFunc(props: {
                           })()
                         : undefined;
                     if (
-                      $steps["invokeGlobalAction4"] != null &&
-                      typeof $steps["invokeGlobalAction4"] === "object" &&
-                      typeof $steps["invokeGlobalAction4"].then === "function"
+                      $steps["buy"] != null &&
+                      typeof $steps["buy"] === "object" &&
+                      typeof $steps["buy"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction4"] = await $steps[
-                        "invokeGlobalAction4"
-                      ];
-                    }
-
-                    $steps["updatePardakhtid"] =
-                      $steps.invokeGlobalAction4?.data[0]?.success == true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["pardakhtid"]
-                              },
-                              operation: 0,
-                              value: $steps.invokeGlobalAction4.data[0].id
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["updatePardakhtid"] != null &&
-                      typeof $steps["updatePardakhtid"] === "object" &&
-                      typeof $steps["updatePardakhtid"].then === "function"
-                    ) {
-                      $steps["updatePardakhtid"] = await $steps[
-                        "updatePardakhtid"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction"] =
-                      $steps.invokeGlobalAction4?.data[0]?.success == true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "PUT",
-                                "https://n8n.babarkat.com/webhook/babarkat/bill",
-                                undefined,
-                                (() => {
-                                  try {
-                                    return {
-                                      method: "bill",
-                                      bill_id: $state.data.bill_id,
-                                      pay_id: $state.data.pay_id,
-                                      mobile: $state.mobile,
-                                      order_id: $state.uuid,
-                                      pay_type: "credit"
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["buy"] = await $steps["buy"];
                     }
 
                     $steps["updateInfopardakt"] = (
-                      $steps.invokeGlobalAction?.data ? true : false
+                      $steps.buy?.data ? true : false
                     )
                       ? (() => {
                           const actionArgs = {
@@ -4488,7 +4479,7 @@ function PlasmicBill__RenderFunc(props: {
                               variablePath: ["infopardakt"]
                             },
                             operation: 0,
-                            value: $steps.invokeGlobalAction.data
+                            value: $steps.buy.data
                           };
                           return (({
                             variable,
@@ -4516,149 +4507,16 @@ function PlasmicBill__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["invokeGlobalAction5"] =
-                      $steps.invokeGlobalAction4?.data[0]?.success == true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "PUT",
-                                "https://n8n.babarkat.com/webhook/Babarkat/transaction",
-                                undefined,
-                                (() => {
-                                  try {
-                                    return {
-                                      id: $state.pardakhtid,
-                                      trackingId:
-                                        $state.infopardakt?.code == 1
-                                          ? $state.infopardakt.ref_code
-                                          : -1,
-                                      userToken: $state.token
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                    if (
-                      $steps["invokeGlobalAction5"] != null &&
-                      typeof $steps["invokeGlobalAction5"] === "object" &&
-                      typeof $steps["invokeGlobalAction5"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction5"] = await $steps[
-                        "invokeGlobalAction5"
-                      ];
-                    }
-
-                    $steps["updateModal2Open"] = (
-                      $state.infopardakt?.code
-                        ? $state.infopardakt?.code == 1
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["modal2", "open"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateModal2Open"] != null &&
-                      typeof $steps["updateModal2Open"] === "object" &&
-                      typeof $steps["updateModal2Open"].then === "function"
-                    ) {
-                      $steps["updateModal2Open"] = await $steps[
-                        "updateModal2Open"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction3"] = (
-                      $state.infopardakt?.code
-                        ? $state.infopardakt?.code != 1
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              (() => {
-                                try {
-                                  return $state.infopardakt.msg
-                                    ? $state.infopardakt.msg
-                                    : "مشکلی رخ داده است مجدد تلاش کنید.";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })(),
-                              "top-left",
-                              5000
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction3"] != null &&
-                      typeof $steps["invokeGlobalAction3"] === "object" &&
-                      typeof $steps["invokeGlobalAction3"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
-                    }
-
-                    $steps["updateError"] =
-                      $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                      $steps.invokeGlobalAction4?.data[0]?.message
+                    $steps["updateDialogOpen"] =
+                      $steps.buy?.data?.success == true
                         ? (() => {
                             const actionArgs = {
                               variable: {
                                 objRoot: $state,
-                                variablePath: ["error"]
+                                variablePath: ["dialog", "open"]
                               },
                               operation: 0,
-                              value: $steps.invokeGlobalAction4?.data[0].message
+                              value: true
                             };
                             return (({
                               variable,
@@ -4677,31 +4535,26 @@ function PlasmicBill__RenderFunc(props: {
                           })()
                         : undefined;
                     if (
-                      $steps["updateError"] != null &&
-                      typeof $steps["updateError"] === "object" &&
-                      typeof $steps["updateError"].then === "function"
+                      $steps["updateDialogOpen"] != null &&
+                      typeof $steps["updateDialogOpen"] === "object" &&
+                      typeof $steps["updateDialogOpen"].then === "function"
                     ) {
-                      $steps["updateError"] = await $steps["updateError"];
+                      $steps["updateDialogOpen"] = await $steps[
+                        "updateDialogOpen"
+                      ];
                     }
 
-                    $steps["invokeGlobalAction6"] =
-                      $steps.invokeGlobalAction4?.data[0]?.success == false &&
-                      $steps.invokeGlobalAction4?.data[0]?.message
+                    $steps["invokeGlobalAction3"] =
+                      $steps.buy?.data?.success == false
                         ? (() => {
                             const actionArgs = {
                               args: [
                                 "error",
                                 (() => {
                                   try {
-                                    return (() => {
-                                      if ($state.error.includes("صراف")) {
-                                        return ($state.error =
-                                          $state.error.replace(
-                                            "صراف",
-                                            "امانتدار"
-                                          ));
-                                      } else return $state.error;
-                                    })();
+                                    return $state.infopardakt.error
+                                      ? $state.infopardakt.error
+                                      : "مشکلی رخ داده است مجدد تلاش کنید.";
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -4712,21 +4565,24 @@ function PlasmicBill__RenderFunc(props: {
                                     }
                                     throw e;
                                   }
-                                })()
+                                })(),
+                                "top-left",
+                                5000
                               ]
                             };
-                            return $globalActions[
-                              "plasmic-antd5-config-provider.showNotification"
-                            ]?.apply(null, [...actionArgs.args]);
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
                           })()
                         : undefined;
                     if (
-                      $steps["invokeGlobalAction6"] != null &&
-                      typeof $steps["invokeGlobalAction6"] === "object" &&
-                      typeof $steps["invokeGlobalAction6"].then === "function"
+                      $steps["invokeGlobalAction3"] != null &&
+                      typeof $steps["invokeGlobalAction3"] === "object" &&
+                      typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction6"] = await $steps[
-                        "invokeGlobalAction6"
+                      $steps["invokeGlobalAction3"] = await $steps[
+                        "invokeGlobalAction3"
                       ];
                     }
 
@@ -10703,13 +10559,13 @@ function PlasmicBill__RenderFunc(props: {
             try {
               return {
                 toman: {
-                  name: "تومان",
+                  name: `${$state.exchange.totalToman.toLocaleString()} تومان`,
                   symbol: "toman",
                   isoCode: "IRR",
                   amount: $state.userinfo.toman
                 },
                 afghani: {
-                  name: "افغانی",
+                  name: `${$state.exchange.totalAfghani.toLocaleString()} افغانی`,
                   symbol: "afghani",
                   isoCode: "AFN",
                   amount: $state.userinfo.afghani
@@ -10863,6 +10719,262 @@ function PlasmicBill__RenderFunc(props: {
           }}
           url={"https://n8n.babarkat.com/webhook/exchangeRate"}
         />
+
+        <Exchange
+          data-plasmic-name={"exchange"}
+          data-plasmic-override={overrides.exchange}
+          amont={generateStateValueProp($state, ["exchange", "amont"])}
+          className={classNames("__wab_instance", sty.exchange, {
+            [sty.exchangestepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange",
+              "afghaniWithoutCommission"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onAmontChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchange", "amont"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTomanWithoutCommissionChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange",
+              "tomanWithoutCommission"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTotalAfghaniChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange",
+              "totalAfghani"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTotalTomanChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchange", "totalToman"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTypeChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["exchange", "type"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          type={generateStateValueProp($state, ["exchange", "type"])}
+        />
+
+        <Dialog
+          data-plasmic-name={"dialog"}
+          data-plasmic-override={overrides.dialog}
+          className={classNames("__wab_instance", sty.dialog, {
+            [sty.dialogstepscharg_step2]: hasVariant(
+              $state,
+              "stepscharg",
+              "step2"
+            ),
+            [sty.dialogstepscharg_step3]: hasVariant(
+              $state,
+              "stepscharg",
+              "step3"
+            )
+          })}
+          data={(() => {
+            try {
+              return {
+                data: [
+                  {
+                    text: "کاربر",
+                    value: $state.userinfo.last_name
+                  },
+                  {
+                    text: "توضیحات",
+                    value: (() => {
+                      if ($state.data?.type_en) {
+                        return $state.types.find(
+                          item => item.type == $state.data.type_en
+                        )?.name;
+                      } else if ($state.type != "mobile") {
+                        return $state.types.find(
+                          item => item.type == $state.type
+                        )?.name;
+                      } else {
+                        return $state.operators2[$state.operatorselect]
+                          ?.description;
+                      }
+                    })()
+                  },
+                  {
+                    text: "تاریخ و زمان",
+                    value: (() => {
+                      const now = new Date();
+                      const date = now.toLocaleDateString("fa-IR");
+                      const time = now.toLocaleTimeString("fa-IR", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit"
+                      });
+                      return `${date} - ${time}`;
+                    })()
+                  },
+                  {
+                    text: "شناسه تراکنش",
+                    value: $state.infopardakt.ref_code
+                  },
+                  {
+                    text: "شماره پیگیری",
+                    value: $state.infopardakt.trans_id
+                  }
+                ],
+
+                amount: {
+                  type: $state.shopModal.type == "toman" ? "تومان" : "افغانی",
+                  text: "مبلغ پرداخت شده",
+                  value:
+                    $state.shopModal.type == "toman"
+                      ? $state.exchange.totalToman.toLocaleString()
+                      : $state.exchange.totalAfghani.toLocaleString()
+                }
+              };
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {
+                  data: [
+                    {
+                      text: "\u0645\u0648\u0631\u062f \u0627\u0648\u0644",
+                      value: 100
+                    },
+                    {
+                      text: "\u0645\u0648\u0631\u062f \u062f\u0648\u0645",
+                      value: 200
+                    },
+                    {
+                      text: "\u0645\u0648\u0631\u062f \u0633\u0648\u0645",
+                      value: 300
+                    },
+                    {
+                      text: "\u0645\u0648\u0631\u062f \u0686\u0647\u0627\u0631\u0645",
+                      value: 400
+                    },
+                    {
+                      text: "\u0645\u0648\u0631\u062f \u067e\u0646\u062c\u0645",
+                      value: 500
+                    }
+                  ],
+                  amount: {
+                    type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+                    text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
+                    value: "500000",
+                    amount: 1000
+                  }
+                };
+              }
+              throw e;
+            }
+          })()}
+          load={generateStateValueProp($state, ["dialog", "load"])}
+          onLoadChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "load"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onTypeChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["dialog", "type"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          open={generateStateValueProp($state, ["dialog", "open"])}
+          type={generateStateValueProp($state, ["dialog", "type"])}
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -10896,6 +11008,7 @@ const PlasmicDescendants = {
     "boxselect",
     "operators3",
     "boxselect3",
+    "pay",
     "nobill",
     "bills",
     "popover",
@@ -10938,7 +11051,9 @@ const PlasmicDescendants = {
     "button6",
     "sideEffect",
     "shopModal",
-    "exchangeRate"
+    "exchangeRate",
+    "exchange",
+    "dialog"
   ],
   header: ["header"],
   reveal: [
@@ -10966,6 +11081,7 @@ const PlasmicDescendants = {
     "boxselect",
     "operators3",
     "boxselect3",
+    "pay",
     "nobill",
     "bills",
     "popover",
@@ -11026,6 +11142,7 @@ const PlasmicDescendants = {
   boxselect: ["boxselect"],
   operators3: ["operators3", "boxselect3"],
   boxselect3: ["boxselect3"],
+  pay: ["pay"],
   nobill: ["nobill"],
   bills: ["bills", "popover", "button3", "button4"],
   popover: ["popover", "button3", "button4"],
@@ -11096,7 +11213,9 @@ const PlasmicDescendants = {
   button6: ["button6"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"]
+  exchangeRate: ["exchangeRate"],
+  exchange: ["exchange"],
+  dialog: ["dialog"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -11128,6 +11247,7 @@ type NodeDefaultElementType = {
   boxselect: typeof Boxselect;
   operators3: "div";
   boxselect3: typeof Boxselect;
+  pay: "div";
   nobill: "div";
   bills: "div";
   popover: typeof AntdPopover;
@@ -11171,6 +11291,8 @@ type NodeDefaultElementType = {
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
   exchangeRate: typeof ApiRequest;
+  exchange: typeof Exchange;
+  dialog: typeof Dialog;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -11287,6 +11409,7 @@ export const PlasmicBill = Object.assign(
     boxselect: makeNodeComponent("boxselect"),
     operators3: makeNodeComponent("operators3"),
     boxselect3: makeNodeComponent("boxselect3"),
+    pay: makeNodeComponent("pay"),
     nobill: makeNodeComponent("nobill"),
     bills: makeNodeComponent("bills"),
     popover: makeNodeComponent("popover"),
@@ -11330,6 +11453,8 @@ export const PlasmicBill = Object.assign(
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
     exchangeRate: makeNodeComponent("exchangeRate"),
+    exchange: makeNodeComponent("exchange"),
+    dialog: makeNodeComponent("dialog"),
 
     // Metadata about props expected for PlasmicBill
     internalVariantProps: PlasmicBill__VariantProps,

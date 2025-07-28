@@ -139,6 +139,10 @@
   --plasmic-token-4: var(--token-V6iPUxl66F8R);
   --token-l3ItR7R_AHRe: 0.75rem;
   --plasmic-token-3: var(--token-l3ItR7R_AHRe);
+  --token-HYofCA0lhstX: #e5e7eb;
+  --plasmic-token-basic-input-background: var(--token-HYofCA0lhstX);
+  --token-Dz1x6wVj7GTW: 1.25rem;
+  --plasmic-token-size-20: var(--token-Dz1x6wVj7GTW);
 }
 
 .plasmic_tokens {
