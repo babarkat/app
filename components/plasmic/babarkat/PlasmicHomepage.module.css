@@ -4079,6 +4079,7 @@
   z-index: 1;
   right: 0;
   bottom: auto;
+  height: auto;
   grid-template-columns:
     var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
     min(
@@ -4091,7 +4092,7 @@
   grid-column: 4;
 }
 .header:global(.__wab_instance) {
-  height: 50px;
+  height: auto;
   left: auto;
   top: auto;
   z-index: 50;

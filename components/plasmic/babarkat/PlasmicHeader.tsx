@@ -784,7 +784,7 @@ function PlasmicHeader__RenderFunc(props: {
         <PlasmicImg__
           alt={""}
           className={classNames(sty.img__utyQr)}
-          displayHeight={"50px"}
+          displayHeight={"40px"}
           displayMaxHeight={"none"}
           displayMaxWidth={"100%"}
           displayMinHeight={"0"}

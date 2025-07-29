@@ -1407,31 +1407,26 @@ function PlasmicCustomer__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["goToCustomerAdd"] = true
+                    $steps["runCode"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/customer-add` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            customFunction: async () => {
+                              return (() => {
+                                return window.open("/customer-add", "_self");
+                              })();
                             }
+                          };
+                          return (({ customFunction }) => {
+                            return customFunction();
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToCustomerAdd"] != null &&
-                      typeof $steps["goToCustomerAdd"] === "object" &&
-                      typeof $steps["goToCustomerAdd"].then === "function"
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
                     ) {
-                      $steps["goToCustomerAdd"] = await $steps[
-                        "goToCustomerAdd"
-                      ];
+                      $steps["runCode"] = await $steps["runCode"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
