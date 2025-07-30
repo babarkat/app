@@ -69,6 +69,7 @@ import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -100,6 +101,7 @@ import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
+import Icon82Icon from "./icons/PlasmicIcon__Icon82"; // plasmic-import: 9IvX4CneDX4f/icon
 
 createPlasmicElementProxy;
 
@@ -163,6 +165,7 @@ export type PlasmicLogIn__OverridesType = {
   group10?: Flex__<"div">;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
+  modal?: Flex__<typeof AntdModal>;
 };
 
 export interface DefaultLogInProps {}
@@ -570,6 +573,12 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.group11
+      },
+      {
+        path: "modal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -6922,6 +6931,80 @@ function PlasmicLogIn__RenderFunc(props: {
             }
           }}
         />
+
+        <AntdModal
+          data-plasmic-name={"modal"}
+          data-plasmic-override={overrides.modal}
+          className={classNames("__wab_instance", sty.modal)}
+          closeButtonClassName={classNames({
+            [sty["pcls_raBBc3-tJ2--"]]: true
+          })}
+          closeIcon={
+            <svg
+              className={classNames(projectcss.all, sty.svg__aE7K)}
+              role={"img"}
+            />
+          }
+          defaultStylesClassName={classNames(
+            projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
+            plasmic_plasmic_rich_components_css.plasmic_tokens
+          )}
+          hideFooter={true}
+          maskClosable={false}
+          modalContentClassName={classNames({
+            [sty["pcls_IFqcsvhAINzF"]]: true
+          })}
+          modalScopeClassName={sty["modal__modal"]}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["modal", "open"]).apply(
+              null,
+              eventArgs
+            );
+          }}
+          open={generateStateValueProp($state, ["modal", "open"])}
+          title={null}
+          trigger={null}
+          width={"100vw"}
+          wrapClassName={classNames({ [sty["pcls_K1Qr6aZkpClP"]]: true })}
+        >
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__nTlnN)}
+          >
+            <Icon82Icon
+              className={classNames(projectcss.all, sty.svg__qDphw)}
+              role={"img"}
+            />
+
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__tmXpz
+              )}
+            >
+              {
+                "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0631\u0648\u0632 \u0631\u0633\u0627\u0646\u06cc..."
+              }
+            </div>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__qa4Vm
+              )}
+            >
+              {
+                "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0642\u0627\u0628\u0644 \u062f\u0633\u062a\u0631\u0633 \u0645\u06cc \u0628\u0627\u0634\u062f."
+              }
+            </div>
+          </Stack__>
+        </AntdModal>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -6960,7 +7043,8 @@ const PlasmicDescendants = {
     "group9",
     "group10",
     "embedHtml",
-    "sideEffect"
+    "sideEffect",
+    "modal"
   ],
   reveal: [
     "reveal",
@@ -7060,7 +7144,8 @@ const PlasmicDescendants = {
   group9: ["group9"],
   group10: ["group10"],
   embedHtml: ["embedHtml"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  modal: ["modal"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7098,6 +7183,7 @@ type NodeDefaultElementType = {
   group10: "div";
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
+  modal: typeof AntdModal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7216,6 +7302,7 @@ export const PlasmicLogIn = Object.assign(
     group10: makeNodeComponent("group10"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
+    modal: makeNodeComponent("modal"),
 
     // Metadata about props expected for PlasmicLogIn
     internalVariantProps: PlasmicLogIn__VariantProps,

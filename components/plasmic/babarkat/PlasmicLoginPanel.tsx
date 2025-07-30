@@ -69,6 +69,7 @@ import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
+import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -101,6 +102,7 @@ import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSE
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import Icon153Icon from "./icons/PlasmicIcon__Icon153"; // plasmic-import: 0QI_dVUCt1kX/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
+import Icon82Icon from "./icons/PlasmicIcon__Icon82"; // plasmic-import: 9IvX4CneDX4f/icon
 
 createPlasmicElementProxy;
 
@@ -167,6 +169,7 @@ export type PlasmicLoginPanel__OverridesType = {
   group9?: Flex__<"div">;
   group10?: Flex__<"div">;
   apiRequest?: Flex__<typeof ApiRequest>;
+  modal?: Flex__<typeof AntdModal>;
 };
 
 export interface DefaultLoginPanelProps {}
@@ -715,6 +718,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "modal.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -7153,6 +7162,80 @@ function PlasmicLoginPanel__RenderFunc(props: {
               : "  <script>\r\n          var initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                        document.getElementById('logoLogin').style.display = 'none';\r\n            } else {\r\n                        document.getElementById('logoLogin').style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
           }
         />
+
+        <AntdModal
+          data-plasmic-name={"modal"}
+          data-plasmic-override={overrides.modal}
+          className={classNames("__wab_instance", sty.modal)}
+          closeButtonClassName={classNames({
+            [sty["pcls_lGMWKXVVEk5J"]]: true
+          })}
+          closeIcon={
+            <svg
+              className={classNames(projectcss.all, sty.svg___2LKii)}
+              role={"img"}
+            />
+          }
+          defaultStylesClassName={classNames(
+            projectcss.root_reset,
+            projectcss.plasmic_default_styles,
+            projectcss.plasmic_mixins,
+            projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
+            plasmic_plasmic_rich_components_css.plasmic_tokens
+          )}
+          hideFooter={true}
+          maskClosable={false}
+          modalContentClassName={classNames({
+            [sty["pcls_7Bp2HIPGx__1"]]: true
+          })}
+          modalScopeClassName={sty["modal__modal"]}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["modal", "open"]).apply(
+              null,
+              eventArgs
+            );
+          }}
+          open={generateStateValueProp($state, ["modal", "open"])}
+          title={null}
+          trigger={null}
+          width={"100vw"}
+          wrapClassName={classNames({ [sty["pcls_RTMk0rX9Eqms"]]: true })}
+        >
+          <Stack__
+            as={"div"}
+            hasGap={true}
+            className={classNames(projectcss.all, sty.freeBox__vQv7Q)}
+          >
+            <Icon82Icon
+              className={classNames(projectcss.all, sty.svg__t630C)}
+              role={"img"}
+            />
+
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__wKEu
+              )}
+            >
+              {
+                "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0631\u0648\u0632 \u0631\u0633\u0627\u0646\u06cc..."
+              }
+            </div>
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__hWvGc
+              )}
+            >
+              {
+                "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0642\u0627\u0628\u0644 \u062f\u0633\u062a\u0631\u0633 \u0645\u06cc \u0628\u0627\u0634\u062f."
+              }
+            </div>
+          </Stack__>
+        </AntdModal>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -7197,7 +7280,8 @@ const PlasmicDescendants = {
     "group8",
     "group9",
     "group10",
-    "apiRequest"
+    "apiRequest",
+    "modal"
   ],
   reveal: [
     "reveal",
@@ -7318,7 +7402,8 @@ const PlasmicDescendants = {
   group8: ["group8"],
   group9: ["group9"],
   group10: ["group10"],
-  apiRequest: ["apiRequest"]
+  apiRequest: ["apiRequest"],
+  modal: ["modal"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7362,6 +7447,7 @@ type NodeDefaultElementType = {
   group9: "div";
   group10: "div";
   apiRequest: typeof ApiRequest;
+  modal: typeof AntdModal;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7486,6 +7572,7 @@ export const PlasmicLoginPanel = Object.assign(
     group9: makeNodeComponent("group9"),
     group10: makeNodeComponent("group10"),
     apiRequest: makeNodeComponent("apiRequest"),
+    modal: makeNodeComponent("modal"),
 
     // Metadata about props expected for PlasmicLoginPanel
     internalVariantProps: PlasmicLoginPanel__VariantProps,
