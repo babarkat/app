@@ -336,9 +336,7 @@ function PlasmicShop__RenderFunc(props: {
           plasmic_plasmic_rich_components_css.plasmic_tokens
         )}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox___78V62, {
             [sty.freeBoxhideHeader___78V62VvKzO]: hasVariant(
               $state,
@@ -365,7 +363,7 @@ function PlasmicShop__RenderFunc(props: {
               })}
             </h5>
           </DialogTitle>
-        </Stack__>
+        </div>
         <div
           className={classNames(projectcss.all, sty.freeBox__hphCi, {
             [sty.freeBoxhideHeader__hphCiVvKzO]: hasVariant(

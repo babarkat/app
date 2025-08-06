@@ -778,29 +778,21 @@ function PlasmicPanel__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"main"}
                 data-plasmic-override={overrides.main}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.main)}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.wallet, ``)}
                   draggable={"true"}
                 >
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__ytVl6)}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__ap4Cl)}
                     >
                       <div
@@ -835,10 +827,8 @@ function PlasmicPanel__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__mnZmX)}
                     >
                       <div
@@ -864,10 +854,8 @@ function PlasmicPanel__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__pdj2P)}
                     >
                       <div
@@ -893,10 +881,8 @@ function PlasmicPanel__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__h7SLs)}
                     >
                       <div
@@ -924,9 +910,7 @@ function PlasmicPanel__RenderFunc(props: {
                           const currentItem = __plasmic_item_0;
                           const currentIndex = __plasmic_idx_0;
                           return (
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__b8N07
@@ -1006,12 +990,12 @@ function PlasmicPanel__RenderFunc(props: {
                                   })()}
                                 </React.Fragment>
                               </div>
-                            </Stack__>
+                            </div>
                           );
                         })}
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__texY)}
                   >
@@ -1149,7 +1133,7 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                </Stack__>
+                </div>
                 <Button
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
@@ -1225,7 +1209,7 @@ function PlasmicPanel__RenderFunc(props: {
                     }
                   </div>
                 </Button>
-              </Stack__>
+              </div>
             ) : null}
             {(() => {
               try {
@@ -1240,21 +1224,17 @@ function PlasmicPanel__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"loading"}
                 data-plasmic-override={overrides.loading}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.loading)}
               >
                 <div
                   className={classNames(projectcss.all, sty.freeBox__xaWa, ``)}
                 >
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"wallet4"}
                     data-plasmic-override={overrides.wallet4}
-                    hasGap={true}
                     className={classNames(
                       projectcss.all,
                       sty.wallet4,
@@ -1262,16 +1242,12 @@ function PlasmicPanel__RenderFunc(props: {
                     )}
                   />
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox___3D54U)}
                 >
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"services5"}
                     data-plasmic-override={overrides.services5}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.services5)}
                   >
                     <div
@@ -1283,9 +1259,9 @@ function PlasmicPanel__RenderFunc(props: {
                         "shimmer"
                       )}
                     />
-                  </Stack__>
-                </Stack__>
-              </Stack__>
+                  </div>
+                </div>
+              </div>
             ) : null}
           </section>
           <AntdModal
@@ -1329,11 +1305,9 @@ function PlasmicPanel__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_79Egkij9TVFD"]]: true })}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"wallet2"}
               data-plasmic-override={overrides.wallet2}
-              hasGap={true}
               className={classNames(projectcss.all, sty.wallet2)}
             >
               <div
@@ -1408,11 +1382,7 @@ function PlasmicPanel__RenderFunc(props: {
                   </React.Fragment>
                 )}
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__ptWjQ)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__ptWjQ)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1441,14 +1411,10 @@ function PlasmicPanel__RenderFunc(props: {
                   type={"text"}
                   value={generateStateValueProp($state, ["input", "value"])}
                 />
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__omSNk)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__slNfm)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__slNfm)}>
                 <div className={classNames(projectcss.all, sty.freeBox__a2N0V)}>
                   <div
                     className={classNames(
@@ -1461,11 +1427,9 @@ function PlasmicPanel__RenderFunc(props: {
                       "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                     }
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators4"}
                     data-plasmic-override={overrides.operators4}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators4)}
                   >
                     {(_par =>
@@ -1641,7 +1605,7 @@ function PlasmicPanel__RenderFunc(props: {
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
                 <div
                   className={classNames(
@@ -1654,11 +1618,7 @@ function PlasmicPanel__RenderFunc(props: {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__meVi)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__meVi)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -1727,8 +1687,8 @@ function PlasmicPanel__RenderFunc(props: {
                       role={"img"}
                     />
                   </div>
-                </Stack__>
-              </Stack__>
+                </div>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__sAz9)}>
                 <Button
                   data-plasmic-name={"button3"}
@@ -1864,11 +1824,9 @@ function PlasmicPanel__RenderFunc(props: {
                   "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"wallet3"}
                 data-plasmic-override={overrides.wallet3}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.wallet3)}
               >
                 <BabarkatlogoCopy2SvgIcon
@@ -1931,7 +1889,7 @@ function PlasmicPanel__RenderFunc(props: {
                     </React.Fragment>
                   )}
                 </div>
-              </Stack__>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__rq7Yx)}>
                 <div className={classNames(projectcss.all, sty.freeBox__patvQ)}>
                   <div
@@ -1967,9 +1925,7 @@ function PlasmicPanel__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__xD8GH)}
                   >
                     <div
@@ -2117,7 +2073,7 @@ function PlasmicPanel__RenderFunc(props: {
                         {"6748  0685  2910  5022"}
                       </div>
                     </div>
-                  </Stack__>
+                  </div>
                 </div>
                 <div
                   className={classNames(
@@ -2130,11 +2086,7 @@ function PlasmicPanel__RenderFunc(props: {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__hUfaq)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__hUfaq)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -2203,15 +2155,13 @@ function PlasmicPanel__RenderFunc(props: {
                       role={"img"}
                     />
                   </div>
-                </Stack__>
+                </div>
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? true
                     : false
                 ) ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__csOiM)}
                   />
                 ) : null}
@@ -2251,11 +2201,7 @@ function PlasmicPanel__RenderFunc(props: {
                 : undefined
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__umva5)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__umva5)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -11695,7 +11641,7 @@ function PlasmicPanel__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.lottie__gQ9Fr)}
                 />
               </div>
-            </Stack__>
+            </div>
           </AntdModal>
           {(() => {
             const child$Props = {
@@ -11802,9 +11748,7 @@ function PlasmicPanel__RenderFunc(props: {
                 {...child$Props}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__olj4W)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__dVHxT)}
                   >
                     <div
@@ -12618,7 +12562,7 @@ function PlasmicPanel__RenderFunc(props: {
                         {"\u062a\u0627\u06cc\u06cc\u062f"}
                       </div>
                     </Button>
-                  </Stack__>
+                  </div>
                 </div>
               </AntdModal>
             );
@@ -12743,11 +12687,9 @@ function PlasmicPanel__RenderFunc(props: {
                 data-plasmic-override={overrides.footer}
                 className={classNames(projectcss.all, sty.footer)}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"snapp2"}
                   data-plasmic-override={overrides.snapp2}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.snapp2)}
                 >
                   <div
@@ -12769,12 +12711,10 @@ function PlasmicPanel__RenderFunc(props: {
                   >
                     {"\u062e\u0627\u0646\u0647"}
                   </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
+                </div>
+                <div
                   data-plasmic-name={"charge2"}
                   data-plasmic-override={overrides.charge2}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.charge2)}
                   onClick={async event => {
                     const $steps = {};
@@ -12829,7 +12769,7 @@ function PlasmicPanel__RenderFunc(props: {
                   >
                     {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </section>
@@ -12879,16 +12819,8 @@ function PlasmicPanel__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___5G21T)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__yg6YJ)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox___5G21T)}>
+              <div className={classNames(projectcss.all, sty.freeBox__yg6YJ)}>
                 <Icon78Icon
                   className={classNames(projectcss.all, sty.svg__q0FBp)}
                   role={"img"}
@@ -12903,7 +12835,7 @@ function PlasmicPanel__RenderFunc(props: {
                 >
                   {"\u06a9\u0627\u0631\u0645\u0632\u062f \u0647\u0627"}
                 </div>
-              </Stack__>
+              </div>
               <Icon89Icon
                 className={classNames(projectcss.all, sty.svg__ruOJz)}
                 onClick={async event => {
@@ -12947,7 +12879,7 @@ function PlasmicPanel__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__dfwvu)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
@@ -12967,15 +12899,11 @@ function PlasmicPanel__RenderFunc(props: {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
                 return (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__fgH2V)}
                     key={currentIndex}
                   >
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(
                         projectcss.all,
                         sty.freeBox___2Kqej
@@ -13009,7 +12937,7 @@ function PlasmicPanel__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
+                    </div>
                     <div
                       className={classNames(
                         projectcss.all,
@@ -13038,7 +12966,7 @@ function PlasmicPanel__RenderFunc(props: {
                         }}
                       />
                     </div>
-                  </Stack__>
+                  </div>
                 );
               })}
             </div>
@@ -13089,16 +13017,8 @@ function PlasmicPanel__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___7O6DS)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__dnFdg)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox___7O6DS)}>
+              <div className={classNames(projectcss.all, sty.freeBox__dnFdg)}>
                 <Icon78Icon
                   className={classNames(projectcss.all, sty.svg__dvBHu)}
                   role={"img"}
@@ -13113,7 +13033,7 @@ function PlasmicPanel__RenderFunc(props: {
                 >
                   {"\u062e\u062f\u0645\u0627\u062a \u062a\u0645\u0627\u0633"}
                 </div>
-              </Stack__>
+              </div>
               <Icon89Icon
                 className={classNames(projectcss.all, sty.svg__zVvic)}
                 onClick={async event => {
@@ -13157,7 +13077,7 @@ function PlasmicPanel__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__kpBcP)}>
               <div
                 data-plasmic-name={"comingSoon12"}
@@ -13407,9 +13327,7 @@ function PlasmicPanel__RenderFunc(props: {
           </AntdModal>
           <section className={classNames(projectcss.all, sty.section__cZeqE)}>
             <div className={classNames(projectcss.all, sty.freeBox__hd8Kc)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__r0QU8)}
                 onClick={async event => {
                   const $steps = {};
@@ -13449,10 +13367,8 @@ function PlasmicPanel__RenderFunc(props: {
                   className={classNames(projectcss.all, sty.svg__cp5Jj)}
                   role={"img"}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__vh8L)}
                 onClick={async event => {
                   const $steps = {};
@@ -13499,7 +13415,7 @@ function PlasmicPanel__RenderFunc(props: {
                     "\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0645\u0627 \u060c \u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 ..."
                   }
                 </div>
-              </Stack__>
+              </div>
             </div>
           </section>
         </div>

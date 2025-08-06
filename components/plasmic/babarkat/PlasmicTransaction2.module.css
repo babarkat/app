@@ -1,26 +1,15 @@
 .root {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   width: 100%;
   height: auto;
   max-width: 100%;
   position: relative;
+  row-gap: 10px;
   min-width: 0;
   padding: 0px;
-}
-.root > :global(.__wab_flex-container) {
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  min-width: 0;
-  margin-top: calc(0px - 10px);
-  height: calc(100% + 10px);
-}
-.root > :global(.__wab_flex-container) > *,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.root > :global(.__wab_flex-container) > picture > img,
-.root > :global(.__wab_flex-container) > :global(.__wab_slot) > picture > img {
-  margin-top: 10px;
 }
 .freeBox__weKhs {
   display: flex;
@@ -85,28 +74,20 @@
   height: auto;
   max-width: 100%;
   background: linear-gradient(0deg, #ffffff0d 0%, #2dc57b33 100%);
-  margin-top: calc(10px + 10px) !important;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
   box-shadow: none;
   min-width: 0;
   border-radius: 20px;
   padding: 24px 20px;
+  margin: 10px;
   border-top: 20px solid #00000052;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__b64Ws {
-    margin-top: calc(10px + 10px) !important;
     padding: 20px 14px;
   }
 }
 .freeBoxfiled__b64Ws0GNub {
   background: linear-gradient(0deg, #ffffff0d 0%, #d9363e33 100%);
-  margin-top: calc(10px + 10px) !important;
-}
-.freeBoxunnamedGroupOfVariants_sim__b64WsZuBps {
-  margin-top: calc(10px + 10px) !important;
 }
 .freeBox__kSag4 {
   display: flex;

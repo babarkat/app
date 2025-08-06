@@ -1171,11 +1171,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   }
                 </div>
               </div>
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"username"}
                 data-plasmic-override={overrides.username}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.username, {
                   [sty.usernameloginByPassword]: hasVariant(
                     $state,
@@ -1967,9 +1965,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     ])}
                   />
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__ldlJj, {
                     [sty.freeBoxunnamedVariant__ldlJjBNary]: hasVariant(
                       $state,
@@ -2038,7 +2034,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       "value"
                     ])}
                   />
-                </Stack__>
+                </div>
                 {(
                   hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -2470,10 +2466,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["select4", "value"])}
                 />
-              </Stack__>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              </div>
+              <div
                 className={classNames(projectcss.all, sty.freeBox__jcgz, {
                   [sty.freeBoxloginByPassword__jcgzGqb7]: hasVariant(
                     $state,
@@ -3312,9 +3306,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     role={"img"}
                   />
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__pVpJw, {
                     [sty.freeBoxunnamedVariant__pVpJwBNary]: hasVariant(
                       $state,
@@ -3383,7 +3375,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       "value"
                     ])}
                   />
-                </Stack__>
+                </div>
                 {(
                   hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -3834,7 +3826,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["select", "value"])}
                 />
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -6977,9 +6969,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }
               })()
         ) ? (
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox___1W0Nw, {
               [sty.freeBoxunnamedVariant___1W0NwBNary]: hasVariant(
                 $state,
@@ -7011,7 +7001,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }}
               />
             </div>
-          </Stack__>
+          </div>
         ) : null}
         {false ? (
           <PlasmicImg__
@@ -7138,6 +7128,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               eventArgs
             );
           }}
+          shouldFetch={true}
           url={"/"}
         />
 
@@ -7202,11 +7193,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
           width={"100vw"}
           wrapClassName={classNames({ [sty["pcls_RTMk0rX9Eqms"]]: true })}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__vQv7Q)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__vQv7Q)}>
             <Icon82Icon
               className={classNames(projectcss.all, sty.svg__t630C)}
               role={"img"}
@@ -7234,7 +7221,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0642\u0627\u0628\u0644 \u062f\u0633\u062a\u0631\u0633 \u0645\u06cc \u0628\u0627\u0634\u062f."
               }
             </div>
-          </Stack__>
+          </div>
         </AntdModal>
       </div>
     </React.Fragment>

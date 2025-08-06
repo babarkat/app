@@ -260,11 +260,9 @@ function PlasmicDrawer__RenderFunc(props: {
           plasmic_plasmic_rich_components_css.plasmic_tokens
         )}
       >
-        <Stack__
-          as={"div"}
+        <div
           data-plasmic-name={"freeBox"}
           data-plasmic-override={overrides.freeBox}
-          hasGap={true}
           className={classNames(projectcss.all, sty.freeBox)}
         >
           <DialogTitle
@@ -279,11 +277,7 @@ function PlasmicDrawer__RenderFunc(props: {
           </DialogTitle>
           {renderPlasmicSlot({
             defaultContents: (
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__g6M8Y)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__g6M8Y)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -293,11 +287,11 @@ function PlasmicDrawer__RenderFunc(props: {
                 >
                   {"You can insert drawer body content here in this slot."}
                 </div>
-              </Stack__>
+              </div>
             ),
             value: args.slot
           })}
-        </Stack__>
+        </div>
         <DialogClose
           data-plasmic-name={"dialogClose"}
           data-plasmic-override={overrides.dialogClose}

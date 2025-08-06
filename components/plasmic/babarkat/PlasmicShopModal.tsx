@@ -379,9 +379,7 @@ function PlasmicShopModal__RenderFunc(props: {
           plasmic_plasmic_rich_components_css.plasmic_tokens
         )}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox___3W7Z0, {
             [sty.freeBoxhideHeader___3W7Z0RZNva]: hasVariant(
               $state,
@@ -406,7 +404,7 @@ function PlasmicShopModal__RenderFunc(props: {
               {"\u0634\u06cc\u0648\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"}
             </div>
           </DialogTitle>
-        </Stack__>
+        </div>
         <div
           className={classNames(projectcss.all, sty.freeBox___4BdTs, {
             [sty.freeBoxhideHeader___4BdTSrZNva]: hasVariant(
@@ -416,14 +414,8 @@ function PlasmicShopModal__RenderFunc(props: {
             )
           })}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__bg4HH)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
+          <div className={classNames(projectcss.all, sty.freeBox__bg4HH)}>
+            <div
               className={classNames(projectcss.all, sty.freeBox__ve8Nm)}
               onClick={async event => {
                 const $steps = {};
@@ -514,11 +506,7 @@ function PlasmicShopModal__RenderFunc(props: {
                 }
               }}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__bOsn)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__bOsn)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -618,7 +606,7 @@ function PlasmicShopModal__RenderFunc(props: {
                     </React.Fragment>
                   )}
                 </div>
-              </Stack__>
+              </div>
               <LottieWrapper
                 animationData={{
                   v: "5.5.7",
@@ -8632,10 +8620,8 @@ function PlasmicShopModal__RenderFunc(props: {
                 }}
                 className={classNames("__wab_instance", sty.lottie__vfN2)}
               />
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            </div>
+            <div
               className={classNames(projectcss.all, sty.freeBox__xeb)}
               onClick={async event => {
                 const $steps = {};
@@ -8725,11 +8711,7 @@ function PlasmicShopModal__RenderFunc(props: {
                 }
               }}
             >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__lR26)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__lR26)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -8783,7 +8765,7 @@ function PlasmicShopModal__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
               <LottieWrapper
                 animationData={{
                   v: "5.5.7",
@@ -16797,8 +16779,8 @@ function PlasmicShopModal__RenderFunc(props: {
                 }}
                 className={classNames("__wab_instance", sty.lottie__ihJtm)}
               />
-            </Stack__>
-          </Stack__>
+            </div>
+          </div>
           {(() => {
             try {
               return $state.load;

@@ -635,11 +635,9 @@ function PlasmicTransaction__RenderFunc(props: {
             effect={"fade"}
             triggerOnce={true}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"wallet"}
               data-plasmic-override={overrides.wallet}
-              hasGap={true}
               className={classNames(projectcss.all, sty.wallet)}
             >
               <div className={classNames(projectcss.all, sty.freeBox__iJtS)}>
@@ -772,9 +770,7 @@ function PlasmicTransaction__RenderFunc(props: {
                         sty.freeBox___7P6N7
                       )}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__dI8Fs
@@ -2016,7 +2012,7 @@ function PlasmicTransaction__RenderFunc(props: {
                             sty.tabUnderline
                           )}
                         />
-                      </Stack__>
+                      </div>
                       <div
                         className={classNames(
                           projectcss.all,
@@ -2030,9 +2026,7 @@ function PlasmicTransaction__RenderFunc(props: {
                           )}
                           tabKey={"charge"}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__mJaif,
@@ -2508,9 +2502,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__qOmEq
@@ -2563,9 +2555,9 @@ function PlasmicTransaction__RenderFunc(props: {
                                     "shimmer"
                                   )}
                                 />
-                              </Stack__>
+                              </div>
                             ) : null}
-                          </Stack__>
+                          </div>
                         </TabContent>
                         <TabContent
                           className={classNames(
@@ -2574,9 +2566,7 @@ function PlasmicTransaction__RenderFunc(props: {
                           )}
                           tabKey={"remittance"}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__oKkyj,
@@ -2959,9 +2949,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__q0C45
@@ -3014,9 +3002,9 @@ function PlasmicTransaction__RenderFunc(props: {
                                     "shimmer"
                                   )}
                                 />
-                              </Stack__>
+                              </div>
                             ) : null}
-                          </Stack__>
+                          </div>
                         </TabContent>
                         <TabContent
                           className={classNames(
@@ -3025,9 +3013,7 @@ function PlasmicTransaction__RenderFunc(props: {
                           )}
                           tabKey={"transaction"}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__nJfBg,
@@ -3448,9 +3434,7 @@ function PlasmicTransaction__RenderFunc(props: {
                                 throw e;
                               }
                             })() ? (
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__pJbgr
@@ -3503,9 +3487,9 @@ function PlasmicTransaction__RenderFunc(props: {
                                     "shimmer"
                                   )}
                                 />
-                              </Stack__>
+                              </div>
                             ) : null}
-                          </Stack__>
+                          </div>
                         </TabContent>
                       </div>
                     </div>
@@ -3763,7 +3747,7 @@ function PlasmicTransaction__RenderFunc(props: {
                   </Button>
                 </div>
               </section>
-            </Stack__>
+            </div>
             <div
               className={classNames(projectcss.all, sty.freeBox__z3HRp, {
                 [sty.freeBoxno__z3HRp7Cleb]: hasVariant($state, "no", "no")
@@ -3992,6 +3976,7 @@ function PlasmicTransaction__RenderFunc(props: {
                 throw e;
               }
             })()}
+            shouldFetch={true}
             url={"https://n8n.babarkat.com/webhook/Babarkat/transaction"}
           />
 
@@ -4044,11 +4029,7 @@ function PlasmicTransaction__RenderFunc(props: {
               >
                 {"\u062a\u0627\u0631\u06cc\u062e "}
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__pzs0K)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__pzs0K)}>
                 <AntdRadioGroup
                   data-plasmic-name={"radioGroup2"}
                   data-plasmic-override={overrides.radioGroup2}
@@ -4188,7 +4169,7 @@ function PlasmicTransaction__RenderFunc(props: {
                     </div>
                   </AntdRadioButton>
                 </AntdRadioGroup>
-              </Stack__>
+              </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__xjOHi)}>
               <div
@@ -4554,11 +4535,9 @@ function PlasmicTransaction__RenderFunc(props: {
                 data-plasmic-override={overrides.footer2}
                 className={classNames(projectcss.all, sty.footer2)}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"snapp3"}
                   data-plasmic-override={overrides.snapp3}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.snapp3)}
                   onClick={async event => {
                     const $steps = {};
@@ -4608,12 +4587,10 @@ function PlasmicTransaction__RenderFunc(props: {
                   >
                     {"\u062e\u0627\u0646\u0647"}
                   </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
+                </div>
+                <div
                   data-plasmic-name={"charge3"}
                   data-plasmic-override={overrides.charge3}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.charge3)}
                 >
                   <div
@@ -4638,7 +4615,7 @@ function PlasmicTransaction__RenderFunc(props: {
                   >
                     {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </section>

@@ -550,11 +550,9 @@ function PlasmicCustomer__RenderFunc(props: {
                 role={"img"}
               />
             </div>
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"main"}
               data-plasmic-override={overrides.main}
-              hasGap={true}
               className={classNames(projectcss.all, sty.main)}
               onScroll={async event => {
                 const $steps = {};
@@ -692,11 +690,9 @@ function PlasmicCustomer__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"loading2"}
                   data-plasmic-override={overrides.loading2}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.loading2)}
                 >
                   <div
@@ -730,7 +726,7 @@ function PlasmicCustomer__RenderFunc(props: {
                       "shimmer"
                     )}
                   />
-                </Stack__>
+                </div>
               ) : null}
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
@@ -750,9 +746,7 @@ function PlasmicCustomer__RenderFunc(props: {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
                 return (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__ehDnB)}
                     key={currentIndex}
                   >
@@ -773,9 +767,7 @@ function PlasmicCustomer__RenderFunc(props: {
                           })()
                         : true
                     ) ? (
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__y35Jg
@@ -928,7 +920,7 @@ function PlasmicCustomer__RenderFunc(props: {
                             </React.Fragment>
                           </div>
                         </div>
-                      </Stack__>
+                      </div>
                     ) : null}
                     {(() => {
                       const child$Props = {
@@ -1272,7 +1264,7 @@ function PlasmicCustomer__RenderFunc(props: {
                         </AntdPopover>
                       );
                     })()}
-                  </Stack__>
+                  </div>
                 );
               })}
               {(() => {
@@ -1331,7 +1323,7 @@ function PlasmicCustomer__RenderFunc(props: {
                   </div>
                 </section>
               ) : null}
-            </Stack__>
+            </div>
           </div>
           <section className={classNames(projectcss.all, sty.section__wd83I)}>
             <div
@@ -1555,11 +1547,7 @@ function PlasmicCustomer__RenderFunc(props: {
             trigger={null}
             width={"520"}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__s6TEo)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__s6TEo)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1571,12 +1559,8 @@ function PlasmicCustomer__RenderFunc(props: {
                   "\u0627\u0632 \u062d\u0630\u0641 \u06a9\u0627\u0631\u0628\u0631 \u0627\u0637\u0645\u06cc\u0646\u0627\u0646 \u062f\u0627\u0631\u06cc\u062f\u061f"
                 }
               </div>
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___1Xv5G)}
-            >
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox___1Xv5G)}>
               <Button
                 data-plasmic-name={"button6"}
                 data-plasmic-override={overrides.button6}
@@ -1776,7 +1760,7 @@ function PlasmicCustomer__RenderFunc(props: {
               >
                 {"\u0627\u0646\u0635\u0631\u0627\u0641"}
               </Button>
-            </Stack__>
+            </div>
           </AntdModal>
         </div>
       </div>

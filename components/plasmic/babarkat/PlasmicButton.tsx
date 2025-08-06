@@ -291,13 +291,11 @@ function PlasmicButton__RenderFunc(props: {
   };
 
   return (
-    <Stack__
-      as={"button"}
+    <button
       data-plasmic-name={"root"}
       data-plasmic-override={overrides.root}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
-      hasGap={true}
       className={classNames(
         projectcss.all,
         projectcss.button,
@@ -480,11 +478,9 @@ function PlasmicButton__RenderFunc(props: {
           })}
         </div>
       ) : null}
-      <Stack__
-        as={"div"}
+      <div
         data-plasmic-name={"contentContainer"}
         data-plasmic-override={overrides.contentContainer}
-        hasGap={true}
         className={classNames(projectcss.all, sty.contentContainer, {
           [sty.contentContainer___focusVisibleWithin]:
             triggers.focusVisibleWithin_root,
@@ -647,7 +643,7 @@ function PlasmicButton__RenderFunc(props: {
           })}
           role={"img"}
         />
-      </Stack__>
+      </div>
       {(hasVariant($state, "showEndIcon", "showEndIcon") ? true : false) ? (
         <div
           data-plasmic-name={"endIconContainer"}
@@ -734,7 +730,7 @@ function PlasmicButton__RenderFunc(props: {
           })}
         </div>
       ) : null}
-    </Stack__>
+    </button>
   ) as React.ReactElement | null;
 }
 

@@ -677,11 +677,7 @@ function PlasmicHeader__RenderFunc(props: {
         sty.header
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__nBoJs)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__nBoJs)}>
         <div className={classNames(projectcss.all, sty.freeBox__h41B6)}>
           <Icon131Icon
             className={classNames(projectcss.all, sty.svg__bVNe)}
@@ -779,7 +775,7 @@ function PlasmicHeader__RenderFunc(props: {
             </React.Fragment>
           </div>
         </PercentageBox>
-      </Stack__>
+      </div>
       <div className={classNames(projectcss.all, sty.freeBox__zrghs)}>
         <PlasmicImg__
           alt={""}
@@ -842,18 +838,12 @@ function PlasmicHeader__RenderFunc(props: {
         wrapClassName={classNames({ [sty["pcls_bl76GPFKHsbK"]]: true })}
       >
         <div className={classNames(projectcss.all, sty.freeBox__sdvDv)}>
-          <Stack__
-            as={"div"}
+          <div
             data-plasmic-name={"wallet4"}
             data-plasmic-override={overrides.wallet4}
-            hasGap={true}
             className={classNames(projectcss.all, sty.wallet4)}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__fJp0M)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__fJp0M)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -865,13 +855,9 @@ function PlasmicHeader__RenderFunc(props: {
                   "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
                 }
               </div>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__bdqb1)}
-          >
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__bdqb1)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -1195,7 +1181,7 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               </div>
             </Button>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__wJUmw)} />
         </div>
       </AntdModal>
@@ -1257,18 +1243,12 @@ function PlasmicHeader__RenderFunc(props: {
         wrapClassName={classNames({ [sty["pcls_ECy8sTZpS0H1"]]: true })}
       >
         <div className={classNames(projectcss.all, sty.freeBox__xbkO)}>
-          <Stack__
-            as={"div"}
+          <div
             data-plasmic-name={"wallet6"}
             data-plasmic-override={overrides.wallet6}
-            hasGap={true}
             className={classNames(projectcss.all, sty.wallet6)}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___0E0Sh)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___0E0Sh)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1280,13 +1260,9 @@ function PlasmicHeader__RenderFunc(props: {
                   "\u062a\u063a\u06cc\u06cc\u0631 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631"
                 }
               </div>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___0PVr0)}
-          >
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox___0PVr0)}>
             <div className={classNames(projectcss.all, sty.freeBox__uOCyg)}>
               <div className={classNames(projectcss.all, sty.freeBox__wLrkG)}>
                 {false ? (
@@ -1309,11 +1285,7 @@ function PlasmicHeader__RenderFunc(props: {
                   />
                 ) : null}
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__zu7Pk)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__zu7Pk)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1429,11 +1401,7 @@ function PlasmicHeader__RenderFunc(props: {
                     role={"img"}
                   />
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__ozlBn)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__ozlBn)}>
                   <Input
                     data-plasmic-name={"fragmentInput2"}
                     data-plasmic-override={overrides.fragmentInput2}
@@ -1460,7 +1428,7 @@ function PlasmicHeader__RenderFunc(props: {
                       "value"
                     ])}
                   />
-                </Stack__>
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1554,7 +1522,7 @@ function PlasmicHeader__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["select", "value"])}
                 />
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2266,7 +2234,7 @@ function PlasmicHeader__RenderFunc(props: {
                 </div>
               ) : null}
             </div>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__g4CXs)} />
         </div>
       </AntdModal>
@@ -2314,18 +2282,12 @@ function PlasmicHeader__RenderFunc(props: {
         wrapClassName={classNames({ [sty["pcls_jCHCzh-MESJT"]]: true })}
       >
         <div className={classNames(projectcss.all, sty.freeBox__zzWtD)}>
-          <Stack__
-            as={"div"}
+          <div
             data-plasmic-name={"wallet7"}
             data-plasmic-override={overrides.wallet7}
-            hasGap={true}
             className={classNames(projectcss.all, sty.wallet7)}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__ovnj)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__ovnj)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2335,13 +2297,9 @@ function PlasmicHeader__RenderFunc(props: {
               >
                 {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
               </div>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__d1WQ)}
-          >
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__d1WQ)}>
             <Icon63Icon
               className={classNames(projectcss.all, sty.svg__lnJa8)}
               role={"img"}
@@ -2358,15 +2316,9 @@ function PlasmicHeader__RenderFunc(props: {
                 "\u0631\u0627\u0647 \u0647\u0627\u06cc \u0627\u0631\u062a\u0628\u0627\u0637\u06cc \u0628\u0627 \u0645\u0627"
               }
             </div>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___5BhwW)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox___5BhwW)}>
+            <div
               className={classNames(projectcss.all, sty.freeBox__uxnBp)}
               onClick={async event => {
                 const $steps = {};
@@ -2469,8 +2421,8 @@ function PlasmicHeader__RenderFunc(props: {
                   </React.Fragment>
                 </div>
               </div>
-            </Stack__>
-          </Stack__>
+            </div>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__uJ4K)} />
         </div>
       </AntdModal>
@@ -2512,18 +2464,12 @@ function PlasmicHeader__RenderFunc(props: {
         wrapClassName={classNames({ [sty["pcls_TkC6kSjbcg6h"]]: true })}
       >
         <div className={classNames(projectcss.all, sty.freeBox__hTf31)}>
-          <Stack__
-            as={"div"}
+          <div
             data-plasmic-name={"wallet5"}
             data-plasmic-override={overrides.wallet5}
-            hasGap={true}
             className={classNames(projectcss.all, sty.wallet5)}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__mJy2C)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__mJy2C)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2535,13 +2481,9 @@ function PlasmicHeader__RenderFunc(props: {
                   "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                 }
               </div>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__fklle)}
-          >
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__fklle)}>
             <div className={classNames(projectcss.all, sty.freeBox__nzhPd)}>
               <div
                 className={classNames(
@@ -3525,7 +3467,7 @@ function PlasmicHeader__RenderFunc(props: {
                 {"\u062a\u0627\u06cc\u06cc\u062f"}
               </div>
             </Button>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__kNRh0)} />
         </div>
       </AntdModal>
@@ -3560,9 +3502,7 @@ function PlasmicHeader__RenderFunc(props: {
               role={"img"}
             />
 
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            <div
               className={classNames(projectcss.all, sty.freeBox__nlHLk)}
               onClick={async event => {
                 const $steps = {};
@@ -3704,23 +3644,13 @@ function PlasmicHeader__RenderFunc(props: {
                 )}
                 role={"img"}
               />
-            </Stack__>
+            </div>
           </React.Fragment>
         }
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__wtMld)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__wlCoF)}
-          >
-            <Stack__
-              as={"div"}
-              hasGap={true}
+        <div className={classNames(projectcss.all, sty.freeBox__wtMld)}>
+          <div className={classNames(projectcss.all, sty.freeBox__wlCoF)}>
+            <div
               className={classNames(projectcss.all, sty.freeBox__ka5OS)}
               onClick={async event => {
                 const $steps = {};
@@ -3823,10 +3753,8 @@ function PlasmicHeader__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.svg__k7Yjj)}
                 role={"img"}
               />
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            </div>
+            <div
               className={classNames(projectcss.all, sty.freeBox___4BKvU)}
               onClick={async event => {
                 const $steps = {};
@@ -3929,10 +3857,8 @@ function PlasmicHeader__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.svg__nfSzB)}
                 role={"img"}
               />
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            </div>
+            <div
               className={classNames(projectcss.all, sty.freeBox__aDXqQ)}
               onClick={async event => {
                 const $steps = {};
@@ -4033,11 +3959,9 @@ function PlasmicHeader__RenderFunc(props: {
                 className={classNames(projectcss.all, sty.svg___06LD1)}
                 role={"img"}
               />
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
+            </div>
+          </div>
+          <div
             className={classNames(projectcss.all, sty.freeBox__ulcP1)}
             onClick={async event => {
               const $steps = {};
@@ -4128,8 +4052,8 @@ function PlasmicHeader__RenderFunc(props: {
               className={classNames(projectcss.all, sty.svg__nOHu)}
               role={"img"}
             />
-          </Stack__>
-        </Stack__>
+          </div>
+        </div>
       </AntdDrawer>
       <AntdModal
         data-plasmic-name={"exitModal"}
@@ -4158,11 +4082,7 @@ function PlasmicHeader__RenderFunc(props: {
         trigger={null}
         width={"520"}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__vv4DC)}
-        >
+        <div className={classNames(projectcss.all, sty.freeBox__vv4DC)}>
           <div
             className={classNames(
               projectcss.all,
@@ -4185,12 +4105,8 @@ function PlasmicHeader__RenderFunc(props: {
               "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
             }
           </div>
-        </Stack__>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__rolc8)}
-        >
+        </div>
+        <div className={classNames(projectcss.all, sty.freeBox__rolc8)}>
           <Button
             data-plasmic-name={"button5"}
             data-plasmic-override={overrides.button5}
@@ -4354,7 +4270,7 @@ function PlasmicHeader__RenderFunc(props: {
           >
             {"\u0627\u0646\u0635\u0631\u0627\u0641"}
           </Button>
-        </Stack__>
+        </div>
       </AntdModal>
     </div>
   ) as React.ReactElement | null;

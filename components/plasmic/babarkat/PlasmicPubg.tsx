@@ -1130,11 +1130,9 @@ function PlasmicPubg__RenderFunc(props: {
                       ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
                       : "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."}
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators"}
                     data-plasmic-override={overrides.operators}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators)}
                   >
                     {(_par =>
@@ -1331,13 +1329,11 @@ function PlasmicPubg__RenderFunc(props: {
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.wallet, {
                     [sty.walletsteps2_step2]: hasVariant(
                       $state,
@@ -1545,9 +1541,7 @@ function PlasmicPubg__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__tDp2S, {
                       [sty.freeBoxsteps2_step2__tDp2SjQ3Ah]: hasVariant(
                         $state,
@@ -2067,7 +2061,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         )}
                       </div>
                     </div>
-                  </Stack__>
+                  </div>
                   {(() => {
                     try {
                       return $state.type == "UC";
@@ -2227,9 +2221,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           ) : null}
                         </div>
                       </div>
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__olFdd
@@ -2395,7 +2387,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </div>
                   ) : null}
                   {(() => {
@@ -2416,9 +2408,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       data-plasmic-override={overrides.likee}
                       className={classNames(projectcss.all, sty.likee)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__zZar2
@@ -2513,7 +2503,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </div>
                   ) : null}
                   {(() => {
@@ -2540,9 +2530,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         )
                       })}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__n59Uv
@@ -2643,7 +2631,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </div>
                   ) : null}
                   {(() => {
@@ -2664,9 +2652,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       data-plasmic-override={overrides.imo2}
                       className={classNames(projectcss.all, sty.imo2)}
                     >
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__lqCT
@@ -2763,10 +2749,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </div>
                   ) : null}
-                </Stack__>
+                </div>
                 {(
                   hasVariant($state, "steps2", "step3")
                     ? true
@@ -2818,11 +2804,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         ? "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"
                         : "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"}
                     </div>
-                    <Stack__
-                      as={"div"}
+                    <div
                       data-plasmic-name={"chargeType"}
                       data-plasmic-override={overrides.chargeType}
-                      hasGap={true}
                       className={classNames(projectcss.all, sty.chargeType, {
                         [sty.chargeTypesteps2_step2]: hasVariant(
                           $state,
@@ -3006,7 +2990,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           );
                         })();
                       })}
-                    </Stack__>
+                    </div>
                   </div>
                 ) : null}
                 {(hasVariant($state, "steps2", "step2") ? false : false) ? (
@@ -3028,9 +3012,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   >
                     <DataCtxReader__>
                       {$ctx => (
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__e9Dg1,
@@ -3043,9 +3025,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             }
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__gNMr,
@@ -3055,9 +3035,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               }
                             )}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__ctGIl,
@@ -3275,8 +3253,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                   }
                                 )}
                               />
-                            </Stack__>
-                          </Stack__>
+                            </div>
+                          </div>
                           <div
                             className={classNames(
                               projectcss.all,
@@ -3337,9 +3315,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     }
                                   })()}
                                 >
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
+                                  <div
                                     className={classNames(
                                       projectcss.all,
                                       sty.freeBox__rbN6B,
@@ -3750,7 +3726,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                         );
                                       }
                                     )}
-                                  </Stack__>
+                                  </div>
                                 </TabContent>
                               );
                             })}
@@ -3795,9 +3771,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               const currentItem = __plasmic_item_0;
                               const currentIndex = __plasmic_idx_0;
                               return (
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox___0Terr,
@@ -4107,7 +4081,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                       </Button>
                                     );
                                   })()}
-                                </Stack__>
+                                </div>
                               );
                             })}
                             <div
@@ -4131,7 +4105,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               }
                             )}
                           />
-                        </Stack__>
+                        </div>
                       )}
                     </DataCtxReader__>
                   </TabsContainer>
@@ -4610,11 +4584,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:"
                     }
                   </div>
-                  <Stack__
-                    as={"ul"}
+                  <ul
                     data-plasmic-name={"ul"}
                     data-plasmic-override={overrides.ul}
-                    hasGap={true}
                     className={classNames(
                       projectcss.all,
                       projectcss.ul,
@@ -4703,7 +4675,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         </div>
                       </div>
                     </li>
-                  </Stack__>
+                  </ul>
                   <Button
                     data-plasmic-name={"button4"}
                     data-plasmic-override={overrides.button4}
@@ -4774,9 +4746,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 </div>
               </AntdModal>
               {(hasVariant($state, "steps2", "step3") ? true : false) ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__mFeU8, {
                     [sty.freeBoxsteps2_step3__mFeU8Jpk3R]: hasVariant(
                       $state,
@@ -5362,11 +5332,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       role={"img"}
                     />
                   </div>
-                </Stack__>
+                </div>
               ) : null}
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__aJznM, {
                   [sty.freeBoxsteps2_step2__aJznMjQ3Ah]: hasVariant(
                     $state,
@@ -5413,7 +5381,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     }
                   </div>
                 </div>
-              </Stack__>
+              </div>
             </div>
           </section>
           <ApiRequest
@@ -5447,6 +5415,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 "data"
               ]).apply(null, eventArgs);
             }}
+            shouldFetch={true}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
 
@@ -5489,9 +5458,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 })}
               >
                 {(hasVariant($state, "steps2", "step2") ? true : false) ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox___0Kz5Z, {
                       [sty.freeBoxsteps2_step2___0Kz5ZjQ3Ah]: hasVariant(
                         $state,
@@ -5537,9 +5504,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         const currentItem = __plasmic_item_0;
                         const currentIndex = __plasmic_idx_0;
                         return (
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__e4Bg,
@@ -5558,7 +5523,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         );
                       })}
                     </div>
-                  </Stack__>
+                  </div>
                 ) : null}
               </section>
             }
@@ -5581,6 +5546,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 eventArgs
               );
             }}
+            shouldFetch={true}
             url={"https://n8n.babarkat.com/webhook/transaction/exchange/list"}
           >
             <section
@@ -5593,9 +5559,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               })}
             >
               {(hasVariant($state, "steps2", "step2") ? true : false) ? (
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__yuRgs, {
                     [sty.freeBoxsteps2_step2__yuRgsjQ3Ah]: hasVariant(
                       $state,
@@ -5637,9 +5601,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       const currentItem = __plasmic_item_0;
                       const currentIndex = __plasmic_idx_0;
                       return (
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__c5CGy,
@@ -5936,7 +5898,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               </Button>
                             );
                           })()}
-                        </Stack__>
+                        </div>
                       );
                     })}
                     <div
@@ -5962,7 +5924,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       )
                     })}
                   />
-                </Stack__>
+                </div>
               ) : null}
             </section>
           </ApiRequest>

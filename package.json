@@ -50,9 +50,8 @@
     "react-timeit": "^1.2.12",
     "recharts": "^2.12.7",
     "slick-carousel": "^1.8.1",
+    "swiper": "^11.0.0",
     "swr": "^2.2.5",
-        "swiper": "^11.0.0",
-
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^10.0.0"

@@ -67,9 +67,11 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
+import { AntdCheckbox } from "@plasmicpkgs/antd5/skinny/registerCheckbox";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
+import Shop from "../../Shop"; // plasmic-import: zOsuRTq3iEqd/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import {
@@ -145,6 +147,7 @@ export type PlasmicLogIn__OverridesType = {
   btnNumber?: Flex__<typeof Button>;
   button2?: Flex__<typeof Button>;
   button3?: Flex__<typeof Button>;
+  checkbox?: Flex__<typeof AntdCheckbox>;
   btnSaraf?: Flex__<typeof Button>;
   sendcode?: Flex__<typeof Button>;
   figmaPaste?: Flex__<"div">;
@@ -166,6 +169,7 @@ export type PlasmicLogIn__OverridesType = {
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
   modal?: Flex__<typeof AntdModal>;
+  shop?: Flex__<typeof Shop>;
 };
 
 export interface DefaultLogInProps {}
@@ -579,6 +583,24 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "checkbox.checked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "group11", "saraf")
+            ? false
+            : hasVariant($state, "saraf2", "saraf2")
+            ? true
+            : undefined
+      },
+      {
+        path: "shop.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "group11", "saraf") ? false : false
       }
     ],
     [$props, $ctx, $refs]
@@ -874,6 +896,11 @@ function PlasmicLogIn__RenderFunc(props: {
             [sty.revealloginByPassword_group11_loginByPassword]:
               hasVariant($state, "group11", "loginByPassword") &&
               hasVariant($state, "loginByPassword", "loginByPassword"),
+            [sty.revealloginByPassword_password_code2_group11_loginByPassword]:
+              hasVariant($state, "group11", "loginByPassword") &&
+              hasVariant($state, "loginByPassword", "loginByPassword") &&
+              hasVariant($state, "password", "password") &&
+              hasVariant($state, "code2", "code2"),
             [sty.revealloginByPassword_password_code2_saraf2_group11_loginByPassword]:
               hasVariant($state, "group11", "loginByPassword") &&
               hasVariant($state, "loginByPassword", "loginByPassword") &&
@@ -890,6 +917,10 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "password", "password") &&
               hasVariant($state, "saraf2", "saraf2"),
             [sty.revealpassword]: hasVariant($state, "password", "password"),
+            [sty.revealpassword_code2_group11_loginByPassword]:
+              hasVariant($state, "group11", "loginByPassword") &&
+              hasVariant($state, "password", "password") &&
+              hasVariant($state, "code2", "code2"),
             [sty.revealpassword_code2_saraf2_group11_loginByPassword]:
               hasVariant($state, "group11", "loginByPassword") &&
               hasVariant($state, "password", "password") &&
@@ -1259,9 +1290,7 @@ function PlasmicLogIn__RenderFunc(props: {
                 />
               ) : null}
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
+            <div
               className={classNames(projectcss.all, sty.freeBox__mauVi, {
                 [sty.freeBoxcode2__mauViDv9B5]: hasVariant(
                   $state,
@@ -2554,9 +2583,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   role={"img"}
                 />
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__hXlRb, {
                   [sty.freeBoxcode2__hXlRbDv9B5]: hasVariant(
                     $state,
@@ -2639,7 +2666,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     "value"
                   ])}
                 />
-              </Stack__>
+              </div>
               {(
                 hasVariant($state, "group11", "code") &&
                 hasVariant(globalVariants, "screen", "mobileOnly")
@@ -3233,7 +3260,7 @@ function PlasmicLogIn__RenderFunc(props: {
                 }
                 value={generateStateValueProp($state, ["select", "value"])}
               />
-            </Stack__>
+            </div>
             <div
               className={classNames(
                 projectcss.all,
@@ -4888,6 +4915,133 @@ function PlasmicLogIn__RenderFunc(props: {
                     : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                 </div>
               </Button>
+              <AntdCheckbox
+                data-plasmic-name={"checkbox"}
+                data-plasmic-override={overrides.checkbox}
+                autoFocus={
+                  hasVariant($state, "group11", "saraf")
+                    ? false
+                    : hasVariant($state, "saraf2", "saraf2")
+                    ? false
+                    : undefined
+                }
+                checked={generateStateValueProp($state, [
+                  "checkbox",
+                  "checked"
+                ])}
+                className={classNames("__wab_instance", sty.checkbox, {
+                  [sty.checkboxgroup11_password]: hasVariant(
+                    $state,
+                    "group11",
+                    "password"
+                  ),
+                  [sty.checkboxgroup11_saraf]: hasVariant(
+                    $state,
+                    "group11",
+                    "saraf"
+                  ),
+                  [sty.checkboxpassword]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.checkboxpassword_group11_password]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "group11", "password"),
+                  [sty.checkboxpassword_group11_saraf]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "group11", "saraf"),
+                  [sty.checkboxpassword_saraf2]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "saraf2", "saraf2"),
+                  [sty.checkboxsaraf2]: hasVariant($state, "saraf2", "saraf2")
+                })}
+                defaultChecked={
+                  hasVariant($state, "group11", "saraf")
+                    ? false
+                    : hasVariant($state, "saraf2", "saraf2")
+                    ? true
+                    : undefined
+                }
+                disabled={
+                  hasVariant($state, "group11", "saraf")
+                    ? false
+                    : hasVariant($state, "saraf2", "saraf2")
+                    ? false
+                    : undefined
+                }
+                onChange={async (...eventArgs: any) => {
+                  generateStateOnChangeProp($state, [
+                    "checkbox",
+                    "checked"
+                  ]).apply(null, eventArgs);
+
+                  (async checked => {
+                    const $steps = {};
+
+                    $steps["updateShopOpen"] =
+                      $state.checkbox.checked == true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["shop", "open"]
+                              },
+                              operation: 4
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              const oldValue = $stateGet(objRoot, variablePath);
+                              $stateSet(objRoot, variablePath, !oldValue);
+                              return !oldValue;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updateShopOpen"] != null &&
+                      typeof $steps["updateShopOpen"] === "object" &&
+                      typeof $steps["updateShopOpen"].then === "function"
+                    ) {
+                      $steps["updateShopOpen"] = await $steps["updateShopOpen"];
+                    }
+                  }).apply(null, eventArgs);
+                }}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__rPoWa,
+                    {
+                      [sty.textgroup11_saraf__rPoWanaBfa]: hasVariant(
+                        $state,
+                        "group11",
+                        "saraf"
+                      ),
+                      [sty.textsaraf2__rPoWaJmKha]: hasVariant(
+                        $state,
+                        "saraf2",
+                        "saraf2"
+                      )
+                    }
+                  )}
+                >
+                  {hasVariant($state, "group11", "saraf")
+                    ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u0645\u06cc\u067e\u0630\u06cc\u0631\u0645!"
+                    : hasVariant($state, "saraf2", "saraf2")
+                    ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u0645\u06cc\u067e\u0630\u06cc\u0631\u0645!"
+                    : "Checkbox"}
+                </div>
+              </AntdCheckbox>
               <Button
                 data-plasmic-name={"btnSaraf"}
                 data-plasmic-override={overrides.btnSaraf}
@@ -5091,32 +5245,33 @@ function PlasmicLogIn__RenderFunc(props: {
                     $steps["updateLoadedbtn"] = await $steps["updateLoadedbtn"];
                   }
 
-                  $steps["updateSelectsaraf"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["selectsaraf"]
-                          },
-                          operation: 0,
-                          value: $state.select.value
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                  $steps["updateSelectsaraf"] =
+                    $state.checkbox.checked == true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["selectsaraf"]
+                            },
+                            operation: 0,
+                            value: $state.select.value
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
                   if (
                     $steps["updateSelectsaraf"] != null &&
                     typeof $steps["updateSelectsaraf"] === "object" &&
@@ -5127,39 +5282,43 @@ function PlasmicLogIn__RenderFunc(props: {
                     ];
                   }
 
-                  $steps["invokeGlobalAction"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          args: [
-                            "POST",
-                            "https://n8n.babarkat.com/webhook/Babarkat/login",
-                            undefined,
-                            (() => {
-                              try {
-                                return {
-                                  _saraf: $state.selectsaraf,
-                                  userToken: JSON.parse(
-                                    sessionStorage.getItem("userbabarcatToken")
-                                  ).value
-                                };
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
+                  $steps["invokeGlobalAction"] =
+                    $state.checkbox.checked == true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "POST",
+                              "https://n8n.babarkat.com/webhook/Babarkat/login",
+                              undefined,
+                              (() => {
+                                try {
+                                  return {
+                                    _saraf: $state.selectsaraf,
+                                    userToken: JSON.parse(
+                                      sessionStorage.getItem(
+                                        "userbabarcatToken"
+                                      )
+                                    ).value
+                                  };
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()
-                          ]
-                        };
-                        return $globalActions["Fragment.apiRequest"]?.apply(
-                          null,
-                          [...actionArgs.args]
-                        );
-                      })()
-                    : undefined;
+                              })()
+                            ]
+                          };
+                          return $globalActions["Fragment.apiRequest"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
                   if (
                     $steps["invokeGlobalAction"] != null &&
                     typeof $steps["invokeGlobalAction"] === "object" &&
@@ -5173,7 +5332,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   $steps["invokeGlobalAction2"] = (
                     $steps.invokeGlobalAction?.data
                       ? $steps.invokeGlobalAction?.data[0]?.success == false
-                      : true
+                      : true && $state.checkbox.checked == true
                   )
                     ? (() => {
                         const actionArgs = {
@@ -5349,6 +5508,32 @@ function PlasmicLogIn__RenderFunc(props: {
                   ) {
                     $steps["updateLoadedbtn2"] = await $steps[
                       "updateLoadedbtn2"
+                    ];
+                  }
+
+                  $steps["invokeGlobalAction4"] =
+                    $state.checkbox.checked == false
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              "error",
+                              "\u0644\u0637\u0641\u0627 \u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u062a\u0627\u06cc\u06cc\u062f \u06a9\u0646\u06cc\u062f.",
+                              "top-left"
+                            ]
+                          };
+                          return $globalActions["Fragment.showToast"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                  if (
+                    $steps["invokeGlobalAction4"] != null &&
+                    typeof $steps["invokeGlobalAction4"] === "object" &&
+                    typeof $steps["invokeGlobalAction4"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction4"] = await $steps[
+                      "invokeGlobalAction4"
                     ];
                   }
                 }}
@@ -6779,9 +6964,7 @@ function PlasmicLogIn__RenderFunc(props: {
             </div>
           </div>
         </Reveal>
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__nlgu0, {
             [sty.freeBoxcode2__nlgu0Dv9B5]: hasVariant(
               $state,
@@ -6818,7 +7001,7 @@ function PlasmicLogIn__RenderFunc(props: {
               }}
             />
           </div>
-        </Stack__>
+        </div>
         {false ? (
           <PlasmicImg__
             alt={""}
@@ -6971,11 +7154,7 @@ function PlasmicLogIn__RenderFunc(props: {
           width={"100vw"}
           wrapClassName={classNames({ [sty["pcls_K1Qr6aZkpClP"]]: true })}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__nTlnN)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox__nTlnN)}>
             <Icon82Icon
               className={classNames(projectcss.all, sty.svg__qDphw)}
               role={"img"}
@@ -7003,8 +7182,129 @@ function PlasmicLogIn__RenderFunc(props: {
                 "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0642\u0627\u0628\u0644 \u062f\u0633\u062a\u0631\u0633 \u0645\u06cc \u0628\u0627\u0634\u062f."
               }
             </div>
-          </Stack__>
+          </div>
         </AntdModal>
+        <Shop
+          data-plasmic-name={"shop"}
+          data-plasmic-override={overrides.shop}
+          body={
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___2An9Q,
+                {
+                  [sty.textgroup11_saraf___2An9QnaBfa]: hasVariant(
+                    $state,
+                    "group11",
+                    "saraf"
+                  )
+                }
+              )}
+            >
+              {hasVariant($state, "group11", "saraf")
+                ? " \u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0633\u06cc\u0627\u0633\u062a \u062d\u0641\u0638 \u062d\u0631\u06cc\u0645 \u062e\u0635\u0648\u0635\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0627\u0628\u0631\u06a9\u062a\r\n1. \u0628\u0627\u0628\u0631\u06a9\u062a \u0686\u06cc\u0633\u062a\u061f\r\n\u0628\u0627\u0628\u0631\u06a9\u062a \u06cc\u06a9 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0627\u0633\u062a \u06a9\u0647 \u0628\u0647 \u0634\u0645\u0627 \u06a9\u0645\u06a9 \u0645\u06cc\u200c\u06a9\u0646\u062f \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 \u06af\u0631\u062f\u0634 \u062d\u0633\u0627\u0628\u200c\u062a\u0627\u0646 \u0646\u0632\u062f \u0635\u0631\u0627\u0641 \u06cc\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\u06cc \u06a9\u0647 \u0628\u0627 \u0627\u0648 \u06a9\u0627\u0631 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f \u0631\u0627 \u0628\u0628\u06cc\u0646\u06cc\u062f\u060c \u0648 \u0628\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0647\u0645\u0627\u0646 \u0645\u0648\u062c\u0648\u062f\u06cc \u062e\u062f\u0645\u0627\u062a\u06cc \u0645\u0627\u0646\u0646\u062f \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698\u060c \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u060c \u0648 \u062f\u06cc\u06af\u0631 \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u06a9\u0648\u0686\u06a9 \u0631\u0627 \u0627\u0646\u062c\u0627\u0645 \u062f\u0647\u06cc\u062f.\r\n2. \u067e\u0648\u0644 \u0645\u0646 \u06a9\u062c\u0627\u0633\u062a\u061f\r\n\u0645\u0648\u062c\u0648\u062f\u06cc\u200c\u0627\u06cc \u06a9\u0647 \u0634\u0645\u0627 \u062f\u0631 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0627\u0628\u0631\u06a9\u062a \u0645\u06cc\u200c\u0628\u06cc\u0646\u06cc\u062f\u060c \u062f\u0631 \u062d\u0633\u0627\u0628 \u0628\u0627\u0628\u0631\u06a9\u062a \u0646\u06cc\u0633\u062a. \u0627\u06cc\u0646 \u0645\u0628\u0644\u063a \u0646\u0632\u062f \u0647\u0645\u0627\u0646 \u0635\u0631\u0627\u0641 \u06cc\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\u06cc \u0627\u0633\u062a \u06a9\u0647 \u0628\u0627 \u0627\u0648 \u06a9\u0627\u0631 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f. \u0628\u0627\u0628\u0631\u06a9\u062a \u0641\u0642\u0637 \u0627\u0628\u0632\u0627\u0631 \u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0648 \u0646\u0645\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc \u0627\u0633\u062a.\r\n3. \u0628\u0627\u0628\u0631\u06a9\u062a \u062f\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0686\u0637\u0648\u0631 \u0639\u0645\u0644 \u0645\u06cc\u200c\u06a9\u0646\u062f\u061f\r\n\u0632\u0645\u0627\u0646\u06cc \u06a9\u0647 \u0634\u0645\u0627 \u0627\u0632 \u062f\u0627\u062e\u0644 \u0627\u067e \u0628\u0627\u0628\u0631\u06a9\u062a \u0634\u0627\u0631\u0698 \u06cc\u0627 \u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0645\u06cc\u200c\u062e\u0631\u06cc\u062f\u060c \u0645\u0628\u0644\u063a \u0622\u0646 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u0627\u0632 \u0645\u0648\u062c\u0648\u062f\u06cc \u0634\u0645\u0627 \u0646\u0632\u062f \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u06a9\u0645 \u0645\u06cc\u200c\u0634\u0648\u062f.\r\n\u0628\u0627\u0628\u0631\u06a9\u062a \u0628\u0639\u062f \u0627\u0632 \u0622\u0646\u060c \u0627\u0632 \u0637\u0631\u0641 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0634\u0627\u0631\u0698 \u0631\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u0645\u06cc\u200c\u062e\u0631\u062f \u0648 \u062a\u062d\u0648\u06cc\u0644\u200c\u062a\u0627\u0646 \u0645\u06cc\u200c\u062f\u0647\u062f.\r\n\u0627\u06af\u0631 \u0648\u0627\u0631\u06cc\u0632 \u06cc\u0627 \u0628\u0631\u062f\u0627\u0634\u062a \u067e\u0648\u0644\u06cc \u062f\u0627\u0631\u06cc\u062f (\u0645\u062b\u0644\u0627\u064b \u067e\u0648\u0644 \u062f\u0633\u062a\u06cc \u0628\u0647 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u062f\u0627\u062f\u0647\u200c\u0627\u06cc\u062f)\u060c \u0627\u06cc\u0646 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0631\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u062f\u0631 \u067e\u0646\u0644 \u062b\u0628\u062a \u0645\u06cc\u200c\u06a9\u0646\u062f \u0648 \u0634\u0645\u0627 \u062f\u0631 \u0627\u067e \u0645\u06cc\u200c\u0628\u06cc\u0646\u06cc\u062f.\r\n4. \u0627\u06af\u0631 \u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f \u0686\u0647 \u06a9\u0633\u06cc \u0645\u0633\u0626\u0648\u0644 \u0627\u0633\u062a\u061f\r\n\u0627\u06af\u0631 \u0645\u0634\u06a9\u0644\u06cc \u062f\u0631 \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u06cc\u0627 \u062e\u062f\u0645\u0627\u062a \u062f\u06cc\u06af\u0631 \u062f\u0627\u0634\u062a\u06cc\u062f\u060c \u0628\u0627\u0628\u0631\u06a9\u062a \u062a\u0644\u0627\u0634 \u0645\u06cc\u200c\u06a9\u0646\u062f \u0622\u0646 \u0631\u0627 \u0628\u0627 \u0633\u0631\u0648\u06cc\u0633\u200c\u062f\u0647\u0646\u062f\u0647 (\u0645\u062b\u0644 \u0627\u06cc\u0631\u0627\u0646\u0633\u0644 \u06cc\u0627 \u0627\u062a\u0635\u0627\u0644\u0627\u062a) \u067e\u06cc\u06af\u06cc\u0631\u06cc \u06a9\u0646\u062f.\r\n\u0627\u0645\u0627 \u0627\u06af\u0631 \u0645\u0634\u06a9\u0644 \u06cc\u0627 \u0627\u062e\u062a\u0644\u0627\u0641\u06cc \u062f\u0631 \u0645\u0648\u062c\u0648\u062f\u06cc \u06cc\u0627 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0648\u062c\u0648\u062f \u062f\u0627\u0631\u062f\u060c \u0628\u0627\u06cc\u062f \u0628\u0627 \u0647\u0645\u0627\u0646 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\u06cc \u06a9\u0647 \u0628\u0627 \u0627\u0648 \u06a9\u0627\u0631 \u0645\u06cc\u200c\u06a9\u0646\u06cc\u062f \u0635\u062d\u0628\u062a \u06a9\u0646\u06cc\u062f.\r\n\u0628\u0627\u0628\u0631\u06a9\u062a \u062f\u0631 \u0645\u0633\u0627\u0626\u0644 \u0645\u0627\u0644\u06cc \u0628\u06cc\u0646 \u0634\u0645\u0627 \u0648 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u062f\u062e\u0627\u0644\u062a\u06cc \u0646\u062f\u0627\u0631\u062f.\r\n5. \u0627\u0645\u0646\u06cc\u062a \u0648 \u0634\u0641\u0627\u0641\u06cc\u062a\r\n\u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062f\u0631 \u0647\u0631 \u0644\u062d\u0638\u0647 \u06af\u0631\u062f\u0634 \u062d\u0633\u0627\u0628 \u0648 \u062e\u0631\u06cc\u062f\u0647\u0627\u06cc \u062e\u0648\u062f \u0631\u0627 \u0628\u0628\u06cc\u0646\u06cc\u062f.\r\n\u0628\u0631\u0627\u06cc \u062d\u0641\u0638 \u0627\u0645\u0646\u06cc\u062a\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062d\u0633\u0627\u0628\u200c\u062a\u0627\u0646 \u0631\u0627 \u062f\u0631 \u0627\u062e\u062a\u06cc\u0627\u0631 \u062f\u06cc\u06af\u0631\u0627\u0646 \u0646\u06af\u0630\u0627\u0631\u06cc\u062f.\r\n6. \u0633\u06cc\u0627\u0633\u062a \u062d\u0641\u0638 \u062d\u0631\u06cc\u0645 \u062e\u0635\u0648\u0635\u06cc (Privacy Policy)\r\n\u0686\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a\u06cc \u0627\u0632 \u0634\u0645\u0627 \u062c\u0645\u0639\u200c\u0622\u0648\u0631\u06cc \u0645\u06cc\u200c\u0634\u0648\u062f\u061f\r\n\u0628\u0631\u0627\u06cc \u0627\u0631\u0627\u0626\u0647 \u062e\u062f\u0645\u0627\u062a\u060c \u0628\u0627\u0628\u0631\u06a9\u062a \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0632\u06cc\u0631 \u0631\u0627 \u062c\u0645\u0639\u200c\u0622\u0648\u0631\u06cc \u06cc\u0627 \u0646\u0645\u0627\u06cc\u0634 \u062f\u0647\u062f:\r\n\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u0634\u0645\u0627 (\u0628\u0631\u0627\u06cc \u0648\u0631\u0648\u062f \u0648 \u062a\u0623\u06cc\u06cc\u062f \u0647\u0648\u06cc\u062a)\r\n\u0646\u0627\u0645 \u0648 \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc (\u062f\u0631 \u0635\u0648\u0631\u062a \u062b\u0628\u062a \u062a\u0648\u0633\u0637 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631)\r\n\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0648 \u0645\u0648\u062c\u0648\u062f\u06cc \u0634\u0645\u0627 \u0646\u0632\u062f \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\r\n\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u062f\u0633\u062a\u06af\u0627\u0647 (\u0645\u062b\u0644 \u0645\u062f\u0644 \u06af\u0648\u0634\u06cc\u060c \u0633\u06cc\u0633\u062a\u0645\u200c\u0639\u0627\u0645\u0644\u060c \u0628\u0631\u0627\u06cc \u0628\u0647\u0628\u0648\u062f \u0639\u0645\u0644\u06a9\u0631\u062f)\r\n\u0627\u06cc\u0646 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u0631\u0627\u06cc \u0686\u0647 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f\u061f\r\n\u0646\u0645\u0627\u06cc\u0634 \u0648\u0636\u0639\u06cc\u062a \u0645\u0627\u0644\u06cc \u0634\u0645\u0627 \u0646\u0632\u062f \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\r\n\u0627\u0631\u0633\u0627\u0644 \u067e\u06cc\u0627\u0645\u06a9\u200c\u0647\u0627\u06cc \u0627\u0637\u0644\u0627\u0639\u200c\u0631\u0633\u0627\u0646\u06cc \u0648 \u0627\u0645\u0646\u06cc\u062a\u06cc\r\n\u062b\u0628\u062a \u0648 \u0627\u0646\u062c\u0627\u0645 \u062e\u062f\u0645\u0627\u062a\u06cc \u0645\u0627\u0646\u0646\u062f \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0648 \u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\r\n\u062a\u062d\u0644\u06cc\u0644 \u0641\u0646\u06cc \u0628\u0631\u0627\u06cc \u0628\u0647\u0628\u0648\u062f \u0639\u0645\u0644\u06a9\u0631\u062f \u0648 \u0627\u0645\u0646\u06cc\u062a \u0628\u0631\u0646\u0627\u0645\u0647\r\n\u0622\u06cc\u0627 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627 \u0628\u0647 \u06a9\u0633\u06cc \u062f\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f\u061f\r\n\u062e\u06cc\u0631. \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u062f\u0631 \u062e\u062f\u0645\u0627\u062a \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0627\u0633\u062a \u0648:\r\n\u0628\u0647 \u0647\u06cc\u0686 \u0641\u0631\u062f \u06cc\u0627 \u0634\u0631\u06a9\u062a \u0633\u0648\u0645\u06cc \u0641\u0631\u0648\u062e\u062a\u0647 \u06cc\u0627 \u0645\u0646\u062a\u0642\u0644 \u0646\u0645\u06cc\u200c\u0634\u0648\u062f\u061b\r\n\u0641\u0642\u0637 \u062a\u0648\u0633\u0637 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631\u06cc \u06a9\u0647 \u0634\u0645\u0627 \u0631\u0627 \u062b\u0628\u062a \u06a9\u0631\u062f\u0647 \u0642\u0627\u0628\u0644 \u0645\u0634\u0627\u0647\u062f\u0647 \u0627\u0633\u062a.\r\n\u0627\u0645\u0646\u06cc\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627\r\n\u0628\u0627\u0628\u0631\u06a9\u062a \u0627\u0632 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u0627\u0645\u0646 \u0648 \u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u0631\u0645\u0632\u0646\u06af\u0627\u0631\u06cc \u0628\u0631\u0627\u06cc \u0645\u062d\u0627\u0641\u0638\u062a \u0627\u0632 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc\u200c\u06a9\u0646\u062f. \u0647\u0645\u0686\u0646\u06cc\u0646 \u062f\u0633\u062a\u0631\u0633\u06cc \u0628\u0647 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0645\u062d\u062f\u0648\u062f \u0648 \u06a9\u0646\u062a\u0631\u0644\u200c\u0634\u062f\u0647 \u0627\u0633\u062a.\r\n\u062d\u0630\u0641 \u0627\u0637\u0644\u0627\u0639\u0627\u062a\r\n\u062f\u0631 \u0635\u0648\u0631\u062a\u06cc \u06a9\u0647 \u0645\u0627\u06cc\u0644 \u0628\u0627\u0634\u06cc\u062f \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627 \u0627\u0632 \u0633\u06cc\u0633\u062a\u0645 \u062d\u0630\u0641 \u0634\u0648\u062f\u060c \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0628\u0627\u0628\u0631\u06a9\u062a \u06cc\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0627\u0642\u062f\u0627\u0645 \u06a9\u0646\u06cc\u062f.\r\n7. \u062a\u0623\u06cc\u06cc\u062f \u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u062d\u0631\u06cc\u0645 \u062e\u0635\u0648\u0635\u06cc\r\n\u0628\u0627 \u0646\u0635\u0628 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0627\u0628\u0631\u06a9\u062a\u060c \u0634\u0645\u0627 \u0627\u06cc\u0646 \u0645\u0648\u0627\u0631\u062f \u0631\u0627 \u0645\u06cc\u200c\u067e\u0630\u06cc\u0631\u06cc\u062f:\r\n\u067e\u0648\u0644\u200c\u062a\u0627\u0646 \u0646\u0632\u062f \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0627\u0633\u062a\u060c \u0646\u0647 \u0646\u0632\u062f \u0628\u0627\u0628\u0631\u06a9\u062a\u061b\r\n\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0634\u0645\u0627 \u0641\u0642\u0637 \u0628\u0631\u0627\u06cc \u0627\u0631\u0627\u0626\u0647 \u062e\u062f\u0645\u0627\u062a \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u062d\u0631\u0645\u0627\u0646\u0647 \u0628\u0627\u0642\u06cc \u0645\u06cc\u200c\u0645\u0627\u0646\u062f\u061b\r\n\u0645\u0633\u0626\u0648\u0644\u06cc\u062a \u0627\u062e\u062a\u0644\u0627\u0641\u0627\u062a \u0645\u0627\u0644\u06cc \u0628\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0627\u0633\u062a\u060c \u0646\u0647 \u0628\u0627 \u0628\u0627\u0628\u0631\u06a9\u062a."
+                : "You can insert body content here in this slot."}
+            </div>
+          }
+          className={classNames("__wab_instance", sty.shop, {
+            [sty.shopgroup11_saraf]: hasVariant($state, "group11", "saraf")
+          })}
+          fullScreen={hasVariant($state, "group11", "saraf") ? true : undefined}
+          onOpenChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, ["shop", "open"]).apply(
+              null,
+              eventArgs
+            );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          open={generateStateValueProp($state, ["shop", "open"])}
+          title={
+            <div
+              className={classNames(projectcss.all, sty.freeBox__znSkq, {
+                [sty.freeBoxgroup11_saraf__znSkqnaBfa]: hasVariant(
+                  $state,
+                  "group11",
+                  "saraf"
+                )
+              })}
+            >
+              <Icon10Icon
+                className={classNames(projectcss.all, sty.svg___09Ie, {
+                  [sty.svggroup11_saraf___09IenaBfa]: hasVariant(
+                    $state,
+                    "group11",
+                    "saraf"
+                  )
+                })}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateShopOpen"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["shop", "open"]
+                          },
+                          operation: 4
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          const oldValue = $stateGet(objRoot, variablePath);
+                          $stateSet(objRoot, variablePath, !oldValue);
+                          return !oldValue;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateShopOpen"] != null &&
+                    typeof $steps["updateShopOpen"] === "object" &&
+                    typeof $steps["updateShopOpen"].then === "function"
+                  ) {
+                    $steps["updateShopOpen"] = await $steps["updateShopOpen"];
+                  }
+                }}
+                role={"img"}
+              />
+
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__b3UKh,
+                  {
+                    [sty.textgroup11_saraf__b3UKhnaBfa]: hasVariant(
+                      $state,
+                      "group11",
+                      "saraf"
+                    )
+                  }
+                )}
+              >
+                {hasVariant($state, "group11", "saraf")
+                  ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a"
+                  : "Title"}
+              </div>
+            </div>
+          }
+        />
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -7024,6 +7324,7 @@ const PlasmicDescendants = {
     "btnNumber",
     "button2",
     "button3",
+    "checkbox",
     "btnSaraf",
     "sendcode",
     "figmaPaste",
@@ -7044,7 +7345,8 @@ const PlasmicDescendants = {
     "group10",
     "embedHtml",
     "sideEffect",
-    "modal"
+    "modal",
+    "shop"
   ],
   reveal: [
     "reveal",
@@ -7058,6 +7360,7 @@ const PlasmicDescendants = {
     "btnNumber",
     "button2",
     "button3",
+    "checkbox",
     "btnSaraf",
     "sendcode",
     "figmaPaste",
@@ -7087,6 +7390,7 @@ const PlasmicDescendants = {
   btnNumber: ["btnNumber"],
   button2: ["button2"],
   button3: ["button3"],
+  checkbox: ["checkbox"],
   btnSaraf: ["btnSaraf"],
   sendcode: ["sendcode"],
   figmaPaste: [
@@ -7145,7 +7449,8 @@ const PlasmicDescendants = {
   group10: ["group10"],
   embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"],
-  modal: ["modal"]
+  modal: ["modal"],
+  shop: ["shop"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -7163,6 +7468,7 @@ type NodeDefaultElementType = {
   btnNumber: typeof Button;
   button2: typeof Button;
   button3: typeof Button;
+  checkbox: typeof AntdCheckbox;
   btnSaraf: typeof Button;
   sendcode: typeof Button;
   figmaPaste: "div";
@@ -7184,6 +7490,7 @@ type NodeDefaultElementType = {
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
   modal: typeof AntdModal;
+  shop: typeof Shop;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -7282,6 +7589,7 @@ export const PlasmicLogIn = Object.assign(
     btnNumber: makeNodeComponent("btnNumber"),
     button2: makeNodeComponent("button2"),
     button3: makeNodeComponent("button3"),
+    checkbox: makeNodeComponent("checkbox"),
     btnSaraf: makeNodeComponent("btnSaraf"),
     sendcode: makeNodeComponent("sendcode"),
     figmaPaste: makeNodeComponent("figmaPaste"),
@@ -7303,6 +7611,7 @@ export const PlasmicLogIn = Object.assign(
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
     modal: makeNodeComponent("modal"),
+    shop: makeNodeComponent("shop"),
 
     // Metadata about props expected for PlasmicLogIn
     internalVariantProps: PlasmicLogIn__VariantProps,

@@ -451,9 +451,7 @@ function PlasmicDialog__RenderFunc(props: {
           plasmic_plasmic_rich_components_css.plasmic_tokens
         )}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox___8Hh5, {
             [sty.freeBoxhideHeader___8Hh56Ljbu]: hasVariant(
               $state,
@@ -463,9 +461,7 @@ function PlasmicDialog__RenderFunc(props: {
           })}
           dir={``}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox__pXkK)}
             id={"receipt"}
           >
@@ -485,11 +481,7 @@ function PlasmicDialog__RenderFunc(props: {
                 "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
               }
             </div>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__inSrv)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__inSrv)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -514,12 +506,8 @@ function PlasmicDialog__RenderFunc(props: {
                   />
                 );
               })}
-            </Stack__>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__exOlE)}
-            >
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__exOlE)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -538,9 +526,7 @@ function PlasmicDialog__RenderFunc(props: {
                 const currentItem = __plasmic_item_0;
                 const currentIndex = __plasmic_idx_0;
                 return (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__cShxb)}
                     key={currentIndex}
                     style={(() => {
@@ -608,14 +594,10 @@ function PlasmicDialog__RenderFunc(props: {
                         })()}
                       </React.Fragment>
                     </div>
-                  </Stack__>
+                  </div>
                 );
               })}
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__vmNbe)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__vmNbe)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -662,14 +644,10 @@ function PlasmicDialog__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
-              </Stack__>
-            </Stack__>
-          </Stack__>
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox__x0D8S)}
-          >
+              </div>
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__x0D8S)}>
             <Button
               data-plasmic-name={"button3"}
               data-plasmic-override={overrides.button3}
@@ -841,7 +819,7 @@ function PlasmicDialog__RenderFunc(props: {
                 }
               </div>
             </Button>
-          </Stack__>
+          </div>
           <Embed
             data-plasmic-name={"embedHtml"}
             data-plasmic-override={overrides.embedHtml}
@@ -850,7 +828,7 @@ function PlasmicDialog__RenderFunc(props: {
               '\r\n  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>\r\n\r\n  <script>\r\n    function captureReceipt() {\r\n      const element = document.getElementById(\'receipt\');\r\n      html2canvas(element, { useCORS: true, backgroundColor: "#fff" }).then(canvas => {\r\n        canvas.toBlob(blob => {\r\n          if (!blob) {\r\n            alert("\u26a0\ufe0f Blob \u062a\u0648\u0644\u06cc\u062f \u0646\u0634\u062f. \u0645\u0637\u0645\u0626\u0646 \u0634\u0648 \u06a9\u0647 \u0627\u0632 \u0645\u0631\u0648\u0631\u06af\u0631 \u0645\u062f\u0631\u0646 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0645\u06cc\u200c\u06a9\u0646\u06cc \u0648 \u0635\u0641\u062d\u0647 \u0631\u0648\u06cc localhost \u0627\u062c\u0631\u0627 \u0645\u06cc\u0634\u0647.");\r\n            return;\r\n          }\r\n\r\n          const file = new File([blob], "receipt.png", { type: "image/png" });\r\n\r\n          if (navigator.canShare && navigator.canShare({ files: [file] })) {\r\n            navigator.share({\r\n              title: "\u0631\u0633\u06cc\u062f \u062a\u0631\u0627\u06a9\u0646\u0634",\r\n              text: "\u0631\u0633\u06cc\u062f \u062e\u0631\u06cc\u062f \u0634\u0645\u0627 \u0622\u0645\u0627\u062f\u0647 \u0627\u0633\u062a.",\r\n              files: [file]\r\n            }).catch(err => console.error("\u0627\u0634\u062a\u0631\u0627\u06a9\u200c\u06af\u0630\u0627\u0631\u06cc \u0646\u0627\u0645\u0648\u0641\u0642:", err));\r\n          } else {\r\n            // \u0627\u06af\u0631 share \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0646\u0634\u062f\u060c \u0641\u0627\u06cc\u0644 \u0631\u0648 \u062f\u0627\u0646\u0644\u0648\u062f \u06a9\u0646\r\n            const url = URL.createObjectURL(blob);\r\n            const link = document.createElement(\'a\');\r\n            link.href = url;\r\n            link.download = "receipt.png";\r\n            link.click();\r\n          }\r\n        }, "image/png");\r\n      });\r\n    }\r\n  </script>\r\n'
             }
           />
-        </Stack__>
+        </div>
         <DialogClose
           data-plasmic-name={"dialogClose"}
           data-plasmic-override={overrides.dialogClose}
@@ -867,16 +845,8 @@ function PlasmicDialog__RenderFunc(props: {
             role={"img"}
           />
         </DialogClose>
-        <Stack__
-          as={"div"}
-          hasGap={true}
-          className={classNames(projectcss.all, sty.freeBox__nTiio)}
-        >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___02ILd)}
-          >
+        <div className={classNames(projectcss.all, sty.freeBox__nTiio)}>
+          <div className={classNames(projectcss.all, sty.freeBox___02ILd)}>
             <div
               className={classNames(
                 projectcss.all,
@@ -886,7 +856,7 @@ function PlasmicDialog__RenderFunc(props: {
             >
               {"\u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a"}
             </div>
-          </Stack__>
+          </div>
           <Icon89Icon
             className={classNames(projectcss.all, sty.svg__aSmv)}
             onClick={async event => {
@@ -923,7 +893,7 @@ function PlasmicDialog__RenderFunc(props: {
             }}
             role={"img"}
           />
-        </Stack__>
+        </div>
       </DialogContent>
     </Dialog>
   ) as React.ReactElement | null;

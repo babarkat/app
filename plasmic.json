@@ -45,8 +45,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -104,8 +103,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "xfguyo8p9zs8FxMdioQAoN",
@@ -139,8 +137,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-contentful"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "a3pmZtcpA5asHkNtN3SGoF",
@@ -155,8 +152,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -222,8 +218,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "58GpZjZCWTaJ8AUhpCwt2K",
@@ -245,8 +240,7 @@
           "componentImportPath": "@plasmicpkgs/react-awesome-reveal"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "5dGW8Awro3qq8Hh5MveXLP",
@@ -274,8 +268,7 @@
           "componentImportPath": "@plasmicpkgs/lottie-react"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "mqxdhm5p6WHAt7hW1mdcCX",
@@ -290,8 +283,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -313,8 +305,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "28Ba3BDvRe7EiWdfFNnLB6",
@@ -524,8 +515,7 @@
           "componentImportPath": "@plasmicpkgs/antd/skinny/registerTable"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -553,8 +543,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "9Vr5YWkf3w7jj6SsTcCEta",
@@ -576,8 +565,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -631,8 +619,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1032,8 +1019,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -2927,6 +2913,16 @@
           "id": "cFLeZQ_zS0Lq",
           "name": "LogoApp2SvgIcon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__LogoApp2Svg.tsx"
+        },
+        {
+          "id": "iz020MAneyYf",
+          "name": "Icon158Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon158.tsx"
+        },
+        {
+          "id": "AxDfmqUcf6GF",
+          "name": "Icon159Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon159.tsx"
         }
       ],
       "images": [
@@ -3419,6 +3415,11 @@
           "id": "t6hqSnMKbsxH",
           "name": "logo app (2).svg 2",
           "filePath": "../public/plasmic/babarkat/images/logoApp2Svg2.svg"
+        },
+        {
+          "id": "9bYFwgmb2-qo",
+          "name": "image 84",
+          "filePath": "../public/plasmic/babarkat/images/image84.svg"
         }
       ],
       "indirect": false,
@@ -3514,6 +3515,18 @@
           "name": "Splunk",
           "displayName": "Splunk",
           "componentImportPath": "@/fragment/splunk"
+        },
+        {
+          "id": "Nokeh3Q9IAjV",
+          "name": "SwiperSlider",
+          "displayName": "SwiperSlider",
+          "componentImportPath": "@/components/SwiperSlider"
+        },
+        {
+          "id": "eisuy4UCB7xD",
+          "name": "BackHandler",
+          "displayName": "BackHandler",
+          "componentImportPath": "@/components/BackHandler"
         }
       ],
       "customFunctions": []
@@ -3531,8 +3544,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -3622,8 +3634,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "hjKYmYi6HMwK6TRyk7ew5R",
@@ -3681,8 +3692,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-cms"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "cAAqA2dcbTMWwuLSmjs7ss",
@@ -3697,8 +3707,7 @@
       "globalContextsFilePath": "",
       "splitsProviderFilePath": "",
       "codeComponents": [],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
@@ -3906,8 +3915,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {

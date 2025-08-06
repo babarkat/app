@@ -302,11 +302,7 @@ function PlasmicEditpass__RenderFunc(props: {
         sty.header
       )}
     >
-      <Stack__
-        as={"div"}
-        hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__yBtfW)}
-      >
+      <div className={classNames(projectcss.all, sty.freeBox__yBtfW)}>
         <div className={classNames(projectcss.all, sty.freeBox___79Rdp)}>
           <div
             className={classNames(
@@ -1012,7 +1008,7 @@ function PlasmicEditpass__RenderFunc(props: {
             {"\u062a\u0627\u06cc\u06cc\u062f"}
           </div>
         </Button>
-      </Stack__>
+      </div>
     </div>
   ) as React.ReactElement | null;
 }

@@ -435,11 +435,7 @@ function PlasmicProfile__RenderFunc(props: {
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox__syWy2)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__pfbLk)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__pfbLk)}>
               <GroupSvgIcon
                 className={classNames(projectcss.all, sty.svg__mlhA)}
                 role={"img"}
@@ -539,9 +535,7 @@ function PlasmicProfile__RenderFunc(props: {
                   const currentItem = __plasmic_item_0;
                   const currentIndex = __plasmic_idx_0;
                   return (
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox___62KC)}
                       key={currentIndex}
                     >
@@ -608,15 +602,11 @@ function PlasmicProfile__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                    </Stack__>
+                    </div>
                   );
                 })}
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__rWdpk)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__rWdpk)}>
                 <Button
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
@@ -753,8 +743,8 @@ function PlasmicProfile__RenderFunc(props: {
                     "\u06a9\u0633\u0631 \u0627\u0632 \u0645\u0648\u062c\u0648\u062f\u06cc"
                   }
                 </Button>
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
           </div>
           <section
             data-plasmic-name={"section"}
@@ -870,11 +860,7 @@ function PlasmicProfile__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__xsLqF)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__xsLqF)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1517,7 +1503,7 @@ function PlasmicProfile__RenderFunc(props: {
                   }
                 </div>
               </Button>
-            </Stack__>
+            </div>
           </AntdModal>
           <AntdModal
             data-plasmic-name={"remove"}
@@ -1566,11 +1552,7 @@ function PlasmicProfile__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_nSD-Uq41os4g"]]: true })}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___8MPoO)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___8MPoO)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -2217,7 +2199,7 @@ function PlasmicProfile__RenderFunc(props: {
                   }
                 </div>
               </Button>
-            </Stack__>
+            </div>
           </AntdModal>
         </div>
       </div>

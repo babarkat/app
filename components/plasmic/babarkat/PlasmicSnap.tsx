@@ -955,11 +955,9 @@ function PlasmicSnap__RenderFunc(props: {
                 effect={"fade"}
                 triggerOnce={true}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.wallet, {
                     [sty.walletstepscharg_step3]: hasVariant(
                       $state,
@@ -1075,9 +1073,7 @@ function PlasmicSnap__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__k1Kvz, {
                       [sty.freeBoxstepscharg_step3__k1KvZzZ317]: hasVariant(
                         $state,
@@ -1297,7 +1293,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         </div>
                       ) : null}
                     </div>
-                  </Stack__>
+                  </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox___2Jf0J)}
                   >
@@ -1553,7 +1549,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       ])}
                     />
                   ) : null}
-                </Stack__>
+                </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox___3KmGp, {
                     [sty.freeBoxstepscharg_step3___3KmGPzZ317]: hasVariant(
@@ -1574,11 +1570,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
                       : "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."}
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators"}
                     data-plasmic-override={overrides.operators}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators)}
                   >
                     {(_par =>
@@ -1775,7 +1769,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
                 {false ? (
                   <div
@@ -1805,11 +1799,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                         : ""}
                     </div>
-                    <Stack__
-                      as={"div"}
+                    <div
                       data-plasmic-name={"operators3"}
                       data-plasmic-override={overrides.operators3}
-                      hasGap={true}
                       className={classNames(projectcss.all, sty.operators3, {
                         [sty.operators3stepscharg_step3]: hasVariant(
                           $state,
@@ -2007,7 +1999,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           );
                         })();
                       })}
-                    </Stack__>
+                    </div>
                   </div>
                 ) : null}
                 <div
@@ -2037,11 +2029,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                       : "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"}
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators4"}
                     data-plasmic-override={overrides.operators4}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators4, {
                       [sty.operators4stepscharg_step3]: hasVariant(
                         $state,
@@ -2241,11 +2231,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox___3UNf, {
                     [sty.freeBoxstepscharg_step3___3UNfzZ317]: hasVariant(
                       $state,
@@ -2809,7 +2797,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       />
                     </div>
                   ) : null}
-                </Stack__>
+                </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__hfu8C, {
                     [sty.freeBoxstepscharg_step3__hfu8CzZ317]: hasVariant(
@@ -2958,9 +2946,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   )
                 })}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__wmaIu, {
                     [sty.freeBoxstepscharg_step3__wmaIuzZ317]: hasVariant(
                       $state,
@@ -3555,7 +3541,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
                     </div>
                   ) : null}
-                </Stack__>
+                </div>
               </section>
               <AntdModal
                 data-plasmic-name={"modal"}

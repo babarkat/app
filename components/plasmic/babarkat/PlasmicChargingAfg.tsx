@@ -1029,11 +1029,9 @@ function PlasmicChargingAfg__RenderFunc(props: {
                 }
                 triggerOnce={true}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.wallet, {
                     [sty.walletstepscharg_step2]: hasVariant(
                       $state,
@@ -1243,9 +1241,7 @@ function PlasmicChargingAfg__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__vlQCm, {
                       [sty.freeBoxstepscharg_step2__vlQCm1Oc4H]: hasVariant(
                         $state,
@@ -1538,7 +1534,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         </div>
                       ) : null}
                     </div>
-                  </Stack__>
+                  </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__zHIi4, {
                       [sty.freeBoxstepscharg_step2__zHIi41Oc4H]: hasVariant(
@@ -1893,7 +1889,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u062e\u0648\u062f \u0631\u0627 \u0628\u062f\u0648\u0646 \u0635\u0641\u0631 \u0627\u0628\u062a\u062f\u0627\u06cc \u0634\u0645\u0627\u0631\u0647 \u0648 \u0628\u062f\u0648\u0646 \u06a9\u062f \u06a9\u0634\u0648\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f. \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0645\u062b\u0627\u0644: 712345678"
                     }
                   </div>
-                </Stack__>
+                </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__mrHvi, {
                     [sty.freeBoxstepscharg_step2__mrHvi1Oc4H]: hasVariant(
@@ -1926,11 +1922,9 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
                       : "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."}
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators"}
                     data-plasmic-override={overrides.operators}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators, {
                       [sty.operatorsstepscharg_step2]: hasVariant(
                         $state,
@@ -2133,7 +2127,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
                 {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
                   <div
@@ -2175,11 +2169,9 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u0627\u0641\u063a\u0627\u0646\u06cc)"
                         : ""}
                     </div>
-                    <Stack__
-                      as={"div"}
+                    <div
                       data-plasmic-name={"operators3"}
                       data-plasmic-override={overrides.operators3}
-                      hasGap={true}
                       className={classNames(projectcss.all, sty.operators3, {
                         [sty.operators3stepscharg_step2]: hasVariant(
                           $state,
@@ -2448,7 +2440,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                           );
                         })();
                       })}
-                    </Stack__>
+                    </div>
                   </div>
                 ) : null}
                 {(
@@ -2502,11 +2494,9 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         ? "\u0646\u0648\u0639 \u0634\u0627\u0631\u0698 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
                         : "\u0646\u0648\u0639 \u0634\u0627\u0631\u0698 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."}
                     </div>
-                    <Stack__
-                      as={"div"}
+                    <div
                       data-plasmic-name={"chargeType"}
                       data-plasmic-override={overrides.chargeType}
-                      hasGap={true}
                       className={classNames(projectcss.all, sty.chargeType)}
                     >
                       {(_par =>
@@ -2724,12 +2714,10 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                           );
                         })();
                       })}
-                    </Stack__>
+                    </div>
                   </div>
                 ) : null}
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__vz63N, {
                     [sty.freeBoxstepscharg_step2__vz63N1Oc4H]: hasVariant(
                       $state,
@@ -3306,7 +3294,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       />
                     </div>
                   ) : null}
-                </Stack__>
+                </div>
               </Reveal>
               <section
                 className={classNames(projectcss.all, sty.section__yrb1V, {
@@ -3317,9 +3305,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                   )
                 })}
               >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__bxLmV, {
                     [sty.freeBoxstepscharg_step2__bxLmV1Oc4H]: hasVariant(
                       $state,
@@ -3947,7 +3933,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
                     </div>
                   ) : null}
-                </Stack__>
+                </div>
               </section>
               <AntdModal
                 data-plasmic-name={"modal"}
@@ -4991,6 +4977,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                 "data"
               ]).apply(null, eventArgs);
             }}
+            shouldFetch={true}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
 
@@ -5045,6 +5032,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                 eventArgs
               );
             }}
+            shouldFetch={true}
             url={
               hasVariant($state, "stepscharg", "step3")
                 ? "https://n8n.babarkat.com/webhook/exchangeRate"

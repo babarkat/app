@@ -490,11 +490,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
           )}
         >
           <div className={classNames(projectcss.all, sty.freeBox___7JFsf)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__fRzCf)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__fRzCf)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -970,7 +966,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                   }
                 </div>
               </Button>
-            </Stack__>
+            </div>
           </div>
           <section
             data-plasmic-name={"section"}
@@ -1088,11 +1084,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___9QLlB)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox___9QLlB)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1353,7 +1345,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                   }
                 </div>
               </Button>
-            </Stack__>
+            </div>
           </AntdModal>
           <AntdModal
             data-plasmic-name={"remove"}
@@ -1402,11 +1394,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_rgnVh23HrN4M"]]: true })}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__nyx2J)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__nyx2J)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -1668,7 +1656,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
                   }
                 </div>
               </Button>
-            </Stack__>
+            </div>
           </AntdModal>
           <SideEffect
             data-plasmic-name={"sideEffect"}

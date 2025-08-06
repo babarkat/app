@@ -912,11 +912,9 @@ function PlasmicCall__RenderFunc(props: {
               effect={"fade"}
               triggerOnce={true}
             >
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"wallet"}
                 data-plasmic-override={overrides.wallet}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.wallet, {
                   [sty.walletsteps2_step2]: hasVariant(
                     $state,
@@ -1113,9 +1111,7 @@ function PlasmicCall__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__pnGc, {
                     [sty.freeBoxsteps2_step2__pnGcWr9V]: hasVariant(
                       $state,
@@ -1393,7 +1389,7 @@ function PlasmicCall__RenderFunc(props: {
                       )}
                     </div>
                   </div>
-                </Stack__>
+                </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__woMUy, {
                     [sty.freeBoxsteps2_step2__woMUyWr9V]: hasVariant(
@@ -1705,7 +1701,7 @@ function PlasmicCall__RenderFunc(props: {
                     })()}
                   />
                 </div>
-              </Stack__>
+              </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__ynpZm, {
                   [sty.freeBoxsteps2_step2__ynpZmWr9V]: hasVariant(
@@ -1731,11 +1727,9 @@ function PlasmicCall__RenderFunc(props: {
                     ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
                     : "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."}
                 </div>
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"operators"}
                   data-plasmic-override={overrides.operators}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.operators)}
                 >
                   {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -1921,7 +1915,7 @@ function PlasmicCall__RenderFunc(props: {
                       );
                     })();
                   })}
-                </Stack__>
+                </div>
               </div>
               {(
                 hasVariant($state, "steps2", "step3")
@@ -1974,11 +1968,9 @@ function PlasmicCall__RenderFunc(props: {
                       ? "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"
                       : "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"}
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"chargeType"}
                     data-plasmic-override={overrides.chargeType}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.chargeType, {
                       [sty.chargeTypesteps2_step2]: hasVariant(
                         $state,
@@ -2160,7 +2152,7 @@ function PlasmicCall__RenderFunc(props: {
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
               ) : null}
               {(hasVariant($state, "steps2", "step2") ? true : false) ? (
@@ -2195,9 +2187,7 @@ function PlasmicCall__RenderFunc(props: {
                           }
                         )}
                       >
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__y8CVc,
@@ -2210,9 +2200,7 @@ function PlasmicCall__RenderFunc(props: {
                             }
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox___19D9P,
@@ -2419,8 +2407,8 @@ function PlasmicCall__RenderFunc(props: {
                                 }
                               )}
                             />
-                          </Stack__>
-                        </Stack__>
+                          </div>
+                        </div>
                         <div
                           className={classNames(
                             projectcss.all,
@@ -2483,9 +2471,7 @@ function PlasmicCall__RenderFunc(props: {
                                   }
                                 })()}
                               >
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox___4FoK0,
@@ -2882,7 +2868,7 @@ function PlasmicCall__RenderFunc(props: {
                                       </div>
                                     );
                                   })}
-                                </Stack__>
+                                </div>
                               </TabContent>
                             );
                           })}
@@ -2967,6 +2953,7 @@ function PlasmicCall__RenderFunc(props: {
                   }
                 }).apply(null, eventArgs);
               }}
+              shouldFetch={true}
               url={"https://n8n.staas.ir/webhook/babarkat/service"}
             />
 
@@ -3387,11 +3374,9 @@ function PlasmicCall__RenderFunc(props: {
                     "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:"
                   }
                 </div>
-                <Stack__
-                  as={"ul"}
+                <ul
                   data-plasmic-name={"ul"}
                   data-plasmic-override={overrides.ul}
-                  hasGap={true}
                   className={classNames(projectcss.all, projectcss.ul, sty.ul)}
                 >
                   <li
@@ -3498,7 +3483,7 @@ function PlasmicCall__RenderFunc(props: {
                       </div>
                     </div>
                   </li>
-                </Stack__>
+                </ul>
                 <Button
                   data-plasmic-name={"button3"}
                   data-plasmic-override={overrides.button3}
@@ -3569,9 +3554,7 @@ function PlasmicCall__RenderFunc(props: {
               </div>
             </AntdModal>
             {(hasVariant($state, "steps2", "step3") ? true : false) ? (
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__fPyHm, {
                   [sty.freeBoxsteps2_step3__fPyHmVqCA]: hasVariant(
                     $state,
@@ -4329,7 +4312,7 @@ function PlasmicCall__RenderFunc(props: {
                     </div>
                   </div>
                 ) : null}
-              </Stack__>
+              </div>
             ) : null}
             <AntdModal
               data-plasmic-name={"modal3"}
@@ -5064,6 +5047,7 @@ function PlasmicCall__RenderFunc(props: {
                 "data"
               ]).apply(null, eventArgs);
             }}
+            shouldFetch={true}
             url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
           />
 

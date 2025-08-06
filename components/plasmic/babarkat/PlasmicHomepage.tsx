@@ -71,6 +71,7 @@ import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdTooltip } from "@plasmicpkgs/antd5/skinny/registerTooltip";
+import { SwiperSlider } from "@/components/SwiperSlider"; // plasmic-import: Nokeh3Q9IAjV/codeComponent
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
@@ -106,7 +107,6 @@ import Icon73Icon from "./icons/PlasmicIcon__Icon73"; // plasmic-import: MlBQyep
 import Icon19Icon from "./icons/PlasmicIcon__Icon19"; // plasmic-import: 4JXM96MZFGZn/icon
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
-import Icon133Icon from "./icons/PlasmicIcon__Icon133"; // plasmic-import: LREUbUcfpDpH/icon
 import Icon83Icon from "./icons/PlasmicIcon__Icon83"; // plasmic-import: IKXgjK7dwscd/icon
 import Icon80Icon from "./icons/PlasmicIcon__Icon80"; // plasmic-import: Z52gdMpS8UCn/icon
 import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mgaWEpMQ/icon
@@ -156,6 +156,7 @@ export type PlasmicHomepage__OverridesType = {
   button2?: Flex__<typeof Button>;
   wallet?: Flex__<"div">;
   tooltip?: Flex__<typeof AntdTooltip>;
+  swiperSlider?: Flex__<typeof SwiperSlider>;
   swiperContainer?: Flex__<"div">;
   swiperWrapper?: Flex__<"div">;
   swiperSlide?: Flex__<"div">;
@@ -609,6 +610,62 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "swiperSlider.activeSlideIndex",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+      },
+      {
+        path: "swiperSlider.lockSlides",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "ad",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            background: "linear-gradient(135deg, #102542, #1b3b6f)",
+            text: "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646",
+            action: "/charging-2",
+            image:
+              "https://app.babarkat.com/plasmic/babarkat/images/Rocket.png",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image64.svg"
+          },
+          {
+            background: "linear-gradient(135deg, #0b5345, #117864)",
+            text: "\u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u06cc \u0642\u0628\u0636",
+            action: "/Bill",
+            image:
+              "https://app.babarkat.com/plasmic/babarkat/images/Untitled-2.png",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image66.svg"
+          },
+          {
+            background: "linear-gradient(135deg, #123c69, #1b6ca8)",
+            text: "\u062e\u0631\u06cc\u062f \u0641\u0648\u0631\u06cc UC \u067e\u0627\u0628\u062c\u06cc",
+            action: "/pubg/?type=UC",
+            image: "https://app.babarkat.com/plasmic/babarkat/images/pubg.png",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image59.svg"
+          },
+          {
+            background: "linear-gradient(135deg, #1a3c40, #16697a)",
+            text: "\u0634\u0627\u0631\u0698 \u062a\u0645\u0627\u0645 \u0627\u067e\u0631\u0627\u062a\u0648\u0631\u0647\u0627",
+            action: "/charging",
+            image: "https://app.babarkat.com/plasmic/babarkat/images/bb.svg",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image62.svg"
+          },
+          {
+            background: "linear-gradient(135deg, #153243, #284b63)",
+            text: "\u0628\u0633\u062a\u0647 \u0645\u06a9\u0627\u0644\u0645\u0647 \u0648 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646",
+            action: "/package-AFG",
+            image: "https://app.babarkat.com/plasmic/babarkat/images/aa.svg",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image100.svg"
+          }
+        ]
       }
     ],
     [$props, $ctx, $refs]
@@ -767,9 +824,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__xpOpT)}
                     >
                       <PlasmicImg__
@@ -885,7 +940,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           {"\u062a\u0644\u0627\u0634 \u0645\u062c\u062f\u062f"}
                         </div>
                       </Button>
-                    </Stack__>
+                    </div>
                   ) : null
                 }
                 loadingDisplay={
@@ -899,11 +954,9 @@ function PlasmicHomepage__RenderFunc(props: {
                         ``
                       )}
                     >
-                      <Stack__
-                        as={"div"}
+                      <div
                         data-plasmic-name={"wallet4"}
                         data-plasmic-override={overrides.wallet4}
-                        hasGap={true}
                         className={classNames(
                           projectcss.all,
                           sty.wallet4,
@@ -911,16 +964,12 @@ function PlasmicHomepage__RenderFunc(props: {
                         )}
                       />
                     </div>
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__dvUVm)}
                     >
-                      <Stack__
-                        as={"div"}
+                      <div
                         data-plasmic-name={"services5"}
                         data-plasmic-override={overrides.services5}
-                        hasGap={true}
                         className={classNames(projectcss.all, sty.services5)}
                       >
                         <div
@@ -942,12 +991,10 @@ function PlasmicHomepage__RenderFunc(props: {
                             "shimmer"
                           )}
                         />
-                      </Stack__>
-                      <Stack__
-                        as={"div"}
+                      </div>
+                      <div
                         data-plasmic-name={"services6"}
                         data-plasmic-override={overrides.services6}
-                        hasGap={true}
                         className={classNames(projectcss.all, sty.services6)}
                       >
                         <div
@@ -969,12 +1016,10 @@ function PlasmicHomepage__RenderFunc(props: {
                             "shimmer"
                           )}
                         />
-                      </Stack__>
-                      <Stack__
-                        as={"div"}
+                      </div>
+                      <div
                         data-plasmic-name={"services7"}
                         data-plasmic-override={overrides.services7}
-                        hasGap={true}
                         className={classNames(projectcss.all, sty.services7)}
                       >
                         <div
@@ -996,15 +1041,13 @@ function PlasmicHomepage__RenderFunc(props: {
                             "shimmer"
                           )}
                         />
-                      </Stack__>
-                      <Stack__
-                        as={"div"}
+                      </div>
+                      <div
                         data-plasmic-name={"services8"}
                         data-plasmic-override={overrides.services8}
-                        hasGap={true}
                         className={classNames(projectcss.all, sty.services8)}
                       />
-                    </Stack__>
+                    </div>
                   </div>
                 }
                 method={"GET"}
@@ -1146,6 +1189,19 @@ function PlasmicHomepage__RenderFunc(props: {
                     throw e;
                   }
                 })()}
+                shouldFetch={(() => {
+                  try {
+                    return $state.token != "";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })()}
                 url={"https://n8n.babarkat.com/webhook/Babarkat/login"}
               >
                 {(() => {
@@ -1161,9 +1217,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__tI9V)}
                   >
                     <PlasmicImg__
@@ -1274,7 +1328,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         {"\u062a\u0644\u0627\u0634 \u0645\u062c\u062f\u062f"}
                       </div>
                     </Button>
-                  </Stack__>
+                  </div>
                 ) : null}
                 {(() => {
                   try {
@@ -1292,9 +1346,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__kT9W)}
                   >
                     <div
@@ -1547,11 +1599,9 @@ function PlasmicHomepage__RenderFunc(props: {
                         const currentItem = __plasmic_item_0;
                         const currentIndex = __plasmic_idx_0;
                         return (
-                          <Stack__
-                            as={"div"}
+                          <div
                             data-plasmic-name={"wallet"}
                             data-plasmic-override={overrides.wallet}
-                            hasGap={true}
                             className={classNames(
                               projectcss.all,
                               sty.wallet,
@@ -1578,17 +1628,13 @@ function PlasmicHomepage__RenderFunc(props: {
                               }
                             })()}
                           >
-                            <Stack__
-                              as={"div"}
-                              hasGap={true}
+                            <div
                               className={classNames(
                                 projectcss.all,
                                 sty.freeBox__i7Hyk
                               )}
                             >
-                              <Stack__
-                                as={"div"}
-                                hasGap={true}
+                              <div
                                 className={classNames(
                                   projectcss.all,
                                   sty.freeBox__e2Zg
@@ -1632,7 +1678,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                     })()}
                                   </React.Fragment>
                                 </div>
-                              </Stack__>
+                              </div>
                               <div
                                 className={classNames(
                                   projectcss.all,
@@ -1685,7 +1731,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   </React.Fragment>
                                 )}
                               </div>
-                            </Stack__>
+                            </div>
                             <div
                               className={classNames(
                                 projectcss.all,
@@ -1749,7 +1795,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               )}
                               role={"img"}
                             />
-                          </Stack__>
+                          </div>
                         );
                       })}
                       {(
@@ -1870,138 +1916,258 @@ function PlasmicHomepage__RenderFunc(props: {
                           "swiper-wrapper"
                         )}
                       >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__hd0VR
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["goToChargingAfg"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    destination: `/charging-2`
-                                  };
-                                  return (({ destination }) => {
-                                    if (
-                                      typeof destination === "string" &&
-                                      destination.startsWith("#")
-                                    ) {
-                                      document
-                                        .getElementById(destination.substr(1))
-                                        .scrollIntoView({ behavior: "smooth" });
-                                    } else {
-                                      __nextRouter?.push(destination);
-                                    }
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["goToChargingAfg"] != null &&
-                              typeof $steps["goToChargingAfg"] === "object" &&
-                              typeof $steps["goToChargingAfg"].then ===
-                                "function"
-                            ) {
-                              $steps["goToChargingAfg"] = await $steps[
-                                "goToChargingAfg"
-                              ];
-                            }
+                        <SwiperSlider
+                          data-plasmic-name={"swiperSlider"}
+                          data-plasmic-override={overrides.swiperSlider}
+                          activeBulletColor={"#ffffff"}
+                          activeSlideIndex={generateStateValueProp($state, [
+                            "swiperSlider",
+                            "activeSlideIndex"
+                          ])}
+                          autoplay={true}
+                          autoplayDelay={5000}
+                          bulletColor={"#888888"}
+                          className={
+                            classNames({ [sty["pcls_LHKxAQWUm4hx"]]: true }) +
+                            " " +
+                            classNames("__wab_instance", sty.swiperSlider)
+                          }
+                          disablePaginationClick={false}
+                          lockSlides={generateStateValueProp($state, [
+                            "swiperSlider",
+                            "lockSlides"
+                          ])}
+                          loop={true}
+                          onActiveSlideIndexChange={async (
+                            ...eventArgs: any
+                          ) => {
+                            generateStateOnChangeProp($state, [
+                              "swiperSlider",
+                              "activeSlideIndex"
+                            ]).apply(null, eventArgs);
                           }}
-                          style={(() => {
-                            try {
-                              return { overflow: "hidden" };
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()}
+                          onLockSlidesChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "swiperSlider",
+                              "lockSlides"
+                            ]).apply(null, eventArgs);
+                          }}
+                          showNavigationButtons={false}
+                          showPagination={true}
                         >
-                          <Icon133Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__ufLi
-                            )}
-                            role={"img"}
-                          />
+                          {(_par =>
+                            !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                            (() => {
+                              try {
+                                return $state.ad;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
+                              }
+                            })()
+                          ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                            const currentItem = __plasmic_item_0;
+                            const currentIndex = __plasmic_idx_0;
+                            return (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__hd0VR
+                                )}
+                                key={currentIndex}
+                                onClick={async event => {
+                                  const $steps = {};
 
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jHsVn
-                            )}
-                          >
-                            {
-                              "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639 \u0648 \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631"
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__jNwFy
-                            )}
-                          >
-                            <PlasmicImg__
-                              alt={""}
-                              className={classNames(sty.img__lxzwR)}
-                              displayHeight={
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? "40px"
-                                  : "60px"
-                              }
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? "40px"
-                                  : "60px"
-                              }
-                              loading={"lazy"}
-                              src={
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? {
-                                      src: "/plasmic/babarkat/images/image64.svg",
-                                      fullWidth: 24,
-                                      fullHeight: 24,
-                                      aspectRatio: 1
+                                  $steps["goToPage"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          destination: (() => {
+                                            try {
+                                              return currentItem.action;
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return `/charging-2`;
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        };
+                                        return (({ destination }) => {
+                                          if (
+                                            typeof destination === "string" &&
+                                            destination.startsWith("#")
+                                          ) {
+                                            document
+                                              .getElementById(
+                                                destination.substr(1)
+                                              )
+                                              .scrollIntoView({
+                                                behavior: "smooth"
+                                              });
+                                          } else {
+                                            __nextRouter?.push(destination);
+                                          }
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["goToPage"] != null &&
+                                    typeof $steps["goToPage"] === "object" &&
+                                    typeof $steps["goToPage"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["goToPage"] = await $steps[
+                                      "goToPage"
+                                    ];
+                                  }
+                                }}
+                                style={(() => {
+                                  try {
+                                    return {
+                                      overflow: "hidden",
+                                      background: currentItem.background
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  : {
-                                      src: "/plasmic/babarkat/images/image64.svg",
-                                      fullWidth: 24,
-                                      fullHeight: 24,
-                                      aspectRatio: 1
+                                    throw e;
+                                  }
+                                })()}
+                              >
+                                <PlasmicImg__
+                                  alt={""}
+                                  className={classNames(sty.img___2D27B)}
+                                  displayHeight={
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "40px"
+                                      : "50px"
+                                  }
+                                  displayMaxHeight={"none"}
+                                  displayMaxWidth={"100%"}
+                                  displayMinHeight={"0"}
+                                  displayMinWidth={"0"}
+                                  displayWidth={
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "40px"
+                                      : "50px"
+                                  }
+                                  height={``}
+                                  loading={"lazy"}
+                                  src={(() => {
+                                    try {
+                                      return currentItem.icon;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
                                     }
-                              }
-                            />
-                          </div>
-                        </div>
+                                  })()}
+                                  width={``}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__jHsVn
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return currentItem.text;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646 \u2013 \u0633\u0631\u06cc\u0639 \u0648 \u0628\u062f\u0648\u0646 \u0627\u0646\u062a\u0638\u0627\u0631";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                                <PlasmicImg__
+                                  alt={""}
+                                  className={classNames(sty.img__ho2Yx)}
+                                  displayHeight={"100%"}
+                                  displayMaxHeight={"none"}
+                                  displayMaxWidth={"100%"}
+                                  displayMinHeight={"0"}
+                                  displayMinWidth={"0"}
+                                  displayWidth={"auto"}
+                                  loading={"lazy"}
+                                  src={{
+                                    src: "/plasmic/babarkat/images/image84.svg",
+                                    fullWidth: 382,
+                                    fullHeight: 341,
+                                    aspectRatio: undefined
+                                  }}
+                                />
+
+                                <PlasmicImg__
+                                  alt={""}
+                                  className={classNames(sty.img__umUbI)}
+                                  displayHeight={"130%"}
+                                  displayMaxHeight={"none"}
+                                  displayMaxWidth={"100%"}
+                                  displayMinHeight={"0"}
+                                  displayMinWidth={"0"}
+                                  displayWidth={"auto"}
+                                  loading={"lazy"}
+                                  src={(() => {
+                                    try {
+                                      return currentItem.image;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                />
+                              </div>
+                            );
+                          })}
+                        </SwiperSlider>
                       </div>
                     </div>
-                    <Stack__
-                      as={"div"}
+                    <div
                       data-plasmic-name={"swiperContainer"}
                       data-plasmic-override={overrides.swiperContainer}
-                      hasGap={true}
                       className={classNames(
                         projectcss.all,
                         sty.swiperContainer,
@@ -3092,14 +3258,12 @@ function PlasmicHomepage__RenderFunc(props: {
                           </div>
                         </div>
                       </div>
-                    </Stack__>
-                  </Stack__>
+                    </div>
+                  </div>
                 ) : null}
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"services4"}
                   data-plasmic-override={overrides.services4}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.services4)}
                 />
               </ApiRequest>
@@ -3146,11 +3310,9 @@ function PlasmicHomepage__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_oMduPsUVEWfB"]]: true })}
           >
-            <Stack__
-              as={"div"}
+            <div
               data-plasmic-name={"wallet2"}
               data-plasmic-override={overrides.wallet2}
-              hasGap={true}
               className={classNames(projectcss.all, sty.wallet2)}
             >
               <div
@@ -3225,11 +3387,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   </React.Fragment>
                 )}
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__aLGe)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__aLGe)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -3258,14 +3416,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   type={"text"}
                   value={generateStateValueProp($state, ["input", "value"])}
                 />
-              </Stack__>
-            </Stack__>
+              </div>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox___8W95F)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__km6Os)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__km6Os)}>
                 <div className={classNames(projectcss.all, sty.freeBox__rxRjC)}>
                   <div
                     className={classNames(
@@ -3278,11 +3432,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                     }
                   </div>
-                  <Stack__
-                    as={"div"}
+                  <div
                     data-plasmic-name={"operators4"}
                     data-plasmic-override={overrides.operators4}
-                    hasGap={true}
                     className={classNames(projectcss.all, sty.operators4)}
                   >
                     {(_par =>
@@ -3458,7 +3610,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         );
                       })();
                     })}
-                  </Stack__>
+                  </div>
                 </div>
                 <div
                   className={classNames(
@@ -3471,11 +3623,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__wDgHa)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__wDgHa)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -3544,8 +3692,8 @@ function PlasmicHomepage__RenderFunc(props: {
                       role={"img"}
                     />
                   </div>
-                </Stack__>
-              </Stack__>
+                </div>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox__cUzTk)}>
                 <Button
                   data-plasmic-name={"button3"}
@@ -3681,11 +3829,9 @@ function PlasmicHomepage__RenderFunc(props: {
                   "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
-              <Stack__
-                as={"div"}
+              <div
                 data-plasmic-name={"wallet3"}
                 data-plasmic-override={overrides.wallet3}
-                hasGap={true}
                 className={classNames(projectcss.all, sty.wallet3)}
               >
                 <BabarkatlogoCopy2SvgIcon
@@ -3748,7 +3894,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     </React.Fragment>
                   )}
                 </div>
-              </Stack__>
+              </div>
               <div className={classNames(projectcss.all, sty.freeBox___6McQj)}>
                 <div className={classNames(projectcss.all, sty.freeBox__bfJ7G)}>
                   <div
@@ -3784,9 +3930,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__t0OWz)}
                   >
                     <div
@@ -3934,7 +4078,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         {"6748  0685  2910  5022"}
                       </div>
                     </div>
-                  </Stack__>
+                  </div>
                 </div>
                 <div
                   className={classNames(
@@ -3947,11 +4091,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__xUpdV)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__xUpdV)}>
                   <div
                     className={classNames(
                       projectcss.all,
@@ -4020,15 +4160,13 @@ function PlasmicHomepage__RenderFunc(props: {
                       role={"img"}
                     />
                   </div>
-                </Stack__>
+                </div>
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? true
                     : false
                 ) ? (
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__q1Z2X)}
                   />
                 ) : null}
@@ -4068,11 +4206,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 : undefined
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__lJ22O)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__lJ22O)}>
               <div
                 className={classNames(
                   projectcss.all,
@@ -13512,7 +13646,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.lottie__n3NIh)}
                 />
               </div>
-            </Stack__>
+            </div>
           </AntdModal>
           <Timer
             data-plasmic-name={"timer"}
@@ -13665,9 +13799,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 {...child$Props}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__e0WeQ)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__yZ4WD)}
                   >
                     <div
@@ -14481,7 +14613,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         {"\u062a\u0627\u06cc\u06cc\u062f"}
                       </div>
                     </Button>
-                  </Stack__>
+                  </div>
                 </div>
               </AntdModal>
             );
@@ -14636,11 +14768,9 @@ function PlasmicHomepage__RenderFunc(props: {
                 data-plasmic-override={overrides.footer}
                 className={classNames(projectcss.all, sty.footer)}
               >
-                <Stack__
-                  as={"div"}
+                <div
                   data-plasmic-name={"snapp2"}
                   data-plasmic-override={overrides.snapp2}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.snapp2)}
                 >
                   <div
@@ -14662,12 +14792,10 @@ function PlasmicHomepage__RenderFunc(props: {
                   >
                     {"\u062e\u0627\u0646\u0647"}
                   </div>
-                </Stack__>
-                <Stack__
-                  as={"div"}
+                </div>
+                <div
                   data-plasmic-name={"charge2"}
                   data-plasmic-override={overrides.charge2}
-                  hasGap={true}
                   className={classNames(projectcss.all, sty.charge2)}
                   onClick={async event => {
                     const $steps = {};
@@ -14722,7 +14850,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   >
                     {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </section>
@@ -14772,16 +14900,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__bYSyC)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__n3J8O)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox__bYSyC)}>
+              <div className={classNames(projectcss.all, sty.freeBox__n3J8O)}>
                 <Icon78Icon
                   className={classNames(projectcss.all, sty.svg__uun5N)}
                   role={"img"}
@@ -14798,7 +14918,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     "\u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc"
                   }
                 </div>
-              </Stack__>
+              </div>
               <Icon89Icon
                 className={classNames(projectcss.all, sty.svg__sMzIn)}
                 onClick={async event => {
@@ -14842,7 +14962,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__tSnU0)}>
               <div
                 data-plasmic-name={"comingSoon5"}
@@ -15285,16 +15405,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__xoFEm)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__y8Z0)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox__xoFEm)}>
+              <div className={classNames(projectcss.all, sty.freeBox__y8Z0)}>
                 <Icon78Icon
                   className={classNames(projectcss.all, sty.svg__e4D9E)}
                   role={"img"}
@@ -15309,7 +15421,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {"\u062e\u062f\u0645\u0627\u062a \u062a\u0645\u0627\u0633"}
                 </div>
-              </Stack__>
+              </div>
               <Icon89Icon
                 className={classNames(projectcss.all, sty.svg__i64TS)}
                 onClick={async event => {
@@ -15353,7 +15465,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__vuFwp)}>
               <div
                 data-plasmic-name={"comingSoon12"}
@@ -15647,16 +15759,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 : "700"
             }
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__zb8Jh)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__dwMeN)}
-              >
+            <div className={classNames(projectcss.all, sty.freeBox__zb8Jh)}>
+              <div className={classNames(projectcss.all, sty.freeBox__dwMeN)}>
                 <Icon78Icon
                   className={classNames(projectcss.all, sty.svg___3Rvxb)}
                   role={"img"}
@@ -15671,7 +15775,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {"\u062e\u062f\u0645\u0627\u062a \u062a\u0645\u0627\u0633"}
                 </div>
-              </Stack__>
+              </div>
               <Icon89Icon
                 className={classNames(projectcss.all, sty.svg__ky26U)}
                 onClick={async event => {
@@ -15715,7 +15819,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }}
                 role={"img"}
               />
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__nsz7)}>
               <div
                 data-plasmic-name={"comingSoon14"}
@@ -15989,6 +16093,7 @@ const PlasmicDescendants = {
     "button2",
     "wallet",
     "tooltip",
+    "swiperSlider",
     "swiperContainer",
     "swiperWrapper",
     "swiperSlide",
@@ -16057,6 +16162,7 @@ const PlasmicDescendants = {
     "button2",
     "wallet",
     "tooltip",
+    "swiperSlider",
     "swiperContainer",
     "swiperWrapper",
     "swiperSlide",
@@ -16087,6 +16193,7 @@ const PlasmicDescendants = {
   button2: ["button2"],
   wallet: ["wallet"],
   tooltip: ["tooltip"],
+  swiperSlider: ["swiperSlider"],
   swiperContainer: [
     "swiperContainer",
     "swiperWrapper",
@@ -16204,6 +16311,7 @@ type NodeDefaultElementType = {
   button2: typeof Button;
   wallet: "div";
   tooltip: typeof AntdTooltip;
+  swiperSlider: typeof SwiperSlider;
   swiperContainer: "div";
   swiperWrapper: "div";
   swiperSlide: "div";
@@ -16357,6 +16465,7 @@ export const PlasmicHomepage = Object.assign(
     button2: makeNodeComponent("button2"),
     wallet: makeNodeComponent("wallet"),
     tooltip: makeNodeComponent("tooltip"),
+    swiperSlider: makeNodeComponent("swiperSlider"),
     swiperContainer: makeNodeComponent("swiperContainer"),
     swiperWrapper: makeNodeComponent("swiperWrapper"),
     swiperSlide: makeNodeComponent("swiperSlide"),

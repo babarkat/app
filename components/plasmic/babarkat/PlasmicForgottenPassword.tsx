@@ -824,9 +824,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   }
                 />
               </div>
-              <Stack__
-                as={"div"}
-                hasGap={true}
+              <div
                 className={classNames(projectcss.all, sty.freeBox__siguy, {
                   [sty.freeBoxforgottenPassword__siguyeMJzM]: hasVariant(
                     $state,
@@ -1340,9 +1338,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     role={"img"}
                   />
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
+                <div
                   className={classNames(projectcss.all, sty.freeBox__m9Cur, {
                     [sty.freeBoxunnamedVariant__m9CuRl6NG6]: hasVariant(
                       $state,
@@ -1395,7 +1391,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       "value"
                     ])}
                   />
-                </Stack__>
+                </div>
                 {(
                   hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1775,7 +1771,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   }
                   value={generateStateValueProp($state, ["select", "value"])}
                 />
-              </Stack__>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -4164,9 +4160,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 }
               })()
         ) ? (
-          <Stack__
-            as={"div"}
-            hasGap={true}
+          <div
             className={classNames(projectcss.all, sty.freeBox__hHf9J, {
               [sty.freeBoxunnamedVariant__hHf9Jl6NG6]: hasVariant(
                 $state,
@@ -4198,7 +4192,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 }}
               />
             </div>
-          </Stack__>
+          </div>
         ) : null}
         {false ? (
           <PlasmicImg__
@@ -4258,6 +4252,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               eventArgs
             );
           }}
+          shouldFetch={true}
           url={"/"}
         />
 
