@@ -130,7 +130,6 @@ export type PlasmicLogIn__OverridesType = {
   fragmentInput?: Flex__<typeof Input>;
   select2?: Flex__<typeof AntdSelect>;
   fragmentInput3?: Flex__<typeof Input>;
-  fragmentInput2?: Flex__<typeof Input>;
   timer?: Flex__<typeof Timer>;
   select?: Flex__<typeof AntdSelect>;
   btnNumber?: Flex__<typeof Button>;
@@ -226,12 +225,6 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ``
-      },
-      {
-        path: "fragmentInput2.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "time",
@@ -1660,48 +1653,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   )
                 })}
               >
-                <Input
-                  data-plasmic-name={"fragmentInput2"}
-                  data-plasmic-override={overrides.fragmentInput2}
-                  className={classNames("__wab_instance", sty.fragmentInput2, {
-                    [sty.fragmentInput2group11_code]: hasVariant(
-                      $state,
-                      "group11",
-                      "code"
-                    ),
-                    [sty.fragmentInput2group11_saraf]: hasVariant(
-                      $state,
-                      "group11",
-                      "saraf"
-                    )
-                  })}
-                  disabled={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? false
-                      : undefined
-                  }
-                  onChange={async (...eventArgs: any) => {
-                    generateStateOnChangeProp($state, [
-                      "fragmentInput2",
-                      "value"
-                    ]).apply(null, eventArgs);
-
-                    (async value => {
-                      const $steps = {};
-                    }).apply(null, eventArgs);
-                  }}
-                  placeholder={hasVariant($state, "group11", "code") ? `` : ``}
-                  type={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "tel"
-                      : "number"
-                  }
-                  value={generateStateValueProp($state, [
-                    "fragmentInput2",
-                    "value"
-                  ])}
-                />
-
                 <Embed
                   className={classNames(
                     "__wab_instance",
@@ -5759,7 +5710,6 @@ const PlasmicDescendants = {
     "fragmentInput",
     "select2",
     "fragmentInput3",
-    "fragmentInput2",
     "timer",
     "select",
     "btnNumber",
@@ -5796,7 +5746,6 @@ const PlasmicDescendants = {
     "fragmentInput",
     "select2",
     "fragmentInput3",
-    "fragmentInput2",
     "timer",
     "select",
     "btnNumber",
@@ -5828,7 +5777,6 @@ const PlasmicDescendants = {
   fragmentInput: ["fragmentInput"],
   select2: ["select2"],
   fragmentInput3: ["fragmentInput3"],
-  fragmentInput2: ["fragmentInput2"],
   timer: ["timer"],
   select: ["select"],
   btnNumber: ["btnNumber"],
@@ -5907,7 +5855,6 @@ type NodeDefaultElementType = {
   fragmentInput: typeof Input;
   select2: typeof AntdSelect;
   fragmentInput3: typeof Input;
-  fragmentInput2: typeof Input;
   timer: typeof Timer;
   select: typeof AntdSelect;
   btnNumber: typeof Button;
@@ -6029,7 +5976,6 @@ export const PlasmicLogIn = Object.assign(
     fragmentInput: makeNodeComponent("fragmentInput"),
     select2: makeNodeComponent("select2"),
     fragmentInput3: makeNodeComponent("fragmentInput3"),
-    fragmentInput2: makeNodeComponent("fragmentInput2"),
     timer: makeNodeComponent("timer"),
     select: makeNodeComponent("select"),
     btnNumber: makeNodeComponent("btnNumber"),
