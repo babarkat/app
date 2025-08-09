@@ -219,7 +219,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Etisalat",
             description: "\u0627\u062a\u0635\u0627\u0644\u0627\u062a",
             logoUrl:
-              "https://site-assets.plasmic.app/49c4b9f5e3ace2592fbdbfeba58b7bf7.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/Etisalat.webp",
             codes: ["78", "73"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -233,7 +233,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Roshan",
             description: "\u0631\u0648\u0634\u0646",
             logoUrl:
-              "https://site-assets.plasmic.app/564f6cb5db594588c8728f3987415019.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/Roshan.webp",
             codes: ["72", "79"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -247,7 +247,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "Salam",
             description: "\u0633\u0644\u0627\u0645",
             logoUrl:
-              "https://site-assets.plasmic.app/42c08a31e52cc321ef4bb96d99c60025.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/Salam.webp",
             codes: ["74"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -261,7 +261,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             nameop: "MTN",
             description: "\u0627\u0645.\u062a\u06cc.\u0627\u0646",
             logoUrl:
-              "https://site-assets.plasmic.app/3b99d8471843332dad6da7bd3e878fd4.jpg",
+              "https://app.babarkat.com/plasmic/babarkat/images/MTN.webp",
             codes: ["76", "77"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
@@ -276,7 +276,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
             description:
               "\u0627\u0641\u063a\u0627\u0646 \u0628\u06cc\u0633\u06cc\u0645",
             logoUrl:
-              "https://site-assets.plasmic.app/67ae67ae2c23ec069cd0a518f1e467f7.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/Afghan-Wireless.webp",
             codes: ["70", "71"],
             services: [
               { type: "Call", text: "\u0645\u06a9\u0627\u0644\u0645\u0647" },
