@@ -19,6 +19,9 @@
   align-items: center;
   min-width: 0;
 }
+.freeBoxmore {
+  margin-bottom: var(--token-vAZ8o9ODdwJP);
+}
 .text__weAqf {
   position: relative;
   width: 100%;
@@ -30,6 +33,7 @@
   display: none;
 }
 .textmore__weAqfOk6Rt {
+  color: var(--token-rrSDs4ZUYTcU);
   display: block;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -47,6 +51,7 @@
   min-width: 0;
 }
 .textmore__xHj5NOk6Rt {
+  color: var(--token-rrSDs4ZUYTcU);
   display: block;
 }
 @media (min-width: 0px) and (max-width: 768px) {

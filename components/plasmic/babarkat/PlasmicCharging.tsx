@@ -5348,6 +5348,10 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                             value: $state.userinfo.last_name
                           },
                           {
+                            text: "شماره گیرنده",
+                            value: $state.number
+                          },
+                          {
                             text: "توضیحات",
                             value: `${
                               $state.operators2[$state.operatorselect]

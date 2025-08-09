@@ -615,7 +615,7 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "swiperSlider.activeSlideIndex",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
         path: "swiperSlider.lockSlides",
@@ -641,28 +641,30 @@ function PlasmicHomepage__RenderFunc(props: {
             text: "\u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u06cc \u0642\u0628\u0636",
             action: "/Bill",
             image:
-              "https://app.babarkat.com/plasmic/babarkat/images/Untitled-2.png",
+              "https://app.babarkat.com/plasmic/babarkat/images/charging.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image66.svg"
           },
           {
             background: "linear-gradient(135deg, #123c69, #1b6ca8)",
             text: "\u062e\u0631\u06cc\u062f \u0641\u0648\u0631\u06cc UC \u067e\u0627\u0628\u062c\u06cc",
             action: "/pubg/?type=UC",
-            image: "https://app.babarkat.com/plasmic/babarkat/images/pubg.png",
+            image: "https://app.babarkat.com/plasmic/babarkat/images/pubg.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image59.svg"
           },
           {
             background: "linear-gradient(135deg, #1a3c40, #16697a)",
             text: "\u0634\u0627\u0631\u0698 \u062a\u0645\u0627\u0645 \u0627\u067e\u0631\u0627\u062a\u0648\u0631\u0647\u0627",
             action: "/charging",
-            image: "https://app.babarkat.com/plasmic/babarkat/images/bb.svg",
+            image:
+              "https://app.babarkat.com/plasmic/babarkat/images/charging.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image62.svg"
           },
           {
             background: "linear-gradient(135deg, #153243, #284b63)",
             text: "\u0628\u0633\u062a\u0647 \u0645\u06a9\u0627\u0644\u0645\u0647 \u0648 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646",
             action: "/package-AFG",
-            image: "https://app.babarkat.com/plasmic/babarkat/images/aa.svg",
+            image:
+              "https://app.babarkat.com/plasmic/babarkat/images/package-AFG.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image100.svg"
           }
         ]

@@ -66,9 +66,10 @@ import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdCheckbox } from "@plasmicpkgs/antd5/skinny/registerCheckbox";
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
+import LineClomp from "../../LineClomp"; // plasmic-import: _sMX4BykvcLd/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import Shop from "../../Shop"; // plasmic-import: zOsuRTq3iEqd/component
@@ -108,29 +109,15 @@ import Icon82Icon from "./icons/PlasmicIcon__Icon82"; // plasmic-import: 9IvX4Cn
 createPlasmicElementProxy;
 
 export type PlasmicLogIn__VariantMembers = {
-  code2: "code2";
-  saraf2: "saraf2";
-  password: "password";
-  loginByPassword: "loginByPassword";
   group11: "code" | "saraf" | "password" | "loginByPassword" | "noSaraf";
 };
 export type PlasmicLogIn__VariantsArgs = {
-  code2?: SingleBooleanChoiceArg<"code2">;
-  saraf2?: SingleBooleanChoiceArg<"saraf2">;
-  password?: SingleBooleanChoiceArg<"password">;
-  loginByPassword?: SingleBooleanChoiceArg<"loginByPassword">;
   group11?: SingleChoiceArg<
     "code" | "saraf" | "password" | "loginByPassword" | "noSaraf"
   >;
 };
 type VariantPropType = keyof PlasmicLogIn__VariantsArgs;
-export const PlasmicLogIn__VariantProps = new Array<VariantPropType>(
-  "code2",
-  "saraf2",
-  "password",
-  "loginByPassword",
-  "group11"
-);
+export const PlasmicLogIn__VariantProps = new Array<VariantPropType>("group11");
 
 export type PlasmicLogIn__ArgsType = { disabled?: boolean };
 type ArgPropType = keyof PlasmicLogIn__ArgsType;
@@ -168,7 +155,8 @@ export type PlasmicLogIn__OverridesType = {
   group8?: Flex__<"div">;
   group9?: Flex__<"div">;
   group10?: Flex__<"div">;
-  embedHtml?: Flex__<typeof Embed>;
+  lineClomp2?: Flex__<typeof LineClomp>;
+  button5?: Flex__<typeof Button>;
   sideEffect?: Flex__<typeof SideEffect>;
   modal?: Flex__<typeof AntdModal>;
   shop?: Flex__<typeof Shop>;
@@ -240,12 +228,6 @@ function PlasmicLogIn__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
-        path: "code2",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.code2
-      },
-      {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
@@ -294,33 +276,12 @@ function PlasmicLogIn__RenderFunc(props: {
         ]
       },
       {
-        path: "saraf2",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.saraf2
-      },
-      {
         path: "select.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "group11", "saraf") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
-            ? (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
-                  }
-                  throw e;
-                }
-              })()
-            : hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
                   return $state.saraf[0].value;
@@ -369,22 +330,10 @@ function PlasmicLogIn__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "password",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.password
-      },
-      {
         path: "pass",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "loginByPassword",
-        type: "private",
-        variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.loginByPassword
       },
       {
         path: "fragmentInput3.value",
@@ -591,11 +540,7 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "group11", "saraf")
-            ? false
-            : hasVariant($state, "saraf2", "saraf2")
-            ? true
-            : undefined
+          hasVariant($state, "group11", "saraf") ? false : undefined
       },
       {
         path: "shop.open",
@@ -603,6 +548,31 @@ function PlasmicLogIn__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant($state, "group11", "saraf") ? false : false
+      },
+      {
+        path: "lineClomp2.line",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "button5.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -670,30 +640,6 @@ function PlasmicLogIn__RenderFunc(props: {
           plasmic_plasmic_rich_components_css.plasmic_tokens,
           sty.root,
           {
-            [sty.rootcode2]: hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_group11_code]:
-              hasVariant($state, "group11", "code") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_group11_loginByPassword]:
-              hasVariant($state, "code2", "code2") &&
-              hasVariant($state, "group11", "loginByPassword"),
-            [sty.rootcode2_group11_password]:
-              hasVariant($state, "group11", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_group11_saraf]:
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_saraf2]:
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootcode2_saraf2_group11_password]:
-              hasVariant($state, "code2", "code2") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "group11", "password"),
             [sty.rootglobal_experiment_override]: hasVariant(
               globalVariants,
               "experiment",
@@ -728,157 +674,15 @@ function PlasmicLogIn__RenderFunc(props: {
               "group11",
               "password"
             ),
-            [sty.rootgroup11_saraf]: hasVariant($state, "group11", "saraf"),
-            [sty.rootloginByPassword]: hasVariant(
-              $state,
-              "loginByPassword",
-              "loginByPassword"
-            ),
-            [sty.rootloginByPassword_code2]:
-              hasVariant($state, "code2", "code2") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootloginByPassword_code2_group11_password]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "group11", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_code2_group11_saraf]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_code2_saraf2]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_code2_saraf2_group11_password]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "group11", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_group11_code]:
-              hasVariant($state, "group11", "code") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootloginByPassword_group11_password]:
-              hasVariant($state, "group11", "password") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootloginByPassword_group11_saraf]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "group11", "saraf"),
-            [sty.rootloginByPassword_password]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.rootloginByPassword_password_code2_group11_saraf]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_password_code2_saraf2]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootloginByPassword_password_group11_saraf]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootloginByPassword_password_saraf2]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootloginByPassword_password_saraf2_group11_code]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "group11", "code"),
-            [sty.rootloginByPassword_saraf2]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2"),
-            [sty.rootloginByPassword_saraf2_group11_code]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "group11", "code"),
-            [sty.rootloginByPassword_saraf2_group11_password]:
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "group11", "password"),
-            [sty.rootpassword]: hasVariant($state, "password", "password"),
-            [sty.rootpassword_code2]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootpassword_code2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootpassword_code2_group11_saraf]:
-              hasVariant($state, "code2", "code2") &&
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootpassword_code2_saraf2]:
-              hasVariant($state, "code2", "code2") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootpassword_code2_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.rootpassword_group11_code]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "group11", "code"),
-            [sty.rootpassword_group11_loginByPassword]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "group11", "loginByPassword"),
-            [sty.rootpassword_group11_password]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "group11", "password"),
-            [sty.rootpassword_group11_saraf]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "group11", "saraf"),
-            [sty.rootpassword_saraf2]:
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2"),
-            [sty.rootpassword_saraf2_group11_code]:
-              hasVariant($state, "group11", "code") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootpassword_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "password", "password"),
-            [sty.rootsaraf2]: hasVariant($state, "saraf2", "saraf2"),
-            [sty.rootsaraf2_group11_code]:
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "group11", "code"),
-            [sty.rootsaraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2"),
-            [sty.rootsaraf2_group11_password]:
-              hasVariant($state, "group11", "password") &&
-              hasVariant($state, "saraf2", "saraf2"),
-            [sty.rootsaraf2_group11_saraf]:
-              hasVariant($state, "group11", "saraf") &&
-              hasVariant($state, "saraf2", "saraf2")
+            [sty.rootgroup11_saraf]: hasVariant($state, "group11", "saraf")
           }
         )}
       >
         <Reveal
           data-plasmic-name={"reveal"}
           data-plasmic-override={overrides.reveal}
-          cascade={
-            hasVariant($state, "group11", "code")
-              ? false
-              : hasVariant($state, "code2", "code2")
-              ? false
-              : undefined
-          }
+          cascade={hasVariant($state, "group11", "code") ? false : undefined}
           className={classNames("__wab_instance", sty.reveal, {
-            [sty.revealcode2]: hasVariant($state, "code2", "code2"),
-            [sty.revealcode2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.revealcode2_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
             [sty.revealgroup11_code]: hasVariant($state, "group11", "code"),
             [sty.revealgroup11_loginByPassword]: hasVariant(
               $state,
@@ -895,65 +699,15 @@ function PlasmicLogIn__RenderFunc(props: {
               "group11",
               "password"
             ),
-            [sty.revealgroup11_saraf]: hasVariant($state, "group11", "saraf"),
-            [sty.revealloginByPassword]: hasVariant(
-              $state,
-              "loginByPassword",
-              "loginByPassword"
-            ),
-            [sty.revealloginByPassword_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "loginByPassword", "loginByPassword"),
-            [sty.revealloginByPassword_password_code2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.revealloginByPassword_password_code2_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.revealloginByPassword_password_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password"),
-            [sty.revealloginByPassword_password_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "loginByPassword", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2"),
-            [sty.revealpassword]: hasVariant($state, "password", "password"),
-            [sty.revealpassword_code2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "code2", "code2"),
-            [sty.revealpassword_code2_saraf2_group11_loginByPassword]:
-              hasVariant($state, "group11", "loginByPassword") &&
-              hasVariant($state, "password", "password") &&
-              hasVariant($state, "saraf2", "saraf2") &&
-              hasVariant($state, "code2", "code2")
+            [sty.revealgroup11_saraf]: hasVariant($state, "group11", "saraf")
           })}
-          damping={
-            hasVariant($state, "group11", "code")
-              ? 0.5
-              : hasVariant($state, "code2", "code2")
-              ? 0.5
-              : undefined
-          }
+          damping={hasVariant($state, "group11", "code") ? 0.5 : undefined}
           direction={
             hasVariant($state, "group11", "loginByPassword")
               ? "left"
               : hasVariant($state, "group11", "password")
               ? "left"
               : hasVariant($state, "group11", "code")
-              ? "left"
-              : hasVariant($state, "loginByPassword", "loginByPassword")
-              ? "left"
-              : hasVariant($state, "password", "password")
-              ? "left"
-              : hasVariant($state, "code2", "code2")
               ? "left"
               : undefined
           }
@@ -964,23 +718,11 @@ function PlasmicLogIn__RenderFunc(props: {
               ? "fade"
               : hasVariant($state, "group11", "code")
               ? "slide"
-              : hasVariant($state, "loginByPassword", "loginByPassword")
-              ? "fade"
-              : hasVariant($state, "password", "password")
-              ? "fade"
-              : hasVariant($state, "code2", "code2")
-              ? "slide"
               : hasVariant(globalVariants, "screen", "mobileOnly")
               ? "fade"
               : undefined
           }
-          reverse={
-            hasVariant($state, "group11", "code")
-              ? false
-              : hasVariant($state, "code2", "code2")
-              ? false
-              : undefined
-          }
+          reverse={hasVariant($state, "group11", "code") ? false : undefined}
           triggerOnce={true}
         >
           <div
@@ -990,25 +732,8 @@ function PlasmicLogIn__RenderFunc(props: {
               hasVariant($state, "group11", "code") &&
                 hasVariant(globalVariants, "screen", "mobileOnly")
                 ? "animate"
-                : hasVariant($state, "code2", "code2") &&
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "animate"
                 : undefined,
               {
-                [sty.freeBoxcode2__ss9JKDv9B5]: hasVariant(
-                  $state,
-                  "code2",
-                  "code2"
-                ),
-                [sty.freeBoxcode2_group11_password__ss9JKDv9B5CxClj]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "password"),
-                [sty.freeBoxcode2_group11_saraf__ss9JKDv9B5NaBfa]:
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "code2", "code2"),
-                [sty.freeBoxcode2_saraf2__ss9JKDv9B5JmKha]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "code2", "code2"),
                 [sty.freeBoxgroup11_code__ss9JKYss9U]: hasVariant(
                   $state,
                   "group11",
@@ -1033,41 +758,12 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.freeBoxloginByPassword__ss9JK0DikB]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.freeBoxpassword__ss9JK8PqF9]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.freeBoxpassword_code2__ss9JK8PqF9Dv9B5]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.freeBoxpassword_group11_code__ss9JK8PqF9Yss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "password", "password"),
-                [sty.freeBoxsaraf2__ss9JKJmKha]: hasVariant(
-                  $state,
-                  "saraf2",
-                  "saraf2"
-                ),
-                [sty.freeBoxsaraf2_group11_code__ss9JKJmKhaYss9U]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "group11", "code")
+                )
               }
             )}
           >
             <div
               className={classNames(projectcss.all, sty.freeBox__oDeZc, {
-                [sty.freeBoxcode2__oDeZcDv9B5]: hasVariant(
-                  $state,
-                  "code2",
-                  "code2"
-                ),
                 [sty.freeBoxgroup11_code__oDeZcYss9U]: hasVariant(
                   $state,
                   "group11",
@@ -1078,6 +774,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   "group11",
                   "loginByPassword"
                 ),
+                [sty.freeBoxgroup11_noSaraf__oDeZcHtLqd]: hasVariant(
+                  $state,
+                  "group11",
+                  "noSaraf"
+                ),
                 [sty.freeBoxgroup11_password__oDeZCcxClj]: hasVariant(
                   $state,
                   "group11",
@@ -1087,54 +788,16 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.freeBoxloginByPassword__oDeZc0DikB]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.freeBoxpassword__oDeZc8PqF9]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.freeBoxsaraf2__oDeZcJmKha]: hasVariant(
-                  $state,
-                  "saraf2",
-                  "saraf2"
-                ),
-                [sty.freeBoxsaraf2_group11_loginByPassword__oDeZcJmKhaE5Wtv]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2")
+                )
               })}
             >
               <PlasmicIcon__
                 PlasmicIconType={
                   hasVariant($state, "group11", "password")
                     ? Icon154Icon
-                    : hasVariant($state, "password", "password")
-                    ? Icon154Icon
                     : Icon154Icon
                 }
                 className={classNames(projectcss.all, sty.svg___6T7, ``, {
-                  [sty.svgcode2___6T7Dv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
-                  [sty.svgcode2_group11_code___6T7Dv9B5Yss9U]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "group11", "code"),
-                  [sty.svgcode2_group11_saraf___6T7Dv9B5NaBfa]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgcode2_saraf2___6T7Dv9B5JmKha]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgcode2_saraf2_group11_password___6T7Dv9B5JmKhaCxClj]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password"),
                   [sty.svggroup11_code___6T7Yss9U]: hasVariant(
                     $state,
                     "group11",
@@ -1159,117 +822,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.svgloginByPassword___6T70DikB]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.svgloginByPassword_code2_group11_saraf___6T70DikBDv9B5NaBfa]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_code2_saraf2_group11_password___6T70DikBDv9B5JmKhaCxClj]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_group11_code___6T70DikBYss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_group11_password___6T70DikBCxClj]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "password"),
-                  [sty.svgloginByPassword_password___6T70DikB8PqF9]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgloginByPassword_password_code2_group11_saraf___6T70DikB8PqF9Dv9B5NaBfa]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_password_code2_saraf2___6T70DikB8PqF9Dv9B5JmKha]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_password_group11_code___6T70DikB8PqF9Yss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_password_group11_saraf___6T70DikB8PqF9NaBfa]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgloginByPassword_password_saraf2___6T70DikB8PqF9JmKha]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgloginByPassword_password_saraf2_group11_code___6T70DikB8PqF9JmKhaYss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_saraf2_group11_code___6T70DikBJmKhaYss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.svgloginByPassword_saraf2_group11_password___6T70DikBJmKhaCxClj]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgpassword___6T78PqF9]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.svgpassword_code2_group11_saraf___6T78PqF9Dv9B5NaBfa]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_code2_saraf2___6T78PqF9Dv9B5JmKha]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_code2_saraf2_group11_loginByPassword___6T78PqF9Dv9B5JmKhaE5Wtv]:
-                    hasVariant($state, "code2", "code2") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "loginByPassword"),
-                  [sty.svgpassword_group11_code___6T78PqF9Yss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_group11_loginByPassword___6T78PqF9E5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_group11_saraf___6T78PqF9NaBfa]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_saraf2___6T78PqF9JmKha]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_saraf2_group11_code___6T78PqF9JmKhaYss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.svgpassword_saraf2_group11_loginByPassword___6T78PqF9JmKhaE5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2___6T7JmKha]: hasVariant(
-                    $state,
-                    "saraf2",
-                    "saraf2"
-                  ),
-                  [sty.svgsaraf2_group11_code___6T7JmKhaYss9U]:
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_loginByPassword___6T7JmKhaE5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_password___6T7JmKhaCxClj]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password")
+                  )
                 })}
                 id={"logoLogin"}
                 role={"img"}
@@ -1293,11 +846,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "password"
-                    ),
-                    [sty.imgpassword__pZ2Jh8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
                     )
                   })}
                   displayHeight={"auto"}
@@ -1318,17 +866,6 @@ function PlasmicLogIn__RenderFunc(props: {
             </div>
             <div
               className={classNames(projectcss.all, sty.freeBox__mauVi, {
-                [sty.freeBoxcode2__mauViDv9B5]: hasVariant(
-                  $state,
-                  "code2",
-                  "code2"
-                ),
-                [sty.freeBoxcode2_group11_saraf__mauViDv9B5NaBfa]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.freeBoxcode2_saraf2__mauViDv9B5JmKha]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2"),
                 [sty.freeBoxgroup11_code__mauViYss9U]: hasVariant(
                   $state,
                   "group11",
@@ -1339,6 +876,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   "group11",
                   "loginByPassword"
                 ),
+                [sty.freeBoxgroup11_noSaraf__mauViHtLqd]: hasVariant(
+                  $state,
+                  "group11",
+                  "noSaraf"
+                ),
                 [sty.freeBoxgroup11_password__mauVicxClj]: hasVariant(
                   $state,
                   "group11",
@@ -1348,52 +890,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.freeBoxloginByPassword__mauVi0DikB]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.freeBoxloginByPassword_group11_password__mauVi0DikBCxClj]:
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.freeBoxloginByPassword_password__mauVi0DikB8PqF9]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.freeBoxpassword__mauVi8PqF9]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.freeBoxpassword_group11_loginByPassword__mauVi8PqF9E5Wtv]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "loginByPassword"),
-                [sty.freeBoxpassword_group11_saraf__mauVi8PqF9NaBfa]:
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "password", "password"),
-                [sty.freeBoxpassword_saraf2__mauVi8PqF9JmKha]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.freeBoxsaraf2__mauViJmKha]: hasVariant(
-                  $state,
-                  "saraf2",
-                  "saraf2"
-                ),
-                [sty.freeBoxsaraf2_group11_code__mauViJmKhaYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.freeBoxsaraf2_group11_password__mauViJmKhaCxClj]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "group11", "password")
+                )
               })}
             >
               <div
                 className={classNames(projectcss.all, sty.freeBox__eu9Fj, {
-                  [sty.freeBoxcode2__eu9FjDv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.freeBoxgroup11_code__eu9FjYss9U]: hasVariant(
                     $state,
                     "group11",
@@ -1402,11 +903,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   [sty.freeBoxgroup11_loginByPassword__eu9Fje5Wtv]: hasVariant(
                     $state,
                     "group11",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxloginByPassword__eu9Fj0DikB]: hasVariant(
-                    $state,
-                    "loginByPassword",
                     "loginByPassword"
                   )
                 })}
@@ -1417,14 +913,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__zL7Oq,
                     {
-                      [sty.textcode2__zL7OqDv9B5]: hasVariant(
-                        $state,
-                        "code2",
-                        "code2"
-                      ),
-                      [sty.textcode2_group11_loginByPassword__zL7OqDv9B5E5Wtv]:
-                        hasVariant($state, "group11", "loginByPassword") &&
-                        hasVariant($state, "code2", "code2"),
                       [sty.textgroup11_code__zL7OqYss9U]: hasVariant(
                         $state,
                         "group11",
@@ -1449,33 +937,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.textloginByPassword__zL7Oq0DikB]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textloginByPassword_code2__zL7Oq0DikBDv9B5]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) && hasVariant($state, "code2", "code2"),
-                      [sty.textloginByPassword_group11_code__zL7Oq0DikBYss9U]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) && hasVariant($state, "group11", "code"),
-                      [sty.textpassword__zL7Oq8PqF9]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textsaraf2__zL7OqJmKha]: hasVariant(
-                        $state,
-                        "saraf2",
-                        "saraf2"
                       )
                     }
                   )}
@@ -1486,27 +947,12 @@ function PlasmicLogIn__RenderFunc(props: {
                     ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
                     : hasVariant($state, "group11", "code")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "saraf2", "saraf2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                    : hasVariant($state, "code2", "code2")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <Button
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
                   className={classNames("__wab_instance", sty.button, {
-                    [sty.buttoncode2]: hasVariant($state, "code2", "code2"),
-                    [sty.buttoncode2_group11_saraf]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.buttoncode2_saraf2]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "saraf2", "saraf2"),
                     [sty.buttongroup11_code]: hasVariant(
                       $state,
                       "group11",
@@ -1517,6 +963,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       "group11",
                       "loginByPassword"
                     ),
+                    [sty.buttongroup11_noSaraf]: hasVariant(
+                      $state,
+                      "group11",
+                      "noSaraf"
+                    ),
                     [sty.buttongroup11_password]: hasVariant(
                       $state,
                       "group11",
@@ -1526,44 +977,10 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.buttonloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.buttonloginByPassword_group11_password]:
-                      hasVariant($state, "group11", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.buttonloginByPassword_password]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.buttonpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.buttonpassword_group11_loginByPassword]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "group11", "loginByPassword"),
-                    [sty.buttonpassword_group11_saraf]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.buttonpassword_saraf2]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.buttonsaraf2]: hasVariant($state, "saraf2", "saraf2"),
-                    [sty.buttonsaraf2_group11_code]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.buttonsaraf2_group11_password]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "password")
+                    )
                   })}
                   color={
                     hasVariant($state, "group11", "code")
-                      ? "softGreen"
-                      : hasVariant($state, "code2", "code2")
                       ? "softGreen"
                       : undefined
                   }
@@ -1576,14 +993,17 @@ function PlasmicLogIn__RenderFunc(props: {
 
                     $steps["updateUnnamedVariant"] = true
                       ? (() => {
-                          const actionArgs = { vgroup: "code2", operation: 6 };
+                          const actionArgs = {
+                            vgroup: "group11",
+                            operation: 1
+                          };
                           return (({ vgroup, value }) => {
                             if (typeof value === "string") {
                               value = [value];
                             }
 
-                            $stateSet($state, vgroup, false);
-                            return false;
+                            $stateSet($state, vgroup, undefined);
+                            return undefined;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
@@ -1616,8 +1036,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 >
                   {hasVariant($state, "group11", "code")
                     ? "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647"
-                    : hasVariant($state, "code2", "code2")
-                    ? "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647"
                     : "Button"}
                 </Button>
               </div>
@@ -1627,11 +1045,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__wdrTs,
                   {
-                    [sty.textcode2__wdrTsDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
                     [sty.textgroup11_code__wdrTsYss9U]: hasVariant(
                       $state,
                       "group11",
@@ -1651,21 +1064,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__wdrTs0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__wdrTs8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textsaraf2__wdrTsJmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
                     )
                   }
                 )}
@@ -1673,40 +1071,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 {hasVariant($state, "group11", "saraf") ? (
                   "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                 ) : hasVariant($state, "group11", "code") ? (
-                  <div
-                    className={projectcss.__wab_expr_html_text}
-                    dangerouslySetInnerHTML={{
-                      __html: (() => {
-                        try {
-                          return (() => {
-                            if ($state.selectContry == "+98")
-                              return (
-                                "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                                $state.number +
-                                "</b> را وارد نمایید."
-                              );
-                            else
-                              return (
-                                "لطفا کد 4 رقمی ارسال شده به <b style='color: #2DC57B;'>واتساپ</b> شماره <b style='color: #2DC57B;'>" +
-                                $state.number +
-                                "</b> را وارد نمایید."
-                              );
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                          }
-                          throw e;
-                        }
-                      })()
-                    }}
-                  />
-                ) : hasVariant($state, "saraf2", "saraf2") ? (
-                  "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                ) : hasVariant($state, "code2", "code2") ? (
                   <div
                     className={projectcss.__wab_expr_html_text}
                     dangerouslySetInnerHTML={{
@@ -1747,17 +1111,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"fragmentInput"}
                   data-plasmic-override={overrides.fragmentInput}
                   className={classNames("__wab_instance", sty.fragmentInput, {
-                    [sty.fragmentInputcode2]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.fragmentInputcode2_group11_saraf]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.fragmentInputcode2_saraf2]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "saraf2", "saraf2"),
                     [sty.fragmentInputgroup11_code]: hasVariant(
                       $state,
                       "group11",
@@ -1777,43 +1130,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.fragmentInputloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.fragmentInputloginByPassword_group11_password]:
-                      hasVariant($state, "group11", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.fragmentInputloginByPassword_password]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.fragmentInputpassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.fragmentInputpassword_group11_loginByPassword]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "group11", "loginByPassword"),
-                    [sty.fragmentInputpassword_group11_saraf]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.fragmentInputpassword_saraf2]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.fragmentInputsaraf2]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.fragmentInputsaraf2_group11_code]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.fragmentInputsaraf2_group11_password]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "password")
+                    )
                   })}
                   disabled={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1858,25 +1175,11 @@ function PlasmicLogIn__RenderFunc(props: {
 
                 <div
                   className={classNames(projectcss.all, sty.freeBox__wvuQl, {
-                    [sty.freeBoxcode2__wvuQlDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.freeBoxcode2_group11_saraf__wvuQlDv9B5NaBfa]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.freeBoxcode2_saraf2__wvuQlDv9B5JmKha]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "saraf2", "saraf2"),
                     [sty.freeBoxgroup11_code__wvuQlYss9U]: hasVariant(
                       $state,
                       "group11",
                       "code"
-                    ),
-                    [sty.freeBoxsaraf2_group11_code__wvuQlJmKhaYss9U]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "saraf2", "saraf2")
+                    )
                   })}
                 >
                   <AntdSelect
@@ -1884,7 +1187,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     data-plasmic-override={overrides.select2}
                     bordered={false}
                     className={classNames("__wab_instance", sty.select2, {
-                      [sty.select2code2]: hasVariant($state, "code2", "code2"),
                       [sty.select2group11_code]: hasVariant(
                         $state,
                         "group11",
@@ -1904,48 +1206,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.select2loginByPassword]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.select2loginByPassword_group11_password]:
-                        hasVariant($state, "group11", "password") &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.select2loginByPassword_password]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ),
-                      [sty.select2password]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.select2password_group11_loginByPassword]:
-                        hasVariant($state, "password", "password") &&
-                        hasVariant($state, "group11", "loginByPassword"),
-                      [sty.select2password_group11_saraf]:
-                        hasVariant($state, "group11", "saraf") &&
-                        hasVariant($state, "password", "password"),
-                      [sty.select2password_saraf2]:
-                        hasVariant($state, "saraf2", "saraf2") &&
-                        hasVariant($state, "password", "password"),
-                      [sty.select2saraf2]: hasVariant(
-                        $state,
-                        "saraf2",
-                        "saraf2"
-                      ),
-                      [sty.select2saraf2_group11_password]:
-                        hasVariant($state, "saraf2", "saraf2") &&
-                        hasVariant($state, "group11", "password")
+                      )
                     })}
                     defaultStylesClassName={classNames(
                       projectcss.root_reset,
@@ -1988,17 +1249,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__lh2V1,
                   {
-                    [sty.textcode2__lh2V1Dv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.textcode2_group11_saraf__lh2V1Dv9B5NaBfa]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.textcode2_saraf2__lh2V1Dv9B5JmKha]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "saraf2", "saraf2"),
                     [sty.textgroup11_code__lh2V1Yss9U]: hasVariant(
                       $state,
                       "group11",
@@ -2018,25 +1268,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__lh2V10DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__lh2V18PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textsaraf2__lh2V1JmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.textsaraf2_group11_code__lh2V1JmKhaYss9U]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "saraf2", "saraf2")
+                    )
                   }
                 )}
                 onClick={async event => {
@@ -2078,14 +1310,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__aBe0K,
                   {
-                    [sty.textcode2__aBe0KDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.textcode2_group11_loginByPassword__aBe0KDv9B5E5Wtv]:
-                      hasVariant($state, "group11", "loginByPassword") &&
-                      hasVariant($state, "code2", "code2"),
                     [sty.textgroup11_code__aBe0KYss9U]: hasVariant(
                       $state,
                       "group11",
@@ -2105,33 +1329,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__aBe0K0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_code2__aBe0K0DikBDv9B5]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "code2", "code2"),
-                    [sty.textloginByPassword_group11_code__aBe0K0DikBYss9U]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "group11", "code"),
-                    [sty.textpassword__aBe0K8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textsaraf2__aBe0KJmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
                     )
                   }
                 )}
@@ -2142,14 +1339,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
                   : hasVariant($state, "group11", "code")
                   ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                  : hasVariant($state, "loginByPassword", "loginByPassword")
-                  ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                  : hasVariant($state, "password", "password")
-                  ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                  : hasVariant($state, "saraf2", "saraf2")
-                  ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                  : hasVariant($state, "code2", "code2")
-                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                   : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <div
@@ -2158,11 +1347,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__obSwQ,
                   {
-                    [sty.textcode2__obSwQDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
                     [sty.textgroup11_code__obSwQYss9U]: hasVariant(
                       $state,
                       "group11",
@@ -2182,51 +1366,35 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__obSwQ0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__obSwQ8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textsaraf2__obSwQJmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
                     )
                   }
                 )}
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["updateLoginByPassword"] = true
+                  $steps["updateGroup11"] = true
                     ? (() => {
                         const actionArgs = {
-                          vgroup: "loginByPassword",
-                          operation: 4
+                          vgroup: "group11",
+                          operation: 0,
+                          value: "loginByPassword"
                         };
                         return (({ vgroup, value }) => {
                           if (typeof value === "string") {
                             value = [value];
                           }
 
-                          $stateSet($state, vgroup, true);
-                          return true;
+                          $stateSet($state, vgroup, value);
+                          return value;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updateLoginByPassword"] != null &&
-                    typeof $steps["updateLoginByPassword"] === "object" &&
-                    typeof $steps["updateLoginByPassword"].then === "function"
+                    $steps["updateGroup11"] != null &&
+                    typeof $steps["updateGroup11"] === "object" &&
+                    typeof $steps["updateGroup11"].then === "function"
                   ) {
-                    $steps["updateLoginByPassword"] = await $steps[
-                      "updateLoginByPassword"
-                    ];
+                    $steps["updateGroup11"] = await $steps["updateGroup11"];
                   }
                 }}
               >
@@ -2264,51 +1432,12 @@ function PlasmicLogIn__RenderFunc(props: {
                       })()
                     }}
                   />
-                ) : hasVariant($state, "saraf2", "saraf2") ? (
-                  "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
-                ) : hasVariant($state, "code2", "code2") ? (
-                  <div
-                    className={projectcss.__wab_expr_html_text}
-                    dangerouslySetInnerHTML={{
-                      __html: (() => {
-                        try {
-                          return (() => {
-                            if ($state.selectContry == "+98")
-                              return (
-                                "لطفا کد 4 رقمی ارسال شده به شماره <b style='color: #2DC57B;'>" +
-                                $state.number +
-                                "</b> را وارد نمایید."
-                              );
-                            else
-                              return (
-                                "لطفا کد 4 رقمی ارسال شده به <b style='color: #2DC57B;'>واتساپ</b> شماره <b style='color: #2DC57B;'>" +
-                                $state.number +
-                                "</b> را وارد نمایید."
-                              );
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "\u0644\u0637\u0641\u0627 \u06a9\u062f 4 \u0631\u0642\u0645\u06cc \u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 09155113179 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f.";
-                          }
-                          throw e;
-                        }
-                      })()
-                    }}
-                  />
                 ) : (
                   "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 "
                 )}
               </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox___8MdV, {
-                  [sty.freeBoxcode2___8MdVDv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.freeBoxgroup11_code___8MdVYss9U]: hasVariant(
                     $state,
                     "group11",
@@ -2328,21 +1457,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.freeBoxloginByPassword___8MdV0DikB]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.freeBoxpassword___8MdV8PqF9]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.freeBoxsaraf2___8MdVJmKha]: hasVariant(
-                    $state,
-                    "saraf2",
-                    "saraf2"
                   )
                 })}
               >
@@ -2350,11 +1464,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"fragmentInput3"}
                   data-plasmic-override={overrides.fragmentInput3}
                   className={classNames("__wab_instance", sty.fragmentInput3, {
-                    [sty.fragmentInput3code2]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
                     [sty.fragmentInput3group11_code]: hasVariant(
                       $state,
                       "group11",
@@ -2374,36 +1483,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.fragmentInput3loginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.fragmentInput3loginByPassword_group11_password]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "group11", "password"),
-                    [sty.fragmentInput3loginByPassword_password]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "password", "password"),
-                    [sty.fragmentInput3password]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.fragmentInput3password_group11_loginByPassword]:
-                      hasVariant($state, "group11", "loginByPassword") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.fragmentInput3saraf2]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
                     )
                   })}
                   disabled={
@@ -2426,10 +1505,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       ? ``
                       : hasVariant($state, "group11", "password")
                       ? ``
-                      : hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? ``
-                      : hasVariant($state, "password", "password")
-                      ? ``
                       : "98+"
                   }
                   type={
@@ -2448,34 +1523,6 @@ function PlasmicLogIn__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "group11", "password")
-                      ? (() => {
-                          try {
-                            return $state.pass1;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "password";
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "loginByPassword", "loginByPassword")
-                      ? (() => {
-                          try {
-                            return $state.pass1;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "password";
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "password", "password")
                       ? (() => {
                           try {
                             return $state.pass1;
@@ -2509,16 +1556,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     [sty.svggroup11_password__rwAhKcxClj]: hasVariant(
                       $state,
                       "group11",
-                      "password"
-                    ),
-                    [sty.svgloginByPassword__rwAhK0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.svgpassword__rwAhK8PqF9]: hasVariant(
-                      $state,
-                      "password",
                       "password"
                     )
                   })}
@@ -2616,11 +1653,6 @@ function PlasmicLogIn__RenderFunc(props: {
               </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__hXlRb, {
-                  [sty.freeBoxcode2__hXlRbDv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.freeBoxgroup11_code__hXlRbYss9U]: hasVariant(
                     $state,
                     "group11",
@@ -2632,20 +1664,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"fragmentInput2"}
                   data-plasmic-override={overrides.fragmentInput2}
                   className={classNames("__wab_instance", sty.fragmentInput2, {
-                    [sty.fragmentInput2code2]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.fragmentInput2code2_group11_code]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "code"),
-                    [sty.fragmentInput2code2_group11_saraf]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.fragmentInput2code2_saraf2]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "saraf2", "saraf2"),
                     [sty.fragmentInput2group11_code]: hasVariant(
                       $state,
                       "group11",
@@ -2655,15 +1673,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.fragmentInput2saraf2]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.fragmentInput2saraf2_group11_code]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "saraf2", "saraf2")
+                    )
                   })}
                   disabled={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -2680,13 +1690,7 @@ function PlasmicLogIn__RenderFunc(props: {
                       const $steps = {};
                     }).apply(null, eventArgs);
                   }}
-                  placeholder={
-                    hasVariant($state, "group11", "code")
-                      ? ``
-                      : hasVariant($state, "code2", "code2")
-                      ? ``
-                      : ``
-                  }
+                  placeholder={hasVariant($state, "group11", "code") ? `` : ``}
                   type={
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "tel"
@@ -2696,6 +1700,23 @@ function PlasmicLogIn__RenderFunc(props: {
                     "fragmentInput2",
                     "value"
                   ])}
+                />
+
+                <Embed
+                  className={classNames(
+                    "__wab_instance",
+                    sty.embedHtml__ghtSl,
+                    {
+                      [sty.embedHtmlgroup11_code__ghtSlYss9U]: hasVariant(
+                        $state,
+                        "group11",
+                        "code"
+                      )
+                    }
+                  )}
+                  code={
+                    '<div class="otp-wrapper">\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit1" class="otp-input"\r\n         onkeyup="handleInput(this, 0, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit2" class="otp-input"\r\n         onkeyup="handleInput(this, 1, \'digit3\')" onkeydown="moveToPrev(event, \'digit1\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit3" class="otp-input"\r\n         onkeyup="handleInput(this, 2, \'digit4\')" onkeydown="moveToPrev(event, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit4" class="otp-input"\r\n         onkeyup="handleInput(this, 3)" onkeydown="moveToPrev(event, \'digit3\')" />\r\n</div>\r\n\r\n<script>\r\n  window.inputValues = ["", "", "", ""];\r\n  window.codeCompleted = false;\r\n\r\n  function handleInput(current, index, nextFieldId) {\r\n    const value = current.value;\r\n\r\n    // \u0641\u0642\u0637 \u0639\u062f\u062f\r\n    if (!/^[0-9]$/.test(value)) {\r\n      current.value = \'\';\r\n      window.inputValues[index] = \'\';\r\n    } else {\r\n      window.inputValues[index] = value;\r\n    }\r\n\r\n    // \u062d\u0631\u06a9\u062a \u0628\u0647 \u0641\u06cc\u0644\u062f \u0628\u0639\u062f\u06cc\r\n    if (value.length === 1 && nextFieldId) {\r\n      document.getElementById(nextFieldId).focus();\r\n    }\r\n\r\n    // \u0627\u06af\u0647 \u06cc\u06a9\u06cc \u0627\u0632 \u0641\u06cc\u0644\u062f\u0647\u0627 \u062e\u0627\u0644\u06cc \u0628\u0634\u0647 \u2192 \u0627\u062c\u0627\u0632\u0647 \u0628\u062f\u0647 \u062f\u0648\u0628\u0627\u0631\u0647 log \u0628\u0634\u0647\r\n    if (window.inputValues.some(val => val === "")) {\r\n      window.codeCompleted = false;\r\n    }\r\n\r\n    // \u0641\u0642\u0637 \u0648\u0642\u062a\u06cc \u0647\u0645\u0647 \u067e\u0631 \u0628\u0648\u062f\u0646 \u0648 \u0642\u0628\u0644\u0627\u064b log \u0646\u0634\u062f\u0647:\r\n    if (window.inputValues.every(val => val !== "") && !window.codeCompleted) {\r\n      console.log("ok");\r\n      document.querySelector(\'#codeButten button\').click();\r\n      window.codeCompleted = true;\r\n    }\r\n  }\r\n\r\n  function moveToPrev(event, prevFieldId) {\r\n    if (event.key === "Backspace" && !event.target.value) {\r\n      document.getElementById(prevFieldId).focus();\r\n    }\r\n  }\r\n</script>\r\n'
+                  }
                 />
               </div>
               {(
@@ -2728,35 +1749,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         throw e;
                       }
                     })()
-                  : hasVariant($state, "code2", "code2") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? (() => {
-                      try {
-                        return $state.time != 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
-                  : hasVariant($state, "code2", "code2")
-                  ? (() => {
-                      try {
-                        return $state.time != 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
                   : true
               ) ? (
                 <div
@@ -2765,17 +1757,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text___7LuKp,
                     {
-                      [sty.textcode2___7LuKpDv9B5]: hasVariant(
-                        $state,
-                        "code2",
-                        "code2"
-                      ),
-                      [sty.textcode2_group11_saraf___7LuKpDv9B5NaBfa]:
-                        hasVariant($state, "group11", "saraf") &&
-                        hasVariant($state, "code2", "code2"),
-                      [sty.textcode2_saraf2___7LuKpDv9B5JmKha]:
-                        hasVariant($state, "saraf2", "saraf2") &&
-                        hasVariant($state, "code2", "code2"),
                       [sty.textgroup11_code___7LuKpYss9U]: hasVariant(
                         $state,
                         "group11",
@@ -2785,10 +1766,7 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.textsaraf2_group11_code___7LuKpJmKhaYss9U]:
-                        hasVariant($state, "saraf2", "saraf2") &&
-                        hasVariant($state, "group11", "code")
+                      )
                     }
                   )}
                 >
@@ -2843,57 +1821,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         })()
                       }}
                     />
-                  ) : hasVariant($state, "code2", "code2") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "ارسال مجدد پیامک  (" +
-                              "<b style='color: #2DC57B;'>" +
-                              $state.time +
-                              "</b>" +
-                              ")"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
-                  ) : hasVariant($state, "code2", "code2") ? (
-                    <div
-                      className={projectcss.__wab_expr_html_text}
-                      dangerouslySetInnerHTML={{
-                        __html: (() => {
-                          try {
-                            return (
-                              "ارسال مجدد پیامک  (" +
-                              "<b style='color: #2DC57B;'>" +
-                              $state.time +
-                              "</b>" +
-                              ")"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)";
-                            }
-                            throw e;
-                          }
-                        })()
-                      }}
-                    />
                   ) : (
                     "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"
                   )}
@@ -2903,7 +1830,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"timer"}
                 data-plasmic-override={overrides.timer}
                 className={classNames("__wab_instance", sty.timer, {
-                  [sty.timercode2]: hasVariant($state, "code2", "code2"),
                   [sty.timergroup11_code]: hasVariant(
                     $state,
                     "group11",
@@ -2913,27 +1839,12 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "password"
-                  ),
-                  [sty.timerpassword]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
                   )
                 })}
                 intervalSeconds={
-                  hasVariant($state, "group11", "code")
-                    ? 1
-                    : hasVariant($state, "code2", "code2")
-                    ? 1
-                    : undefined
+                  hasVariant($state, "group11", "code") ? 1 : undefined
                 }
-                isRunning={
-                  hasVariant($state, "group11", "code")
-                    ? true
-                    : hasVariant($state, "code2", "code2")
-                    ? true
-                    : true
-                }
+                isRunning={hasVariant($state, "group11", "code") ? true : true}
                 onTick={async () => {
                   const $steps = {};
 
@@ -2973,11 +1884,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   }
                 }}
                 runWhileEditing={
-                  hasVariant($state, "group11", "code")
-                    ? false
-                    : hasVariant($state, "code2", "code2")
-                    ? false
-                    : false
+                  hasVariant($state, "group11", "code") ? false : false
                 }
               />
 
@@ -3011,35 +1918,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         throw e;
                       }
                     })()
-                  : hasVariant($state, "code2", "code2") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? (() => {
-                      try {
-                        return $state.time == 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
-                  : hasVariant($state, "code2", "code2")
-                  ? (() => {
-                      try {
-                        return $state.time == 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
                   : false
               ) ? (
                 <div
@@ -3048,11 +1926,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     projectcss.__wab_text,
                     sty.text__qrzqV,
                     {
-                      [sty.textcode2__qrzqVDv9B5]: hasVariant(
-                        $state,
-                        "code2",
-                        "code2"
-                      ),
                       [sty.textgroup11_code__qrzqVYss9U]: hasVariant(
                         $state,
                         "group11",
@@ -3139,8 +2012,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 >
                   {hasVariant($state, "group11", "code")
                     ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
-                    : hasVariant($state, "code2", "code2")
-                    ? "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9"
                     : "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"}
                 </div>
               ) : null}
@@ -3148,13 +2019,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"select"}
                 data-plasmic-override={overrides.select}
                 className={classNames("__wab_instance", sty.select, {
-                  [sty.selectcode2]: hasVariant($state, "code2", "code2"),
-                  [sty.selectcode2_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.selectcode2_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "code2", "code2"),
                   [sty.selectgroup11_code]: hasVariant(
                     $state,
                     "group11",
@@ -3164,11 +2028,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.selectsaraf2]: hasVariant($state, "saraf2", "saraf2"),
-                  [sty.selectsaraf2_group11_code]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "code")
+                  )
                 })}
                 defaultStylesClassName={classNames(
                   projectcss.root_reset,
@@ -3181,21 +2041,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 defaultValue={
                   hasVariant($state, "group11", "saraf") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return $state.saraf[0].value;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return 100;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
                           return $state.saraf[0].value;
@@ -3269,9 +2114,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       hasVariant($state, "group11", "saraf") &&
                       hasVariant(globalVariants, "screen", "mobileOnly")
                         ? Icon37Icon
-                        : hasVariant($state, "saraf2", "saraf2") &&
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? Icon37Icon
                         : Icon10Icon
                     }
                     className={classNames(projectcss.all, sty.svg__bIJr, {
@@ -3279,11 +2121,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.svgsaraf2__bIJrJmKha]: hasVariant(
-                        $state,
-                        "saraf2",
-                        "saraf2"
                       )
                     })}
                     role={"img"}
@@ -3298,11 +2135,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 projectcss.__wab_text,
                 sty.text__vfBkC,
                 {
-                  [sty.textcode2__vfBkCDv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.textgroup11_code__vfBkCYss9U]: hasVariant(
                     $state,
                     "group11",
@@ -3322,36 +2154,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.textloginByPassword__vfBkC0DikB]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.textloginByPassword_group11_loginByPassword__vfBkC0DikBE5Wtv]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "loginByPassword"),
-                  [sty.textloginByPassword_group11_password__vfBkC0DikBCxClj]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.textloginByPassword_password__vfBkC0DikB8PqF9]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.textpassword__vfBkC8PqF9]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.textpassword_group11_loginByPassword__vfBkC8PqF9E5Wtv]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "loginByPassword"),
-                  [sty.textpassword_group11_password__vfBkC8PqF9CxClj]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.textsaraf2__vfBkCJmKha]: hasVariant(
-                    $state,
-                    "saraf2",
-                    "saraf2"
                   )
                 }
               )}
@@ -3392,23 +2194,10 @@ function PlasmicLogIn__RenderFunc(props: {
                 ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
                 : hasVariant($state, "group11", "code")
                 ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                : hasVariant($state, "loginByPassword", "loginByPassword")
-                ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
-                : hasVariant($state, "password", "password")
-                ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
-                : hasVariant($state, "saraf2", "saraf2")
-                ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                : hasVariant($state, "code2", "code2")
-                ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                 : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
             </div>
             <div
               className={classNames(projectcss.all, sty.freeBox__rr6S, {
-                [sty.freeBoxcode2__rr6SDv9B5]: hasVariant(
-                  $state,
-                  "code2",
-                  "code2"
-                ),
                 [sty.freeBoxgroup11_code__rr6SYss9U]: hasVariant(
                   $state,
                   "group11",
@@ -3419,6 +2208,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   "group11",
                   "loginByPassword"
                 ),
+                [sty.freeBoxgroup11_noSaraf__rr6SHtLqd]: hasVariant(
+                  $state,
+                  "group11",
+                  "noSaraf"
+                ),
                 [sty.freeBoxgroup11_password__rr6ScxClj]: hasVariant(
                   $state,
                   "group11",
@@ -3428,21 +2222,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.freeBoxloginByPassword__rr6S0DikB]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.freeBoxpassword__rr6S8PqF9]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.freeBoxsaraf2__rr6SJmKha]: hasVariant(
-                  $state,
-                  "saraf2",
-                  "saraf2"
                 )
               })}
             >
@@ -3450,13 +2229,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"btnNumber"}
                 data-plasmic-override={overrides.btnNumber}
                 className={classNames("__wab_instance", sty.btnNumber, {
-                  [sty.btnNumbercode2]: hasVariant($state, "code2", "code2"),
-                  [sty.btnNumbercode2_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.btnNumbercode2_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "code2", "code2"),
                   [sty.btnNumbergroup11_code]: hasVariant(
                     $state,
                     "group11",
@@ -3476,30 +2248,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.btnNumberloginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.btnNumberpassword]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.btnNumberpassword_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.btnNumberpassword_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.btnNumbersaraf2]: hasVariant($state, "saraf2", "saraf2"),
-                  [sty.btnNumbersaraf2_group11_code]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "code"),
-                  [sty.btnNumbersaraf2_group11_password]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password")
+                  )
                 })}
                 color={"green"}
                 endIcon={
@@ -3826,13 +2575,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"button2"}
                 data-plasmic-override={overrides.button2}
                 className={classNames("__wab_instance", sty.button2, {
-                  [sty.button2code2]: hasVariant($state, "code2", "code2"),
-                  [sty.button2code2_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.button2code2_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "code2", "code2"),
                   [sty.button2group11_code]: hasVariant(
                     $state,
                     "group11",
@@ -3852,30 +2594,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.button2loginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.button2loginByPassword_group11_password]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.button2loginByPassword_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.button2password]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.button2password_group11_loginByPassword]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "loginByPassword"),
-                  [sty.button2saraf2]: hasVariant($state, "saraf2", "saraf2"),
-                  [sty.button2saraf2_group11_code]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "code")
+                  )
                 })}
                 color={"green"}
                 endIcon={
@@ -3904,41 +2623,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "group11", "password")
-                    ? (() => {
-                        try {
-                          return (
-                            $state.fragmentInput3.value.length == 0 ||
-                            $state.loadedbtn
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? (() => {
-                        try {
-                          return (
-                            $state.fragmentInput.value.length != 11 ||
-                            $state.fragmentInput3.value.length == 0 ||
-                            $state.loadedbtn
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "password", "password")
                     ? (() => {
                         try {
                           return (
@@ -4280,16 +2964,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "password"
-                      ),
-                      [sty.textloginByPassword__yawAd0DikB]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword__yawAd8PqF9]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
                       )
                     }
                   )}
@@ -4298,10 +2972,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     ? "\u0648\u0631\u0648\u062f"
                     : hasVariant($state, "group11", "password")
                     ? "\u0648\u0631\u0648\u062f"
-                    : hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0648\u0631\u0648\u062f"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f"
                     : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                 </div>
               </Button>
@@ -4309,13 +2979,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"button3"}
                 data-plasmic-override={overrides.button3}
                 className={classNames("__wab_instance", sty.button3, {
-                  [sty.button3code2]: hasVariant($state, "code2", "code2"),
-                  [sty.button3code2_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.button3code2_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "code2", "code2"),
                   [sty.button3group11_code]: hasVariant(
                     $state,
                     "group11",
@@ -4335,64 +2998,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.button3loginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.button3loginByPassword_group11_password]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "password"),
-                  [sty.button3loginByPassword_group11_saraf]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.button3loginByPassword_password]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3loginByPassword_password_group11_saraf]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3loginByPassword_password_saraf2]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3loginByPassword_saraf2]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.button3loginByPassword_saraf2_group11_password]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password"),
-                  [sty.button3password]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.button3password_group11_loginByPassword]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3password_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3password_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3password_saraf2_group11_loginByPassword]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "password", "password"),
-                  [sty.button3saraf2]: hasVariant($state, "saraf2", "saraf2"),
-                  [sty.button3saraf2_group11_code]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "code"),
-                  [sty.button3saraf2_group11_loginByPassword]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.button3saraf2_group11_password]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "password")
+                  )
                 })}
                 color={"green"}
                 endIcon={
@@ -4444,67 +3050,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "group11", "password")
-                    ? (() => {
-                        try {
-                          return (
-                            $state.fragmentInput3.value.length == 0 ||
-                            $state.loadedbtn
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return (
-                            !$state.fragmentInput.value.match(
-                              $state.contry.find(
-                                item => item.value === $state.selectContry
-                              ).phoneFormats.regex
-                            ) || $state.loadedbtn
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? (() => {
-                        try {
-                          return (
-                            !$state.fragmentInput.value.match(
-                              $state.contry.find(
-                                item => item.value === $state.selectContry
-                              ).phoneFormats.regex
-                            ) || $state.loadedbtn
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "password", "password")
                     ? (() => {
                         try {
                           return (
@@ -4921,16 +3466,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "password"
-                      ),
-                      [sty.textloginByPassword___73Cik0DikB]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword___73Cik8PqF9]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
                       )
                     }
                   )}
@@ -4939,10 +3474,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     ? "\u0648\u0631\u0648\u062f"
                     : hasVariant($state, "group11", "password")
                     ? "\u0648\u0631\u0648\u062f"
-                    : hasVariant($state, "loginByPassword", "loginByPassword")
-                    ? "\u0648\u0631\u0648\u062f"
-                    : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f"
                     : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                 </div>
               </Button>
@@ -4950,11 +3481,7 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"checkbox"}
                 data-plasmic-override={overrides.checkbox}
                 autoFocus={
-                  hasVariant($state, "group11", "saraf")
-                    ? false
-                    : hasVariant($state, "saraf2", "saraf2")
-                    ? false
-                    : undefined
+                  hasVariant($state, "group11", "saraf") ? false : undefined
                 }
                 checked={generateStateValueProp($state, [
                   "checkbox",
@@ -4970,36 +3497,13 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.checkboxpassword]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.checkboxpassword_group11_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "password"),
-                  [sty.checkboxpassword_group11_saraf]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.checkboxpassword_saraf2]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.checkboxsaraf2]: hasVariant($state, "saraf2", "saraf2")
+                  )
                 })}
                 defaultChecked={
-                  hasVariant($state, "group11", "saraf")
-                    ? false
-                    : hasVariant($state, "saraf2", "saraf2")
-                    ? true
-                    : undefined
+                  hasVariant($state, "group11", "saraf") ? false : undefined
                 }
                 disabled={
-                  hasVariant($state, "group11", "saraf")
-                    ? false
-                    : hasVariant($state, "saraf2", "saraf2")
-                    ? false
-                    : undefined
+                  hasVariant($state, "group11", "saraf") ? false : undefined
                 }
                 onChange={async (...eventArgs: any) => {
                   generateStateOnChangeProp($state, [
@@ -5057,18 +3561,11 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.textsaraf2__rPoWaJmKha]: hasVariant(
-                        $state,
-                        "saraf2",
-                        "saraf2"
                       )
                     }
                   )}
                 >
                   {hasVariant($state, "group11", "saraf")
-                    ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u0645\u06cc\u067e\u0630\u06cc\u0631\u0645!"
-                    : hasVariant($state, "saraf2", "saraf2")
                     ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u0645\u06cc\u067e\u0630\u06cc\u0631\u0645!"
                     : "Checkbox"}
                 </div>
@@ -5077,13 +3574,6 @@ function PlasmicLogIn__RenderFunc(props: {
                 data-plasmic-name={"btnSaraf"}
                 data-plasmic-override={overrides.btnSaraf}
                 className={classNames("__wab_instance", sty.btnSaraf, {
-                  [sty.btnSarafcode2]: hasVariant($state, "code2", "code2"),
-                  [sty.btnSarafcode2_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.btnSarafcode2_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "code2", "code2"),
                   [sty.btnSarafgroup11_code]: hasVariant(
                     $state,
                     "group11",
@@ -5103,39 +3593,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.btnSarafloginByPassword]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.btnSarafloginByPassword_group11_password]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.btnSarafloginByPassword_group11_saraf]:
-                    hasVariant($state, "group11", "saraf") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.btnSarafloginByPassword_password]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.btnSarafloginByPassword_saraf2]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.btnSarafpassword]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.btnSarafpassword_group11_loginByPassword]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "loginByPassword"),
-                  [sty.btnSarafsaraf2]: hasVariant($state, "saraf2", "saraf2"),
-                  [sty.btnSarafsaraf2_group11_code]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "code"),
-                  [sty.btnSarafsaraf2_group11_loginByPassword]:
-                    hasVariant($state, "saraf2", "saraf2") &&
-                    hasVariant($state, "group11", "loginByPassword")
+                  )
                 })}
                 color={"green"}
                 endIcon={
@@ -5145,66 +3603,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   />
                 }
                 isDisabled={
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "code2", "code2")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "code")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "code2", "code2")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "group11", "saraf")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2")
+                  hasVariant($state, "group11", "saraf")
                     ? (() => {
                         try {
                           return $state.loadedbtn;
@@ -5585,66 +3984,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   }
                 }}
                 showEndIcon={
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "code2", "code2")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "code")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "code2", "code2")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "group11", "saraf")
-                    ? (() => {
-                        try {
-                          return $state.loadedbtn;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return [];
-                          }
-                          throw e;
-                        }
-                      })()
-                    : hasVariant($state, "saraf2", "saraf2")
+                  hasVariant($state, "group11", "saraf")
                     ? (() => {
                         try {
                           return $state.loadedbtn;
@@ -5683,634 +4023,511 @@ function PlasmicLogIn__RenderFunc(props: {
                         $state,
                         "group11",
                         "saraf"
-                      ),
-                      [sty.textsaraf2__uxobwJmKha]: hasVariant(
-                        $state,
-                        "saraf2",
-                        "saraf2"
                       )
                     }
                   )}
                 >
                   {hasVariant($state, "group11", "saraf")
                     ? "\u062a\u0627\u06cc\u06cc\u062f"
-                    : hasVariant($state, "saraf2", "saraf2")
-                    ? "\u062a\u0627\u06cc\u06cc\u062f"
                     : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                 </div>
               </Button>
-              {(
-                hasVariant($state, "group11", "code")
-                  ? true
-                  : hasVariant($state, "code2", "code2")
-                  ? true
-                  : false
-              ) ? (
-                <Button
-                  data-plasmic-name={"sendcode"}
-                  data-plasmic-override={overrides.sendcode}
-                  className={classNames("__wab_instance", sty.sendcode, {
-                    [sty.sendcodecode2]: hasVariant($state, "code2", "code2"),
-                    [sty.sendcodecode2_group11_code]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "code"),
-                    [sty.sendcodecode2_group11_loginByPassword]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "group11", "loginByPassword"),
-                    [sty.sendcodecode2_group11_saraf]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "code2", "code2"),
-                    [sty.sendcodecode2_saraf2]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "code2", "code2"),
-                    [sty.sendcodegroup11_code]: hasVariant(
-                      $state,
-                      "group11",
-                      "code"
-                    ),
-                    [sty.sendcodegroup11_loginByPassword]: hasVariant(
-                      $state,
-                      "group11",
-                      "loginByPassword"
-                    ),
-                    [sty.sendcodegroup11_password]: hasVariant(
-                      $state,
-                      "group11",
-                      "password"
-                    ),
-                    [sty.sendcodegroup11_saraf]: hasVariant(
-                      $state,
-                      "group11",
-                      "saraf"
-                    ),
-                    [sty.sendcodeloginByPassword]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.sendcodeloginByPassword_code2]:
-                      hasVariant($state, "code2", "code2") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.sendcodeloginByPassword_group11_code]:
-                      hasVariant($state, "group11", "code") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.sendcodeloginByPassword_group11_saraf]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.sendcodeloginByPassword_saraf2]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.sendcodepassword]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.sendcodepassword_group11_saraf]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.sendcodepassword_saraf2]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "password", "password"),
-                    [sty.sendcodesaraf2]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.sendcodesaraf2_group11_code]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "code"),
-                    [sty.sendcodesaraf2_group11_loginByPassword]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "loginByPassword"),
-                    [sty.sendcodesaraf2_group11_password]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "password")
-                  })}
-                  color={"green"}
-                  endIcon={
-                    <PlasmicIcon__
-                      PlasmicIconType={
-                        hasVariant($state, "group11", "code")
-                          ? IconIcon
-                          : hasVariant($state, "code2", "code2")
-                          ? IconIcon
-                          : Icon3Icon
+              <div
+                className={classNames(projectcss.all, sty.freeBox__d1Qv, {
+                  [sty.freeBoxgroup11_code__d1QvYss9U]: hasVariant(
+                    $state,
+                    "group11",
+                    "code"
+                  ),
+                  [sty.freeBoxgroup11_saraf__d1QVnaBfa]: hasVariant(
+                    $state,
+                    "group11",
+                    "saraf"
+                  )
+                })}
+                id={
+                  hasVariant($state, "group11", "code")
+                    ? "codeButten"
+                    : undefined
+                }
+              >
+                {(hasVariant($state, "group11", "code") ? true : false) ? (
+                  <Button
+                    data-plasmic-name={"sendcode"}
+                    data-plasmic-override={overrides.sendcode}
+                    className={classNames("__wab_instance", sty.sendcode, {
+                      [sty.sendcodegroup11_code]: hasVariant(
+                        $state,
+                        "group11",
+                        "code"
+                      ),
+                      [sty.sendcodegroup11_loginByPassword]: hasVariant(
+                        $state,
+                        "group11",
+                        "loginByPassword"
+                      ),
+                      [sty.sendcodegroup11_password]: hasVariant(
+                        $state,
+                        "group11",
+                        "password"
+                      ),
+                      [sty.sendcodegroup11_saraf]: hasVariant(
+                        $state,
+                        "group11",
+                        "saraf"
+                      )
+                    })}
+                    color={"green"}
+                    endIcon={
+                      <PlasmicIcon__
+                        PlasmicIconType={
+                          hasVariant($state, "group11", "code")
+                            ? IconIcon
+                            : Icon3Icon
+                        }
+                        className={classNames(projectcss.all, sty.svg__r6GXo, {
+                          [sty.svggroup11_code__r6GXoYss9U]: hasVariant(
+                            $state,
+                            "group11",
+                            "code"
+                          )
+                        })}
+                        role={"img"}
+                      />
+                    }
+                    isDisabled={(() => {
+                      try {
+                        return $state.loadedbtn;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
                       }
-                      className={classNames(projectcss.all, sty.svg__r6GXo, {
-                        [sty.svgcode2__r6GXoDv9B5]: hasVariant(
-                          $state,
-                          "code2",
-                          "code2"
-                        ),
-                        [sty.svggroup11_code__r6GXoYss9U]: hasVariant(
-                          $state,
-                          "group11",
-                          "code"
-                        )
-                      })}
-                      role={"img"}
-                    />
-                  }
-                  isDisabled={
-                    hasVariant($state, "group11", "code") &&
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.fragmentInput2.value.length != 4;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "group11", "code")
-                      ? (() => {
-                          try {
-                            return $state.fragmentInput2.value.length != 4;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "code2", "code2") &&
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.fragmentInput2.value.length != 4;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "code2", "code2")
-                      ? (() => {
-                          try {
-                            return $state.fragmentInput2.value.length != 4;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.fragmentInput2.value.length != 11;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                  }
-                  loadingviow={generateStateValueProp($state, [
-                    "sendcode",
-                    "loadingviow"
-                  ])}
-                  onClick={async event => {
-                    const $steps = {};
+                    })()}
+                    loadingviow={generateStateValueProp($state, [
+                      "sendcode",
+                      "loadingviow"
+                    ])}
+                    onClick={async event => {
+                      const $steps = {};
 
-                    $steps["updateLoadedbtn"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["loadedbtn"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
+                      $steps["updateLoadedbtn"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["loadedbtn"]
+                              },
+                              operation: 0,
+                              value: true
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
 
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoadedbtn"] != null &&
-                      typeof $steps["updateLoadedbtn"] === "object" &&
-                      typeof $steps["updateLoadedbtn"].then === "function"
-                    ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
-                    }
-
-                    $steps["updateCode"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["code"]
-                            },
-                            operation: 0,
-                            value: parseInt($state.fragmentInput2.value)
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateCode"] != null &&
-                      typeof $steps["updateCode"] === "object" &&
-                      typeof $steps["updateCode"].then === "function"
-                    ) {
-                      $steps["updateCode"] = await $steps["updateCode"];
-                    }
-
-                    $steps["invokeGlobalAction2"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "POST",
-                              "https://n8n.babarkat.com/webhook/Babarkat/login",
-                              undefined,
-                              (() => {
-                                try {
-                                  return {
-                                    mobile: $state.number,
-                                    code: $state.code
-                                  };
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            ]
-                          };
-                          return $globalActions["Fragment.apiRequest"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction2"] != null &&
-                      typeof $steps["invokeGlobalAction2"] === "object" &&
-                      typeof $steps["invokeGlobalAction2"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
-                    }
-
-                    $steps["invokeGlobalAction"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success == false
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
-                    }
-
-                    $steps["runCode"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success == true
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            customFunction: async () => {
-                              return (() => {
-                                localStorage.setItem(
-                                  "userbabarcat",
-                                  JSON.stringify(
-                                    $steps.invokeGlobalAction2.data[0].data
-                                  )
-                                );
-                                const item = {
-                                  value:
-                                    $steps.invokeGlobalAction2.data[0].data
-                                      .token,
-                                  expiration:
-                                    new Date().getTime() + 10 * 60 * 1000
-                                };
-                                return sessionStorage.setItem(
-                                  "userbabarcatToken",
-                                  JSON.stringify(item)
-                                );
-                              })();
-                            }
-                          };
-                          return (({ customFunction }) => {
-                            return customFunction();
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["runCode"] != null &&
-                      typeof $steps["runCode"] === "object" &&
-                      typeof $steps["runCode"].then === "function"
-                    ) {
-                      $steps["runCode"] = await $steps["runCode"];
-                    }
-
-                    $steps["invokeGlobalAction3"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success == false
-                        : true
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "error",
-                              "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
-                              "top-left"
-                            ]
-                          };
-                          return $globalActions["Fragment.showToast"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["invokeGlobalAction3"] != null &&
-                      typeof $steps["invokeGlobalAction3"] === "object" &&
-                      typeof $steps["invokeGlobalAction3"].then === "function"
-                    ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
-                    }
-
-                    $steps["goToHomepage"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success ==
-                            true &&
-                          $steps.invokeGlobalAction2?.data[0]?.saraf.length < 2
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = { destination: `/` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToHomepage"] != null &&
-                      typeof $steps["goToHomepage"] === "object" &&
-                      typeof $steps["goToHomepage"].then === "function"
-                    ) {
-                      $steps["goToHomepage"] = await $steps["goToHomepage"];
-                    }
-
-                    $steps["updateSaraf"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["saraf"]
-                            },
-                            operation: 0,
-                            value: (() => {
-                              const transformedArray =
-                                $steps.invokeGlobalAction2.data[0].saraf.map(
-                                  item => ({
-                                    label: item.name,
-                                    value: item.id
-                                  })
-                                );
-                              return transformedArray;
-                            })()
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateSaraf"] != null &&
-                      typeof $steps["updateSaraf"] === "object" &&
-                      typeof $steps["updateSaraf"].then === "function"
-                    ) {
-                      $steps["updateSaraf"] = await $steps["updateSaraf"];
-                    }
-
-                    $steps["updateUnnamedVariant2"] = (
-                      $steps.invokeGlobalAction2?.data
-                        ? $steps.invokeGlobalAction2?.data[0]?.success ===
-                            true && $state.saraf.length > 1
-                        : false
-                    )
-                      ? (() => {
-                          const actionArgs = {
-                            vgroup: "group11",
-                            operation: 0,
-                            value: "saraf"
-                          };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
-                            }
-
-                            $stateSet($state, vgroup, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateUnnamedVariant2"] != null &&
-                      typeof $steps["updateUnnamedVariant2"] === "object" &&
-                      typeof $steps["updateUnnamedVariant2"].then === "function"
-                    ) {
-                      $steps["updateUnnamedVariant2"] = await $steps[
-                        "updateUnnamedVariant2"
-                      ];
-                    }
-
-                    $steps["updateLoadedbtn2"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["loadedbtn"]
-                            },
-                            operation: 0,
-                            value: false
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateLoadedbtn2"] != null &&
-                      typeof $steps["updateLoadedbtn2"] === "object" &&
-                      typeof $steps["updateLoadedbtn2"].then === "function"
-                    ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
-                    }
-                  }}
-                  onLoadingviowChange={async (...eventArgs: any) => {
-                    ((...eventArgs) => {
-                      generateStateOnChangeProp($state, [
-                        "sendcode",
-                        "loadingviow"
-                      ])(eventArgs[0]);
-                    }).apply(null, eventArgs);
-
-                    if (
-                      eventArgs.length > 1 &&
-                      eventArgs[1] &&
-                      eventArgs[1]._plasmic_state_init_
-                    ) {
-                      return;
-                    }
-                  }}
-                  showEndIcon={(() => {
-                    try {
-                      return $state.loadedbtn;
-                    } catch (e) {
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
+                        $steps["updateLoadedbtn"] != null &&
+                        typeof $steps["updateLoadedbtn"] === "object" &&
+                        typeof $steps["updateLoadedbtn"].then === "function"
                       ) {
-                        return [];
+                        $steps["updateLoadedbtn"] = await $steps[
+                          "updateLoadedbtn"
+                        ];
                       }
-                      throw e;
-                    }
-                  })()}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sE8Bl,
-                      {
-                        [sty.textcode2__sE8BlDv9B5]: hasVariant(
-                          $state,
-                          "code2",
-                          "code2"
-                        ),
-                        [sty.textgroup11_code__sE8BlYss9U]: hasVariant(
-                          $state,
-                          "group11",
-                          "code"
-                        )
+
+                      $steps["updateCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["code"]
+                              },
+                              operation: 0,
+                              value: parseInt(window.inputValues.join(""))
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateCode"] != null &&
+                        typeof $steps["updateCode"] === "object" &&
+                        typeof $steps["updateCode"].then === "function"
+                      ) {
+                        $steps["updateCode"] = await $steps["updateCode"];
                       }
-                    )}
+
+                      $steps["invokeGlobalAction2"] =
+                        $state.code.toString().length == 4
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://n8n.babarkat.com/webhook/Babarkat/login",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        mobile: $state.number,
+                                        code: $state.code
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["invokeGlobalAction2"] != null &&
+                        typeof $steps["invokeGlobalAction2"] === "object" &&
+                        typeof $steps["invokeGlobalAction2"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction2"] = await $steps[
+                          "invokeGlobalAction2"
+                        ];
+                      }
+
+                      $steps["invokeGlobalAction"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
+                            false
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u06a9\u062f \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0635\u062d\u06cc\u062d \u0646\u0645\u06cc \u0628\u0627\u0634\u062f.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+
+                      $steps["runCode"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success == true
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  localStorage.setItem(
+                                    "userbabarcat",
+                                    JSON.stringify(
+                                      $steps.invokeGlobalAction2.data[0].data
+                                    )
+                                  );
+                                  const item = {
+                                    value:
+                                      $steps.invokeGlobalAction2.data[0].data
+                                        .token,
+                                    expiration:
+                                      new Date().getTime() + 10 * 60 * 1000
+                                  };
+                                  return sessionStorage.setItem(
+                                    "userbabarcatToken",
+                                    JSON.stringify(item)
+                                  );
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+
+                      $steps["invokeGlobalAction3"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
+                            false
+                          : true
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "error",
+                                "\u0645\u0634\u06a9\u0644\u06cc \u0631\u062e \u062f\u0627\u062f\u0647 \u0627\u0633\u062a \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
+                                "top-left"
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction3"] != null &&
+                        typeof $steps["invokeGlobalAction3"] === "object" &&
+                        typeof $steps["invokeGlobalAction3"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction3"] = await $steps[
+                          "invokeGlobalAction3"
+                        ];
+                      }
+
+                      $steps["goToHomepage"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ==
+                              true &&
+                            $steps.invokeGlobalAction2?.data[0]?.saraf.length <
+                              2
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = { destination: `/` };
+                            return (({ destination }) => {
+                              if (
+                                typeof destination === "string" &&
+                                destination.startsWith("#")
+                              ) {
+                                document
+                                  .getElementById(destination.substr(1))
+                                  .scrollIntoView({ behavior: "smooth" });
+                              } else {
+                                __nextRouter?.push(destination);
+                              }
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["goToHomepage"] != null &&
+                        typeof $steps["goToHomepage"] === "object" &&
+                        typeof $steps["goToHomepage"].then === "function"
+                      ) {
+                        $steps["goToHomepage"] = await $steps["goToHomepage"];
+                      }
+
+                      $steps["updateSaraf"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["saraf"]
+                              },
+                              operation: 0,
+                              value: (() => {
+                                const transformedArray =
+                                  $steps.invokeGlobalAction2.data[0].saraf.map(
+                                    item => ({
+                                      label: item.name,
+                                      value: item.id
+                                    })
+                                  );
+                                return transformedArray;
+                              })()
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateSaraf"] != null &&
+                        typeof $steps["updateSaraf"] === "object" &&
+                        typeof $steps["updateSaraf"].then === "function"
+                      ) {
+                        $steps["updateSaraf"] = await $steps["updateSaraf"];
+                      }
+
+                      $steps["updateUnnamedVariant2"] = (
+                        $steps.invokeGlobalAction2?.data
+                          ? $steps.invokeGlobalAction2?.data[0]?.success ===
+                              true && $state.saraf.length > 1
+                          : false
+                      )
+                        ? (() => {
+                            const actionArgs = {
+                              vgroup: "group11",
+                              operation: 0,
+                              value: "saraf"
+                            };
+                            return (({ vgroup, value }) => {
+                              if (typeof value === "string") {
+                                value = [value];
+                              }
+
+                              $stateSet($state, vgroup, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateUnnamedVariant2"] != null &&
+                        typeof $steps["updateUnnamedVariant2"] === "object" &&
+                        typeof $steps["updateUnnamedVariant2"].then ===
+                          "function"
+                      ) {
+                        $steps["updateUnnamedVariant2"] = await $steps[
+                          "updateUnnamedVariant2"
+                        ];
+                      }
+
+                      $steps["updateLoadedbtn2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["loadedbtn"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateLoadedbtn2"] != null &&
+                        typeof $steps["updateLoadedbtn2"] === "object" &&
+                        typeof $steps["updateLoadedbtn2"].then === "function"
+                      ) {
+                        $steps["updateLoadedbtn2"] = await $steps[
+                          "updateLoadedbtn2"
+                        ];
+                      }
+                    }}
+                    onLoadingviowChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "sendcode",
+                          "loadingviow"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
+                    showEndIcon={(() => {
+                      try {
+                        return $state.loadedbtn;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
                   >
-                    {"\u062a\u0627\u06cc\u06cc\u062f"}
-                  </div>
-                </Button>
-              ) : null}
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__sE8Bl,
+                        {
+                          [sty.textgroup11_code__sE8BlYss9U]: hasVariant(
+                            $state,
+                            "group11",
+                            "code"
+                          )
+                        }
+                      )}
+                    >
+                      {"\u062a\u0627\u06cc\u06cc\u062f"}
+                    </div>
+                  </Button>
+                ) : null}
+              </div>
             </div>
-            {(
-              hasVariant($state, "group11", "code")
-                ? true
-                : hasVariant($state, "code2", "code2")
-                ? true
-                : false
-            ) ? (
+            {(hasVariant($state, "group11", "code") ? true : false) ? (
               <div
                 data-plasmic-name={"figmaPaste"}
                 data-plasmic-override={overrides.figmaPaste}
                 className={classNames(projectcss.all, sty.figmaPaste, {
-                  [sty.figmaPastecode2]: hasVariant($state, "code2", "code2"),
                   [sty.figmaPastegroup11_code]: hasVariant(
                     $state,
                     "group11",
@@ -6322,7 +4539,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   data-plasmic-name={"group"}
                   data-plasmic-override={overrides.group}
                   className={classNames(projectcss.all, sty.group, {
-                    [sty.groupcode2]: hasVariant($state, "code2", "code2"),
                     [sty.groupgroup11_code]: hasVariant(
                       $state,
                       "group11",
@@ -6355,7 +4571,6 @@ function PlasmicLogIn__RenderFunc(props: {
                     data-plasmic-name={"group3"}
                     data-plasmic-override={overrides.group3}
                     className={classNames(projectcss.all, sty.group3, {
-                      [sty.group3code2]: hasVariant($state, "code2", "code2"),
                       [sty.group3group11_code]: hasVariant(
                         $state,
                         "group11",
@@ -6435,11 +4650,6 @@ function PlasmicLogIn__RenderFunc(props: {
                         data-plasmic-name={"rectangle"}
                         data-plasmic-override={overrides.rectangle}
                         className={classNames(projectcss.all, sty.rectangle, {
-                          [sty.rectanglecode2]: hasVariant(
-                            $state,
-                            "code2",
-                            "code2"
-                          ),
                           [sty.rectanglegroup11_code]: hasVariant(
                             $state,
                             "group11",
@@ -6465,11 +4675,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text__oDmNk,
                       {
-                        [sty.textcode2__oDmNkDv9B5]: hasVariant(
-                          $state,
-                          "code2",
-                          "code2"
-                        ),
                         [sty.textgroup11_code__oDmNkYss9U]: hasVariant(
                           $state,
                           "group11",
@@ -6488,11 +4693,6 @@ function PlasmicLogIn__RenderFunc(props: {
                       projectcss.__wab_text,
                       sty.text___7SctQ,
                       {
-                        [sty.textcode2___7SctQDv9B5]: hasVariant(
-                          $state,
-                          "code2",
-                          "code2"
-                        ),
                         [sty.textgroup11_code___7SctQYss9U]: hasVariant(
                           $state,
                           "group11",
@@ -6517,16 +4717,6 @@ function PlasmicLogIn__RenderFunc(props: {
               data-plasmic-name={"group9"}
               data-plasmic-override={overrides.group9}
               className={classNames(projectcss.all, sty.group9, {
-                [sty.group9code2]: hasVariant($state, "code2", "code2"),
-                [sty.group9code2_group11_password]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "password"),
-                [sty.group9code2_group11_saraf]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group9code2_saraf2]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2"),
                 [sty.group9group11_code]: hasVariant($state, "group11", "code"),
                 [sty.group9group11_loginByPassword]: hasVariant(
                   $state,
@@ -6542,45 +4732,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.group9loginByPassword]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.group9loginByPassword_group11_saraf]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group9loginByPassword_saraf2]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group9password]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.group9password_code2]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.group9password_group11_code]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "password", "password"),
-                [sty.group9password_group11_saraf]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group9password_saraf2]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group9saraf2]: hasVariant($state, "saraf2", "saraf2"),
-                [sty.group9saraf2_group11_code]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group9saraf2_group11_loginByPassword]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group9saraf2_group11_password]:
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "saraf2", "saraf2")
+                )
               })}
               onClick={async event => {
                 const $steps = {};
@@ -6617,17 +4769,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__wYgld,
                   {
-                    [sty.textcode2__wYgldDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.textcode2_group11_saraf__wYgldDv9B5NaBfa]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "code2", "code2"),
-                    [sty.textcode2_saraf2__wYgldDv9B5JmKha]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "code2", "code2"),
                     [sty.textgroup11_code__wYgldYss9U]: hasVariant(
                       $state,
                       "group11",
@@ -6647,65 +4788,16 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__wYgld0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_group11_saraf__wYgld0DikBNaBfa]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "group11", "saraf"),
-                    [sty.textloginByPassword_saraf2__wYgld0DikBJmKha]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textpassword__wYgld8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textpassword_group11_saraf__wYgld8PqF9NaBfa]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.textpassword_saraf2__wYgld8PqF9JmKha]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textsaraf2__wYgldJmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.textsaraf2_group11_code__wYgldJmKhaYss9U]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "code"),
-                    [sty.textsaraf2_group11_loginByPassword__wYgldJmKhaE5Wtv]:
-                      hasVariant($state, "group11", "loginByPassword") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textsaraf2_group11_password__wYgldJmKhaCxClj]:
-                      hasVariant($state, "group11", "password") &&
-                      hasVariant($state, "saraf2", "saraf2")
+                    )
                   }
                 )}
               >
-                {hasVariant($state, "loginByPassword", "loginByPassword")
-                  ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                  : hasVariant($state, "password", "password")
-                  ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                  : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                {
+                  "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                }
               </div>
               <LeftArrowBackSvgrepoComSvgIcon
                 className={classNames(projectcss.all, sty.svg___40A0, {
-                  [sty.svgcode2___40A0Dv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.svggroup11_code___40A0Yss9U]: hasVariant(
                     $state,
                     "group11",
@@ -6725,25 +4817,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "saraf"
-                  ),
-                  [sty.svgloginByPassword_group11_saraf___40A00DikBNaBfa]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgloginByPassword_saraf2___40A00DikBJmKha]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgpassword_group11_saraf___40A08PqF9NaBfa]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgpassword_saraf2___40A08PqF9JmKha]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_loginByPassword___40A0JmKhaE5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_password___40A0JmKhaCxClj]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "saraf2", "saraf2")
+                  )
                 })}
                 role={"img"}
               />
@@ -6752,16 +4826,6 @@ function PlasmicLogIn__RenderFunc(props: {
               data-plasmic-name={"group10"}
               data-plasmic-override={overrides.group10}
               className={classNames(projectcss.all, sty.group10, {
-                [sty.group10code2]: hasVariant($state, "code2", "code2"),
-                [sty.group10code2_group11_loginByPassword]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "loginByPassword"),
-                [sty.group10code2_group11_saraf]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group10code2_saraf2]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2"),
                 [sty.group10group11_code]: hasVariant(
                   $state,
                   "group11",
@@ -6781,54 +4845,7 @@ function PlasmicLogIn__RenderFunc(props: {
                   $state,
                   "group11",
                   "saraf"
-                ),
-                [sty.group10loginByPassword]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.group10loginByPassword_code2]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.group10loginByPassword_group11_code]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.group10loginByPassword_group11_password]:
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.group10loginByPassword_group11_saraf]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group10loginByPassword_password]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.group10loginByPassword_saraf2]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group10password]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.group10password_group11_loginByPassword]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "loginByPassword"),
-                [sty.group10password_group11_saraf]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.group10password_saraf2]:
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group10saraf2]: hasVariant($state, "saraf2", "saraf2"),
-                [sty.group10saraf2_group11_code]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group10saraf2_group11_loginByPassword]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.group10saraf2_group11_password]:
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "saraf2", "saraf2")
+                )
               })}
               onClick={async event => {
                 const $steps = {};
@@ -6867,17 +4884,6 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.__wab_text,
                   sty.text__agfv,
                   {
-                    [sty.textcode2__agfvDv9B5]: hasVariant(
-                      $state,
-                      "code2",
-                      "code2"
-                    ),
-                    [sty.textcode2_group11_saraf__agfvDv9B5NaBfa]:
-                      hasVariant($state, "group11", "saraf") &&
-                      hasVariant($state, "code2", "code2"),
-                    [sty.textcode2_saraf2__agfvDv9B5JmKha]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "code2", "code2"),
                     [sty.textgroup11_code__agfvYss9U]: hasVariant(
                       $state,
                       "group11",
@@ -6897,65 +4903,16 @@ function PlasmicLogIn__RenderFunc(props: {
                       $state,
                       "group11",
                       "saraf"
-                    ),
-                    [sty.textloginByPassword__agfv0DikB]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_group11_saraf__agfv0DikBNaBfa]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "group11", "saraf"),
-                    [sty.textloginByPassword_saraf2__agfv0DikBJmKha]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) && hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textpassword__agfv8PqF9]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textpassword_group11_saraf__agfv8PqF9NaBfa]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "group11", "saraf"),
-                    [sty.textpassword_saraf2__agfv8PqF9JmKha]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textsaraf2__agfvJmKha]: hasVariant(
-                      $state,
-                      "saraf2",
-                      "saraf2"
-                    ),
-                    [sty.textsaraf2_group11_code__agfvJmKhaYss9U]:
-                      hasVariant($state, "saraf2", "saraf2") &&
-                      hasVariant($state, "group11", "code"),
-                    [sty.textsaraf2_group11_loginByPassword__agfvJmKhaE5Wtv]:
-                      hasVariant($state, "group11", "loginByPassword") &&
-                      hasVariant($state, "saraf2", "saraf2"),
-                    [sty.textsaraf2_group11_password__agfvJmKhaCxClj]:
-                      hasVariant($state, "group11", "password") &&
-                      hasVariant($state, "saraf2", "saraf2")
+                    )
                   }
                 )}
               >
-                {hasVariant($state, "loginByPassword", "loginByPassword")
-                  ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                  : hasVariant($state, "password", "password")
-                  ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                  : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                {
+                  "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                }
               </div>
               <LeftArrowBackSvgrepoComSvgIcon
                 className={classNames(projectcss.all, sty.svg__hTSxw, {
-                  [sty.svgcode2__hTSxwDv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
                   [sty.svggroup11_code__hTSxwYss9U]: hasVariant(
                     $state,
                     "group11",
@@ -6970,49 +4927,502 @@ function PlasmicLogIn__RenderFunc(props: {
                     $state,
                     "group11",
                     "password"
-                  ),
-                  [sty.svgloginByPassword_group11_saraf__hTSxw0DikBNaBfa]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgloginByPassword_saraf2__hTSxw0DikBJmKha]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgpassword_group11_saraf__hTSxw8PqF9NaBfa]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "group11", "saraf"),
-                  [sty.svgpassword_saraf2__hTSxw8PqF9JmKha]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_loginByPassword__hTSxwJmKhaE5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "saraf2", "saraf2"),
-                  [sty.svgsaraf2_group11_password__hTSxwJmKhaCxClj]:
-                    hasVariant($state, "group11", "password") &&
-                    hasVariant($state, "saraf2", "saraf2")
+                  )
                 })}
                 role={"img"}
               />
             </div>
+            {(hasVariant($state, "group11", "noSaraf") ? true : false) ? (
+              <div
+                className={classNames(projectcss.all, sty.freeBox__vSy1, {
+                  [sty.freeBoxgroup11_noSaraf__vSy1HtLqd]: hasVariant(
+                    $state,
+                    "group11",
+                    "noSaraf"
+                  )
+                })}
+              >
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__fyPp6, {
+                    [sty.freeBoxgroup11_code__fyPp6Yss9U]: hasVariant(
+                      $state,
+                      "group11",
+                      "code"
+                    ),
+                    [sty.freeBoxgroup11_noSaraf__fyPp6HtLqd]: hasVariant(
+                      $state,
+                      "group11",
+                      "noSaraf"
+                    )
+                  })}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__kwlYs,
+                      {
+                        [sty.textgroup11_code__kwlYsYss9U]: hasVariant(
+                          $state,
+                          "group11",
+                          "code"
+                        ),
+                        [sty.textgroup11_loginByPassword__kwlYse5Wtv]:
+                          hasVariant($state, "group11", "loginByPassword"),
+                        [sty.textgroup11_noSaraf__kwlYsHtLqd]: hasVariant(
+                          $state,
+                          "group11",
+                          "noSaraf"
+                        ),
+                        [sty.textgroup11_password__kwlYscxClj]: hasVariant(
+                          $state,
+                          "group11",
+                          "password"
+                        ),
+                        [sty.textgroup11_saraf__kwlYsnaBfa]: hasVariant(
+                          $state,
+                          "group11",
+                          "saraf"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "group11", "password")
+                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      : hasVariant($state, "group11", "saraf")
+                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                      : hasVariant($state, "group11", "code")
+                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      : "\u062b\u0628\u062a \u0646\u0627\u0645 \u062f\u0631 \u0628\u0627\u0628\u0631\u06a9\u062a"}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___5Mt6I,
+                      {
+                        [sty.textgroup11_noSaraf___5Mt6IHtLqd]: hasVariant(
+                          $state,
+                          "group11",
+                          "noSaraf"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "\u06cc\u06a9\u06cc \u0627\u0632 \u062f\u0648 \u062d\u0627\u0644\u062a \u0632\u06cc\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0645\u0633\u06cc\u0631 \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u0645\u062a\u0646\u0627\u0633\u0628 \u0628\u0627\u0632 \u0634\u0648\u062f.\r\n\r\n"
+                    }
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__qImYv, {
+                      [sty.freeBoxgroup11_noSaraf__qImYvHtLqd]: hasVariant(
+                        $state,
+                        "group11",
+                        "noSaraf"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__cvzwE,
+                        {
+                          [sty.textgroup11_code__cvzwEYss9U]: hasVariant(
+                            $state,
+                            "group11",
+                            "code"
+                          ),
+                          [sty.textgroup11_loginByPassword__cvzwEe5Wtv]:
+                            hasVariant($state, "group11", "loginByPassword"),
+                          [sty.textgroup11_noSaraf__cvzwEHtLqd]: hasVariant(
+                            $state,
+                            "group11",
+                            "noSaraf"
+                          ),
+                          [sty.textgroup11_password__cvzwEcxClj]: hasVariant(
+                            $state,
+                            "group11",
+                            "password"
+                          ),
+                          [sty.textgroup11_saraf__cvzwEnaBfa]: hasVariant(
+                            $state,
+                            "group11",
+                            "saraf"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "group11", "noSaraf") ? (
+                        <React.Fragment>
+                          <React.Fragment>{""}</React.Fragment>
+                          {
+                            <ol
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.ol,
+                                sty.ol__qSs8T,
+                                {
+                                  [sty.olgroup11_noSaraf__qSs8THtLqd]:
+                                    hasVariant($state, "group11", "noSaraf")
+                                }
+                              )}
+                            >
+                              <li
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.li,
+                                  projectcss.__wab_text,
+                                  sty.li__oc0Dh,
+                                  {
+                                    [sty.ligroup11_noSaraf__oc0DhHtLqd]:
+                                      hasVariant($state, "group11", "noSaraf")
+                                  }
+                                )}
+                              >
+                                {hasVariant($state, "group11", "noSaraf")
+                                  ? "\u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u060c \u062d\u0648\u0627\u0644\u0647\u060c \u06cc\u0627 \u0635\u0631\u0627\u0641\u06cc \u062f\u0627\u0631\u0645 \u06a9\u0647 \u067e\u0646\u0644 \u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0628\u0627\u0628\u0631\u06a9\u062a \u0631\u0627 \u062f\u0627\u0631\u062f."
+                                  : "\u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u06cc\u0627 \u0635\u0631\u0627\u0641 \u062f\u0627\u0631\u0645\r"}
+                              </li>
+                            </ol>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                        </React.Fragment>
+                      ) : hasVariant($state, "group11", "password") ? (
+                        "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      ) : hasVariant($state, "group11", "saraf") ? (
+                        "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                      ) : hasVariant($state, "group11", "code") ? (
+                        "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      ) : (
+                        <React.Fragment>
+                          <React.Fragment>{""}</React.Fragment>
+                          {
+                            <ol
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.ol,
+                                sty.ol__qSs8T,
+                                {
+                                  [sty.olgroup11_noSaraf__qSs8THtLqd]:
+                                    hasVariant($state, "group11", "noSaraf")
+                                }
+                              )}
+                            >
+                              <li
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.li,
+                                  projectcss.__wab_text,
+                                  sty.li__oc0Dh,
+                                  {
+                                    [sty.ligroup11_noSaraf__oc0DhHtLqd]:
+                                      hasVariant($state, "group11", "noSaraf")
+                                  }
+                                )}
+                              >
+                                {hasVariant($state, "group11", "noSaraf")
+                                  ? "\u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u060c \u062d\u0648\u0627\u0644\u0647\u060c \u06cc\u0627 \u0635\u0631\u0627\u0641\u06cc \u062f\u0627\u0631\u0645 \u06a9\u0647 \u067e\u0646\u0644 \u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0628\u0627\u0628\u0631\u06a9\u062a \u0631\u0627 \u062f\u0627\u0631\u062f."
+                                  : "\u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u06cc\u0627 \u0635\u0631\u0627\u0641 \u062f\u0627\u0631\u0645\r"}
+                              </li>
+                            </ol>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                        </React.Fragment>
+                      )}
+                    </div>
+                    <LineClomp
+                      data-plasmic-name={"lineClomp2"}
+                      data-plasmic-override={overrides.lineClomp2}
+                      className={classNames("__wab_instance", sty.lineClomp2, {
+                        [sty.lineClomp2group11_noSaraf]: hasVariant(
+                          $state,
+                          "group11",
+                          "noSaraf"
+                        )
+                      })}
+                      more={true}
+                      numberOfLine={2}
+                      onLineChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "lineClomp2",
+                          "line"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__dDuKv,
+                          {
+                            [sty.textgroup11_noSaraf__dDuKvHtLqd]: hasVariant(
+                              $state,
+                              "group11",
+                              "noSaraf"
+                            )
+                          }
+                        )}
+                      >
+                        {
+                          "\u0644\u0637\u0641\u0627\u064b \u0628\u0647 \u0635\u0631\u0627\u0641 \u06cc\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u062e\u0648\u062f \u0627\u0637\u0644\u0627\u0639 \u062f\u0647\u06cc\u062f \u062a\u0627 \u0646\u0633\u0628\u062a \u0628\u0647 \u0627\u0636\u0627\u0641\u0647 \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627 \u062f\u0631 \u067e\u0646\u0644 \u0627\u0642\u062f\u0627\u0645 \u0646\u0645\u0627\u06cc\u062f.\n\u062f\u0631 \u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06cc\u0627 \u0645\u062f\u0627\u0631\u06a9 \u0645\u0648\u0631\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0631\u0627 \u062f\u0631 \u0627\u062e\u062a\u06cc\u0627\u0631 \u0627\u06cc\u0634\u0627\u0646 \u0642\u0631\u0627\u0631 \u062f\u0647\u06cc\u062f \u062a\u0627 \u0641\u0631\u0622\u06cc\u0646\u062f \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u06cc\u0627 \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0633\u0631\u06cc\u0639\u200c\u062a\u0631 \u0627\u0646\u062c\u0627\u0645 \u0634\u0648\u062f.\n\u067e\u0633 \u0627\u0632 \u0627\u0636\u0627\u0641\u0647 \u0634\u062f\u0646 \u062f\u0631 \u067e\u0646\u0644\u060c \u06a9\u0627\u0641\u06cc\u0633\u062a \u062f\u0648\u0628\u0627\u0631\u0647 \u0628\u0647 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0627\u0632\u06af\u0631\u062f\u06cc\u062f \u0648 \u0627\u0632 \u062e\u062f\u0645\u0627\u062a \u0645\u0627 \u0628\u0647\u0631\u0647\u200c\u0645\u0646\u062f \u0634\u0648\u06cc\u062f\u061b \u0627\u0632 \u062c\u0645\u0644\u0647 \u0645\u0634\u0627\u0647\u062f\u0647 \u0645\u0648\u062c\u0648\u062f\u06cc\u060c \u0627\u0646\u062c\u0627\u0645 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u060c \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0648\u0636\u0639\u06cc\u062a \u062d\u0648\u0627\u0644\u0647\u200c\u0647\u0627 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0633\u0627\u06cc\u0631 \u0627\u0645\u06a9\u0627\u0646\u0627\u062a \u0648\u06cc\u0698\u0647\u200c\u0627\u06cc \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0631\u0627\u062d\u062a\u06cc \u0634\u0645\u0627 \u0641\u0631\u0627\u0647\u0645 \u0634\u062f\u0647 \u0627\u0633\u062a."
+                        }
+                      </div>
+                    </LineClomp>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___5Quea, {
+                      [sty.freeBoxgroup11_noSaraf___5QueaHtLqd]: hasVariant(
+                        $state,
+                        "group11",
+                        "noSaraf"
+                      )
+                    })}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__hVkvg,
+                        {
+                          [sty.textgroup11_code__hVkvgYss9U]: hasVariant(
+                            $state,
+                            "group11",
+                            "code"
+                          ),
+                          [sty.textgroup11_loginByPassword__hVkvGe5Wtv]:
+                            hasVariant($state, "group11", "loginByPassword"),
+                          [sty.textgroup11_noSaraf__hVkvgHtLqd]: hasVariant(
+                            $state,
+                            "group11",
+                            "noSaraf"
+                          ),
+                          [sty.textgroup11_password__hVkvGcxClj]: hasVariant(
+                            $state,
+                            "group11",
+                            "password"
+                          ),
+                          [sty.textgroup11_saraf__hVkvGnaBfa]: hasVariant(
+                            $state,
+                            "group11",
+                            "saraf"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "group11", "noSaraf") ? (
+                        <React.Fragment>
+                          <React.Fragment>{""}</React.Fragment>
+                          {
+                            <ol
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.ol,
+                                sty.ol__lkBhg,
+                                {
+                                  [sty.olgroup11_noSaraf__lkBhgHtLqd]:
+                                    hasVariant($state, "group11", "noSaraf")
+                                }
+                              )}
+                            >
+                              <li
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.li,
+                                  projectcss.__wab_text,
+                                  sty.li___8GXvi,
+                                  {
+                                    [sty.ligroup11_noSaraf___8GXviHtLqd]:
+                                      hasVariant($state, "group11", "noSaraf")
+                                  }
+                                )}
+                              >
+                                {hasVariant($state, "group11", "noSaraf")
+                                  ? "\u0647\u06cc\u0686 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u060c \u062d\u0648\u0627\u0644\u0647 \u0631\u06cc\u0632 \u06cc\u0627 \u0635\u0631\u0627\u0641 \u0646\u062f\u0627\u0631\u0645."
+                                  : "\u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0646\u062f\u0627\u0631\u0645\r"}
+                              </li>
+                            </ol>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                        </React.Fragment>
+                      ) : hasVariant($state, "group11", "password") ? (
+                        "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      ) : hasVariant($state, "group11", "saraf") ? (
+                        "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                      ) : hasVariant($state, "group11", "code") ? (
+                        "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                      ) : (
+                        <React.Fragment>
+                          <React.Fragment>{""}</React.Fragment>
+                          {
+                            <ol
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.ol,
+                                sty.ol__lkBhg,
+                                {
+                                  [sty.olgroup11_noSaraf__lkBhgHtLqd]:
+                                    hasVariant($state, "group11", "noSaraf")
+                                }
+                              )}
+                            >
+                              <li
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.li,
+                                  projectcss.__wab_text,
+                                  sty.li___8GXvi,
+                                  {
+                                    [sty.ligroup11_noSaraf___8GXviHtLqd]:
+                                      hasVariant($state, "group11", "noSaraf")
+                                  }
+                                )}
+                              >
+                                {hasVariant($state, "group11", "noSaraf")
+                                  ? "\u0647\u06cc\u0686 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u060c \u062d\u0648\u0627\u0644\u0647 \u0631\u06cc\u0632 \u06cc\u0627 \u0635\u0631\u0627\u0641 \u0646\u062f\u0627\u0631\u0645."
+                                  : "\u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0646\u062f\u0627\u0631\u0645\r"}
+                              </li>
+                            </ol>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                        </React.Fragment>
+                      )}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__tYnDa,
+                        {
+                          [sty.textgroup11_noSaraf__tYnDaHtLqd]: hasVariant(
+                            $state,
+                            "group11",
+                            "noSaraf"
+                          )
+                        }
+                      )}
+                    >
+                      {hasVariant($state, "group11", "noSaraf")
+                        ? "\u0627\u06af\u0631 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u0646\u062f\u0627\u0631\u06cc\u062f\u060c \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u062a\u0633\u0627\u067e \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f \u062a\u0627 \u0645\u0631\u0627\u062d\u0644 \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u0631\u0627 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u0646\u062f."
+                        : "\u0644\u0637\u0641\u0627\u064b \u0628\u0647 \u0635\u0631\u0627\u0641 \u06cc\u0627 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631 \u062e\u0648\u062f \u0627\u0637\u0644\u0627\u0639 \u062f\u0647\u06cc\u062f \u062a\u0627 \u0646\u0633\u0628\u062a \u0628\u0647 \u0627\u0636\u0627\u0641\u0647 \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627 \u062f\u0631 \u067e\u0646\u0644 \u0627\u0642\u062f\u0627\u0645 \u0646\u0645\u0627\u06cc\u062f.\n\u062f\u0631 \u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06cc\u0627 \u0645\u062f\u0627\u0631\u06a9 \u0645\u0648\u0631\u062f \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0631\u0627 \u062f\u0631 \u0627\u062e\u062a\u06cc\u0627\u0631 \u0627\u06cc\u0634\u0627\u0646 \u0642\u0631\u0627\u0631 \u062f\u0647\u06cc\u062f \u062a\u0627 \u0641\u0631\u0622\u06cc\u0646\u062f \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u06cc\u0627 \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0633\u0631\u06cc\u0639\u200c\u062a\u0631 \u0627\u0646\u062c\u0627\u0645 \u0634\u0648\u062f.\n\u067e\u0633 \u0627\u0632 \u0627\u0636\u0627\u0641\u0647 \u0634\u062f\u0646 \u062f\u0631 \u067e\u0646\u0644\u060c \u06a9\u0627\u0641\u06cc\u0633\u062a \u062f\u0648\u0628\u0627\u0631\u0647 \u0628\u0647 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0627\u0632\u06af\u0631\u062f\u06cc\u062f \u0648 \u0627\u0632 \u062e\u062f\u0645\u0627\u062a \u0645\u0627 \u0628\u0647\u0631\u0647\u200c\u0645\u0646\u062f \u0634\u0648\u06cc\u062f\u061b \u0627\u0632 \u062c\u0645\u0644\u0647 \u0645\u0634\u0627\u0647\u062f\u0647 \u0645\u0648\u062c\u0648\u062f\u06cc\u060c \u0627\u0646\u062c\u0627\u0645 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u060c \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0648\u0636\u0639\u06cc\u062a \u062d\u0648\u0627\u0644\u0647\u200c\u0647\u0627 \u0648 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0633\u0627\u06cc\u0631 \u0627\u0645\u06a9\u0627\u0646\u0627\u062a \u0648\u06cc\u0698\u0647\u200c\u0627\u06cc \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0631\u0627\u062d\u062a\u06cc \u0634\u0645\u0627 \u0641\u0631\u0627\u0647\u0645 \u0634\u062f\u0647 \u0627\u0633\u062a."}
+                    </div>
+                    <Button
+                      data-plasmic-name={"button5"}
+                      data-plasmic-override={overrides.button5}
+                      className={classNames("__wab_instance", sty.button5, {
+                        [sty.button5group11_code]: hasVariant(
+                          $state,
+                          "group11",
+                          "code"
+                        ),
+                        [sty.button5group11_noSaraf]: hasVariant(
+                          $state,
+                          "group11",
+                          "noSaraf"
+                        )
+                      })}
+                      color={"softGreen"}
+                      loadingviow={generateStateValueProp($state, [
+                        "button5",
+                        "loadingviow"
+                      ])}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return Android.onElementClicked(
+                                    `https://wa.me/989202116750?text=%D8%B3%D9%84%D8%A7%D9%85%20%D9%88%D9%82%D8%AA%20%D8%A8%D8%AE%DB%8C%D8%B1%0A%D9%85%D9%86%20%D8%A8%D8%B1%D8%A7%DB%8C%20%D8%AB%D8%A8%D8%AA%E2%80%8C%D9%86%D8%A7%D9%85%20%D8%AF%D8%B1%20%D9%88%D8%A8%E2%80%8C%D8%A7%D9%BE%20%D8%A8%D8%A7%D8%A8%D8%B1%DA%A9%D8%AA%20%D8%A7%D9%82%D8%AF%D8%A7%D9%85%20%DA%A9%D8%B1%D8%AF%D9%87%E2%80%8C%D8%A7%D9%85%20%D9%88%D9%84%DB%8C%20%D8%A7%D9%85%D8%A7%D9%86%D8%AA%E2%80%8C%D8%AF%D8%A7%D8%B1%20%D9%86%D8%AF%D8%A7%D8%B1%D9%85.%0A%D9%84%D8%B7%D9%81%D8%A7%D9%8B%20%D8%B1%D8%A7%D9%87%D9%86%D9%85%D8%A7%DB%8C%DB%8C%20%D8%A8%D9%81%D8%B1%D9%85%D8%A7%DB%8C%DB%8C%D8%AF%20%DA%A9%D9%87%20%DA%86%D8%B7%D9%88%D8%B1%20%D9%85%DB%8C%E2%80%8C%D8%AA%D9%88%D8%A7%D9%86%D9%85%20%D8%AB%D8%A8%D8%AA%E2%80%8C%D9%86%D8%A7%D9%85%20%D8%B1%D8%A7%20%D8%AA%DA%A9%D9%85%DB%8C%D9%84%20%DA%A9%D9%86%D9%85.%0A%D8%B4%D9%85%D8%A7%D8%B1%D9%87%20%D8%AA%D9%85%D8%A7%D8%B3%3A%20${$state.number}%0A%0A%D8%A8%D8%A7%20%D8%B3%D9%BE%D8%A7%D8%B3%20%F0%9F%8C%BF`
+                                  );
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "button5",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      size={
+                        hasVariant($state, "group11", "noSaraf")
+                          ? undefined
+                          : "compact"
+                      }
+                    >
+                      {
+                        "\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
+                      }
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </div>
         </Reveal>
         <div
           className={classNames(projectcss.all, sty.freeBox__nlgu0, {
-            [sty.freeBoxcode2__nlgu0Dv9B5]: hasVariant(
-              $state,
-              "code2",
-              "code2"
-            ),
             [sty.freeBoxgroup11_code__nlgu0Yss9U]: hasVariant(
               $state,
               "group11",
               "code"
+            ),
+            [sty.freeBoxgroup11_noSaraf__nlgu0HtLqd]: hasVariant(
+              $state,
+              "group11",
+              "noSaraf"
             )
           })}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__dO1PX)}>
+          <div
+            className={classNames(projectcss.all, sty.freeBox__dO1PX, {
+              [sty.freeBoxgroup11_noSaraf__dO1PXHtLqd]: hasVariant(
+                $state,
+                "group11",
+                "noSaraf"
+              )
+            })}
+          >
             <PlasmicImg__
               alt={""}
-              className={classNames(sty.img___6WuZh)}
+              className={classNames(sty.img___6WuZh, {
+                [sty.imggroup11_noSaraf___6WuZhHtLqd]: hasVariant(
+                  $state,
+                  "group11",
+                  "noSaraf"
+                )
+              })}
               displayHeight={"auto"}
               displayMaxHeight={"none"}
               displayMaxWidth={"100%"}
@@ -7053,30 +5463,27 @@ function PlasmicLogIn__RenderFunc(props: {
           />
         ) : null}
         <Embed
-          data-plasmic-name={"embedHtml"}
-          data-plasmic-override={overrides.embedHtml}
-          className={classNames("__wab_instance", sty.embedHtml, {
-            [sty.embedHtmlcode2]: hasVariant($state, "code2", "code2"),
-            [sty.embedHtmlgroup11_code]: hasVariant($state, "group11", "code"),
-            [sty.embedHtmlgroup11_loginByPassword]: hasVariant(
+          className={classNames("__wab_instance", sty.embedHtml__msl0, {
+            [sty.embedHtmlgroup11_code__msl0Yss9U]: hasVariant(
+              $state,
+              "group11",
+              "code"
+            ),
+            [sty.embedHtmlgroup11_loginByPassword__msl0E5Wtv]: hasVariant(
               $state,
               "group11",
               "loginByPassword"
             ),
-            [sty.embedHtmlloginByPassword]: hasVariant(
+            [sty.embedHtmlgroup11_noSaraf__msl0HtLqd]: hasVariant(
               $state,
-              "loginByPassword",
-              "loginByPassword"
+              "group11",
+              "noSaraf"
             )
           })}
           code={
             hasVariant($state, "group11", "loginByPassword")
               ? "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
               : hasVariant($state, "group11", "code")
-              ? "  <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n              console.log(\"\u0627\u0644\u0627\u0646\");\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
-              : hasVariant($state, "loginByPassword", "loginByPassword")
-              ? "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
-              : hasVariant($state, "code2", "code2")
               ? "  <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n              console.log(\"\u0627\u0644\u0627\u0646\");\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
               : "  <script>\r\n          var initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                        document.getElementById('logoLogin').style.display = 'none';\r\n            } else {\r\n                        document.getElementById('logoLogin').style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
           }
@@ -7149,7 +5556,9 @@ function PlasmicLogIn__RenderFunc(props: {
         <AntdModal
           data-plasmic-name={"modal"}
           data-plasmic-override={overrides.modal}
-          className={classNames("__wab_instance", sty.modal)}
+          className={classNames("__wab_instance", sty.modal, {
+            [sty.modalgroup11_noSaraf]: hasVariant($state, "group11", "noSaraf")
+          })}
           closeButtonClassName={classNames({
             [sty["pcls_raBBc3-tJ2--"]]: true
           })}
@@ -7239,6 +5648,7 @@ function PlasmicLogIn__RenderFunc(props: {
             </div>
           }
           className={classNames("__wab_instance", sty.shop, {
+            [sty.shopgroup11_noSaraf]: hasVariant($state, "group11", "noSaraf"),
             [sty.shopgroup11_saraf]: hasVariant($state, "group11", "saraf")
           })}
           fullScreen={hasVariant($state, "group11", "saraf") ? true : undefined}
@@ -7336,296 +5746,6 @@ function PlasmicLogIn__RenderFunc(props: {
             </div>
           }
         />
-
-        <div
-          className={classNames(projectcss.all, sty.freeBox___9AlIg, {
-            [sty.freeBoxgroup11_noSaraf___9AlIgHtLqd]: hasVariant(
-              $state,
-              "group11",
-              "noSaraf"
-            )
-          })}
-        >
-          <div
-            className={classNames(projectcss.all, sty.freeBox__xxdY, {
-              [sty.freeBoxgroup11_code__xxdYYss9U]: hasVariant(
-                $state,
-                "group11",
-                "code"
-              ),
-              [sty.freeBoxgroup11_noSaraf__xxdYHtLqd]: hasVariant(
-                $state,
-                "group11",
-                "noSaraf"
-              )
-            })}
-          >
-            <PlasmicIcon__
-              PlasmicIconType={
-                hasVariant($state, "group11", "password")
-                  ? Icon154Icon
-                  : hasVariant($state, "password", "password")
-                  ? Icon154Icon
-                  : Icon154Icon
-              }
-              className={classNames(projectcss.all, sty.svg___9Hesj, ``, {
-                [sty.svgcode2___9HesjDv9B5]: hasVariant(
-                  $state,
-                  "code2",
-                  "code2"
-                ),
-                [sty.svgcode2_group11_code___9HesjDv9B5Yss9U]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "code"),
-                [sty.svgcode2_group11_saraf___9HesjDv9B5NaBfa]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.svgcode2_saraf2___9HesjDv9B5JmKha]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgcode2_saraf2_group11_password___9HesjDv9B5JmKhaCxClj]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "group11", "password"),
-                [sty.svggroup11_code___9HesjYss9U]: hasVariant(
-                  $state,
-                  "group11",
-                  "code"
-                ),
-                [sty.svggroup11_loginByPassword___9Hesje5Wtv]: hasVariant(
-                  $state,
-                  "group11",
-                  "loginByPassword"
-                ),
-                [sty.svggroup11_noSaraf___9HesjHtLqd]: hasVariant(
-                  $state,
-                  "group11",
-                  "noSaraf"
-                ),
-                [sty.svggroup11_password___9HesjcxClj]: hasVariant(
-                  $state,
-                  "group11",
-                  "password"
-                ),
-                [sty.svggroup11_saraf___9HesjnaBfa]: hasVariant(
-                  $state,
-                  "group11",
-                  "saraf"
-                ),
-                [sty.svgloginByPassword___9Hesj0DikB]: hasVariant(
-                  $state,
-                  "loginByPassword",
-                  "loginByPassword"
-                ),
-                [sty.svgloginByPassword_code2_group11_saraf___9Hesj0DikBDv9B5NaBfa]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_code2_saraf2_group11_password___9Hesj0DikBDv9B5JmKhaCxClj]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_group11_code___9Hesj0DikBYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_group11_password___9Hesj0DikBCxClj]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "group11", "password"),
-                [sty.svgloginByPassword_password___9Hesj0DikB8PqF9]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgloginByPassword_password_code2_group11_saraf___9Hesj0DikB8PqF9Dv9B5NaBfa]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_password_code2_saraf2___9Hesj0DikB8PqF9Dv9B5JmKha]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_password_group11_code___9Hesj0DikB8PqF9Yss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_password_group11_saraf___9Hesj0DikB8PqF9NaBfa]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "saraf"),
-                [sty.svgloginByPassword_password_saraf2___9Hesj0DikB8PqF9JmKha]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgloginByPassword_password_saraf2_group11_code___9Hesj0DikB8PqF9JmKhaYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_saraf2_group11_code___9Hesj0DikBJmKhaYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "loginByPassword", "loginByPassword"),
-                [sty.svgloginByPassword_saraf2_group11_password___9Hesj0DikBJmKhaCxClj]:
-                  hasVariant($state, "loginByPassword", "loginByPassword") &&
-                  hasVariant($state, "group11", "password") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgpassword___9Hesj8PqF9]: hasVariant(
-                  $state,
-                  "password",
-                  "password"
-                ),
-                [sty.svgpassword_code2_group11_saraf___9Hesj8PqF9Dv9B5NaBfa]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_code2_saraf2___9Hesj8PqF9Dv9B5JmKha]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_code2_saraf2_group11_loginByPassword___9Hesj8PqF9Dv9B5JmKhaE5Wtv]:
-                  hasVariant($state, "code2", "code2") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "group11", "loginByPassword"),
-                [sty.svgpassword_group11_code___9Hesj8PqF9Yss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_group11_loginByPassword___9Hesj8PqF9E5Wtv]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_group11_saraf___9Hesj8PqF9NaBfa]:
-                  hasVariant($state, "group11", "saraf") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_saraf2___9Hesj8PqF9JmKha]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_saraf2_group11_code___9Hesj8PqF9JmKhaYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "password", "password"),
-                [sty.svgpassword_saraf2_group11_loginByPassword___9Hesj8PqF9JmKhaE5Wtv]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "password", "password") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgsaraf2___9HesjJmKha]: hasVariant(
-                  $state,
-                  "saraf2",
-                  "saraf2"
-                ),
-                [sty.svgsaraf2_group11_code___9HesjJmKhaYss9U]:
-                  hasVariant($state, "group11", "code") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgsaraf2_group11_loginByPassword___9HesjJmKhaE5Wtv]:
-                  hasVariant($state, "group11", "loginByPassword") &&
-                  hasVariant($state, "saraf2", "saraf2"),
-                [sty.svgsaraf2_group11_password___9HesjJmKhaCxClj]:
-                  hasVariant($state, "saraf2", "saraf2") &&
-                  hasVariant($state, "group11", "password")
-              })}
-              id={"logoLogin"}
-              role={"img"}
-            />
-
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__x84UA,
-                {
-                  [sty.textcode2__x84UADv9B5]: hasVariant(
-                    $state,
-                    "code2",
-                    "code2"
-                  ),
-                  [sty.textcode2_group11_loginByPassword__x84UADv9B5E5Wtv]:
-                    hasVariant($state, "group11", "loginByPassword") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.textgroup11_code__x84UAYss9U]: hasVariant(
-                    $state,
-                    "group11",
-                    "code"
-                  ),
-                  [sty.textgroup11_loginByPassword__x84UAe5Wtv]: hasVariant(
-                    $state,
-                    "group11",
-                    "loginByPassword"
-                  ),
-                  [sty.textgroup11_noSaraf__x84UAHtLqd]: hasVariant(
-                    $state,
-                    "group11",
-                    "noSaraf"
-                  ),
-                  [sty.textgroup11_password__x84UAcxClj]: hasVariant(
-                    $state,
-                    "group11",
-                    "password"
-                  ),
-                  [sty.textgroup11_saraf__x84UAnaBfa]: hasVariant(
-                    $state,
-                    "group11",
-                    "saraf"
-                  ),
-                  [sty.textloginByPassword__x84UA0DikB]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.textloginByPassword_code2__x84UA0DikBDv9B5]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "code2", "code2"),
-                  [sty.textloginByPassword_group11_code__x84UA0DikBYss9U]:
-                    hasVariant($state, "loginByPassword", "loginByPassword") &&
-                    hasVariant($state, "group11", "code"),
-                  [sty.textpassword__x84UA8PqF9]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.textsaraf2__x84UAJmKha]: hasVariant(
-                    $state,
-                    "saraf2",
-                    "saraf2"
-                  )
-                }
-              )}
-            >
-              {hasVariant($state, "group11", "password")
-                ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                : hasVariant($state, "group11", "saraf")
-                ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                : hasVariant($state, "group11", "code")
-                ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                : hasVariant($state, "loginByPassword", "loginByPassword")
-                ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                : hasVariant($state, "password", "password")
-                ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                : hasVariant($state, "saraf2", "saraf2")
-                ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                : hasVariant($state, "code2", "code2")
-                ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                : "\u062b\u0628\u062a \u0646\u0627\u0645 \u062f\u0631 \u0628\u0627\u0628\u0631\u06a9\u062a"}
-            </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___6Xi6Z,
-                {
-                  [sty.textgroup11_noSaraf___6Xi6ZHtLqd]: hasVariant(
-                    $state,
-                    "group11",
-                    "noSaraf"
-                  )
-                }
-              )}
-            >
-              {
-                "\u06cc\u06a9\u06cc \u0627\u0632 \u062f\u0648 \u062d\u0627\u0644\u062a \u0632\u06cc\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0645\u0633\u06cc\u0631 \u062b\u0628\u062a\u200c\u0646\u0627\u0645 \u0645\u062a\u0646\u0627\u0633\u0628 \u0628\u0627\u0632 \u0634\u0648\u062f.\r\n\r\n"
-              }
-            </div>
-          </div>
-        </div>
       </div>
     </React.Fragment>
   ) as React.ReactElement | null;
@@ -7664,7 +5784,8 @@ const PlasmicDescendants = {
     "group8",
     "group9",
     "group10",
-    "embedHtml",
+    "lineClomp2",
+    "button5",
     "sideEffect",
     "modal",
     "shop"
@@ -7699,7 +5820,9 @@ const PlasmicDescendants = {
     "rectangle",
     "group8",
     "group9",
-    "group10"
+    "group10",
+    "lineClomp2",
+    "button5"
   ],
   button: ["button"],
   fragmentInput: ["fragmentInput"],
@@ -7768,7 +5891,8 @@ const PlasmicDescendants = {
   group8: ["group8"],
   group9: ["group9"],
   group10: ["group10"],
-  embedHtml: ["embedHtml"],
+  lineClomp2: ["lineClomp2"],
+  button5: ["button5"],
   sideEffect: ["sideEffect"],
   modal: ["modal"],
   shop: ["shop"]
@@ -7808,7 +5932,8 @@ type NodeDefaultElementType = {
   group8: "div";
   group9: "div";
   group10: "div";
-  embedHtml: typeof Embed;
+  lineClomp2: typeof LineClomp;
+  button5: typeof Button;
   sideEffect: typeof SideEffect;
   modal: typeof AntdModal;
   shop: typeof Shop;
@@ -7929,7 +6054,8 @@ export const PlasmicLogIn = Object.assign(
     group8: makeNodeComponent("group8"),
     group9: makeNodeComponent("group9"),
     group10: makeNodeComponent("group10"),
-    embedHtml: makeNodeComponent("embedHtml"),
+    lineClomp2: makeNodeComponent("lineClomp2"),
+    button5: makeNodeComponent("button5"),
     sideEffect: makeNodeComponent("sideEffect"),
     modal: makeNodeComponent("modal"),
     shop: makeNodeComponent("shop"),
