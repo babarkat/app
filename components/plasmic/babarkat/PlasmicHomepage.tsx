@@ -607,8 +607,7 @@ function PlasmicHomepage__RenderFunc(props: {
             background: "linear-gradient(135deg, #0b5345, #117864)",
             text: "\u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u06cc \u0642\u0628\u0636",
             action: "/Bill",
-            image:
-              "https://app.babarkat.com/plasmic/babarkat/images/charging.webp",
+            image: "https://app.babarkat.com/plasmic/babarkat/images/Bill.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image66.svg"
           },
           {
