@@ -4945,6 +4945,18 @@ function PlasmicTransaction__RenderFunc(props: {
                         value: other.namePack
                       });
                     }
+                    if (other.priceAfg) {
+                      data.push({
+                        text: "مبلغ شارژ",
+                        value: other.priceAfg.toLocaleString() + " افغانی "
+                      });
+                    }
+                    if (other.operatorAfg) {
+                      data.push({
+                        text: "اپراتور افغانستان",
+                        value: other.operatorAfg
+                      });
+                    }
                     if (input.originId) {
                       data.push({
                         text: "شناسه تراکنش",
