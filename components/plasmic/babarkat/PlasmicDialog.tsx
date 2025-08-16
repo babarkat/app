@@ -33,7 +33,6 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -64,17 +63,13 @@ import { DialogContent } from "@plasmicpkgs/radix-ui";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { DialogClose } from "@plasmicpkgs/radix-ui";
-
-import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
-import {
-  ExperimentValue,
-  useExperiment
-} from "./PlasmicGlobalVariant__Experiment"; // plasmic-import: 0yNpRAZ9BHRO/globalVariant
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_antd_5_hostless } from ""; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
+import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from ""; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
-import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicDialog.module.css"; // plasmic-import: 2GQa6CZGhRDY/css
 
@@ -332,10 +327,12 @@ function PlasmicDialog__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsosEvNkdp6Zt6(),
-    experiment: useExperiment()
-  });
+  const globalVariants = _useGlobalVariants();
+  const styleTokensClassNames = _useStyleTokens();
+  const styleTokensClassNames_antd_5_hostless =
+    useStyleTokens_antd_5_hostless();
+  const styleTokensClassNames_plasmic_rich_components =
+    useStyleTokens_plasmic_rich_components();
 
   return (
     <Dialog
@@ -348,9 +345,9 @@ function PlasmicDialog__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        styleTokensClassNames,
+        styleTokensClassNames_antd_5_hostless,
+        styleTokensClassNames_plasmic_rich_components,
         sty.dialog,
         {
           [sty.dialogfullScreen]: hasVariant(
@@ -395,9 +392,9 @@ function PlasmicDialog__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
-        plasmic_antd_5_hostless_css.plasmic_tokens,
-        plasmic_plasmic_rich_components_css.plasmic_tokens
+        styleTokensClassNames,
+        styleTokensClassNames_antd_5_hostless,
+        styleTokensClassNames_plasmic_rich_components
       )}
       triggerSlot={null}
     >
@@ -446,9 +443,9 @@ function PlasmicDialog__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          projectcss.plasmic_tokens,
-          plasmic_antd_5_hostless_css.plasmic_tokens,
-          plasmic_plasmic_rich_components_css.plasmic_tokens
+          styleTokensClassNames,
+          styleTokensClassNames_antd_5_hostless,
+          styleTokensClassNames_plasmic_rich_components
         )}
       >
         <div
