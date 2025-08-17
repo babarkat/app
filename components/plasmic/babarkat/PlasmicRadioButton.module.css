@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  column-gap: 8px;
+  min-width: 0;
+  padding: 8px;
+}
+.rootstepscharg_step1 {
+  display: inline-flex;
+  flex-direction: row;
+  width: auto;
+  row-gap: 0px;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  width: 25px;
+  height: 25px;
+  color: var(--token-aCLVKlB2IKxe);
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+.svgselected {
+  opacity: 1;
+  color: var(--token-aCLVKlB2IKxe);
+  box-shadow: none;
+}
+.text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-aCLVKlB2IKxe);
+  opacity: 0.8;
+  min-width: 0;
+}
+.textselected {
+  opacity: 1;
+  font-weight: 800;
+}

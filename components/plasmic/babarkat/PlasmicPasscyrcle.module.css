@@ -1,0 +1,22 @@
+.root {
+  display: block;
+  width: 20px;
+  height: 20px;
+  max-width: 100%;
+  position: relative;
+  border-radius: 50px;
+  padding: 8px;
+  border: 3px solid var(--token-jgohepLVeKvh);
+}
+.rootpassword {
+  width: 20px;
+  height: 20px;
+  background: var(--token-jgohepLVeKvh);
+  border-radius: 50px;
+}
+.rootbad {
+  background: var(--token-ZDcvRU4gUKFH);
+}
+.rootgood {
+  background: var(--token-s7Z9BN_B1gNc);
+}
