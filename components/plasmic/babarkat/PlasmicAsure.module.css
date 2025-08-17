@@ -1,0 +1,97 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: linear-gradient(#34495e, #34495e), #ffffff;
+  position: relative;
+  min-width: 0;
+  padding: 10px;
+}
+.rootsuccessful {
+  opacity: 0.5;
+}
+.freeBox__tzGmc {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.text___5GZsp {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: left;
+  font-family: "Vazirmatn", sans-serif;
+  color: var(--token-Pxe4wDL2kJpb);
+  min-width: 0;
+}
+.text__fURu {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-Pxe4wDL2kJpb);
+  font-family: "Vazirmatn", sans-serif;
+  min-width: 0;
+}
+.freeBox___36PEz {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  background: linear-gradient(#535353, #535353), #ca4f05;
+  min-width: 0;
+  border-radius: 20px;
+  padding: 0px;
+}
+.text___0DZ1 {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: left;
+  font-family: "Vazirmatn", sans-serif;
+  color: var(--token-Pxe4wDL2kJpb);
+  margin-left: 10px;
+  padding-top: 5px;
+  border-radius: 20px;
+}
+.text__uaI3E {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: left;
+  color: var(--token-Pxe4wDL2kJpb);
+  font-family: "Vazirmatn", sans-serif;
+  margin-left: 5px;
+  padding-top: 5px;
+}
+.text__hCeU {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  max-width: 100%;
+  text-align: right;
+  color: var(--token-Pxe4wDL2kJpb);
+  font-family: "Vazirmatn", sans-serif;
+  padding-right: 10px;
+  padding-top: 5px;
+  min-width: 0;
+}
