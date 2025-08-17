@@ -168,34 +168,8 @@
       "projectName": "plasmic-tabs",
       "version": ">0.0.0",
       "cssFilePath": "plasmic/plasmic_tabs/plasmic.module.css",
-      "components": [
-        {
-          "id": "lBHNzts6tFyj",
-          "name": "Button",
-          "type": "managed",
-          "projectId": "gLnoj82AzKVVT7qXiqAbHD",
-          "renderModuleFilePath": "plasmic/plasmic_tabs/PlasmicButton.tsx",
-          "importSpec": {
-            "modulePath": "Button.tsx"
-          },
-          "cssFilePath": "plasmic/plasmic_tabs/PlasmicButton.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "button"
-        }
-      ],
-      "icons": [
-        {
-          "id": "zq2s7N0xWucT",
-          "name": "CheckSvgIcon",
-          "moduleFilePath": "plasmic/plasmic_tabs/icons/PlasmicIcon__CheckSvg.tsx"
-        },
-        {
-          "id": "8K40faRNhuCj",
-          "name": "IconIcon",
-          "moduleFilePath": "plasmic/plasmic_tabs/icons/PlasmicIcon__Icon.tsx"
-        }
-      ],
+      "components": [],
+      "icons": [],
       "images": [],
       "indirect": true,
       "globalContextsFilePath": "",
@@ -1187,7 +1161,7 @@
           "cssFilePath": "plasmic/babarkat/PlasmicLogIn.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/new-page"
+          "path": "/login"
         },
         {
           "id": "_5H7Xe2DiXqI",
@@ -1255,6 +1229,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicTransactionBox.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "sK9gh25-ApmB",
+          "name": "Internet3",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet3.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/intenet.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicInternet3.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/intenet"
         },
         {
           "id": "skA4mCHGCjr2",
@@ -1348,20 +1336,6 @@
           "componentType": "component"
         },
         {
-          "id": "sK9gh25-ApmB",
-          "name": "Internet3",
-          "type": "managed",
-          "projectId": "sZQMbqXz9utLNaTnNb3uss",
-          "renderModuleFilePath": "plasmic/babarkat/PlasmicInternet3.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/intenet.tsx"
-          },
-          "cssFilePath": "plasmic/babarkat/PlasmicInternet3.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/intenet"
-        },
-        {
           "id": "ZCvnmuylbYRk",
           "name": "Snap",
           "type": "managed",
@@ -1373,7 +1347,7 @@
           "cssFilePath": "plasmic/babarkat/PlasmicSnap.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/snap"
+          "path": "/snapp"
         },
         {
           "id": "guZRqy1VG4VR",
@@ -1627,7 +1601,7 @@
           "cssFilePath": "plasmic/babarkat/PlasmicBill.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/charging-3"
+          "path": "/Bill"
         },
         {
           "id": "L2fWbb7vOro8",
@@ -3584,34 +3558,8 @@
       "projectName": "radix-ui",
       "version": ">0.0.0",
       "cssFilePath": "plasmic/radix_ui/plasmic.module.css",
-      "components": [
-        {
-          "id": "5nirPCGmCnRD",
-          "name": "RadixUiButton",
-          "type": "managed",
-          "projectId": "sqPBLwEBBKHA2WDuGb17eV",
-          "renderModuleFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.tsx",
-          "importSpec": {
-            "modulePath": "RadixUiButton.tsx"
-          },
-          "cssFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "button"
-        }
-      ],
-      "icons": [
-        {
-          "id": "Wyt3GMMsLefj",
-          "name": "CheckSvgIcon",
-          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__CheckSvg.tsx"
-        },
-        {
-          "id": "MbDRsJU0e3bw",
-          "name": "IconIcon",
-          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__Icon.tsx"
-        }
-      ],
+      "components": [],
+      "icons": [],
       "images": [],
       "indirect": true,
       "globalContextsFilePath": "",

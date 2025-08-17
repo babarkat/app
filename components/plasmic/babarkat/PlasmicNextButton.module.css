@@ -1,0 +1,32 @@
+.confirm {
+  width: 100%;
+  height: 35px;
+  max-width: 90%;
+  background: #26c676;
+  text-align: center;
+  color: var(--token-41VRhDKfihhY);
+  font-family: "Vazirmatn", sans-serif;
+  padding-top: 7px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  position: relative;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  border-radius: 5px;
+}
+.confirmoperator_click1 {
+  color: var(--token-41VRhDKfihhY);
+  background: #26c676;
+}
+.confirmoperator_click2 {
+  background: #26c676;
+}
+.confirmoperator_click4 {
+  color: var(--token-41VRhDKfihhY);
+  background: #26c676;
+}
+.confirmtype_click1 {
+  color: var(--token-41VRhDKfihhY);
+  background: #26c676;
+}
