@@ -8,8 +8,8 @@ export const requestPermission = async (): Promise<string | null> => {
       const currentToken = await getToken(messaging, {
         vapidKey: "BMf6ryVO3UrbQJ-_h-EFxHa3Gy8EQiwCOnmQGLFuY9W-POujf52qpJXiadtPYT2mhnQGxqQFvrmMYCqV5qMT5Ds",
       });
-      const savedToken = localStorage.getItem("fcmToken");
-      console.log("Saved FCM Token:", savedToken);
+      localStorage.setItem("fcmToken", currentToken);
+      console.log("Saved FCM Token:", currentToken);
       return currentToken;
     } else {
       console.log("Permission not granted");
