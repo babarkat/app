@@ -33,6 +33,7 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
+  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -73,13 +74,25 @@ import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import Shop from "../../Shop"; // plasmic-import: zOsuRTq3iEqd/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
-import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
-import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
+
+import {
+  ExperimentValue,
+  useExperiment
+} from "./PlasmicGlobalVariant__Experiment"; // plasmic-import: 0yNpRAZ9BHRO/globalVariant
+import {
+  UnnamedGlobalGroupOfVariantsValue,
+  useUnnamedGlobalGroupOfVariants
+} from "./PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants"; // plasmic-import: 0yrtEc_Se3kZ/globalVariant
+import {
+  UnnamedGlobalGroupOfVariants2Value,
+  useUnnamedGlobalGroupOfVariants2
+} from "./PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2"; // plasmic-import: N3RmGzhPpcNq/globalVariant
+import { useScreenVariants as useScreenVariantsosEvNkdp6Zt6 } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: OSEvNkdp6ZT6/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
+import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLogIn.module.css"; // plasmic-import: -3JBPQCG-aXv/css
 
@@ -338,8 +351,8 @@ function PlasmicLogIn__RenderFunc(props: {
             description: "Iran",
             phoneFormats: {
               type: "Mobile",
-              regex: "^9\\d{9}$",
-              example: "9123456789"
+              regex: "^0?9\\d{9}$",
+              example: "09123456789"
             }
           },
           {
@@ -348,8 +361,8 @@ function PlasmicLogIn__RenderFunc(props: {
             description: "Afghanistan",
             phoneFormats: {
               type: "Mobile",
-              regex: "^7\\d{8}$",
-              example: "70123456"
+              regex: "^0?7\\d{8}$",
+              example: "070123456"
             }
           },
           {
@@ -358,8 +371,8 @@ function PlasmicLogIn__RenderFunc(props: {
             description: "Turkey",
             phoneFormats: {
               type: "Mobile",
-              regex: "^5\\d{9}$",
-              example: "5012345678"
+              regex: "^0?5\\d{9}$",
+              example: "05012345678"
             }
           }
         ]
@@ -564,12 +577,12 @@ function PlasmicLogIn__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
-  const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
+  const globalVariants = ensureGlobalVariants({
+    experiment: useExperiment(),
+    unnamedGlobalGroupOfVariants: useUnnamedGlobalGroupOfVariants(),
+    unnamedGlobalGroupOfVariants2: useUnnamedGlobalGroupOfVariants2(),
+    screen: useScreenVariantsosEvNkdp6Zt6()
+  });
 
   return (
     <React.Fragment>
@@ -615,9 +628,9 @@ function PlasmicLogIn__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components,
+          projectcss.plasmic_tokens,
+          plasmic_antd_5_hostless_css.plasmic_tokens,
+          plasmic_plasmic_rich_components_css.plasmic_tokens,
           sty.root,
           {
             [sty.rootglobal_experiment_override]: hasVariant(
@@ -1192,9 +1205,9 @@ function PlasmicLogIn__RenderFunc(props: {
                       projectcss.root_reset,
                       projectcss.plasmic_default_styles,
                       projectcss.plasmic_mixins,
-                      styleTokensClassNames,
-                      styleTokensClassNames_antd_5_hostless,
-                      styleTokensClassNames_plasmic_rich_components
+                      projectcss.plasmic_tokens,
+                      plasmic_antd_5_hostless_css.plasmic_tokens,
+                      plasmic_plasmic_rich_components_css.plasmic_tokens
                     )}
                     defaultValue={"+98"}
                     onChange={async (...eventArgs: any) => {
@@ -1972,9 +1985,9 @@ function PlasmicLogIn__RenderFunc(props: {
                   projectcss.root_reset,
                   projectcss.plasmic_default_styles,
                   projectcss.plasmic_mixins,
-                  styleTokensClassNames,
-                  styleTokensClassNames_antd_5_hostless,
-                  styleTokensClassNames_plasmic_rich_components
+                  projectcss.plasmic_tokens,
+                  plasmic_antd_5_hostless_css.plasmic_tokens,
+                  plasmic_plasmic_rich_components_css.plasmic_tokens
                 )}
                 defaultValue={
                   hasVariant($state, "group11", "saraf") &&
@@ -2264,12 +2277,15 @@ function PlasmicLogIn__RenderFunc(props: {
                           },
                           operation: 0,
                           value: (() => {
-                            if ($state.selectContry == "+98")
-                              return "0" + $state.fragmentInput.value;
-                            else
-                              return (
-                                $state.selectContry + $state.fragmentInput.value
-                              );
+                            if ($state.selectContry == "+98") {
+                              return $state.fragmentInput.value.startsWith("0")
+                                ? $state.fragmentInput.value
+                                : "0" + $state.fragmentInput.value;
+                            } else {
+                              const cleanNumber =
+                                $state.fragmentInput.value.replace(/^0/, "");
+                              return $state.selectContry + cleanNumber;
+                            }
                           })()
                         };
                         return (({
@@ -5503,9 +5519,9 @@ function PlasmicLogIn__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components
+            projectcss.plasmic_tokens,
+            plasmic_antd_5_hostless_css.plasmic_tokens,
+            plasmic_plasmic_rich_components_css.plasmic_tokens
           )}
           hideFooter={true}
           maskClosable={false}

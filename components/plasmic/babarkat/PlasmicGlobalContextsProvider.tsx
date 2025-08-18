@@ -5,8 +5,7 @@
 // Plasmic Project: sZQMbqXz9utLNaTnNb3uss
 
 import * as React from "react";
-
-import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
+import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
 import { Fragment } from "@/fragment/fragment"; // plasmic-import: NP7qNLfNGb4C/codeComponent
 import { GrowthBook } from "@/fragment/growthbook"; // plasmic-import: 6gZuti1VknsC/codeComponent
