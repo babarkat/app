@@ -6,24 +6,30 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { useEffect } from "react";
-import { requestPermission, onMessageListener } from "../firebase/notifications"; // مسیر درست فایل notifications.ts
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
-    // درخواست دسترسی و گرفتن FCM Token
-    requestPermission().then((token) => {
-      if (token) {
-        // ذخیره در localStorage یا ارسال به n8n
-        localStorage.setItem("fcmToken", token);
-        console.log("User FCM Token:", token);
-      }
-    });
+    if (typeof window !== "undefined") {  // فقط در مرورگر اجرا میشه
+      // 1️⃣ import دینامیک notifications
+      import("../firebase/notifications").then(({ requestPermission, onMessageListener }) => {
+        requestPermission().then((token) => {
+          if (token) localStorage.setItem("fcmToken", token);
+        });
 
-    // گوش دادن به پیام‌ها وقتی تب فعال است
-    onMessageListener().then((payload) => {
-      console.log("Message received: ", payload);
-      alert(`Notification: ${payload.notification?.title}`);
-    });
+        onMessageListener((payload) => {
+          console.log("Message received: ", payload);
+        });
+      });
+
+      // 2️⃣ ثبت Service Worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+          .then(registration => {
+            console.log('Service Worker registered:', registration);
+          })
+          .catch(err => console.log('Service Worker registration failed:', err));
+      }
+    }
   }, []);
 
   return (
