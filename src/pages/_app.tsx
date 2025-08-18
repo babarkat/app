@@ -16,7 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           if (token) localStorage.setItem("fcmToken", token);
         });
 
-        onMessageListener((payload) => {
+        onMessageListener().then((payload) => {
           console.log("Message received: ", payload);
         });
       });
