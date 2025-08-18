@@ -1,4 +1,3 @@
-// notifications.ts
 import { messaging } from "./firebase";
 import { getToken, onMessage } from "firebase/messaging";
 
