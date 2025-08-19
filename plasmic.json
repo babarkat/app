@@ -3849,8 +3849,8 @@
       "indirect": false,
       "globalContextsFilePath": "plasmic/babarkat/PlasmicGlobalContextsProvider.tsx",
       "splitsProviderFilePath": "plasmic/babarkat/PlasmicSplitsProvider.tsx",
-      "styleTokensProviderFilePath": "",
-      "projectModuleFilePath": "",
+      "styleTokensProviderFilePath": "plasmic/babarkat/PlasmicStyleTokensProvider.tsx",
+      "projectModuleFilePath": "plasmic/babarkat/plasmic.tsx",
       "codeComponents": [
         {
           "id": "gWikLeIhNJO0",
