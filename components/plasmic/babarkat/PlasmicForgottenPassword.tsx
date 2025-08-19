@@ -363,8 +363,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             description: "Iran",
             phoneFormats: {
               type: "Mobile",
-              regex: "^9\\d{9}$",
-              example: "9123456789"
+              regex: "^0?9\\d{9}$",
+              example: "09123456789"
             }
           },
           {
@@ -373,8 +373,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             description: "Afghanistan",
             phoneFormats: {
               type: "Mobile",
-              regex: "^7\\d{8}$",
-              example: "70123456"
+              regex: "^0?7\\d{8}$",
+              example: "070123456"
             }
           },
           {
@@ -383,8 +383,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             description: "Turkey",
             phoneFormats: {
               type: "Mobile",
-              regex: "^5\\d{9}$",
-              example: "5012345678"
+              regex: "^0?5\\d{9}$",
+              example: "05012345678"
             }
           }
         ]
@@ -1932,13 +1932,17 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                             },
                             operation: 0,
                             value: (() => {
-                              if ($state.selectContry == "+98")
-                                return "0" + $state.fragmentInput.value;
-                              else
-                                return (
-                                  $state.selectContry +
-                                  $state.fragmentInput.value
-                                );
+                              if ($state.selectContry == "+98") {
+                                return $state.fragmentInput.value.startsWith(
+                                  "0"
+                                )
+                                  ? $state.fragmentInput.value
+                                  : "0" + $state.fragmentInput.value;
+                              } else {
+                                const cleanNumber =
+                                  $state.fragmentInput.value.replace(/^0/, "");
+                                return $state.selectContry + cleanNumber;
+                              }
                             })()
                           };
                           return (({
