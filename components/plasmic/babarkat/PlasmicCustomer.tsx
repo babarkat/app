@@ -512,8 +512,12 @@ function PlasmicCustomer__RenderFunc(props: {
                               variablePath: ["filter"]
                             },
                             operation: 0,
-                            value: $state.customer.filter(item =>
-                              item.name.includes($state.input.value)
+                            value: $state.customer.filter(
+                              item =>
+                                item.name.includes($state.input.value) ||
+                                item.last_name.includes($state.input.value) ||
+                                item.mobile.includes($state.input.value) ||
+                                item.id.toString().includes($state.input.value)
                             )
                           };
                           return (({
@@ -847,26 +851,57 @@ function PlasmicCustomer__RenderFunc(props: {
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__pB7T
+                                sty.freeBox__ic7Li
                               )}
                             >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return currentItem.name;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "\u0628\u0647\u0646\u0627\u0645 \u062d\u0633\u06cc\u0646\u06cc \u0632\u0627\u062f\u0647";
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__pB7T
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return `${currentItem.name} ${currentItem.last_name}`;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "\u0628\u0647\u0646\u0627\u0645 \u062d\u0633\u06cc\u0646\u06cc \u0632\u0627\u062f\u0647";
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__pHva8
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return `(${currentItem.id})`;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "\u0628\u0647\u0646\u0627\u0645 \u062d\u0633\u06cc\u0646\u06cc \u0632\u0627\u062f\u0647";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
                             </div>
                             <div
                               className={classNames(
