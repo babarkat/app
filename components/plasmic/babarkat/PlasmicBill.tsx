@@ -748,8 +748,8 @@ function PlasmicBill__RenderFunc(props: {
       {
         path: "buttonHasError",
         type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
         path: "data",
@@ -6181,19 +6181,45 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               const actionArgs = {
                                 customFunction: async () => {
                                   return (() => {
+                                    $state.buttonHasError = "";
                                     switch ($state.type) {
                                       case "mobile":
+                                        $state.operatorselect = -1;
+                                        for (
+                                          let operatorIndex = 0;
+                                          operatorIndex <
+                                          $state.operators2.length;
+                                          operatorIndex++
+                                        ) {
+                                          const operator =
+                                            $state.operators2[operatorIndex];
+                                          for (let code of operator.codes) {
+                                            if (
+                                              $state.fragmentInput5.value.startsWith(
+                                                code
+                                              )
+                                            ) {
+                                              $state.operatorselect =
+                                                operatorIndex;
+                                            }
+                                          }
+                                        }
                                         if (
                                           !/^09\d{9}$/.test(
                                             $state.fragmentInput5.value
                                           )
                                         ) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "شماره موبایل باید با 09 شروع شود و 11 رقم باشد.";
+                                        } else if (
+                                          $state.operatorselect == -1
+                                        ) {
+                                          $state.buttonHasError =
+                                            "اپراتور معتبر پیدا نشد.";
+                                        } else if ($state.operatorselect == 2) {
+                                          $state.buttonHasError =
+                                            "این اپراتور پشتیبانی نمی‌شود.";
                                         }
-                                        if ($state.operatorselect == -1)
-                                          $state.buttonHasError = true;
-                                        if ($state.operatorselect == 2)
-                                          $state.buttonHasError = true;
                                         break;
                                       case "phone":
                                         if (
@@ -6201,13 +6227,15 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                             $state.fragmentInput4.value
                                           )
                                         ) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "شماره تلفن ثابت باید با 0 شروع شود و 11 رقم باشد.";
                                         }
                                         break;
                                       case "elec":
                                       case "water":
                                         if (!/^\d+$/.test($state.id)) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "شناسه فقط باید شامل عدد باشد.";
                                         }
                                         break;
                                       case "gas":
@@ -6215,13 +6243,15 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                           !/^\d+$/.test($state.id) &&
                                           $state.idORcode == "bill_id"
                                         ) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "شناسه قبض گاز معتبر نیست.";
                                         }
                                         if (
                                           $state.idinput3.value.length == 0 &&
                                           $state.idORcode == "participate_code"
                                         ) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "کد مشارکت نمی‌تواند خالی باشد.";
                                         }
                                         break;
                                       case "other":
@@ -6229,13 +6259,15 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                           !/^\d+$/.test($state.id) &&
                                           !/^\d+$/.test($state.pardakhtid)
                                         ) {
-                                          $state.buttonHasError = true;
+                                          $state.buttonHasError =
+                                            "شناسه یا شماره پرداخت معتبر نیست.";
                                         }
                                         break;
                                     }
-                                    if ($state.type != "mobile")
+                                    if ($state.type != "mobile") {
                                       return ($state.mobile =
                                         $state.userinfo.mobile);
+                                    }
                                   })();
                                 }
                               };
@@ -6319,8 +6351,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         }
 
                         $steps["inquiry1"] =
-                          $state.type != "other" &&
-                          $state.buttonHasError == false
+                          $state.type != "other" && $state.buttonHasError == ""
                             ? (() => {
                                 const actionArgs = {
                                   args: [
@@ -6454,7 +6485,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     "error",
                                     (() => {
                                       try {
-                                        return $state.data.msg;
+                                        return (
+                                          $state.data.msg ||
+                                          $state.buttonHasError
+                                        );
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
