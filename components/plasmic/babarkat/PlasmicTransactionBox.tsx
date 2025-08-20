@@ -83,6 +83,7 @@ export type PlasmicTransactionBox__VariantMembers = {
     | "snap"
     | "pubg"
     | "bill";
+  wait: "wait";
 };
 export type PlasmicTransactionBox__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
@@ -96,11 +97,13 @@ export type PlasmicTransactionBox__VariantsArgs = {
     | "pubg"
     | "bill"
   >;
+  wait?: SingleBooleanChoiceArg<"wait">;
 };
 type VariantPropType = keyof PlasmicTransactionBox__VariantsArgs;
 export const PlasmicTransactionBox__VariantProps = new Array<VariantPropType>(
   "filed",
-  "unnamedGroupOfVariants"
+  "unnamedGroupOfVariants",
+  "wait"
 );
 
 export type PlasmicTransactionBox__ArgsType = {
@@ -133,6 +136,7 @@ export interface DefaultTransactionBoxProps {
     | "pubg"
     | "bill"
   >;
+  wait?: SingleBooleanChoiceArg<"wait">;
   className?: string;
 }
 
@@ -191,6 +195,12 @@ function PlasmicTransactionBox__RenderFunc(props: {
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           $props.unnamedGroupOfVariants
+      },
+      {
+        path: "wait",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.wait
       }
     ],
     [$props, $ctx, $refs]
@@ -272,7 +282,8 @@ function PlasmicTransactionBox__RenderFunc(props: {
             $state,
             "unnamedGroupOfVariants",
             "walet"
-          )
+          ),
+          [sty.rootwait]: hasVariant($state, "wait", "wait")
         }
       )}
       onClick={args.onClick}
@@ -317,7 +328,8 @@ function PlasmicTransactionBox__RenderFunc(props: {
             $state,
             "unnamedGroupOfVariants",
             "walet"
-          )
+          ),
+          [sty.iconswait]: hasVariant($state, "wait", "wait")
         })}
         filed={
           hasVariant($state, "filed", "filed") &&
@@ -337,6 +349,8 @@ function PlasmicTransactionBox__RenderFunc(props: {
             : hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
               hasVariant($state, "filed", "filed")
             ? "intenet"
+            : hasVariant($state, "wait", "wait")
+            ? "waite"
             : hasVariant($state, "unnamedGroupOfVariants", "bill")
             ? "bill"
             : hasVariant($state, "unnamedGroupOfVariants", "pubg")

@@ -142,6 +142,7 @@ export type PlasmicTransaction__OverridesType = {
   timer?: Flex__<typeof Timer>;
   sideEffect?: Flex__<typeof SideEffect>;
   dialog2?: Flex__<typeof Dialog2>;
+  apiRequest2?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultTransactionProps {}
@@ -516,6 +517,24 @@ function PlasmicTransaction__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "apiRequest2.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest2.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest2.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -2275,6 +2294,26 @@ function PlasmicTransaction__RenderFunc(props: {
                                           throw e;
                                         }
                                       })()}
+                                      wait={(() => {
+                                        try {
+                                          return $state.apiRequest2?.data?.find(
+                                            i =>
+                                              i.TransactionID ==
+                                              currentItem.originId
+                                          )
+                                            ? true
+                                            : false;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return [];
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
                                     >
                                       <div
                                         className={classNames(
@@ -2288,6 +2327,29 @@ function PlasmicTransaction__RenderFunc(props: {
                                             projectcss.__wab_text,
                                             sty.text__bPjsC
                                           )}
+                                          style={(() => {
+                                            try {
+                                              return {
+                                                color:
+                                                  $state.apiRequest2?.data?.find(
+                                                    i =>
+                                                      i.TransactionID ==
+                                                      currentItem.originId
+                                                  )
+                                                    ? "#FAAD14"
+                                                    : ""
+                                              };
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return undefined;
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
                                         >
                                           <React.Fragment>
                                             {(() => {
@@ -5063,6 +5125,70 @@ function PlasmicTransaction__RenderFunc(props: {
             open={generateStateValueProp($state, ["dialog2", "open"])}
             type={generateStateValueProp($state, ["dialog2", "type"])}
           />
+
+          <ApiRequest
+            data-plasmic-name={"apiRequest2"}
+            data-plasmic-override={overrides.apiRequest2}
+            className={classNames("__wab_instance", sty.apiRequest2)}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___5WKr
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text___43ZdE
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={"GET"}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["apiRequest2", "error"]).apply(
+                null,
+                eventArgs
+              );
+            }}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "apiRequest2",
+                "loading"
+              ]).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["apiRequest2", "data"]).apply(
+                null,
+                eventArgs
+              );
+            }}
+            params={(() => {
+              try {
+                return {
+                  phone: $state.userinfo.mobile
+                };
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+            shouldFetch={true}
+            url={"https://n8n.babarkat.com/webhook/transaction-confirmation"}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -5093,7 +5219,8 @@ const PlasmicDescendants = {
     "vuesaxBoldReceipt3",
     "timer",
     "sideEffect",
-    "dialog2"
+    "dialog2",
+    "apiRequest2"
   ],
   embedHtml: ["embedHtml"],
   header: ["header"],
@@ -5137,7 +5264,8 @@ const PlasmicDescendants = {
   vuesaxBoldReceipt3: ["vuesaxBoldReceipt3"],
   timer: ["timer"],
   sideEffect: ["sideEffect"],
-  dialog2: ["dialog2"]
+  dialog2: ["dialog2"],
+  apiRequest2: ["apiRequest2"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5166,6 +5294,7 @@ type NodeDefaultElementType = {
   timer: typeof Timer;
   sideEffect: typeof SideEffect;
   dialog2: typeof Dialog2;
+  apiRequest2: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5275,6 +5404,7 @@ export const PlasmicTransaction = Object.assign(
     timer: makeNodeComponent("timer"),
     sideEffect: makeNodeComponent("sideEffect"),
     dialog2: makeNodeComponent("dialog2"),
+    apiRequest2: makeNodeComponent("apiRequest2"),
 
     // Metadata about props expected for PlasmicTransaction
     internalVariantProps: PlasmicTransaction__VariantProps,

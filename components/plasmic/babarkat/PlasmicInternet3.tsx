@@ -5269,6 +5269,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       value: $state.userinfo.last_name
                     },
                     {
+                      text: "شماره گیرنده",
+                      value: $state.number
+                    },
+                    {
                       text: "توضیحات",
                       value: `بسته${
                         $state.operators2[$state.operatorselect].description

@@ -74,6 +74,7 @@ import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: E6ROkR3
 import Icon58Icon from "./icons/PlasmicIcon__Icon58"; // plasmic-import: b6_fsTkPhz_-/icon
 import Icon129Icon from "./icons/PlasmicIcon__Icon129"; // plasmic-import: 2rxYPp6upTUU/icon
 import Icon104Icon from "./icons/PlasmicIcon__Icon104"; // plasmic-import: 3o5IGmXy7oW3/icon
+import Icon160Icon from "./icons/PlasmicIcon__Icon160"; // plasmic-import: NEr1WT__As1_/icon
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
 import SvgRepoIconCarrier4Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier4"; // plasmic-import: H4kDPOF3z7xX/icon
 
@@ -89,8 +90,10 @@ export type PlasmicIcons__VariantMembers = {
     | "unnamedVariant"
     | "snap"
     | "pubg"
-    | "bill";
+    | "bill"
+    | "waite";
   dialog: "dialog";
+  wite: "wite";
 };
 export type PlasmicIcons__VariantsArgs = {
   filed?: SingleBooleanChoiceArg<"filed">;
@@ -103,14 +106,17 @@ export type PlasmicIcons__VariantsArgs = {
     | "snap"
     | "pubg"
     | "bill"
+    | "waite"
   >;
   dialog?: SingleBooleanChoiceArg<"dialog">;
+  wite?: SingleBooleanChoiceArg<"wite">;
 };
 type VariantPropType = keyof PlasmicIcons__VariantsArgs;
 export const PlasmicIcons__VariantProps = new Array<VariantPropType>(
   "filed",
   "unnamedGroupOfVariants",
-  "dialog"
+  "dialog",
+  "wite"
 );
 
 export type PlasmicIcons__ArgsType = {};
@@ -132,8 +138,10 @@ export interface DefaultIconsProps {
     | "snap"
     | "pubg"
     | "bill"
+    | "waite"
   >;
   dialog?: SingleBooleanChoiceArg<"dialog">;
+  wite?: SingleBooleanChoiceArg<"wite">;
   className?: string;
 }
 
@@ -198,6 +206,12 @@ function PlasmicIcons__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.dialog
+      },
+      {
+        path: "wite",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.wite
       }
     ],
     [$props, $ctx, $refs]
@@ -238,13 +252,23 @@ function PlasmicIcons__RenderFunc(props: {
             $state,
             "unnamedGroupOfVariants",
             "intenet"
-          )
+          ),
+          [sty.frameunnamedGroupOfVariants_waite]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "waite"
+          ),
+          [sty.framewite]: hasVariant($state, "wite", "wite")
         }
       )}
     >
       <PlasmicIcon__
         PlasmicIconType={
-          hasVariant($state, "unnamedGroupOfVariants", "bill")
+          hasVariant($state, "wite", "wite")
+            ? Icon160Icon
+            : hasVariant($state, "unnamedGroupOfVariants", "waite")
+            ? Icon160Icon
+            : hasVariant($state, "unnamedGroupOfVariants", "bill")
             ? Icon104Icon
             : hasVariant($state, "unnamedGroupOfVariants", "pubg")
             ? Icon129Icon
@@ -281,11 +305,17 @@ function PlasmicIcons__RenderFunc(props: {
             "unnamedGroupOfVariants",
             "snap"
           ),
+          [sty.svgunnamedGroupOfVariants_waite__cRwxwnm8L7]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "waite"
+          ),
           [sty.svgunnamedGroupOfVariants_walet__cRwxwwSVt]: hasVariant(
             $state,
             "unnamedGroupOfVariants",
             "walet"
-          )
+          ),
+          [sty.svgwite__cRwxwT15Jx]: hasVariant($state, "wite", "wite")
         })}
         role={"img"}
       />
@@ -299,7 +329,16 @@ function PlasmicIcons__RenderFunc(props: {
             $state,
             "unnamedGroupOfVariants",
             "intenet"
-          )
+          ),
+          [sty.svgunnamedGroupOfVariants_waite__bzwy5Nm8L7]: hasVariant(
+            $state,
+            "unnamedGroupOfVariants",
+            "waite"
+          ),
+          [sty.svgwite__bzwy5T15Jx]: hasVariant($state, "wite", "wite"),
+          [sty.svgwite_unnamedGroupOfVariants_intenet__bzwy5T15JxMMJ6]:
+            hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
+            hasVariant($state, "wite", "wite")
         })}
         role={"img"}
       />

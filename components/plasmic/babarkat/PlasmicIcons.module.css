@@ -24,8 +24,14 @@
   align-items: center;
   justify-content: center;
 }
+.frameunnamedGroupOfVariants_waite {
+  background: #faad1433;
+}
 .framedialog {
   padding: 20px;
+}
+.framewite {
+  background: #faad1433;
 }
 .svg__cRwxw {
   object-fit: cover;
@@ -55,6 +61,12 @@
 }
 .svgunnamedGroupOfVariants_walet__cRwxwwSVt {
   display: none;
+}
+.svgunnamedGroupOfVariants_waite__cRwxwnm8L7 {
+  color: var(--token-47ovROB-Xr2C);
+}
+.svgwite__cRwxwT15Jx {
+  color: var(--token-47ovROB-Xr2C);
 }
 .svg__bzwy5 {
   object-fit: cover;

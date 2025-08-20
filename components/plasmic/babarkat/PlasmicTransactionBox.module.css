@@ -49,6 +49,9 @@
 .iconsunnamedGroupOfVariants_bill:global(.__wab_instance) {
   flex-shrink: 0;
 }
+.iconswait:global(.__wab_instance) {
+  flex-shrink: 0;
+}
 .iconsfiled_unnamedGroupOfVariants_intenet:global(.__wab_instance) {
   flex-shrink: 0;
 }
