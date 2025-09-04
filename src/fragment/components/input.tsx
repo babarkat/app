@@ -1,7 +1,12 @@
 /* eslint-disable react/display-name */
 import { CodeComponentMeta, useSelector } from "@plasmicapp/host";
 import * as InputPrimitive from "@/components/ui/input";
-import { HTMLInputTypeAttribute, RefAttributes, useState, useEffect } from "react";
+import {
+  HTMLInputTypeAttribute,
+  RefAttributes,
+  useState,
+  useEffect,
+} from "react";
 
 type InputType = {
   placeholder?: string;
@@ -14,6 +19,7 @@ type InputType = {
   attributes?: InputPrimitive.InputProps & RefAttributes<HTMLInputElement>;
   multiple?: boolean;
   accept?: string;
+  maxLength?: number; // 🔥 محدودیت تعداد کاراکتر
 };
 
 export const Input = (props: InputType) => {
@@ -28,6 +34,7 @@ export const Input = (props: InputType) => {
     attributes,
     multiple,
     accept,
+    maxLength,
   } = props;
 
   const fragmentConfig = useSelector("Fragment");
@@ -46,12 +53,20 @@ export const Input = (props: InputType) => {
   }, [value, type]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputVal = e.target.value;
+    let inputVal = e.target.value;
+
+    // اعمال محدودیت تعداد کاراکتر
+    if (maxLength && inputVal.length > maxLength) {
+      inputVal = inputVal.slice(0, maxLength);
+    }
+
     if (type === "amount") {
       // حذف هر چیزی جز عدد
       const raw = inputVal.replace(/\D/g, "");
-      onChange?.(raw); // خروجی فقط عدد خام
-      const formatted = raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      const limitedRaw =
+        maxLength && raw.length > maxLength ? raw.slice(0, maxLength) : raw;
+      onChange?.(limitedRaw); // خروجی فقط عدد خام
+      const formatted = limitedRaw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       setDisplayValue(formatted);
     } else {
       onChange?.(inputVal);
@@ -64,7 +79,13 @@ export const Input = (props: InputType) => {
       disabled={disabled}
       onChange={handleChange}
       value={displayValue}
-      dir={type !== "text" && type !== "amount" ? "ltr" : fragmentConfig.rtl ? "rtl" : "ltr"}
+      dir={
+        type !== "text" && type !== "amount"
+          ? "ltr"
+          : fragmentConfig.rtl
+          ? "rtl"
+          : "ltr"
+      }
       name={name}
       placeholder={placeholder}
       className={className}
@@ -73,6 +94,7 @@ export const Input = (props: InputType) => {
         multiple,
         accept,
       })}
+      maxLength={maxLength} // 🔥 برای HTML input
       {...attributes}
     />
   );
@@ -124,6 +146,10 @@ export const inputMeta: CodeComponentMeta<InputType> = {
     attributes: {
       type: "object",
       advanced: true,
+    },
+    maxLength: {
+      type: "number",
+      description: "حداکثر تعداد کاراکتر مجاز", // 🔥 اضافه شد
     },
     onChange: {
       type: "eventHandler",
