@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { CodeComponentMeta, useSelector } from "@plasmicapp/host";
 import * as InputPrimitive from "@/components/ui/input";
-import { HTMLInputTypeAttribute, RefAttributes } from "react";
+import { HTMLInputTypeAttribute, RefAttributes, useState, useEffect } from "react";
 
 type InputType = {
   placeholder?: string;
@@ -10,7 +10,7 @@ type InputType = {
   disabled?: boolean;
   className?: string;
   name?: string;
-  type?: HTMLInputTypeAttribute;
+  type?: HTMLInputTypeAttribute | "amount";
   attributes?: InputPrimitive.InputProps & RefAttributes<HTMLInputElement>;
   multiple?: boolean;
   accept?: string;
@@ -29,17 +29,46 @@ export const Input = (props: InputType) => {
     multiple,
     accept,
   } = props;
+
   const fragmentConfig = useSelector("Fragment");
+
+  // حالت نمایش فرمت‌شده برای amount
+  const [displayValue, setDisplayValue] = useState(value ?? "");
+
+  useEffect(() => {
+    if (type === "amount") {
+      const raw = value?.toString().replace(/\D/g, "") || "";
+      const formatted = raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      setDisplayValue(formatted);
+    } else {
+      setDisplayValue(value ?? "");
+    }
+  }, [value, type]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputVal = e.target.value;
+    if (type === "amount") {
+      // حذف هر چیزی جز عدد
+      const raw = inputVal.replace(/\D/g, "");
+      onChange?.(raw); // خروجی فقط عدد خام
+      const formatted = raw.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      setDisplayValue(formatted);
+    } else {
+      onChange?.(inputVal);
+      setDisplayValue(inputVal);
+    }
+  };
+
   return (
     <InputPrimitive.Input
       disabled={disabled}
-      onChange={(e) => onChange?.(e.target?.value ?? "")}
-      value={value}
-      dir={type !== "text" ? "ltr" : fragmentConfig.rtl ? "rtl" : "ltr"}
+      onChange={handleChange}
+      value={displayValue}
+      dir={type !== "text" && type !== "amount" ? "ltr" : fragmentConfig.rtl ? "rtl" : "ltr"}
       name={name}
       placeholder={placeholder}
       className={className}
-      type={type}
+      type={type === "amount" ? "text" : type}
       {...(type == "file" && {
         multiple,
         accept,
@@ -73,6 +102,7 @@ export const inputMeta: CodeComponentMeta<InputType> = {
         "email",
         "tel",
         "file",
+        "amount", // 🔥 حالت جدید
       ],
       defaultValue: "text",
       defaultValueHint: "text",
