@@ -197,6 +197,8 @@ function PlasmicCharging__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const $globalActions = useGlobalActions?.();
 
   const currentUser = useCurrentUser?.() || {};
@@ -249,7 +251,9 @@ function PlasmicCharging__RenderFunc(props: {
                 text: "\u0634\u06af\u0641\u062a\u200c\u0627\u0646\u06af\u06cc\u0632",
                 chargeAmounts: [5000, 10000, 20000, 30000]
               }
-            ]
+            ],
+            infoText:
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "MCI",
@@ -288,7 +292,9 @@ function PlasmicCharging__RenderFunc(props: {
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
                 chargeAmounts: [5000, 10000, 20000, 50000, 100000]
               }
-            ]
+            ],
+            infoText:
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "RTL",
@@ -310,7 +316,9 @@ function PlasmicCharging__RenderFunc(props: {
                 text: "\u0634\u06af\u0641\u062a\u200c\u0627\u0646\u06af\u06cc\u0632",
                 chargeAmounts: [2000, 5000, 10000, 20000, 50000]
               }
-            ]
+            ],
+            infoText:
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "SHT",
@@ -326,7 +334,8 @@ function PlasmicCharging__RenderFunc(props: {
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
                 chargeAmounts: [1100, 2200, 5500, 11000, 22000, 55000]
               }
-            ]
+            ],
+            infoText: ""
           }
         ]
       },
@@ -778,7 +787,6 @@ function PlasmicCharging__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -1581,6 +1589,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                           )
                         }
                       )}
+                      maxLength={11}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentInput",
@@ -1875,7 +1884,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       placeholder={"\u062a\u0648\u0645\u0627\u0646"}
                       type={
                         hasVariant($state, "stepscharg", "step2")
-                          ? "number"
+                          ? "amount"
                           : "number"
                       }
                       value={generateStateValueProp($state, [
@@ -1884,6 +1893,48 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       ])}
                     />
                   ) : null}
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__wozM,
+                      {
+                        [sty.textstepscharg_step2__wozMTtIk]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.textstepscharg_step3__wozMWug5H]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      }
+                    )}
+                  >
+                    {hasVariant($state, "stepscharg", "step3") ? (
+                      "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
+                    ) : hasVariant($state, "stepscharg", "step2") ? (
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.operators2[$state.operatorselect]
+                              .infoText;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646).";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    ) : (
+                      "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                    )}
+                  </div>
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__wxlSq, {

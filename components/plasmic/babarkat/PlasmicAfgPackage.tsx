@@ -148,7 +148,6 @@ export type PlasmicAfgPackage__OverridesType = {
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
-  exchangeRate?: Flex__<typeof ApiRequest>;
   dialog?: Flex__<typeof Dialog>;
   exchange2?: Flex__<typeof Exchange>;
 };
@@ -197,6 +196,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const globalVariants = _useGlobalVariants();
 
   const $globalActions = useGlobalActions?.();
 
@@ -669,24 +670,6 @@ function PlasmicAfgPackage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
       },
       {
-        path: "exchangeRate.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "exchangeRate.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
@@ -777,7 +760,6 @@ function PlasmicAfgPackage__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -1557,6 +1539,21 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         "step3"
                       )
                     })}
+                    maxLength={(() => {
+                      try {
+                        return $state.fragmentInput.value?.startsWith("0")
+                          ? 10
+                          : 9;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
                         "fragmentInput",
@@ -1571,8 +1568,11 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                               const actionArgs = {
                                 customFunction: async () => {
                                   return (() => {
-                                    let __plasmic_ret = undefined;
-                                    for (
+                                    const input =
+                                      $state.fragmentInput.value.startsWith("0")
+                                        ? $state.fragmentInput.value.slice(1)
+                                        : $state.fragmentInput.value;
+                                    outerLoop: for (
                                       let operatorIndex = 0;
                                       operatorIndex < $state.operators2.length;
                                       operatorIndex++
@@ -1580,36 +1580,23 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                       const operator =
                                         $state.operators2[operatorIndex];
                                       for (let code of operator.codes) {
-                                        if (
-                                          $state.fragmentInput.value.startsWith(
-                                            code
-                                          )
-                                        ) {
-                                          for (
-                                            let i = 0;
-                                            i < $state.boxselect.length;
-                                            i++
-                                          ) {
-                                            $state.boxselect[i].select = false;
-                                          }
-                                          for (
-                                            let i = 0;
-                                            i < $state.boxselect2.length;
-                                            i++
-                                          ) {
-                                            $state.boxselect2[i].select = false;
-                                          }
+                                        if (input.startsWith(code)) {
+                                          $state.boxselect.forEach(
+                                            item => (item.select = false)
+                                          );
+                                          $state.boxselect2.forEach(
+                                            item => (item.select = false)
+                                          );
                                           $state.boxselect[
                                             operatorIndex
                                           ].select = true;
                                           $state.boxselect2[0].select = true;
                                           $state.operatorselect = operatorIndex;
-                                          __plasmic_ret = $state.typecharge =
-                                            "Call";
+                                          $state.typecharge = "Internet";
+                                          break outerLoop;
                                         }
                                       }
                                     }
-                                    return __plasmic_ret;
                                   })();
                                 }
                               };
@@ -1692,7 +1679,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       }
                     )}
                   >
-                    {"93+"}
+                    {"\ud83c\udde6\ud83c\uddeb +93"}
                   </div>
                   <PlasmicImg__
                     alt={""}
@@ -3053,7 +3040,22 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                   "mobileOnly"
                                 )
                                   ? false
-                                  : false
+                                  : (() => {
+                                      try {
+                                        return (
+                                          typeitem.type == $state.typecharge
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return false;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
                             },
                             {
                               name: "boxselect2[].disable2",
@@ -3998,7 +4000,13 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                               variablePath: ["number"]
                             },
                             operation: 0,
-                            value: "0093" + $state.fragmentInput.value
+                            value: (() => {
+                              const input = $state.fragmentInput.value || "";
+                              const normalized = input.startsWith("0")
+                                ? input.slice(1)
+                                : input;
+                              return "0093" + normalized;
+                            })()
                           };
                           return (({
                             variable,
@@ -5561,61 +5569,6 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
           type={generateStateValueProp($state, ["shopModal", "type"])}
         />
 
-        <ApiRequest
-          data-plasmic-name={"exchangeRate"}
-          data-plasmic-override={overrides.exchangeRate}
-          className={classNames("__wab_instance", sty.exchangeRate, {
-            [sty.exchangeRatestepscharg_step3]: hasVariant(
-              $state,
-              "stepscharg",
-              "step3"
-            )
-          })}
-          errorDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__jWqCp
-              )}
-            >
-              {"Error fetching data"}
-            </div>
-          }
-          loadingDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xz6U
-              )}
-            >
-              {"Loading..."}
-            </div>
-          }
-          method={"GET"}
-          onError={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["exchangeRate", "error"]).apply(
-              null,
-              eventArgs
-            );
-          }}
-          onLoading={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, [
-              "exchangeRate",
-              "loading"
-            ]).apply(null, eventArgs);
-          }}
-          onSuccess={async (...eventArgs: any) => {
-            generateStateOnChangeProp($state, ["exchangeRate", "data"]).apply(
-              null,
-              eventArgs
-            );
-          }}
-          shouldFetch={true}
-          url={"https://n8n.babarkat.com/webhook/exchangeRate"}
-        />
-
         <Dialog
           data-plasmic-name={"dialog"}
           data-plasmic-override={overrides.dialog}
@@ -5903,7 +5856,6 @@ const PlasmicDescendants = {
     "commissionBabarkat",
     "sideEffect",
     "shopModal",
-    "exchangeRate",
     "dialog",
     "exchange2"
   ],
@@ -5981,7 +5933,6 @@ const PlasmicDescendants = {
   commissionBabarkat: ["commissionBabarkat"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
-  exchangeRate: ["exchangeRate"],
   dialog: ["dialog"],
   exchange2: ["exchange2"]
 } as const;
@@ -6022,7 +5973,6 @@ type NodeDefaultElementType = {
   commissionBabarkat: typeof ApiRequest;
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
-  exchangeRate: typeof ApiRequest;
   dialog: typeof Dialog;
   exchange2: typeof Exchange;
 };
@@ -6148,7 +6098,6 @@ export const PlasmicAfgPackage = Object.assign(
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
-    exchangeRate: makeNodeComponent("exchangeRate"),
     dialog: makeNodeComponent("dialog"),
     exchange2: makeNodeComponent("exchange2"),
 

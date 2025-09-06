@@ -196,6 +196,8 @@ function PlasmicChargingAfg__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const $globalActions = useGlobalActions?.();
 
   const currentUser = useCurrentUser?.() || {};
@@ -786,7 +788,6 @@ function PlasmicChargingAfg__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -1571,6 +1572,21 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                           )
                         }
                       )}
+                      maxLength={(() => {
+                        try {
+                          return $state.fragmentInput.value?.startsWith("0")
+                            ? 10
+                            : 9;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
                       onChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
                           "fragmentInput",
@@ -1586,6 +1602,12 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                   customFunction: async () => {
                                     return (() => {
                                       let __plasmic_ret = undefined;
+                                      const input =
+                                        $state.fragmentInput.value.startsWith(
+                                          "0"
+                                        )
+                                          ? $state.fragmentInput.value.slice(1)
+                                          : $state.fragmentInput.value;
                                       for (
                                         let operatorIndex = 0;
                                         operatorIndex <
@@ -1595,11 +1617,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                         const operator =
                                           $state.operators2[operatorIndex];
                                         for (let code of operator.codes) {
-                                          if (
-                                            $state.fragmentInput.value.startsWith(
-                                              code
-                                            )
-                                          ) {
+                                          if (input.startsWith(code)) {
                                             for (
                                               let i = 0;
                                               i < $state.boxselect.length;
@@ -1712,7 +1730,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                         }
                       )}
                     >
-                      {"93+"}
+                      {"\ud83c\udde6\ud83c\uddeb +93"}
                     </div>
                     <PlasmicImg__
                       alt={""}
@@ -1860,7 +1878,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       }
                       type={
                         hasVariant($state, "stepscharg", "step2")
-                          ? "number"
+                          ? "amount"
                           : "number"
                       }
                       value={generateStateValueProp($state, [
@@ -2653,10 +2671,13 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                       })()
                                     : (() => {
                                         try {
-                                          return (
-                                            $state.fragmentInput.value.length !=
-                                            9
-                                          );
+                                          return $state.fragmentInput.value?.startsWith(
+                                            "0"
+                                          )
+                                            ? $state.fragmentInput.value
+                                                .length !== 10
+                                            : $state.fragmentInput.value
+                                                .length !== 9;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -3540,8 +3561,10 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                     isDisabled={(() => {
                       try {
                         return (
-                          $state.fragmentInput.value.length != 9 &&
-                          $state.operatorselect == -1
+                          ($state.fragmentInput.value?.startsWith("0")
+                            ? $state.fragmentInput.value.length !== 10
+                            : $state.fragmentInput.value.length !== 9) &&
+                          $state.operatorselect === -1
                         );
                       } catch (e) {
                         if (
@@ -3568,7 +3591,9 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                 variablePath: ["number"]
                               },
                               operation: 0,
-                              value: "0" + $state.fragmentInput.value
+                              value: $state.fragmentInput.value?.startsWith("0")
+                                ? $state.fragmentInput.value
+                                : "0" + $state.fragmentInput.value
                             };
                             return (({
                               variable,

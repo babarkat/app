@@ -707,6 +707,34 @@
 .fragmentInput2stepscharg_step2:global(.__wab_instance) {
   z-index: 1;
 }
+.text__wozM {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  font-family: "Vazirmatn", sans-serif;
+  color: var(--token-pRs3-4jrQ4XQ);
+  font-size: 16px;
+  padding-bottom: 5px;
+  min-width: 0;
+  display: none;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__wozM {
+    font-weight: 700;
+  }
+}
+.textstepscharg_step2__wozMTtIk {
+  z-index: 1;
+  color: var(--token-WxyGMLCV1Pdq);
+  padding-top: 10px;
+  display: block;
+}
+.textstepscharg_step3__wozMWug5H {
+  font-weight: 700;
+  font-size: 18px;
+  border-bottom: 1px solid #00ffcc;
+}
 .freeBox__wxlSq {
   flex-direction: column;
   position: relative;

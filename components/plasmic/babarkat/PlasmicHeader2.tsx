@@ -84,8 +84,8 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicHeader2.module.css"; // plasmic-import: vtwl99Nd1npi/css
 
-import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon131Icon from "./icons/PlasmicIcon__Icon131"; // plasmic-import: mk8KWA0sV7w5/icon
+import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
 import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
@@ -109,6 +109,7 @@ import Icon57Icon from "./icons/PlasmicIcon__Icon57"; // plasmic-import: T9OBsfB
 import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 import Icon130Icon from "./icons/PlasmicIcon__Icon130"; // plasmic-import: szPKHsLDIQ3Z/icon
 import Icon24Icon from "./icons/PlasmicIcon__Icon24"; // plasmic-import: aU_d9Ch-rBVW/icon
+import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
@@ -260,6 +261,8 @@ function PlasmicHeader2__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const globalVariants = _useGlobalVariants();
 
   const $globalActions = useGlobalActions?.();
 
@@ -646,7 +649,6 @@ function PlasmicHeader2__RenderFunc(props: {
   const dataSourcesCtx = usePlasmicDataSourceContext();
   const plasmicInvalidate = usePlasmicInvalidate();
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -670,11 +672,6 @@ function PlasmicHeader2__RenderFunc(props: {
         sty.header
       )}
     >
-      <BabarkatlogoCopy2SvgIcon
-        className={classNames(projectcss.all, sty.svg__c7LT7)}
-        role={"img"}
-      />
-
       <div className={classNames(projectcss.all, sty.freeBox__xy8N9)}>
         <div className={classNames(projectcss.all, sty.freeBox___60TsA)}>
           <Icon131Icon
@@ -715,6 +712,11 @@ function PlasmicHeader2__RenderFunc(props: {
           />
         </div>
       </div>
+      <Icon154Icon
+        className={classNames(projectcss.all, sty.svg__c7LT7)}
+        role={"img"}
+      />
+
       <Icon4Icon
         className={classNames(projectcss.all, sty.svg__gCajo)}
         role={"img"}

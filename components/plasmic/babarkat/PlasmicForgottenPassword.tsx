@@ -187,6 +187,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const $globalActions = useGlobalActions?.();
 
   const currentUser = useCurrentUser?.() || {};
@@ -352,7 +354,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             phoneFormats: {
               type: "Mobile",
               regex: "^0?9\\d{9}$",
-              example: "09123456789"
+              example: "09123456789",
+              maxLength: 11
             }
           },
           {
@@ -362,7 +365,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             phoneFormats: {
               type: "Mobile",
               regex: "^0?7\\d{8}$",
-              example: "070123456"
+              example: "0701234567",
+              maxLength: 10
             }
           },
           {
@@ -372,7 +376,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
             phoneFormats: {
               type: "Mobile",
               regex: "^0?5\\d{9}$",
-              example: "05012345678"
+              example: "05012345678",
+              maxLength: 11
             }
           }
         ]
@@ -533,7 +538,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
     $refs
   });
 
-  const globalVariants = _useGlobalVariants();
   const styleTokensClassNames = _useStyleTokens();
   const styleTokensClassNames_antd_5_hostless =
     useStyleTokens_antd_5_hostless();
@@ -1002,6 +1006,25 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         ? false
                         : undefined
                     }
+                    maxLength={(() => {
+                      try {
+                        return $state.fragmentInput.value.startsWith("0")
+                          ? $state.contry.find(
+                              i => i.value == $state.selectContry
+                            ).phoneFormats.maxLength
+                          : $state.contry.find(
+                              i => i.value == $state.selectContry
+                            ).phoneFormats.maxLength - 1;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
                         "fragmentInput",
