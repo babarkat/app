@@ -3378,6 +3378,11 @@
           "id": "NEr1WT__As1_",
           "name": "Icon160Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon160.tsx"
+        },
+        {
+          "id": "dGgugbzPr2Us",
+          "name": "Icon161Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon161.tsx"
         }
       ],
       "images": [

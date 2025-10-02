@@ -86,10 +86,11 @@ import sty from "./PlasmicPanel.module.css"; // plasmic-import: zKFKE8oLJjW9/css
 import Icon147Icon from "./icons/PlasmicIcon__Icon147"; // plasmic-import: -wCYHUCW1Gsm/icon
 import Icon148Icon from "./icons/PlasmicIcon__Icon148"; // plasmic-import: 0ugKFUu_E8eH/icon
 import Icon149Icon from "./icons/PlasmicIcon__Icon149"; // plasmic-import: hXT4DhuDx7z6/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon161Icon from "./icons/PlasmicIcon__Icon161"; // plasmic-import: dGgugbzPr2Us/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
@@ -1218,6 +1219,12 @@ function PlasmicPanel__RenderFunc(props: {
                       : undefined
                   }
                   showStartIcon={true}
+                  startIcon={
+                    <Icon161Icon
+                      className={classNames(projectcss.all, sty.svg__ieaEr)}
+                      role={"img"}
+                    />
+                  }
                 >
                   <div
                     className={classNames(
