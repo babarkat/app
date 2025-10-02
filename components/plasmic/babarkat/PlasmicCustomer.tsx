@@ -69,8 +69,6 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -354,10 +352,6 @@ function PlasmicCustomer__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -381,8 +375,6 @@ function PlasmicCustomer__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -1113,9 +1105,8 @@ function PlasmicCustomer__RenderFunc(props: {
                                     typeof $steps["updateCustomerId"].then ===
                                       "function"
                                   ) {
-                                    $steps["updateCustomerId"] = await $steps[
-                                      "updateCustomerId"
-                                    ];
+                                    $steps["updateCustomerId"] =
+                                      await $steps["updateCustomerId"];
                                   }
 
                                   $steps["updateExitModalOpen"] = true
@@ -1242,9 +1233,7 @@ function PlasmicCustomer__RenderFunc(props: {
                           projectcss.root_reset,
                           projectcss.plasmic_default_styles,
                           projectcss.plasmic_mixins,
-                          styleTokensClassNames,
-                          styleTokensClassNames_antd_5_hostless,
-                          styleTokensClassNames_plasmic_rich_components
+                          styleTokensClassNames
                         ),
                         mouseEnterDelay: 0,
                         mouseLeaveDelay: 0,
@@ -1565,9 +1554,7 @@ function PlasmicCustomer__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={true}
@@ -1643,9 +1630,8 @@ function PlasmicCustomer__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
 
                   $steps["invokeGlobalAction"] = true
@@ -1684,9 +1670,8 @@ function PlasmicCustomer__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
 
                   $steps["invokeGlobalAction2"] =
@@ -1708,9 +1693,8 @@ function PlasmicCustomer__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction2"] === "object" &&
                     typeof $steps["invokeGlobalAction2"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction2"] = await $steps[
-                      "invokeGlobalAction2"
-                    ];
+                    $steps["invokeGlobalAction2"] =
+                      await $steps["invokeGlobalAction2"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -1775,9 +1759,8 @@ function PlasmicCustomer__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -1872,7 +1855,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCustomer__VariantsArgs;
     args?: PlasmicCustomer__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCustomer__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCustomer__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCustomer__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

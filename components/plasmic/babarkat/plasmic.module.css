@@ -158,11 +158,11 @@
 .plasmic_default_styles,
 .plasmic_default_styles:where(.global_experiment_override),
 .plasmic_default_styles:where(
-    .global_unnamedGlobalGroupOfVariants_unnamedVariant
-  ),
+  .global_unnamedGlobalGroupOfVariants_unnamedVariant
+),
 .plasmic_default_styles:where(
-    .global_unnamedGlobalGroupOfVariants2_unnamedVariant
-  ) {
+  .global_unnamedGlobalGroupOfVariants2_unnamedVariant
+) {
   --mixin-n6feKYd1v6Hx_font-family: "Inter", sans-serif;
   --mixin-n6feKYd1v6Hx_font-size: 14px;
   --mixin-n6feKYd1v6Hx_font-weight: 400;

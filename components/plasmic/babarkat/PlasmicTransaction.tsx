@@ -85,8 +85,6 @@ import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import Dialog2 from "../../Dialog2"; // plasmic-import: hyFNHR4bCLIY/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -551,10 +549,6 @@ function PlasmicTransaction__RenderFunc(props: {
   const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -578,8 +572,6 @@ function PlasmicTransaction__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root,
             {
               [sty.rootglobal_experiment_override]: hasVariant(
@@ -731,9 +723,8 @@ function PlasmicTransaction__RenderFunc(props: {
                       typeof $steps["updateModal2Open"] === "object" &&
                       typeof $steps["updateModal2Open"].then === "function"
                     ) {
-                      $steps["updateModal2Open"] = await $steps[
-                        "updateModal2Open"
-                      ];
+                      $steps["updateModal2Open"] =
+                        await $steps["updateModal2Open"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -842,9 +833,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updateList"] = true
@@ -879,9 +869,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateScroll"] = true
@@ -917,9 +906,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -956,9 +944,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
 
                               $steps["updatePage"] = true
@@ -993,9 +980,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
                             }}
                             onTouchStart={async event => {
@@ -1034,9 +1020,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updateList"] = true
@@ -1071,9 +1056,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateScroll"] = true
@@ -1109,9 +1093,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -1148,9 +1131,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
 
                               $steps["updatePage"] = true
@@ -1185,9 +1167,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
                             }}
                           >
@@ -1251,9 +1232,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateScroll"] = true
@@ -1289,9 +1269,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateHasMore"] = true
@@ -1327,9 +1306,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updatePage"] = true
@@ -1364,9 +1342,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -1403,9 +1380,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
                             }}
                             onTouchStart={async event => {
@@ -1443,9 +1419,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateScroll"] = true
@@ -1481,9 +1456,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateHasMore"] = true
@@ -1519,9 +1493,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updatePage"] = true
@@ -1556,9 +1529,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -1595,9 +1567,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
                             }}
                           >
@@ -1660,9 +1631,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updateScroll"] = true
@@ -1698,9 +1668,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateList"] = true
@@ -1735,9 +1704,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -1774,9 +1742,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
 
                               $steps["updatePage"] = true
@@ -1811,9 +1778,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
                             }}
                             onTouchStart={async event => {
@@ -1852,9 +1818,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateHasMore"].then ===
                                   "function"
                               ) {
-                                $steps["updateHasMore"] = await $steps[
-                                  "updateHasMore"
-                                ];
+                                $steps["updateHasMore"] =
+                                  await $steps["updateHasMore"];
                               }
 
                               $steps["updateList"] = true
@@ -1889,9 +1854,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateList"] === "object" &&
                                 typeof $steps["updateList"].then === "function"
                               ) {
-                                $steps["updateList"] = await $steps[
-                                  "updateList"
-                                ];
+                                $steps["updateList"] =
+                                  await $steps["updateList"];
                               }
 
                               $steps["updateScroll"] = true
@@ -1927,9 +1891,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateScroll"].then ===
                                   "function"
                               ) {
-                                $steps["updateScroll"] = await $steps[
-                                  "updateScroll"
-                                ];
+                                $steps["updateScroll"] =
+                                  await $steps["updateScroll"];
                               }
 
                               $steps["updateTransaction"] = true
@@ -1966,9 +1929,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updateTransaction"].then ===
                                   "function"
                               ) {
-                                $steps["updateTransaction"] = await $steps[
-                                  "updateTransaction"
-                                ];
+                                $steps["updateTransaction"] =
+                                  await $steps["updateTransaction"];
                               }
 
                               $steps["updatePage"] = true
@@ -2003,9 +1965,8 @@ function PlasmicTransaction__RenderFunc(props: {
                                 typeof $steps["updatePage"] === "object" &&
                                 typeof $steps["updatePage"].then === "function"
                               ) {
-                                $steps["updatePage"] = await $steps[
-                                  "updatePage"
-                                ];
+                                $steps["updatePage"] =
+                                  await $steps["updatePage"];
                               }
                             }}
                           >
@@ -2108,32 +2069,32 @@ function PlasmicTransaction__RenderFunc(props: {
                               hasVariant($state, "no", "no")
                                 ? true
                                 : hasVariant(
-                                    globalVariants,
-                                    "screen",
-                                    "mobileOnly"
-                                  )
-                                ? true
-                                : (() => {
-                                    try {
-                                      return $state.list.length > 0;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return true;
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                  ? true
+                                  : (() => {
+                                      try {
+                                        return $state.list.length > 0;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
+                                    })()
                             )
                               ? (_par =>
                                   !_par
                                     ? []
                                     : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
+                                      ? _par
+                                      : [_par])(
                                   (() => {
                                     try {
                                       return $state.fiterlist;
@@ -2691,32 +2652,32 @@ function PlasmicTransaction__RenderFunc(props: {
                               hasVariant($state, "no", "no")
                                 ? true
                                 : hasVariant(
-                                    globalVariants,
-                                    "screen",
-                                    "mobileOnly"
-                                  )
-                                ? true
-                                : (() => {
-                                    try {
-                                      return $state.list.length > 0;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return true;
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                  ? true
+                                  : (() => {
+                                      try {
+                                        return $state.list.length > 0;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
+                                    })()
                             )
                               ? (_par =>
                                   !_par
                                     ? []
                                     : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
+                                      ? _par
+                                      : [_par])(
                                   (() => {
                                     try {
                                       return $state.fiterlist;
@@ -3138,32 +3099,32 @@ function PlasmicTransaction__RenderFunc(props: {
                               hasVariant($state, "no", "no")
                                 ? true
                                 : hasVariant(
-                                    globalVariants,
-                                    "screen",
-                                    "mobileOnly"
-                                  )
-                                ? true
-                                : (() => {
-                                    try {
-                                      return $state.list.length > 0;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return true;
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                  ? true
+                                  : (() => {
+                                      try {
+                                        return $state.list.length > 0;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
                                       }
-                                      throw e;
-                                    }
-                                  })()
+                                    })()
                             )
                               ? (_par =>
                                   !_par
                                     ? []
                                     : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
+                                      ? _par
+                                      : [_par])(
                                   (() => {
                                     try {
                                       return $state.fiterlist;
@@ -3977,9 +3938,8 @@ function PlasmicTransaction__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["updateScroll"] = true
@@ -4049,9 +4009,7 @@ function PlasmicTransaction__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -4389,9 +4347,8 @@ function PlasmicTransaction__RenderFunc(props: {
                     typeof $steps["updateModal2Open"] === "object" &&
                     typeof $steps["updateModal2Open"].then === "function"
                   ) {
-                    $steps["updateModal2Open"] = await $steps[
-                      "updateModal2Open"
-                    ];
+                    $steps["updateModal2Open"] =
+                      await $steps["updateModal2Open"];
                   }
 
                   $steps["updateFiterlist"] = true
@@ -4858,15 +4815,11 @@ function PlasmicTransaction__RenderFunc(props: {
                       },
                       {
                         text: "نرخ روز",
-                        value: `${input.today_value_rate?.toString()} ${
-                          formatAmount(input.type_2).type
-                        }`
+                        value: `${input.today_value_rate?.toString()} ${formatAmount(input.type_2).type}`
                       },
                       {
                         text: "مبلغ ارسالی",
-                        value: `${input.amount?.toLocaleString()} ${
-                          formatAmount(input.type_2).type
-                        }`
+                        value: `${input.amount?.toLocaleString()} ${formatAmount(input.type_2).type}`
                       },
                       {
                         text: "تاریخ ارسال",
@@ -5309,7 +5262,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransaction__VariantsArgs;
     args?: PlasmicTransaction__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransaction__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransaction__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransaction__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

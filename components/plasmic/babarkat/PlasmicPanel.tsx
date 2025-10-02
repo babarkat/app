@@ -70,11 +70,13 @@ import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/compo
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import Header2 from "../../Header2"; // plasmic-import: vtwl99Nd1npi/component
+import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
+import CustomerComponnet from "../../CustomerComponnet"; // plasmic-import: uXx8PLeZeTQA/component
+import { BackHandler } from "@/components/BackHandler"; // plasmic-import: eisuy4UCB7xD/codeComponent
+import CustomerAddComponnet from "../../CustomerAddComponnet"; // plasmic-import: RKNsGINinP2W/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -105,10 +107,19 @@ import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
-export type PlasmicPanel__VariantMembers = {};
-export type PlasmicPanel__VariantsArgs = {};
+export type PlasmicPanel__VariantMembers = {
+  page: "users";
+  newUser: "newUser";
+};
+export type PlasmicPanel__VariantsArgs = {
+  page?: SingleChoiceArg<"users">;
+  newUser?: SingleBooleanChoiceArg<"newUser">;
+};
 type VariantPropType = keyof PlasmicPanel__VariantsArgs;
-export const PlasmicPanel__VariantProps = new Array<VariantPropType>();
+export const PlasmicPanel__VariantProps = new Array<VariantPropType>(
+  "page",
+  "newUser"
+);
 
 export type PlasmicPanel__ArgsType = {};
 type ArgPropType = keyof PlasmicPanel__ArgsType;
@@ -150,6 +161,8 @@ export type PlasmicPanel__OverridesType = {
   comingSoon12?: Flex__<"div">;
   comingSoon15?: Flex__<"div">;
   comingSoon13?: Flex__<"div">;
+  customerComponnet?: Flex__<typeof CustomerComponnet>;
+  customerAddComponnet?: Flex__<typeof CustomerAddComponnet>;
 };
 
 export interface DefaultPanelProps {}
@@ -525,6 +538,18 @@ function PlasmicPanel__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "page",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.page
+      },
+      {
+        path: "newUser",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.newUser
       }
     ],
     [$props, $ctx, $refs]
@@ -537,10 +562,6 @@ function PlasmicPanel__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -577,8 +598,6 @@ function PlasmicPanel__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
               ? "page"
@@ -613,7 +632,12 @@ function PlasmicPanel__RenderFunc(props: {
                   globalVariants,
                   "unnamedGlobalGroupOfVariants",
                   "unnamedVariant"
-                )
+                ),
+              [sty.rootnewUser]: hasVariant($state, "newUser", "newUser"),
+              [sty.rootpage_users]: hasVariant($state, "page", "users"),
+              [sty.rootpage_users_newUser]:
+                hasVariant($state, "page", "users") &&
+                hasVariant($state, "newUser", "newUser")
             }
           )}
         >
@@ -753,7 +777,20 @@ function PlasmicPanel__RenderFunc(props: {
             }}
           />
 
-          <section className={classNames(projectcss.all, sty.section__sLlng)}>
+          <section
+            className={classNames(projectcss.all, sty.section__sLlng, {
+              [sty.sectionnewUser__sLlngnV6If]: hasVariant(
+                $state,
+                "newUser",
+                "newUser"
+              ),
+              [sty.sectionpage_users__sLlngGxQj4]: hasVariant(
+                $state,
+                "page",
+                "users"
+              )
+            })}
+          >
             {(() => {
               try {
                 return !$state.loading2;
@@ -770,7 +807,10 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"main"}
                 data-plasmic-override={overrides.main}
-                className={classNames(projectcss.all, sty.main)}
+                className={classNames(projectcss.all, sty.main, {
+                  [sty.mainnewUser]: hasVariant($state, "newUser", "newUser"),
+                  [sty.mainpage_users]: hasVariant($state, "page", "users")
+                })}
               >
                 <div
                   data-plasmic-name={"wallet"}
@@ -1078,9 +1118,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["updateGameOpen"] === "object" &&
                           typeof $steps["updateGameOpen"].then === "function"
                         ) {
-                          $steps["updateGameOpen"] = await $steps[
-                            "updateGameOpen"
-                          ];
+                          $steps["updateGameOpen"] =
+                            await $steps["updateGameOpen"];
                         }
                       }}
                     >
@@ -1139,29 +1178,29 @@ function PlasmicPanel__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["goToCustomer"] = true
+                    $steps["updatePage"] = true
                       ? (() => {
-                          const actionArgs = { destination: `/customer` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
+                          const actionArgs = {
+                            vgroup: "page",
+                            operation: 0,
+                            value: "users"
+                          };
+                          return (({ vgroup, value }) => {
+                            if (typeof value === "string") {
+                              value = [value];
                             }
+
+                            $stateSet($state, vgroup, value);
+                            return value;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["goToCustomer"] != null &&
-                      typeof $steps["goToCustomer"] === "object" &&
-                      typeof $steps["goToCustomer"].then === "function"
+                      $steps["updatePage"] != null &&
+                      typeof $steps["updatePage"] === "object" &&
+                      typeof $steps["updatePage"].then === "function"
                     ) {
-                      $steps["goToCustomer"] = await $steps["goToCustomer"];
+                      $steps["updatePage"] = await $steps["updatePage"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -1185,6 +1224,7 @@ function PlasmicPanel__RenderFunc(props: {
                       ? undefined
                       : undefined
                   }
+                  showStartIcon={true}
                 >
                   <div
                     className={classNames(
@@ -1264,9 +1304,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -1668,9 +1706,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                       role={"img"}
@@ -1766,9 +1803,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={
@@ -1974,9 +2009,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                     >
@@ -2041,9 +2075,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                     >
@@ -2136,9 +2169,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                       role={"img"}
@@ -2165,9 +2197,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={true}
@@ -2238,9 +2268,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["updateModal5Open"] === "object" &&
                     typeof $steps["updateModal5Open"].then === "function"
                   ) {
-                    $steps["updateModal5Open"] = await $steps[
-                      "updateModal5Open"
-                    ];
+                    $steps["updateModal5Open"] =
+                      await $steps["updateModal5Open"];
                   }
 
                   $steps["updateModal2Open"] = true
@@ -2274,9 +2303,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["updateModal2Open"] === "object" &&
                     typeof $steps["updateModal2Open"].then === "function"
                   ) {
-                    $steps["updateModal2Open"] = await $steps[
-                      "updateModal2Open"
-                    ];
+                    $steps["updateModal2Open"] =
+                      await $steps["updateModal2Open"];
                   }
                 }}
               >
@@ -3526,9 +3554,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["updateModal5Open"] === "object" &&
                     typeof $steps["updateModal5Open"].then === "function"
                   ) {
-                    $steps["updateModal5Open"] = await $steps[
-                      "updateModal5Open"
-                    ];
+                    $steps["updateModal5Open"] =
+                      await $steps["updateModal5Open"];
                   }
 
                   $steps["updateModalOpen"] = true
@@ -11639,9 +11666,7 @@ function PlasmicPanel__RenderFunc(props: {
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               ),
               hideFooter: true,
               maskClosable: false,
@@ -11899,9 +11924,8 @@ function PlasmicPanel__RenderFunc(props: {
                               typeof $steps["updatePass1"] === "object" &&
                               typeof $steps["updatePass1"].then === "function"
                             ) {
-                              $steps["updatePass1"] = await $steps[
-                                "updatePass1"
-                              ];
+                              $steps["updatePass1"] =
+                                await $steps["updatePass1"];
                             }
 
                             $steps["invokeGlobalAction"] = true
@@ -11920,9 +11944,8 @@ function PlasmicPanel__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
 
                             $steps["runCode2"] = true
@@ -12002,8 +12025,8 @@ function PlasmicPanel__RenderFunc(props: {
                             return $state.p1 > 80
                               ? "#2DC57B"
                               : $state.p1 > 50
-                              ? "#FAAD14"
-                              : "#FF4D4F";
+                                ? "#FAAD14"
+                                : "#FF4D4F";
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -12113,9 +12136,8 @@ function PlasmicPanel__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
 
                           $steps["runCode2"] = true
@@ -12311,9 +12333,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["updateLodingbtn"] === "object" &&
                           typeof $steps["updateLodingbtn"].then === "function"
                         ) {
-                          $steps["updateLodingbtn"] = await $steps[
-                            "updateLodingbtn"
-                          ];
+                          $steps["updateLodingbtn"] =
+                            await $steps["updateLodingbtn"];
                         }
 
                         $steps["invokeGlobalAction3"] = true
@@ -12354,9 +12375,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction3"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction3"] = await $steps[
-                            "invokeGlobalAction3"
-                          ];
+                          $steps["invokeGlobalAction3"] =
+                            await $steps["invokeGlobalAction3"];
                         }
 
                         $steps["updateModal4Open"] =
@@ -12379,9 +12399,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["updateModal4Open"] === "object" &&
                           typeof $steps["updateModal4Open"].then === "function"
                         ) {
-                          $steps["updateModal4Open"] = await $steps[
-                            "updateModal4Open"
-                          ];
+                          $steps["updateModal4Open"] =
+                            await $steps["updateModal4Open"];
                         }
 
                         $steps["invokeGlobalAction4"] =
@@ -12405,9 +12424,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction4"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction4"] = await $steps[
-                            "invokeGlobalAction4"
-                          ];
+                          $steps["invokeGlobalAction4"] =
+                            await $steps["invokeGlobalAction4"];
                         }
 
                         $steps["updateLodingbtn2"] = true
@@ -12441,9 +12459,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["updateLodingbtn2"] === "object" &&
                           typeof $steps["updateLodingbtn2"].then === "function"
                         ) {
-                          $steps["updateLodingbtn2"] = await $steps[
-                            "updateLodingbtn2"
-                          ];
+                          $steps["updateLodingbtn2"] =
+                            await $steps["updateLodingbtn2"];
                         }
 
                         $steps["updateModal6Open"] =
@@ -12478,9 +12495,8 @@ function PlasmicPanel__RenderFunc(props: {
                           typeof $steps["updateModal6Open"] === "object" &&
                           typeof $steps["updateModal6Open"].then === "function"
                         ) {
-                          $steps["updateModal6Open"] = await $steps[
-                            "updateModal6Open"
-                          ];
+                          $steps["updateModal6Open"] =
+                            await $steps["updateModal6Open"];
                         }
 
                         $steps["runCode"] =
@@ -12564,9 +12580,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={
@@ -12662,7 +12676,20 @@ function PlasmicPanel__RenderFunc(props: {
               </div>
             </div>
           </AntdModal>
-          <section className={classNames(projectcss.all, sty.section__cwGyG)}>
+          <section
+            className={classNames(projectcss.all, sty.section__cwGyG, {
+              [sty.sectionnewUser__cwGyGnV6If]: hasVariant(
+                $state,
+                "newUser",
+                "newUser"
+              ),
+              [sty.sectionpage_users__cwGyGGxQj4]: hasVariant(
+                $state,
+                "page",
+                "users"
+              )
+            })}
+          >
             <Header2
               data-plasmic-name={"header2"}
               data-plasmic-override={overrides.header2}
@@ -12730,9 +12757,8 @@ function PlasmicPanel__RenderFunc(props: {
                       typeof $steps["goToChargeStep1"] === "object" &&
                       typeof $steps["goToChargeStep1"].then === "function"
                     ) {
-                      $steps["goToChargeStep1"] = await $steps[
-                        "goToChargeStep1"
-                      ];
+                      $steps["goToChargeStep1"] =
+                        await $steps["goToChargeStep1"];
                     }
                   }}
                 >
@@ -12784,9 +12810,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -12861,9 +12885,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -12939,9 +12962,7 @@ function PlasmicPanel__RenderFunc(props: {
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
-                              return `<span style="color: #A7F3D0; font-weight: bold;">${(
-                                $state.profile.data[currentItem.id] * 1000
-                              ).toLocaleString()}</span>  ${currentItem.name}`;
+                              return `<span style="color: #A7F3D0; font-weight: bold;">${($state.profile.data[currentItem.id] * 1000).toLocaleString()}</span>  ${currentItem.name}`;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -12982,9 +13003,7 @@ function PlasmicPanel__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -13059,9 +13078,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -13096,9 +13114,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -13177,9 +13194,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -13258,9 +13274,8 @@ function PlasmicPanel__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -13314,8 +13329,34 @@ function PlasmicPanel__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__gSwD5)} />
           </AntdModal>
-          <section className={classNames(projectcss.all, sty.section__cZeqE)}>
-            <div className={classNames(projectcss.all, sty.freeBox__hd8Kc)}>
+          <section
+            className={classNames(projectcss.all, sty.section__cZeqE, {
+              [sty.sectionnewUser__cZeqEnV6If]: hasVariant(
+                $state,
+                "newUser",
+                "newUser"
+              ),
+              [sty.sectionpage_users__cZeqEGxQj4]: hasVariant(
+                $state,
+                "page",
+                "users"
+              )
+            })}
+          >
+            <div
+              className={classNames(projectcss.all, sty.freeBox__hd8Kc, {
+                [sty.freeBoxnewUser__hd8KCnV6If]: hasVariant(
+                  $state,
+                  "newUser",
+                  "newUser"
+                ),
+                [sty.freeBoxpage_users__hd8KcGxQj4]: hasVariant(
+                  $state,
+                  "page",
+                  "users"
+                )
+              })}
+            >
               <div
                 className={classNames(projectcss.all, sty.freeBox__r0QU8)}
                 onClick={async event => {
@@ -13407,6 +13448,236 @@ function PlasmicPanel__RenderFunc(props: {
               </div>
             </div>
           </section>
+          <Reveal
+            className={classNames("__wab_instance", sty.reveal___48Gkn, {
+              [sty.revealpage_users___48GknGxQj4]: hasVariant(
+                $state,
+                "page",
+                "users"
+              )
+            })}
+            damping={0.5}
+            duration={1000}
+            effect={"fade"}
+            triggerOnce={true}
+          >
+            <CustomerComponnet
+              data-plasmic-name={"customerComponnet"}
+              data-plasmic-override={overrides.customerComponnet}
+              back={async () => {
+                const $steps = {};
+
+                $steps["updatePage"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        vgroup: "page",
+                        operation: 1,
+                        value: "users"
+                      };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, undefined);
+                        return undefined;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePage"] != null &&
+                  typeof $steps["updatePage"] === "object" &&
+                  typeof $steps["updatePage"].then === "function"
+                ) {
+                  $steps["updatePage"] = await $steps["updatePage"];
+                }
+              }}
+              className={classNames("__wab_instance", sty.customerComponnet, {
+                [sty.customerComponnetnewUser]: hasVariant(
+                  $state,
+                  "newUser",
+                  "newUser"
+                ),
+                [sty.customerComponnetpage_users]: hasVariant(
+                  $state,
+                  "page",
+                  "users"
+                )
+              })}
+              openNew={async () => {
+                const $steps = {};
+
+                $steps["updateNewUser"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "newUser", operation: 4 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, true);
+                        return true;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateNewUser"] != null &&
+                  typeof $steps["updateNewUser"] === "object" &&
+                  typeof $steps["updateNewUser"].then === "function"
+                ) {
+                  $steps["updateNewUser"] = await $steps["updateNewUser"];
+                }
+              }}
+            />
+
+            <BackHandler
+              active={(() => {
+                try {
+                  return $state.page == "users";
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })()}
+              className={classNames("__wab_instance", sty.backHandler__hcwbg, {
+                [sty.backHandlernewUser__hcwbGnV6If]: hasVariant(
+                  $state,
+                  "newUser",
+                  "newUser"
+                )
+              })}
+              onBack={async () => {
+                const $steps = {};
+
+                $steps["updatePage"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "page", operation: 1 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, undefined);
+                        return undefined;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updatePage"] != null &&
+                  typeof $steps["updatePage"] === "object" &&
+                  typeof $steps["updatePage"].then === "function"
+                ) {
+                  $steps["updatePage"] = await $steps["updatePage"];
+                }
+              }}
+            />
+          </Reveal>
+          <Reveal
+            className={classNames("__wab_instance", sty.reveal__kvBt0, {
+              [sty.revealnewUser__kvBt0NV6If]: hasVariant(
+                $state,
+                "newUser",
+                "newUser"
+              )
+            })}
+            damping={1}
+            triggerOnce={true}
+          >
+            <CustomerAddComponnet
+              data-plasmic-name={"customerAddComponnet"}
+              data-plasmic-override={overrides.customerAddComponnet}
+              back={async () => {
+                const $steps = {};
+
+                $steps["updateNewUser"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "newUser", operation: 6 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        $stateSet($state, vgroup, false);
+                        return false;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateNewUser"] != null &&
+                  typeof $steps["updateNewUser"] === "object" &&
+                  typeof $steps["updateNewUser"].then === "function"
+                ) {
+                  $steps["updateNewUser"] = await $steps["updateNewUser"];
+                }
+              }}
+              className={classNames(
+                "__wab_instance",
+                sty.customerAddComponnet,
+                {
+                  [sty.customerAddComponnetnewUser]: hasVariant(
+                    $state,
+                    "newUser",
+                    "newUser"
+                  ),
+                  [sty.customerAddComponnetpage_users]: hasVariant(
+                    $state,
+                    "page",
+                    "users"
+                  ),
+                  [sty.customerAddComponnetpage_users_newUser]:
+                    hasVariant($state, "newUser", "newUser") &&
+                    hasVariant($state, "page", "users")
+                }
+              )}
+            />
+
+            <BackHandler
+              active={(() => {
+                try {
+                  return $state.newUser ? true : false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })()}
+              className={classNames("__wab_instance", sty.backHandler__mKaYs)}
+              onBack={async () => {
+                const $steps = {};
+
+                $steps["updateNewUser"] = true
+                  ? (() => {
+                      const actionArgs = { vgroup: "newUser", operation: 2 };
+                      return (({ vgroup, value }) => {
+                        if (typeof value === "string") {
+                          value = [value];
+                        }
+
+                        const oldValue = $stateGet($state, vgroup);
+                        $stateSet($state, vgroup, !oldValue);
+                        return !oldValue;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateNewUser"] != null &&
+                  typeof $steps["updateNewUser"] === "object" &&
+                  typeof $steps["updateNewUser"].then === "function"
+                ) {
+                  $steps["updateNewUser"] = await $steps["updateNewUser"];
+                }
+              }}
+            />
+          </Reveal>
         </div>
       </div>
     </React.Fragment>
@@ -13449,7 +13720,9 @@ const PlasmicDescendants = {
     "call",
     "comingSoon12",
     "comingSoon15",
-    "comingSoon13"
+    "comingSoon13",
+    "customerComponnet",
+    "customerAddComponnet"
   ],
   sideEffect: ["sideEffect"],
   main: ["main", "wallet", "button"],
@@ -13490,7 +13763,9 @@ const PlasmicDescendants = {
   call: ["call", "comingSoon12", "comingSoon15", "comingSoon13"],
   comingSoon12: ["comingSoon12"],
   comingSoon15: ["comingSoon15"],
-  comingSoon13: ["comingSoon13"]
+  comingSoon13: ["comingSoon13"],
+  customerComponnet: ["customerComponnet"],
+  customerAddComponnet: ["customerAddComponnet"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -13531,6 +13806,8 @@ type NodeDefaultElementType = {
   comingSoon12: "div";
   comingSoon15: "div";
   comingSoon13: "div";
+  customerComponnet: typeof CustomerComponnet;
+  customerAddComponnet: typeof CustomerAddComponnet;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -13544,7 +13821,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPanel__VariantsArgs;
     args?: PlasmicPanel__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicPanel__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicPanel__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicPanel__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
@@ -13652,6 +13931,8 @@ export const PlasmicPanel = Object.assign(
     comingSoon12: makeNodeComponent("comingSoon12"),
     comingSoon15: makeNodeComponent("comingSoon15"),
     comingSoon13: makeNodeComponent("comingSoon13"),
+    customerComponnet: makeNodeComponent("customerComponnet"),
+    customerAddComponnet: makeNodeComponent("customerAddComponnet"),
 
     // Metadata about props expected for PlasmicPanel
     internalVariantProps: PlasmicPanel__VariantProps,

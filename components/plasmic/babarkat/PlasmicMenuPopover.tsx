@@ -66,8 +66,6 @@ import MenuItem from "../../MenuItem"; // plasmic-import: GgHv52K5p_wn/component
 import MenuSection from "../../MenuSection"; // plasmic-import: nzem11uDyysK/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -170,10 +168,6 @@ function PlasmicMenuPopover__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <BasePopover
@@ -187,8 +181,6 @@ function PlasmicMenuPopover__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.root
       )}
       matchTriggerWidth={true}
@@ -198,9 +190,7 @@ function PlasmicMenuPopover__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components
+        styleTokensClassNames
       )}
       shouldFlip={true}
     >
@@ -322,7 +312,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicMenuPopover__VariantsArgs;
     args?: PlasmicMenuPopover__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicMenuPopover__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicMenuPopover__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicMenuPopover__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

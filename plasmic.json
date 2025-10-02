@@ -2250,6 +2250,32 @@
           "cssFilePath": "plasmic/babarkat/PlasmicIcons.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "uXx8PLeZeTQA",
+          "name": "CustomerComponnet",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCustomerComponnet.tsx",
+          "importSpec": {
+            "modulePath": "CustomerComponnet.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCustomerComponnet.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "RKNsGINinP2W",
+          "name": "CustomerAddComponnet",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCustomerAddComponnet.tsx",
+          "importSpec": {
+            "modulePath": "CustomerAddComponnet.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCustomerAddComponnet.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -3995,6 +4021,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.342",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.342/dist/plasmic.schema.json"
+  "cliVersion": "0.1.345",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.345/dist/plasmic.schema.json"
 }

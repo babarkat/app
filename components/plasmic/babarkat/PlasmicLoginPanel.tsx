@@ -73,8 +73,6 @@ import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -326,32 +324,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }
               })()
             : hasVariant(globalVariants, "screen", "mobileOnly")
-            ? (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
+              ? (() => {
+                  try {
+                    return $state.saraf[0].value;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return 100;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()
-            : (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
+                })()
+              : (() => {
+                  try {
+                    return $state.saraf[0].value;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return 100;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()
+                })()
       },
       {
         path: "selectsaraf",
@@ -644,32 +642,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }
               })()
             : hasVariant(globalVariants, "screen", "mobileOnly")
-            ? (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
+              ? (() => {
+                  try {
+                    return $state.saraf[0].value;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return 100;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()
-            : (() => {
-                try {
-                  return $state.saraf[0].value;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return 100;
+                })()
+              : (() => {
+                  try {
+                    return $state.saraf[0].value;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return 100;
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()
+                })()
       },
       {
         path: "username2",
@@ -726,10 +724,6 @@ function PlasmicLoginPanel__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -776,8 +770,6 @@ function PlasmicLoginPanel__RenderFunc(props: {
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
           styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components,
           sty.root,
           {
             [sty.rootglobal_experiment_override]: hasVariant(
@@ -970,21 +962,21 @@ function PlasmicLoginPanel__RenderFunc(props: {
               hasVariant($state, "loginByPassword", "loginByPassword")
                 ? "left"
                 : hasVariant($state, "password", "password")
-                ? "left"
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                ? "left"
-                : undefined
+                  ? "left"
+                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    ? "left"
+                    : undefined
             }
             effect={
               hasVariant($state, "loginByPassword", "loginByPassword")
                 ? "fade"
                 : hasVariant($state, "password", "password")
-                ? "fade"
-                : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                ? "slide"
-                : hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "fade"
-                : undefined
+                  ? "fade"
+                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                    ? "slide"
+                    : hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "fade"
+                      : undefined
             }
             reverse={
               hasVariant($state, "unnamedVariant", "unnamedVariant")
@@ -1248,12 +1240,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     {hasVariant($state, "loginByPassword", "loginByPassword")
                       ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                       : hasVariant($state, "password", "password")
-                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                        ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                        : hasVariant(
+                              $state,
+                              "unnamedVariant2",
+                              "unnamedVariant2"
+                            )
+                          ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                          : hasVariant(
+                                $state,
+                                "unnamedVariant",
+                                "unnamedVariant"
+                              )
+                            ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                            : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                   </div>
                   <Button
                     data-plasmic-name={"button4"}
@@ -1334,9 +1334,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["updateUnnamedVariant"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
+                        $steps["updateUnnamedVariant"] =
+                          await $steps["updateUnnamedVariant"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -1601,9 +1600,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         projectcss.root_reset,
                         projectcss.plasmic_default_styles,
                         projectcss.plasmic_mixins,
-                        styleTokensClassNames,
-                        styleTokensClassNames_antd_5_hostless,
-                        styleTokensClassNames_plasmic_rich_components
+                        styleTokensClassNames
                       )}
                       defaultValue={"+98"}
                       onChange={async (...eventArgs: any) => {
@@ -1694,9 +1691,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoginByPassword"] === "object" &&
                       typeof $steps["updateLoginByPassword"].then === "function"
                     ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
+                      $steps["updateLoginByPassword"] =
+                        await $steps["updateLoginByPassword"];
                     }
                   }}
                 >
@@ -1743,12 +1739,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc"
                     : hasVariant($state, "password", "password")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                        ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                        : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                          ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                          : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <div
                   className={classNames(
@@ -1802,9 +1798,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoginByPassword"] === "object" &&
                       typeof $steps["updateLoginByPassword"].then === "function"
                     ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
+                      $steps["updateLoginByPassword"] =
+                        await $steps["updateLoginByPassword"];
                     }
                   }}
                 >
@@ -1924,29 +1919,29 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       hasVariant($state, "loginByPassword", "loginByPassword")
                         ? ``
                         : hasVariant($state, "password", "password")
-                        ? ``
-                        : "98+"
+                          ? ``
+                          : "98+"
                     }
                     type={
                       hasVariant($state, "loginByPassword", "loginByPassword")
                         ? "text"
                         : hasVariant($state, "password", "password")
-                        ? (() => {
-                            try {
-                              return $state.pass1;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "password";
+                          ? (() => {
+                              try {
+                                return $state.pass1;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "password";
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "tel"
-                        : "tel"
+                            })()
+                          : hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "tel"
+                            : "tel"
                     }
                     value={generateStateValueProp($state, [
                       "fragmentInput5",
@@ -2041,20 +2036,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time != 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : true
+                        })()
+                      : true
                 ) ? (
                   <div
                     className={classNames(
@@ -2222,20 +2217,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : false
+                        })()
+                      : false
                 ) ? (
                   <div
                     className={classNames(
@@ -2287,9 +2282,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["updateTime"] = true
@@ -2358,9 +2352,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
@@ -2379,32 +2371,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
+                        ? (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
+                          })()
+                        : (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
@@ -2542,12 +2534,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     {hasVariant($state, "loginByPassword", "loginByPassword")
                       ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                       : hasVariant($state, "password", "password")
-                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
-                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                      ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                      : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                        ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                        : hasVariant(
+                              $state,
+                              "unnamedVariant2",
+                              "unnamedVariant2"
+                            )
+                          ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
+                          : hasVariant(
+                                $state,
+                                "unnamedVariant",
+                                "unnamedVariant"
+                              )
+                            ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                            : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                   </div>
                   <Button
                     data-plasmic-name={"button"}
@@ -2628,9 +2628,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["updateUnnamedVariant"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
+                        $steps["updateUnnamedVariant"] =
+                          await $steps["updateUnnamedVariant"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -2887,9 +2886,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         projectcss.root_reset,
                         projectcss.plasmic_default_styles,
                         projectcss.plasmic_mixins,
-                        styleTokensClassNames,
-                        styleTokensClassNames_antd_5_hostless,
-                        styleTokensClassNames_plasmic_rich_components
+                        styleTokensClassNames
                       )}
                       defaultValue={"+98"}
                       onChange={async (...eventArgs: any) => {
@@ -2960,12 +2957,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                     : hasVariant($state, "password", "password")
-                    ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
-                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                    ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                    : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                    : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                      ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
+                      : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                        ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                        : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                          ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                          : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <div
                   className={classNames(
@@ -3019,9 +3016,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoginByPassword"] === "object" &&
                       typeof $steps["updateLoginByPassword"].then === "function"
                     ) {
-                      $steps["updateLoginByPassword"] = await $steps[
-                        "updateLoginByPassword"
-                      ];
+                      $steps["updateLoginByPassword"] =
+                        await $steps["updateLoginByPassword"];
                     }
                   }}
                 >
@@ -3147,8 +3143,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       hasVariant($state, "loginByPassword", "loginByPassword")
                         ? ``
                         : hasVariant($state, "password", "password")
-                        ? ``
-                        : "98+"
+                          ? ``
+                          : "98+"
                     }
                     type={
                       hasVariant($state, "loginByPassword", "loginByPassword")
@@ -3166,22 +3162,22 @@ function PlasmicLoginPanel__RenderFunc(props: {
                             }
                           })()
                         : hasVariant($state, "password", "password")
-                        ? (() => {
-                            try {
-                              return $state.pass1;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "password";
+                          ? (() => {
+                              try {
+                                return $state.pass1;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "password";
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        : hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "tel"
-                        : "tel"
+                            })()
+                          : hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "tel"
+                            : "tel"
                     }
                     value={generateStateValueProp($state, [
                       "fragmentInput3",
@@ -3253,9 +3249,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["runCode2"] = true
@@ -3382,20 +3377,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time != 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : true
+                        })()
+                      : true
                 ) ? (
                   <div
                     className={classNames(
@@ -3563,20 +3558,20 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : false
+                        })()
+                      : false
                 ) ? (
                   <div
                     className={classNames(
@@ -3628,9 +3623,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["updateTime"] = true
@@ -3718,9 +3712,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
@@ -3739,32 +3731,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
+                        ? (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
+                          })()
+                        : (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                   onChange={async (...eventArgs: any) => {
                     generateStateOnChangeProp($state, [
@@ -3881,12 +3873,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 {hasVariant($state, "loginByPassword", "loginByPassword")
                   ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
                   : hasVariant($state, "password", "password")
-                  ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
-                  : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                  ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
-                  : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                  ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
-                  : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                    ? "\u0622\u06cc\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062e\u0648\u062f \u0631\u0627 \u0641\u0631\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u061f"
+                    : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                      ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
+                      : hasVariant($state, "unnamedVariant", "unnamedVariant")
+                        ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
+                        : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__kpVY, {
@@ -4014,9 +4006,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateNumber"] = true
@@ -4095,9 +4086,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] =
@@ -4121,9 +4111,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateUnnamedVariant"] =
@@ -4148,9 +4137,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateUnnamedVariant"] === "object" &&
                       typeof $steps["updateUnnamedVariant"].then === "function"
                     ) {
-                      $steps["updateUnnamedVariant"] = await $steps[
-                        "updateUnnamedVariant"
-                      ];
+                      $steps["updateUnnamedVariant"] =
+                        await $steps["updateUnnamedVariant"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -4184,9 +4172,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
 
                     $steps["updateFragmentInputValue4"] = true
@@ -4221,9 +4208,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue4"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue4"] = await $steps[
-                        "updateFragmentInputValue4"
-                      ];
+                      $steps["updateFragmentInputValue4"] =
+                        await $steps["updateFragmentInputValue4"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -4330,38 +4316,38 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "password", "password")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                        ? (() => {
+                            try {
+                              return (
+                                $state.fragmentInput3.value.length == 0 ||
+                                $state.loadedbtn
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                          })()
+                        : (() => {
+                            try {
+                              return (
+                                $state.fragmentInput.value.length != 11 ||
+                                $state.loadedbtn
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                   loadingviow={generateStateValueProp($state, [
                     "button2",
@@ -4401,9 +4387,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["invokeGlobalAction2"] = true
@@ -4445,9 +4430,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] = (
@@ -4474,9 +4458,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateFragmentInputValue2"] = (
@@ -4513,9 +4496,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue2"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue2"] = await $steps[
-                        "updateFragmentInputValue2"
-                      ];
+                      $steps["updateFragmentInputValue2"] =
+                        await $steps["updateFragmentInputValue2"];
                     }
 
                     $steps["goToHomepage"] = (
@@ -4592,9 +4574,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -4628,9 +4609,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -4685,8 +4665,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     {hasVariant($state, "loginByPassword", "loginByPassword")
                       ? "\u0648\u0631\u0648\u062f"
                       : hasVariant($state, "password", "password")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                        ? "\u0648\u0631\u0648\u062f"
+                        : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
                 </Button>
                 <Button
@@ -4775,38 +4755,38 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "password", "password")
-                      ? (() => {
-                          try {
-                            return (
-                              $state.fragmentInput3.value.length == 0 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                        ? (() => {
+                            try {
+                              return (
+                                $state.fragmentInput3.value.length == 0 ||
+                                $state.loadedbtn
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                          })()
+                        : (() => {
+                            try {
+                              return (
+                                $state.fragmentInput.value.length != 11 ||
+                                $state.loadedbtn
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                   loadingviow={generateStateValueProp($state, [
                     "button3",
@@ -4846,9 +4826,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateUsername2"] = true
@@ -4882,9 +4861,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateUsername2"] === "object" &&
                       typeof $steps["updateUsername2"].then === "function"
                     ) {
-                      $steps["updateUsername2"] = await $steps[
-                        "updateUsername2"
-                      ];
+                      $steps["updateUsername2"] =
+                        await $steps["updateUsername2"];
                     }
 
                     $steps["invokeGlobalAction2"] = true
@@ -4924,9 +4902,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] =
@@ -4950,9 +4927,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateFragmentInputValue2"] = (
@@ -4994,9 +4970,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue2"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue2"] = await $steps[
-                        "updateFragmentInputValue2"
-                      ];
+                      $steps["updateFragmentInputValue2"] =
+                        await $steps["updateFragmentInputValue2"];
                     }
 
                     $steps["goToPanel"] =
@@ -5050,9 +5025,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue3"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue3"] = await $steps[
-                        "updateFragmentInputValue3"
-                      ];
+                      $steps["updateFragmentInputValue3"] =
+                        await $steps["updateFragmentInputValue3"];
                     }
 
                     $steps["updateFragmentInputValue4"] = (
@@ -5101,9 +5075,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue4"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue4"] = await $steps[
-                        "updateFragmentInputValue4"
-                      ];
+                      $steps["updateFragmentInputValue4"] =
+                        await $steps["updateFragmentInputValue4"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -5137,9 +5110,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -5194,8 +5166,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     {hasVariant($state, "loginByPassword", "loginByPassword")
                       ? "\u0648\u0631\u0648\u062f"
                       : hasVariant($state, "password", "password")
-                      ? "\u0648\u0631\u0648\u062f"
-                      : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
+                        ? "\u0648\u0631\u0648\u062f"
+                        : "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
                 </Button>
                 <Button
@@ -5264,35 +5236,35 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                        ? (() => {
+                            try {
+                              return $state.loadedbtn;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return (
-                              $state.fragmentInput.value.length != 11 ||
-                              $state.loadedbtn
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                          })()
+                        : (() => {
+                            try {
+                              return (
+                                $state.fragmentInput.value.length != 11 ||
+                                $state.loadedbtn
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                   loadingviow={generateStateValueProp($state, [
                     "btnSaraf",
@@ -5332,9 +5304,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateSelectsaraf"] = true
@@ -5368,9 +5339,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateSelectsaraf"] === "object" &&
                       typeof $steps["updateSelectsaraf"].then === "function"
                     ) {
-                      $steps["updateSelectsaraf"] = await $steps[
-                        "updateSelectsaraf"
-                      ];
+                      $steps["updateSelectsaraf"] =
+                        await $steps["updateSelectsaraf"];
                     }
 
                     $steps["invokeGlobalAction"] = true
@@ -5414,9 +5384,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["invokeGlobalAction2"] = (
@@ -5443,9 +5412,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["runCode"] = (
@@ -5564,9 +5532,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -5600,9 +5567,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -5638,32 +5604,32 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                      ? (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                        ? (() => {
+                            try {
+                              return $state.loadedbtn;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : (() => {
-                          try {
-                            return $state.loadedbtn;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
+                          })()
+                        : (() => {
+                            try {
+                              return $state.loadedbtn;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
                   }
                 >
                   <div
@@ -5785,35 +5751,35 @@ function PlasmicLoginPanel__RenderFunc(props: {
                             }
                           })()
                         : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                        ? (() => {
-                            try {
-                              return (
-                                $state.fragmentInput2.value.length != 4 &&
-                                !$state.loadedbtn
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
+                          ? (() => {
+                              try {
+                                return (
+                                  $state.fragmentInput2.value.length != 4 &&
+                                  !$state.loadedbtn
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        : (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 11;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
+                            })()
+                          : (() => {
+                              try {
+                                return $state.fragmentInput2.value.length != 11;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
+                            })()
                     }
                     loadingviow={generateStateValueProp($state, [
                       "sendcode",
@@ -5853,9 +5819,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["updateLoadedbtn"] === "object" &&
                         typeof $steps["updateLoadedbtn"].then === "function"
                       ) {
-                        $steps["updateLoadedbtn"] = await $steps[
-                          "updateLoadedbtn"
-                        ];
+                        $steps["updateLoadedbtn"] =
+                          await $steps["updateLoadedbtn"];
                       }
 
                       $steps["updateCode"] = true
@@ -5929,9 +5894,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction2"] === "object" &&
                         typeof $steps["invokeGlobalAction2"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
+                        $steps["invokeGlobalAction2"] =
+                          await $steps["invokeGlobalAction2"];
                       }
 
                       $steps["invokeGlobalAction"] =
@@ -5954,9 +5918,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["runCode"] = (
@@ -6025,9 +5988,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction3"] === "object" &&
                         typeof $steps["invokeGlobalAction3"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction3"] = await $steps[
-                          "invokeGlobalAction3"
-                        ];
+                        $steps["invokeGlobalAction3"] =
+                          await $steps["invokeGlobalAction3"];
                       }
 
                       $steps["runCode2"] =
@@ -6113,9 +6075,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         typeof $steps["updateLoadedbtn2"] === "object" &&
                         typeof $steps["updateLoadedbtn2"].then === "function"
                       ) {
-                        $steps["updateLoadedbtn2"] = await $steps[
-                          "updateLoadedbtn2"
-                        ];
+                        $steps["updateLoadedbtn2"] =
+                          await $steps["updateLoadedbtn2"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -6281,9 +6242,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     typeof $steps["updateLoginByPassword"] === "object" &&
                     typeof $steps["updateLoginByPassword"].then === "function"
                   ) {
-                    $steps["updateLoginByPassword"] = await $steps[
-                      "updateLoginByPassword"
-                    ];
+                    $steps["updateLoginByPassword"] =
+                      await $steps["updateLoginByPassword"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -6620,9 +6580,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     typeof $steps["updateUnnamedVariant"] === "object" &&
                     typeof $steps["updateUnnamedVariant"].then === "function"
                   ) {
-                    $steps["updateUnnamedVariant"] = await $steps[
-                      "updateUnnamedVariant"
-                    ];
+                    $steps["updateUnnamedVariant"] =
+                      await $steps["updateUnnamedVariant"];
                   }
 
                   $steps["updateLoginByPassword"] = true
@@ -6646,9 +6605,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     typeof $steps["updateLoginByPassword"] === "object" &&
                     typeof $steps["updateLoginByPassword"].then === "function"
                   ) {
-                    $steps["updateLoginByPassword"] = await $steps[
-                      "updateLoginByPassword"
-                    ];
+                    $steps["updateLoginByPassword"] =
+                      await $steps["updateLoginByPassword"];
                   }
 
                   $steps["updatePassword"] = true
@@ -6730,8 +6688,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                     : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                      ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                      : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg___61TN0, {
@@ -6818,9 +6776,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     typeof $steps["updateUnnamedVariant"] === "object" &&
                     typeof $steps["updateUnnamedVariant"].then === "function"
                   ) {
-                    $steps["updateUnnamedVariant"] = await $steps[
-                      "updateUnnamedVariant"
-                    ];
+                    $steps["updateUnnamedVariant"] =
+                      await $steps["updateUnnamedVariant"];
                   }
 
                   $steps["updatePassword"] = true
@@ -6902,8 +6859,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                     : hasVariant($state, "password", "password")
-                    ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                    : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
+                      ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
+                      : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
                   className={classNames(projectcss.all, sty.svg__c4I0W, {
@@ -7105,9 +7062,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 typeof $steps["updateLoginByPassword"] === "object" &&
                 typeof $steps["updateLoginByPassword"].then === "function"
               ) {
-                $steps["updateLoginByPassword"] = await $steps[
-                  "updateLoginByPassword"
-                ];
+                $steps["updateLoginByPassword"] =
+                  await $steps["updateLoginByPassword"];
               }
             }).apply(null, eventArgs);
           }}
@@ -7138,8 +7094,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
             hasVariant($state, "loginByPassword", "loginByPassword")
               ? "<script>\r\n    const myElement = document.querySelector('.logoLogin');\r\n    let initialHeight = window.innerHeight;\r\n\r\n    window.addEventListener('resize', () => {\r\n        if (window.innerHeight < initialHeight * (2 / 3)) {\r\n            myElement.style.display = 'none';\r\n        } else {\r\n            myElement.style.display = 'block';\r\n        }\r\n    });\r\n</script>\r\n"
               : hasVariant($state, "unnamedVariant", "unnamedVariant")
-              ? "  <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n              console.log(\"\u0627\u0644\u0627\u0646\");\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
-              : "  <script>\r\n          var initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                        document.getElementById('logoLogin').style.display = 'none';\r\n            } else {\r\n                        document.getElementById('logoLogin').style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
+                ? "  <script>\r\n        const myElement = document.getElementById('logoLogin');\r\n        let initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n              console.log(\"\u0627\u0644\u0627\u0646\");\r\n                myElement.style.display = 'none';\r\n            } else {\r\n                myElement.style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
+                : "  <script>\r\n          var initialHeight = window.innerHeight;\r\n\r\n        window.addEventListener('resize', () => {\r\n            if (window.innerHeight < initialHeight * (2 / 3)) {\r\n                        document.getElementById('logoLogin').style.display = 'none';\r\n            } else {\r\n                        document.getElementById('logoLogin').style.display = 'block';\r\n            }\r\n        });\r\n    </script>"
           }
         />
 
@@ -7160,9 +7116,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components
+            styleTokensClassNames
           )}
           hideFooter={true}
           maskClosable={false}
@@ -7437,7 +7391,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicLoginPanel__VariantsArgs;
     args?: PlasmicLoginPanel__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicLoginPanel__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicLoginPanel__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicLoginPanel__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

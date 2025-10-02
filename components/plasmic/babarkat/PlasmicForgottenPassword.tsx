@@ -73,8 +73,6 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -539,10 +537,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -589,8 +583,6 @@ function PlasmicForgottenPassword__RenderFunc(props: {
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
           styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components,
           sty.root,
           {
             [sty.rootforgottenPassword]: hasVariant(
@@ -685,8 +677,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               hasVariant($state, "unnamedVariant", "unnamedVariant")
                 ? "slide"
                 : hasVariant(globalVariants, "screen", "mobileOnly")
-                ? "fade"
-                : undefined
+                  ? "fade"
+                  : undefined
             }
             reverse={
               hasVariant($state, "unnamedVariant", "unnamedVariant")
@@ -913,9 +905,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["updateUnnamedVariant"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
+                        $steps["updateUnnamedVariant"] =
+                          await $steps["updateUnnamedVariant"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -1085,9 +1076,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         projectcss.root_reset,
                         projectcss.plasmic_default_styles,
                         projectcss.plasmic_mixins,
-                        styleTokensClassNames,
-                        styleTokensClassNames_antd_5_hostless,
-                        styleTokensClassNames_plasmic_rich_components
+                        styleTokensClassNames
                       )}
                       defaultValue={"+98"}
                       onChange={async (...eventArgs: any) => {
@@ -1314,9 +1303,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["runCode2"] = true
@@ -1427,20 +1415,20 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time != 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : true
+                        })()
+                      : true
                 ) ? (
                   <div
                     className={classNames(
@@ -1598,20 +1586,20 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         }
                       })()
                     : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    ? (() => {
-                        try {
-                          return $state.time == 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? (() => {
+                          try {
+                            return $state.time == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
-                    : false
+                        })()
+                      : false
                 ) ? (
                   <div
                     className={classNames(
@@ -1663,9 +1651,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["updateTime"] = true
@@ -1722,9 +1709,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={
                     hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1929,9 +1914,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateNumber"] = true
@@ -2014,9 +1998,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] = (
@@ -2043,9 +2026,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateUnnamedVariant"] = (
@@ -2073,9 +2055,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateUnnamedVariant"] === "object" &&
                       typeof $steps["updateUnnamedVariant"].then === "function"
                     ) {
-                      $steps["updateUnnamedVariant"] = await $steps[
-                        "updateUnnamedVariant"
-                      ];
+                      $steps["updateUnnamedVariant"] =
+                        await $steps["updateUnnamedVariant"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -2109,9 +2090,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
 
                     $steps["updateFragmentInputValue4"] = true
@@ -2146,9 +2126,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue4"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue4"] = await $steps[
-                        "updateFragmentInputValue4"
-                      ];
+                      $steps["updateFragmentInputValue4"] =
+                        await $steps["updateFragmentInputValue4"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -2264,9 +2243,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["invokeGlobalAction2"] = true
@@ -2308,9 +2286,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] = (
@@ -2337,9 +2314,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateFragmentInputValue2"] = (
@@ -2376,9 +2352,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue2"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue2"] = await $steps[
-                        "updateFragmentInputValue2"
-                      ];
+                      $steps["updateFragmentInputValue2"] =
+                        await $steps["updateFragmentInputValue2"];
                     }
 
                     $steps["goToHomepage"] = (
@@ -2451,9 +2426,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -2487,9 +2461,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -2605,9 +2578,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateNumber"] = true
@@ -2689,9 +2661,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["invokeGlobalAction3"] = (
@@ -2718,9 +2689,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateFragmentInputValue2"] = (
@@ -2763,9 +2733,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue2"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue2"] = await $steps[
-                        "updateFragmentInputValue2"
-                      ];
+                      $steps["updateFragmentInputValue2"] =
+                        await $steps["updateFragmentInputValue2"];
                     }
 
                     $steps["goToHomepage"] = (
@@ -2824,9 +2793,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue3"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue3"] = await $steps[
-                        "updateFragmentInputValue3"
-                      ];
+                      $steps["updateFragmentInputValue3"] =
+                        await $steps["updateFragmentInputValue3"];
                     }
 
                     $steps["updateFragmentInputValue4"] = true
@@ -2871,9 +2839,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateFragmentInputValue4"].then ===
                         "function"
                     ) {
-                      $steps["updateFragmentInputValue4"] = await $steps[
-                        "updateFragmentInputValue4"
-                      ];
+                      $steps["updateFragmentInputValue4"] =
+                        await $steps["updateFragmentInputValue4"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -2907,9 +2874,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -3025,9 +2991,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["updateSelectsaraf"] = true
@@ -3061,9 +3026,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateSelectsaraf"] === "object" &&
                       typeof $steps["updateSelectsaraf"].then === "function"
                     ) {
-                      $steps["updateSelectsaraf"] = await $steps[
-                        "updateSelectsaraf"
-                      ];
+                      $steps["updateSelectsaraf"] =
+                        await $steps["updateSelectsaraf"];
                     }
 
                     $steps["invokeGlobalAction"] = true
@@ -3107,9 +3071,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["invokeGlobalAction2"] = (
@@ -3136,9 +3099,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["runCode"] = (
@@ -3253,9 +3215,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -3289,9 +3250,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -3386,32 +3346,32 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                             }
                           })()
                         : hasVariant($state, "unnamedVariant", "unnamedVariant")
-                        ? (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 4;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
+                          ? (() => {
+                              try {
+                                return $state.fragmentInput2.value.length != 4;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        : (() => {
-                            try {
-                              return $state.fragmentInput2.value.length != 11;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
+                            })()
+                          : (() => {
+                              try {
+                                return $state.fragmentInput2.value.length != 11;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [];
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
+                            })()
                     }
                     loadingviow={generateStateValueProp($state, [
                       "sendcode",
@@ -3451,9 +3411,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["updateLoadedbtn"] === "object" &&
                         typeof $steps["updateLoadedbtn"].then === "function"
                       ) {
-                        $steps["updateLoadedbtn"] = await $steps[
-                          "updateLoadedbtn"
-                        ];
+                        $steps["updateLoadedbtn"] =
+                          await $steps["updateLoadedbtn"];
                       }
 
                       $steps["updateCode"] = true
@@ -3527,9 +3486,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction2"] === "object" &&
                         typeof $steps["invokeGlobalAction2"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
+                        $steps["invokeGlobalAction2"] =
+                          await $steps["invokeGlobalAction2"];
                       }
 
                       $steps["invokeGlobalAction"] = (
@@ -3557,9 +3515,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["runCode"] = (
@@ -3629,9 +3586,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction3"] === "object" &&
                         typeof $steps["invokeGlobalAction3"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction3"] = await $steps[
-                          "invokeGlobalAction3"
-                        ];
+                        $steps["invokeGlobalAction3"] =
+                          await $steps["invokeGlobalAction3"];
                       }
 
                       $steps["updateUnnamedVariant3"] = (
@@ -3660,9 +3616,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["updateUnnamedVariant3"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant3"] = await $steps[
-                          "updateUnnamedVariant3"
-                        ];
+                        $steps["updateUnnamedVariant3"] =
+                          await $steps["updateUnnamedVariant3"];
                       }
 
                       $steps["updateUnnamedVariant"] = true
@@ -3688,9 +3643,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["updateUnnamedVariant"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant"] = await $steps[
-                          "updateUnnamedVariant"
-                        ];
+                        $steps["updateUnnamedVariant"] =
+                          await $steps["updateUnnamedVariant"];
                       }
 
                       $steps["updateLoadedbtn2"] = true
@@ -3724,9 +3678,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         typeof $steps["updateLoadedbtn2"] === "object" &&
                         typeof $steps["updateLoadedbtn2"].then === "function"
                       ) {
-                        $steps["updateLoadedbtn2"] = await $steps[
-                          "updateLoadedbtn2"
-                        ];
+                        $steps["updateLoadedbtn2"] =
+                          await $steps["updateLoadedbtn2"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -4491,7 +4444,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicForgottenPassword__VariantsArgs;
     args?: PlasmicForgottenPassword__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicForgottenPassword__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicForgottenPassword__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicForgottenPassword__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

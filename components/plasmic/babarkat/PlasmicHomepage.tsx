@@ -82,8 +82,6 @@ import Header from "../../Header"; // plasmic-import: guZRqy1VG4VR/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -644,10 +642,6 @@ function PlasmicHomepage__RenderFunc(props: {
   const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -684,8 +678,6 @@ function PlasmicHomepage__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
               ? "page"
@@ -823,9 +815,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 typeof $steps["updateUserbabarcat"] === "object" &&
                 typeof $steps["updateUserbabarcat"].then === "function"
               ) {
-                $steps["updateUserbabarcat"] = await $steps[
-                  "updateUserbabarcat"
-                ];
+                $steps["updateUserbabarcat"] =
+                  await $steps["updateUserbabarcat"];
               }
             }}
           />
@@ -1207,9 +1198,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     ) {
                                       $state.cards[i].zIndex =
                                         $state.cards.length - i;
-                                      __plasmic_ret = $state.cards[
-                                        i
-                                      ].width = `${100 - i * 5}%`;
+                                      __plasmic_ret = $state.cards[i].width =
+                                        `${100 - i * 5}%`;
                                     }
                                   } else if ($state.startY < event.clientY) {
                                     const firstCard = $state.cards.shift();
@@ -1221,9 +1211,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     ) {
                                       $state.cards[i].zIndex =
                                         $state.cards.length - i;
-                                      __plasmic_ret = $state.cards[
-                                        i
-                                      ].width = `${100 - i * 5}%`;
+                                      __plasmic_ret = $state.cards[i].width =
+                                        `${100 - i * 5}%`;
                                     }
                                   }
                                   return __plasmic_ret;
@@ -1302,9 +1291,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     ) {
                                       $state.cards[i].zIndex =
                                         $state.cards.length - i;
-                                      __plasmic_ret = $state.cards[
-                                        i
-                                      ].width = `${100 - i * 5}%`;
+                                      __plasmic_ret = $state.cards[i].width =
+                                        `${100 - i * 5}%`;
                                     }
                                   } else if (
                                     $state.startY <
@@ -1319,9 +1307,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     ) {
                                       $state.cards[i].zIndex =
                                         $state.cards.length - i;
-                                      __plasmic_ret = $state.cards[
-                                        i
-                                      ].width = `${100 - i * 5}%`;
+                                      __plasmic_ret = $state.cards[i].width =
+                                        `${100 - i * 5}%`;
                                     }
                                   }
                                   return __plasmic_ret;
@@ -1714,9 +1701,8 @@ function PlasmicHomepage__RenderFunc(props: {
                               typeof $steps["updateModal5Open"].then ===
                                 "function"
                             ) {
-                              $steps["updateModal5Open"] = await $steps[
-                                "updateModal5Open"
-                              ];
+                              $steps["updateModal5Open"] =
+                                await $steps["updateModal5Open"];
                             }
                           }}
                         >
@@ -2061,9 +2047,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["goToCharge2"] === "object" &&
                                 typeof $steps["goToCharge2"].then === "function"
                               ) {
-                                $steps["goToCharge2"] = await $steps[
-                                  "goToCharge2"
-                                ];
+                                $steps["goToCharge2"] =
+                                  await $steps["goToCharge2"];
                               }
                             }}
                             style={(() => {
@@ -2166,9 +2151,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["goToIntenet"] === "object" &&
                                 typeof $steps["goToIntenet"].then === "function"
                               ) {
-                                $steps["goToIntenet"] = await $steps[
-                                  "goToIntenet"
-                                ];
+                                $steps["goToIntenet"] =
+                                  await $steps["goToIntenet"];
                               }
                             }}
                             style={(() => {
@@ -2275,9 +2259,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["goToChargingAfg"].then ===
                                   "function"
                               ) {
-                                $steps["goToChargingAfg"] = await $steps[
-                                  "goToChargingAfg"
-                                ];
+                                $steps["goToChargingAfg"] =
+                                  await $steps["goToChargingAfg"];
                               }
                             }}
                           >
@@ -2384,9 +2367,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["goToAfgPackage"].then ===
                                   "function"
                               ) {
-                                $steps["goToAfgPackage"] = await $steps[
-                                  "goToAfgPackage"
-                                ];
+                                $steps["goToAfgPackage"] =
+                                  await $steps["goToAfgPackage"];
                               }
                             }}
                           >
@@ -2571,9 +2553,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["updateModal3Open"].then ===
                                   "function"
                               ) {
-                                $steps["updateModal3Open"] = await $steps[
-                                  "updateModal3Open"
-                                ];
+                                $steps["updateModal3Open"] =
+                                  await $steps["updateModal3Open"];
                               }
                             }}
                           >
@@ -2683,9 +2664,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["updateCallOpen"].then ===
                                   "function"
                               ) {
-                                $steps["updateCallOpen"] = await $steps[
-                                  "updateCallOpen"
-                                ];
+                                $steps["updateCallOpen"] =
+                                  await $steps["updateCallOpen"];
                               }
                             }}
                           >
@@ -2985,9 +2965,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
                             }}
                           >
@@ -3213,9 +3192,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -3617,9 +3594,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                       role={"img"}
@@ -3715,9 +3691,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={
@@ -3923,9 +3897,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                     >
@@ -3990,9 +3963,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                     >
@@ -4085,9 +4057,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                       role={"img"}
@@ -4114,9 +4085,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={true}
@@ -4187,9 +4156,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal5Open"] === "object" &&
                     typeof $steps["updateModal5Open"].then === "function"
                   ) {
-                    $steps["updateModal5Open"] = await $steps[
-                      "updateModal5Open"
-                    ];
+                    $steps["updateModal5Open"] =
+                      await $steps["updateModal5Open"];
                   }
 
                   $steps["updateModal2Open"] = true
@@ -4223,9 +4191,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal2Open"] === "object" &&
                     typeof $steps["updateModal2Open"].then === "function"
                   ) {
-                    $steps["updateModal2Open"] = await $steps[
-                      "updateModal2Open"
-                    ];
+                    $steps["updateModal2Open"] =
+                      await $steps["updateModal2Open"];
                   }
                 }}
               >
@@ -5475,9 +5442,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal5Open"] === "object" &&
                     typeof $steps["updateModal5Open"].then === "function"
                   ) {
-                    $steps["updateModal5Open"] = await $steps[
-                      "updateModal5Open"
-                    ];
+                    $steps["updateModal5Open"] =
+                      await $steps["updateModal5Open"];
                   }
 
                   $steps["updateModalOpen"] = true
@@ -13634,9 +13600,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               ),
               hideFooter: true,
               maskClosable: false,
@@ -13891,9 +13855,8 @@ function PlasmicHomepage__RenderFunc(props: {
                               typeof $steps["updatePass1"] === "object" &&
                               typeof $steps["updatePass1"].then === "function"
                             ) {
-                              $steps["updatePass1"] = await $steps[
-                                "updatePass1"
-                              ];
+                              $steps["updatePass1"] =
+                                await $steps["updatePass1"];
                             }
 
                             $steps["invokeGlobalAction"] = true
@@ -13912,9 +13875,8 @@ function PlasmicHomepage__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
 
                             $steps["runCode2"] = true
@@ -13994,8 +13956,8 @@ function PlasmicHomepage__RenderFunc(props: {
                             return $state.p1 > 80
                               ? "#2DC57B"
                               : $state.p1 > 50
-                              ? "#FAAD14"
-                              : "#FF4D4F";
+                                ? "#FAAD14"
+                                : "#FF4D4F";
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -14108,9 +14070,8 @@ function PlasmicHomepage__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
 
                           $steps["runCode2"] = true
@@ -14306,9 +14267,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["updateLodingbtn"] === "object" &&
                           typeof $steps["updateLodingbtn"].then === "function"
                         ) {
-                          $steps["updateLodingbtn"] = await $steps[
-                            "updateLodingbtn"
-                          ];
+                          $steps["updateLodingbtn"] =
+                            await $steps["updateLodingbtn"];
                         }
 
                         $steps["invokeGlobalAction3"] = true
@@ -14349,9 +14309,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction3"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction3"] = await $steps[
-                            "invokeGlobalAction3"
-                          ];
+                          $steps["invokeGlobalAction3"] =
+                            await $steps["invokeGlobalAction3"];
                         }
 
                         $steps["updateModal4Open"] =
@@ -14374,9 +14333,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["updateModal4Open"] === "object" &&
                           typeof $steps["updateModal4Open"].then === "function"
                         ) {
-                          $steps["updateModal4Open"] = await $steps[
-                            "updateModal4Open"
-                          ];
+                          $steps["updateModal4Open"] =
+                            await $steps["updateModal4Open"];
                         }
 
                         $steps["invokeGlobalAction4"] =
@@ -14400,9 +14358,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction4"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction4"] = await $steps[
-                            "invokeGlobalAction4"
-                          ];
+                          $steps["invokeGlobalAction4"] =
+                            await $steps["invokeGlobalAction4"];
                         }
 
                         $steps["updateLodingbtn2"] = true
@@ -14436,9 +14393,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["updateLodingbtn2"] === "object" &&
                           typeof $steps["updateLodingbtn2"].then === "function"
                         ) {
-                          $steps["updateLodingbtn2"] = await $steps[
-                            "updateLodingbtn2"
-                          ];
+                          $steps["updateLodingbtn2"] =
+                            await $steps["updateLodingbtn2"];
                         }
 
                         $steps["updateModal6Open"] =
@@ -14473,9 +14429,8 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["updateModal6Open"] === "object" &&
                           typeof $steps["updateModal6Open"].then === "function"
                         ) {
-                          $steps["updateModal6Open"] = await $steps[
-                            "updateModal6Open"
-                          ];
+                          $steps["updateModal6Open"] =
+                            await $steps["updateModal6Open"];
                         }
 
                         $steps["runCode"] =
@@ -14559,9 +14514,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             maskClosable={
@@ -14755,9 +14708,8 @@ function PlasmicHomepage__RenderFunc(props: {
                       typeof $steps["goToChargeStep1"] === "object" &&
                       typeof $steps["goToChargeStep1"].then === "function"
                     ) {
-                      $steps["goToChargeStep1"] = await $steps[
-                        "goToChargeStep1"
-                      ];
+                      $steps["goToChargeStep1"] =
+                        await $steps["goToChargeStep1"];
                     }
                   }}
                 >
@@ -14809,9 +14761,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -14888,9 +14838,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -15314,9 +15263,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -15391,9 +15338,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -15428,9 +15374,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -15509,9 +15454,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -15590,9 +15534,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -15668,9 +15611,7 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -15745,9 +15686,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -15782,9 +15722,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -15863,9 +15802,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -15944,9 +15882,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
               >
@@ -16312,7 +16249,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHomepage__VariantsArgs;
     args?: PlasmicHomepage__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicHomepage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicHomepage__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicHomepage__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

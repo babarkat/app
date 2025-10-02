@@ -70,8 +70,6 @@ import { TextArea } from "@plasmicpkgs/antd/skinny/registerInput";
 import { inputHelpers as TextArea_Helpers } from "@plasmicpkgs/antd/skinny/registerInput";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -406,10 +404,6 @@ function PlasmicProfile__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -433,8 +427,6 @@ function PlasmicProfile__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -721,9 +713,8 @@ function PlasmicProfile__RenderFunc(props: {
                       typeof $steps["updateRemoveOpen"] === "object" &&
                       typeof $steps["updateRemoveOpen"].then === "function"
                     ) {
-                      $steps["updateRemoveOpen"] = await $steps[
-                        "updateRemoveOpen"
-                      ];
+                      $steps["updateRemoveOpen"] =
+                        await $steps["updateRemoveOpen"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -840,9 +831,7 @@ function PlasmicProfile__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -1032,9 +1021,8 @@ function PlasmicProfile__RenderFunc(props: {
                         typeof $steps["updateTextNumber"] === "object" &&
                         typeof $steps["updateTextNumber"].then === "function"
                       ) {
-                        $steps["updateTextNumber"] = await $steps[
-                          "updateTextNumber"
-                        ];
+                        $steps["updateTextNumber"] =
+                          await $steps["updateTextNumber"];
                       }
                     }).apply(null, eventArgs);
                   }}
@@ -1051,9 +1039,7 @@ function PlasmicProfile__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={"toman"}
                   onChange={async (...eventArgs: any) => {
@@ -1216,9 +1202,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateButton3Loadingviow"].then ===
                       "function"
                   ) {
-                    $steps["updateButton3Loadingviow"] = await $steps[
-                      "updateButton3Loadingviow"
-                    ];
+                    $steps["updateButton3Loadingviow"] =
+                      await $steps["updateButton3Loadingviow"];
                   }
 
                   $steps["invokeGlobalAction"] =
@@ -1268,9 +1253,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
 
                   $steps["invokeGlobalAction2"] =
@@ -1297,9 +1281,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction2"] === "object" &&
                     typeof $steps["invokeGlobalAction2"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction2"] = await $steps[
-                      "invokeGlobalAction2"
-                    ];
+                    $steps["invokeGlobalAction2"] =
+                      await $steps["invokeGlobalAction2"];
                   }
 
                   $steps["invokeGlobalAction3"] = $steps.invokeGlobalAction
@@ -1324,9 +1307,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction3"] === "object" &&
                     typeof $steps["invokeGlobalAction3"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction3"] = await $steps[
-                      "invokeGlobalAction3"
-                    ];
+                    $steps["invokeGlobalAction3"] =
+                      await $steps["invokeGlobalAction3"];
                   }
 
                   $steps["info"] = true
@@ -1401,9 +1383,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateCustomerInfo"] === "object" &&
                     typeof $steps["updateCustomerInfo"].then === "function"
                   ) {
-                    $steps["updateCustomerInfo"] = await $steps[
-                      "updateCustomerInfo"
-                    ];
+                    $steps["updateCustomerInfo"] =
+                      await $steps["updateCustomerInfo"];
                   }
 
                   $steps["updateAddOpen"] = $steps.invokeGlobalAction?.data
@@ -1473,9 +1454,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateButtonLoadingviow2"].then ===
                       "function"
                   ) {
-                    $steps["updateButtonLoadingviow2"] = await $steps[
-                      "updateButtonLoadingviow2"
-                    ];
+                    $steps["updateButtonLoadingviow2"] =
+                      await $steps["updateButtonLoadingviow2"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -1531,9 +1511,7 @@ function PlasmicProfile__RenderFunc(props: {
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -1724,9 +1702,8 @@ function PlasmicProfile__RenderFunc(props: {
                         typeof $steps["updateTextNum2"] === "object" &&
                         typeof $steps["updateTextNum2"].then === "function"
                       ) {
-                        $steps["updateTextNum2"] = await $steps[
-                          "updateTextNum2"
-                        ];
+                        $steps["updateTextNum2"] =
+                          await $steps["updateTextNum2"];
                       }
                     }).apply(null, eventArgs);
                   }}
@@ -1743,9 +1720,7 @@ function PlasmicProfile__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={"toman"}
                   onChange={async (...eventArgs: any) => {
@@ -1908,9 +1883,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateButton4Loadingviow"].then ===
                       "function"
                   ) {
-                    $steps["updateButton4Loadingviow"] = await $steps[
-                      "updateButton4Loadingviow"
-                    ];
+                    $steps["updateButton4Loadingviow"] =
+                      await $steps["updateButton4Loadingviow"];
                   }
 
                   $steps["invokeGlobalAction"] =
@@ -1962,9 +1936,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
 
                   $steps["invokeGlobalAction2"] =
@@ -1991,9 +1964,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction2"] === "object" &&
                     typeof $steps["invokeGlobalAction2"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction2"] = await $steps[
-                      "invokeGlobalAction2"
-                    ];
+                    $steps["invokeGlobalAction2"] =
+                      await $steps["invokeGlobalAction2"];
                   }
 
                   $steps["invokeGlobalAction3"] = $steps.invokeGlobalAction
@@ -2018,9 +1990,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction3"] === "object" &&
                     typeof $steps["invokeGlobalAction3"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction3"] = await $steps[
-                      "invokeGlobalAction3"
-                    ];
+                    $steps["invokeGlobalAction3"] =
+                      await $steps["invokeGlobalAction3"];
                   }
 
                   $steps["info"] = true
@@ -2095,9 +2066,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateCustomerInfo"] === "object" &&
                     typeof $steps["updateCustomerInfo"].then === "function"
                   ) {
-                    $steps["updateCustomerInfo"] = await $steps[
-                      "updateCustomerInfo"
-                    ];
+                    $steps["updateCustomerInfo"] =
+                      await $steps["updateCustomerInfo"];
                   }
 
                   $steps["updateRemoveOpen"] = $steps.invokeGlobalAction?.data
@@ -2132,9 +2102,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateRemoveOpen"] === "object" &&
                     typeof $steps["updateRemoveOpen"].then === "function"
                   ) {
-                    $steps["updateRemoveOpen"] = await $steps[
-                      "updateRemoveOpen"
-                    ];
+                    $steps["updateRemoveOpen"] =
+                      await $steps["updateRemoveOpen"];
                   }
 
                   $steps["updateButtonLoadingviow2"] = true
@@ -2169,9 +2138,8 @@ function PlasmicProfile__RenderFunc(props: {
                     typeof $steps["updateButtonLoadingviow2"].then ===
                       "function"
                   ) {
-                    $steps["updateButtonLoadingviow2"] = await $steps[
-                      "updateButtonLoadingviow2"
-                    ];
+                    $steps["updateButtonLoadingviow2"] =
+                      await $steps["updateButtonLoadingviow2"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -2276,7 +2244,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicProfile__VariantsArgs;
     args?: PlasmicProfile__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicProfile__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicProfile__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicProfile__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

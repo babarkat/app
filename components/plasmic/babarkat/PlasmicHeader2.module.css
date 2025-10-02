@@ -15,6 +15,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .header {
     width: 100%;
+    justify-content: space-between;
+    align-items: center;
     min-width: 0;
   }
 }
@@ -32,7 +34,9 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__xy8N9 {
-    margin-left: 10px;
+    column-gap: 0px;
+    row-gap: 0px;
+    margin: 0px;
   }
 }
 .freeBox___60TsA {
@@ -73,7 +77,10 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__c7LT7 {
-    left: 38%;
+    left: auto;
+    position: relative;
+    top: auto;
+    z-index: 1;
   }
 }
 .svg__gCajo {

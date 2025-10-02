@@ -62,8 +62,6 @@ import {
 import Icons from "../../Icons"; // plasmic-import: y9SwG9bN8mmR/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -215,10 +213,6 @@ function PlasmicTransactionBox__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <div
@@ -232,8 +226,6 @@ function PlasmicTransactionBox__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.root,
         {
           [sty.rootfiled]: hasVariant($state, "filed", "filed"),
@@ -337,34 +329,38 @@ function PlasmicTransactionBox__RenderFunc(props: {
           hasVariant($state, "unnamedGroupOfVariants", "walet")
             ? true
             : hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
-              hasVariant($state, "filed", "filed")
-            ? true
-            : hasVariant($state, "filed", "filed")
-            ? true
-            : undefined
+                hasVariant($state, "filed", "filed")
+              ? true
+              : hasVariant($state, "filed", "filed")
+                ? true
+                : undefined
         }
         unnamedGroupOfVariants={
           hasVariant($state, "filed", "filed") &&
           hasVariant($state, "unnamedGroupOfVariants", "walet")
             ? "walet"
             : hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
-              hasVariant($state, "filed", "filed")
-            ? "intenet"
-            : hasVariant($state, "wait", "wait")
-            ? "waite"
-            : hasVariant($state, "unnamedGroupOfVariants", "bill")
-            ? "bill"
-            : hasVariant($state, "unnamedGroupOfVariants", "pubg")
-            ? "pubg"
-            : hasVariant($state, "unnamedGroupOfVariants", "snap")
-            ? "snap"
-            : hasVariant($state, "unnamedGroupOfVariants", "panel")
-            ? "panel"
-            : hasVariant($state, "unnamedGroupOfVariants", "walet")
-            ? "walet"
-            : hasVariant($state, "unnamedGroupOfVariants", "intenet")
-            ? "intenet"
-            : undefined
+                hasVariant($state, "filed", "filed")
+              ? "intenet"
+              : hasVariant($state, "wait", "wait")
+                ? "waite"
+                : hasVariant($state, "unnamedGroupOfVariants", "bill")
+                  ? "bill"
+                  : hasVariant($state, "unnamedGroupOfVariants", "pubg")
+                    ? "pubg"
+                    : hasVariant($state, "unnamedGroupOfVariants", "snap")
+                      ? "snap"
+                      : hasVariant($state, "unnamedGroupOfVariants", "panel")
+                        ? "panel"
+                        : hasVariant($state, "unnamedGroupOfVariants", "walet")
+                          ? "walet"
+                          : hasVariant(
+                                $state,
+                                "unnamedGroupOfVariants",
+                                "intenet"
+                              )
+                            ? "intenet"
+                            : undefined
         }
       />
 
@@ -443,7 +439,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransactionBox__VariantsArgs;
     args?: PlasmicTransactionBox__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransactionBox__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransactionBox__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransactionBox__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

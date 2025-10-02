@@ -79,8 +79,6 @@ import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
 import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -679,8 +677,8 @@ function PlasmicBill__RenderFunc(props: {
           hasVariant($state, "stepscharg", "step3")
             ? false
             : hasVariant(globalVariants, "screen", "mobileOnly")
-            ? false
-            : false
+              ? false
+              : false
       },
       {
         path: "idORcode",
@@ -1206,10 +1204,6 @@ function PlasmicBill__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -1245,15 +1239,13 @@ function PlasmicBill__RenderFunc(props: {
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
           styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components,
           sty.chargeStep1,
           hasVariant($state, "stepscharg", "step3") &&
             hasVariant(globalVariants, "screen", "mobileOnly")
             ? "page"
             : hasVariant($state, "stepscharg", "step3")
-            ? "page"
-            : undefined,
+              ? "page"
+              : undefined,
           {
             [sty.chargeStep1stepscharg_step1]: hasVariant(
               $state,
@@ -1519,8 +1511,8 @@ function PlasmicBill__RenderFunc(props: {
                         hasVariant($state, "stepscharg", "step3")
                           ? CheckCircleSvgrepoComSvgIcon
                           : hasVariant($state, "stepscharg", "step2")
-                          ? CheckCircleSvgrepoComSvgIcon
-                          : RadioButtonCheckedSvgrepoCom2SvgIcon
+                            ? CheckCircleSvgrepoComSvgIcon
+                            : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
                       className={classNames(projectcss.all, sty.selected, {
                         [sty.selectedstepscharg_step1]: hasVariant(
@@ -1832,8 +1824,8 @@ function PlasmicBill__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : true
+                        ? true
+                        : true
                   ) ? (
                     <div
                       className={classNames(
@@ -1878,8 +1870,8 @@ function PlasmicBill__RenderFunc(props: {
                           {hasVariant($state, "stepscharg", "step3")
                             ? "\u0646\u0627\u0645 \u0645\u0634\u062a\u0631\u06a9"
                             : hasVariant($state, "stepscharg", "step2")
-                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
                       <div
@@ -1964,8 +1956,8 @@ function PlasmicBill__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : true
+                        ? true
+                        : true
                   ) ? (
                     <div
                       className={classNames(
@@ -2004,8 +1996,8 @@ function PlasmicBill__RenderFunc(props: {
                           {hasVariant($state, "stepscharg", "step3")
                             ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                             : hasVariant($state, "stepscharg", "step2")
-                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
                       {(
@@ -2066,8 +2058,8 @@ function PlasmicBill__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : true
+                        ? true
+                        : true
                   ) ? (
                     <div
                       className={classNames(
@@ -2100,8 +2092,8 @@ function PlasmicBill__RenderFunc(props: {
                           {hasVariant($state, "stepscharg", "step3")
                             ? "\u0634\u0645\u0627\u0631\u0647 \u062b\u0627\u0628\u062a"
                             : hasVariant($state, "stepscharg", "step2")
-                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
                       {(
@@ -2168,8 +2160,8 @@ function PlasmicBill__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : true
+                        ? true
+                        : true
                   ) ? (
                     <div
                       className={classNames(
@@ -2208,8 +2200,8 @@ function PlasmicBill__RenderFunc(props: {
                           {hasVariant($state, "stepscharg", "step3")
                             ? "\u06a9\u062f \u0627\u0634\u062a\u0631\u0627\u06a9"
                             : hasVariant($state, "stepscharg", "step2")
-                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
                       {(
@@ -2270,8 +2262,8 @@ function PlasmicBill__RenderFunc(props: {
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : true
+                        ? true
+                        : true
                   ) ? (
                     <div
                       className={classNames(
@@ -2310,8 +2302,8 @@ function PlasmicBill__RenderFunc(props: {
                           {hasVariant($state, "stepscharg", "step3")
                             ? "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636"
                             : hasVariant($state, "stepscharg", "step2")
-                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                         </div>
                       ) : null}
                       {(
@@ -2395,8 +2387,8 @@ function PlasmicBill__RenderFunc(props: {
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a"
                           : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
+                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                            : "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."}
                       </div>
                     ) : null}
                     {(
@@ -2575,9 +2567,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                 typeof $steps["updateIdORcode"].then ===
                                   "function"
                               ) {
-                                $steps["updateIdORcode"] = await $steps[
-                                  "updateIdORcode"
-                                ];
+                                $steps["updateIdORcode"] =
+                                  await $steps["updateIdORcode"];
                               }
                             }}
                             selected={
@@ -2664,8 +2655,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       {hasVariant($state, "stepscharg", "step3")
                         ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                         : hasVariant($state, "stepscharg", "step2")
-                        ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                        : "\u0646\u0627\u0645 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                          : "\u0646\u0627\u0645 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                     </div>
                     <Input
                       data-plasmic-name={"fragmentInput3"}
@@ -2814,10 +2805,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step1")
                           ? "\u0634\u0645\u0627\u0631\u0647 \u062b\u0627\u0628\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f (\u0647\u0645\u0631\u0627\u0647 \u06a9\u062f \u0634\u0647\u0631)."
                           : hasVariant($state, "stepscharg", "step3")
-                          ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u06cc\u0627 \u062b\u0627\u0628\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                            ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
+                            : hasVariant($state, "stepscharg", "step2")
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u06cc\u0627 \u062b\u0627\u0628\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Input
                         data-plasmic-name={"fragmentInput4"}
@@ -2883,9 +2874,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               typeof $steps["updatePhone"] === "object" &&
                               typeof $steps["updatePhone"].then === "function"
                             ) {
-                              $steps["updatePhone"] = await $steps[
-                                "updatePhone"
-                              ];
+                              $steps["updatePhone"] =
+                                await $steps["updatePhone"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -2964,10 +2954,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step1")
                           ? "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
                           : hasVariant($state, "stepscharg", "step3")
-                          ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u06cc\u0627 \u062b\u0627\u0628\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                            ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
+                            : hasVariant($state, "stepscharg", "step2")
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u06cc\u0627 \u062b\u0627\u0628\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Input
                         data-plasmic-name={"fragmentInput5"}
@@ -3083,9 +3073,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               typeof $steps["updateMobile"] === "object" &&
                               typeof $steps["updateMobile"].then === "function"
                             ) {
-                              $steps["updateMobile"] = await $steps[
-                                "updateMobile"
-                              ];
+                              $steps["updateMobile"] =
+                                await $steps["updateMobile"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -3236,8 +3225,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                           : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                            : "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Input
                         data-plasmic-name={"idinput"}
@@ -3385,10 +3374,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step1")
                           ? "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
                           : hasVariant($state, "stepscharg", "step3")
-                          ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                            ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
+                            : hasVariant($state, "stepscharg", "step2")
+                              ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                              : "\u0634\u0646\u0627\u0633\u0647 \u0642\u0628\u0636 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Input
                         data-plasmic-name={"idinput3"}
@@ -3457,9 +3446,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               typeof $steps["updateIdinputValue"].then ===
                                 "function"
                             ) {
-                              $steps["updateIdinputValue"] = await $steps[
-                                "updateIdinputValue"
-                              ];
+                              $steps["updateIdinputValue"] =
+                                await $steps["updateIdinputValue"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -3544,8 +3532,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step3")
                           ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                           : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
-                          : "\u06a9\u062f \u0627\u0634\u062a\u0631\u0627\u06a9 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
+                            ? "\u0645\u0628\u0644\u063a \u0634\u0627\u0631\u0698 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f(\u062a\u0648\u0645\u0627\u0646)."
+                            : "\u06a9\u062f \u0627\u0634\u062a\u0631\u0627\u06a9 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."}
                       </div>
                       <Input
                         data-plasmic-name={"idinput2"}
@@ -3664,23 +3652,23 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             }
                           })()
                         : hasVariant($state, "stepscharg", "step2")
-                        ? (() => {
-                            try {
-                              return (
-                                $state.typecharge == 1 ||
-                                $state.operatorselect == 3
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
+                          ? (() => {
+                              try {
+                                return (
+                                  $state.typecharge == 1 ||
+                                  $state.operatorselect == 3
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        : undefined
+                            })()
+                          : undefined
                     }
                     onChange={async (...eventArgs: any) => {
                       generateStateOnChangeProp($state, [
@@ -4003,8 +3991,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     {hasVariant($state, "stepscharg", "step3")
                       ? "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
                       : hasVariant($state, "stepscharg", "step2")
-                      ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                      : ""}
+                        ? "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                        : ""}
                   </div>
                   <div
                     data-plasmic-name={"operators3"}
@@ -4490,9 +4478,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["updateInfopardakt"] === "object" &&
                       typeof $steps["updateInfopardakt"].then === "function"
                     ) {
-                      $steps["updateInfopardakt"] = await $steps[
-                        "updateInfopardakt"
-                      ];
+                      $steps["updateInfopardakt"] =
+                        await $steps["updateInfopardakt"];
                     }
 
                     $steps["updateDialogOpen"] =
@@ -4527,9 +4514,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["updateDialogOpen"] === "object" &&
                       typeof $steps["updateDialogOpen"].then === "function"
                     ) {
-                      $steps["updateDialogOpen"] = await $steps[
-                        "updateDialogOpen"
-                      ];
+                      $steps["updateDialogOpen"] =
+                        await $steps["updateDialogOpen"];
                     }
 
                     $steps["invokeGlobalAction3"] =
@@ -4569,9 +4555,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateDisable2"] = true
@@ -4676,9 +4661,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateDisable2"] === "object" &&
                         typeof $steps["updateDisable2"].then === "function"
                       ) {
-                        $steps["updateDisable2"] = await $steps[
-                          "updateDisable2"
-                        ];
+                        $steps["updateDisable2"] =
+                          await $steps["updateDisable2"];
                       }
                     }}
                   >
@@ -4786,22 +4770,22 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 hasVariant($state, "stepscharg", "step1")
                   ? true
                   : hasVariant($state, "stepscharg", "step3")
-                  ? true
-                  : hasVariant($state, "stepscharg", "step2")
-                  ? true
-                  : (() => {
-                      try {
-                        return $state.billsdata?.length == 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
+                    ? true
+                    : hasVariant($state, "stepscharg", "step2")
+                      ? true
+                      : (() => {
+                          try {
+                            return $state.billsdata?.length == 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })()
               ) ? (
                 <div
                   data-plasmic-name={"nobill"}
@@ -4883,22 +4867,22 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 hasVariant($state, "stepscharg", "step1")
                   ? true
                   : hasVariant($state, "stepscharg", "step3")
-                  ? true
-                  : hasVariant($state, "stepscharg", "step2")
-                  ? true
-                  : (() => {
-                      try {
-                        return $state.billsdata?.length > 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
+                    ? true
+                    : hasVariant($state, "stepscharg", "step2")
+                      ? true
+                      : (() => {
+                          try {
+                            return $state.billsdata?.length > 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })()
               ) ? (
                 <div
                   data-plasmic-name={"bills"}
@@ -5067,9 +5051,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               typeof $steps["updateStepscharg"].then ===
                                 "function"
                             ) {
-                              $steps["updateStepscharg"] = await $steps[
-                                "updateStepscharg"
-                              ];
+                              $steps["updateStepscharg"] =
+                                await $steps["updateStepscharg"];
                             }
                           }}
                         >
@@ -5298,9 +5281,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                         typeof $steps["runCode"].then ===
                                           "function"
                                       ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
                                       }
                                     },
                                     onLoadingviowChange: async (
@@ -5482,9 +5464,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               projectcss.root_reset,
                               projectcss.plasmic_default_styles,
                               projectcss.plasmic_mixins,
-                              styleTokensClassNames,
-                              styleTokensClassNames_antd_5_hostless,
-                              styleTokensClassNames_plasmic_rich_components
+                              styleTokensClassNames
                             ),
                             mouseEnterDelay: 0,
                             mouseLeaveDelay: 0,
@@ -5578,10 +5558,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   hasVariant($state, "stepscharg", "step3")
                     ? true
                     : hasVariant($state, "stepscharg", "step2")
-                    ? true
-                    : hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? true
-                    : false
+                      ? true
+                      : hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? true
+                        : false
                 ) ? (
                   <Button
                     data-plasmic-name={"backstep3"}
@@ -5638,9 +5618,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateUnnamedVariant2"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant2"] = await $steps[
-                          "updateUnnamedVariant2"
-                        ];
+                        $steps["updateUnnamedVariant2"] =
+                          await $steps["updateUnnamedVariant2"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -5710,24 +5689,25 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           }
                         })()
                       : hasVariant($state, "stepscharg", "step3")
-                      ? true
-                      : hasVariant($state, "stepscharg", "step2")
-                      ? true
-                      : hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? true
-                      : (() => {
-                          try {
-                            return (() => {})();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })()
+                        ? true
+                        : hasVariant($state, "stepscharg", "step2")
+                          ? true
+                          : hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? true
+                            : (() => {
+                                try {
+                                  return (() => {})();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })()
                   ) ? (
                     <Button
                       data-plasmic-name={"step1Next2"}
@@ -5884,9 +5864,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     }}
                   >
@@ -5947,9 +5926,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateLoadingLoad"] === "object" &&
                           typeof $steps["updateLoadingLoad"].then === "function"
                         ) {
-                          $steps["updateLoadingLoad"] = await $steps[
-                            "updateLoadingLoad"
-                          ];
+                          $steps["updateLoadingLoad"] =
+                            await $steps["updateLoadingLoad"];
                         }
                       }}
                     >
@@ -6060,9 +6038,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateStep1NextLoadingviow"].then ===
                             "function"
                         ) {
-                          $steps["updateStep1NextLoadingviow"] = await $steps[
-                            "updateStep1NextLoadingviow"
-                          ];
+                          $steps["updateStep1NextLoadingviow"] =
+                            await $steps["updateStep1NextLoadingviow"];
                         }
 
                         $steps["updateIdinputValue2"] = true
@@ -6100,9 +6077,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateIdinputValue2"].then ===
                             "function"
                         ) {
-                          $steps["updateIdinputValue2"] = await $steps[
-                            "updateIdinputValue2"
-                          ];
+                          $steps["updateIdinputValue2"] =
+                            await $steps["updateIdinputValue2"];
                         }
 
                         $steps["updateId"] = true
@@ -6305,9 +6281,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
 
                         $steps["inquiry"] =
@@ -6408,8 +6383,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           $steps.inquiry?.data
                             ? true
                             : false || $steps.inquiry1?.data
-                            ? true
-                            : false
+                              ? true
+                              : false
                         )
                           ? (() => {
                               const actionArgs = {
@@ -6443,9 +6418,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateIdinputValue3"].then ===
                             "function"
                         ) {
-                          $steps["updateIdinputValue3"] = await $steps[
-                            "updateIdinputValue3"
-                          ];
+                          $steps["updateIdinputValue3"] =
+                            await $steps["updateIdinputValue3"];
                         }
 
                         $steps["updateStepscharg"] =
@@ -6472,9 +6446,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateStepscharg"] === "object" &&
                           typeof $steps["updateStepscharg"].then === "function"
                         ) {
-                          $steps["updateStepscharg"] = await $steps[
-                            "updateStepscharg"
-                          ];
+                          $steps["updateStepscharg"] =
+                            await $steps["updateStepscharg"];
                         }
 
                         $steps["invokeGlobalAction2"] =
@@ -6515,9 +6488,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["invokeGlobalAction2"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction2"] = await $steps[
-                            "invokeGlobalAction2"
-                          ];
+                          $steps["invokeGlobalAction2"] =
+                            await $steps["invokeGlobalAction2"];
                         }
 
                         $steps["updateStep1NextLoadingviow2"] = true
@@ -6553,9 +6525,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateStep1NextLoadingviow2"].then ===
                             "function"
                         ) {
-                          $steps["updateStep1NextLoadingviow2"] = await $steps[
-                            "updateStep1NextLoadingviow2"
-                          ];
+                          $steps["updateStep1NextLoadingviow2"] =
+                            await $steps["updateStep1NextLoadingviow2"];
                         }
 
                         $steps["updateIdinputValue4"] =
@@ -6638,9 +6609,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateIdinputValue4"].then ===
                             "function"
                         ) {
-                          $steps["updateIdinputValue4"] = await $steps[
-                            "updateIdinputValue4"
-                          ];
+                          $steps["updateIdinputValue4"] =
+                            await $steps["updateIdinputValue4"];
                         }
                       }}
                       onLoadingviowChange={async (...eventArgs: any) => {
@@ -6701,8 +6671,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         hasVariant($state, "stepscharg", "step1")
                           ? "softGreen"
                           : hasVariant($state, "stepscharg", "step2")
-                          ? "softGreen"
-                          : "green"
+                            ? "softGreen"
+                            : "green"
                       }
                       loadingviow={generateStateValueProp($state, [
                         "backstep2",
@@ -6733,9 +6703,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateUnnamedVariant"].then ===
                             "function"
                         ) {
-                          $steps["updateUnnamedVariant"] = await $steps[
-                            "updateUnnamedVariant"
-                          ];
+                          $steps["updateUnnamedVariant"] =
+                            await $steps["updateUnnamedVariant"];
                         }
                       }}
                       onLoadingviowChange={async (...eventArgs: any) => {
@@ -6777,8 +6746,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         {hasVariant($state, "stepscharg", "step1")
                           ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
                           : hasVariant($state, "stepscharg", "step2")
-                          ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                          : "\u0627\u062f\u0627\u0645\u0647"}
+                            ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                            : "\u0627\u062f\u0627\u0645\u0647"}
                       </div>
                     </Button>
                   </div>
@@ -6798,8 +6767,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       hasVariant(globalVariants, "screen", "mobileOnly")
                         ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
                         : hasVariant($state, "stepscharg", "step1")
-                        ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
-                        : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
+                          ? '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
+                          : '<input type="file" id="imageInput" accept="image/*" capture="environment" style="display:none">\r\n<canvas id="canvas" style="display: none;"></canvas>\r\n\r\n<!-- \u06a9\u062a\u0627\u0628\u062e\u0627\u0646\u0647\u200c\u0647\u0627\u06cc \u0645\u0648\u0631\u062f \u0646\u06cc\u0627\u0632 -->\r\n<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>\r\n<script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>\r\n\r\n<script>\r\n  let barcodeErrorClicked = false; // \u062c\u0644\u0648\u06af\u06cc\u0631\u06cc \u0627\u0632 \u0627\u062c\u0631\u0627\u06cc \u0686\u0646\u062f\u0628\u0627\u0631\u0647 \u062e\u0637\u0627\r\n\r\n  document.getElementById("imageInput").addEventListener("change", function(event) {\r\n      window.document.getElementById("loadingImage").click();\r\n\r\n      const file = event.target.files[0];\r\n      if (!file) return;\r\n\r\n      const canvas = document.getElementById("canvas");\r\n      const context = canvas.getContext("2d");\r\n      const img = new Image();\r\n\r\n      img.onload = function() {\r\n          window.document.getElementById("loadingImage").click();\r\n\r\n          // \u062a\u0646\u0638\u06cc\u0645 \u0627\u0646\u062f\u0627\u0632\u0647 \u06a9\u0627\u0646\u0648\u0627\u0633 \u0648 \u0631\u0633\u0645 \u062a\u0635\u0648\u06cc\u0631\r\n          canvas.width = img.width;\r\n          canvas.height = img.height;\r\n          context.drawImage(img, 0, 0, img.width, img.height);\r\n\r\n          // \u0627\u0633\u06a9\u0646 QR \u06a9\u062f\r\n          scanQRCode(canvas);\r\n\r\n          // \u0627\u0633\u06a9\u0646 \u0628\u0627\u0631\u06a9\u062f\r\n          scanBarcode(canvas);\r\n      };\r\n\r\n      img.src = URL.createObjectURL(file);\r\n  });\r\n\r\n  function scanQRCode(canvas) {\r\n      const context = canvas.getContext("2d");\r\n      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);\r\n      const code = jsQR(imageData.data, imageData.width, imageData.height);\r\n\r\n      if (code) {\r\n          document.getElementsByName("idNumber")[0].value = code.data;\r\n      } \r\n  }\r\n\r\n  function scanBarcode(canvas) {\r\n      const imageData = canvas.toDataURL("image/jpeg");\r\n\r\n      Quagga.decodeSingle({\r\n          decoder: {\r\n              readers: ["code_128_reader", "ean_reader", "ean_8_reader", "code_39_reader", "upc_reader"]\r\n          },\r\n          locate: true,\r\n          src: imageData\r\n      }, function(result) {\r\n          if (result && result.codeResult) {\r\n              var inputField = document.getElementsByName("idNumber")[0];\r\n              inputField.value= result.codeResult.code+"."\r\n              if (inputField) {\r\n                  inputField.focus();\r\n                  inputField.setSelectionRange(inputField.value.length, inputField.value.length);\r\n                  document.execCommand(\'delete\', false); // \u0634\u0628\u06cc\u0647\u200c\u0633\u0627\u0632\u06cc \u062d\u0630\u0641 \u0628\u0647 \u0633\u0628\u06a9 \u0642\u062f\u06cc\u0645\u06cc\r\n              }\r\n             }\r\n          else {\r\n              window.document.getElementById("barcode_error").click();\r\n          }\r\n      });\r\n  }\r\n</script>'
                     }
                   />
                 </div>
@@ -6881,9 +6850,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["updateType2Open"] === "object" &&
                       typeof $steps["updateType2Open"].then === "function"
                     ) {
-                      $steps["updateType2Open"] = await $steps[
-                        "updateType2Open"
-                      ];
+                      $steps["updateType2Open"] =
+                        await $steps["updateType2Open"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -6931,8 +6899,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   hasVariant($state, "stepscharg", "step2")
                     ? true
                     : hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? true
-                    : false
+                      ? true
+                      : false
                 ) ? (
                   <Button
                     data-plasmic-name={"step2Next"}
@@ -7052,9 +7020,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateUnnamedVariant2"].then ===
                           "function"
                       ) {
-                        $steps["updateUnnamedVariant2"] = await $steps[
-                          "updateUnnamedVariant2"
-                        ];
+                        $steps["updateUnnamedVariant2"] =
+                          await $steps["updateUnnamedVariant2"];
                       }
 
                       $steps["invokeGlobalAction"] = (() => {
@@ -7126,9 +7093,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -7163,8 +7129,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   hasVariant($state, "stepscharg", "step3")
                     ? true
                     : hasVariant($state, "stepscharg", "step2")
-                    ? true
-                    : false
+                      ? true
+                      : false
                 ) ? (
                   <div
                     className={classNames(
@@ -7214,9 +7180,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["goToChargeStep1"] === "object" &&
                         typeof $steps["goToChargeStep1"].then === "function"
                       ) {
-                        $steps["goToChargeStep1"] = await $steps[
-                          "goToChargeStep1"
-                        ];
+                        $steps["goToChargeStep1"] =
+                          await $steps["goToChargeStep1"];
                       }
                     }}
                   >
@@ -7239,9 +7204,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               )}
               hideFooter={true}
               modalContentClassName={classNames({
@@ -7439,9 +7402,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["updateModalOpen"] === "object" &&
                       typeof $steps["updateModalOpen"].then === "function"
                     ) {
-                      $steps["updateModalOpen"] = await $steps[
-                        "updateModalOpen"
-                      ];
+                      $steps["updateModalOpen"] =
+                        await $steps["updateModalOpen"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -7479,9 +7441,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               )}
               hideFooter={true}
               maskClosable={
@@ -7513,10 +7473,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "100vw"
                   : hasVariant($state, "stepscharg", "step3")
-                  ? "520"
-                  : hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "100%"
-                  : "55%"
+                    ? "520"
+                    : hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "100%"
+                      : "55%"
               }
               wrapClassName={classNames({
                 [sty["pcls_0k-yhts48o-i"]]:
@@ -8143,9 +8103,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       typeof $steps["updateModalOpen"] === "object" &&
                       typeof $steps["updateModalOpen"].then === "function"
                     ) {
-                      $steps["updateModalOpen"] = await $steps[
-                        "updateModalOpen"
-                      ];
+                      $steps["updateModalOpen"] =
+                        await $steps["updateModalOpen"];
                     }
 
                     $steps["goToHomepage"] = true
@@ -8291,9 +8250,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components
+            styleTokensClassNames
           )}
           hideFooter={true}
           modalContentClassName={classNames({
@@ -9119,9 +9076,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components
+            styleTokensClassNames
           )}
           hideFooter={true}
           modalContentClassName={classNames({
@@ -9948,9 +9903,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               projectcss.root_reset,
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
-              styleTokensClassNames,
-              styleTokensClassNames_antd_5_hostless,
-              styleTokensClassNames_plasmic_rich_components
+              styleTokensClassNames
             )}
             hideFooter={true}
             modalContentClassName={classNames({
@@ -10025,9 +9978,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     typeof $steps["updateModal3Open"] === "object" &&
                     typeof $steps["updateModal3Open"].then === "function"
                   ) {
-                    $steps["updateModal3Open"] = await $steps[
-                      "updateModal3Open"
-                    ];
+                    $steps["updateModal3Open"] =
+                      await $steps["updateModal3Open"];
                   }
                 }}
                 role={"img"}
@@ -10226,9 +10178,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             projectcss.root_reset,
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
-            styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components
+            styleTokensClassNames
           )}
           hideFooter={true}
           maskClosable={true}
@@ -10330,9 +10280,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   typeof $steps["updateExitModalOpen"] === "object" &&
                   typeof $steps["updateExitModalOpen"].then === "function"
                 ) {
-                  $steps["updateExitModalOpen"] = await $steps[
-                    "updateExitModalOpen"
-                  ];
+                  $steps["updateExitModalOpen"] =
+                    await $steps["updateExitModalOpen"];
                 }
               }}
               onLoadingviowChange={async (...eventArgs: any) => {
@@ -11260,7 +11209,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicBill__VariantsArgs;
     args?: PlasmicBill__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicBill__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicBill__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicBill__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

@@ -79,8 +79,6 @@ import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
 import Dialog from "../../Dialog"; // plasmic-import: 2GQa6CZGhRDY/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -879,10 +877,6 @@ function PlasmicPubg__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -919,8 +913,6 @@ function PlasmicPubg__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
               ? "page"
@@ -1082,9 +1074,8 @@ function PlasmicPubg__RenderFunc(props: {
                       typeof $steps["updateModalOpen"] === "object" &&
                       typeof $steps["updateModalOpen"].then === "function"
                     ) {
-                      $steps["updateModalOpen"] = await $steps[
-                        "updateModalOpen"
-                      ];
+                      $steps["updateModalOpen"] =
+                        await $steps["updateModalOpen"];
                     }
                   }}
                   role={"img"}
@@ -1395,8 +1386,8 @@ function PlasmicPubg__RenderFunc(props: {
                           hasVariant($state, "steps2", "step3")
                             ? CheckCircleSvgrepoComSvgIcon
                             : hasVariant($state, "steps2", "step2")
-                            ? CheckCircleSvgrepoComSvgIcon
-                            : RadioButtonCheckedSvgrepoCom2SvgIcon
+                              ? CheckCircleSvgrepoComSvgIcon
+                              : RadioButtonCheckedSvgrepoCom2SvgIcon
                         }
                         className={classNames(projectcss.all, sty.selected, {
                           [sty.selectedsteps2_step2]: hasVariant(
@@ -2761,20 +2752,20 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   hasVariant($state, "steps2", "step3")
                     ? true
                     : hasVariant($state, "steps2", "step2")
-                    ? true
-                    : (() => {
-                        try {
-                          return $state.operatorselect >= 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                      ? true
+                      : (() => {
+                          try {
+                            return $state.operatorselect >= 0;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()
+                        })()
                 ) ? (
                   <div
                     className={classNames(projectcss.all, sty.freeBox__lpbb, {
@@ -3053,8 +3044,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                 !_par
                                   ? []
                                   : Array.isArray(_par)
-                                  ? _par
-                                  : [_par])(
+                                    ? _par
+                                    : [_par])(
                                 (() => {
                                   try {
                                     return $state.variable;
@@ -3333,8 +3324,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                       !_par
                                         ? []
                                         : Array.isArray(_par)
-                                        ? _par
-                                        : [_par])(
+                                          ? _par
+                                          : [_par])(
                                       (() => {
                                         try {
                                           return currentItem.plans;
@@ -3530,9 +3521,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                                       ) {
                                                         $steps[
                                                           "updateSelectpack"
-                                                        ] = await $steps[
-                                                          "updateSelectpack"
-                                                        ];
+                                                        ] =
+                                                          await $steps[
+                                                            "updateSelectpack"
+                                                          ];
                                                       }
 
                                                       $steps["updateSteps2"] =
@@ -3801,8 +3793,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                       )
                                         ? "70px"
                                         : hasVariant($state, "steps2", "step2")
-                                        ? "80px"
-                                        : "auto"
+                                          ? "80px"
+                                          : "auto"
                                     }
                                     displayMaxHeight={"none"}
                                     displayMaxWidth={"100%"}
@@ -3817,8 +3809,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                       )
                                         ? "auto"
                                         : hasVariant($state, "steps2", "step2")
-                                        ? "80px"
-                                        : "auto"
+                                          ? "80px"
+                                          : "auto"
                                     }
                                     loading={"lazy"}
                                     src={
@@ -3976,9 +3968,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                           typeof $steps["updateSteps2"].then ===
                                             "function"
                                         ) {
-                                          $steps["updateSteps2"] = await $steps[
-                                            "updateSteps2"
-                                          ];
+                                          $steps["updateSteps2"] =
+                                            await $steps["updateSteps2"];
                                         }
                                       },
                                       onLoadingviowChange: async (
@@ -4223,9 +4214,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateOtherData"] === "object" &&
                         typeof $steps["updateOtherData"].then === "function"
                       ) {
-                        $steps["updateOtherData"] = await $steps[
-                          "updateOtherData"
-                        ];
+                        $steps["updateOtherData"] =
+                          await $steps["updateOtherData"];
                       }
 
                       $steps["updateSteps2"] = true
@@ -4273,9 +4263,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -4546,9 +4535,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   projectcss.root_reset,
                   projectcss.plasmic_default_styles,
                   projectcss.plasmic_mixins,
-                  styleTokensClassNames,
-                  styleTokensClassNames_antd_5_hostless,
-                  styleTokensClassNames_plasmic_rich_components
+                  styleTokensClassNames
                 )}
                 hideFooter={true}
                 modalContentClassName={classNames({
@@ -4723,9 +4710,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateModalOpen"] === "object" &&
                         typeof $steps["updateModalOpen"].then === "function"
                       ) {
-                        $steps["updateModalOpen"] = await $steps[
-                          "updateModalOpen"
-                        ];
+                        $steps["updateModalOpen"] =
+                          await $steps["updateModalOpen"];
                       }
                     }}
                     onLoadingviowChange={async (...eventArgs: any) => {
@@ -4871,9 +4857,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateDisable"] === "object" &&
                           typeof $steps["updateDisable"].then === "function"
                         ) {
-                          $steps["updateDisable"] = await $steps[
-                            "updateDisable"
-                          ];
+                          $steps["updateDisable"] =
+                            await $steps["updateDisable"];
                         }
 
                         $steps["updateUuid"] = true
@@ -5043,9 +5028,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateDialogOpen"] === "object" &&
                           typeof $steps["updateDialogOpen"].then === "function"
                         ) {
-                          $steps["updateDialogOpen"] = await $steps[
-                            "updateDialogOpen"
-                          ];
+                          $steps["updateDialogOpen"] =
+                            await $steps["updateDialogOpen"];
                         }
 
                         $steps["updateError"] =
@@ -5126,9 +5110,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["invokeGlobalAction6"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction6"] = await $steps[
-                            "invokeGlobalAction6"
-                          ];
+                          $steps["invokeGlobalAction6"] =
+                            await $steps["invokeGlobalAction6"];
                         }
 
                         $steps["updateDisable2"] = true
@@ -5162,9 +5145,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           typeof $steps["updateDisable2"] === "object" &&
                           typeof $steps["updateDisable2"].then === "function"
                         ) {
-                          $steps["updateDisable2"] = await $steps[
-                            "updateDisable2"
-                          ];
+                          $steps["updateDisable2"] =
+                            await $steps["updateDisable2"];
                         }
 
                         $steps["runCode"] = true
@@ -5239,9 +5221,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         typeof $steps["updateShopModalOpen"] === "object" &&
                         typeof $steps["updateShopModalOpen"].then === "function"
                       ) {
-                        $steps["updateShopModalOpen"] = await $steps[
-                          "updateShopModalOpen"
-                        ];
+                        $steps["updateShopModalOpen"] =
+                          await $steps["updateShopModalOpen"];
                       }
                     }}
                   >
@@ -5638,8 +5619,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               hasVariant(globalVariants, "screen", "mobileOnly")
                                 ? "50px"
                                 : hasVariant($state, "steps2", "step2")
-                                ? "50px"
-                                : "auto"
+                                  ? "50px"
+                                  : "auto"
                             }
                             displayMaxHeight={"none"}
                             displayMaxWidth={"100%"}
@@ -5650,8 +5631,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               hasVariant(globalVariants, "screen", "mobileOnly")
                                 ? "auto"
                                 : hasVariant($state, "steps2", "step2")
-                                ? "50px"
-                                : "auto"
+                                  ? "50px"
+                                  : "auto"
                             }
                             loading={"lazy"}
                             src={
@@ -5782,9 +5763,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                   typeof $steps["updateSelectpack"].then ===
                                     "function"
                                 ) {
-                                  $steps["updateSelectpack"] = await $steps[
-                                    "updateSelectpack"
-                                  ];
+                                  $steps["updateSelectpack"] =
+                                    await $steps["updateSelectpack"];
                                 }
 
                                 $steps["updateSteps2"] = true
@@ -5810,9 +5790,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                   typeof $steps["updateSteps2"].then ===
                                     "function"
                                 ) {
-                                  $steps["updateSteps2"] = await $steps[
-                                    "updateSteps2"
-                                  ];
+                                  $steps["updateSteps2"] =
+                                    await $steps["updateSteps2"];
                                 }
                               },
                               onLoadingviowChange: async (
@@ -6728,7 +6707,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPubg__VariantsArgs;
     args?: PlasmicPubg__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicPubg__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicPubg__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicPubg__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

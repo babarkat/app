@@ -77,8 +77,6 @@ import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -659,10 +657,6 @@ function PlasmicHeader__RenderFunc(props: {
   const plasmicInvalidate = usePlasmicInvalidate();
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <div
@@ -676,8 +670,6 @@ function PlasmicHeader__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.header
       )}
     >
@@ -730,12 +722,12 @@ function PlasmicHeader__RenderFunc(props: {
               return $props.level == 0
                 ? "red"
                 : $props.level == 3
-                ? "yellow"
-                : $props.level == 2
-                ? "blue"
-                : $props.level == 1
-                ? ""
-                : "";
+                  ? "yellow"
+                  : $props.level == 2
+                    ? "blue"
+                    : $props.level == 1
+                      ? ""
+                      : "";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -763,12 +755,12 @@ function PlasmicHeader__RenderFunc(props: {
                   return $props.level == 0
                     ? "بلاک"
                     : $props.level == 3
-                    ? "با اعتبار"
-                    : $props.level == 2
-                    ? "همکار"
-                    : $props.level == 1
-                    ? "عادی"
-                    : "";
+                      ? "با اعتبار"
+                      : $props.level == 2
+                        ? "همکار"
+                        : $props.level == 1
+                          ? "عادی"
+                          : "";
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -852,9 +844,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         modalContentClassName={classNames({
@@ -1077,9 +1067,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["invokeGlobalAction2"] = (
@@ -1104,9 +1093,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction2"] === "object" &&
                   typeof $steps["invokeGlobalAction2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction2"] = await $steps[
-                    "invokeGlobalAction2"
-                  ];
+                  $steps["invokeGlobalAction2"] =
+                    await $steps["invokeGlobalAction2"];
                 }
 
                 $steps["updateModal4Open"] = (
@@ -1170,9 +1158,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction3"] === "object" &&
                   typeof $steps["invokeGlobalAction3"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction3"] = await $steps[
-                    "invokeGlobalAction3"
-                  ];
+                  $steps["invokeGlobalAction3"] =
+                    await $steps["invokeGlobalAction3"];
                 }
 
                 $steps["refreshData"] = true
@@ -1257,9 +1244,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         modalContentClassName={classNames({
@@ -1513,9 +1498,7 @@ function PlasmicHeader__RenderFunc(props: {
                     projectcss.root_reset,
                     projectcss.plasmic_default_styles,
                     projectcss.plasmic_mixins,
-                    styleTokensClassNames,
-                    styleTokensClassNames_antd_5_hostless,
-                    styleTokensClassNames_plasmic_rich_components
+                    styleTokensClassNames
                   )}
                   defaultValue={(() => {
                     try {
@@ -1769,9 +1752,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn"] === "object" &&
                       typeof $steps["updateLoadedbtn"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn"] = await $steps[
-                        "updateLoadedbtn"
-                      ];
+                      $steps["updateLoadedbtn"] =
+                        await $steps["updateLoadedbtn"];
                     }
 
                     $steps["invokeGlobalAction"] = true
@@ -1811,9 +1793,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["invokeGlobalAction2"] = (
@@ -1839,9 +1820,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction2"] === "object" &&
                       typeof $steps["invokeGlobalAction2"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction2"] = await $steps[
-                        "invokeGlobalAction2"
-                      ];
+                      $steps["invokeGlobalAction2"] =
+                        await $steps["invokeGlobalAction2"];
                     }
 
                     $steps["runCode"] = (
@@ -1921,9 +1901,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["updateEditSarafOpen"] === "object" &&
                       typeof $steps["updateEditSarafOpen"].then === "function"
                     ) {
-                      $steps["updateEditSarafOpen"] = await $steps[
-                        "updateEditSarafOpen"
-                      ];
+                      $steps["updateEditSarafOpen"] =
+                        await $steps["updateEditSarafOpen"];
                     }
 
                     $steps["updateLoadedbtn2"] = true
@@ -1944,9 +1923,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn2"] === "object" &&
                       typeof $steps["updateLoadedbtn2"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn2"] = await $steps[
-                        "updateLoadedbtn2"
-                      ];
+                      $steps["updateLoadedbtn2"] =
+                        await $steps["updateLoadedbtn2"];
                     }
 
                     $steps["invokeGlobalAction3"] = true
@@ -1990,9 +1968,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction3"] === "object" &&
                       typeof $steps["invokeGlobalAction3"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction3"] = await $steps[
-                        "invokeGlobalAction3"
-                      ];
+                      $steps["invokeGlobalAction3"] =
+                        await $steps["invokeGlobalAction3"];
                     }
 
                     $steps["updateLoadedbtn3"] = true
@@ -2026,9 +2003,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["updateLoadedbtn3"] === "object" &&
                       typeof $steps["updateLoadedbtn3"].then === "function"
                     ) {
-                      $steps["updateLoadedbtn3"] = await $steps[
-                        "updateLoadedbtn3"
-                      ];
+                      $steps["updateLoadedbtn3"] =
+                        await $steps["updateLoadedbtn3"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -2296,9 +2272,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         modalContentClassName={classNames({
@@ -2414,9 +2388,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
               }}
             >
@@ -2478,9 +2451,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         modalContentClassName={classNames({
@@ -2628,9 +2599,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["updatePass12"] = true
@@ -2858,9 +2828,8 @@ function PlasmicHeader__RenderFunc(props: {
                       typeof $steps["invokeGlobalAction"] === "object" &&
                       typeof $steps["invokeGlobalAction"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["invokeGlobalAction"] =
+                        await $steps["invokeGlobalAction"];
                     }
 
                     $steps["updatePass22"] = true
@@ -2938,8 +2907,8 @@ function PlasmicHeader__RenderFunc(props: {
                     return $state.p1 > 80
                       ? "#2DC57B"
                       : $state.p1 > 50
-                      ? "#FAAD14"
-                      : "#FF4D4F";
+                        ? "#FAAD14"
+                        : "#FF4D4F";
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -3042,9 +3011,8 @@ function PlasmicHeader__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
 
                   $steps["updatePass32"] = true
@@ -3274,9 +3242,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction2"] === "object" &&
                   typeof $steps["invokeGlobalAction2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction2"] = await $steps[
-                    "invokeGlobalAction2"
-                  ];
+                  $steps["invokeGlobalAction2"] =
+                    await $steps["invokeGlobalAction2"];
                 }
 
                 $steps["invokeGlobalAction"] =
@@ -3300,9 +3267,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["invokeGlobalAction3"] =
@@ -3343,9 +3309,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction3"] === "object" &&
                   typeof $steps["invokeGlobalAction3"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction3"] = await $steps[
-                    "invokeGlobalAction3"
-                  ];
+                  $steps["invokeGlobalAction3"] =
+                    await $steps["invokeGlobalAction3"];
                 }
 
                 $steps["updateModal4Open"] =
@@ -3393,9 +3358,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction4"] === "object" &&
                   typeof $steps["invokeGlobalAction4"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction4"] = await $steps[
-                    "invokeGlobalAction4"
-                  ];
+                  $steps["invokeGlobalAction4"] =
+                    await $steps["invokeGlobalAction4"];
                 }
 
                 $steps["updatePasswordOpen"] =
@@ -3430,9 +3394,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["updatePasswordOpen"] === "object" &&
                   typeof $steps["updatePasswordOpen"].then === "function"
                 ) {
-                  $steps["updatePasswordOpen"] = await $steps[
-                    "updatePasswordOpen"
-                  ];
+                  $steps["updatePasswordOpen"] =
+                    await $steps["updatePasswordOpen"];
                 }
 
                 $steps["updateLoadedbtn2"] = true
@@ -3524,9 +3487,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         drawerBodyClassName={classNames({ [sty["pcls_gEPSKEVXpylB"]]: true })}
         drawerFooterClassName={classNames({ [sty["pcls_qG4AYU9oZO8u"]]: true })}
@@ -3765,9 +3726,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["updatePasswordOpen"] === "object" &&
                   typeof $steps["updatePasswordOpen"].then === "function"
                 ) {
-                  $steps["updatePasswordOpen"] = await $steps[
-                    "updatePasswordOpen"
-                  ];
+                  $steps["updatePasswordOpen"] =
+                    await $steps["updatePasswordOpen"];
                 }
               }}
             >
@@ -3869,9 +3829,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["updatePasswordOpen"] === "object" &&
                   typeof $steps["updatePasswordOpen"].then === "function"
                 ) {
-                  $steps["updatePasswordOpen"] = await $steps[
-                    "updatePasswordOpen"
-                  ];
+                  $steps["updatePasswordOpen"] =
+                    await $steps["updatePasswordOpen"];
                 }
               }}
             >
@@ -3973,9 +3932,8 @@ function PlasmicHeader__RenderFunc(props: {
                   typeof $steps["updatePasswordOpen"] === "object" &&
                   typeof $steps["updatePasswordOpen"].then === "function"
                 ) {
-                  $steps["updatePasswordOpen"] = await $steps[
-                    "updatePasswordOpen"
-                  ];
+                  $steps["updatePasswordOpen"] =
+                    await $steps["updatePasswordOpen"];
                 }
               }}
             >
@@ -4108,9 +4066,7 @@ function PlasmicHeader__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
         hideFooter={true}
         maskClosable={true}
@@ -4570,7 +4526,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHeader__VariantsArgs;
     args?: PlasmicHeader__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicHeader__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicHeader__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicHeader__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

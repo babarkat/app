@@ -66,8 +66,6 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { DialogClose } from "@plasmicpkgs/radix-ui";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -331,10 +329,6 @@ function PlasmicDialog__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <Dialog
@@ -348,8 +342,6 @@ function PlasmicDialog__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.dialog,
         {
           [sty.dialogfullScreen]: hasVariant(
@@ -394,9 +386,7 @@ function PlasmicDialog__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components
+        styleTokensClassNames
       )}
       triggerSlot={null}
     >
@@ -445,9 +435,7 @@ function PlasmicDialog__RenderFunc(props: {
           projectcss.root_reset,
           projectcss.plasmic_default_styles,
           projectcss.plasmic_mixins,
-          styleTokensClassNames,
-          styleTokensClassNames_antd_5_hostless,
-          styleTokensClassNames_plasmic_rich_components
+          styleTokensClassNames
         )}
       >
         <div
@@ -784,9 +772,8 @@ function PlasmicDialog__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
               }}
               onLoadingviowChange={async (...eventArgs: any) => {
@@ -942,7 +929,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicDialog__VariantsArgs;
     args?: PlasmicDialog__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicDialog__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicDialog__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicDialog__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

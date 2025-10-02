@@ -64,8 +64,6 @@ import { BaseText } from "@plasmicpkgs/react-aria/skinny/registerText";
 import { BaseText as BaseText2 } from "@plasmicpkgs/react-aria/skinny/registerText";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -149,10 +147,6 @@ function PlasmicMenuItem__RenderFunc(props: {
   const currentUser = useCurrentUser?.() || {};
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   const [$ccVariants, setDollarCcVariants] = React.useState<
     Record<string, boolean>
@@ -188,8 +182,6 @@ function PlasmicMenuItem__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.root
       )}
       id={args.value}
@@ -289,7 +281,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicMenuItem__VariantsArgs;
     args?: PlasmicMenuItem__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicMenuItem__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicMenuItem__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicMenuItem__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

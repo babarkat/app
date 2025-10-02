@@ -61,8 +61,6 @@ import {
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -193,10 +191,6 @@ function PlasmicTransaction2__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <div
@@ -210,8 +204,6 @@ function PlasmicTransaction2__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        styleTokensClassNames_antd_5_hostless,
-        styleTokensClassNames_plasmic_rich_components,
         sty.root,
         {
           [sty.rootfiled]: hasVariant($state, "filed", "filed"),
@@ -273,14 +265,14 @@ function PlasmicTransaction2__RenderFunc(props: {
             hasVariant($state, "unnamedGroupOfVariants", "pubg")
               ? Icon70Icon
               : hasVariant($state, "unnamedGroupOfVariants", "snap")
-              ? Icon58Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "panel")
-              ? Icon14Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "walet")
-              ? SvgRepoIconCarrier4Icon
-              : hasVariant($state, "unnamedGroupOfVariants", "intenet")
-              ? SvgRepoIconCarrier3Icon
-              : SvgRepoIconCarrier2Icon
+                ? Icon58Icon
+                : hasVariant($state, "unnamedGroupOfVariants", "panel")
+                  ? Icon14Icon
+                  : hasVariant($state, "unnamedGroupOfVariants", "walet")
+                    ? SvgRepoIconCarrier4Icon
+                    : hasVariant($state, "unnamedGroupOfVariants", "intenet")
+                      ? SvgRepoIconCarrier3Icon
+                      : SvgRepoIconCarrier2Icon
           }
           className={classNames(projectcss.all, sty.svg, {
             [sty.svgfiled]: hasVariant($state, "filed", "filed"),
@@ -555,7 +547,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransaction2__VariantsArgs;
     args?: PlasmicTransaction2__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransaction2__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransaction2__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransaction2__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

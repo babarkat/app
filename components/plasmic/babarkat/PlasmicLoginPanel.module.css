@@ -7,7 +7,9 @@
   justify-items: center;
   justify-content: flex-start;
   align-items: center;
-  background: #1e2c39;
+  background:
+    url("/plasmic/babarkat/images/image83.svg") top 50% left 50% / 100% 100% repeat,
+    #1e2c39;
   overflow: auto;
   position: relative;
   min-width: 0;

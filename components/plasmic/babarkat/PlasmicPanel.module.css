@@ -22,7 +22,7 @@
   padding-left: 0;
   padding-right: 0;
   height: 100%;
-  padding-top: 75px;
+  padding-top: 80px;
   grid-row-gap: 16px;
   min-width: 0;
   min-height: 0;
@@ -41,6 +41,18 @@
   .section__sLlng > * {
     grid-column: 4;
   }
+}
+.sectionpage_users__sLlngGxQj4 {
+  display: none;
+}
+.sectionpage_users__sLlngGxQj4 > * {
+  grid-column: 4;
+}
+.sectionnewUser__sLlngnV6If {
+  display: none;
+}
+.sectionnewUser__sLlngnV6If > * {
+  grid-column: 4;
 }
 .main {
   display: flex;
@@ -233,7 +245,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__aCuPr {
     font-size: 16px;
-    color: var(--token-xZA8BugQdZGY);
+    color: var(--token-arm2L2XW_xJ6);
     font-weight: 700;
   }
 }
@@ -2113,6 +2125,18 @@
 .section__cwGyG > * {
   grid-column: 4;
 }
+.sectionpage_users__cwGyGGxQj4 {
+  display: none;
+}
+.sectionpage_users__cwGyGGxQj4 > * {
+  grid-column: 4;
+}
+.sectionnewUser__cwGyGnV6If {
+  display: none;
+}
+.sectionnewUser__cwGyGnV6If > * {
+  grid-column: 4;
+}
 .header2:global(.__wab_instance) {
   max-width: 100%;
 }
@@ -2866,6 +2890,18 @@
 .section__cZeqE > * {
   grid-column: 4;
 }
+.sectionpage_users__cZeqEGxQj4 {
+  display: none;
+}
+.sectionpage_users__cZeqEGxQj4 > * {
+  grid-column: 4;
+}
+.sectionnewUser__cZeqEnV6If {
+  display: none;
+}
+.sectionnewUser__cZeqEnV6If > * {
+  grid-column: 4;
+}
 .freeBox__hd8Kc {
   display: flex;
   flex-direction: row;
@@ -2948,4 +2984,49 @@
   padding-bottom: 0px;
   color: var(--token-s7Z9BN_B1gNc);
   min-width: 0;
+}
+.reveal___48Gkn:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  min-width: 0;
+  display: none;
+}
+.revealpage_users___48GknGxQj4:global(.__wab_instance) {
+  display: flex;
+}
+.customerComponnet:global(.__wab_instance) {
+  max-width: 100%;
+  display: none;
+}
+.customerComponnetpage_users:global(.__wab_instance) {
+  display: grid;
+}
+.customerComponnetnewUser:global(.__wab_instance) {
+  display: none;
+}
+.backHandler__hcwbg:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.reveal__kvBt0:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  width: 100%;
+  min-width: 0;
+  display: none;
+}
+.revealnewUser__kvBt0NV6If:global(.__wab_instance) {
+  display: flex;
+}
+.customerAddComponnet:global(.__wab_instance) {
+  max-width: 100%;
+  display: none;
+}
+.customerAddComponnetnewUser:global(.__wab_instance) {
+  display: grid;
+}
+.backHandler__mKaYs:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
 }

@@ -64,8 +64,6 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -191,10 +189,6 @@ function PlasmicNewPage__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -218,8 +212,6 @@ function PlasmicNewPage__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root
           )}
         >
@@ -243,18 +235,16 @@ function PlasmicNewPage__RenderFunc(props: {
                             $state.cards.unshift(lastCard);
                             for (let i = 0; i < $state.cards.length; i++) {
                               $state.cards[i].zIndex = $state.cards.length - i;
-                              __plasmic_ret = $state.cards[i].width = `${
-                                100 - i * 5
-                              }%`;
+                              __plasmic_ret = $state.cards[i].width =
+                                `${100 - i * 5}%`;
                             }
                           } else if ($state.startY < event.clientY) {
                             const firstCard = $state.cards.shift();
                             $state.cards.push(firstCard);
                             for (let i = 0; i < $state.cards.length; i++) {
                               $state.cards[i].zIndex = $state.cards.length - i;
-                              __plasmic_ret = $state.cards[i].width = `${
-                                100 - i * 5
-                              }%`;
+                              __plasmic_ret = $state.cards[i].width =
+                                `${100 - i * 5}%`;
                             }
                           }
                           return __plasmic_ret;
@@ -413,7 +403,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicNewPage__VariantsArgs;
     args?: PlasmicNewPage__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicNewPage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicNewPage__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicNewPage__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

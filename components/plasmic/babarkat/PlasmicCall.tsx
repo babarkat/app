@@ -78,8 +78,6 @@ import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_antd_5_hostless } from "../antd_5_hostless/PlasmicStyleTokensProvider"; // plasmic-import: ohDidvG9XsCeFumugENU3J/styleTokensProvider
-import { _useStyleTokens as useStyleTokens_plasmic_rich_components } from "../plasmic_rich_components/PlasmicStyleTokensProvider"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -524,10 +522,10 @@ function PlasmicCall__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? false
             : hasVariant($state, "steps2", "step2")
-            ? false
-            : hasVariant(globalVariants, "screen", "mobileOnly")
-            ? false
-            : false
+              ? false
+              : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? false
+                : false
       },
       {
         path: "userinfo",
@@ -723,10 +721,6 @@ function PlasmicCall__RenderFunc(props: {
   });
 
   const styleTokensClassNames = _useStyleTokens();
-  const styleTokensClassNames_antd_5_hostless =
-    useStyleTokens_antd_5_hostless();
-  const styleTokensClassNames_plasmic_rich_components =
-    useStyleTokens_plasmic_rich_components();
 
   return (
     <React.Fragment>
@@ -763,8 +757,6 @@ function PlasmicCall__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             styleTokensClassNames,
-            styleTokensClassNames_antd_5_hostless,
-            styleTokensClassNames_plasmic_rich_components,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
               ? "page"
@@ -971,8 +963,8 @@ function PlasmicCall__RenderFunc(props: {
                         hasVariant($state, "steps2", "step3")
                           ? CheckCircleSvgrepoComSvgIcon
                           : hasVariant($state, "steps2", "step2")
-                          ? CheckCircleSvgrepoComSvgIcon
-                          : RadioButtonCheckedSvgrepoCom2SvgIcon
+                            ? CheckCircleSvgrepoComSvgIcon
+                            : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
                       className={classNames(projectcss.all, sty.selected, {
                         [sty.selectedsteps2_step2]: hasVariant(
@@ -1925,20 +1917,20 @@ function PlasmicCall__RenderFunc(props: {
                 hasVariant($state, "steps2", "step3")
                   ? true
                   : hasVariant($state, "steps2", "step2")
-                  ? true
-                  : (() => {
-                      try {
-                        return $state.operatorselect >= 0;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
+                    ? true
+                    : (() => {
+                        try {
+                          return $state.operatorselect >= 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
                         }
-                        throw e;
-                      }
-                    })()
+                      })()
               ) ? (
                 <div
                   className={classNames(projectcss.all, sty.freeBox__wcwMa, {
@@ -2489,8 +2481,8 @@ function PlasmicCall__RenderFunc(props: {
                                     !_par
                                       ? []
                                       : Array.isArray(_par)
-                                      ? _par
-                                      : [_par])(
+                                        ? _par
+                                        : [_par])(
                                     (() => {
                                       try {
                                         return currentItem.plans;
@@ -2951,9 +2943,8 @@ function PlasmicCall__RenderFunc(props: {
                     typeof $steps["updateInternetPack"] === "object" &&
                     typeof $steps["updateInternetPack"].then === "function"
                   ) {
-                    $steps["updateInternetPack"] = await $steps[
-                      "updateInternetPack"
-                    ];
+                    $steps["updateInternetPack"] =
+                      await $steps["updateInternetPack"];
                   }
                 }).apply(null, eventArgs);
               }}
@@ -3096,9 +3087,8 @@ function PlasmicCall__RenderFunc(props: {
                     typeof $steps["invokeGlobalAction"] === "object" &&
                     typeof $steps["invokeGlobalAction"].then === "function"
                   ) {
-                    $steps["invokeGlobalAction"] = await $steps[
-                      "invokeGlobalAction"
-                    ];
+                    $steps["invokeGlobalAction"] =
+                      await $steps["invokeGlobalAction"];
                   }
                 }}
                 onLoadingviowChange={async (...eventArgs: any) => {
@@ -3336,9 +3326,7 @@ function PlasmicCall__RenderFunc(props: {
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               )}
               hideFooter={true}
               modalContentClassName={classNames({
@@ -3531,9 +3519,8 @@ function PlasmicCall__RenderFunc(props: {
                       typeof $steps["updateModalOpen"] === "object" &&
                       typeof $steps["updateModalOpen"].then === "function"
                     ) {
-                      $steps["updateModalOpen"] = await $steps[
-                        "updateModalOpen"
-                      ];
+                      $steps["updateModalOpen"] =
+                        await $steps["updateModalOpen"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -3691,9 +3678,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction2"] === "object" &&
                         typeof $steps["invokeGlobalAction2"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction2"] = await $steps[
-                          "invokeGlobalAction2"
-                        ];
+                        $steps["invokeGlobalAction2"] =
+                          await $steps["invokeGlobalAction2"];
                       }
 
                       $steps["invokeGlobalAction4"] =
@@ -3746,9 +3732,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction4"] === "object" &&
                         typeof $steps["invokeGlobalAction4"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction4"] = await $steps[
-                          "invokeGlobalAction4"
-                        ];
+                        $steps["invokeGlobalAction4"] =
+                          await $steps["invokeGlobalAction4"];
                       }
 
                       $steps["updatePardakhtid"] = $steps.invokeGlobalAction4
@@ -3783,9 +3768,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["updatePardakhtid"] === "object" &&
                         typeof $steps["updatePardakhtid"].then === "function"
                       ) {
-                        $steps["updatePardakhtid"] = await $steps[
-                          "updatePardakhtid"
-                        ];
+                        $steps["updatePardakhtid"] =
+                          await $steps["updatePardakhtid"];
                       }
 
                       $steps["invokeGlobalAction"] =
@@ -3835,9 +3819,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
 
                       $steps["updateInfopardakt"] = (
@@ -3873,9 +3856,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["updateInfopardakt"] === "object" &&
                         typeof $steps["updateInfopardakt"].then === "function"
                       ) {
-                        $steps["updateInfopardakt"] = await $steps[
-                          "updateInfopardakt"
-                        ];
+                        $steps["updateInfopardakt"] =
+                          await $steps["updateInfopardakt"];
                       }
 
                       $steps["invokeGlobalAction5"] =
@@ -3919,9 +3901,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction5"] === "object" &&
                         typeof $steps["invokeGlobalAction5"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction5"] = await $steps[
-                          "invokeGlobalAction5"
-                        ];
+                        $steps["invokeGlobalAction5"] =
+                          await $steps["invokeGlobalAction5"];
                       }
 
                       $steps["updateModal3Open"] = (
@@ -3959,9 +3940,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["updateModal3Open"] === "object" &&
                         typeof $steps["updateModal3Open"].then === "function"
                       ) {
-                        $steps["updateModal3Open"] = await $steps[
-                          "updateModal3Open"
-                        ];
+                        $steps["updateModal3Open"] =
+                          await $steps["updateModal3Open"];
                       }
 
                       $steps["invokeGlobalAction3"] = (
@@ -4004,9 +3984,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction3"] === "object" &&
                         typeof $steps["invokeGlobalAction3"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction3"] = await $steps[
-                          "invokeGlobalAction3"
-                        ];
+                        $steps["invokeGlobalAction3"] =
+                          await $steps["invokeGlobalAction3"];
                       }
 
                       $steps["updateError"] =
@@ -4087,9 +4066,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction6"] === "object" &&
                         typeof $steps["invokeGlobalAction6"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction6"] = await $steps[
-                          "invokeGlobalAction6"
-                        ];
+                        $steps["invokeGlobalAction6"] =
+                          await $steps["invokeGlobalAction6"];
                       }
 
                       $steps["updateDisable2"] = true
@@ -4123,9 +4101,8 @@ function PlasmicCall__RenderFunc(props: {
                         typeof $steps["updateDisable2"] === "object" &&
                         typeof $steps["updateDisable2"].then === "function"
                       ) {
-                        $steps["updateDisable2"] = await $steps[
-                          "updateDisable2"
-                        ];
+                        $steps["updateDisable2"] =
+                          await $steps["updateDisable2"];
                       }
                     }}
                   >
@@ -4328,9 +4305,7 @@ function PlasmicCall__RenderFunc(props: {
                 projectcss.root_reset,
                 projectcss.plasmic_default_styles,
                 projectcss.plasmic_mixins,
-                styleTokensClassNames,
-                styleTokensClassNames_antd_5_hostless,
-                styleTokensClassNames_plasmic_rich_components
+                styleTokensClassNames
               )}
               hideFooter={true}
               modalContentClassName={classNames({
@@ -5301,7 +5276,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicCall__VariantsArgs;
     args?: PlasmicCall__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicCall__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicCall__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicCall__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

@@ -15,7 +15,7 @@ import { _useGlobalVariants } from "./plasmic"; // plasmic-import: xfguyo8p9zs8F
 import projectcss from "./plasmic.module.css"; // plasmic-import: xfguyo8p9zs8FxMdioQAoN/projectcss
 
 const data = {
-  base: projectcss.plasmic_tokens,
+  base: `${projectcss.plasmic_tokens}`,
   varianted: []
 };
 
