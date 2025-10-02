@@ -657,14 +657,7 @@ function PlasmicPanel__RenderFunc(props: {
                             sessionStorage.getItem("userbabarcatToken")
                           );
                           if (item == null) {
-                            return window.open("/login");
-                          } else {
-                            const currentTime = new Date().getTime();
-                            if (currentTime > item.expiration) {
-                              return sessionStorage.removeItem(
-                                "userbabarcatToken"
-                              );
-                            }
+                            return window.open("/login-panel");
                           }
                         })();
                       }
