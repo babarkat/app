@@ -64,6 +64,7 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K1
 import { AntdPopover } from "@plasmicpkgs/antd5/skinny/registerPopover";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
+import { BackHandler } from "@/components/BackHandler"; // plasmic-import: eisuy4UCB7xD/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
 
@@ -93,11 +94,13 @@ export const PlasmicCustomerComponnet__VariantProps =
 export type PlasmicCustomerComponnet__ArgsType = {
   back?: () => void;
   openNew?: () => void;
+  active?: boolean;
 };
 type ArgPropType = keyof PlasmicCustomerComponnet__ArgsType;
 export const PlasmicCustomerComponnet__ArgProps = new Array<ArgPropType>(
   "back",
-  "openNew"
+  "openNew",
+  "active"
 );
 
 export type PlasmicCustomerComponnet__OverridesType = {
@@ -116,11 +119,13 @@ export type PlasmicCustomerComponnet__OverridesType = {
   exitModal?: Flex__<typeof AntdModal>;
   button6?: Flex__<typeof Button>;
   button7?: Flex__<typeof Button>;
+  backHandler?: Flex__<typeof BackHandler>;
 };
 
 export interface DefaultCustomerComponnetProps {
   back?: () => void;
   openNew?: () => void;
+  active?: boolean;
   className?: string;
 }
 
@@ -144,7 +149,9 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
   const args = React.useMemo(
     () =>
       Object.assign(
-        {},
+        {
+          active: true
+        },
         Object.fromEntries(
           Object.entries(props.args).filter(([_, v]) => v !== undefined)
         )
@@ -1717,6 +1724,36 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
           </Button>
         </div>
       </AntdModal>
+      <BackHandler
+        data-plasmic-name={"backHandler"}
+        data-plasmic-override={overrides.backHandler}
+        active={args.active}
+        className={classNames("__wab_instance", sty.backHandler)}
+        onBack={async () => {
+          const $steps = {};
+
+          $steps["runBack"] = true
+            ? (() => {
+                const actionArgs = { eventRef: $props["back"] };
+                return (({ eventRef, args }) => {
+                  return eventRef?.(...(args ?? []));
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runBack"] != null &&
+            typeof $steps["runBack"] === "object" &&
+            typeof $steps["runBack"].then === "function"
+          ) {
+            $steps["runBack"] = await $steps["runBack"];
+          }
+        }}
+      />
+
+      <div
+        className={classNames(projectcss.all, sty.freeBox___537YH)}
+        id={"click"}
+      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -1737,7 +1774,8 @@ const PlasmicDescendants = {
     "img",
     "exitModal",
     "button6",
-    "button7"
+    "button7",
+    "backHandler"
   ],
   sideEffect: ["sideEffect"],
   input: ["input"],
@@ -1752,7 +1790,8 @@ const PlasmicDescendants = {
   img: ["img"],
   exitModal: ["exitModal", "button6", "button7"],
   button6: ["button6"],
-  button7: ["button7"]
+  button7: ["button7"],
+  backHandler: ["backHandler"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1773,6 +1812,7 @@ type NodeDefaultElementType = {
   exitModal: typeof AntdModal;
   button6: typeof Button;
   button7: typeof Button;
+  backHandler: typeof BackHandler;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1851,6 +1891,7 @@ export const PlasmicCustomerComponnet = Object.assign(
     exitModal: makeNodeComponent("exitModal"),
     button6: makeNodeComponent("button6"),
     button7: makeNodeComponent("button7"),
+    backHandler: makeNodeComponent("backHandler"),
 
     // Metadata about props expected for PlasmicCustomerComponnet
     internalVariantProps: PlasmicCustomerComponnet__VariantProps,

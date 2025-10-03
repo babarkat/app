@@ -3010,10 +3010,6 @@
 .customerComponnetnewUser:global(.__wab_instance) {
   display: none;
 }
-.backHandler__hcwbg:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .reveal__kvBt0:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
@@ -3030,8 +3026,4 @@
 }
 .customerAddComponnetnewUser:global(.__wab_instance) {
   display: grid;
-}
-.backHandler__mKaYs:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
 }

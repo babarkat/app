@@ -72,7 +72,6 @@ import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import Header2 from "../../Header2"; // plasmic-import: vtwl99Nd1npi/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import CustomerComponnet from "../../CustomerComponnet"; // plasmic-import: uXx8PLeZeTQA/component
-import { BackHandler } from "@/components/BackHandler"; // plasmic-import: eisuy4UCB7xD/codeComponent
 import CustomerAddComponnet from "../../CustomerAddComponnet"; // plasmic-import: RKNsGINinP2W/component
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
@@ -767,6 +766,28 @@ function PlasmicPanel__RenderFunc(props: {
                 typeof $steps["updateLoading2"].then === "function"
               ) {
                 $steps["updateLoading2"] = await $steps["updateLoading2"];
+              }
+
+              $steps["runCode2"] = false
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return window.history.back();
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode2"] != null &&
+                typeof $steps["runCode2"] === "object" &&
+                typeof $steps["runCode2"].then === "function"
+              ) {
+                $steps["runCode2"] = await $steps["runCode2"];
               }
             }}
           />
@@ -13450,6 +13471,11 @@ function PlasmicPanel__RenderFunc(props: {
           </section>
           <Reveal
             className={classNames("__wab_instance", sty.reveal___48Gkn, {
+              [sty.revealnewUser___48GknnV6If]: hasVariant(
+                $state,
+                "newUser",
+                "newUser"
+              ),
               [sty.revealpage_users___48GknGxQj4]: hasVariant(
                 $state,
                 "page",
@@ -13464,6 +13490,19 @@ function PlasmicPanel__RenderFunc(props: {
             <CustomerComponnet
               data-plasmic-name={"customerComponnet"}
               data-plasmic-override={overrides.customerComponnet}
+              active={(() => {
+                try {
+                  return $state.page == "users" && !$state.newUser;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })()}
               back={async () => {
                 const $steps = {};
 
@@ -13490,6 +13529,31 @@ function PlasmicPanel__RenderFunc(props: {
                   typeof $steps["updatePage"].then === "function"
                 ) {
                   $steps["updatePage"] = await $steps["updatePage"];
+                }
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            const el = window.document.getElementById("click");
+                            if (el) {
+                              return el.click();
+                            }
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
                 }
               }}
               className={classNames("__wab_instance", sty.customerComponnet, {
@@ -13529,53 +13593,6 @@ function PlasmicPanel__RenderFunc(props: {
                 }
               }}
             />
-
-            <BackHandler
-              active={(() => {
-                try {
-                  return $state.page == "users";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return false;
-                  }
-                  throw e;
-                }
-              })()}
-              className={classNames("__wab_instance", sty.backHandler__hcwbg, {
-                [sty.backHandlernewUser__hcwbGnV6If]: hasVariant(
-                  $state,
-                  "newUser",
-                  "newUser"
-                )
-              })}
-              onBack={async () => {
-                const $steps = {};
-
-                $steps["updatePage"] = true
-                  ? (() => {
-                      const actionArgs = { vgroup: "page", operation: 1 };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
-                        }
-
-                        $stateSet($state, vgroup, undefined);
-                        return undefined;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updatePage"] != null &&
-                  typeof $steps["updatePage"] === "object" &&
-                  typeof $steps["updatePage"].then === "function"
-                ) {
-                  $steps["updatePage"] = await $steps["updatePage"];
-                }
-              }}
-            />
           </Reveal>
           <Reveal
             className={classNames("__wab_instance", sty.reveal__kvBt0, {
@@ -13591,6 +13608,19 @@ function PlasmicPanel__RenderFunc(props: {
             <CustomerAddComponnet
               data-plasmic-name={"customerAddComponnet"}
               data-plasmic-override={overrides.customerAddComponnet}
+              active={(() => {
+                try {
+                  return $state.newUser ? true : false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })()}
               back={async () => {
                 const $steps = {};
 
@@ -13614,6 +13644,105 @@ function PlasmicPanel__RenderFunc(props: {
                 ) {
                   $steps["updateNewUser"] = await $steps["updateNewUser"];
                 }
+
+                $steps["invokeGlobalAction"] = true
+                  ? (() => {
+                      const actionArgs = { args: [1000] };
+                      return $globalActions["Fragment.wait"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["invokeGlobalAction"] != null &&
+                  typeof $steps["invokeGlobalAction"] === "object" &&
+                  typeof $steps["invokeGlobalAction"].then === "function"
+                ) {
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
+                }
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            const el = window.document.getElementById("click");
+                            [
+                              "mouseover",
+                              "mousemove",
+                              "mousedown",
+                              "mouseup",
+                              "click"
+                            ].forEach(eventName => {
+                              el.addEventListener(eventName, e => {
+                                console.log(
+                                  "رویداد:",
+                                  eventName,
+                                  "در مختصات:",
+                                  e.clientX,
+                                  e.clientY
+                                );
+                              });
+                            });
+                            if (el) {
+                              const rect = el.getBoundingClientRect();
+                              const x = rect.left + rect.width / 2;
+                              const y = rect.top + rect.height / 2;
+                              el.dispatchEvent(
+                                new MouseEvent("mouseover", {
+                                  bubbles: true,
+                                  clientX: x,
+                                  clientY: y
+                                })
+                              );
+                              el.dispatchEvent(
+                                new MouseEvent("mousemove", {
+                                  bubbles: true,
+                                  clientX: x,
+                                  clientY: y
+                                })
+                              );
+                              el.dispatchEvent(
+                                new MouseEvent("mousedown", {
+                                  bubbles: true,
+                                  clientX: x,
+                                  clientY: y,
+                                  button: 0
+                                })
+                              );
+                              el.dispatchEvent(
+                                new MouseEvent("mouseup", {
+                                  bubbles: true,
+                                  clientX: x,
+                                  clientY: y,
+                                  button: 0
+                                })
+                              );
+                              return el.dispatchEvent(
+                                new MouseEvent("click", {
+                                  bubbles: true,
+                                  clientX: x,
+                                  clientY: y,
+                                  button: 0
+                                })
+                              );
+                            }
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
               }}
               className={classNames(
                 "__wab_instance",
@@ -13634,48 +13763,6 @@ function PlasmicPanel__RenderFunc(props: {
                     hasVariant($state, "page", "users")
                 }
               )}
-            />
-
-            <BackHandler
-              active={(() => {
-                try {
-                  return $state.newUser ? true : false;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return false;
-                  }
-                  throw e;
-                }
-              })()}
-              className={classNames("__wab_instance", sty.backHandler__mKaYs)}
-              onBack={async () => {
-                const $steps = {};
-
-                $steps["updateNewUser"] = true
-                  ? (() => {
-                      const actionArgs = { vgroup: "newUser", operation: 2 };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
-                        }
-
-                        const oldValue = $stateGet($state, vgroup);
-                        $stateSet($state, vgroup, !oldValue);
-                        return !oldValue;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateNewUser"] != null &&
-                  typeof $steps["updateNewUser"] === "object" &&
-                  typeof $steps["updateNewUser"].then === "function"
-                ) {
-                  $steps["updateNewUser"] = await $steps["updateNewUser"];
-                }
-              }}
             />
           </Reveal>
         </div>
