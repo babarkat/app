@@ -6,7 +6,7 @@ import GlobalContextsProvider from "../../../components/plasmic/babarkat/Plasmic
 
 import { UnnamedGlobalGroupOfVariantsContextProvider } from "../../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
 import { UnnamedGlobalGroupOfVariants2ContextProvider } from "../../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
-import { PlasmicPanel } from "../../components/plasmic/babarkat/PlasmicPanel";
+import { PlasmicPanel } from "../../../components/plasmic/babarkat/PlasmicPanel";
 import { useRouter } from "next/router";
 
 function Panel() {
