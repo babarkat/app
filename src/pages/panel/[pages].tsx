@@ -2,10 +2,10 @@
 // This file is owned by you, feel free to edit as you see fit.
 import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
-import GlobalContextsProvider from "../../components/plasmic/babarkat/PlasmicGlobalContextsProvider";
+import GlobalContextsProvider from "../../../components/plasmic/babarkat/PlasmicGlobalContextsProvider";
 
-import { UnnamedGlobalGroupOfVariantsContextProvider } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
-import { UnnamedGlobalGroupOfVariants2ContextProvider } from "../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
+import { UnnamedGlobalGroupOfVariantsContextProvider } from "../../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants";
+import { UnnamedGlobalGroupOfVariants2ContextProvider } from "../../../components/plasmic/babarkat/PlasmicGlobalVariant__UnnamedGlobalGroupOfVariants2";
 import { PlasmicPanel } from "../../components/plasmic/babarkat/PlasmicPanel";
 import { useRouter } from "next/router";
 
