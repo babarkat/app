@@ -223,7 +223,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .svg___6T7 {
     width: auto;
-    height: 150px;
+    height: 120px;
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -254,6 +254,11 @@
     height: 150px;
     width: 150px;
     flex-shrink: 0;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svggroup11_noSaraf___6T7HtLqd {
+    height: 100px;
   }
 }
 .img__pZ2Jh {
