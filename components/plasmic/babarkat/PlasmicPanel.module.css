@@ -352,6 +352,11 @@
   filter: contrast(56%) brightness(200%);
   min-width: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__zgMXh {
+    font-size: 12px;
+  }
+}
 .freeBox__texY {
   display: flex;
   flex-direction: row;
@@ -385,8 +390,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__bKoS {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     flex-shrink: 0;
   }
 }
@@ -421,8 +426,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__nWfgj {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     flex-shrink: 0;
   }
 }
@@ -458,8 +463,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__ppEZw {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     flex-shrink: 0;
   }
 }
@@ -2468,7 +2473,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  grid-row-gap: 16px;
+  grid-row-gap: 10px;
   grid-column-gap: 16px;
   min-width: 0;
   padding: 68px 8px 8px;
@@ -2497,14 +2502,15 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  column-gap: var(--token-LaEv2Dm1x3K9);
   min-width: 0;
   padding: 8px;
 }
 .svg__pDxq {
   object-fit: cover;
   max-width: 100%;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   color: var(--token-rrSDs4ZUYTcU);
   flex-shrink: 0;
 }
@@ -2514,13 +2520,13 @@
   max-width: 100%;
   text-align: center;
   color: var(--token-aCLVKlB2IKxe);
-  font-size: var(--token-7Z4I3VkEvKuO);
+  font-size: var(--token--3UT6C2Na0g9);
   font-weight: 700;
 }
 .text__p6Xos {
   position: relative;
   color: var(--token-aCLVKlB2IKxe);
-  font-size: 18px;
+  font-size: var(--token--3UT6C2Na0g9);
   text-align: center;
   max-width: 100%;
   height: auto;
@@ -2544,7 +2550,7 @@
 .text__zy4V {
   position: relative;
   color: var(--token-aCLVKlB2IKxe);
-  font-size: 18px;
+  font-size: var(--token--3UT6C2Na0g9);
   text-align: center;
   max-width: 100%;
   height: auto;
@@ -2554,7 +2560,7 @@
 .text___0G49D {
   position: relative;
   color: var(--token-aCLVKlB2IKxe);
-  font-size: 18px;
+  font-size: var(--token--3UT6C2Na0g9);
   text-align: center;
   max-width: 100%;
   height: auto;

@@ -557,6 +557,7 @@
     width: 100%;
     left: auto;
     top: auto;
+    padding-right: 16px;
     grid-column-start: 1 !important;
     grid-column-end: -1 !important;
   }
@@ -589,6 +590,13 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__j6NWb {
     color: #2dc57b;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    position: sticky;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: -25px;
   }
 }
 .freeBox__zobp1 {
