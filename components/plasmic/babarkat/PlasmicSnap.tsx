@@ -387,8 +387,7 @@ function PlasmicSnap__RenderFunc(props: {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "stepscharg", "step3") ? false : false
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
         path: "variable",
@@ -2404,6 +2403,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                           originId: $state.uuid + "",
                                           priceType: $state.shopModal.type,
                                           userToken: $state.token,
+                                          snap: {
+                                            user: $state.userinfo.last_name,
+                                            mobile: $state.userinfo.mobile,
+                                            amont: $state.amont
+                                          },
                                           buy: {
                                             text:
                                               "\nخرید شارژ اسنپ با موفقیت انجام شد.\uD83D\uDE95\n" +

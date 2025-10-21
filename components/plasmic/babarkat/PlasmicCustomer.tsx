@@ -1371,7 +1371,7 @@ function PlasmicCustomer__RenderFunc(props: {
 
                   $steps["goToPanel"] = true
                     ? (() => {
-                        const actionArgs = { destination: `/panel` };
+                        const actionArgs = { destination: `/panel/[pages]` };
                         return (({ destination }) => {
                           if (
                             typeof destination === "string" &&

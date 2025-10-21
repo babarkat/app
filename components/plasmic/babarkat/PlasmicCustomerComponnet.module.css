@@ -778,10 +778,6 @@
   width: auto;
   height: 1em;
 }
-.backHandler:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .freeBox___537YH {
   display: block;
   position: relative;

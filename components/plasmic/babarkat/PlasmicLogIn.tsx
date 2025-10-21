@@ -4321,28 +4321,28 @@ function PlasmicLogIn__RenderFunc(props: {
                         $steps["updateSaraf"] = await $steps["updateSaraf"];
                       }
 
-                      $steps["updateUnnamedVariant2"] = (
-                        $steps.invokeGlobalAction2?.data
+                      $steps["updateUnnamedVariant2"] =
+                        ($steps.invokeGlobalAction2?.data
                           ? $steps.invokeGlobalAction2?.data[0]?.success ===
                               true && $state.saraf.length != 0
-                          : false
-                      )
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "group11",
-                              operation: 0,
-                              value: "saraf"
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
+                          : false) &&
+                        $steps.invokeGlobalAction2?.data[0]?.hasSaraf == true
+                          ? (() => {
+                              const actionArgs = {
+                                vgroup: "group11",
+                                operation: 0,
+                                value: "saraf"
+                              };
+                              return (({ vgroup, value }) => {
+                                if (typeof value === "string") {
+                                  value = [value];
+                                }
 
-                              $stateSet($state, vgroup, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                                $stateSet($state, vgroup, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
                       if (
                         $steps["updateUnnamedVariant2"] != null &&
                         typeof $steps["updateUnnamedVariant2"] === "object" &&
@@ -4351,6 +4351,32 @@ function PlasmicLogIn__RenderFunc(props: {
                       ) {
                         $steps["updateUnnamedVariant2"] =
                           await $steps["updateUnnamedVariant2"];
+                      }
+
+                      $steps["updateGroup11"] =
+                        $steps.invokeGlobalAction2?.data[0]?.hasSaraf == false
+                          ? (() => {
+                              const actionArgs = {
+                                vgroup: "group11",
+                                operation: 0,
+                                value: "noSaraf"
+                              };
+                              return (({ vgroup, value }) => {
+                                if (typeof value === "string") {
+                                  value = [value];
+                                }
+
+                                $stateSet($state, vgroup, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updateGroup11"] != null &&
+                        typeof $steps["updateGroup11"] === "object" &&
+                        typeof $steps["updateGroup11"].then === "function"
+                      ) {
+                        $steps["updateGroup11"] = await $steps["updateGroup11"];
                       }
 
                       $steps["updateLoadedbtn2"] = true

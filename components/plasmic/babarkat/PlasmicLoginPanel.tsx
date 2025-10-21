@@ -879,7 +879,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             localStorage.getItem("userbabarcat") != null &&
             sessionStorage.getItem("userbabarcatToken") != null
               ? (() => {
-                  const actionArgs = { destination: `/panel` };
+                  const actionArgs = { destination: `/panel/[pages]` };
                   return (({ destination }) => {
                     if (
                       typeof destination === "string" &&
@@ -4977,7 +4977,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     $steps["goToPanel"] =
                       $steps.invokeGlobalAction2?.data?.success === true
                         ? (() => {
-                            const actionArgs = { destination: `/panel` };
+                            const actionArgs = {
+                              destination: `/panel/[pages]`
+                            };
                             return (({ destination }) => {
                               if (
                                 typeof destination === "string" &&
@@ -6021,7 +6023,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       $steps["goToPanel"] =
                         $steps.invokeGlobalAction2?.data?.success == true
                           ? (() => {
-                              const actionArgs = { destination: `/panel` };
+                              const actionArgs = {
+                                destination: `/panel/[pages]`
+                              };
                               return (({ destination }) => {
                                 if (
                                   typeof destination === "string" &&
@@ -7015,7 +7019,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 localStorage.getItem("userbabarcat") != null &&
                 sessionStorage.getItem("userbabarcatToken") != null
                   ? (() => {
-                      const actionArgs = { destination: `/panel` };
+                      const actionArgs = { destination: `/panel/[pages]` };
                       return (({ destination }) => {
                         if (
                           typeof destination === "string" &&

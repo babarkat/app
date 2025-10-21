@@ -66,7 +66,6 @@ import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
-import { BackHandler } from "@/components/BackHandler"; // plasmic-import: eisuy4UCB7xD/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
 
@@ -126,7 +125,6 @@ export type PlasmicCustomerAddComponnet__OverridesType = {
   info2?: Flex__<typeof TextArea>;
   button4?: Flex__<typeof Button>;
   sideEffect?: Flex__<typeof SideEffect>;
-  backHandler?: Flex__<typeof BackHandler>;
 };
 
 export interface DefaultCustomerAddComponnetProps {
@@ -1670,32 +1668,6 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
           }
         }}
       />
-
-      <BackHandler
-        data-plasmic-name={"backHandler"}
-        data-plasmic-override={overrides.backHandler}
-        active={args.active}
-        className={classNames("__wab_instance", sty.backHandler)}
-        onBack={async () => {
-          const $steps = {};
-
-          $steps["runBack"] = true
-            ? (() => {
-                const actionArgs = { eventRef: $props["back"] };
-                return (({ eventRef, args }) => {
-                  return eventRef?.(...(args ?? []));
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["runBack"] != null &&
-            typeof $steps["runBack"] === "object" &&
-            typeof $steps["runBack"].then === "function"
-          ) {
-            $steps["runBack"] = await $steps["runBack"];
-          }
-        }}
-      />
     </div>
   ) as React.ReactElement | null;
 }
@@ -1721,8 +1693,7 @@ const PlasmicDescendants = {
     "select2",
     "info2",
     "button4",
-    "sideEffect",
-    "backHandler"
+    "sideEffect"
   ],
   name: ["name"],
   lastname: ["lastname"],
@@ -1742,8 +1713,7 @@ const PlasmicDescendants = {
   select2: ["select2"],
   info2: ["info2"],
   button4: ["button4"],
-  sideEffect: ["sideEffect"],
-  backHandler: ["backHandler"]
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1769,7 +1739,6 @@ type NodeDefaultElementType = {
   info2: typeof TextArea;
   button4: typeof Button;
   sideEffect: typeof SideEffect;
-  backHandler: typeof BackHandler;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1853,7 +1822,6 @@ export const PlasmicCustomerAddComponnet = Object.assign(
     info2: makeNodeComponent("info2"),
     button4: makeNodeComponent("button4"),
     sideEffect: makeNodeComponent("sideEffect"),
-    backHandler: makeNodeComponent("backHandler"),
 
     // Metadata about props expected for PlasmicCustomerAddComponnet
     internalVariantProps: PlasmicCustomerAddComponnet__VariantProps,

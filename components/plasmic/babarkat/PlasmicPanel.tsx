@@ -100,7 +100,7 @@ import HomeIcon from "./icons/PlasmicIcon__Home"; // plasmic-import: fgZ7Egzk3oz
 import ReceiptIcon from "./icons/PlasmicIcon__Receipt"; // plasmic-import: w-6fhMSwiFWW/icon
 import Icon78Icon from "./icons/PlasmicIcon__Icon78"; // plasmic-import: Yub8sXrIQi2p/icon
 import Icon89Icon from "./icons/PlasmicIcon__Icon89"; // plasmic-import: 1mHusOdupjsZ/icon
-import Icon135Icon from "./icons/PlasmicIcon__Icon135"; // plasmic-import: HZ0SmpwAeiAF/icon
+import Icon116Icon from "./icons/PlasmicIcon__Icon116"; // plasmic-import: 7m6l-uNDSK55/icon
 import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
@@ -109,16 +109,16 @@ createPlasmicElementProxy;
 
 export type PlasmicPanel__VariantMembers = {
   page: "users";
-  newUser: "newUser";
+  addUser: "addUser";
 };
 export type PlasmicPanel__VariantsArgs = {
   page?: SingleChoiceArg<"users">;
-  newUser?: SingleBooleanChoiceArg<"newUser">;
+  addUser?: SingleBooleanChoiceArg<"addUser">;
 };
 type VariantPropType = keyof PlasmicPanel__VariantsArgs;
 export const PlasmicPanel__VariantProps = new Array<VariantPropType>(
   "page",
-  "newUser"
+  "addUser"
 );
 
 export type PlasmicPanel__ArgsType = {};
@@ -402,34 +402,42 @@ function PlasmicPanel__RenderFunc(props: {
           {
             id: "toman",
             name: "\u062a\u0648\u0645\u0627\u0646",
+            enName: "Iranian Toman",
+            symbol: "IRR",
             color: "#2DC57B",
             width: "100%",
             zIndex: 4,
-            transform: "translateY(0px) "
+            transform: "translateY(0px)"
           },
           {
             id: "lira",
             name: "\u0644\u06cc\u0631",
+            enName: "Turkish Lira",
+            symbol: "TRY",
             color: "#a31ec8",
             width: "95%",
             zIndex: 3,
-            transform: "translateY(-15px) "
+            transform: "translateY(-15px)"
           },
           {
             id: "afghani",
             name: "\u0627\u0641\u063a\u0627\u0646\u06cc",
+            enName: "Afghan Afghani",
+            symbol: "AFN",
             color: "#C9A92B",
             width: "95%",
             zIndex: 3,
-            transform: "translateY(-15px) "
+            transform: "translateY(-15px)"
           },
           {
             id: "dollar",
             name: "\u062f\u0644\u0627\u0631",
+            enName: "US Dollar",
+            symbol: "USD",
             color: "#3574BF",
             width: "90%",
             zIndex: 2,
-            transform: "translateY(-15px) "
+            transform: "translateY(-15px)"
           }
         ]
       },
@@ -543,13 +551,39 @@ function PlasmicPanel__RenderFunc(props: {
         path: "page",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.page
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $ctx.params.pages;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })() ?? $props.page
       },
       {
-        path: "newUser",
+        path: "addUser",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.newUser
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $ctx.params.pages == "addUser";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })() ?? $props.addUser
       }
     ],
     [$props, $ctx, $refs]
@@ -603,6 +637,7 @@ function PlasmicPanel__RenderFunc(props: {
               ? "page"
               : "page",
             {
+              [sty.rootaddUser]: hasVariant($state, "addUser", "addUser"),
               [sty.rootglobal_experiment_override]: hasVariant(
                 globalVariants,
                 "experiment",
@@ -633,11 +668,10 @@ function PlasmicPanel__RenderFunc(props: {
                   "unnamedGlobalGroupOfVariants",
                   "unnamedVariant"
                 ),
-              [sty.rootnewUser]: hasVariant($state, "newUser", "newUser"),
               [sty.rootpage_users]: hasVariant($state, "page", "users"),
-              [sty.rootpage_users_newUser]:
+              [sty.rootpage_users_addUser]:
                 hasVariant($state, "page", "users") &&
-                hasVariant($state, "newUser", "newUser")
+                hasVariant($state, "addUser", "addUser")
             }
           )}
         >
@@ -794,10 +828,10 @@ function PlasmicPanel__RenderFunc(props: {
 
           <section
             className={classNames(projectcss.all, sty.section__sLlng, {
-              [sty.sectionnewUser__sLlngnV6If]: hasVariant(
+              [sty.sectionaddUser__sLlngnV6If]: hasVariant(
                 $state,
-                "newUser",
-                "newUser"
+                "addUser",
+                "addUser"
               ),
               [sty.sectionpage_users__sLlngGxQj4]: hasVariant(
                 $state,
@@ -823,7 +857,7 @@ function PlasmicPanel__RenderFunc(props: {
                 data-plasmic-name={"main"}
                 data-plasmic-override={overrides.main}
                 className={classNames(projectcss.all, sty.main, {
-                  [sty.mainnewUser]: hasVariant($state, "newUser", "newUser"),
+                  [sty.mainaddUser]: hasVariant($state, "addUser", "addUser"),
                   [sty.mainpage_users]: hasVariant($state, "page", "users")
                 })}
               >
@@ -1193,29 +1227,31 @@ function PlasmicPanel__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["updatePage"] = true
+                    $steps["goToPanel"] = true
                       ? (() => {
                           const actionArgs = {
-                            vgroup: "page",
-                            operation: 0,
-                            value: "users"
+                            destination: `/panel/${"users"}`
                           };
-                          return (({ vgroup, value }) => {
-                            if (typeof value === "string") {
-                              value = [value];
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
                             }
-
-                            $stateSet($state, vgroup, value);
-                            return value;
                           })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["updatePage"] != null &&
-                      typeof $steps["updatePage"] === "object" &&
-                      typeof $steps["updatePage"].then === "function"
+                      $steps["goToPanel"] != null &&
+                      typeof $steps["goToPanel"] === "object" &&
+                      typeof $steps["goToPanel"].then === "function"
                     ) {
-                      $steps["updatePage"] = await $steps["updatePage"];
+                      $steps["goToPanel"] = await $steps["goToPanel"];
                     }
                   }}
                   onLoadingviowChange={async (...eventArgs: any) => {
@@ -12699,10 +12735,10 @@ function PlasmicPanel__RenderFunc(props: {
           </AntdModal>
           <section
             className={classNames(projectcss.all, sty.section__cwGyG, {
-              [sty.sectionnewUser__cwGyGnV6If]: hasVariant(
+              [sty.sectionaddUser__cwGyGnV6If]: hasVariant(
                 $state,
-                "newUser",
-                "newUser"
+                "addUser",
+                "addUser"
               ),
               [sty.sectionpage_users__cwGyGGxQj4]: hasVariant(
                 $state,
@@ -12867,7 +12903,9 @@ function PlasmicPanel__RenderFunc(props: {
                     sty.text__jnc5W
                   )}
                 >
-                  {"\u06a9\u0627\u0631\u0645\u0632\u062f \u0647\u0627"}
+                  {
+                    "\u062c\u0632\u0626\u06cc\u0627\u062a \u06a9\u0627\u0631\u0645\u0632\u062f "
+                  }
                 </div>
               </div>
               <Icon89Icon
@@ -12914,6 +12952,64 @@ function PlasmicPanel__RenderFunc(props: {
               />
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__dfwvu)}>
+              <div className={classNames(projectcss.all, sty.freeBox___5YpL)}>
+                <div className={classNames(projectcss.all, sty.freeBox__gWmoU)}>
+                  <Icon116Icon
+                    className={classNames(projectcss.all, sty.svg__pDxq)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__vq1Q
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return `کارمزد اپلیکیشن `;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__p6Xos
+                  )}
+                >
+                  <div
+                    className={projectcss.__wab_expr_html_text}
+                    dangerouslySetInnerHTML={{
+                      __html: (() => {
+                        try {
+                          return `<span style="color: #A7F3D0; font-weight: bold;">${($state.profile.data.appCommission * 1000).toLocaleString()} تومان</span>`;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()
+                    }}
+                  />
+                </div>
+              </div>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -12939,25 +13035,16 @@ function PlasmicPanel__RenderFunc(props: {
                     <div
                       className={classNames(
                         projectcss.all,
-                        sty.freeBox___2Kqej
+                        projectcss.__wab_text,
+                        sty.text__zy4V
                       )}
                     >
-                      <Icon135Icon
-                        className={classNames(projectcss.all, sty.svg__pDxq)}
-                        role={"img"}
-                      />
-
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vq1Q
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
+                        className={projectcss.__wab_expr_html_text}
+                        dangerouslySetInnerHTML={{
+                          __html: (() => {
                             try {
-                              return `کارمزد دریافتی `;
+                              return `  ${currentItem.name} <span style="font-size:0.8em; color:#64748b;">(${currentItem.symbol})</span>`;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -12967,9 +13054,9 @@ function PlasmicPanel__RenderFunc(props: {
                               }
                               throw e;
                             }
-                          })()}
-                        </React.Fragment>
-                      </div>
+                          })()
+                        }}
+                      />
                     </div>
                     <div
                       className={classNames(
@@ -12983,7 +13070,7 @@ function PlasmicPanel__RenderFunc(props: {
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
-                              return `<span style="color: #A7F3D0; font-weight: bold;">${($state.profile.data[currentItem.id] * 1000).toLocaleString()}</span>  ${currentItem.name}`;
+                              return `<span style="color: #A7F3D0; font-weight: bold;">${($state.profile.data[currentItem.id] * 1000).toLocaleString()}</span>`;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -13352,10 +13439,10 @@ function PlasmicPanel__RenderFunc(props: {
           </AntdModal>
           <section
             className={classNames(projectcss.all, sty.section__cZeqE, {
-              [sty.sectionnewUser__cZeqEnV6If]: hasVariant(
+              [sty.sectionaddUser__cZeqEnV6If]: hasVariant(
                 $state,
-                "newUser",
-                "newUser"
+                "addUser",
+                "addUser"
               ),
               [sty.sectionpage_users__cZeqEGxQj4]: hasVariant(
                 $state,
@@ -13366,10 +13453,10 @@ function PlasmicPanel__RenderFunc(props: {
           >
             <div
               className={classNames(projectcss.all, sty.freeBox__hd8Kc, {
-                [sty.freeBoxnewUser__hd8KCnV6If]: hasVariant(
+                [sty.freeBoxaddUser__hd8KCnV6If]: hasVariant(
                   $state,
-                  "newUser",
-                  "newUser"
+                  "addUser",
+                  "addUser"
                 ),
                 [sty.freeBoxpage_users__hd8KcGxQj4]: hasVariant(
                   $state,
@@ -13471,10 +13558,10 @@ function PlasmicPanel__RenderFunc(props: {
           </section>
           <Reveal
             className={classNames("__wab_instance", sty.reveal___48Gkn, {
-              [sty.revealnewUser___48GknnV6If]: hasVariant(
+              [sty.revealaddUser___48GknnV6If]: hasVariant(
                 $state,
-                "newUser",
-                "newUser"
+                "addUser",
+                "addUser"
               ),
               [sty.revealpage_users___48GknGxQj4]: hasVariant(
                 $state,
@@ -13492,7 +13579,7 @@ function PlasmicPanel__RenderFunc(props: {
               data-plasmic-override={overrides.customerComponnet}
               active={(() => {
                 try {
-                  return $state.page == "users" && !$state.newUser;
+                  return $state.page == "users" && !$state.addUser;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -13506,29 +13593,29 @@ function PlasmicPanel__RenderFunc(props: {
               back={async () => {
                 const $steps = {};
 
-                $steps["updatePage"] = true
+                $steps["goToPanel"] = true
                   ? (() => {
-                      const actionArgs = {
-                        vgroup: "page",
-                        operation: 1,
-                        value: "users"
-                      };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
+                      const actionArgs = { destination: `/panel/${"home"}` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
                         }
-
-                        $stateSet($state, vgroup, undefined);
-                        return undefined;
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["updatePage"] != null &&
-                  typeof $steps["updatePage"] === "object" &&
-                  typeof $steps["updatePage"].then === "function"
+                  $steps["goToPanel"] != null &&
+                  typeof $steps["goToPanel"] === "object" &&
+                  typeof $steps["goToPanel"].then === "function"
                 ) {
-                  $steps["updatePage"] = await $steps["updatePage"];
+                  $steps["goToPanel"] = await $steps["goToPanel"];
                 }
 
                 $steps["runCode"] = true
@@ -13557,10 +13644,10 @@ function PlasmicPanel__RenderFunc(props: {
                 }
               }}
               className={classNames("__wab_instance", sty.customerComponnet, {
-                [sty.customerComponnetnewUser]: hasVariant(
+                [sty.customerComponnetaddUser]: hasVariant(
                   $state,
-                  "newUser",
-                  "newUser"
+                  "addUser",
+                  "addUser"
                 ),
                 [sty.customerComponnetpage_users]: hasVariant(
                   $state,
@@ -13573,14 +13660,18 @@ function PlasmicPanel__RenderFunc(props: {
 
                 $steps["updateNewUser"] = true
                   ? (() => {
-                      const actionArgs = { vgroup: "newUser", operation: 4 };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
+                      const actionArgs = { destination: `/panel/${"addUser"}` };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
                         }
-
-                        $stateSet($state, vgroup, true);
-                        return true;
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
@@ -13596,10 +13687,10 @@ function PlasmicPanel__RenderFunc(props: {
           </Reveal>
           <Reveal
             className={classNames("__wab_instance", sty.reveal__kvBt0, {
-              [sty.revealnewUser__kvBt0NV6If]: hasVariant(
+              [sty.revealaddUser__kvBt0NV6If]: hasVariant(
                 $state,
-                "newUser",
-                "newUser"
+                "addUser",
+                "addUser"
               )
             })}
             damping={1}
@@ -13610,7 +13701,7 @@ function PlasmicPanel__RenderFunc(props: {
               data-plasmic-override={overrides.customerAddComponnet}
               active={(() => {
                 try {
-                  return $state.newUser ? true : false;
+                  return $state.addUser ? true : false;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -13626,14 +13717,32 @@ function PlasmicPanel__RenderFunc(props: {
 
                 $steps["updateNewUser"] = true
                   ? (() => {
-                      const actionArgs = { vgroup: "newUser", operation: 6 };
-                      return (({ vgroup, value }) => {
-                        if (typeof value === "string") {
-                          value = [value];
+                      const actionArgs = {
+                        destination: `/panel/${(() => {
+                          try {
+                            return $ctx.params.pages;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()}`
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
                         }
-
-                        $stateSet($state, vgroup, false);
-                        return false;
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
@@ -13661,105 +13770,23 @@ function PlasmicPanel__RenderFunc(props: {
                   $steps["invokeGlobalAction"] =
                     await $steps["invokeGlobalAction"];
                 }
-
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            const el = window.document.getElementById("click");
-                            [
-                              "mouseover",
-                              "mousemove",
-                              "mousedown",
-                              "mouseup",
-                              "click"
-                            ].forEach(eventName => {
-                              el.addEventListener(eventName, e => {
-                                console.log(
-                                  "رویداد:",
-                                  eventName,
-                                  "در مختصات:",
-                                  e.clientX,
-                                  e.clientY
-                                );
-                              });
-                            });
-                            if (el) {
-                              const rect = el.getBoundingClientRect();
-                              const x = rect.left + rect.width / 2;
-                              const y = rect.top + rect.height / 2;
-                              el.dispatchEvent(
-                                new MouseEvent("mouseover", {
-                                  bubbles: true,
-                                  clientX: x,
-                                  clientY: y
-                                })
-                              );
-                              el.dispatchEvent(
-                                new MouseEvent("mousemove", {
-                                  bubbles: true,
-                                  clientX: x,
-                                  clientY: y
-                                })
-                              );
-                              el.dispatchEvent(
-                                new MouseEvent("mousedown", {
-                                  bubbles: true,
-                                  clientX: x,
-                                  clientY: y,
-                                  button: 0
-                                })
-                              );
-                              el.dispatchEvent(
-                                new MouseEvent("mouseup", {
-                                  bubbles: true,
-                                  clientX: x,
-                                  clientY: y,
-                                  button: 0
-                                })
-                              );
-                              return el.dispatchEvent(
-                                new MouseEvent("click", {
-                                  bubbles: true,
-                                  clientX: x,
-                                  clientY: y,
-                                  button: 0
-                                })
-                              );
-                            }
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
-                ) {
-                  $steps["runCode"] = await $steps["runCode"];
-                }
               }}
               className={classNames(
                 "__wab_instance",
                 sty.customerAddComponnet,
                 {
-                  [sty.customerAddComponnetnewUser]: hasVariant(
+                  [sty.customerAddComponnetaddUser]: hasVariant(
                     $state,
-                    "newUser",
-                    "newUser"
+                    "addUser",
+                    "addUser"
                   ),
                   [sty.customerAddComponnetpage_users]: hasVariant(
                     $state,
                     "page",
                     "users"
                   ),
-                  [sty.customerAddComponnetpage_users_newUser]:
-                    hasVariant($state, "newUser", "newUser") &&
+                  [sty.customerAddComponnetpage_users_addUser]:
+                    hasVariant($state, "addUser", "addUser") &&
                     hasVariant($state, "page", "users")
                 }
               )}

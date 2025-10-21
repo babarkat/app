@@ -846,6 +846,11 @@ function PlasmicChargingAfg__RenderFunc(props: {
         >
           <section
             className={classNames(projectcss.all, sty.section__vh1Sc, {
+              [sty.sectionstepscharg_step2__vh1Sc1Oc4H]: hasVariant(
+                $state,
+                "stepscharg",
+                "step2"
+              ),
               [sty.sectionstepscharg_step3__vh1SCq2TCe]: hasVariant(
                 $state,
                 "stepscharg",
@@ -2332,10 +2337,13 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                   hasVariant($state, "stepscharg", "step2")
                                     ? (() => {
                                         try {
-                                          return (
-                                            $state.fragmentInput.value.length !=
-                                            9
-                                          );
+                                          return $state.fragmentInput.value?.startsWith(
+                                            "0"
+                                          )
+                                            ? $state.fragmentInput.value
+                                                .length != 10
+                                            : $state.fragmentInput.value
+                                                .length != 9;
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
