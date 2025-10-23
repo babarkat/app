@@ -117,8 +117,8 @@ const handleCancel = () => {
         {children}
         <Password
           open={passwordOpen}
-          onOk={handleOk}
-          onCancel={handleCancel}
+          OnOk={handleOk}
+          OnCansel={handleCancel}
         />
         <Toaster />
       </DataProvider>
