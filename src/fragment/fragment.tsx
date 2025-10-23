@@ -8,6 +8,8 @@ import {
 } from "@plasmicapp/host";
 import axios from "axios";
 
+import Password from "@/components/Password"; // مسیر رو با مسیر واقعی خودت تنظیم کن
+
 type FragmentProps = React.PropsWithChildren<{
   previewApiConfig: Record<string, any>;
   apiConfig: Record<string, any>;
@@ -25,13 +27,31 @@ export const Fragment = ({
   useEffect(() => {
     changeTheme(primaryColor);
   }, [primaryColor]);
+  
+  const [passwordOpen, setPasswordOpen] = useState(false);
+  const [resolver, setResolver] = useState<((val: string | null) => void) | null>(null);
 
+  const handleConfirm = (password: string) => {
+    setPasswordOpen(false);
+    resolver?.(password);
+  };
+
+  const handleCancel = () => {
+    setPasswordOpen(false);
+    resolver?.(null);
+  };
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
   };
 
   const actions = useMemo(
     () => ({
+      showPasswordDialog: async () => {
+        return new Promise<string | null>((resolve) => {
+          setResolver(() => resolve);
+          setPasswordOpen(true);
+        });
+      },
       showToast: (
         type: "success" | "error",
         message: string,
@@ -97,6 +117,11 @@ export const Fragment = ({
         hidden
       >
         {children}
+        <Password
+          open={passwordOpen}
+          onConfirm={handleConfirm}
+          onCancel={handleCancel}
+        />
         <Toaster />
       </DataProvider>
     </GlobalActionsProvider>
@@ -193,6 +218,12 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
           },
         },
       ],
+    },
+    showPasswordDialog: {
+      displayName: "Show Password Dialog",
+      description: "Opens the password dialog and waits for user input",
+      parameters: [],
+      returnValueHint: "Password string or null",
     },
     apiRequest: {
       displayName: "API Request",
