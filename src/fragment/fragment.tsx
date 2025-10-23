@@ -47,10 +47,7 @@ export const Fragment = ({
   const actions = useMemo(
     () => ({
       showPasswordDialog: async () => {
-        return new Promise<string | null>((resolve) => {
-          setResolver(() => resolve);
-          setPasswordOpen(true);
-        });
+        setPasswordOpen(true);
       },
       showToast: (
         type: "success" | "error",
@@ -119,8 +116,6 @@ export const Fragment = ({
         {children}
         <Password
           open={passwordOpen}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
         />
         <Toaster />
       </DataProvider>
