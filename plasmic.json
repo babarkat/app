@@ -2276,6 +2276,19 @@
           "cssFilePath": "plasmic/babarkat/PlasmicCustomerAddComponnet.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "NplQo51f3X7d",
+          "name": "Password",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicPassword.tsx",
+          "importSpec": {
+            "modulePath": "Password.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicPassword.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -3383,6 +3396,11 @@
           "id": "dGgugbzPr2Us",
           "name": "Icon161Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon161.tsx"
+        },
+        {
+          "id": "1H7C8RS5wNv-",
+          "name": "Icon162Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon162.tsx"
         }
       ],
       "images": [

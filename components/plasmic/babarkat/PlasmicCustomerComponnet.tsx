@@ -1336,7 +1336,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
             PlasmicIconType={
               hasVariant(globalVariants, "screen", "mobileOnly")
                 ? Icon10Icon
-                : Icon3Icon
+                : Icon10Icon
             }
             className={classNames(projectcss.all, sty.svg__yjkss)}
             onClick={async event => {
@@ -1375,7 +1375,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
               data-plasmic-name={"button"}
               data-plasmic-override={overrides.button}
               className={classNames("__wab_instance", sty.button)}
-              color={"white"}
+              color={"softGreen"}
               endIcon={
                 <Icon12Icon
                   className={classNames(projectcss.all, sty.svg___2Vn2C)}

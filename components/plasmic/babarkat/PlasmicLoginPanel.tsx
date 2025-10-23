@@ -4266,11 +4266,29 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     [sty.button2loginByPassword_password]:
                       hasVariant($state, "password", "password") &&
                       hasVariant($state, "loginByPassword", "loginByPassword"),
+                    [sty.button2loginByPassword_password_unnamedVariant2]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
+                    [sty.button2loginByPassword_unnamedVariant2]:
+                      hasVariant(
+                        $state,
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "loginByPassword", "loginByPassword"),
                     [sty.button2password]: hasVariant(
                       $state,
                       "password",
                       "password"
                     ),
+                    [sty.button2password_unnamedVariant2]:
+                      hasVariant($state, "password", "password") &&
+                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
                     [sty.button2unnamedVariant2]: hasVariant(
                       $state,
                       "unnamedVariant2",
@@ -4978,7 +4996,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       $steps.invokeGlobalAction2?.data?.success === true
                         ? (() => {
                             const actionArgs = {
-                              destination: `/panel/[pages]`
+                              destination: `/panel/${"home"}`
                             };
                             return (({ destination }) => {
                               if (
@@ -6024,7 +6042,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         $steps.invokeGlobalAction2?.data?.success == true
                           ? (() => {
                               const actionArgs = {
-                                destination: `/panel/[pages]`
+                                destination: `/panel/${"home"}`
                               };
                               return (({ destination }) => {
                                 if (

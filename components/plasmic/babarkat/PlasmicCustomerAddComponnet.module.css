@@ -470,7 +470,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  height: auto;
+  height: 55px;
   max-width: 100%;
   background: #1e2c39;
   box-shadow: 0px 12px 16px 0px #00000047;
@@ -479,7 +479,7 @@
   z-index: 1;
   position: relative;
   min-width: 0;
-  padding: 10px 24px;
+  padding: 10px 16px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .header {
@@ -493,8 +493,8 @@
 .svg___2BXc5 {
   object-fit: cover;
   max-width: 100%;
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   color: #2dc57b;
   flex-shrink: 0;
 }

@@ -10,7 +10,7 @@
   box-shadow: 0px 12px 16px 0px #00000047;
   position: relative;
   min-width: 0;
-  padding: 10px 24px;
+  padding: 10px 16px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .header {
@@ -68,8 +68,8 @@
 .svg__c7LT7 {
   object-fit: cover;
   max-width: 100%;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   position: relative;
   left: auto;
   top: auto;

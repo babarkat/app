@@ -960,7 +960,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
             PlasmicIconType={
               hasVariant(globalVariants, "screen", "mobileOnly")
                 ? Icon10Icon
-                : Icon3Icon
+                : Icon10Icon
             }
             className={classNames(projectcss.all, sty.svg___2BXc5)}
             onClick={async event => {
@@ -968,7 +968,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
 
               $steps["goToPanel"] = true
                 ? (() => {
-                    const actionArgs = { destination: `/panel/${"home"}` };
+                    const actionArgs = { destination: `/panel/${"users"}` };
                     return (({ destination }) => {
                       if (
                         typeof destination === "string" &&
