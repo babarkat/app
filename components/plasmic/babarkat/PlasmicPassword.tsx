@@ -109,6 +109,8 @@ export type PlasmicPassword__ArgsType = {
   load?: boolean;
   onLoadChange?: (val: string) => void;
   onClick2?: (event: any) => void;
+  onOk?: (event: any) => void;
+  onCansel?: () => void;
 };
 type ArgPropType = keyof PlasmicPassword__ArgsType;
 export const PlasmicPassword__ArgProps = new Array<ArgPropType>(
@@ -120,7 +122,9 @@ export const PlasmicPassword__ArgProps = new Array<ArgPropType>(
   "onClick",
   "load",
   "onLoadChange",
-  "onClick2"
+  "onClick2",
+  "onOk",
+  "onCansel"
 );
 
 export type PlasmicPassword__OverridesType = {
@@ -142,6 +146,8 @@ export interface DefaultPasswordProps {
   load?: boolean;
   onLoadChange?: (val: string) => void;
   onClick2?: (event: any) => void;
+  onOk?: (event: any) => void;
+  onCansel?: () => void;
   noTrigger?: SingleBooleanChoiceArg<"noTrigger">;
   hideHeader?: SingleBooleanChoiceArg<"hideHeader">;
   noSpacing?: SingleBooleanChoiceArg<"noSpacing">;
@@ -493,6 +499,7 @@ function PlasmicPassword__RenderFunc(props: {
                   "button3",
                   "loadingviow"
                 ])}
+                onClick={args.onOk}
                 onLoadingviowChange={async (...eventArgs: any) => {
                   ((...eventArgs) => {
                     generateStateOnChangeProp($state, [
@@ -551,6 +558,22 @@ function PlasmicPassword__RenderFunc(props: {
                   typeof $steps["runCode"].then === "function"
                 ) {
                   $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["runOnCansel"] = true
+                  ? (() => {
+                      const actionArgs = { eventRef: $props["onCansel"] };
+                      return (({ eventRef, args }) => {
+                        return eventRef?.(...(args ?? []));
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runOnCansel"] != null &&
+                  typeof $steps["runOnCansel"] === "object" &&
+                  typeof $steps["runOnCansel"].then === "function"
+                ) {
+                  $steps["runOnCansel"] = await $steps["runOnCansel"];
                 }
               }}
               onLoadingviowChange={async (...eventArgs: any) => {

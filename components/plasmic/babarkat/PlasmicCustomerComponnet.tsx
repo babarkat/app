@@ -1057,6 +1057,25 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                             onClick: async event => {
                               const $steps = {};
 
+                              $steps["invokeGlobalAction"] = false
+                                ? (() => {
+                                    const actionArgs = { args: [] };
+                                    return $globalActions[
+                                      "Fragment.showPasswordDialog"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["invokeGlobalAction"] != null &&
+                                typeof $steps["invokeGlobalAction"] ===
+                                  "object" &&
+                                typeof $steps["invokeGlobalAction"].then ===
+                                  "function"
+                              ) {
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
+                              }
+
                               $steps["updateCustomerId"] = true
                                 ? (() => {
                                     const actionArgs = {
