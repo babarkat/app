@@ -33,12 +33,12 @@ const [continueCallback, setContinueCallback] = useState<(() => void) | null>(nu
   
 const handleOk = () => {
   setPasswordOpen(false);
-  continueCallback?.(); // ادامه کد اجرا می‌شه
+  resolveDialog?.(true);   // Ok → ادامه
 };
 
 const handleCancel = () => {
   setPasswordOpen(false);
-  setContinueCallback(null); // ادامه اجرا نمی‌شه
+  resolveDialog?.(false);  // Cancel → ادامه نده
 };
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
@@ -46,9 +46,11 @@ const handleCancel = () => {
 
   const actions = useMemo(
     () => ({
-      showPasswordDialog: (onOk: () => void) => {
-        setContinueCallback(() => onOk); // ذخیره callback برای بعد از Ok
-        setPasswordOpen(true);           // باز کردن دیالوگ
+      showPasswordDialog: async () => {
+        return new Promise<boolean>((resolve) => {
+          setResolveDialog(() => resolve);
+          setPasswordOpen(true);
+        });
       },
       showToast: (
         type: "success" | "error",
