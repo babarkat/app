@@ -29,17 +29,18 @@ export const Fragment = ({
   }, [primaryColor]);
   
 const [passwordOpen, setPasswordOpen] = useState(false);
-const [continueCallback, setContinueCallback] = useState<(() => void) | null>(null);
-  
+const [resolveDialog, setResolveDialog] = useState<((ok: boolean) => void) | null>(null);
+
 const handleOk = () => {
   setPasswordOpen(false);
-  resolveDialog?.(true);   // Ok → ادامه
+  resolveDialog?.(true); // وقتی OK زده شد → Promise حل می‌شه (true)
 };
 
 const handleCancel = () => {
   setPasswordOpen(false);
-  resolveDialog?.(false);  // Cancel → ادامه نده
+  resolveDialog?.(false); // وقتی Cancel زده شد → Promise حل می‌شه (false)
 };
+
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
   };
