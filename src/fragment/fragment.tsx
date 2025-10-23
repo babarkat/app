@@ -218,7 +218,6 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
       displayName: "Show Password Dialog",
       description: "Opens the password dialog and waits for user input",
       parameters: [],
-      returnValueHint: "Password string or null",
     },
     apiRequest: {
       displayName: "API Request",
