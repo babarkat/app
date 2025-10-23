@@ -28,26 +28,27 @@ export const Fragment = ({
     changeTheme(primaryColor);
   }, [primaryColor]);
   
-  const [passwordOpen, setPasswordOpen] = useState(false);
-  const [resolver, setResolver] = useState<((val: string | null) => void) | null>(null);
+const [passwordOpen, setPasswordOpen] = useState(false);
+const [continueCallback, setContinueCallback] = useState<(() => void) | null>(null);
+  
+const handleOk = () => {
+  setPasswordOpen(false);
+  continueCallback?.(); // ادامه کد اجرا می‌شه
+};
 
-  const handleConfirm = (password: string) => {
-    setPasswordOpen(false);
-    resolver?.(password);
-  };
-
-  const handleCancel = () => {
-    setPasswordOpen(false);
-    resolver?.(null);
-  };
+const handleCancel = () => {
+  setPasswordOpen(false);
+  setContinueCallback(null); // ادامه اجرا نمی‌شه
+};
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
   };
 
   const actions = useMemo(
     () => ({
-      showPasswordDialog: async () => {
-        setPasswordOpen(true);
+      showPasswordDialog: (onOk: () => void) => {
+        setContinueCallback(() => onOk); // ذخیره callback برای بعد از Ok
+        setPasswordOpen(true);           // باز کردن دیالوگ
       },
       showToast: (
         type: "success" | "error",
@@ -116,6 +117,8 @@ export const Fragment = ({
         {children}
         <Password
           open={passwordOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
         />
         <Toaster />
       </DataProvider>
