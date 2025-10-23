@@ -8,7 +8,7 @@ import {
 } from "@plasmicapp/host";
 import axios from "axios";
 
-import Password from "@/components/Password"; // مسیر رو با مسیر واقعی خودت تنظیم کن
+import Password from "../../components/Password"; // مسیر رو با مسیر واقعی خودت تنظیم کن
 
 type FragmentProps = React.PropsWithChildren<{
   previewApiConfig: Record<string, any>;
