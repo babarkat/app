@@ -353,6 +353,12 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "refresh",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx, $refs]
@@ -385,6 +391,19 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
         data-plasmic-name={"sideEffect"}
         data-plasmic-override={overrides.sideEffect}
         className={classNames("__wab_instance", sty.sideEffect)}
+        deps={(() => {
+          try {
+            return [$state.refresh];
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
         onMount={async () => {
           const $steps = {};
 
@@ -1057,25 +1076,6 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                             onClick: async event => {
                               const $steps = {};
 
-                              $steps["invokeGlobalAction"] = false
-                                ? (() => {
-                                    const actionArgs = { args: [] };
-                                    return $globalActions[
-                                      "Fragment.showPasswordDialog"
-                                    ]?.apply(null, [...actionArgs.args]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["invokeGlobalAction"] != null &&
-                                typeof $steps["invokeGlobalAction"] ===
-                                  "object" &&
-                                typeof $steps["invokeGlobalAction"].then ===
-                                  "function"
-                              ) {
-                                $steps["invokeGlobalAction"] =
-                                  await $steps["invokeGlobalAction"];
-                              }
-
                               $steps["updateCustomerId"] = true
                                 ? (() => {
                                     const actionArgs = {
@@ -1600,6 +1600,24 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                 $steps["updateModal3Open"] = await $steps["updateModal3Open"];
               }
 
+              $steps["invokeGlobalAction3"] = false
+                ? (() => {
+                    const actionArgs = { args: [] };
+                    return $globalActions["Fragment.showPasswordDialog"]?.apply(
+                      null,
+                      [...actionArgs.args]
+                    );
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction3"] != null &&
+                typeof $steps["invokeGlobalAction3"] === "object" &&
+                typeof $steps["invokeGlobalAction3"].then === "function"
+              ) {
+                $steps["invokeGlobalAction3"] =
+                  await $steps["invokeGlobalAction3"];
+              }
+
               $steps["invokeGlobalAction"] = true
                 ? (() => {
                     const actionArgs = {
@@ -1660,6 +1678,41 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
               ) {
                 $steps["invokeGlobalAction2"] =
                   await $steps["invokeGlobalAction2"];
+              }
+
+              $steps["updateButtonLoadingviow"] =
+                $steps.invokeGlobalAction?.data?.success == true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["button", "loadingviow"]
+                        },
+                        operation: 0
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateButtonLoadingviow"] != null &&
+                typeof $steps["updateButtonLoadingviow"] === "object" &&
+                typeof $steps["updateButtonLoadingviow"].then === "function"
+              ) {
+                $steps["updateButtonLoadingviow"] =
+                  await $steps["updateButtonLoadingviow"];
               }
             }}
             onLoadingviowChange={async (...eventArgs: any) => {

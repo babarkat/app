@@ -111,6 +111,8 @@ export type PlasmicPassword__ArgsType = {
   onClick2?: (event: any) => void;
   onOk?: (event: any) => void;
   onCansel?: () => void;
+  code?: string;
+  onCodeChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicPassword__ArgsType;
 export const PlasmicPassword__ArgProps = new Array<ArgPropType>(
@@ -124,7 +126,9 @@ export const PlasmicPassword__ArgProps = new Array<ArgPropType>(
   "onLoadChange",
   "onClick2",
   "onOk",
-  "onCansel"
+  "onCansel",
+  "code",
+  "onCodeChange"
 );
 
 export type PlasmicPassword__OverridesType = {
@@ -148,6 +152,8 @@ export interface DefaultPasswordProps {
   onClick2?: (event: any) => void;
   onOk?: (event: any) => void;
   onCansel?: () => void;
+  code?: string;
+  onCodeChange?: (val: string) => void;
   noTrigger?: SingleBooleanChoiceArg<"noTrigger">;
   hideHeader?: SingleBooleanChoiceArg<"hideHeader">;
   noSpacing?: SingleBooleanChoiceArg<"noSpacing">;
@@ -316,6 +322,14 @@ function PlasmicPassword__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "code",
+        type: "writable",
+        variableType: "text",
+
+        valueProp: "code",
+        onChangeProp: "onCodeChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -481,7 +495,7 @@ function PlasmicPassword__RenderFunc(props: {
             data-plasmic-override={overrides.embedHtml}
             className={classNames("__wab_instance", sty.embedHtml)}
             code={
-              '<div class="otp-wrapper">\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit1" class="otp-input"\r\n         onkeyup="handleInput(this, 0, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit2" class="otp-input"\r\n         onkeyup="handleInput(this, 1, \'digit3\')" onkeydown="moveToPrev(event, \'digit1\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit3" class="otp-input"\r\n         onkeyup="handleInput(this, 2, \'digit4\')" onkeydown="moveToPrev(event, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit4" class="otp-input"\r\n         onkeyup="handleInput(this, 3)" onkeydown="moveToPrev(event, \'digit3\')" />\r\n</div>\r\n\r\n<script>\r\n  window.inputValues = ["", "", "", ""];\r\n  window.codeCompleted = false;\r\n\r\n  function handleInput(current, index, nextFieldId) {\r\n    const value = current.value;\r\n\r\n    // \u0641\u0642\u0637 \u0639\u062f\u062f\r\n    if (!/^[0-9]$/.test(value)) {\r\n      current.value = \'\';\r\n      window.inputValues[index] = \'\';\r\n    } else {\r\n      window.inputValues[index] = value;\r\n    }\r\n\r\n    // \u062d\u0631\u06a9\u062a \u0628\u0647 \u0641\u06cc\u0644\u062f \u0628\u0639\u062f\u06cc\r\n    if (value.length === 1 && nextFieldId) {\r\n      document.getElementById(nextFieldId).focus();\r\n    }\r\n\r\n    // \u0627\u06af\u0647 \u06cc\u06a9\u06cc \u0627\u0632 \u0641\u06cc\u0644\u062f\u0647\u0627 \u062e\u0627\u0644\u06cc \u0628\u0634\u0647 \u2192 \u0627\u062c\u0627\u0632\u0647 \u0628\u062f\u0647 \u062f\u0648\u0628\u0627\u0631\u0647 log \u0628\u0634\u0647\r\n    if (window.inputValues.some(val => val === "")) {\r\n      window.codeCompleted = false;\r\n    }\r\n\r\n    // \u0641\u0642\u0637 \u0648\u0642\u062a\u06cc \u0647\u0645\u0647 \u067e\u0631 \u0628\u0648\u062f\u0646 \u0648 \u0642\u0628\u0644\u0627\u064b log \u0646\u0634\u062f\u0647:\r\n    if (window.inputValues.every(val => val !== "") && !window.codeCompleted) {\r\n      console.log("ok");\r\n      document.querySelector(\'#codeButten button\').click();\r\n      window.codeCompleted = true;\r\n    }\r\n  }\r\n\r\n  function moveToPrev(event, prevFieldId) {\r\n    if (event.key === "Backspace" && !event.target.value) {\r\n      document.getElementById(prevFieldId).focus();\r\n    }\r\n  }\r\n</script>\r\n'
+              '<div class="otp-wrapper">\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit1" class="otp-input"\r\n         onkeyup="handleInput(this, 0, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit2" class="otp-input"\r\n         onkeyup="handleInput(this, 1, \'digit3\')" onkeydown="moveToPrev(event, \'digit1\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit3" class="otp-input"\r\n         onkeyup="handleInput(this, 2, \'digit4\')" onkeydown="moveToPrev(event, \'digit2\')" />\r\n\r\n  <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" id="digit4" class="otp-input"\r\n         onkeyup="handleInput(this, 3)" onkeydown="moveToPrev(event, \'digit3\')" />\r\n</div>\r\n\r\n<script>\r\n  window.inputValues = ["", "", "", ""];\r\n  window.codeCompleted = false;\r\n\r\n  function handleInput(current, index, nextFieldId) {\r\n    const value = current.value;\r\n    if (!window.inputValues) {\r\n        window.inputValues = ["", "", "", ""];\r\n    }\r\n    // \u0641\u0642\u0637 \u0639\u062f\u062f\r\n    if (!/^[0-9]$/.test(value)) {\r\n      current.value = \'\';\r\n      window.inputValues[index] = \'\';\r\n    } else {\r\n      window.inputValues[index] = value;\r\n    }\r\n\r\n    // \u062d\u0631\u06a9\u062a \u0628\u0647 \u0641\u06cc\u0644\u062f \u0628\u0639\u062f\u06cc\r\n    if (value.length === 1 && nextFieldId) {\r\n      document.getElementById(nextFieldId).focus();\r\n    }\r\n\r\n    // \u0627\u06af\u0647 \u06cc\u06a9\u06cc \u0627\u0632 \u0641\u06cc\u0644\u062f\u0647\u0627 \u062e\u0627\u0644\u06cc \u0628\u0634\u0647 \u2192 \u0627\u062c\u0627\u0632\u0647 \u0628\u062f\u0647 \u062f\u0648\u0628\u0627\u0631\u0647 log \u0628\u0634\u0647\r\n    if (window.inputValues.some(val => val === "")) {\r\n      window.codeCompleted = false;\r\n    }\r\n\r\n    // \u0641\u0642\u0637 \u0648\u0642\u062a\u06cc \u0647\u0645\u0647 \u067e\u0631 \u0628\u0648\u062f\u0646 \u0648 \u0642\u0628\u0644\u0627\u064b log \u0646\u0634\u062f\u0647:\r\n    if (window.inputValues.every(val => val !== "") && !window.codeCompleted) {\r\n      console.log("ok");\r\n      document.querySelector(\'#codeButten button\').click();\r\n      window.codeCompleted = true;\r\n    }\r\n  }\r\n\r\n  function moveToPrev(event, prevFieldId) {\r\n    if (event.key === "Backspace" && !event.target.value) {\r\n      document.getElementById(prevFieldId).focus();\r\n    }\r\n  }\r\n</script>\r\n'
             }
           />
 
@@ -499,7 +513,59 @@ function PlasmicPassword__RenderFunc(props: {
                   "button3",
                   "loadingviow"
                 ])}
-                onClick={args.onOk}
+                onClick={async event => {
+                  const $steps = {};
+
+                  $steps["updateCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["code"]
+                          },
+                          operation: 0,
+                          value: window.inputValues.join("")
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateCode"] != null &&
+                    typeof $steps["updateCode"] === "object" &&
+                    typeof $steps["updateCode"].then === "function"
+                  ) {
+                    $steps["updateCode"] = await $steps["updateCode"];
+                  }
+
+                  $steps["runOnOk"] = true
+                    ? (() => {
+                        const actionArgs = { eventRef: $props["onOk"] };
+                        return (({ eventRef, args }) => {
+                          return eventRef?.(...(args ?? []));
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runOnOk"] != null &&
+                    typeof $steps["runOnOk"] === "object" &&
+                    typeof $steps["runOnOk"].then === "function"
+                  ) {
+                    $steps["runOnOk"] = await $steps["runOnOk"];
+                  }
+                }}
                 onLoadingviowChange={async (...eventArgs: any) => {
                   ((...eventArgs) => {
                     generateStateOnChangeProp($state, [
