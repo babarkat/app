@@ -1680,15 +1680,18 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction2"];
               }
 
-              $steps["updateButtonLoadingviow"] =
+              $steps["updateRefresh"] =
                 $steps.invokeGlobalAction?.data?.success == true
                   ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
-                          variablePath: ["button", "loadingviow"]
+                          variablePath: ["refresh"]
                         },
-                        operation: 0
+                        operation: 0,
+                        value: new Date().toLocaleString("fa-IR", {
+                          timeZone: "Asia/Tehran"
+                        })
                       };
                       return (({
                         variable,
@@ -1707,12 +1710,11 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["updateButtonLoadingviow"] != null &&
-                typeof $steps["updateButtonLoadingviow"] === "object" &&
-                typeof $steps["updateButtonLoadingviow"].then === "function"
+                $steps["updateRefresh"] != null &&
+                typeof $steps["updateRefresh"] === "object" &&
+                typeof $steps["updateRefresh"].then === "function"
               ) {
-                $steps["updateButtonLoadingviow"] =
-                  await $steps["updateButtonLoadingviow"];
+                $steps["updateRefresh"] = await $steps["updateRefresh"];
               }
             }}
             onLoadingviowChange={async (...eventArgs: any) => {
