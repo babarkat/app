@@ -28,18 +28,19 @@ export const Fragment = ({
     changeTheme(primaryColor);
   }, [primaryColor]);
   
-const [passwordOpen, setPasswordOpen] = useState(false);
-const [resolveDialog, setResolveDialog] = useState<((ok: boolean) => void) | null>(null);
+  const [passwordOpen, setPasswordOpen] = useState(false);
+  const [resolveDialog, setResolveDialog] = useState<((code: string | null) => void) | null>(null);
+  const [passwordCode, setPasswordCode] = useState<string>(""); // 👈 اضافه شد
 
-const handleOk = () => {
-  setPasswordOpen(false);
-  resolveDialog?.(true); // وقتی OK زده شد → Promise حل می‌شه (true)
-};
+  const handleOk = () => {
+    setPasswordOpen(false);
+    resolveDialog?.(passwordCode); // 👈 وقتی OK می‌زنن، مقدار code برمی‌گرده
+  };
 
-const handleCancel = () => {
-  setPasswordOpen(false);
-  resolveDialog?.(false); // وقتی Cancel زده شد → Promise حل می‌شه (false)
-};
+  const handleCancel = () => {
+    setPasswordOpen(false);
+    resolveDialog?.(null); // 👈 Cancel یعنی هیچی برنگردونه
+  };
 
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
@@ -47,8 +48,8 @@ const handleCancel = () => {
 
   const actions = useMemo(
     () => ({
-      showPasswordDialog: async () => {
-        return new Promise<boolean>((resolve) => {
+      showPasswordDialog: async (): Promise<string | null> => {
+        return new Promise<string | null>((resolve) => {
           setResolveDialog(() => resolve);
           setPasswordOpen(true);
         });
@@ -120,6 +121,8 @@ const handleCancel = () => {
         {children}
         <Password
           open={passwordOpen}
+          code={passwordCode}
+          onCodeChange={setPasswordCode}  // 👈 وقتی داخل Password مقدار تغییر کنه، اینجا ذخیره می‌شه
           onOk={handleOk}
           onCansel={handleCancel}
         />
