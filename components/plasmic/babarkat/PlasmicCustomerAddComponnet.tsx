@@ -727,6 +727,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (() => {
+                          $state.button5.loadingviow = true;
                           $state.error = [];
                           if (
                             $state.name.value === "" ||
@@ -759,8 +760,26 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
+              $steps["invokeGlobalAction4"] = true
+                ? (() => {
+                    const actionArgs = { args: [] };
+                    return $globalActions["Fragment.showPasswordDialog"]?.apply(
+                      null,
+                      [...actionArgs.args]
+                    );
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction4"] != null &&
+                typeof $steps["invokeGlobalAction4"] === "object" &&
+                typeof $steps["invokeGlobalAction4"].then === "function"
+              ) {
+                $steps["invokeGlobalAction4"] =
+                  await $steps["invokeGlobalAction4"];
+              }
+
               $steps["invokeGlobalAction"] =
-                $state.error.length == 0
+                $state.error.length == 0 && $steps.invokeGlobalAction4
                   ? (() => {
                       const actionArgs = {
                         args: [
@@ -775,7 +794,8 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                                 customerId: parseInt($state.customerId.value),
                                 location: $state.location.value,
                                 mobile: $state.mobile.value,
-                                userToken: $state.token
+                                userToken: $state.token,
+                                code: $steps.invokeGlobalAction4
                               };
                             } catch (e) {
                               if (
@@ -804,7 +824,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction"];
               }
 
-              $steps["updateErrror"] = true
+              $steps["updateErrror"] = $steps.invokeGlobalAction4
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -916,6 +936,26 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 typeof $steps["runCode2"].then === "function"
               ) {
                 $steps["runCode2"] = await $steps["runCode2"];
+              }
+
+              $steps["runCode3"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return ($state.button5.loadingviow = false);
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode3"] != null &&
+                typeof $steps["runCode3"] === "object" &&
+                typeof $steps["runCode3"].then === "function"
+              ) {
+                $steps["runCode3"] = await $steps["runCode3"];
               }
             }}
             onLoadingviowChange={async (...eventArgs: any) => {

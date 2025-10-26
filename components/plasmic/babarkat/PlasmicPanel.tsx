@@ -744,7 +744,7 @@ function PlasmicPanel__RenderFunc(props: {
                 $steps["profilee"] = await $steps["profilee"];
               }
 
-              $steps["updateProfile"] = true
+              $steps["updateProfile"] = $steps.profilee?.data
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -800,28 +800,6 @@ function PlasmicPanel__RenderFunc(props: {
                 typeof $steps["updateLoading2"].then === "function"
               ) {
                 $steps["updateLoading2"] = await $steps["updateLoading2"];
-              }
-
-              $steps["runCode2"] = false
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          return window.history.back();
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode2"] != null &&
-                typeof $steps["runCode2"] === "object" &&
-                typeof $steps["runCode2"].then === "function"
-              ) {
-                $steps["runCode2"] = await $steps["runCode2"];
               }
             }}
           />
