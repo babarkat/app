@@ -34,8 +34,15 @@ export const Fragment = ({
 
   const handleOk = () => {
     setPasswordOpen(false);
-    resolveDialog?.(passwordCode); // 👈 وقتی OK می‌زنن، مقدار code برمی‌گرده
+  
+    const code =
+      typeof window !== "undefined"
+        ? window.sessionStorage.getItem("panelCode") || passwordCode
+        : passwordCode;
+  
+    resolveDialog?.(code); // 👈 برگردوندن مقدار نهایی
   };
+
 
   const handleCancel = () => {
     setPasswordOpen(false);
