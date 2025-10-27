@@ -556,7 +556,13 @@ function PlasmicPassword__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
-                            return ($state.button3.loadingviow = true);
+                            return (() => {
+                              window.sessionStorage.setItem(
+                                "panelCode",
+                                $state.code
+                              );
+                              return ($state.button3.loadingviow = true);
+                            })();
                           }
                         };
                         return (({ customFunction }) => {
