@@ -233,8 +233,6 @@ function PlasmicPassword__RenderFunc(props: {
 
   const globalVariants = _useGlobalVariants();
 
-  const $globalActions = useGlobalActions?.();
-
   const currentUser = useCurrentUser?.() || {};
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -559,7 +557,7 @@ function PlasmicPassword__RenderFunc(props: {
                             return (() => {
                               window.sessionStorage.setItem(
                                 "panelCode",
-                                $state.code
+                                window.inputValues.join("")
                               );
                               return ($state.button3.loadingviow = true);
                             })();
@@ -576,23 +574,6 @@ function PlasmicPassword__RenderFunc(props: {
                     typeof $steps["runCode"].then === "function"
                   ) {
                     $steps["runCode"] = await $steps["runCode"];
-                  }
-
-                  $steps["invokeGlobalAction"] = true
-                    ? (() => {
-                        const actionArgs = { args: [1000] };
-                        return $globalActions["Fragment.wait"]?.apply(null, [
-                          ...actionArgs.args
-                        ]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["invokeGlobalAction"] != null &&
-                    typeof $steps["invokeGlobalAction"] === "object" &&
-                    typeof $steps["invokeGlobalAction"].then === "function"
-                  ) {
-                    $steps["invokeGlobalAction"] =
-                      await $steps["invokeGlobalAction"];
                   }
 
                   $steps["runOnOk"] = true
