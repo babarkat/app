@@ -760,7 +760,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
-              $steps["invokeGlobalAction4"] = true
+              $steps["invokeGlobalAction4"] = false
                 ? (() => {
                     const actionArgs = { args: [] };
                     return $globalActions["Fragment.showPasswordDialog"]?.apply(
@@ -779,8 +779,9 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
               }
 
               $steps["invokeGlobalAction"] =
-                $state.error.length == 0 && $steps.invokeGlobalAction4
-                  ? (() => {
+                $state.error.length == 0
+                  ? // && $steps.invokeGlobalAction4
+                    (() => {
                       const actionArgs = {
                         args: [
                           "POST",
@@ -824,7 +825,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction"];
               }
 
-              $steps["updateErrror"] = $steps.invokeGlobalAction4
+              $steps["updateErrror"] = true
                 ? (() => {
                     const actionArgs = {
                       variable: {

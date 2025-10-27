@@ -1600,7 +1600,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                 $steps["updateModal3Open"] = await $steps["updateModal3Open"];
               }
 
-              $steps["invokeGlobalAction3"] = true
+              $steps["invokeGlobalAction3"] = false
                 ? (() => {
                     const actionArgs = { args: [] };
                     return $globalActions["Fragment.showPasswordDialog"]?.apply(
@@ -1618,7 +1618,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction3"];
               }
 
-              $steps["invokeGlobalAction"] = $steps.invokeGlobalAction3
+              $steps["invokeGlobalAction"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [

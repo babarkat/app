@@ -518,6 +518,40 @@ function PlasmicPassword__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
+                  $steps["updateCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["code"]
+                          },
+                          operation: 0,
+                          value: window.inputValues.join("")
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["updateCode"] != null &&
+                    typeof $steps["updateCode"] === "object" &&
+                    typeof $steps["updateCode"].then === "function"
+                  ) {
+                    $steps["updateCode"] = await $steps["updateCode"];
+                  }
+
                   $steps["runCode"] = true
                     ? (() => {
                         const actionArgs = {
@@ -553,40 +587,6 @@ function PlasmicPassword__RenderFunc(props: {
                   ) {
                     $steps["invokeGlobalAction"] =
                       await $steps["invokeGlobalAction"];
-                  }
-
-                  $steps["updateCode"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["code"]
-                          },
-                          operation: 0,
-                          value: window.inputValues.join("")
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateCode"] != null &&
-                    typeof $steps["updateCode"] === "object" &&
-                    typeof $steps["updateCode"].then === "function"
-                  ) {
-                    $steps["updateCode"] = await $steps["updateCode"];
                   }
 
                   $steps["runOnOk"] = true
