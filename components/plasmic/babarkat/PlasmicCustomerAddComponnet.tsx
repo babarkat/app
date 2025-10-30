@@ -1664,7 +1664,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                         }
                         return "";
                       };
-                      return ($state.token = getCookie("token"));
+                      return ($state.token = JSON.parse(getCookie("token")));
                     })();
                   }
                 };
