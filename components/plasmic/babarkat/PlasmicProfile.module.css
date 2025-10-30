@@ -651,3 +651,7 @@
   height: 0px;
   max-width: 100%;
 }
+.sideEffect:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}

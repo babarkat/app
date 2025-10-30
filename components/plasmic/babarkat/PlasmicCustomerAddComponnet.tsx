@@ -228,8 +228,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
+              return undefined;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -760,7 +759,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
-              $steps["invokeGlobalAction4"] = false
+              $steps["invokeGlobalAction4"] = true
                 ? (() => {
                     const actionArgs = { args: [] };
                     return $globalActions["Fragment.showPasswordDialog"]?.apply(
@@ -779,9 +778,8 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
               }
 
               $steps["invokeGlobalAction"] =
-                $state.error.length == 0
-                  ? // && $steps.invokeGlobalAction4
-                    (() => {
+                $state.error.length == 0 && $steps.invokeGlobalAction4
+                  ? (() => {
                       const actionArgs = {
                         args: [
                           "POST",
@@ -825,7 +823,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction"];
               }
 
-              $steps["updateErrror"] = true
+              $steps["updateErrror"] = $steps.invokeGlobalAction4
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -1652,6 +1650,36 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         className={classNames("__wab_instance", sty.sideEffect)}
         onMount={async () => {
           const $steps = {};
+
+          $steps["runCode"] = true
+            ? (() => {
+                const actionArgs = {
+                  customFunction: async () => {
+                    return (() => {
+                      var getCookie = name => {
+                        const cookies = document.cookie.split("; ");
+                        for (let cookie of cookies) {
+                          const [key, value] = cookie.split("=");
+                          if (key === name) return value;
+                        }
+                        return "";
+                      };
+                      return ($state.token = getCookie("token"));
+                    })();
+                  }
+                };
+                return (({ customFunction }) => {
+                  return customFunction();
+                })?.apply(null, [actionArgs]);
+              })()
+            : undefined;
+          if (
+            $steps["runCode"] != null &&
+            typeof $steps["runCode"] === "object" &&
+            typeof $steps["runCode"].then === "function"
+          ) {
+            $steps["runCode"] = await $steps["runCode"];
+          }
 
           $steps["invokeGlobalAction"] = true
             ? (() => {

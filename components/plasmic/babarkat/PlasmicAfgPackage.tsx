@@ -3300,7 +3300,8 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                                             $state.number +
                                             "\nکپی کردن شماره: " +
                                             "`" +
-                                            $state.number.slice(5) +
+                                            0 +
+                                            $state.number.slice(4) +
                                             "`" +
                                             "\nشناسه تراکنش: " +
                                             $state.uuid

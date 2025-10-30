@@ -1449,6 +1449,41 @@ function PlasmicHomepage__RenderFunc(props: {
                             }
                           })()}
                         >
+                          <PlasmicImg__
+                            alt={""}
+                            className={classNames(sty.img__cwCKk)}
+                            displayHeight={
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? "auto"
+                                : "auto"
+                            }
+                            displayMaxHeight={"none"}
+                            displayMaxWidth={"100%"}
+                            displayMinHeight={"0"}
+                            displayMinWidth={"0"}
+                            displayWidth={
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? "auto"
+                                : "auto"
+                            }
+                            loading={"lazy"}
+                            src={
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? {
+                                    src: "/plasmic/babarkat/images/simpleShinySvg.svg",
+                                    fullWidth: 1440,
+                                    fullHeight: 560,
+                                    aspectRatio: undefined
+                                  }
+                                : {
+                                    src: "/plasmic/babarkat/images/simpleShinySvg.svg",
+                                    fullWidth: 1440,
+                                    fullHeight: 560,
+                                    aspectRatio: undefined
+                                  }
+                            }
+                          />
+
                           <div
                             className={classNames(
                               projectcss.all,

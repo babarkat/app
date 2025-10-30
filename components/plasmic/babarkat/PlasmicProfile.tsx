@@ -68,6 +68,7 @@ import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K1
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
 import { TextArea } from "@plasmicpkgs/antd/skinny/registerInput";
 import { inputHelpers as TextArea_Helpers } from "@plasmicpkgs/antd/skinny/registerInput";
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
 
@@ -111,6 +112,7 @@ export type PlasmicProfile__OverridesType = {
   select2?: Flex__<typeof AntdSelect>;
   info2?: Flex__<typeof TextArea>;
   button4?: Flex__<typeof Button>;
+  sideEffect?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultProfileProps {}
@@ -246,8 +248,7 @@ function PlasmicProfile__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
+              return undefined;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1027,7 +1028,7 @@ function PlasmicProfile__RenderFunc(props: {
                     }).apply(null, eventArgs);
                   }}
                   placeholder={"\u0645\u0628\u0644\u063a"}
-                  type={"number"}
+                  type={"amount"}
                   value={generateStateValueProp($state, ["valueAdd", "value"])}
                 />
 
@@ -1206,10 +1207,28 @@ function PlasmicProfile__RenderFunc(props: {
                       await $steps["updateButton3Loadingviow"];
                   }
 
+                  $steps["invokeGlobalAction4"] = true
+                    ? (() => {
+                        const actionArgs = { args: [] };
+                        return $globalActions[
+                          "Fragment.showPasswordDialog"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction4"] != null &&
+                    typeof $steps["invokeGlobalAction4"] === "object" &&
+                    typeof $steps["invokeGlobalAction4"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction4"] =
+                      await $steps["invokeGlobalAction4"];
+                  }
+
                   $steps["invokeGlobalAction"] =
                     $state.valueAdd.value != "" &&
                     parseInt($state.valueAdd.value) > 0 &&
-                    $state.valueAdd.value != undefined
+                    $state.valueAdd.value != undefined &&
+                    $steps.invokeGlobalAction4
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -1227,7 +1246,8 @@ function PlasmicProfile__RenderFunc(props: {
                                         : parseInt($state.valueAdd.value),
                                     priceType: $state.select.value,
                                     type: "transmission",
-                                    text: $state.info.value
+                                    text: $state.info.value,
+                                    code: $steps.invokeGlobalAction4
                                   };
                                 } catch (e) {
                                   if (
@@ -1311,7 +1331,7 @@ function PlasmicProfile__RenderFunc(props: {
                       await $steps["invokeGlobalAction3"];
                   }
 
-                  $steps["info"] = true
+                  $steps["info"] = $steps.invokeGlobalAction?.data?.success
                     ? (() => {
                         const actionArgs = {
                           args: [
@@ -1887,10 +1907,28 @@ function PlasmicProfile__RenderFunc(props: {
                       await $steps["updateButton4Loadingviow"];
                   }
 
+                  $steps["invokeGlobalAction4"] = true
+                    ? (() => {
+                        const actionArgs = { args: [] };
+                        return $globalActions[
+                          "Fragment.showPasswordDialog"
+                        ]?.apply(null, [...actionArgs.args]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["invokeGlobalAction4"] != null &&
+                    typeof $steps["invokeGlobalAction4"] === "object" &&
+                    typeof $steps["invokeGlobalAction4"].then === "function"
+                  ) {
+                    $steps["invokeGlobalAction4"] =
+                      await $steps["invokeGlobalAction4"];
+                  }
+
                   $steps["invokeGlobalAction"] =
                     $state.valueAdd2.value != "" &&
                     parseInt($state.valueAdd2.value) > 0 &&
-                    $state.valueAdd2.value != undefined
+                    $state.valueAdd2.value != undefined &&
+                    $steps.invokeGlobalAction4
                       ? (() => {
                           const actionArgs = {
                             args: [
@@ -1910,7 +1948,8 @@ function PlasmicProfile__RenderFunc(props: {
                                         : parseInt($state.valueAdd2.value)),
                                     priceType: $state.select.value,
                                     type: "transmission",
-                                    text: $state.info.value
+                                    text: $state.info.value,
+                                    code: $steps.invokeGlobalAction4
                                   };
                                 } catch (e) {
                                   if (
@@ -1994,7 +2033,7 @@ function PlasmicProfile__RenderFunc(props: {
                       await $steps["invokeGlobalAction3"];
                   }
 
-                  $steps["info"] = true
+                  $steps["info"] = $steps.invokeGlobalAction?.data?.success
                     ? (() => {
                         const actionArgs = {
                           args: [
@@ -2173,6 +2212,44 @@ function PlasmicProfile__RenderFunc(props: {
               </Button>
             </div>
           </AntdModal>
+          <SideEffect
+            data-plasmic-name={"sideEffect"}
+            data-plasmic-override={overrides.sideEffect}
+            className={classNames("__wab_instance", sty.sideEffect)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          var getCookie = name => {
+                            const cookies = document.cookie.split("; ");
+                            for (let cookie of cookies) {
+                              const [key, value] = cookie.split("=");
+                              if (key === name) return value;
+                            }
+                            return "";
+                          };
+                          return ($state.token = getCookie("token"));
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -2195,7 +2272,8 @@ const PlasmicDescendants = {
     "valueAdd2",
     "select2",
     "info2",
-    "button4"
+    "button4",
+    "sideEffect"
   ],
   button: ["button"],
   button2: ["button2"],
@@ -2210,7 +2288,8 @@ const PlasmicDescendants = {
   valueAdd2: ["valueAdd2"],
   select2: ["select2"],
   info2: ["info2"],
-  button4: ["button4"]
+  button4: ["button4"],
+  sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2231,6 +2310,7 @@ type NodeDefaultElementType = {
   select2: typeof AntdSelect;
   info2: typeof TextArea;
   button4: typeof Button;
+  sideEffect: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2334,6 +2414,7 @@ export const PlasmicProfile = Object.assign(
     select2: makeNodeComponent("select2"),
     info2: makeNodeComponent("info2"),
     button4: makeNodeComponent("button4"),
+    sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicProfile
     internalVariantProps: PlasmicProfile__VariantProps,

@@ -218,8 +218,7 @@ function PlasmicCustomerAdd__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
+              return undefined;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1644,33 +1643,65 @@ function PlasmicCustomerAdd__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["invokeGlobalAction"] = true
+              $steps["runCode"] = true
                 ? (() => {
                     const actionArgs = {
-                      args: [
-                        "PUT",
-                        "https://n8n.babarkat.com/webhook/saraf/login/username",
-                        undefined,
-                        (() => {
-                          try {
-                            return { userToken: $state.token };
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+                      customFunction: async () => {
+                        return (() => {
+                          var getCookie = name => {
+                            const cookies = document.cookie.split("; ");
+                            for (let cookie of cookies) {
+                              const [key, value] = cookie.split("=");
+                              if (key === name) return value;
                             }
-                            throw e;
-                          }
-                        })()
-                      ]
+                            return "";
+                          };
+                          return ($state.token = getCookie("token"));
+                        })();
+                      }
                     };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
                   })()
                 : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+
+              $steps["invokeGlobalAction"] =
+                $state.token != null && $state.token != ""
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          "PUT",
+                          "https://n8n.babarkat.com/webhook/saraf/login/username",
+                          undefined,
+                          (() => {
+                            try {
+                              return { userToken: $state.token };
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["invokeGlobalAction"] != null &&
                 typeof $steps["invokeGlobalAction"] === "object" &&

@@ -3898,6 +3898,16 @@
           "id": "9bYFwgmb2-qo",
           "name": "image 84",
           "filePath": "../public/plasmic/babarkat/images/image84.svg"
+        },
+        {
+          "id": "DU6MW9RNxhCi",
+          "name": "Animated Shape.svg",
+          "filePath": "../public/plasmic/babarkat/images/animatedShapeSvg.svg"
+        },
+        {
+          "id": "BoNy3CTBYIcn",
+          "name": "Simple Shiny.svg",
+          "filePath": "../public/plasmic/babarkat/images/simpleShinySvg.svg"
         }
       ],
       "indirect": false,

@@ -261,6 +261,31 @@
     padding: 5px 20px 20px;
   }
 }
+.img__cwCKk {
+  object-fit: cover;
+  max-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  opacity: 0.6;
+}
+.img__cwCKk > picture > img {
+  object-fit: cover;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .img__cwCKk {
+    width: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: auto;
+    opacity: 0.5;
+  }
+}
 .freeBox__i7Hyk {
   display: flex;
   flex-direction: column;
@@ -396,12 +421,12 @@
   opacity: 0.1;
   width: auto;
   height: 100%;
-  filter: saturate(0%) brightness(200%) contrast(100%);
+  filter: brightness(0%) contrast(200%);
   min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg___7Xbq {
-    width: 250px;
+    width: auto;
     height: 150px;
     top: -2px;
     flex-shrink: 0;

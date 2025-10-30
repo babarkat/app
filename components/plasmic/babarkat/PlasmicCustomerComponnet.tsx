@@ -273,8 +273,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
+              return undefined;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -407,35 +406,66 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
         onMount={async () => {
           const $steps = {};
 
-          $steps["customer"] = true
+          $steps["runCode"] = true
             ? (() => {
                 const actionArgs = {
-                  args: [
-                    undefined,
-                    "https://n8n.babarkat.com/webhook/saraf/getCustomer/",
-                    (() => {
-                      try {
-                        return {
-                          userToken: $state.token,
-                          page: 0
-                        };
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
+                  customFunction: async () => {
+                    return (() => {
+                      var getCookie = name => {
+                        const cookies = document.cookie.split("; ");
+                        for (let cookie of cookies) {
+                          const [key, value] = cookie.split("=");
+                          if (key === name) return value;
                         }
-                        throw e;
-                      }
-                    })()
-                  ]
+                        return "";
+                      };
+                      return ($state.token = getCookie("token"));
+                    })();
+                  }
                 };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
+                return (({ customFunction }) => {
+                  return customFunction();
+                })?.apply(null, [actionArgs]);
               })()
             : undefined;
+          if (
+            $steps["runCode"] != null &&
+            typeof $steps["runCode"] === "object" &&
+            typeof $steps["runCode"].then === "function"
+          ) {
+            $steps["runCode"] = await $steps["runCode"];
+          }
+
+          $steps["customer"] =
+            $state.token == null || $state.token == ""
+              ? (() => {
+                  const actionArgs = {
+                    args: [
+                      undefined,
+                      "https://n8n.babarkat.com/webhook/saraf/getCustomer/",
+                      (() => {
+                        try {
+                          return {
+                            userToken: $state.token,
+                            page: 0
+                          };
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()
+                    ]
+                  };
+                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                    ...actionArgs.args
+                  ]);
+                })()
+              : undefined;
           if (
             $steps["customer"] != null &&
             typeof $steps["customer"] === "object" &&
@@ -1600,7 +1630,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                 $steps["updateModal3Open"] = await $steps["updateModal3Open"];
               }
 
-              $steps["invokeGlobalAction3"] = false
+              $steps["invokeGlobalAction3"] = true
                 ? (() => {
                     const actionArgs = { args: [] };
                     return $globalActions["Fragment.showPasswordDialog"]?.apply(
@@ -1618,7 +1648,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
                   await $steps["invokeGlobalAction3"];
               }
 
-              $steps["invokeGlobalAction"] = true
+              $steps["invokeGlobalAction"] = $steps.invokeGlobalAction3
                 ? (() => {
                     const actionArgs = {
                       args: [
