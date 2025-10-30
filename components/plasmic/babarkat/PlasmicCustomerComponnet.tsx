@@ -436,36 +436,35 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
             $steps["runCode"] = await $steps["runCode"];
           }
 
-          $steps["customer"] =
-            $state.token == null || $state.token == ""
-              ? (() => {
-                  const actionArgs = {
-                    args: [
-                      undefined,
-                      "https://n8n.babarkat.com/webhook/saraf/getCustomer/",
-                      (() => {
-                        try {
-                          return {
-                            userToken: $state.token,
-                            page: 0
-                          };
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
+          $steps["customer"] = true
+            ? (() => {
+                const actionArgs = {
+                  args: [
+                    undefined,
+                    "https://n8n.babarkat.com/webhook/saraf/getCustomer/",
+                    (() => {
+                      try {
+                        return {
+                          userToken: $state.token,
+                          page: 0
+                        };
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
                         }
-                      })()
-                    ]
-                  };
-                  return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                    ...actionArgs.args
-                  ]);
-                })()
-              : undefined;
+                        throw e;
+                      }
+                    })()
+                  ]
+                };
+                return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                  ...actionArgs.args
+                ]);
+              })()
+            : undefined;
           if (
             $steps["customer"] != null &&
             typeof $steps["customer"] === "object" &&
