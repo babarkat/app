@@ -26,7 +26,7 @@
   color: var(--token-jgohepLVeKvh);
   text-align: center;
   align-self: flex-start;
-  transform: rotateX(0deg) rotateY(20deg) rotateZ(-40deg);
+  transform: rotate3d(-0.156725, 0.430599, -0.888832, 44.5375deg);
   left: -25px;
   top: 12px;
   transform-style: preserve-3d;

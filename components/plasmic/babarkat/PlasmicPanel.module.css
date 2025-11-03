@@ -2064,15 +2064,19 @@
 .img__vYqvl {
   object-fit: cover;
   max-width: 100%;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(87deg);
+  transform: rotate3d(0, 0, 1, 87deg);
   width: 100px;
   position: relative;
   left: auto;
   top: auto;
+  transform-style: preserve-3d;
   flex-shrink: 0;
 }
 .img__vYqvl > picture > img {
   object-fit: cover;
+}
+.img__vYqvl * {
+  transform-style: preserve-3d;
 }
 .freeBox__al5Hb {
   display: flex;

@@ -335,9 +335,23 @@
   position: relative;
   left: auto;
   top: auto;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   z-index: 3;
   height: auto;
+  transform-style: preserve-3d;
+}
+.popover2 * {
+  transform-style: preserve-3d;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .popover2:global(.__wab_instance) {
+    transform-style: preserve-3d;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .popover2 * {
+    transform-style: preserve-3d;
+  }
 }
 .svg___21TtL {
   object-fit: cover;

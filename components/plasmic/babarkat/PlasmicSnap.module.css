@@ -240,13 +240,21 @@
   max-width: 100%;
   width: 20px;
   height: 20px;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   color: #ffffff;
+  transform-style: preserve-3d;
   flex-shrink: 0;
+}
+.selected * {
+  transform-style: preserve-3d;
 }
 .selectedstepscharg_step3 {
   transform: none;
   color: #00ffcc;
+  transform-style: preserve-3d;
+}
+.selectedstepscharg_step3 * {
+  transform-style: preserve-3d;
 }
 .text___2CRi {
   position: relative;
@@ -265,7 +273,7 @@
   object-fit: cover;
   max-width: 100%;
   color: #ffffff;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   width: 20px;
   height: 20px;
   align-self: auto;
@@ -274,7 +282,11 @@
   z-index: 1;
   position: sticky;
   margin-bottom: 15px;
+  transform-style: preserve-3d;
   flex-shrink: 0;
+}
+.svg___1SBz2 * {
+  transform-style: preserve-3d;
 }
 .تاییدخرید {
   display: flex;

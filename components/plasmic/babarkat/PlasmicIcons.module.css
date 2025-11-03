@@ -79,14 +79,44 @@
   top: 4px;
   left: 2px;
   z-index: 1;
+  transform-style: preserve-3d;
   flex-shrink: 0;
   display: none;
 }
+.svg__bzwy5 * {
+  transform-style: preserve-3d;
+}
 .svgunnamedGroupOfVariants_intenet__bzwy5MMJ6 {
+  transform-style: preserve-3d;
   display: block;
+}
+.svgunnamedGroupOfVariants_intenet__bzwy5MMJ6 * {
+  transform-style: preserve-3d;
+}
+.svgunnamedGroupOfVariants_waite__bzwy5Nm8L7 {
+  transform-style: preserve-3d;
+}
+.svgunnamedGroupOfVariants_waite__bzwy5Nm8L7 * {
+  transform-style: preserve-3d;
+}
+.svgwite__bzwy5T15Jx {
+  transform-style: preserve-3d;
+}
+.svgwite__bzwy5T15Jx * {
+  transform-style: preserve-3d;
 }
 .svgfiled_unnamedGroupOfVariants_intenet__bzwy5ZvsHyMMJ6 {
   color: var(--token-fDNuFs9Skt3p);
+  transform-style: preserve-3d;
+}
+.svgfiled_unnamedGroupOfVariants_intenet__bzwy5ZvsHyMMJ6 * {
+  transform-style: preserve-3d;
+}
+.svgwite_unnamedGroupOfVariants_intenet__bzwy5T15JxMMJ6 {
+  transform-style: preserve-3d;
+}
+.svgwite_unnamedGroupOfVariants_intenet__bzwy5T15JxMMJ6 * {
+  transform-style: preserve-3d;
 }
 .svg__oOal {
   object-fit: cover;

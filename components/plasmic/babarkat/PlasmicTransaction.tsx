@@ -4971,6 +4971,12 @@ function PlasmicTransaction__RenderFunc(props: {
                         value: other.operatorAfg
                       });
                     }
+                    if (other.selectPack) {
+                      data.push({
+                        text: " توضیحات ",
+                        value: other.selectPack
+                      });
+                    }
                     if (input.originId) {
                       data.push({
                         text: "شناسه تراکنش",

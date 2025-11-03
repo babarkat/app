@@ -276,17 +276,29 @@
   max-width: 100%;
   width: 20px;
   height: 20px;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   color: #ffffff;
+  transform-style: preserve-3d;
   flex-shrink: 0;
+}
+.selected * {
+  transform-style: preserve-3d;
 }
 .selectedsteps2_step2 {
   color: #00ffcc;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transform: skew(0deg, 0deg);
+  transform-style: preserve-3d;
+}
+.selectedsteps2_step2 * {
+  transform-style: preserve-3d;
 }
 .selectedsteps2_step3 {
   color: #00ffcc;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  transform: skew(0deg, 0deg);
+  transform-style: preserve-3d;
+}
+.selectedsteps2_step3 * {
+  transform-style: preserve-3d;
 }
 .text___2MZo2 {
   position: relative;
@@ -318,7 +330,7 @@
   object-fit: cover;
   max-width: 100%;
   color: #ffffff;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   width: 20px;
   height: 20px;
   align-self: auto;
@@ -327,7 +339,11 @@
   z-index: 1;
   position: sticky;
   margin-bottom: 15px;
+  transform-style: preserve-3d;
   flex-shrink: 0;
+}
+.svg__ve9R7 * {
+  transform-style: preserve-3d;
 }
 .مبلغشارژ {
   display: flex;
@@ -387,9 +403,13 @@
   color: #ffffff;
   width: 20px;
   height: 20px;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(90deg);
+  transform: rotate3d(0, 0, 1, 90deg);
   margin-bottom: 15px;
+  transform-style: preserve-3d;
   flex-shrink: 0;
+}
+.svg__n2TT8 * {
+  transform-style: preserve-3d;
 }
 .تاییدخرید {
   display: flex;

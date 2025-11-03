@@ -48,11 +48,15 @@
   transition-property: all;
   transition-duration: 0.5s;
   box-shadow: 0px -4px 16px 0px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
   min-width: 0;
   flex-shrink: 0;
   -webkit-transition-property: all;
   -webkit-transition-duration: 0.5s;
   padding: 8px;
+}
+.freeBox__zFRi0 * {
+  transform-style: preserve-3d;
 }
 .text {
   position: relative;

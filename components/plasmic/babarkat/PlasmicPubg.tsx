@@ -852,7 +852,7 @@ function PlasmicPubg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "steps2", "step3") ? false : false
+          hasVariant($state, "steps2", "step3") ? true : true
       },
       {
         path: "dialog.type",
@@ -5373,6 +5373,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             data-plasmic-name={"commissionBabarkat"}
             data-plasmic-override={overrides.commissionBabarkat}
             className={classNames("__wab_instance", sty.commissionBabarkat, {
+              [sty.commissionBabarkatsteps2_step2]: hasVariant(
+                $state,
+                "steps2",
+                "step2"
+              ),
               [sty.commissionBabarkatsteps2_step3]: hasVariant(
                 $state,
                 "steps2",
@@ -5792,6 +5797,32 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                 ) {
                                   $steps["updateSteps2"] =
                                     await $steps["updateSteps2"];
+                                }
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            return ($state.otherData.selectPack =
+                                              " بسته " +
+                                              $state.selectpack.name +
+                                              " _ " +
+                                              $state.selectpack.number);
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
                                 }
                               },
                               onLoadingviowChange: async (

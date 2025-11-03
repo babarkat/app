@@ -1017,7 +1017,7 @@
   left: -25px;
   top: 12px;
   background: #1bae67;
-  transform: rotateX(0deg) rotateY(20deg) rotateZ(-40deg);
+  transform: rotate3d(-0.156725, 0.430599, -0.888832, 44.5375deg);
   transform-style: preserve-3d;
   display: none;
 }
@@ -3227,15 +3227,19 @@
 .img__mAlJs {
   object-fit: cover;
   max-width: 100%;
-  transform: rotateX(0deg) rotateY(0deg) rotateZ(87deg);
+  transform: rotate3d(0, 0, 1, 87deg);
   width: 100px;
   position: relative;
   left: auto;
   top: auto;
+  transform-style: preserve-3d;
   flex-shrink: 0;
 }
 .img__mAlJs > picture > img {
   object-fit: cover;
+}
+.img__mAlJs * {
+  transform-style: preserve-3d;
 }
 .freeBox__fAf7Z {
   display: flex;
