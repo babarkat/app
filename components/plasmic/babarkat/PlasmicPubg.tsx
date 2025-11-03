@@ -852,7 +852,7 @@ function PlasmicPubg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "steps2", "step3") ? true : true
+          hasVariant($state, "steps2", "step3") ? false : true
       },
       {
         path: "dialog.type",

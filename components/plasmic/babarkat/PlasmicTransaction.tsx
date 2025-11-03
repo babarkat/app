@@ -4902,6 +4902,9 @@ function PlasmicTransaction__RenderFunc(props: {
                     } catch (e) {
                       console.warn("otherData is not valid JSON:", e);
                     }
+                    if (other?.mobile) {
+                      input.mobile = other.mobile;
+                    }
                     let faDateTime = "";
                     if (input.createdAt) {
                       const createdAt = new Date(input.createdAt);
@@ -4934,8 +4937,8 @@ function PlasmicTransaction__RenderFunc(props: {
 
                     if (
                       input.type?.includes("package_") &&
-                      other.userName &&
-                      other.userId
+                      other?.userName &&
+                      other?.userId
                     ) {
                       data.push({
                         text: "نام کاربری",
@@ -4959,19 +4962,19 @@ function PlasmicTransaction__RenderFunc(props: {
                         value: other.namePack
                       });
                     }
-                    if (other.priceAfg) {
+                    if (other?.priceAfg) {
                       data.push({
                         text: "مبلغ شارژ",
                         value: other.priceAfg.toLocaleString() + " افغانی "
                       });
                     }
-                    if (other.operatorAfg) {
+                    if (other?.operatorAfg) {
                       data.push({
                         text: "اپراتور افغانستان",
                         value: other.operatorAfg
                       });
                     }
-                    if (other.selectPack) {
+                    if (other?.selectPack) {
                       data.push({
                         text: " توضیحات ",
                         value: other.selectPack
