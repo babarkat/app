@@ -69,9 +69,9 @@ import {
 import PercentageBox from "../../PercentageBox"; // plasmic-import: TD7BXkDTXaTo/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
-import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { Timer } from "@plasmicpkgs/plasmic-basic-components";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
+import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdProgress } from "@plasmicpkgs/antd5/skinny/registerProgress";
 import { AntdDrawer } from "@plasmicpkgs/antd5/skinny/registerDrawer";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -85,15 +85,12 @@ import sty from "./PlasmicHeader.module.css"; // plasmic-import: guZRqy1VG4VR/cs
 
 import Icon131Icon from "./icons/PlasmicIcon__Icon131"; // plasmic-import: mk8KWA0sV7w5/icon
 import Icon4Icon from "./icons/PlasmicIcon__Icon4"; // plasmic-import: XqFJUGsoKZel/icon
-import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: 9kOh69ICiFe8/icon
-import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 33CxUtuIdK2p/icon
-import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: AbdW4zXLIAYD/icon
-import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon60Icon from "./icons/PlasmicIcon__Icon60"; // plasmic-import: P52THJblgWka/icon
 import Icon63Icon from "./icons/PlasmicIcon__Icon63"; // plasmic-import: 3pIKdy4AyleH/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
@@ -138,14 +135,6 @@ export const PlasmicHeader__ArgProps = new Array<ArgPropType>(
 export type PlasmicHeader__OverridesType = {
   header?: Flex__<"div">;
   percentageBox?: Flex__<typeof PercentageBox>;
-  editProfile?: Flex__<typeof AntdModal>;
-  wallet4?: Flex__<"div">;
-  name?: Flex__<typeof Input>;
-  lastname?: Flex__<typeof Input>;
-  fathername?: Flex__<typeof Input>;
-  city?: Flex__<typeof Input>;
-  location?: Flex__<typeof Input>;
-  button3?: Flex__<typeof Button>;
   editSaraf?: Flex__<typeof AntdModal>;
   wallet6?: Flex__<"div">;
   fragmentInput?: Flex__<typeof Input>;
@@ -291,56 +280,6 @@ function PlasmicHeader__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "editProfile.open",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
-      },
-      {
-        path: "name.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "lastname.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return undefined;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
-      },
-      {
-        path: "city.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "location.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "fathername.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
         path: "editPassword.open",
         type: "private",
         variableType: "boolean",
@@ -472,25 +411,6 @@ function PlasmicHeader__RenderFunc(props: {
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
-      },
-      {
-        path: "button3.loadingviow",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return $state.loadingviow;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
       },
       {
         path: "btnNumber.loadingviow",
@@ -835,386 +755,6 @@ function PlasmicHeader__RenderFunc(props: {
         role={"img"}
       />
 
-      <AntdModal
-        data-plasmic-name={"editProfile"}
-        data-plasmic-override={overrides.editProfile}
-        className={classNames("__wab_instance", sty.editProfile)}
-        closeButtonClassName={classNames({ [sty["pcls_jXvPmkqxDbqs"]]: true })}
-        defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
-          styleTokensClassNames
-        )}
-        hideFooter={true}
-        modalContentClassName={classNames({
-          [sty["pcls_kdalUTwzGL3w"]]: true,
-          [sty["pcls_qynkwFxV0E2x"]]: hasVariant(
-            globalVariants,
-            "screen",
-            "mobileOnly"
-          )
-        })}
-        modalScopeClassName={sty["editProfile__modal"]}
-        onOpenChange={async (...eventArgs: any) => {
-          generateStateOnChangeProp($state, ["editProfile", "open"]).apply(
-            null,
-            eventArgs
-          );
-        }}
-        open={generateStateValueProp($state, ["editProfile", "open"])}
-        title={null}
-        trigger={null}
-        width={
-          hasVariant(globalVariants, "screen", "mobileOnly") ? "100vw" : "100vw"
-        }
-        wrapClassName={classNames({ [sty["pcls_bl76GPFKHsbK"]]: true })}
-      >
-        <div className={classNames(projectcss.all, sty.freeBox__sdvDv)}>
-          <div
-            data-plasmic-name={"wallet4"}
-            data-plasmic-override={overrides.wallet4}
-            className={classNames(projectcss.all, sty.wallet4)}
-          >
-            <div className={classNames(projectcss.all, sty.freeBox__fJp0M)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___9KkJs
-                )}
-              >
-                {
-                  "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
-                }
-              </div>
-            </div>
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__bdqb1)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xx5Bw
-              )}
-            >
-              {
-                "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u06a9\u0627\u0631\u0628\u0631\u06cc"
-              }
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__v3Ud)}>
-              <Icon30Icon
-                className={classNames(projectcss.all, sty.svg__uqfYd)}
-                role={"img"}
-              />
-
-              <Input
-                data-plasmic-name={"name"}
-                data-plasmic-override={overrides.name}
-                className={classNames("__wab_instance", sty.name)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["name", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                placeholder={"\u0646\u0627\u0645"}
-                type={"text"}
-                value={generateStateValueProp($state, ["name", "value"])}
-              />
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__zAxBg)}>
-              <Icon30Icon
-                className={classNames(projectcss.all, sty.svg__chfOn)}
-                role={"img"}
-              />
-
-              <Input
-                data-plasmic-name={"lastname"}
-                data-plasmic-override={overrides.lastname}
-                className={classNames("__wab_instance", sty.lastname)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "lastname",
-                    "value"
-                  ]).apply(null, eventArgs);
-                }}
-                placeholder={
-                  "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
-                }
-                type={"text"}
-                value={generateStateValueProp($state, ["lastname", "value"])}
-              />
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__d2Iks)}>
-              <Icon30Icon
-                className={classNames(projectcss.all, sty.svg__l93ZI)}
-                role={"img"}
-              />
-
-              <Input
-                data-plasmic-name={"fathername"}
-                data-plasmic-override={overrides.fathername}
-                className={classNames("__wab_instance", sty.fathername)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "fathername",
-                    "value"
-                  ]).apply(null, eventArgs);
-                }}
-                placeholder={"\u0646\u0627\u0645 \u067e\u062f\u0631"}
-                type={"text"}
-                value={generateStateValueProp($state, ["fathername", "value"])}
-              />
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__pmkk9)}>
-              <Icon28Icon
-                className={classNames(projectcss.all, sty.svg__mVLsl)}
-                role={"img"}
-              />
-
-              <Input
-                data-plasmic-name={"city"}
-                data-plasmic-override={overrides.city}
-                className={classNames("__wab_instance", sty.city)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, ["city", "value"]).apply(
-                    null,
-                    eventArgs
-                  );
-                }}
-                placeholder={
-                  "\u0634\u0647\u0631 \u0645\u062d\u0644 \u062a\u0648\u0644\u062f"
-                }
-                type={"text"}
-                value={generateStateValueProp($state, ["city", "value"])}
-              />
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__c92Mp)}>
-              <Icon29Icon
-                className={classNames(projectcss.all, sty.svg___5Uh0H)}
-                role={"img"}
-              />
-
-              <Input
-                data-plasmic-name={"location"}
-                data-plasmic-override={overrides.location}
-                className={classNames("__wab_instance", sty.location)}
-                onChange={async (...eventArgs: any) => {
-                  generateStateOnChangeProp($state, [
-                    "location",
-                    "value"
-                  ]).apply(null, eventArgs);
-                }}
-                placeholder={" \u0622\u062f\u0631\u0633"}
-                type={"text"}
-                value={generateStateValueProp($state, ["location", "value"])}
-              />
-            </div>
-            <Button
-              data-plasmic-name={"button3"}
-              data-plasmic-override={overrides.button3}
-              className={classNames("__wab_instance", sty.button3)}
-              color={
-                hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? "green"
-                  : "green"
-              }
-              loadingviow={generateStateValueProp($state, [
-                "button3",
-                "loadingviow"
-              ])}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["invokeGlobalAction"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "PUT",
-                          "https://n8n.babarkat.com/webhook/Babarkat/login",
-                          undefined,
-                          (() => {
-                            try {
-                              return {
-                                name: $state.name.value,
-                                last_name: $state.lastname.value,
-                                birthplace: $state.city.value,
-                                location: $state.location.value,
-                                fatherName: $state.fathername.value,
-                                userToken: $props.token
-                              };
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction"] != null &&
-                  typeof $steps["invokeGlobalAction"] === "object" &&
-                  typeof $steps["invokeGlobalAction"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction"] =
-                    await $steps["invokeGlobalAction"];
-                }
-
-                $steps["invokeGlobalAction2"] = (
-                  $steps.invokeGlobalAction?.data
-                    ? $steps.invokeGlobalAction?.data[0]?.success === true
-                    : false
-                )
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "success",
-                          "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0628\u0631\u0648\u0632 \u0634\u062f."
-                        ]
-                      };
-                      return $globalActions[
-                        "plasmic-antd5-config-provider.showNotification"
-                      ]?.apply(null, [...actionArgs.args]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction2"] != null &&
-                  typeof $steps["invokeGlobalAction2"] === "object" &&
-                  typeof $steps["invokeGlobalAction2"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction2"] =
-                    await $steps["invokeGlobalAction2"];
-                }
-
-                $steps["updateModal4Open"] = (
-                  $steps.invokeGlobalAction?.data
-                    ? $steps.invokeGlobalAction?.data[0]?.success === true
-                    : false
-                )
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["editProfile", "open"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateModal4Open"] != null &&
-                  typeof $steps["updateModal4Open"] === "object" &&
-                  typeof $steps["updateModal4Open"].then === "function"
-                ) {
-                  $steps["updateModal4Open"] = await $steps["updateModal4Open"];
-                }
-
-                $steps["invokeGlobalAction3"] = (
-                  $steps.invokeGlobalAction?.data
-                    ? $steps.invokeGlobalAction?.data[0]?.success === false
-                    : false
-                )
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "error",
-                          "\u0645\u0634\u06a9\u0644\u06cc \u067e\u06cc\u0634 \u0622\u0645\u062f\u0647 \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u06a9\u0646\u06cc\u062f.",
-                          "top-left"
-                        ]
-                      };
-                      return $globalActions["Fragment.showToast"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["invokeGlobalAction3"] != null &&
-                  typeof $steps["invokeGlobalAction3"] === "object" &&
-                  typeof $steps["invokeGlobalAction3"].then === "function"
-                ) {
-                  $steps["invokeGlobalAction3"] =
-                    await $steps["invokeGlobalAction3"];
-                }
-
-                $steps["refreshData"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        queryInvalidation: ["plasmic_refresh_all"]
-                      };
-                      return (async ({ queryInvalidation }) => {
-                        if (!queryInvalidation) {
-                          return;
-                        }
-                        await plasmicInvalidate(queryInvalidation);
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["refreshData"] != null &&
-                  typeof $steps["refreshData"] === "object" &&
-                  typeof $steps["refreshData"].then === "function"
-                ) {
-                  $steps["refreshData"] = await $steps["refreshData"];
-                }
-              }}
-              onLoadingviowChange={async (...eventArgs: any) => {
-                ((...eventArgs) => {
-                  generateStateOnChangeProp($state, ["button3", "loadingviow"])(
-                    eventArgs[0]
-                  );
-                }).apply(null, eventArgs);
-
-                if (
-                  eventArgs.length > 1 &&
-                  eventArgs[1] &&
-                  eventArgs[1]._plasmic_state_init_
-                ) {
-                  return;
-                }
-              }}
-            >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__s80C4
-                )}
-              >
-                {
-                  "\u062b\u0628\u062a \u0627\u0637\u0644\u0627\u0639\u0627\u062a"
-                }
-              </div>
-            </Button>
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__wJUmw)} />
-        </div>
-      </AntdModal>
       <AntdModal
         data-plasmic-name={"editSaraf"}
         data-plasmic-override={overrides.editSaraf}
@@ -3508,80 +3048,7 @@ function PlasmicHeader__RenderFunc(props: {
               role={"img"}
             />
 
-            <div
-              className={classNames(projectcss.all, sty.freeBox__nlHLk)}
-              onClick={async event => {
-                const $steps = {};
-
-                $steps["updateDrawerOpen"] = $props.userbabarcat.canEdit
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["drawer", "open"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateDrawerOpen"] != null &&
-                  typeof $steps["updateDrawerOpen"] === "object" &&
-                  typeof $steps["updateDrawerOpen"].then === "function"
-                ) {
-                  $steps["updateDrawerOpen"] = await $steps["updateDrawerOpen"];
-                }
-
-                $steps["updateModal4Open"] = $props.userbabarcat.canEdit
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["editProfile", "open"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateModal4Open"] != null &&
-                  typeof $steps["updateModal4Open"] === "object" &&
-                  typeof $steps["updateModal4Open"].then === "function"
-                ) {
-                  $steps["updateModal4Open"] = await $steps["updateModal4Open"];
-                }
-              }}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__nlHLk)}>
               <GroupSvgIcon
                 className={classNames(projectcss.all, sty.svg__rApRx)}
                 role={"img"}
@@ -4281,14 +3748,6 @@ const PlasmicDescendants = {
   header: [
     "header",
     "percentageBox",
-    "editProfile",
-    "wallet4",
-    "name",
-    "lastname",
-    "fathername",
-    "city",
-    "location",
-    "button3",
     "editSaraf",
     "wallet6",
     "fragmentInput",
@@ -4330,23 +3789,6 @@ const PlasmicDescendants = {
     "button6"
   ],
   percentageBox: ["percentageBox"],
-  editProfile: [
-    "editProfile",
-    "wallet4",
-    "name",
-    "lastname",
-    "fathername",
-    "city",
-    "location",
-    "button3"
-  ],
-  wallet4: ["wallet4"],
-  name: ["name"],
-  lastname: ["lastname"],
-  fathername: ["fathername"],
-  city: ["city"],
-  location: ["location"],
-  button3: ["button3"],
   editSaraf: [
     "editSaraf",
     "wallet6",
@@ -4466,14 +3908,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   header: "div";
   percentageBox: typeof PercentageBox;
-  editProfile: typeof AntdModal;
-  wallet4: "div";
-  name: typeof Input;
-  lastname: typeof Input;
-  fathername: typeof Input;
-  city: typeof Input;
-  location: typeof Input;
-  button3: typeof Button;
   editSaraf: typeof AntdModal;
   wallet6: "div";
   fragmentInput: typeof Input;
@@ -4578,14 +4012,6 @@ export const PlasmicHeader = Object.assign(
   {
     // Helper components rendering sub-elements
     percentageBox: makeNodeComponent("percentageBox"),
-    editProfile: makeNodeComponent("editProfile"),
-    wallet4: makeNodeComponent("wallet4"),
-    _name: makeNodeComponent("name"),
-    lastname: makeNodeComponent("lastname"),
-    fathername: makeNodeComponent("fathername"),
-    city: makeNodeComponent("city"),
-    location: makeNodeComponent("location"),
-    button3: makeNodeComponent("button3"),
     editSaraf: makeNodeComponent("editSaraf"),
     wallet6: makeNodeComponent("wallet6"),
     fragmentInput: makeNodeComponent("fragmentInput"),
