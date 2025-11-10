@@ -2069,14 +2069,10 @@
   position: relative;
   left: auto;
   top: auto;
-  transform-style: preserve-3d;
   flex-shrink: 0;
 }
 .img__vYqvl > picture > img {
   object-fit: cover;
-}
-.img__vYqvl * {
-  transform-style: preserve-3d;
 }
 .freeBox__al5Hb {
   display: flex;

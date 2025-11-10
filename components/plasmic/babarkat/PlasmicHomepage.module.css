@@ -3232,14 +3232,10 @@
   position: relative;
   left: auto;
   top: auto;
-  transform-style: preserve-3d;
   flex-shrink: 0;
 }
 .img__mAlJs > picture > img {
   object-fit: cover;
-}
-.img__mAlJs * {
-  transform-style: preserve-3d;
 }
 .freeBox__fAf7Z {
   display: flex;

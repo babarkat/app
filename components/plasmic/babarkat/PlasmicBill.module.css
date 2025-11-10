@@ -318,33 +318,15 @@
   height: 20px;
   transform: rotate3d(0, 0, 1, 90deg);
   color: #ffffff;
-  transform-style: preserve-3d;
   flex-shrink: 0;
-}
-.selected * {
-  transform-style: preserve-3d;
 }
 .selectedstepscharg_step2 {
   color: #00ffcc;
   transform: skew(0deg, 0deg);
-  transform-style: preserve-3d;
-}
-.selectedstepscharg_step2 * {
-  transform-style: preserve-3d;
 }
 .selectedstepscharg_step3 {
   transform: none;
   color: #00ffcc;
-  transform-style: preserve-3d;
-}
-.selectedstepscharg_step3 * {
-  transform-style: preserve-3d;
-}
-.selectedstepscharg_step1 {
-  transform-style: preserve-3d;
-}
-.selectedstepscharg_step1 * {
-  transform-style: preserve-3d;
 }
 .text__dr5Sp {
   position: relative;
@@ -375,11 +357,7 @@
   z-index: 1;
   position: sticky;
   margin-bottom: 15px;
-  transform-style: preserve-3d;
   flex-shrink: 0;
-}
-.svg__wWiHf * {
-  transform-style: preserve-3d;
 }
 .مبلغشارژ {
   display: flex;
@@ -431,11 +409,7 @@
   height: 20px;
   transform: rotate3d(0, 0, 1, 90deg);
   margin-bottom: 15px;
-  transform-style: preserve-3d;
   flex-shrink: 0;
-}
-.svg__sNzY * {
-  transform-style: preserve-3d;
 }
 .تاییدخرید {
   display: flex;
@@ -1927,10 +1901,6 @@
   transform: rotate3d(0, 0, 1, 90deg);
   z-index: 3;
   height: auto;
-  transform-style: preserve-3d;
-}
-.popover * {
-  transform-style: preserve-3d;
 }
 .svg__a7Rhy {
   object-fit: cover;

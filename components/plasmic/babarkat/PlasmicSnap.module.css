@@ -242,19 +242,11 @@
   height: 20px;
   transform: rotate3d(0, 0, 1, 90deg);
   color: #ffffff;
-  transform-style: preserve-3d;
   flex-shrink: 0;
-}
-.selected * {
-  transform-style: preserve-3d;
 }
 .selectedstepscharg_step3 {
   transform: none;
   color: #00ffcc;
-  transform-style: preserve-3d;
-}
-.selectedstepscharg_step3 * {
-  transform-style: preserve-3d;
 }
 .text___2CRi {
   position: relative;
@@ -282,11 +274,7 @@
   z-index: 1;
   position: sticky;
   margin-bottom: 15px;
-  transform-style: preserve-3d;
   flex-shrink: 0;
-}
-.svg___1SBz2 * {
-  transform-style: preserve-3d;
 }
 .تاییدخرید {
   display: flex;

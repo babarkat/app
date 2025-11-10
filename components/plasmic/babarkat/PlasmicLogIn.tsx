@@ -2039,19 +2039,35 @@ function PlasmicLogIn__RenderFunc(props: {
                     const $steps = {};
                   }).apply(null, eventArgs);
                 }}
-                options={(() => {
-                  try {
-                    return $state.saraf;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return [{ type: "option" }];
-                    }
-                    throw e;
-                  }
-                })()}
+                options={
+                  hasVariant($state, "group11", "saraf")
+                    ? (() => {
+                        try {
+                          return $state.saraf.filter(i => i.value != 1110);
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [{ type: "option" }];
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $state.saraf.filter(i => i.value != 1110);
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [{ type: "option" }];
+                          }
+                          throw e;
+                        }
+                      })()
+                }
                 placeholder={null}
                 popupScopeClassName={sty["select__popup"]}
                 size={"large"}
