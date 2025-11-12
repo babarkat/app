@@ -1515,11 +1515,18 @@ function PlasmicHomepage__RenderFunc(props: {
                                   {(() => {
                                     try {
                                       return (
-                                        ($state.userbabarcat.last_name ||
-                                          "کاربر بی نام") +
+                                        ($state.userbabarcat.name ||
+                                        $state.userbabarcat.last_name
+                                          ? [
+                                              $state.userbabarcat.name,
+                                              $state.userbabarcat.last_name
+                                            ]
+                                              .filter(Boolean)
+                                              .join(" ")
+                                          : "کاربر بی نام") +
                                         " (امانتداری " +
                                         $state.userbabarcat.sarafName +
-                                        ") "
+                                        ")"
                                       );
                                     } catch (e) {
                                       if (

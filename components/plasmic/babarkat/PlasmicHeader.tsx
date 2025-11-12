@@ -3065,7 +3065,15 @@ function PlasmicHeader__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return $props.userbabarcat.last_name;
+                        return $props.userbabarcat.name ||
+                          $props.userbabarcat.last_name
+                          ? [
+                              $props.userbabarcat.name,
+                              $props.userbabarcat.last_name
+                            ]
+                              .filter(Boolean)
+                              .join(" ")
+                          : "کاربر بی نام";
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
