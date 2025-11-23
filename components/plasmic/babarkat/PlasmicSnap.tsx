@@ -62,6 +62,7 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
+import HeaderPage from "../../HeaderPage"; // plasmic-import: mcUMtOs2L3cw/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/component
@@ -80,9 +81,6 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicSnap.module.css"; // plasmic-import: ZCvnmuylbYRk/css
 
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
@@ -90,6 +88,7 @@ import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; 
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -112,7 +111,7 @@ export const PlasmicSnap__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicSnap__OverridesType = {
   chargeStep1?: Flex__<"div">;
-  header?: Flex__<"div">;
+  headerPage?: Flex__<typeof HeaderPage>;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
   steps?: Flex__<"div">;
@@ -808,133 +807,21 @@ function PlasmicSnap__RenderFunc(props: {
                 )
               })}
             >
-              <div
-                data-plasmic-name={"header"}
-                data-plasmic-override={overrides.header}
-                className={classNames(projectcss.all, sty.header, {
-                  [sty.headerstepscharg_step3]: hasVariant(
+              <HeaderPage
+                data-plasmic-name={"headerPage"}
+                data-plasmic-override={overrides.headerPage}
+                className={classNames("__wab_instance", sty.headerPage, {
+                  [sty.headerPagestepscharg_step3]: hasVariant(
                     $state,
                     "stepscharg",
                     "step3"
                   )
                 })}
               >
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon10Icon
-                      : Icon3Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg___0OtwH, {
-                    [sty.svgstepscharg_step3___0OtwHzZ317]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step3"
-                    )
-                  })}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToHomepage"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToHomepage"] != null &&
-                      typeof $steps["goToHomepage"] === "object" &&
-                      typeof $steps["goToHomepage"].then === "function"
-                    ) {
-                      $steps["goToHomepage"] = await $steps["goToHomepage"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__suHcX,
-                    {
-                      [sty.textstepscharg_step3__suHcXzZ317]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
-                >
-                  {
-                    "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 \u0627\u0633\u0646\u067e"
-                  }
-                </div>
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon9Icon
-                      : Icon9Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__pGQzv, {
-                    [sty.svgstepscharg_step3__pGQzvzZ317]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step3"
-                    )
-                  })}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateModalOpen"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["modal", "open"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateModalOpen"] != null &&
-                      typeof $steps["updateModalOpen"] === "object" &&
-                      typeof $steps["updateModalOpen"].then === "function"
-                    ) {
-                      $steps["updateModalOpen"] =
-                        await $steps["updateModalOpen"];
-                    }
-                  }}
-                  role={"img"}
-                />
-              </div>
+                {
+                  "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 \u0627\u0633\u0646\u067e"
+                }
+              </HeaderPage>
               <Reveal
                 data-plasmic-name={"reveal"}
                 data-plasmic-override={overrides.reveal}
@@ -1130,7 +1017,14 @@ function PlasmicSnap__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text___5P0MN
+                          sty.text___5P0MN,
+                          {
+                            [sty.textstepscharg_step3___5P0MNzZ317]: hasVariant(
+                              $state,
+                              "stepscharg",
+                              "step3"
+                            )
+                          }
                         )}
                       >
                         <React.Fragment>
@@ -4862,7 +4756,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 const PlasmicDescendants = {
   chargeStep1: [
     "chargeStep1",
-    "header",
+    "headerPage",
     "reveal",
     "wallet",
     "steps",
@@ -4894,7 +4788,7 @@ const PlasmicDescendants = {
     "exchange",
     "dialog"
   ],
-  header: ["header"],
+  headerPage: ["headerPage"],
   reveal: [
     "reveal",
     "wallet",
@@ -4967,7 +4861,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   chargeStep1: "div";
-  header: "div";
+  headerPage: typeof HeaderPage;
   reveal: typeof Reveal;
   wallet: "div";
   steps: "div";
@@ -5087,7 +4981,7 @@ export const PlasmicSnap = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("chargeStep1")),
   {
     // Helper components rendering sub-elements
-    header: makeNodeComponent("header"),
+    headerPage: makeNodeComponent("headerPage"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
     steps: makeNodeComponent("steps"),

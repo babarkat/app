@@ -63,7 +63,7 @@
     {
       "name": "Basic/Container-Background",
       "type": "color",
-      "value": "#FFFFFF",
+      "value": "var(--antd-colorPrimary)",
       "category": "color",
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
@@ -2668,6 +2668,26 @@
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",
         "id": "-3UT6C2Na0g9"
+      }
+    },
+    {
+      "name": "bg",
+      "type": "color",
+      "value": "#1E2C39",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "952cmwegeejP"
+      }
+    },
+    {
+      "name": "footer hader",
+      "type": "color",
+      "value": "#19242F",
+      "category": "color",
+      "meta": {
+        "projectId": "sZQMbqXz9utLNaTnNb3uss",
+        "id": "PmxGwMeNfFAN"
       }
     },
     {

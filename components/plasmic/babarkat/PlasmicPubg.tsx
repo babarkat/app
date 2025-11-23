@@ -62,6 +62,7 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
+import HeaderPage from "../../HeaderPage"; // plasmic-import: mcUMtOs2L3cw/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import Boxselect2 from "../../Boxselect2"; // plasmic-import: skA4mCHGCjr2/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
@@ -72,7 +73,6 @@ import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import ShopModal from "../../ShopModal"; // plasmic-import: pU2JisUur_AL/component
 import Exchange from "../../Exchange"; // plasmic-import: o18FzkeW7v5y/component
@@ -85,9 +85,6 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPubg.module.css"; // plasmic-import: Izx7HE7nypnF/css
 
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
@@ -98,6 +95,7 @@ import Icon112Icon from "./icons/PlasmicIcon__Icon112"; // plasmic-import: n9Idd
 import Icon113Icon from "./icons/PlasmicIcon__Icon113"; // plasmic-import: G2o3PwB6SKLN/icon
 import Icon114Icon from "./icons/PlasmicIcon__Icon114"; // plasmic-import: TMIYL_YcSO8V/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Group3SvgIcon from "./icons/PlasmicIcon__Group3Svg"; // plasmic-import: 3nXrgMVaV7TW/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
@@ -121,7 +119,7 @@ export const PlasmicPubg__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicPubg__OverridesType = {
   root?: Flex__<"div">;
-  header?: Flex__<"div">;
+  headerPage?: Flex__<typeof HeaderPage>;
   reveal?: Flex__<typeof Reveal>;
   operators?: Flex__<"div">;
   boxselect?: Flex__<typeof Boxselect2>;
@@ -162,7 +160,6 @@ export type PlasmicPubg__OverridesType = {
   commissionBabarkat?: Flex__<typeof ApiRequest>;
   rate?: Flex__<typeof ApiRequest>;
   button6?: Flex__<typeof Button>;
-  embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
   shopModal?: Flex__<typeof ShopModal>;
   exchange?: Flex__<typeof Exchange>;
@@ -951,136 +948,15 @@ function PlasmicPubg__RenderFunc(props: {
                 )
               })}
             >
-              <div
-                data-plasmic-name={"header"}
-                data-plasmic-override={overrides.header}
-                className={classNames(projectcss.all, sty.header, {
-                  [sty.headersteps2_step2]: hasVariant(
-                    $state,
-                    "steps2",
-                    "step2"
-                  ),
-                  [sty.headersteps2_step3]: hasVariant(
-                    $state,
-                    "steps2",
-                    "step3"
-                  )
-                })}
+              <HeaderPage
+                data-plasmic-name={"headerPage"}
+                data-plasmic-override={overrides.headerPage}
+                className={classNames("__wab_instance", sty.headerPage)}
               >
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon10Icon
-                      : Icon3Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__mZ6FI, {
-                    [sty.svgsteps2_step2__mZ6FIjQ3Ah]: hasVariant(
-                      $state,
-                      "steps2",
-                      "step2"
-                    )
-                  })}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToHomepage"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToHomepage"] != null &&
-                      typeof $steps["goToHomepage"] === "object" &&
-                      typeof $steps["goToHomepage"].then === "function"
-                    ) {
-                      $steps["goToHomepage"] = await $steps["goToHomepage"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__asuJq
-                  )}
-                >
-                  {
-                    "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 \u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc \u0647\u0627"
-                  }
-                </div>
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon9Icon
-                      : Icon9Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__wM5P2, {
-                    [sty.svgsteps2_step2__wM5P2JQ3Ah]: hasVariant(
-                      $state,
-                      "steps2",
-                      "step2"
-                    ),
-                    [sty.svgsteps2_step3__wM5P2Jpk3R]: hasVariant(
-                      $state,
-                      "steps2",
-                      "step3"
-                    )
-                  })}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateModalOpen"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["modal", "open"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateModalOpen"] != null &&
-                      typeof $steps["updateModalOpen"] === "object" &&
-                      typeof $steps["updateModalOpen"].then === "function"
-                    ) {
-                      $steps["updateModalOpen"] =
-                        await $steps["updateModalOpen"];
-                    }
-                  }}
-                  role={"img"}
-                />
-              </div>
+                {
+                  "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647 \u0628\u0631\u0646\u0627\u0645\u0647 \u0648 \u0628\u0627\u0632\u06cc \u0647\u0627"
+                }
+              </HeaderPage>
               <Reveal
                 data-plasmic-name={"reveal"}
                 data-plasmic-override={overrides.reveal}
@@ -2645,7 +2521,13 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     <div
                       data-plasmic-name={"imo2"}
                       data-plasmic-override={overrides.imo2}
-                      className={classNames(projectcss.all, sty.imo2)}
+                      className={classNames(projectcss.all, sty.imo2, {
+                        [sty.imo2steps2_step2]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step2"
+                        )
+                      })}
                     >
                       <div
                         className={classNames(
@@ -5942,24 +5824,6 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               ) : null}
             </section>
           </ApiRequest>
-          {(hasVariant($state, "steps2", "step3") ? true : false) ? (
-            <Embed
-              data-plasmic-name={"embedHtml"}
-              data-plasmic-override={overrides.embedHtml}
-              className={classNames("__wab_instance", sty.embedHtml, {
-                [sty.embedHtmlsteps2_step3]: hasVariant(
-                  $state,
-                  "steps2",
-                  "step3"
-                )
-              })}
-              code={
-                hasVariant($state, "steps2", "step3")
-                  ? "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/pubg\"\r\n        });\r\n    </script>"
-                  : "<div></div>\r\n    <script>\r\n        window.addEventListener('popstate', function (event) {\r\n            window.location.href = \"/charging\"\r\n        });\r\n    </script>"
-              }
-            />
-          ) : null}
           <SideEffect
             data-plasmic-name={"sideEffect"}
             data-plasmic-override={overrides.sideEffect}
@@ -6508,7 +6372,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 const PlasmicDescendants = {
   root: [
     "root",
-    "header",
+    "headerPage",
     "reveal",
     "operators",
     "boxselect",
@@ -6549,13 +6413,12 @@ const PlasmicDescendants = {
     "commissionBabarkat",
     "rate",
     "button6",
-    "embedHtml",
     "sideEffect",
     "shopModal",
     "exchange",
     "dialog"
   ],
-  header: ["header"],
+  headerPage: ["headerPage"],
   reveal: [
     "reveal",
     "operators",
@@ -6668,7 +6531,6 @@ const PlasmicDescendants = {
   commissionBabarkat: ["commissionBabarkat"],
   rate: ["rate", "button6"],
   button6: ["button6"],
-  embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"],
   shopModal: ["shopModal"],
   exchange: ["exchange"],
@@ -6679,7 +6541,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  header: "div";
+  headerPage: typeof HeaderPage;
   reveal: typeof Reveal;
   operators: "div";
   boxselect: typeof Boxselect2;
@@ -6720,7 +6582,6 @@ type NodeDefaultElementType = {
   commissionBabarkat: typeof ApiRequest;
   rate: typeof ApiRequest;
   button6: typeof Button;
-  embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
   shopModal: typeof ShopModal;
   exchange: typeof Exchange;
@@ -6814,7 +6675,7 @@ export const PlasmicPubg = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("root")),
   {
     // Helper components rendering sub-elements
-    header: makeNodeComponent("header"),
+    headerPage: makeNodeComponent("headerPage"),
     reveal: makeNodeComponent("reveal"),
     operators: makeNodeComponent("operators"),
     boxselect: makeNodeComponent("boxselect"),
@@ -6859,7 +6720,6 @@ export const PlasmicPubg = Object.assign(
     commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     rate: makeNodeComponent("rate"),
     button6: makeNodeComponent("button6"),
-    embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
     shopModal: makeNodeComponent("shopModal"),
     exchange: makeNodeComponent("exchange"),

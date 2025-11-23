@@ -62,6 +62,7 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
+import HeaderPage from "../../HeaderPage"; // plasmic-import: mcUMtOs2L3cw/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect from "../../Boxselect"; // plasmic-import: zrEzOXBZcn1e/component
@@ -81,14 +82,12 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicAfgPackage.module.css"; // plasmic-import: B7RWjbP8P1bE/css
 
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Group3SvgIcon from "./icons/PlasmicIcon__Group3Svg"; // plasmic-import: 3nXrgMVaV7TW/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
@@ -114,7 +113,7 @@ export const PlasmicAfgPackage__ArgProps = new Array<ArgPropType>("onClick");
 
 export type PlasmicAfgPackage__OverridesType = {
   chargeStep1?: Flex__<"div">;
-  header?: Flex__<"div">;
+  headerPage?: Flex__<typeof HeaderPage>;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
   steps?: Flex__<"div">;
@@ -843,135 +842,15 @@ function PlasmicAfgPackage__RenderFunc(props: {
               )
             })}
           >
-            <div
-              data-plasmic-name={"header"}
-              data-plasmic-override={overrides.header}
-              className={classNames(projectcss.all, sty.header, {
-                [sty.headerstepscharg_step2]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step2"
-                ),
-                [sty.headerstepscharg_step3]: hasVariant(
-                  $state,
-                  "stepscharg",
-                  "step3"
-                )
-              })}
+            <HeaderPage
+              data-plasmic-name={"headerPage"}
+              data-plasmic-override={overrides.headerPage}
+              className={classNames("__wab_instance", sty.headerPage)}
             >
-              <PlasmicIcon__
-                PlasmicIconType={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? Icon10Icon
-                    : Icon3Icon
-                }
-                className={classNames(projectcss.all, sty.svg__llt7T, {
-                  [sty.svgstepscharg_step2__llt7Tzwaj5]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.svgstepscharg_step3__llt7TTDnBg]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["goToHomepage"] = true
-                    ? (() => {
-                        const actionArgs = { destination: `/` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["goToHomepage"] != null &&
-                    typeof $steps["goToHomepage"] === "object" &&
-                    typeof $steps["goToHomepage"].then === "function"
-                  ) {
-                    $steps["goToHomepage"] = await $steps["goToHomepage"];
-                  }
-                }}
-                role={"img"}
-              />
-
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__eph6C
-                )}
-              >
-                {
-                  "\u0628\u0633\u062a\u0647 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
-                }
-              </div>
-              <PlasmicIcon__
-                PlasmicIconType={
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? Icon9Icon
-                    : Icon9Icon
-                }
-                className={classNames(projectcss.all, sty.svg__dYsoU, {
-                  [sty.svgstepscharg_step3__dYsoUtDnBg]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step3"
-                  )
-                })}
-                onClick={async event => {
-                  const $steps = {};
-
-                  $steps["updateModalOpen"] = true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["modal", "open"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                  if (
-                    $steps["updateModalOpen"] != null &&
-                    typeof $steps["updateModalOpen"] === "object" &&
-                    typeof $steps["updateModalOpen"].then === "function"
-                  ) {
-                    $steps["updateModalOpen"] = await $steps["updateModalOpen"];
-                  }
-                }}
-                role={"img"}
-              />
-            </div>
+              {
+                "\u0628\u0633\u062a\u0647 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
+              }
+            </HeaderPage>
             <Reveal
               data-plasmic-name={"reveal"}
               data-plasmic-override={overrides.reveal}
@@ -1501,6 +1380,29 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       </div>
                     ) : null}
                   </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__zb1Qy,
+                      {
+                        [sty.textstepscharg_step2__zb1Qyzwaj5]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.textstepscharg_step3__zb1QyTDnBg]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      }
+                    )}
+                  >
+                    {
+                      "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                    }
+                  </div>
                 </div>
                 <div
                   className={classNames(projectcss.all, sty.freeBox__aQf5H, {
@@ -1824,29 +1726,6 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                     ])}
                   />
                 ) : null}
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__pwJ8T,
-                    {
-                      [sty.textstepscharg_step2__pwJ8Tzwaj5]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
-                      [sty.textstepscharg_step3__pwJ8TTDnBg]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
-                >
-                  {
-                    "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u062e\u0648\u062f \u0631\u0627 \u0628\u062f\u0648\u0646 \u0635\u0641\u0631 \u0627\u0628\u062a\u062f\u0627\u06cc \u0634\u0645\u0627\u0631\u0647 \u0648 \u0628\u062f\u0648\u0646 \u06a9\u062f \u06a9\u0634\u0648\u0631 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f. \u0628\u0647 \u0639\u0646\u0648\u0627\u0646 \u0645\u062b\u0627\u0644: 712345678"
-                  }
-                </div>
               </div>
               <div
                 className={classNames(projectcss.all, sty.freeBox__e50W8, {
@@ -5786,7 +5665,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
 const PlasmicDescendants = {
   chargeStep1: [
     "chargeStep1",
-    "header",
+    "headerPage",
     "reveal",
     "wallet",
     "steps",
@@ -5821,7 +5700,7 @@ const PlasmicDescendants = {
     "dialog",
     "exchange2"
   ],
-  header: ["header"],
+  headerPage: ["headerPage"],
   reveal: [
     "reveal",
     "wallet",
@@ -5903,7 +5782,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   chargeStep1: "div";
-  header: "div";
+  headerPage: typeof HeaderPage;
   reveal: typeof Reveal;
   wallet: "div";
   steps: "div";
@@ -6026,7 +5905,7 @@ export const PlasmicAfgPackage = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("chargeStep1")),
   {
     // Helper components rendering sub-elements
-    header: makeNodeComponent("header"),
+    headerPage: makeNodeComponent("headerPage"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
     steps: makeNodeComponent("steps"),

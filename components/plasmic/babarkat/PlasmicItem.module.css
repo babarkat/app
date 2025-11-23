@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  background: #ffffff4d;
+  position: relative;
+  min-width: 0;
+  border-radius: var(--token-R6c1b-gPSxDB);
+  padding: 8px;
+}
+.rootselected {
+  background: #ffffff;
+}
+.text {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: var(--token--3UT6C2Na0g9);
+  color: var(--token-GGYj13plNx6v);
+  min-width: 0;
+}
+.textselected {
+  color: var(--token-fNYqKZOa5tL7);
+}

@@ -62,6 +62,7 @@ import * as plasmicAuth from "@plasmicapp/react-web/lib/auth";
 
 import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
+import HeaderPage from "../../HeaderPage"; // plasmic-import: mcUMtOs2L3cw/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import RadioButton from "../../RadioButton"; // plasmic-import: L2fWbb7vOro8/component
@@ -85,10 +86,6 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicBill.module.css"; // plasmic-import: b-NdD4-urlc5/css
 
-import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
-import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
-import Icon61Icon from "./icons/PlasmicIcon__Icon61"; // plasmic-import: 6aKHa8qmDKOv/icon
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
 import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButtonCheckedSvgrepoCom2Svg"; // plasmic-import: txDOSA20FGud/icon
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
@@ -97,6 +94,7 @@ import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import Icon109Icon from "./icons/PlasmicIcon__Icon109"; // plasmic-import: LIgkphYcL9vu/icon
 import Icon110Icon from "./icons/PlasmicIcon__Icon110"; // plasmic-import: aq88MiXmlJWv/icon
+import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon111Icon from "./icons/PlasmicIcon__Icon111"; // plasmic-import: ZQs8iNj46bRk/icon
 import Icon108Icon from "./icons/PlasmicIcon__Icon108"; // plasmic-import: tptDKswn1-8W/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
@@ -132,7 +130,7 @@ export const PlasmicBill__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicBill__OverridesType = {
   chargeStep1?: Flex__<"div">;
-  header?: Flex__<"div">;
+  headerPage?: Flex__<typeof HeaderPage>;
   reveal?: Flex__<typeof Reveal>;
   wallet?: Flex__<"div">;
   steps?: Flex__<"div">;
@@ -1302,106 +1300,22 @@ function PlasmicBill__RenderFunc(props: {
                 )
               })}
             >
-              <div
-                data-plasmic-name={"header"}
-                data-plasmic-override={overrides.header}
-                className={classNames(projectcss.all, sty.header, {
-                  [sty.headerstepscharg_step1]: hasVariant(
+              <HeaderPage
+                data-plasmic-name={"headerPage"}
+                data-plasmic-override={overrides.headerPage}
+                className={classNames("__wab_instance", sty.headerPage, {
+                  [sty.headerPagestepscharg_step1]: hasVariant(
                     $state,
                     "stepscharg",
                     "step1"
                   ),
-                  [sty.headerstepscharg_step2]: hasVariant(
-                    $state,
-                    "stepscharg",
-                    "step2"
-                  ),
-                  [sty.headerstepscharg_step3]: hasVariant(
+                  [sty.headerPagestepscharg_step3]: hasVariant(
                     $state,
                     "stepscharg",
                     "step3"
                   )
                 })}
-              >
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon10Icon
-                      : Icon3Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__qGyiK, {
-                    [sty.svgstepscharg_step1__qGyiKqKzi3]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step1"
-                    ),
-                    [sty.svgstepscharg_step2__qGyiKAvykh]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
-                    [sty.svgstepscharg_step3__qGyiKTqZTv]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step3"
-                    )
-                  })}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToHomepage"] = true
-                      ? (() => {
-                          const actionArgs = { destination: `/` };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToHomepage"] != null &&
-                      typeof $steps["goToHomepage"] === "object" &&
-                      typeof $steps["goToHomepage"].then === "function"
-                    ) {
-                      $steps["goToHomepage"] = await $steps["goToHomepage"];
-                    }
-                  }}
-                  role={"img"}
-                />
-
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___9DAgr
-                  )}
-                >
-                  {"\u067e\u0631\u062f\u0627\u062e\u062a \u0642\u0628\u0636"}
-                </div>
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? Icon9Icon
-                      : Icon9Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__pqJFh, {
-                    [sty.svgstepscharg_step3__pqJFhTqZTv]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step3"
-                    )
-                  })}
-                  role={"img"}
-                />
-              </div>
+              />
             </section>
             <Reveal
               data-plasmic-name={"reveal"}
@@ -1451,24 +1365,14 @@ function PlasmicBill__RenderFunc(props: {
                   )
                 })}
               >
-                <PlasmicIcon__
-                  PlasmicIconType={
-                    hasVariant($state, "stepscharg", "step3")
-                      ? Icon154Icon
-                      : Icon61Icon
-                  }
-                  className={classNames(projectcss.all, sty.svg__yjxOe, {
-                    [sty.svgstepscharg_step1__yjxOeqKzi3]: hasVariant(
+                <Icon154Icon
+                  className={classNames(projectcss.all, sty.svg__upyI, {
+                    [sty.svgstepscharg_step1__upyIqKzi3]: hasVariant(
                       $state,
                       "stepscharg",
                       "step1"
                     ),
-                    [sty.svgstepscharg_step2__yjxOeAvykh]: hasVariant(
-                      $state,
-                      "stepscharg",
-                      "step2"
-                    ),
-                    [sty.svgstepscharg_step3__yjxOeTqZTv]: hasVariant(
+                    [sty.svgstepscharg_step3__upyITqZTv]: hasVariant(
                       $state,
                       "stepscharg",
                       "step3"
@@ -1481,6 +1385,11 @@ function PlasmicBill__RenderFunc(props: {
                   data-plasmic-name={"steps"}
                   data-plasmic-override={overrides.steps}
                   className={classNames(projectcss.all, sty.steps, {
+                    [sty.stepsstepscharg_step1]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step1"
+                    ),
                     [sty.stepsstepscharg_step2]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1497,6 +1406,11 @@ function PlasmicBill__RenderFunc(props: {
                     data-plasmic-name={"\u0645\u0634\u062e\u0635\u0627\u062a"}
                     data-plasmic-override={overrides.مشخصات}
                     className={classNames(projectcss.all, sty.مشخصات, {
+                      [sty.مشخصاتstepscharg_step1]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step1"
+                      ),
                       [sty.مشخصاتstepscharg_step3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2043,29 +1957,33 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   ) : null}
                   {(
-                    hasVariant($state, "stepscharg", "step3")
-                      ? (() => {
-                          try {
-                            return $state.phone;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
+                    hasVariant($state, "stepscharg", "step1")
+                      ? true
+                      : hasVariant($state, "stepscharg", "step3")
+                        ? (() => {
+                            try {
+                              return $state.phone;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "stepscharg", "step2")
-                        ? true
-                        : true
+                          })()
+                        : hasVariant($state, "stepscharg", "step2")
+                          ? true
+                          : true
                   ) ? (
                     <div
                       className={classNames(
                         projectcss.all,
                         sty.freeBox___6HMtq,
                         {
+                          [sty.freeBoxstepscharg_step1___6HMtqqKzi3]:
+                            hasVariant($state, "stepscharg", "step1"),
                           [sty.freeBoxstepscharg_step2___6HMtqAvykh]:
                             hasVariant($state, "stepscharg", "step2"),
                           [sty.freeBoxstepscharg_step3___6HMtqTqZTv]:
@@ -2145,29 +2063,36 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   ) : null}
                   {(
-                    hasVariant($state, "stepscharg", "step3")
-                      ? (() => {
-                          try {
-                            return $state.code;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
+                    hasVariant($state, "stepscharg", "step1")
+                      ? true
+                      : hasVariant($state, "stepscharg", "step3")
+                        ? (() => {
+                            try {
+                              return $state.code;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "stepscharg", "step2")
-                        ? true
-                        : true
+                          })()
+                        : hasVariant($state, "stepscharg", "step2")
+                          ? true
+                          : true
                   ) ? (
                     <div
                       className={classNames(
                         projectcss.all,
                         sty.freeBox__vjiyC,
                         {
+                          [sty.freeBoxstepscharg_step1__vjiyCqKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
                           [sty.freeBoxstepscharg_step2__vjiyCAvykh]: hasVariant(
                             $state,
                             "stepscharg",
@@ -2247,29 +2172,36 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   ) : null}
                   {(
-                    hasVariant($state, "stepscharg", "step3")
-                      ? (() => {
-                          try {
-                            return $state.id != 0;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
+                    hasVariant($state, "stepscharg", "step1")
+                      ? true
+                      : hasVariant($state, "stepscharg", "step3")
+                        ? (() => {
+                            try {
+                              return $state.id != 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      : hasVariant($state, "stepscharg", "step2")
-                        ? true
-                        : true
+                          })()
+                        : hasVariant($state, "stepscharg", "step2")
+                          ? true
+                          : true
                   ) ? (
                     <div
                       className={classNames(
                         projectcss.all,
                         sty.freeBox__yl38R,
                         {
+                          [sty.freeBoxstepscharg_step1__yl38RQKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
                           [sty.freeBoxstepscharg_step2__yl38RAvykh]: hasVariant(
                             $state,
                             "stepscharg",
@@ -10886,7 +10818,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 const PlasmicDescendants = {
   chargeStep1: [
     "chargeStep1",
-    "header",
+    "headerPage",
     "reveal",
     "wallet",
     "steps",
@@ -10958,7 +10890,7 @@ const PlasmicDescendants = {
     "exchange",
     "dialog"
   ],
-  header: ["header"],
+  headerPage: ["headerPage"],
   reveal: [
     "reveal",
     "wallet",
@@ -11125,7 +11057,7 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   chargeStep1: "div";
-  header: "div";
+  headerPage: typeof HeaderPage;
   reveal: typeof Reveal;
   wallet: "div";
   steps: "div";
@@ -11285,7 +11217,7 @@ export const PlasmicBill = Object.assign(
   withUsePlasmicAuth(makeNodeComponent("chargeStep1")),
   {
     // Helper components rendering sub-elements
-    header: makeNodeComponent("header"),
+    headerPage: makeNodeComponent("headerPage"),
     reveal: makeNodeComponent("reveal"),
     wallet: makeNodeComponent("wallet"),
     steps: makeNodeComponent("steps"),

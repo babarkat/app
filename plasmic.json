@@ -2289,6 +2289,45 @@
           "cssFilePath": "plasmic/babarkat/PlasmicPassword.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "mcUMtOs2L3cw",
+          "name": "HeaderPage",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicHeaderPage.tsx",
+          "importSpec": {
+            "modulePath": "HeaderPage.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicHeaderPage.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "sTHibAFEudZL",
+          "name": "Item",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicItem.tsx",
+          "importSpec": {
+            "modulePath": "Item.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "Of7t60zoG2wG",
+          "name": "Items",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicItems.tsx",
+          "importSpec": {
+            "modulePath": "Items.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicItems.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -3401,6 +3440,16 @@
           "id": "1H7C8RS5wNv-",
           "name": "Icon162Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon162.tsx"
+        },
+        {
+          "id": "0_Fk2PfIpoWR",
+          "name": "Icon163Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon163.tsx"
+        },
+        {
+          "id": "zwoIPH1X8BCA",
+          "name": "Icon164Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon164.tsx"
         }
       ],
       "images": [
@@ -3908,6 +3957,26 @@
           "id": "BoNy3CTBYIcn",
           "name": "Simple Shiny.svg",
           "filePath": "../public/plasmic/babarkat/images/simpleShinySvg.svg"
+        },
+        {
+          "id": "PObmp3cxYn7F",
+          "name": "اینو-بهم-سبک-Flat-De.png",
+          "filePath": "../public/plasmic/babarkat/images/اینوبهمسبکFlatDePng.png"
+        },
+        {
+          "id": "Tioe3QLEWaN-",
+          "name": "این تصویر که فرستادم.png",
+          "filePath": "../public/plasmic/babarkat/images/اینتصویرکهفرستادمPng.png"
+        },
+        {
+          "id": "7PjOv7q37wB2",
+          "name": "این تصویر هم Flat De.png",
+          "filePath": "../public/plasmic/babarkat/images/اینتصویرهمFlatDePng.png"
+        },
+        {
+          "id": "vx4nn8eDEaMn",
+          "name": "این تصویر که فرستادم.png 2",
+          "filePath": "../public/plasmic/babarkat/images/اینتصویرکهفرستادمPng2.png"
         }
       ],
       "indirect": false,
