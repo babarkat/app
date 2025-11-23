@@ -4756,6 +4756,11 @@ function PlasmicLogIn__RenderFunc(props: {
                   "group11",
                   "loginByPassword"
                 ),
+                [sty.group9group11_noSaraf]: hasVariant(
+                  $state,
+                  "group11",
+                  "noSaraf"
+                ),
                 [sty.group9group11_password]: hasVariant(
                   $state,
                   "group11",
@@ -4931,6 +4936,11 @@ function PlasmicLogIn__RenderFunc(props: {
                       "group11",
                       "loginByPassword"
                     ),
+                    [sty.textgroup11_noSaraf__agfvHtLqd]: hasVariant(
+                      $state,
+                      "group11",
+                      "noSaraf"
+                    ),
                     [sty.textgroup11_password__agfVcxClj]: hasVariant(
                       $state,
                       "group11",
@@ -4944,9 +4954,9 @@ function PlasmicLogIn__RenderFunc(props: {
                   }
                 )}
               >
-                {
-                  "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                }
+                {hasVariant($state, "group11", "noSaraf")
+                  ? "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0648\u0631\u0648\u062f"
+                  : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <LeftArrowBackSvgrepoComSvgIcon
                 className={classNames(projectcss.all, sty.svg__hTSxw, {
@@ -6551,6 +6561,11 @@ function PlasmicLogIn__RenderFunc(props: {
               $state,
               "group11",
               "noSaraf"
+            ),
+            [sty.sideEffectgroup11_saraf]: hasVariant(
+              $state,
+              "group11",
+              "saraf"
             )
           })}
           onMount={async () => {
@@ -6591,7 +6606,7 @@ function PlasmicLogIn__RenderFunc(props: {
                     const actionArgs = {
                       vgroup: "group11",
                       operation: 0,
-                      value: "noSaraf"
+                      value: "password"
                     };
                     return (({ vgroup, value }) => {
                       if (typeof value === "string") {
