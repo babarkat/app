@@ -73,6 +73,7 @@
   left: 0;
   top: 0;
   right: 0;
+  z-index: 3;
   flex-shrink: 0;
 }
 .headerPagestepscharg_step3:global(.__wab_instance) {

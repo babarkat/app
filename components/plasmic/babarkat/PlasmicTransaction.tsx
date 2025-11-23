@@ -610,6 +610,7 @@ function PlasmicTransaction__RenderFunc(props: {
                   throw e;
                 }
               })()}
+              lodingbtn={false}
               token={(() => {
                 try {
                   return $state.token;

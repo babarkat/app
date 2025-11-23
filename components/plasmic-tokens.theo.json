@@ -63,7 +63,7 @@
     {
       "name": "Basic/Container-Background",
       "type": "color",
-      "value": "var(--antd-colorPrimary)",
+      "value": "var(--antd-colorWhite)",
       "category": "color",
       "meta": {
         "projectId": "sZQMbqXz9utLNaTnNb3uss",

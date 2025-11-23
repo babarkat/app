@@ -14659,7 +14659,7 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames("__wab_instance", sty.header)}
               level={(() => {
                 try {
-                  return $state.userbabarcat.level;
+                  return $state.userbabarcat.level || 1;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
