@@ -8,8 +8,6 @@ import {
 } from "@plasmicapp/host";
 import axios from "axios";
 
-import Password from "../../components/Password"; // مسیر رو با مسیر واقعی خودت تنظیم کن
-
 type FragmentProps = React.PropsWithChildren<{
   previewApiConfig: Record<string, any>;
   apiConfig: Record<string, any>;
@@ -27,27 +25,6 @@ export const Fragment = ({
   useEffect(() => {
     changeTheme(primaryColor);
   }, [primaryColor]);
-  
-  const [passwordOpen, setPasswordOpen] = useState(false);
-  const [resolveDialog, setResolveDialog] = useState<((code: string | null) => void) | null>(null);
-  const [passwordCode, setPasswordCode] = useState<string>(""); // 👈 اضافه شد
-
-  const handleOk = () => {
-    setPasswordOpen(false);
-  
-    const code =
-      typeof window !== "undefined"
-        ? window.sessionStorage.getItem("panelCode") || passwordCode
-        : passwordCode;
-  
-    resolveDialog?.(code); // 👈 برگردوندن مقدار نهایی
-  };
-
-
-  const handleCancel = () => {
-    setPasswordOpen(false);
-    resolveDialog?.(null); // 👈 Cancel یعنی هیچی برنگردونه
-  };
 
   const changeTheme = (color: string) => {
     document.documentElement.style.setProperty("--primary", color);
@@ -55,12 +32,6 @@ export const Fragment = ({
 
   const actions = useMemo(
     () => ({
-      showPasswordDialog: async (): Promise<string | null> => {
-        return new Promise<string | null>((resolve) => {
-          setResolveDialog(() => resolve);
-          setPasswordOpen(true);
-        });
-      },
       showToast: (
         type: "success" | "error",
         message: string,
@@ -126,13 +97,6 @@ export const Fragment = ({
         hidden
       >
         {children}
-        <Password
-          open={passwordOpen}
-          code={passwordCode}
-          onCodeChange={setPasswordCode}  // 👈 وقتی داخل Password مقدار تغییر کنه، اینجا ذخیره می‌شه
-          onOk={handleOk}
-          onCansel={handleCancel}
-        />
         <Toaster />
       </DataProvider>
     </GlobalActionsProvider>
@@ -229,11 +193,6 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
           },
         },
       ],
-    },
-    showPasswordDialog: {
-      displayName: "Show Password Dialog",
-      description: "Opens the password dialog and waits for user input",
-      parameters: [],
     },
     apiRequest: {
       displayName: "API Request",
