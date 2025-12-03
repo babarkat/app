@@ -71,12 +71,17 @@ createPlasmicElementProxy;
 
 export type PlasmicItem__VariantMembers = {
   selected: "selected";
+  size: "small";
 };
 export type PlasmicItem__VariantsArgs = {
   selected?: SingleBooleanChoiceArg<"selected">;
+  size?: SingleChoiceArg<"small">;
 };
 type VariantPropType = keyof PlasmicItem__VariantsArgs;
-export const PlasmicItem__VariantProps = new Array<VariantPropType>("selected");
+export const PlasmicItem__VariantProps = new Array<VariantPropType>(
+  "selected",
+  "size"
+);
 
 export type PlasmicItem__ArgsType = {
   currentItem?: any;
@@ -97,6 +102,7 @@ export interface DefaultItemProps {
   currentItem?: any;
   onClick?: (event: any) => void;
   selected?: SingleBooleanChoiceArg<"selected">;
+  size?: SingleChoiceArg<"small">;
   className?: string;
 }
 
@@ -148,6 +154,12 @@ function PlasmicItem__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.selected
+      },
+      {
+        path: "size",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.size
       }
     ],
     [$props, $ctx, $refs]
@@ -174,7 +186,10 @@ function PlasmicItem__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.root,
-        { [sty.rootselected]: hasVariant($state, "selected", "selected") }
+        {
+          [sty.rootselected]: hasVariant($state, "selected", "selected"),
+          [sty.rootsize_small]: hasVariant($state, "size", "small")
+        }
       )}
       onClick={args.onClick}
     >
@@ -182,7 +197,8 @@ function PlasmicItem__RenderFunc(props: {
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
         className={classNames(projectcss.all, projectcss.__wab_text, sty.text, {
-          [sty.textselected]: hasVariant($state, "selected", "selected")
+          [sty.textselected]: hasVariant($state, "selected", "selected"),
+          [sty.textsize_small]: hasVariant($state, "size", "small")
         })}
       >
         <React.Fragment>

@@ -8,9 +8,14 @@
   max-width: 100%;
   column-gap: var(--token-l3ItR7R_AHRe);
   position: relative;
+  background: #ffffff40;
   min-width: 0;
-  padding: 0px;
+  border-radius: 100px;
+  padding: var(--token-LaEv2Dm1x3K9);
 }
 .item:global(.__wab_instance) {
   position: relative;
+}
+.itemsize_small:global(.__wab_instance) {
+  width: auto;
 }

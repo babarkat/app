@@ -84,6 +84,10 @@ export type PlasmicExchange__ArgsType = {
   onTomanWithoutCommissionChange?: (val: string) => void;
   type?: string;
   onTypeChange?: (val: string) => void;
+  commissionToman?: number;
+  onCommissionTomanChange?: (val: string) => void;
+  commissionAfghani?: number;
+  onCommissionAfghaniChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicExchange__ArgsType;
 export const PlasmicExchange__ArgProps = new Array<ArgPropType>(
@@ -94,7 +98,11 @@ export const PlasmicExchange__ArgProps = new Array<ArgPropType>(
   "onAfghaniWithoutCommissionChange",
   "onTomanWithoutCommissionChange",
   "type",
-  "onTypeChange"
+  "onTypeChange",
+  "commissionToman",
+  "onCommissionTomanChange",
+  "commissionAfghani",
+  "onCommissionAfghaniChange"
 );
 
 export type PlasmicExchange__OverridesType = {
@@ -111,6 +119,10 @@ export interface DefaultExchangeProps {
   onTomanWithoutCommissionChange?: (val: string) => void;
   type?: string;
   onTypeChange?: (val: string) => void;
+  commissionToman?: number;
+  onCommissionTomanChange?: (val: string) => void;
+  commissionAfghani?: number;
+  onCommissionAfghaniChange?: (val: string) => void;
   className?: string;
 }
 
@@ -242,6 +254,22 @@ function PlasmicExchange__RenderFunc(props: {
 
         valueProp: "type",
         onChangeProp: "onTypeChange"
+      },
+      {
+        path: "commissionToman",
+        type: "writable",
+        variableType: "number",
+
+        valueProp: "commissionToman",
+        onChangeProp: "onCommissionTomanChange"
+      },
+      {
+        path: "commissionAfghani",
+        type: "writable",
+        variableType: "number",
+
+        valueProp: "commissionAfghani",
+        onChangeProp: "onCommissionAfghaniChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -292,8 +320,13 @@ function PlasmicExchange__RenderFunc(props: {
                         $state.totalToman / rate
                       );
                       $state.tomanWithoutCommission = amount;
-                      return ($state.afghaniWithoutCommission = Math.round(
+                      $state.afghaniWithoutCommission = Math.round(
                         amount / rate
+                      );
+                      $state.commissionToman =
+                        (amount * totalCommissionPercent) / 100;
+                      return ($state.commissionAfghani = Math.round(
+                        $state.commissionToman / rate
                       ));
                     } else if (type === "afghani") {
                       var toman = amount * rate;
@@ -302,7 +335,12 @@ function PlasmicExchange__RenderFunc(props: {
                       );
                       $state.totalAfghani = amount;
                       $state.tomanWithoutCommission = Math.round(toman);
-                      return ($state.afghaniWithoutCommission = amount);
+                      $state.afghaniWithoutCommission = amount;
+                      $state.commissionToman =
+                        (toman * totalCommissionPercent) / 100;
+                      return ($state.commissionAfghani = Math.round(
+                        $state.commissionToman / rate
+                      ));
                     }
                   })();
                 }
@@ -361,8 +399,13 @@ function PlasmicExchange__RenderFunc(props: {
                           $state.totalToman / rate
                         );
                         $state.tomanWithoutCommission = amount;
-                        return ($state.afghaniWithoutCommission = Math.round(
+                        $state.afghaniWithoutCommission = Math.round(
                           amount / rate
+                        );
+                        $state.commissionToman =
+                          (amount * totalCommissionPercent) / 100;
+                        return ($state.commissionAfghani = Math.round(
+                          $state.commissionToman / rate
                         ));
                       } else if (type === "afghani") {
                         var toman = amount * rate;
@@ -372,7 +415,12 @@ function PlasmicExchange__RenderFunc(props: {
                         $state.totalAfghani =
                           amount + (amount * totalCommissionPercent) / 100;
                         $state.tomanWithoutCommission = Math.round(toman);
-                        return ($state.afghaniWithoutCommission = amount);
+                        $state.afghaniWithoutCommission = amount;
+                        $state.commissionToman =
+                          (toman * totalCommissionPercent) / 100;
+                        return ($state.commissionAfghani = Math.round(
+                          $state.commissionToman / rate
+                        ));
                       }
                     })();
                   }

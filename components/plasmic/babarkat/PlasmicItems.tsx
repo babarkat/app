@@ -70,10 +70,14 @@ import sty from "./PlasmicItems.module.css"; // plasmic-import: Of7t60zoG2wG/css
 
 createPlasmicElementProxy;
 
-export type PlasmicItems__VariantMembers = {};
-export type PlasmicItems__VariantsArgs = {};
+export type PlasmicItems__VariantMembers = {
+  size: "small";
+};
+export type PlasmicItems__VariantsArgs = {
+  size?: SingleChoiceArg<"small">;
+};
 type VariantPropType = keyof PlasmicItems__VariantsArgs;
-export const PlasmicItems__VariantProps = new Array<VariantPropType>();
+export const PlasmicItems__VariantProps = new Array<VariantPropType>("size");
 
 export type PlasmicItems__ArgsType = {
   variable?: any;
@@ -102,6 +106,7 @@ export interface DefaultItemsProps {
   onSelectedChange?: (val: string) => void;
   selectedPanel?: any;
   onSelectedPanelChange?: (val: string) => void;
+  size?: SingleChoiceArg<"small">;
   className?: string;
 }
 
@@ -163,6 +168,12 @@ function PlasmicItems__RenderFunc(props: {
 
         valueProp: "selectedPanel",
         onChangeProp: "onSelectedPanelChange"
+      },
+      {
+        path: "size",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.size
       }
     ],
     [$props, $ctx, $refs]
@@ -188,7 +199,8 @@ function PlasmicItems__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        sty.root
+        sty.root,
+        { [sty.rootsize_small]: hasVariant($state, "size", "small") }
       )}
     >
       {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
@@ -212,7 +224,9 @@ function PlasmicItems__RenderFunc(props: {
           <Item
             data-plasmic-name={"item"}
             data-plasmic-override={overrides.item}
-            className={classNames("__wab_instance", sty.item)}
+            className={classNames("__wab_instance", sty.item, {
+              [sty.itemsize_small]: hasVariant($state, "size", "small")
+            })}
             currentItem={currentItem}
             key={currentIndex}
             onClick={async event => {
@@ -289,6 +303,23 @@ function PlasmicItems__RenderFunc(props: {
                 throw e;
               }
             })()}
+            size={
+              hasVariant($state, "size", "small")
+                ? (() => {
+                    try {
+                      return $state.size;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()
+                : "small"
+            }
           />
         );
       })}

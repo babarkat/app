@@ -64,6 +64,7 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import HeaderPage from "../../HeaderPage"; // plasmic-import: mcUMtOs2L3cw/component
 import { Reveal } from "@plasmicpkgs/react-awesome-reveal";
+import Invoice from "../../Invoice"; // plasmic-import: U_Qsdj6_40KF/component
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Items from "../../Items"; // plasmic-import: Of7t60zoG2wG/component
 import Boxselect2 from "../../Boxselect2"; // plasmic-import: skA4mCHGCjr2/component
@@ -71,6 +72,7 @@ import { TabsContainer } from "@plasmicpkgs/plasmic-tabs";
 import { TabButton } from "@plasmicpkgs/plasmic-tabs";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
+import PackItem from "../../PackItem"; // plasmic-import: vbVyLD-uyVh8/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { LottieWrapper } from "@plasmicpkgs/lottie-react";
@@ -92,7 +94,6 @@ import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrep
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
-import Group3SvgIcon from "./icons/PlasmicIcon__Group3Svg"; // plasmic-import: 3nXrgMVaV7TW/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 
@@ -127,6 +128,7 @@ export type PlasmicInternet3__OverridesType = {
   unselected?: Flex__<"svg">;
   تاییدخرید?: Flex__<"div">;
   unselected2?: Flex__<"svg">;
+  invoice?: Flex__<typeof Invoice>;
   fragmentInput?: Flex__<typeof Input>;
   items?: Flex__<typeof Items>;
   operators?: Flex__<"div">;
@@ -137,7 +139,7 @@ export type PlasmicInternet3__OverridesType = {
   tabButton?: Flex__<typeof TabButton>;
   button?: Flex__<typeof Button>;
   tabContent?: Flex__<typeof TabContent>;
-  button2?: Flex__<typeof Button>;
+  packItem?: Flex__<typeof PackItem>;
   apiRequest?: Flex__<typeof ApiRequest>;
   step1Next?: Flex__<typeof Button>;
   step1Next2?: Flex__<typeof Button>;
@@ -595,11 +597,6 @@ function PlasmicInternet3__RenderFunc(props: {
         variableType: "boolean"
       },
       {
-        path: "button2[][].loadingviow",
-        type: "private",
-        variableType: "boolean"
-      },
-      {
         path: "step1Next.loadingviow",
         type: "private",
         variableType: "boolean",
@@ -828,6 +825,60 @@ function PlasmicInternet3__RenderFunc(props: {
                 }
               })()
             : ``
+      },
+      {
+        path: "exchange.commissionToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange.commissionAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "invoice.exchange",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant($state, "steps2", "step3")
+            ? (() => {
+                try {
+                  return {
+                    afghaniWithoutCommission:
+                      $state.exchange.afghaniWithoutCommission,
+                    tomanWithoutCommission:
+                      $state.exchange.tomanWithoutCommission,
+                    totalAfghani: $state.exchange.totalAfghani,
+                    totalToman: $state.exchange.totalToman,
+                    commissionAfghani: $state.exchange.commissionAfghani,
+                    commissionToman: $state.exchange.commissionToman
+                  };
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return {};
+                  }
+                  throw e;
+                }
+              })()
+            : (() => {
+                try {
+                  return undefined;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return {};
+                  }
+                  throw e;
+                }
+              })()
       }
     ],
     [$props, $ctx, $refs]
@@ -888,6 +939,11 @@ function PlasmicInternet3__RenderFunc(props: {
         >
           <section
             className={classNames(projectcss.all, sty.section___8YWeq, {
+              [sty.sectionsteps2_step2___8YWeqoGK8]: hasVariant(
+                $state,
+                "steps2",
+                "step2"
+              ),
               [sty.sectionsteps2_step3___8YWeqYl49R]: hasVariant(
                 $state,
                 "steps2",
@@ -1133,291 +1189,57 @@ function PlasmicInternet3__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__zWwMa, {
-                      [sty.freeBoxsteps2_step2__zWwMaoGK8]: hasVariant(
+                  <Invoice
+                    data-plasmic-name={"invoice"}
+                    data-plasmic-override={overrides.invoice}
+                    className={classNames("__wab_instance", sty.invoice, {
+                      [sty.invoicesteps2_step2]: hasVariant(
                         $state,
                         "steps2",
                         "step2"
                       ),
-                      [sty.freeBoxsteps2_step3__zWwMaYl49R]: hasVariant(
+                      [sty.invoicesteps2_step3]: hasVariant(
                         $state,
                         "steps2",
                         "step3"
                       )
                     })}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__bGybf
-                      )}
-                    >
-                      {
-                        "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u067e\u0631\u062f\u0627\u062e\u062a"
+                    exchange={generateStateValueProp($state, [
+                      "invoice",
+                      "exchange"
+                    ])}
+                    number={$state.number}
+                    onExchangeChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "invoice",
+                        "exchange"
+                      ]).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
                       }
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__iWKre)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__nm5Pj
-                        )}
-                      >
-                        {
-                          "\u0639\u0646\u0648\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__deYrj,
-                          {
-                            [sty.textsteps2_step3__deYrjYl49R]: hasVariant(
-                              $state,
-                              "steps2",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return " بسته " + $state.selectpack.name;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__pWf5U,
-                        {
-                          [sty.freeBoxsteps2_step3__pWf5UYl49R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__le8Cz
-                        )}
-                      >
-                        {
-                          "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__y92He,
-                          {
-                            [sty.textsteps2_step3__y92HeYl49R]: hasVariant(
-                              $state,
-                              "steps2",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.number;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__noLlj,
-                        {
-                          [sty.freeBoxsteps2_step3__noLljYl49R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__gR4A9,
-                          {
-                            [sty.textsteps2_step3__gR4A9Yl49R]: hasVariant(
-                              $state,
-                              "steps2",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "steps2", "step3")
-                          ? "\u0646\u0648\u0639 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a"
-                          : "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__yqHml,
-                          {
-                            [sty.textsteps2_step3__yqHmlYl49R]: hasVariant(
-                              $state,
-                              "steps2",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "steps2", "step3") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return `${$state.operators2[$state.operatorselect].description} ${$state.operators2[$state.operatorselect].internet[$state.typecharge].text}`;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.number;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__peGpz,
-                        {
-                          [sty.freeBoxsteps2_step3__peGpzYl49R]: hasVariant(
-                            $state,
-                            "steps2",
-                            "step3"
-                          )
-                        }
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t8N4Y
-                        )}
-                      >
-                        {
-                          "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a"
-                        }
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___2EXfp,
-                          {
-                            [sty.textsteps2_step3___2EXfpYl49R]: hasVariant(
-                              $state,
-                              "steps2",
-                              "step3"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant($state, "steps2", "step3") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return `${$state.exchange.totalToman.toLocaleString()} تومان \n
-${$state.exchange.totalAfghani.toLocaleString()} افغانی
-`;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (
-                                  $state.selectpack.amount.toLocaleString(
-                                    "en"
-                                  ) + " تومان "
-                                );
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                    }}
+                    operators2={$state.operators2}
+                    operatorselect={$state.operatorselect}
+                    selectpack={$state.selectpack}
+                    steps2={
+                      hasVariant($state, "steps2", "step3") &&
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "step3"
+                        : hasVariant($state, "steps2", "step3")
+                          ? "step3"
+                          : hasVariant($state, "steps2", "step2")
+                            ? "step2"
+                            : undefined
+                    }
+                    typecharge={$state.typecharge}
+                    variable={$state.variable}
+                  />
+
                   <div
                     className={classNames(projectcss.all, sty.freeBox___8MKoj, {
                       [sty.freeBoxsteps2_step2___8MKojoGK8]: hasVariant(
@@ -1847,7 +1669,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         const child$Props = {
                           className: classNames(
                             "__wab_instance",
-                            sty.boxselect
+                            sty.boxselect,
+                            {
+                              [sty.boxselectsteps2_step3]: hasVariant(
+                                $state,
+                                "steps2",
+                                "step3"
+                              )
+                            }
                           ),
                           disable2: generateStateValueProp($state, [
                             "boxselect",
@@ -2639,18 +2468,22 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                         const currentItem = __plasmic_item_1;
                                         const currentIndex = __plasmic_idx_1;
                                         return (
-                                          <div
+                                          <PackItem
+                                            data-plasmic-name={"packItem"}
+                                            data-plasmic-override={
+                                              overrides.packItem
+                                            }
                                             className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__karPa,
+                                              "__wab_instance",
+                                              sty.packItem,
                                               {
-                                                [sty.freeBoxsteps2_step2__karPaoGK8]:
+                                                [sty.packItemsteps2_step2]:
                                                   hasVariant(
                                                     $state,
                                                     "steps2",
                                                     "step2"
                                                   ),
-                                                [sty.freeBoxsteps2_step3__karPaYl49R]:
+                                                [sty.packItemsteps2_step3]:
                                                   hasVariant(
                                                     $state,
                                                     "steps2",
@@ -2658,426 +2491,158 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                                   )
                                               }
                                             )}
+                                            currentItem={currentItem}
                                             key={currentIndex}
-                                          >
-                                            <PlasmicImg__
-                                              alt={""}
-                                              className={classNames(
-                                                sty.img__c8Rvt,
-                                                {
-                                                  [sty.imgsteps2_step2__c8RvtoGK8]:
-                                                    hasVariant(
-                                                      $state,
-                                                      "steps2",
-                                                      "step2"
-                                                    )
-                                                }
-                                              )}
-                                              displayHeight={"auto"}
-                                              displayMaxHeight={"none"}
-                                              displayMaxWidth={"100%"}
-                                              displayMinHeight={"0"}
-                                              displayMinWidth={"0"}
-                                              displayWidth={"auto"}
-                                              loading={"lazy"}
-                                              src={{
-                                                src: "/plasmic/babarkat/images/image6.svg",
-                                                fullWidth: 58,
-                                                fullHeight: 62,
-                                                aspectRatio: 0.935484
-                                              }}
-                                            />
+                                            onClick={async event => {
+                                              const $steps = {};
 
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                sty.freeBox__qhViG,
-                                                {
-                                                  [sty.freeBoxsteps2_step2__qhViGoGK8]:
-                                                    hasVariant(
-                                                      $state,
-                                                      "steps2",
-                                                      "step2"
-                                                    )
-                                                }
-                                              )}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  sty.freeBox__kDv6G,
-                                                  {
-                                                    [sty.freeBoxsteps2_step2__kDv6GoGK8]:
-                                                      hasVariant(
-                                                        $state,
-                                                        "steps2",
-                                                        "step2"
-                                                      )
-                                                  }
-                                                )}
-                                              >
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
-                                                    sty.text__q33JQ,
-                                                    {
-                                                      [sty.textsteps2_step2__q33JQoGK8]:
-                                                        hasVariant(
-                                                          $state,
-                                                          "steps2",
-                                                          "step2"
-                                                        )
-                                                    }
-                                                  )}
-                                                >
-                                                  <React.Fragment>
-                                                    {(() => {
-                                                      try {
-                                                        return currentItem.json
-                                                          .name;
-                                                      } catch (e) {
-                                                        if (
-                                                          e instanceof
-                                                            TypeError ||
-                                                          e?.plasmicType ===
-                                                            "PlasmicUndefinedDataError"
-                                                        ) {
-                                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644";
-                                                        }
-                                                        throw e;
-                                                      }
-                                                    })()}
-                                                  </React.Fragment>
-                                                </div>
-                                                {(() => {
-                                                  const child$Props = {
-                                                    className: classNames(
-                                                      "__wab_instance",
-                                                      sty.button2,
-                                                      {
-                                                        [sty.button2steps2_step2]:
-                                                          hasVariant(
-                                                            $state,
-                                                            "steps2",
-                                                            "step2"
-                                                          ),
-                                                        [sty.button2steps2_step3]:
-                                                          hasVariant(
-                                                            $state,
-                                                            "steps2",
-                                                            "step3"
-                                                          )
-                                                      }
-                                                    ),
-                                                    color: "softGreen",
-                                                    loadingviow:
-                                                      generateStateValueProp(
-                                                        $state,
-                                                        [
-                                                          "button2",
-                                                          __plasmic_idx_0,
-                                                          __plasmic_idx_1,
-                                                          "loadingviow"
+                                              $steps["updateSelectpack"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "selectpack"
                                                         ]
-                                                      ),
-                                                    onClick: async event => {
-                                                      const $steps = {};
-
-                                                      $steps[
-                                                        "updateSelectpack"
-                                                      ] = true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              variable: {
-                                                                objRoot: $state,
-                                                                variablePath: [
-                                                                  "selectpack"
-                                                                ]
-                                                              },
-                                                              operation: 0,
-                                                              value:
-                                                                currentItem.json
-                                                            };
-                                                            return (({
-                                                              variable,
-                                                              value,
-                                                              startIndex,
-                                                              deleteCount
-                                                            }) => {
-                                                              if (!variable) {
-                                                                return;
-                                                              }
-                                                              const {
-                                                                objRoot,
-                                                                variablePath
-                                                              } = variable;
-
-                                                              $stateSet(
-                                                                objRoot,
-                                                                variablePath,
-                                                                value
-                                                              );
-                                                              return value;
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                      if (
-                                                        $steps[
-                                                          "updateSelectpack"
-                                                        ] != null &&
-                                                        typeof $steps[
-                                                          "updateSelectpack"
-                                                        ] === "object" &&
-                                                        typeof $steps[
-                                                          "updateSelectpack"
-                                                        ].then === "function"
-                                                      ) {
-                                                        $steps[
-                                                          "updateSelectpack"
-                                                        ] =
-                                                          await $steps[
-                                                            "updateSelectpack"
-                                                          ];
-                                                      }
-
-                                                      $steps["updateSteps2"] =
-                                                        true
-                                                          ? (() => {
-                                                              const actionArgs =
-                                                                {
-                                                                  vgroup:
-                                                                    "steps2",
-                                                                  operation: 0,
-                                                                  value: "step3"
-                                                                };
-                                                              return (({
-                                                                vgroup,
-                                                                value
-                                                              }) => {
-                                                                if (
-                                                                  typeof value ===
-                                                                  "string"
-                                                                ) {
-                                                                  value = [
-                                                                    value
-                                                                  ];
-                                                                }
-
-                                                                $stateSet(
-                                                                  $state,
-                                                                  vgroup,
-                                                                  value
-                                                                );
-                                                                return value;
-                                                              })?.apply(null, [
-                                                                actionArgs
-                                                              ]);
-                                                            })()
-                                                          : undefined;
-                                                      if (
-                                                        $steps[
-                                                          "updateSteps2"
-                                                        ] != null &&
-                                                        typeof $steps[
-                                                          "updateSteps2"
-                                                        ] === "object" &&
-                                                        typeof $steps[
-                                                          "updateSteps2"
-                                                        ].then === "function"
-                                                      ) {
-                                                        $steps["updateSteps2"] =
-                                                          await $steps[
-                                                            "updateSteps2"
-                                                          ];
-                                                      }
-
-                                                      $steps["runCode"] = true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              customFunction:
-                                                                async () => {
-                                                                  return (() => {
-                                                                    return ($state.exchange.amont =
-                                                                      currentItem.json.amount);
-                                                                  })();
-                                                                }
-                                                            };
-                                                            return (({
-                                                              customFunction
-                                                            }) => {
-                                                              return customFunction();
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                      if (
-                                                        $steps["runCode"] !=
-                                                          null &&
-                                                        typeof $steps[
-                                                          "runCode"
-                                                        ] === "object" &&
-                                                        typeof $steps["runCode"]
-                                                          .then === "function"
-                                                      ) {
-                                                        $steps["runCode"] =
-                                                          await $steps[
-                                                            "runCode"
-                                                          ];
-                                                      }
-                                                    },
-                                                    onLoadingviowChange: async (
-                                                      ...eventArgs: any
-                                                    ) => {
-                                                      ((...eventArgs) => {
-                                                        generateStateOnChangeProp(
-                                                          $state,
-                                                          [
-                                                            "button2",
-                                                            __plasmic_idx_0,
-                                                            __plasmic_idx_1,
-                                                            "loadingviow"
-                                                          ]
-                                                        )(eventArgs[0]);
-                                                      }).apply(null, eventArgs);
-
-                                                      if (
-                                                        eventArgs.length > 1 &&
-                                                        eventArgs[1] &&
-                                                        eventArgs[1]
-                                                          ._plasmic_state_init_
-                                                      ) {
+                                                      },
+                                                      operation: 0,
+                                                      value: currentItem.json
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
                                                         return;
                                                       }
-                                                    },
-                                                    size: "minimal"
-                                                  };
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
 
-                                                  initializePlasmicStates(
-                                                    $state,
-                                                    [
-                                                      {
-                                                        name: "button2[][].loadingviow",
-                                                        initFunc: ({
-                                                          $props,
-                                                          $state,
-                                                          $queries
-                                                        }) =>
-                                                          (() => {
-                                                            try {
-                                                              return $state.loadingviow;
-                                                            } catch (e) {
-                                                              if (
-                                                                e instanceof
-                                                                  TypeError ||
-                                                                e?.plasmicType ===
-                                                                  "PlasmicUndefinedDataError"
-                                                              ) {
-                                                                return undefined;
-                                                              }
-                                                              throw e;
-                                                            }
-                                                          })()
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateSelectpack"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateSelectpack"
+                                                ] === "object" &&
+                                                typeof $steps[
+                                                  "updateSelectpack"
+                                                ].then === "function"
+                                              ) {
+                                                $steps["updateSelectpack"] =
+                                                  await $steps[
+                                                    "updateSelectpack"
+                                                  ];
+                                              }
+
+                                              $steps["updateSteps2"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      vgroup: "steps2",
+                                                      operation: 0,
+                                                      value: "step3"
+                                                    };
+                                                    return (({
+                                                      vgroup,
+                                                      value
+                                                    }) => {
+                                                      if (
+                                                        typeof value ===
+                                                        "string"
+                                                      ) {
+                                                        value = [value];
                                                       }
-                                                    ],
-                                                    [
-                                                      __plasmic_idx_0,
-                                                      __plasmic_idx_1
-                                                    ]
-                                                  );
-                                                  return (
-                                                    <Button
-                                                      data-plasmic-name={
-                                                        "button2"
-                                                      }
-                                                      data-plasmic-override={
-                                                        overrides.button2
-                                                      }
-                                                      {...child$Props}
-                                                    >
-                                                      <div
-                                                        className={classNames(
-                                                          projectcss.all,
-                                                          projectcss.__wab_text,
-                                                          sty.text__eYZsL
-                                                        )}
-                                                      >
-                                                        {
-                                                          "\u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
-                                                        }
-                                                      </div>
-                                                    </Button>
-                                                  );
-                                                })()}
-                                              </div>
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  sty.freeBox__xphyf,
-                                                  {
-                                                    [sty.freeBoxsteps2_step2__xphyFoGK8]:
-                                                      hasVariant(
+
+                                                      $stateSet(
                                                         $state,
-                                                        "steps2",
-                                                        "step2"
-                                                      )
-                                                  }
-                                                )}
-                                              >
-                                                <Group3SvgIcon
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    sty.svg__iec4G
-                                                  )}
-                                                  role={"img"}
-                                                />
+                                                        vgroup,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateSteps2"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateSteps2"
+                                                ] === "object" &&
+                                                typeof $steps["updateSteps2"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateSteps2"] =
+                                                  await $steps["updateSteps2"];
+                                              }
 
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
-                                                    sty.text__zd5T
-                                                  )}
-                                                >
-                                                  {
-                                                    "\u0645\u0628\u0644\u063a + \u0645\u0627\u0644\u06cc\u0627\u062a :"
-                                                  }
-                                                </div>
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
-                                                    sty.text__f4I6C
-                                                  )}
-                                                >
-                                                  <React.Fragment>
-                                                    {(() => {
-                                                      try {
-                                                        return (
-                                                          currentItem.json.amount.toLocaleString(
-                                                            "en"
-                                                          ) + " تومان "
-                                                        );
-                                                      } catch (e) {
-                                                        if (
-                                                          e instanceof
-                                                            TypeError ||
-                                                          e?.plasmicType ===
-                                                            "PlasmicUndefinedDataError"
-                                                        ) {
-                                                          return "14056 \u062a\u0648\u0645\u0627\u0646";
+                                              $steps["runCode"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      customFunction:
+                                                        async () => {
+                                                          return (() => {
+                                                            return ($state.exchange.amont =
+                                                              currentItem.json.amount);
+                                                          })();
                                                         }
-                                                        throw e;
-                                                      }
-                                                    })()}
-                                                  </React.Fragment>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
+                                                    };
+                                                    return (({
+                                                      customFunction
+                                                    }) => {
+                                                      return customFunction();
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["runCode"] != null &&
+                                                typeof $steps["runCode"] ===
+                                                  "object" &&
+                                                typeof $steps["runCode"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["runCode"] =
+                                                  await $steps["runCode"];
+                                              }
+                                            }}
+                                            steps2={
+                                              hasVariant(
+                                                $state,
+                                                "steps2",
+                                                "step2"
+                                              ) &&
+                                              hasVariant(
+                                                globalVariants,
+                                                "screen",
+                                                "mobileOnly"
+                                              )
+                                                ? "step2"
+                                                : hasVariant(
+                                                      $state,
+                                                      "steps2",
+                                                      "step2"
+                                                    )
+                                                  ? "step2"
+                                                  : undefined
+                                            }
+                                          />
                                         );
                                       }
                                     )}
@@ -4993,6 +4558,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               [sty.exchangesteps2_step2]: hasVariant($state, "steps2", "step2"),
               [sty.exchangesteps2_step3]: hasVariant($state, "steps2", "step3")
             })}
+            commissionAfghani={generateStateValueProp($state, [
+              "exchange",
+              "commissionAfghani"
+            ])}
+            commissionToman={generateStateValueProp($state, [
+              "exchange",
+              "commissionToman"
+            ])}
             onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
                 "exchange",
@@ -5024,6 +4597,34 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               (async val => {
                 const $steps = {};
               }).apply(null, eventArgs);
+            }}
+            onCommissionAfghaniChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange",
+                "commissionAfghani"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
+            }}
+            onCommissionTomanChange={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "exchange",
+                "commissionToman"
+              ]).apply(null, eventArgs);
+
+              if (
+                eventArgs.length > 1 &&
+                eventArgs[1] &&
+                eventArgs[1]._plasmic_state_init_
+              ) {
+                return;
+              }
             }}
             onTomanWithoutCommissionChange={async (...eventArgs: any) => {
               generateStateOnChangeProp($state, [
@@ -5423,6 +5024,7 @@ const PlasmicDescendants = {
     "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
+    "invoice",
     "fragmentInput",
     "items",
     "operators",
@@ -5433,7 +5035,7 @@ const PlasmicDescendants = {
     "tabButton",
     "button",
     "tabContent",
-    "button2",
+    "packItem",
     "apiRequest",
     "step1Next",
     "step1Next2",
@@ -5464,6 +5066,7 @@ const PlasmicDescendants = {
     "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
+    "invoice",
     "fragmentInput",
     "items",
     "operators",
@@ -5474,7 +5077,7 @@ const PlasmicDescendants = {
     "tabButton",
     "button",
     "tabContent",
-    "button2"
+    "packItem"
   ],
   wallet: [
     "wallet",
@@ -5485,6 +5088,7 @@ const PlasmicDescendants = {
     "unselected",
     "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f",
     "unselected2",
+    "invoice",
     "fragmentInput",
     "items"
   ],
@@ -5506,6 +5110,7 @@ const PlasmicDescendants = {
     "unselected2"
   ],
   unselected2: ["unselected2"],
+  invoice: ["invoice"],
   fragmentInput: ["fragmentInput"],
   items: ["items"],
   operators: ["operators", "boxselect"],
@@ -5517,12 +5122,12 @@ const PlasmicDescendants = {
     "tabButton",
     "button",
     "tabContent",
-    "button2"
+    "packItem"
   ],
   tabButton: ["tabButton", "button"],
   button: ["button"],
-  tabContent: ["tabContent", "button2"],
-  button2: ["button2"],
+  tabContent: ["tabContent", "packItem"],
+  packItem: ["packItem"],
   apiRequest: ["apiRequest"],
   step1Next: ["step1Next"],
   step1Next2: ["step1Next2"],
@@ -5569,6 +5174,7 @@ type NodeDefaultElementType = {
   unselected: "svg";
   تاییدخرید: "div";
   unselected2: "svg";
+  invoice: typeof Invoice;
   fragmentInput: typeof Input;
   items: typeof Items;
   operators: "div";
@@ -5579,7 +5185,7 @@ type NodeDefaultElementType = {
   tabButton: typeof TabButton;
   button: typeof Button;
   tabContent: typeof TabContent;
-  button2: typeof Button;
+  packItem: typeof PackItem;
   apiRequest: typeof ApiRequest;
   step1Next: typeof Button;
   step1Next2: typeof Button;
@@ -5701,6 +5307,7 @@ export const PlasmicInternet3 = Object.assign(
       "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f"
     ),
     unselected2: makeNodeComponent("unselected2"),
+    invoice: makeNodeComponent("invoice"),
     fragmentInput: makeNodeComponent("fragmentInput"),
     items: makeNodeComponent("items"),
     operators: makeNodeComponent("operators"),
@@ -5711,7 +5318,7 @@ export const PlasmicInternet3 = Object.assign(
     tabButton: makeNodeComponent("tabButton"),
     button: makeNodeComponent("button"),
     tabContent: makeNodeComponent("tabContent"),
-    button2: makeNodeComponent("button2"),
+    packItem: makeNodeComponent("packItem"),
     apiRequest: makeNodeComponent("apiRequest"),
     step1Next: makeNodeComponent("step1Next"),
     step1Next2: makeNodeComponent("step1Next2"),

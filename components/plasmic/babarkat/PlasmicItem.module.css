@@ -6,7 +6,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  background: #ffffff4d;
+  background: none;
   position: relative;
   min-width: 0;
   border-radius: var(--token-R6c1b-gPSxDB);
@@ -14,6 +14,10 @@
 }
 .rootselected {
   background: #ffffff;
+}
+.rootsize_small {
+  padding-right: var(--token-V6iPUxl66F8R);
+  padding-left: var(--token-V6iPUxl66F8R);
 }
 .text {
   position: relative;
@@ -28,4 +32,7 @@
 }
 .textselected {
   color: var(--token-fNYqKZOa5tL7);
+}
+.textsize_small {
+  font-size: var(--token-FKfEFJSAUH6i);
 }

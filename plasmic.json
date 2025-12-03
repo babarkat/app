@@ -2328,6 +2328,32 @@
           "cssFilePath": "plasmic/babarkat/PlasmicItems.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "vbVyLD-uyVh8",
+          "name": "PackItem",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicPackItem.tsx",
+          "importSpec": {
+            "modulePath": "PackItem.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicPackItem.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "U_Qsdj6_40KF",
+          "name": "Invoice",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicInvoice.tsx",
+          "importSpec": {
+            "modulePath": "Invoice.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicInvoice.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -3450,6 +3476,11 @@
           "id": "zwoIPH1X8BCA",
           "name": "Icon164Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon164.tsx"
+        },
+        {
+          "id": "m1lBFLfCaGj5",
+          "name": "Icon165Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon165.tsx"
         }
       ],
       "images": [

@@ -590,7 +590,14 @@ function PlasmicHeader__RenderFunc(props: {
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
         styleTokensClassNames,
-        sty.header
+        sty.header,
+        {
+          [sty.headerglobal_experiment_override]: hasVariant(
+            globalVariants,
+            "experiment",
+            "override"
+          )
+        }
       )}
     >
       <div className={classNames(projectcss.all, sty.freeBox__nBoJs)}>

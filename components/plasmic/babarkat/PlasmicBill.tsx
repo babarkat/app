@@ -1190,6 +1190,18 @@ function PlasmicBill__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "exchange.commissionToman",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "exchange.commissionAfghani",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -10566,6 +10578,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               "step3"
             )
           })}
+          commissionAfghani={generateStateValueProp($state, [
+            "exchange",
+            "commissionAfghani"
+          ])}
+          commissionToman={generateStateValueProp($state, [
+            "exchange",
+            "commissionToman"
+          ])}
           onAfghaniWithoutCommissionChange={async (...eventArgs: any) => {
             generateStateOnChangeProp($state, [
               "exchange",
@@ -10585,6 +10605,34 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               null,
               eventArgs
             );
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onCommissionAfghaniChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange",
+              "commissionAfghani"
+            ]).apply(null, eventArgs);
+
+            if (
+              eventArgs.length > 1 &&
+              eventArgs[1] &&
+              eventArgs[1]._plasmic_state_init_
+            ) {
+              return;
+            }
+          }}
+          onCommissionTomanChange={async (...eventArgs: any) => {
+            generateStateOnChangeProp($state, [
+              "exchange",
+              "commissionToman"
+            ]).apply(null, eventArgs);
 
             if (
               eventArgs.length > 1 &&
