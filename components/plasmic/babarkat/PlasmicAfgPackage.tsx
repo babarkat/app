@@ -308,7 +308,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "typecharge",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $ctx }) => "Call"
       },
       {
         path: "boxselect[].disable2",
@@ -882,7 +882,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
             <HeaderPage
               data-plasmic-name={"headerPage"}
               data-plasmic-override={overrides.headerPage}
-              className={classNames("__wab_instance", sty.headerPage)}
+              className={classNames("__wab_instance", sty.headerPage, {
+                [sty.headerPagestepscharg_step2]: hasVariant(
+                  $state,
+                  "stepscharg",
+                  "step2"
+                )
+              })}
             >
               {
                 "\u0628\u0633\u062a\u0647 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
