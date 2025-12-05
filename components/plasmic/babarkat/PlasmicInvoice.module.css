@@ -168,193 +168,6 @@
 .ratessteps2_step3:global(.__wab_instance) {
   width: auto;
 }
-.freeBox__kw1Z8 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.freeBoxsteps2_step3__kw1Z8TFm5 {
-  justify-content: center;
-  align-items: center;
-}
-.freeBox__i7MN7 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.text__nc5JH {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: right;
-  font-family: "Vazirmatn", sans-serif;
-  color: var(--token-jgohepLVeKvh);
-  font-size: 14px;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__nc5JH {
-    font-weight: 700;
-  }
-}
-.text__d0Nk1 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-family: "Vazirmatn", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  font-style: normal;
-  color: var(--token-jgohepLVeKvh);
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-.textsteps2_step3__d0Nk1TFm5 {
-  line-height: 1;
-}
-.freeBox___3Bcw {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.freeBoxsteps2_step3___3BcwTFm5 {
-  justify-content: center;
-  align-items: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
-}
-.freeBox__sPtIu {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  padding: 0px;
-}
-.text__djqsG {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: right;
-  font-family: "Vazirmatn", sans-serif;
-  color: var(--token-jgohepLVeKvh);
-  font-size: 14px;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__djqsG {
-    font-weight: 700;
-  }
-}
-.textsteps2_step3__djqsGtFm5 {
-  font-weight: 400;
-}
-.text__xpkol {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  font-family: "Vazirmatn", sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  font-style: normal;
-  color: var(--token-jgohepLVeKvh);
-  text-align: left;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-}
-.textsteps2_step3__xpkoltFm5 {
-  line-height: 1;
-  font-weight: 400;
-}
-.text__x66Zw {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: right;
-  font-family: "Vazirmatn", sans-serif;
-  color: var(--token-jgohepLVeKvh);
-  font-size: 18px;
-  padding-bottom: 5px;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: none;
-  line-height: 1.5;
-  letter-spacing: normal;
-  white-space: pre-wrap;
-  user-select: text;
-  text-decoration-line: none;
-  text-overflow: clip;
-  min-width: 0;
-  border-bottom: 1px solid #00ffcc;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__x66Zw {
-    font-weight: 700;
-  }
-}
-.textsteps2_step3__x66ZwtFm5 {
-  height: 0px;
-  flex-shrink: 0;
-  padding: 0px;
-}
 .freeBox__jyApI {
   display: flex;
   flex-direction: row;
@@ -408,7 +221,7 @@
   }
 }
 .textsteps2_step3__fAR7TFm5 {
-  color: var(--token-WxyGMLCV1Pdq);
+  color: var(--token-aCLVKlB2IKxe);
   font-weight: 700;
 }
 .text__allf3 {
@@ -433,6 +246,6 @@
 }
 .textsteps2_step3__allf3TFm5 {
   line-height: 1;
-  color: var(--token-WxyGMLCV1Pdq);
+  color: var(--token-aCLVKlB2IKxe);
   font-weight: 700;
 }
