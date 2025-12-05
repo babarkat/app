@@ -1651,13 +1651,13 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         onMount={async () => {
           const $steps = {};
 
-          $steps["runCode"] = true
+          $steps["runCode"] = false
             ? (() => {
                 const actionArgs = {
                   customFunction: async () => {
                     return (() => {
                       var getCookie = name => {
-                        const cookies = document.cookie.split("; ");
+                        const cookies = window.document.cookie.split("; ");
                         for (let cookie of cookies) {
                           const [key, value] = cookie.split("=");
                           if (key === name) return value;

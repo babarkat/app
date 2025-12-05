@@ -64,6 +64,7 @@ import { usePlasmicDataSourceContext } from "@plasmicapp/data-sources-context";
 
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
+import Transaction2 from "../../Transaction2"; // plasmic-import: mV3ZGhPwKbGA/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
 import Boxselect3 from "../../Boxselect3"; // plasmic-import: _v6nB3wu5lfi/component
@@ -82,9 +83,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPanel.module.css"; // plasmic-import: zKFKE8oLJjW9/css
 
-import Icon147Icon from "./icons/PlasmicIcon__Icon147"; // plasmic-import: -wCYHUCW1Gsm/icon
-import Icon148Icon from "./icons/PlasmicIcon__Icon148"; // plasmic-import: 0ugKFUu_E8eH/icon
-import Icon149Icon from "./icons/PlasmicIcon__Icon149"; // plasmic-import: hXT4DhuDx7z6/icon
+import Icon169Icon from "./icons/PlasmicIcon__Icon169"; // plasmic-import: 5Z7gtsPEEKQ4/icon
+import Icon167Icon from "./icons/PlasmicIcon__Icon167"; // plasmic-import: SlWSK5vl4mVu/icon
+import Icon168Icon from "./icons/PlasmicIcon__Icon168"; // plasmic-import: aWggx95MZ_3j/icon
 import Icon161Icon from "./icons/PlasmicIcon__Icon161"; // plasmic-import: dGgugbzPr2Us/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
@@ -110,15 +111,18 @@ createPlasmicElementProxy;
 export type PlasmicPanel__VariantMembers = {
   page: "users";
   addUser: "addUser";
+  full: "full";
 };
 export type PlasmicPanel__VariantsArgs = {
   page?: SingleChoiceArg<"users">;
   addUser?: SingleBooleanChoiceArg<"addUser">;
+  full?: SingleBooleanChoiceArg<"full">;
 };
 type VariantPropType = keyof PlasmicPanel__VariantsArgs;
 export const PlasmicPanel__VariantProps = new Array<VariantPropType>(
   "page",
-  "addUser"
+  "addUser",
+  "full"
 );
 
 export type PlasmicPanel__ArgsType = {};
@@ -131,6 +135,7 @@ export type PlasmicPanel__OverridesType = {
   main?: Flex__<"div">;
   wallet?: Flex__<"div">;
   button?: Flex__<typeof Button>;
+  transaction2?: Flex__<typeof Transaction2>;
   loading?: Flex__<"div">;
   wallet4?: Flex__<"div">;
   services5?: Flex__<"div">;
@@ -297,21 +302,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
-                .value;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "p1",
@@ -584,6 +575,44 @@ function PlasmicPanel__RenderFunc(props: {
               throw e;
             }
           })() ?? $props.addUser
+      },
+      {
+        path: "page2",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "transaction2.token",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NjQ4NzI3MjZ9.a9cZ8EUnV93WeFoxZNmUMCvbkFzDuNZIA0EeBW4vCFo"
+      },
+      {
+        path: "transaction2.full",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "full",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.transaction2.full;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })() ?? $props.full
       }
     ],
     [$props, $ctx, $refs]
@@ -873,11 +902,19 @@ function PlasmicPanel__RenderFunc(props: {
                 <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  className={classNames(projectcss.all, sty.wallet, ``)}
+                  className={classNames(projectcss.all, sty.wallet, ``, {
+                    [sty.walletfull]: hasVariant($state, "full", "full")
+                  })}
                   draggable={"true"}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__ytVl6)}
+                    className={classNames(projectcss.all, sty.freeBox__ytVl6, {
+                      [sty.freeBoxfull__ytVl6NdTOl]: hasVariant(
+                        $state,
+                        "full",
+                        "full"
+                      )
+                    })}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__ap4Cl)}
@@ -1084,7 +1121,13 @@ function PlasmicPanel__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__texY)}
+                    className={classNames(projectcss.all, sty.freeBox__texY, {
+                      [sty.freeBoxfull__texYNdTOl]: hasVariant(
+                        $state,
+                        "full",
+                        "full"
+                      )
+                    })}
                   >
                     <div
                       className={classNames(projectcss.all, sty.freeBox__kV3Yc)}
@@ -1125,7 +1168,7 @@ function PlasmicPanel__RenderFunc(props: {
                         }
                       }}
                     >
-                      <Icon147Icon
+                      <Icon169Icon
                         className={classNames(projectcss.all, sty.svg__bKoS)}
                         role={"img"}
                       />
@@ -1181,7 +1224,7 @@ function PlasmicPanel__RenderFunc(props: {
                         }
                       }}
                     >
-                      <Icon148Icon
+                      <Icon167Icon
                         className={classNames(projectcss.all, sty.svg__nWfgj)}
                         role={"img"}
                       />
@@ -1200,8 +1243,38 @@ function PlasmicPanel__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__cOohO)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["goToPanel"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/panel/${"users"}`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToPanel"] != null &&
+                          typeof $steps["goToPanel"] === "object" &&
+                          typeof $steps["goToPanel"].then === "function"
+                        ) {
+                          $steps["goToPanel"] = await $steps["goToPanel"];
+                        }
+                      }}
                     >
-                      <Icon149Icon
+                      <Icon168Icon
                         className={classNames(projectcss.all, sty.svg__ppEZw)}
                         role={"img"}
                       />
@@ -1219,6 +1292,9 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__w43Rh)}
+                  />
                 </div>
                 <Button
                   data-plasmic-name={"button"}
@@ -1304,6 +1380,51 @@ function PlasmicPanel__RenderFunc(props: {
                     }
                   </div>
                 </Button>
+                <div className={classNames(projectcss.all, sty.freeBox__nqw7O)}>
+                  <Transaction2
+                    data-plasmic-name={"transaction2"}
+                    data-plasmic-override={overrides.transaction2}
+                    className={classNames("__wab_instance", sty.transaction2, {
+                      [sty.transaction2full]: hasVariant($state, "full", "full")
+                    })}
+                    full={generateStateValueProp($state, [
+                      "transaction2",
+                      "full"
+                    ])}
+                    onFullChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "transaction2",
+                        "full"
+                      ]).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
+                    onTokenChange={async (...eventArgs: any) => {
+                      generateStateOnChangeProp($state, [
+                        "transaction2",
+                        "token"
+                      ]).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
+                    token={generateStateValueProp($state, [
+                      "transaction2",
+                      "token"
+                    ])}
+                  />
+                </div>
               </div>
             ) : null}
             {(() => {
@@ -1333,7 +1454,8 @@ function PlasmicPanel__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       sty.wallet4,
-                      "shimmer"
+                      "shimmer",
+                      { [sty.wallet4full]: hasVariant($state, "full", "full") }
                     )}
                   />
                 </div>
@@ -13814,6 +13936,7 @@ const PlasmicDescendants = {
     "main",
     "wallet",
     "button",
+    "transaction2",
     "loading",
     "wallet4",
     "services5",
@@ -13848,9 +13971,10 @@ const PlasmicDescendants = {
     "customerAddComponnet"
   ],
   sideEffect: ["sideEffect"],
-  main: ["main", "wallet", "button"],
+  main: ["main", "wallet", "button", "transaction2"],
   wallet: ["wallet"],
   button: ["button"],
+  transaction2: ["transaction2"],
   loading: ["loading", "wallet4", "services5", "internet2"],
   wallet4: ["wallet4"],
   services5: ["services5", "internet2"],
@@ -13899,6 +14023,7 @@ type NodeDefaultElementType = {
   main: "div";
   wallet: "div";
   button: typeof Button;
+  transaction2: typeof Transaction2;
   loading: "div";
   wallet4: "div";
   services5: "div";
@@ -14024,6 +14149,7 @@ export const PlasmicPanel = Object.assign(
     main: makeNodeComponent("main"),
     wallet: makeNodeComponent("wallet"),
     button: makeNodeComponent("button"),
+    transaction2: makeNodeComponent("transaction2"),
     loading: makeNodeComponent("loading"),
     wallet4: makeNodeComponent("wallet4"),
     services5: makeNodeComponent("services5"),

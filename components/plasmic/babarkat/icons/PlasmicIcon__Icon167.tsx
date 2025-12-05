@@ -1,0 +1,45 @@
+/* eslint-disable */
+/* tslint:disable */
+// @ts-nocheck
+/* prettier-ignore-start */
+import React from "react";
+import { classNames } from "@plasmicapp/react-web";
+
+export type Icon167IconProps = React.ComponentProps<"svg"> & {
+  title?: string;
+};
+
+export function Icon167Icon(props: Icon167IconProps) {
+  const { className, style, title, ...restProps } = props;
+  return (
+    <svg
+      xmlns={"http://www.w3.org/2000/svg"}
+      fill={"none"}
+      viewBox={"0 0 24 24"}
+      height={"1em"}
+      className={classNames("plasmic-default__svg", className)}
+      style={style}
+      {...restProps}
+    >
+      {title && <title>{title}</title>}
+
+      <g fill={"currentColor"} fillRule={"evenodd"} clipRule={"evenodd"}>
+        <path
+          d={
+            "M22 12c0 5.523-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2s10 4.477 10 10"
+          }
+          opacity={".5"}
+        ></path>
+
+        <path
+          d={
+            "M12 5.25a.75.75 0 0 1 .75.75v.317c1.63.292 3 1.517 3 3.183a.75.75 0 0 1-1.5 0c0-.678-.564-1.397-1.5-1.653v3.47c1.63.292 3 1.517 3 3.183s-1.37 2.891-3 3.183V18a.75.75 0 0 1-1.5 0v-.317c-1.63-.292-3-1.517-3-3.183a.75.75 0 0 1 1.5 0c0 .678.564 1.397 1.5 1.652v-3.469c-1.63-.292-3-1.517-3-3.183s1.37-2.891 3-3.183V6a.75.75 0 0 1 .75-.75m-.75 2.597c-.936.256-1.5.975-1.5 1.653s.564 1.397 1.5 1.652zm3 6.653c0-.678-.564-1.397-1.5-1.652v3.304c.936-.255 1.5-.974 1.5-1.652"
+          }
+        ></path>
+      </g>
+    </svg>
+  );
+}
+
+export default Icon167Icon;
+/* prettier-ignore-end */
