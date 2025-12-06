@@ -365,7 +365,7 @@
   height: 75vh;
   max-width: 100%;
   row-gap: 20px;
-  padding: 0px;
+  padding: 8px 8px 100px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mwefs {
