@@ -933,6 +933,7 @@ function PlasmicPanel__RenderFunc(props: {
                 data-plasmic-override={overrides.main}
                 className={classNames(projectcss.all, sty.main, {
                   [sty.mainaddUser]: hasVariant($state, "addUser", "addUser"),
+                  [sty.mainfull]: hasVariant($state, "full", "full"),
                   [sty.mainpage_users]: hasVariant($state, "page", "users")
                 })}
               >
@@ -1320,7 +1321,14 @@ function PlasmicPanel__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__n89MO
+                          sty.text__n89MO,
+                          {
+                            [sty.textpage_users__n89MOGxQj4]: hasVariant(
+                              $state,
+                              "page",
+                              "users"
+                            )
+                          }
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
