@@ -1742,7 +1742,19 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
             }
           }).apply(null, eventArgs);
         }}
-        shouldFetch={true}
+        shouldFetch={(() => {
+          try {
+            return $props.active;
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })()}
         url={"https://n8n.babarkat.com/webhook/saraf/login/username"}
       />
     </div>

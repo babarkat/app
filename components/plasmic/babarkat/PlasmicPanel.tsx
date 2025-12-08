@@ -649,7 +649,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "customerAddComponnet.active2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -13867,7 +13867,19 @@ function PlasmicPanel__RenderFunc(props: {
             <CustomerAddComponnet
               data-plasmic-name={"customerAddComponnet"}
               data-plasmic-override={overrides.customerAddComponnet}
-              active={false}
+              active={(() => {
+                try {
+                  return $state.addUser ? true : false;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })()}
               active2={generateStateValueProp($state, [
                 "customerAddComponnet",
                 "active2"
