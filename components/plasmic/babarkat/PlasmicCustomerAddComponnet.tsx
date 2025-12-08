@@ -1712,7 +1712,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
           (async data => {
             const $steps = {};
 
-            $steps["updateCode"] = $state.invokeGlobalAction?.data?.success
+            $steps["updateCode"] = $state.apiRequest?.data?.success
               ? (() => {
                   const actionArgs = {
                     variable: {
@@ -1720,7 +1720,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                       variablePath: ["code"]
                     },
                     operation: 0,
-                    value: $state.invokeGlobalAction.data.customerId
+                    value: $state.apiRequest.data.customerId
                   };
                   return (({ variable, value, startIndex, deleteCount }) => {
                     if (!variable) {
