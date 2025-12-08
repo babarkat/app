@@ -65,7 +65,7 @@ import { inputHelpers as TextArea_Helpers } from "@plasmicpkgs/antd/skinny/regis
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
 import { AntdModal } from "@plasmicpkgs/antd5/skinny/registerModal";
 import { AntdSelect } from "@plasmicpkgs/antd5/skinny/registerSelect";
-import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: OG1SoduAPhRs/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
 
@@ -95,11 +95,15 @@ export const PlasmicCustomerAddComponnet__VariantProps =
   new Array<VariantPropType>();
 
 export type PlasmicCustomerAddComponnet__ArgsType = {
+  token?: string;
+  onTokenChange?: (val: string) => void;
   back?: () => void;
   active?: boolean;
 };
 type ArgPropType = keyof PlasmicCustomerAddComponnet__ArgsType;
 export const PlasmicCustomerAddComponnet__ArgProps = new Array<ArgPropType>(
+  "token",
+  "onTokenChange",
   "back",
   "active"
 );
@@ -124,10 +128,12 @@ export type PlasmicCustomerAddComponnet__OverridesType = {
   select2?: Flex__<typeof AntdSelect>;
   info2?: Flex__<typeof TextArea>;
   button4?: Flex__<typeof Button>;
-  sideEffect?: Flex__<typeof SideEffect>;
+  apiRequest?: Flex__<typeof ApiRequest>;
 };
 
 export interface DefaultCustomerAddComponnetProps {
+  token?: string;
+  onTokenChange?: (val: string) => void;
   back?: () => void;
   active?: boolean;
   className?: string;
@@ -223,22 +229,11 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
       },
       {
         path: "token",
-        type: "private",
+        type: "writable",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return undefined;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
+
+        valueProp: "token",
+        onChangeProp: "onTokenChange"
       },
       {
         path: "customerInfo",
@@ -456,6 +451,24 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "apiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -1644,107 +1657,111 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
           </Button>
         </div>
       </AntdModal>
-      <SideEffect
-        data-plasmic-name={"sideEffect"}
-        data-plasmic-override={overrides.sideEffect}
-        className={classNames("__wab_instance", sty.sideEffect)}
-        onMount={async () => {
-          const $steps = {};
-
-          $steps["runCode"] = false
-            ? (() => {
-                const actionArgs = {
-                  customFunction: async () => {
-                    return (() => {
-                      var getCookie = name => {
-                        const cookies = window.document.cookie.split("; ");
-                        for (let cookie of cookies) {
-                          const [key, value] = cookie.split("=");
-                          if (key === name) return value;
-                        }
-                        return "";
-                      };
-                      return ($state.token = JSON.parse(getCookie("token")));
-                    })();
-                  }
-                };
-                return (({ customFunction }) => {
-                  return customFunction();
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["runCode"] != null &&
-            typeof $steps["runCode"] === "object" &&
-            typeof $steps["runCode"].then === "function"
-          ) {
-            $steps["runCode"] = await $steps["runCode"];
+      <ApiRequest
+        data-plasmic-name={"apiRequest"}
+        data-plasmic-override={overrides.apiRequest}
+        body={(() => {
+          try {
+            return { userToken: $state.token };
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
           }
-
-          $steps["invokeGlobalAction"] = true
-            ? (() => {
-                const actionArgs = {
-                  args: [
-                    "PUT",
-                    "https://n8n.babarkat.com/webhook/saraf/login/username",
-                    undefined,
-                    (() => {
-                      try {
-                        return { userToken: $state.token };
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
-                        }
-                        throw e;
-                      }
-                    })()
-                  ]
-                };
-                return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                  ...actionArgs.args
-                ]);
-              })()
-            : undefined;
-          if (
-            $steps["invokeGlobalAction"] != null &&
-            typeof $steps["invokeGlobalAction"] === "object" &&
-            typeof $steps["invokeGlobalAction"].then === "function"
-          ) {
-            $steps["invokeGlobalAction"] = await $steps["invokeGlobalAction"];
-          }
-
-          $steps["updateCode"] = $steps.invokeGlobalAction?.data?.success
-            ? (() => {
-                const actionArgs = {
-                  variable: {
-                    objRoot: $state,
-                    variablePath: ["code"]
-                  },
-                  operation: 0,
-                  value: $steps.invokeGlobalAction.data.customerId
-                };
-                return (({ variable, value, startIndex, deleteCount }) => {
-                  if (!variable) {
-                    return;
-                  }
-                  const { objRoot, variablePath } = variable;
-
-                  $stateSet(objRoot, variablePath, value);
-                  return value;
-                })?.apply(null, [actionArgs]);
-              })()
-            : undefined;
-          if (
-            $steps["updateCode"] != null &&
-            typeof $steps["updateCode"] === "object" &&
-            typeof $steps["updateCode"].then === "function"
-          ) {
-            $steps["updateCode"] = await $steps["updateCode"];
-          }
+        })()}
+        className={classNames("__wab_instance", sty.apiRequest)}
+        errorDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__zkoi6
+            )}
+          >
+            {"Error fetching data"}
+          </div>
+        }
+        loadingDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__vkWNj
+            )}
+          >
+            {"Loading..."}
+          </div>
+        }
+        method={"PUT"}
+        onError={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["apiRequest", "error"]).apply(
+            null,
+            eventArgs
+          );
         }}
+        onLoading={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["apiRequest", "loading"]).apply(
+            null,
+            eventArgs
+          );
+        }}
+        onSuccess={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
+            null,
+            eventArgs
+          );
+
+          (async data => {
+            const $steps = {};
+
+            $steps["updateCode"] = $state.invokeGlobalAction?.data?.success
+              ? (() => {
+                  const actionArgs = {
+                    variable: {
+                      objRoot: $state,
+                      variablePath: ["code"]
+                    },
+                    operation: 0,
+                    value: $state.invokeGlobalAction.data.customerId
+                  };
+                  return (({ variable, value, startIndex, deleteCount }) => {
+                    if (!variable) {
+                      return;
+                    }
+                    const { objRoot, variablePath } = variable;
+
+                    $stateSet(objRoot, variablePath, value);
+                    return value;
+                  })?.apply(null, [actionArgs]);
+                })()
+              : undefined;
+            if (
+              $steps["updateCode"] != null &&
+              typeof $steps["updateCode"] === "object" &&
+              typeof $steps["updateCode"].then === "function"
+            ) {
+              $steps["updateCode"] = await $steps["updateCode"];
+            }
+          }).apply(null, eventArgs);
+        }}
+        shouldFetch={(() => {
+          try {
+            return $state.token != null && $state.token != "";
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return true;
+            }
+            throw e;
+          }
+        })()}
+        url={"https://n8n.babarkat.com/webhook/saraf/login/username"}
       />
     </div>
   ) as React.ReactElement | null;
@@ -1771,7 +1788,7 @@ const PlasmicDescendants = {
     "select2",
     "info2",
     "button4",
-    "sideEffect"
+    "apiRequest"
   ],
   name: ["name"],
   lastname: ["lastname"],
@@ -1791,7 +1808,7 @@ const PlasmicDescendants = {
   select2: ["select2"],
   info2: ["info2"],
   button4: ["button4"],
-  sideEffect: ["sideEffect"]
+  apiRequest: ["apiRequest"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1816,7 +1833,7 @@ type NodeDefaultElementType = {
   select2: typeof AntdSelect;
   info2: typeof TextArea;
   button4: typeof Button;
-  sideEffect: typeof SideEffect;
+  apiRequest: typeof ApiRequest;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1899,7 +1916,7 @@ export const PlasmicCustomerAddComponnet = Object.assign(
     select2: makeNodeComponent("select2"),
     info2: makeNodeComponent("info2"),
     button4: makeNodeComponent("button4"),
-    sideEffect: makeNodeComponent("sideEffect"),
+    apiRequest: makeNodeComponent("apiRequest"),
 
     // Metadata about props expected for PlasmicCustomerAddComponnet
     internalVariantProps: PlasmicCustomerAddComponnet__VariantProps,

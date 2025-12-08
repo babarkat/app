@@ -625,6 +625,25 @@ function PlasmicPanel__RenderFunc(props: {
               throw e;
             }
           })() ?? $props.full
+      },
+      {
+        path: "customerAddComponnet.token",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return undefined;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -13933,6 +13952,24 @@ function PlasmicPanel__RenderFunc(props: {
                     hasVariant($state, "page", "users")
                 }
               )}
+              onTokenChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "customerAddComponnet",
+                  "token"
+                ]).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              }}
+              token={generateStateValueProp($state, [
+                "customerAddComponnet",
+                "token"
+              ])}
             />
           </Reveal>
         </div>
