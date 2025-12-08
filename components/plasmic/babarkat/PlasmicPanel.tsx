@@ -587,7 +587,19 @@ function PlasmicPanel__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTAwNSwidHlwZSI6InNhcmFmVG9rZW4iLCJleHBpcmUiOjE3NjQ4NzI3MjZ9.a9cZ8EUnV93WeFoxZNmUMCvbkFzDuNZIA0EeBW4vCFo"
+          (() => {
+            try {
+              return $state.token;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "transaction2.full",
@@ -1286,9 +1298,9 @@ function PlasmicPanel__RenderFunc(props: {
                           sty.text__n89MO
                         )}
                       >
-                        {
-                          "\u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc"
-                        }
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"
+                          : "\u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc"}
                       </div>
                     </div>
                   </div>
