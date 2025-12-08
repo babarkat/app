@@ -1333,7 +1333,7 @@ function PlasmicPanel__RenderFunc(props: {
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"
-                          : "\u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc"}
+                          : "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"}
                       </div>
                     </div>
                   </div>
