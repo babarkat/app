@@ -633,7 +633,7 @@ function PlasmicPanel__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return undefined;
+              return $state.token;
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -644,6 +644,12 @@ function PlasmicPanel__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "customerAddComponnet.active2",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -13861,19 +13867,11 @@ function PlasmicPanel__RenderFunc(props: {
             <CustomerAddComponnet
               data-plasmic-name={"customerAddComponnet"}
               data-plasmic-override={overrides.customerAddComponnet}
-              active={(() => {
-                try {
-                  return $state.addUser ? true : false;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return false;
-                  }
-                  throw e;
-                }
-              })()}
+              active={false}
+              active2={generateStateValueProp($state, [
+                "customerAddComponnet",
+                "active2"
+              ])}
               back={async () => {
                 const $steps = {};
 
@@ -13942,6 +13940,9 @@ function PlasmicPanel__RenderFunc(props: {
                     "addUser",
                     "addUser"
                   ),
+                  [sty.customerAddComponnetfull_addUser]:
+                    hasVariant($state, "full", "full") &&
+                    hasVariant($state, "addUser", "addUser"),
                   [sty.customerAddComponnetpage_users]: hasVariant(
                     $state,
                     "page",
@@ -13949,9 +13950,30 @@ function PlasmicPanel__RenderFunc(props: {
                   ),
                   [sty.customerAddComponnetpage_users_addUser]:
                     hasVariant($state, "addUser", "addUser") &&
-                    hasVariant($state, "page", "users")
+                    hasVariant($state, "page", "users"),
+                  [sty.customerAddComponnetpage_users_full]:
+                    hasVariant($state, "page", "users") &&
+                    hasVariant($state, "full", "full"),
+                  [sty.customerAddComponnetpage_users_full_addUser]:
+                    hasVariant($state, "page", "users") &&
+                    hasVariant($state, "full", "full") &&
+                    hasVariant($state, "addUser", "addUser")
                 }
               )}
+              onActive2Change={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, [
+                  "customerAddComponnet",
+                  "active2"
+                ]).apply(null, eventArgs);
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
+              }}
               onTokenChange={async (...eventArgs: any) => {
                 generateStateOnChangeProp($state, [
                   "customerAddComponnet",

@@ -99,13 +99,17 @@ export type PlasmicCustomerAddComponnet__ArgsType = {
   onTokenChange?: (val: string) => void;
   back?: () => void;
   active?: boolean;
+  active2?: boolean;
+  onActive2Change?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicCustomerAddComponnet__ArgsType;
 export const PlasmicCustomerAddComponnet__ArgProps = new Array<ArgPropType>(
   "token",
   "onTokenChange",
   "back",
-  "active"
+  "active",
+  "active2",
+  "onActive2Change"
 );
 
 export type PlasmicCustomerAddComponnet__OverridesType = {
@@ -136,6 +140,8 @@ export interface DefaultCustomerAddComponnetProps {
   onTokenChange?: (val: string) => void;
   back?: () => void;
   active?: boolean;
+  active2?: boolean;
+  onActive2Change?: (val: string) => void;
   className?: string;
 }
 
@@ -469,6 +475,14 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "active2",
+        type: "writable",
+        variableType: "boolean",
+
+        valueProp: "active2",
+        onChangeProp: "onActive2Change"
       }
     ],
     [$props, $ctx, $refs]
@@ -1674,28 +1688,8 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
           }
         })()}
         className={classNames("__wab_instance", sty.apiRequest)}
-        errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__zkoi6
-            )}
-          >
-            {"Error fetching data"}
-          </div>
-        }
-        loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__vkWNj
-            )}
-          >
-            {"Loading..."}
-          </div>
-        }
+        errorDisplay={null}
+        loadingDisplay={null}
         method={"PUT"}
         onError={async (...eventArgs: any) => {
           generateStateOnChangeProp($state, ["apiRequest", "error"]).apply(
@@ -1748,19 +1742,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
             }
           }).apply(null, eventArgs);
         }}
-        shouldFetch={(() => {
-          try {
-            return $state.token != null && $state.token != "";
-          } catch (e) {
-            if (
-              e instanceof TypeError ||
-              e?.plasmicType === "PlasmicUndefinedDataError"
-            ) {
-              return true;
-            }
-            throw e;
-          }
-        })()}
+        shouldFetch={true}
         url={"https://n8n.babarkat.com/webhook/saraf/login/username"}
       />
     </div>
