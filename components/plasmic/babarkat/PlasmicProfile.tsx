@@ -762,29 +762,24 @@ function PlasmicProfile__RenderFunc(props: {
                 onClick={async event => {
                   const $steps = {};
 
-                  $steps["goToCustomer"] = true
+                  $steps["runCode"] = true
                     ? (() => {
-                        const actionArgs = { destination: `/customer` };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return window.history.back();
                           }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["goToCustomer"] != null &&
-                    typeof $steps["goToCustomer"] === "object" &&
-                    typeof $steps["goToCustomer"].then === "function"
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
                   ) {
-                    $steps["goToCustomer"] = await $steps["goToCustomer"];
+                    $steps["runCode"] = await $steps["runCode"];
                   }
                 }}
                 role={"img"}
