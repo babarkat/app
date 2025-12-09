@@ -243,7 +243,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $props.tabButton || "charge";
+              return $props.tabButton || "transaction";
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -640,7 +640,7 @@ function PlasmicTransaction2__RenderFunc(props: {
             initialKey={
               hasVariant(globalVariants, "screen", "mobileOnly")
                 ? "charge"
-                : "charge"
+                : "transaction"
             }
           >
             <DataCtxReader__>
@@ -2081,67 +2081,94 @@ function PlasmicTransaction2__RenderFunc(props: {
                                         sty.text__zzsI
                                       )}
                                     >
-                                      <React.Fragment>
-                                        {(() => {
-                                          try {
-                                            return (() => {
-                                              switch (true) {
-                                                case currentItem.type.includes(
-                                                  "afghanistan_internet"
-                                                ):
-                                                  return "بسته اینترنت افغانستان";
-                                                case currentItem.type.includes(
-                                                  "argin"
-                                                ):
-                                                  return "شارژ سیم کارت";
-                                                case currentItem.type.includes(
-                                                  "inte"
-                                                ):
-                                                  return "خرید بسته اینترنت";
-                                                case currentItem.type.includes(
-                                                  "snap"
-                                                ):
-                                                  return "خرید بسته اسنپ";
-                                                case currentItem.type.includes(
-                                                  "package_UC"
-                                                ):
-                                                  return "خرید بسته UC PUBG";
-                                                case currentItem.type.includes(
-                                                  "package_likee"
-                                                ):
-                                                  return "خرید الماس Likee";
-                                                case currentItem.type.includes(
-                                                  "package_imo"
-                                                ):
-                                                  return "خرید الماس imo";
-                                                case currentItem.type.includes(
-                                                  "package_bigo-live"
-                                                ):
-                                                  return "خرید الماس Bigo live";
-                                                case currentItem.type.includes(
-                                                  "bill"
-                                                ):
-                                                  return "پرداخت قبض";
-                                                case currentItem.type.includes(
-                                                  "afghanistan_contact"
-                                                ):
-                                                  return "بسته مکاله افغانستان";
-                                                default:
-                                                  return "نوع ناشناخته";
+                                      <div
+                                        className={
+                                          projectcss.__wab_expr_html_text
+                                        }
+                                        dangerouslySetInnerHTML={{
+                                          __html: (() => {
+                                            try {
+                                              return (() => {
+                                                let transText = "نوع ناشناخته";
+                                                switch (true) {
+                                                  case currentItem.type.includes(
+                                                    "afghanistan_internet"
+                                                  ):
+                                                    transText =
+                                                      "بسته اینترنت افغانستان";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "argin"
+                                                  ):
+                                                    transText = "شارژ سیم کارت";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "inte"
+                                                  ):
+                                                    transText =
+                                                      "خرید بسته اینترنت";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "snap"
+                                                  ):
+                                                    transText =
+                                                      "خرید بسته اسنپ";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "package_UC"
+                                                  ):
+                                                    transText =
+                                                      "خرید بسته UC PUBG";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "package_likee"
+                                                  ):
+                                                    transText =
+                                                      "خرید الماس Likee";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "package_imo"
+                                                  ):
+                                                    transText =
+                                                      "خرید الماس imo";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "package_bigo-live"
+                                                  ):
+                                                    transText =
+                                                      "خرید الماس Bigo live";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "bill"
+                                                  ):
+                                                    transText = "پرداخت قبض";
+                                                    break;
+                                                  case currentItem.type.includes(
+                                                    "afghanistan_contact"
+                                                  ):
+                                                    transText =
+                                                      "بسته مکالمه افغانستان";
+                                                    break;
+                                                }
+                                                const result = `
+<span class="big-text">${currentItem.fullName}</span>
+<span class="small-text">(${transText})</span>
+`;
+                                                return result;
+                                              })();
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
                                               }
-                                            })();
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
+                                              throw e;
                                             }
-                                            throw e;
-                                          }
-                                        })()}
-                                      </React.Fragment>
+                                          })()
+                                        }}
+                                      />
                                     </div>
                                     <div
                                       className={classNames(
@@ -2573,22 +2600,30 @@ function PlasmicTransaction2__RenderFunc(props: {
                                         sty.text___182UP
                                       )}
                                     >
-                                      <React.Fragment>
-                                        {(() => {
-                                          try {
-                                            return "حواله وجه";
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
+                                      <div
+                                        className={
+                                          projectcss.__wab_expr_html_text
+                                        }
+                                        dangerouslySetInnerHTML={{
+                                          __html: (() => {
+                                            try {
+                                              return `<span class="big-text">${currentItem.fullName}</span>
+<span class="small-text">(حواله وجه")
+</span>
+`;
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
+                                              }
+                                              throw e;
                                             }
-                                            throw e;
-                                          }
-                                        })()}
-                                      </React.Fragment>
+                                          })()
+                                        }}
+                                      />
                                     </div>
                                     <div
                                       className={classNames(
@@ -3004,31 +3039,30 @@ function PlasmicTransaction2__RenderFunc(props: {
                                         sty.text__afIj
                                       )}
                                     >
-                                      <React.Fragment>
-                                        {(() => {
-                                          try {
-                                            return (() => {
+                                      <div
+                                        className={
+                                          projectcss.__wab_expr_html_text
+                                        }
+                                        dangerouslySetInnerHTML={{
+                                          __html: (() => {
+                                            try {
+                                              return `<span class="big-text">${currentItem.fullName}</span>
+<span class="small-text">(${currentItem.transactionType.includes("واریز") ? "رسید وجه" : currentItem.transactionType})
+</span>
+`;
+                                            } catch (e) {
                                               if (
-                                                currentItem.transactionType.includes(
-                                                  "واریز"
-                                                )
-                                              )
-                                                return "رسید" + " وجه";
-                                              else
-                                                return currentItem.transactionType;
-                                            })();
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a ";
+                                              }
+                                              throw e;
                                             }
-                                            throw e;
-                                          }
-                                        })()}
-                                      </React.Fragment>
+                                          })()
+                                        }}
+                                      />
                                     </div>
                                     <div
                                       className={classNames(

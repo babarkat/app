@@ -83,9 +83,9 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPanel.module.css"; // plasmic-import: zKFKE8oLJjW9/css
 
+import Icon168Icon from "./icons/PlasmicIcon__Icon168"; // plasmic-import: aWggx95MZ_3j/icon
 import Icon169Icon from "./icons/PlasmicIcon__Icon169"; // plasmic-import: 5Z7gtsPEEKQ4/icon
 import Icon167Icon from "./icons/PlasmicIcon__Icon167"; // plasmic-import: SlWSK5vl4mVu/icon
-import Icon168Icon from "./icons/PlasmicIcon__Icon168"; // plasmic-import: aWggx95MZ_3j/icon
 import Icon161Icon from "./icons/PlasmicIcon__Icon161"; // plasmic-import: dGgugbzPr2Us/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
@@ -1168,6 +1168,63 @@ function PlasmicPanel__RenderFunc(props: {
                     })}
                   >
                     <div
+                      className={classNames(projectcss.all, sty.freeBox__cOohO)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["goToPanel"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination: `/panel/${"users"}`
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["goToPanel"] != null &&
+                          typeof $steps["goToPanel"] === "object" &&
+                          typeof $steps["goToPanel"].then === "function"
+                        ) {
+                          $steps["goToPanel"] = await $steps["goToPanel"];
+                        }
+                      }}
+                    >
+                      <Icon168Icon
+                        className={classNames(projectcss.all, sty.svg__ppEZw)}
+                        role={"img"}
+                      />
+
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__n89MO,
+                          {
+                            [sty.textpage_users__n89MOGxQj4]: hasVariant(
+                              $state,
+                              "page",
+                              "users"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"
+                          : "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"}
+                      </div>
+                    </div>
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__kV3Yc)}
                       onClick={async event => {
                         const $steps = {};
@@ -1277,63 +1334,6 @@ function PlasmicPanel__RenderFunc(props: {
                         {
                           "\u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646"
                         }
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cOohO)}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["goToPanel"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                destination: `/panel/${"users"}`
-                              };
-                              return (({ destination }) => {
-                                if (
-                                  typeof destination === "string" &&
-                                  destination.startsWith("#")
-                                ) {
-                                  document
-                                    .getElementById(destination.substr(1))
-                                    .scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                  __nextRouter?.push(destination);
-                                }
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["goToPanel"] != null &&
-                          typeof $steps["goToPanel"] === "object" &&
-                          typeof $steps["goToPanel"].then === "function"
-                        ) {
-                          $steps["goToPanel"] = await $steps["goToPanel"];
-                        }
-                      }}
-                    >
-                      <Icon168Icon
-                        className={classNames(projectcss.all, sty.svg__ppEZw)}
-                        role={"img"}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__n89MO,
-                          {
-                            [sty.textpage_users__n89MOGxQj4]: hasVariant(
-                              $state,
-                              "page",
-                              "users"
-                            )
-                          }
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"
-                          : "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627"}
                       </div>
                     </div>
                   </div>
