@@ -333,7 +333,7 @@ function PlasmicHeader__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : true
       },
       {
         path: "fragmentInput.value",
@@ -1068,7 +1068,7 @@ function PlasmicHeader__RenderFunc(props: {
                   }}
                   options={(() => {
                     try {
-                      return $state.saraflist;
+                      return $state.saraflist.filter(i => i.value != 1110);
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

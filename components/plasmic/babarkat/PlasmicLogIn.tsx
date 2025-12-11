@@ -281,10 +281,10 @@ function PlasmicLogIn__RenderFunc(props: {
                   throw e;
                 }
               })()
-            : hasVariant(globalVariants, "screen", "mobileOnly")
+            : hasVariant($state, "group11", "saraf")
               ? (() => {
                   try {
-                    return $state.saraf[0].value;
+                    return $state.saraf.filter(i => i.value != 1110)[0].value;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -295,19 +295,33 @@ function PlasmicLogIn__RenderFunc(props: {
                     throw e;
                   }
                 })()
-              : (() => {
-                  try {
-                    return $state.saraf[0].value;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return 100;
+              : hasVariant(globalVariants, "screen", "mobileOnly")
+                ? (() => {
+                    try {
+                      return $state.saraf[0].value;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return 100;
+                      }
+                      throw e;
                     }
-                    throw e;
-                  }
-                })()
+                  })()
+                : (() => {
+                    try {
+                      return $state.saraf[0].value;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return 100;
+                      }
+                      throw e;
+                    }
+                  })()
       },
       {
         path: "selectsaraf",
@@ -2077,10 +2091,11 @@ function PlasmicLogIn__RenderFunc(props: {
                           throw e;
                         }
                       })()
-                    : hasVariant(globalVariants, "screen", "mobileOnly")
+                    : hasVariant($state, "group11", "saraf")
                       ? (() => {
                           try {
-                            return $state.saraf[0].value;
+                            return $state.saraf.filter(i => i.value != 1110)[0]
+                              .value;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -2091,19 +2106,33 @@ function PlasmicLogIn__RenderFunc(props: {
                             throw e;
                           }
                         })()
-                      : (() => {
-                          try {
-                            return $state.saraf[0].value;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return 100;
+                      : hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
+                          })()
+                        : (() => {
+                            try {
+                              return $state.saraf[0].value;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return 100;
+                              }
+                              throw e;
+                            }
+                          })()
                 }
                 onChange={async (...eventArgs: any) => {
                   generateStateOnChangeProp($state, ["select", "value"]).apply(
