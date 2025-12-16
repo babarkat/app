@@ -584,6 +584,14 @@ function PlasmicHomepage__RenderFunc(props: {
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => [
           {
+            background: "linear-gradient(135deg, #3a1c71, #5f2c82)",
+            text: "\u062e\u0631\u06cc\u062f \u0627\u0644\u0645\u0627\u0633 likee",
+            action: "pubg/?type=Likee",
+            image:
+              "https://app.babarkat.com/plasmic/babarkat/images/likee.webp",
+            icon: "https://app.babarkat.com/plasmic/babarkat/images/image59.svg"
+          },
+          {
             background: "linear-gradient(135deg, #102542, #1b3b6f)",
             text: "\u0634\u0627\u0631\u0698 \u0641\u0648\u0631\u06cc \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646",
             action: "/charging-2",

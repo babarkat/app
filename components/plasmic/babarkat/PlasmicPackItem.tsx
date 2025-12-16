@@ -59,6 +59,7 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { TextCollapse } from "@/components/TextCollapse"; // plasmic-import: _ERIU_HsKOAk/codeComponent
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/styleTokensProvider
 
@@ -102,6 +103,8 @@ export const PlasmicPackItem__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicPackItem__OverridesType = {
   root?: Flex__<"div">;
+  textCollapse?: Flex__<typeof TextCollapse>;
+  text?: Flex__<"div">;
 };
 
 export interface DefaultPackItemProps {
@@ -199,11 +202,18 @@ function PlasmicPackItem__RenderFunc(props: {
         projectcss.plasmic_mixins,
         styleTokensClassNames,
         sty.root,
-        { [sty.roottype_call]: hasVariant($state, "type", "call") }
+        {
+          [sty.rootsteps2_step2]: hasVariant($state, "steps2", "step2"),
+          [sty.roottype_call]: hasVariant($state, "type", "call")
+        }
       )}
       onClick={args.onClick}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__z1KFd)}>
+      <div
+        className={classNames(projectcss.all, sty.freeBox__z1KFd, {
+          [sty.freeBoxtype_call__z1KFdjco79]: hasVariant($state, "type", "call")
+        })}
+      >
         <PlasmicIcon__
           PlasmicIconType={
             hasVariant($state, "type", "call")
@@ -218,54 +228,31 @@ function PlasmicPackItem__RenderFunc(props: {
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__pA0A3)}>
         <div className={classNames(projectcss.all, sty.freeBox__btNb3)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text___3Etf9,
-              {
-                [sty.textpackageAfgani___3Etf9WeS8]: hasVariant(
-                  $state,
-                  "packageAfgani",
-                  "packageAfgani"
-                )
+          <TextCollapse
+            data-plasmic-name={"textCollapse"}
+            data-plasmic-override={overrides.textCollapse}
+            className={classNames("__wab_instance", sty.textCollapse)}
+            enableMarquee={false}
+            enableToggle={false}
+            maxLines={2}
+            text={(() => {
+              try {
+                return (
+                  $props.currentItem?.json?.name ||
+                  "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
+                );
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
               }
-            )}
-          >
-            {hasVariant($state, "packageAfgani", "packageAfgani") ? (
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $props.currentItem.image;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                {(() => {
-                  try {
-                    return $props.currentItem.json.name;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644";
-                    }
-                    throw e;
-                  }
-                })()}
-              </React.Fragment>
-            )}
-          </div>
+            })()}
+          />
+
           <div
             className={classNames(projectcss.all, sty.freeBox__ldmn7, {
               [sty.freeBoxsteps2_step2__ldmn7SDf8]: hasVariant(
@@ -276,21 +263,19 @@ function PlasmicPackItem__RenderFunc(props: {
             })}
           >
             <div
+              data-plasmic-name={"text"}
+              data-plasmic-override={overrides.text}
               className={classNames(
                 projectcss.all,
                 projectcss.__wab_text,
-                sty.text__vv84U,
+                sty.text,
                 {
-                  [sty.textpackageAfgani__vv84UWeS8]: hasVariant(
+                  [sty.textpackageAfgani]: hasVariant(
                     $state,
                     "packageAfgani",
                     "packageAfgani"
                   ),
-                  [sty.textsteps2_step2__vv84USDf8]: hasVariant(
-                    $state,
-                    "steps2",
-                    "step2"
-                  )
+                  [sty.textsteps2_step2]: hasVariant($state, "steps2", "step2")
                 }
               )}
             >
@@ -351,13 +336,17 @@ function PlasmicPackItem__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root", "textCollapse", "text"],
+  textCollapse: ["textCollapse"],
+  text: ["text"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  textCollapse: typeof TextCollapse;
+  text: "div";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -422,6 +411,8 @@ export const PlasmicPackItem = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    textCollapse: makeNodeComponent("textCollapse"),
+    text: makeNodeComponent("text"),
 
     // Metadata about props expected for PlasmicPackItem
     internalVariantProps: PlasmicPackItem__VariantProps,

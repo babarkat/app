@@ -4150,6 +4150,12 @@
           "name": "BackHandler",
           "displayName": "BackHandler",
           "componentImportPath": "@/components/BackHandler"
+        },
+        {
+          "id": "_ERIU_HsKOAk",
+          "name": "TextCollapse",
+          "displayName": "TextCollapse",
+          "componentImportPath": "@/components/TextCollapse"
         }
       ],
       "customFunctions": []
