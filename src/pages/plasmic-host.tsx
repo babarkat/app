@@ -20,7 +20,7 @@ import { Chart, chartMeta } from "@/fragment/components/chart";
 import { Textarea, textareaMeta } from "@/fragment/components/textarea";
 import {SwiperSlider,SwiperSliderMeta} from "@/components/SwiperSlider";
 import {BackHandler,BackHandlerMeta} from "@/components/BackHandler";
-import {TextCollapse,TextCollapseMeta} from "@/TextCollapse/TextCollapseMeta";
+import {TextCollapse,TextCollapseMeta} from "@/components/TextCollapse";
 
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
