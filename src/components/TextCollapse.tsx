@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import Marquee from "react-fast-marquee";
 import { classNames } from "@plasmicapp/react-web";
 import { CodeComponentMeta } from "@plasmicapp/host";
 
@@ -26,96 +27,54 @@ export const TextCollapse = (props: TextCollapseProps) => {
 
   const [expanded, setExpanded] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
-
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const innerRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | null>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
   /* تشخیص overflow عمودی */
   useEffect(() => {
-    if (!wrapperRef.current) return;
+    if (!textRef.current) return;
 
-    const el = wrapperRef.current;
+    const el = textRef.current;
     const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
     const maxHeight = lineHeight * maxLines;
 
     setIsOverflowing(el.scrollHeight > maxHeight);
   }, [text, maxLines]);
 
-  /* marquee animation */
-  useEffect(() => {
-    if (
-      !enableMarquee ||
-      !isOverflowing ||
-      expanded ||
-      !wrapperRef.current ||
-      !innerRef.current
-    ) {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-      if (innerRef.current) {
-        innerRef.current.style.transform = "translateX(0)";
-      }
-      return;
-    }
-
-    const wrapper = wrapperRef.current;
-    const inner = innerRef.current;
-
-    const containerWidth = wrapper.clientWidth;
-    const contentWidth = inner.scrollWidth;
-
-    if (contentWidth <= containerWidth) return;
-
-    let x = containerWidth;
-    const speed = 0.4; // سرعت اسکرول
-
-    const animate = () => {
-      x -= speed;
-      inner.style.transform = `translateX(${x}px)`;
-
-      if (x < -contentWidth) {
-        x = containerWidth;
-      }
-
-      rafRef.current = requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      if (rafRef.current) {
-        cancelAnimationFrame(rafRef.current);
-        rafRef.current = null;
-      }
-    };
-  }, [enableMarquee, isOverflowing, expanded]);
+  const shouldMarquee =
+    enableMarquee && isOverflowing && !expanded;
 
   return (
     <div className={classNames("tc-wrapper", className)}>
-      <div
-        ref={wrapperRef}
-        className={classNames("tc-text", textClassName)}
-        style={{
-          overflow: "hidden",
-          whiteSpace:
-            enableMarquee && isOverflowing && !expanded
-              ? "nowrap"
-              : "pre-line",
-          display:
-            enableMarquee && isOverflowing && !expanded
-              ? "block"
-              : "-webkit-box",
-          WebkitBoxOrient: "vertical",
-          WebkitLineClamp:
-            expanded || enableMarquee ? "unset" : maxLines,
-          transition: "all 0.3s ease",
-        }}
-      >
-        <div ref={innerRef}>{text}</div>
-      </div>
+      {shouldMarquee ? (
+        <div
+          className={classNames("tc-text", textClassName)}
+          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+        >
+          <Marquee
+            speed={40}
+            gradient={false}
+            pauseOnHover
+            direction="right" // مناسب RTL
+          >
+            <span style={{ paddingLeft: 24 }}>{text}</span>
+          </Marquee>
+        </div>
+      ) : (
+        <div
+          ref={textRef}
+          className={classNames("tc-text", textClassName)}
+          style={{
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: expanded ? "unset" : maxLines,
+            overflow: "hidden",
+            whiteSpace: "pre-line",
+            transition: "all 0.3s ease",
+          }}
+        >
+          {text}
+        </div>
+      )}
 
       {enableToggle && isOverflowing && !enableMarquee && (
         <button
