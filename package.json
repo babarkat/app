@@ -52,6 +52,7 @@
     "recharts": "^2.12.7",
     "slick-carousel": "^1.8.1",
     "swiper": "^11.0.0",
+    "react-fast-marquee": "^1.6.5",
     "swr": "^2.2.5",
     "tailwind-merge": "^2.3.0",
     "tailwindcss-animate": "^1.0.7",
