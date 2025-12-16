@@ -237,10 +237,7 @@ function PlasmicPackItem__RenderFunc(props: {
             maxLines={2}
             text={(() => {
               try {
-                return (
-                  $props.currentItem?.json?.name ||
-                  "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است."
-                );
+                return $props.currentItem?.json?.name || "";
               } catch (e) {
                 if (
                   e instanceof TypeError ||
