@@ -227,27 +227,62 @@ function PlasmicPackItem__RenderFunc(props: {
         />
       </div>
       <div className={classNames(projectcss.all, sty.freeBox__pA0A3)}>
-        <div className={classNames(projectcss.all, sty.freeBox__btNb3)}>
+        <div
+          className={classNames(projectcss.all, sty.freeBox__btNb3, {
+            [sty.freeBoxpackageAfgani__btNb3WeS8]: hasVariant(
+              $state,
+              "packageAfgani",
+              "packageAfgani"
+            )
+          })}
+        >
           <TextCollapse
             data-plasmic-name={"textCollapse"}
             data-plasmic-override={overrides.textCollapse}
-            className={classNames("__wab_instance", sty.textCollapse)}
+            className={classNames("__wab_instance", sty.textCollapse, {
+              [sty.textCollapsepackageAfgani]: hasVariant(
+                $state,
+                "packageAfgani",
+                "packageAfgani"
+              ),
+              [sty.textCollapsesteps2_step2]: hasVariant(
+                $state,
+                "steps2",
+                "step2"
+              )
+            })}
             enableMarquee={false}
             enableToggle={false}
             maxLines={2}
-            text={(() => {
-              try {
-                return $props.currentItem?.json?.name || "";
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
-                }
-                throw e;
-              }
-            })()}
+            text={
+              hasVariant($state, "packageAfgani", "packageAfgani")
+                ? (() => {
+                    try {
+                      return $props.currentItem?.image;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : (() => {
+                    try {
+                      return $props.currentItem?.json?.name;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+            }
           />
 
           <div
@@ -272,6 +307,9 @@ function PlasmicPackItem__RenderFunc(props: {
                     "packageAfgani",
                     "packageAfgani"
                   ),
+                  [sty.textpackageAfgani_steps2_step2]:
+                    hasVariant($state, "steps2", "step2") &&
+                    hasVariant($state, "packageAfgani", "packageAfgani"),
                   [sty.textsteps2_step2]: hasVariant($state, "steps2", "step2")
                 }
               )}

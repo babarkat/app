@@ -586,7 +586,7 @@ function PlasmicHomepage__RenderFunc(props: {
           {
             background: "linear-gradient(135deg, #3a1c71, #5f2c82)",
             text: "\u062e\u0631\u06cc\u062f \u0627\u0644\u0645\u0627\u0633 likee",
-            action: "pubg/?type=Likee",
+            action: "pubg/?type=likee",
             image:
               "https://app.babarkat.com/plasmic/babarkat/images/likee.webp",
             icon: "https://app.babarkat.com/plasmic/babarkat/images/image59.svg"
