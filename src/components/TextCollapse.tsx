@@ -27,53 +27,57 @@ export const TextCollapse = (props: TextCollapseProps) => {
   const [expanded, setExpanded] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
 
-  const textRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
-  const offsetRef = useRef(0);
 
-  // تشخیص overflow عمودی
+  /* تشخیص overflow عمودی */
   useEffect(() => {
-    if (!textRef.current) return;
+    if (!wrapperRef.current) return;
 
-    const el = textRef.current;
+    const el = wrapperRef.current;
     const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
     const maxHeight = lineHeight * maxLines;
 
     setIsOverflowing(el.scrollHeight > maxHeight);
   }, [text, maxLines]);
 
-  // marquee animation
+  /* marquee animation */
   useEffect(() => {
-    const el = textRef.current;
-    if (!el) return;
-
-    // شرایط فعال شدن marquee
-    const shouldMarquee =
-      enableMarquee && isOverflowing && !expanded;
-
-    if (!shouldMarquee) {
+    if (
+      !enableMarquee ||
+      !isOverflowing ||
+      expanded ||
+      !wrapperRef.current ||
+      !innerRef.current
+    ) {
       if (rafRef.current) {
         cancelAnimationFrame(rafRef.current);
         rafRef.current = null;
       }
-      el.style.transform = "translateX(0)";
+      if (innerRef.current) {
+        innerRef.current.style.transform = "translateX(0)";
+      }
       return;
     }
 
-    const containerWidth = el.parentElement?.clientWidth ?? 0;
-    const textWidth = el.scrollWidth;
+    const wrapper = wrapperRef.current;
+    const inner = innerRef.current;
 
-    if (textWidth <= containerWidth) return;
+    const containerWidth = wrapper.clientWidth;
+    const contentWidth = inner.scrollWidth;
 
-    offsetRef.current = containerWidth;
-    const speed = 0.4; // هرچی کمتر، آروم‌تر
+    if (contentWidth <= containerWidth) return;
+
+    let x = containerWidth;
+    const speed = 0.4; // سرعت اسکرول
 
     const animate = () => {
-      offsetRef.current -= speed;
-      el.style.transform = `translateX(${offsetRef.current}px)`;
+      x -= speed;
+      inner.style.transform = `translateX(${x}px)`;
 
-      if (offsetRef.current < -textWidth) {
-        offsetRef.current = containerWidth;
+      if (x < -contentWidth) {
+        x = containerWidth;
       }
 
       rafRef.current = requestAnimationFrame(animate);
@@ -92,11 +96,10 @@ export const TextCollapse = (props: TextCollapseProps) => {
   return (
     <div className={classNames("tc-wrapper", className)}>
       <div
-        ref={textRef}
+        ref={wrapperRef}
         className={classNames("tc-text", textClassName)}
         style={{
           overflow: "hidden",
-          transition: "all 0.3s ease",
           whiteSpace:
             enableMarquee && isOverflowing && !expanded
               ? "nowrap"
@@ -108,9 +111,10 @@ export const TextCollapse = (props: TextCollapseProps) => {
           WebkitBoxOrient: "vertical",
           WebkitLineClamp:
             expanded || enableMarquee ? "unset" : maxLines,
+          transition: "all 0.3s ease",
         }}
       >
-        {text}
+        <div ref={innerRef}>{text}</div>
       </div>
 
       {enableToggle && isOverflowing && !enableMarquee && (
