@@ -27,13 +27,13 @@ export const TextCollapse = (props: TextCollapseProps) => {
 
   const [expanded, setExpanded] = useState(false);
   const [isOverflowing, setIsOverflowing] = useState(false);
-  const textRef = useRef<HTMLDivElement>(null);
+  const measureRef = useRef<HTMLDivElement>(null);
 
   /* تشخیص overflow عمودی */
   useEffect(() => {
-    if (!textRef.current) return;
+    if (!measureRef.current) return;
 
-    const el = textRef.current;
+    const el = measureRef.current;
     const lineHeight = parseFloat(getComputedStyle(el).lineHeight);
     const maxHeight = lineHeight * maxLines;
 
@@ -45,23 +45,46 @@ export const TextCollapse = (props: TextCollapseProps) => {
 
   return (
     <div className={classNames("tc-wrapper", className)}>
+      {/* Hidden measure element */}
+      <div
+        ref={measureRef}
+        className={classNames("tc-text", textClassName)}
+        style={{
+          position: "absolute",
+          visibility: "hidden",
+          pointerEvents: "none",
+          whiteSpace: "pre-line",
+          display: "-webkit-box",
+          WebkitBoxOrient: "vertical",
+          WebkitLineClamp: maxLines,
+          overflow: "hidden",
+        }}
+      >
+        {text}
+      </div>
+
       {shouldMarquee ? (
         <div
           className={classNames("tc-text", textClassName)}
-          style={{ overflow: "hidden", whiteSpace: "nowrap" }}
+          style={{
+            overflow: "hidden",
+            whiteSpace: "nowrap",
+          }}
         >
           <Marquee
+            direction="left"   // راست → چپ
             speed={40}
-            gradient={false}
             pauseOnHover
-            direction="right" // مناسب RTL
+            gradient={false}
+            autoFill           // 🔥 حذف فاصله خالی
           >
-            <span style={{ paddingLeft: 24 }}>{text}</span>
+            <span style={{ paddingInlineEnd: 32 }}>
+              {text}
+            </span>
           </Marquee>
         </div>
       ) : (
         <div
-          ref={textRef}
           className={classNames("tc-text", textClassName)}
           style={{
             display: "-webkit-box",
@@ -94,11 +117,11 @@ export const TextCollapseMeta: CodeComponentMeta<TextCollapseProps> = {
   props: {
     text: {
       type: "string",
-      defaultValue: "متنی که می‌تواند طولانی باشد...",
+      defaultValue: "این یک متن فارسی طولانی است که باید اسکرول شود",
     },
     maxLines: {
       type: "number",
-      defaultValue: 3,
+      defaultValue: 1,
     },
     enableToggle: {
       type: "boolean",
