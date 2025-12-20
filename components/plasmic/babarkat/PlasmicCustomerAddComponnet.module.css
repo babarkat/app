@@ -165,58 +165,6 @@
   padding: 4px;
   border: 1px dashed var(--token-ddpevpfGL4QK);
 }
-.freeBox__ejUfw {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 0px;
-}
-.svg__utUPo {
-  object-fit: cover;
-  max-width: 100%;
-  align-self: center;
-  color: var(--token-Pxe4wDL2kJpb);
-  width: auto;
-  height: 25px;
-  position: absolute;
-  left: 711px;
-  top: 10px;
-  margin-right: 0px;
-  flex-shrink: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__utUPo {
-    top: 0;
-    left: auto;
-    right: 8px;
-    bottom: 0;
-    height: 25px;
-    flex-shrink: 0;
-  }
-}
-.lastname:global(.__wab_instance) {
-  width: 100%;
-  max-width: 100%;
-  object-fit: cover;
-  background: #182b36;
-  color: #ffffff;
-  height: 50px;
-  min-width: 0;
-  flex-shrink: 0;
-  padding: 20px 50px 20px 20px;
-  border-width: 0px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .lastname:global(.__wab_instance) {
-    border-width: 0px;
-  }
-}
 .freeBox__io1C {
   display: flex;
   flex-direction: column;

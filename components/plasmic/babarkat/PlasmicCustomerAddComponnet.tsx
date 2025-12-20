@@ -75,7 +75,6 @@ import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNa
 import sty from "./PlasmicCustomerAddComponnet.module.css"; // plasmic-import: RKNsGINinP2W/css
 
 import Icon125Icon from "./icons/PlasmicIcon__Icon125"; // plasmic-import: YQy20jWydd0d/icon
-import Icon124Icon from "./icons/PlasmicIcon__Icon124"; // plasmic-import: P1Fs12YxYeJP/icon
 import Icon123Icon from "./icons/PlasmicIcon__Icon123"; // plasmic-import: _zv4Q0EC6aSe/icon
 import Icon127Icon from "./icons/PlasmicIcon__Icon127"; // plasmic-import: cIU9xx5_awUn/icon
 import Icon126Icon from "./icons/PlasmicIcon__Icon126"; // plasmic-import: FYscFmWJih1P/icon
@@ -115,7 +114,6 @@ export const PlasmicCustomerAddComponnet__ArgProps = new Array<ArgPropType>(
 export type PlasmicCustomerAddComponnet__OverridesType = {
   root?: Flex__<"div">;
   name?: Flex__<typeof Input>;
-  lastname?: Flex__<typeof Input>;
   mobile?: Flex__<typeof Input>;
   customerId?: Flex__<typeof Input>;
   location?: Flex__<typeof TextArea>;
@@ -370,25 +368,6 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "lastname.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return undefined;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return undefined;
-              }
-              throw e;
-            }
-          })()
-      },
-      {
         path: "mobile.value",
         type: "private",
         variableType: "text",
@@ -540,7 +519,9 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                   eventArgs
                 );
               }}
-              placeholder={"\u0646\u0627\u0645"}
+              placeholder={
+                "\u0646\u0627\u0645 \u0648 \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
+              }
               type={"text"}
               value={generateStateValueProp($state, ["name", "value"])}
             />
@@ -570,29 +551,6 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 }
               </div>
             ) : null}
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__ejUfw)}>
-            <Icon124Icon
-              className={classNames(projectcss.all, sty.svg__utUPo)}
-              role={"img"}
-            />
-
-            <Input
-              data-plasmic-name={"lastname"}
-              data-plasmic-override={overrides.lastname}
-              className={classNames("__wab_instance", sty.lastname)}
-              onChange={async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, ["lastname", "value"]).apply(
-                  null,
-                  eventArgs
-                );
-              }}
-              placeholder={
-                "\u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
-              }
-              type={"text"}
-              value={generateStateValueProp($state, ["lastname", "value"])}
-            />
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__io1C)}>
             <Icon123Icon
@@ -816,7 +774,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                             try {
                               return {
                                 name: $state.name.value,
-                                last_name: $state.lastname.value || "",
+                                last_name: "",
                                 customerId: parseInt($state.customerId.value),
                                 location: $state.location.value,
                                 mobile: $state.mobile.value,
@@ -944,7 +902,6 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                         customFunction: async () => {
                           return (() => {
                             $state.name.value = "";
-                            $state.lastname.value = "";
                             $state.mobile.value = "";
                             $state.location.value = "";
                             return ($state.customerId.value = "");
@@ -1765,7 +1722,6 @@ const PlasmicDescendants = {
   root: [
     "root",
     "name",
-    "lastname",
     "mobile",
     "customerId",
     "location",
@@ -1785,7 +1741,6 @@ const PlasmicDescendants = {
     "apiRequest"
   ],
   name: ["name"],
-  lastname: ["lastname"],
   mobile: ["mobile"],
   customerId: ["customerId"],
   location: ["location"],
@@ -1810,7 +1765,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   name: typeof Input;
-  lastname: typeof Input;
   mobile: typeof Input;
   customerId: typeof Input;
   location: typeof TextArea;
@@ -1893,7 +1847,6 @@ export const PlasmicCustomerAddComponnet = Object.assign(
   {
     // Helper components rendering sub-elements
     _name: makeNodeComponent("name"),
-    lastname: makeNodeComponent("lastname"),
     mobile: makeNodeComponent("mobile"),
     customerId: makeNodeComponent("customerId"),
     location: makeNodeComponent("location"),

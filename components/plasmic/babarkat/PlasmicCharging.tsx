@@ -238,7 +238,7 @@ function PlasmicCharging__RenderFunc(props: {
               "0939",
               "0941"
             ],
-            chargeRange: { min: 1000, max: 100000, customAmounts: true },
+            chargeRange: { min: 1000, max: 200000, customAmounts: true },
             services: [
               {
                 type: "normal",
@@ -252,7 +252,7 @@ function PlasmicCharging__RenderFunc(props: {
               }
             ],
             infoText:
-              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f2\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "MCI",
@@ -281,7 +281,7 @@ function PlasmicCharging__RenderFunc(props: {
             ],
             chargeRange: {
               min: 1000,
-              max: 100000,
+              max: 200000,
               customAmounts: false,
               amountStep: 1000
             },
@@ -293,7 +293,7 @@ function PlasmicCharging__RenderFunc(props: {
               }
             ],
             infoText:
-              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f2\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "RTL",
@@ -303,7 +303,7 @@ function PlasmicCharging__RenderFunc(props: {
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
             codes: ["0920", "0921", "0922", "0923"],
-            chargeRange: { min: 1000, max: 100000, customAmounts: true },
+            chargeRange: { min: 1000, max: 200000, customAmounts: true },
             services: [
               {
                 type: "normal",
@@ -317,7 +317,7 @@ function PlasmicCharging__RenderFunc(props: {
               }
             ],
             infoText:
-              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f1\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 \u06f1,\u06f0\u06f0\u06f0 \u062a\u0627 \u06f2\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "SHT",

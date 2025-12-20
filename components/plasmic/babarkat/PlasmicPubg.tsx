@@ -2147,6 +2147,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                 )
                               }
                             )}
+                            maxLength={50}
                             onChange={async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
                                 "pubginame",
@@ -2235,20 +2236,17 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                 )
                               }
                             )}
+                            maxLength={11}
                             onChange={async (...eventArgs: any) => {
                               generateStateOnChangeProp($state, [
                                 "pubgiId",
                                 "value"
                               ]).apply(null, eventArgs);
-
-                              (async value => {
-                                const $steps = {};
-                              }).apply(null, eventArgs);
                             }}
                             placeholder={
                               "\u0634\u0646\u0627\u0633\u0647 \u0639\u062f\u062f\u06cc"
                             }
-                            type={"text"}
+                            type={"number"}
                             value={generateStateValueProp($state, [
                               "pubgiId",
                               "value"
@@ -4065,6 +4063,52 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     onClick={async event => {
                       const $steps = {};
 
+                      $steps["error"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  let error = "";
+                                  if ($state.type === "UC") {
+                                    if ($state.pubginame.value.length < 1) {
+                                      error = "نام پابجی را وارد کنید";
+                                    } else if (
+                                      !/^5\d{10}$/.test($state.pubgiId.value)
+                                    ) {
+                                      error =
+                                        "آیدی پابجی باید ۱۱ رقم باشد و با 5 شروع شود";
+                                    }
+                                  } else if ($state.type === "likee") {
+                                    if ($state.likee2.value.length < 1) {
+                                      error = "آیدی Likee را وارد کنید";
+                                    }
+                                  } else if ($state.type === "imo") {
+                                    if ($state.imo.value.length < 9) {
+                                      error =
+                                        "آیدی imo باید حداقل ۹ کاراکتر باشد";
+                                    }
+                                  } else if ($state.type === "bigo-live") {
+                                    if ($state.bigoLive3.value.length < 1) {
+                                      error = "آیدی Bigo Live را وارد کنید";
+                                    }
+                                  }
+                                  return error;
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["error"] != null &&
+                        typeof $steps["error"] === "object" &&
+                        typeof $steps["error"].then === "function"
+                      ) {
+                        $steps["error"] = await $steps["error"];
+                      }
+
                       $steps["updateOtherData"] = true
                         ? (() => {
                             const actionArgs = {
@@ -4112,23 +4156,24 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           await $steps["updateOtherData"];
                       }
 
-                      $steps["updateSteps2"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              vgroup: "steps2",
-                              operation: 0,
-                              value: "step2"
-                            };
-                            return (({ vgroup, value }) => {
-                              if (typeof value === "string") {
-                                value = [value];
-                              }
+                      $steps["updateSteps2"] =
+                        $steps.error == ""
+                          ? (() => {
+                              const actionArgs = {
+                                vgroup: "steps2",
+                                operation: 0,
+                                value: "step2"
+                              };
+                              return (({ vgroup, value }) => {
+                                if (typeof value === "string") {
+                                  value = [value];
+                                }
 
-                              $stateSet($state, vgroup, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                                $stateSet($state, vgroup, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
                       if (
                         $steps["updateSteps2"] != null &&
                         typeof $steps["updateSteps2"] === "object" &&
@@ -4137,21 +4182,35 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         $steps["updateSteps2"] = await $steps["updateSteps2"];
                       }
 
-                      $steps["invokeGlobalAction"] = false
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                undefined,
-                                "\u0634\u0645\u0627\u0631\u0647 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0645\u0639\u062a\u0628\u0631 \u0646\u0645\u06cc\u200c\u0628\u0627\u0634\u062f.",
-                                "top-left"
-                              ]
-                            };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                      $steps["invokeGlobalAction"] =
+                        $steps.error != ""
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  (() => {
+                                    try {
+                                      return $steps.error;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })(),
+                                  "top-left",
+                                  5000
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                       if (
                         $steps["invokeGlobalAction"] != null &&
                         typeof $steps["invokeGlobalAction"] === "object" &&
