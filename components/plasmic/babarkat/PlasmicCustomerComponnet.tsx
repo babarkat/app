@@ -335,7 +335,7 @@ function PlasmicCustomerComponnet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $state.customer || [1];
+              return $state.customer;
             } catch (e) {
               if (
                 e instanceof TypeError ||

@@ -2367,6 +2367,19 @@
           "cssFilePath": "plasmic/babarkat/PlasmicTransaction2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "TplLKZCFlHXj",
+          "name": "LogIn2",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicLogIn2.tsx",
+          "importSpec": {
+            "modulePath": "LogIn2.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

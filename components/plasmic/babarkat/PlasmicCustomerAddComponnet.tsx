@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { Input } from "@/fragment/components/input"; // plasmic-import: UGm7T3K14yEW/codeComponent
+import LogIn2 from "../../LogIn2"; // plasmic-import: TplLKZCFlHXj/component
 import { TextArea } from "@plasmicpkgs/antd/skinny/registerInput";
 import { inputHelpers as TextArea_Helpers } from "@plasmicpkgs/antd/skinny/registerInput";
 import Button from "../../Button"; // plasmic-import: _5H7Xe2DiXqI/component
@@ -114,7 +115,7 @@ export const PlasmicCustomerAddComponnet__ArgProps = new Array<ArgPropType>(
 export type PlasmicCustomerAddComponnet__OverridesType = {
   root?: Flex__<"div">;
   name?: Flex__<typeof Input>;
-  mobile?: Flex__<typeof Input>;
+  logIn2?: Flex__<typeof LogIn2>;
   customerId?: Flex__<typeof Input>;
   location?: Flex__<typeof TextArea>;
   button5?: Flex__<typeof Button>;
@@ -368,12 +369,6 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "mobile.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
         path: "customerId.value",
         type: "private",
         variableType: "text",
@@ -462,6 +457,12 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
 
         valueProp: "active2",
         onChangeProp: "onActive2Change"
+      },
+      {
+        path: "logIn2.number",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx, $refs]
@@ -558,21 +559,26 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
               role={"img"}
             />
 
-            <Input
-              data-plasmic-name={"mobile"}
-              data-plasmic-override={overrides.mobile}
-              className={classNames("__wab_instance", sty.mobile)}
-              onChange={async (...eventArgs: any) => {
-                generateStateOnChangeProp($state, ["mobile", "value"]).apply(
+            <LogIn2
+              data-plasmic-name={"logIn2"}
+              data-plasmic-override={overrides.logIn2}
+              className={classNames("__wab_instance", sty.logIn2)}
+              disabled={false}
+              number={generateStateValueProp($state, ["logIn2", "number"])}
+              onNumberChange={async (...eventArgs: any) => {
+                generateStateOnChangeProp($state, ["logIn2", "number"]).apply(
                   null,
                   eventArgs
                 );
+
+                if (
+                  eventArgs.length > 1 &&
+                  eventArgs[1] &&
+                  eventArgs[1]._plasmic_state_init_
+                ) {
+                  return;
+                }
               }}
-              placeholder={
-                "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
-              }
-              type={"tel"}
-              value={generateStateValueProp($state, ["mobile", "value"])}
             />
 
             {(() => {
@@ -596,7 +602,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 )}
               >
                 {
-                  "\u0644\u0637\u0641\u0627\u064b \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f\u060c \u0627\u06cc\u0646 \u0641\u06cc\u0644\u062f \u0646\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u062e\u0627\u0644\u06cc \u0628\u0627\u0634\u062f."
+                  "\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 \u0631\u0627 \u0628\u0627 \u0627\u0639\u062f\u0627\u062f \u0627\u0646\u06af\u0644\u06cc\u0633\u06cc \u0648 \u062f\u0631 \u0641\u0631\u0645\u062a \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
                 }
               </div>
             ) : null}
@@ -719,8 +725,8 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                           )
                             $state.error.push("name");
                           if (
-                            $state.mobile.value === "" ||
-                            $state.mobile.value == null
+                            $state.logIn2.number === "" ||
+                            $state.logIn2.number == null
                           )
                             $state.error.push("mobile");
                           if (
@@ -744,15 +750,15 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
-              $steps["invokeGlobalAction4"] = true
-                ? (() => {
-                    const actionArgs = { args: [] };
-                    return $globalActions["Fragment.showPasswordDialog"]?.apply(
-                      null,
-                      [...actionArgs.args]
-                    );
-                  })()
-                : undefined;
+              $steps["invokeGlobalAction4"] =
+                $state.error.length == 0
+                  ? (() => {
+                      const actionArgs = { args: [] };
+                      return $globalActions[
+                        "Fragment.showPasswordDialog"
+                      ]?.apply(null, [...actionArgs.args]);
+                    })()
+                  : undefined;
               if (
                 $steps["invokeGlobalAction4"] != null &&
                 typeof $steps["invokeGlobalAction4"] === "object" &&
@@ -777,7 +783,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                                 last_name: "",
                                 customerId: parseInt($state.customerId.value),
                                 location: $state.location.value,
-                                mobile: $state.mobile.value,
+                                mobile: $state.logIn2.number,
                                 userToken: $state.token,
                                 code: $steps.invokeGlobalAction4
                               };
@@ -902,7 +908,7 @@ function PlasmicCustomerAddComponnet__RenderFunc(props: {
                         customFunction: async () => {
                           return (() => {
                             $state.name.value = "";
-                            $state.mobile.value = "";
+                            $state.logIn2.number = "";
                             $state.location.value = "";
                             return ($state.customerId.value = "");
                           })();
@@ -1722,7 +1728,7 @@ const PlasmicDescendants = {
   root: [
     "root",
     "name",
-    "mobile",
+    "logIn2",
     "customerId",
     "location",
     "button5",
@@ -1741,7 +1747,7 @@ const PlasmicDescendants = {
     "apiRequest"
   ],
   name: ["name"],
-  mobile: ["mobile"],
+  logIn2: ["logIn2"],
   customerId: ["customerId"],
   location: ["location"],
   button5: ["button5"],
@@ -1765,7 +1771,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   name: typeof Input;
-  mobile: typeof Input;
+  logIn2: typeof LogIn2;
   customerId: typeof Input;
   location: typeof TextArea;
   button5: typeof Button;
@@ -1847,7 +1853,7 @@ export const PlasmicCustomerAddComponnet = Object.assign(
   {
     // Helper components rendering sub-elements
     _name: makeNodeComponent("name"),
-    mobile: makeNodeComponent("mobile"),
+    logIn2: makeNodeComponent("logIn2"),
     customerId: makeNodeComponent("customerId"),
     location: makeNodeComponent("location"),
     button5: makeNodeComponent("button5"),

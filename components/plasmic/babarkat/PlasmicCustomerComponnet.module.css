@@ -247,6 +247,7 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
+  display: none;
 }
 .freeBox__trWjz {
   display: flex;
