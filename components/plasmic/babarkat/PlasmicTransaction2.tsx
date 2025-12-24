@@ -469,6 +469,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         onChangeProp: "onFullChange"
       }
     ],
+
     [$props, $ctx, $refs]
   );
   const $state = useDollarState(stateSpecs, {
@@ -2189,11 +2190,13 @@ function PlasmicTransaction2__RenderFunc(props: {
                                                     ).toLocaleString() +
                                                     " تومان "
                                                   );
+
                                                 case "dollar":
                                                   return (
                                                     currentItem.price.toLocaleString() +
                                                     " دلار "
                                                   );
+
                                                 case "afghani":
                                                   return (
                                                     currentItem.price.toLocaleString() +
@@ -2644,11 +2647,13 @@ function PlasmicTransaction2__RenderFunc(props: {
                                                     ).toLocaleString() +
                                                     " تومان "
                                                   );
+
                                                 case "dollar":
                                                   return (
                                                     currentItem.amount.toLocaleString() +
                                                     " دلار "
                                                   );
+
                                                 case "afghani":
                                                   return (
                                                     currentItem.amount.toLocaleString() +
@@ -3110,11 +3115,13 @@ function PlasmicTransaction2__RenderFunc(props: {
                                                       ).toLocaleString() +
                                                       " تومان "
                                                     );
+
                                                   case "dollar":
                                                     return (
                                                       currentItem.value.toLocaleString() +
                                                       " دلار "
                                                     );
+
                                                   case "afghani":
                                                     return (
                                                       currentItem.value.toLocaleString() +
@@ -3567,6 +3574,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                   { value: null, label: null },
                   { label: null, value: null }
                 ];
+
                 __composite["0"]["value"] = "all";
                 __composite["0"]["label"] = "\u0647\u0645\u0647";
                 __composite["1"]["value"] = "transaction";
@@ -3697,6 +3705,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 { value: null, label: null },
                 { label: null, value: null }
               ];
+
               __composite["0"]["value"] = "all";
               __composite["0"]["label"] = "\u0647\u0645\u0647";
               __composite["1"]["value"] = "transaction";
@@ -4238,6 +4247,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                     value: 500
                   }
                 ],
+
                 amount: {
                   type: "\u0627\u0641\u063a\u0627\u0646\u06cc",
                   text: "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647 ",
@@ -4316,6 +4326,7 @@ const PlasmicDescendants = {
     "button5",
     "dialog2"
   ],
+
   embedHtml: ["embedHtml"],
   reveal: [
     "reveal",
@@ -4325,6 +4336,7 @@ const PlasmicDescendants = {
     "tabsContainer",
     "tabUnderline"
   ],
+
   wallet: ["wallet", "button", "svg", "tabsContainer", "tabUnderline"],
   button: ["button", "svg"],
   svg: ["svg"],
@@ -4362,6 +4374,7 @@ type NodeOverridesType<T extends NodeNameType> = Pick<
   PlasmicTransaction2__OverridesType,
   DescendantsType<T>
 >;
+
 type NodeComponentProps<T extends NodeNameType> =
   // Explicitly specify variants, args, and overrides as objects
   {

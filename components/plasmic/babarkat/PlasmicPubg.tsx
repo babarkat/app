@@ -4073,10 +4073,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     if ($state.pubginame.value.length < 1) {
                                       error = "نام پابجی را وارد کنید";
                                     } else if (
-                                      !/^5\d{10}$/.test($state.pubgiId.value)
+                                      !/^5\d{9,10}$/.test($state.pubgiId.value)
                                     ) {
                                       error =
-                                        "آیدی پابجی باید ۱۱ رقم باشد و با 5 شروع شود";
+                                        "آیدی پابجی باید ۱۰ یا ۱۱ رقم باشد و با ۵ شروع شود";
                                     }
                                   } else if ($state.type === "likee") {
                                     if ($state.likee2.value.length < 1) {
