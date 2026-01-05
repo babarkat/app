@@ -157,7 +157,6 @@ export type PlasmicPubg__OverridesType = {
   اپراتور3?: Flex__<"div">;
   button4?: Flex__<typeof Button>;
   pay?: Flex__<"div">;
-  commissionBabarkat?: Flex__<typeof ApiRequest>;
   rate?: Flex__<typeof ApiRequest>;
   button6?: Flex__<typeof Button>;
   sideEffect?: Flex__<typeof SideEffect>;
@@ -560,24 +559,6 @@ function PlasmicPubg__RenderFunc(props: {
           })()
       },
       {
-        path: "commissionBabarkat.data",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.error",
-        type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
-        path: "commissionBabarkat.loading",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "error",
         type: "private",
         variableType: "text",
@@ -874,6 +855,32 @@ function PlasmicPubg__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "commission",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (() => {
+                try {
+                  const raw = window.localStorage.getItem("comson");
+                  return raw ? JSON.parse(raw) : null;
+                } catch (e) {
+                  return null;
+                }
+              })();
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return {};
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -3940,12 +3947,10 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                                   Math.ceil(
                                                     currentItem.rate +
                                                       currentItem.rate *
-                                                        (($state
-                                                          .commissionBabarkat
-                                                          .data.babrkat +
-                                                          $state
-                                                            .commissionBabarkat
-                                                            .data.saraf) /
+                                                        (($state.commission
+                                                          .babrkat +
+                                                          $state.commission
+                                                            .saraf) /
                                                           100)
                                                   ).toLocaleString("en") +
                                                   " تومان "
@@ -5323,46 +5328,6 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             </div>
           </section>
           <ApiRequest
-            data-plasmic-name={"commissionBabarkat"}
-            data-plasmic-override={overrides.commissionBabarkat}
-            className={classNames("__wab_instance", sty.commissionBabarkat, {
-              [sty.commissionBabarkatsteps2_step2]: hasVariant(
-                $state,
-                "steps2",
-                "step2"
-              ),
-              [sty.commissionBabarkatsteps2_step3]: hasVariant(
-                $state,
-                "steps2",
-                "step3"
-              )
-            })}
-            errorDisplay={null}
-            loadingDisplay={null}
-            method={"GET"}
-            onError={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "error"
-              ]).apply(null, eventArgs);
-            }}
-            onLoading={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "loading"
-              ]).apply(null, eventArgs);
-            }}
-            onSuccess={async (...eventArgs: any) => {
-              generateStateOnChangeProp($state, [
-                "commissionBabarkat",
-                "data"
-              ]).apply(null, eventArgs);
-            }}
-            shouldFetch={true}
-            url={"https://n8n.babarkat.com/webhook/CommissionBabarkat"}
-          />
-
-          <ApiRequest
             data-plasmic-name={"rate"}
             data-plasmic-override={overrides.rate}
             body={(() => {
@@ -5840,10 +5805,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                           Math.ceil(
                                             currentItem.rate +
                                               currentItem.rate *
-                                                (($state.commissionBabarkat.data
-                                                  .babrkat +
-                                                  $state.commissionBabarkat.data
-                                                    .saraf) /
+                                                (($state.commission.babrkat +
+                                                  $state.commission.saraf) /
                                                   100)
                                           ).toLocaleString("en") + " تومان "
                                         );
@@ -6518,7 +6481,6 @@ const PlasmicDescendants = {
     "\u0627\u067e\u0631\u0627\u062a\u0648\u06313",
     "button4",
     "pay",
-    "commissionBabarkat",
     "rate",
     "button6",
     "sideEffect",
@@ -6636,7 +6598,6 @@ const PlasmicDescendants = {
   اپراتور3: ["\u0627\u067e\u0631\u0627\u062a\u0648\u06313"],
   button4: ["button4"],
   pay: ["pay"],
-  commissionBabarkat: ["commissionBabarkat"],
   rate: ["rate", "button6"],
   button6: ["button6"],
   sideEffect: ["sideEffect"],
@@ -6687,7 +6648,6 @@ type NodeDefaultElementType = {
   اپراتور3: "div";
   button4: typeof Button;
   pay: "div";
-  commissionBabarkat: typeof ApiRequest;
   rate: typeof ApiRequest;
   button6: typeof Button;
   sideEffect: typeof SideEffect;
@@ -6825,7 +6785,6 @@ export const PlasmicPubg = Object.assign(
     اپراتور3: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u06313"),
     button4: makeNodeComponent("button4"),
     pay: makeNodeComponent("pay"),
-    commissionBabarkat: makeNodeComponent("commissionBabarkat"),
     rate: makeNodeComponent("rate"),
     button6: makeNodeComponent("button6"),
     sideEffect: makeNodeComponent("sideEffect"),

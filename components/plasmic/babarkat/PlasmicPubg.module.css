@@ -2657,10 +2657,6 @@
     font-size: 14px;
   }
 }
-.commissionBabarkat:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
 .rate:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
