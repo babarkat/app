@@ -849,7 +849,7 @@ function PlasmicPubg__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant($state, "steps2", "step3") ? false : true
+          hasVariant($state, "steps2", "step3") ? false : false
       },
       {
         path: "dialog.type",
@@ -6276,6 +6276,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             data-plasmic-name={"dialog"}
             data-plasmic-override={overrides.dialog}
             className={classNames("__wab_instance", sty.dialog, {
+              [sty.dialogsteps2_step2]: hasVariant($state, "steps2", "step2"),
               [sty.dialogsteps2_step3]: hasVariant($state, "steps2", "step3")
             })}
             data={
