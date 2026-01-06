@@ -3194,12 +3194,15 @@ function PlasmicLogIn__RenderFunc(props: {
                           },
                           operation: 0,
                           value: (() => {
-                            if ($state.selectContry == "+98")
-                              return "0" + $state.fragmentInput.value;
-                            else
-                              return (
-                                $state.selectContry + $state.fragmentInput.value
-                              );
+                            if ($state.selectContry == "+98") {
+                              return $state.fragmentInput.value.startsWith("0")
+                                ? $state.fragmentInput.value
+                                : "0" + $state.fragmentInput.value;
+                            } else {
+                              const cleanNumber =
+                                $state.fragmentInput.value.replace(/^0/, "");
+                              return $state.selectContry + cleanNumber;
+                            }
                           })()
                         };
                         return (({
@@ -3568,41 +3571,6 @@ function PlasmicLogIn__RenderFunc(props: {
 
                   (async checked => {
                     const $steps = {};
-
-                    $steps["updateShopOpen"] =
-                      $state.checkbox.checked == true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["shop", "open"]
-                              },
-                              operation: 4
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              const oldValue = $stateGet(objRoot, variablePath);
-                              $stateSet(objRoot, variablePath, !oldValue);
-                              return !oldValue;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["updateShopOpen"] != null &&
-                      typeof $steps["updateShopOpen"] === "object" &&
-                      typeof $steps["updateShopOpen"].then === "function"
-                    ) {
-                      $steps["updateShopOpen"] = await $steps["updateShopOpen"];
-                    }
                   }).apply(null, eventArgs);
                 }}
               >
@@ -3619,6 +3587,43 @@ function PlasmicLogIn__RenderFunc(props: {
                       )
                     }
                   )}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateShopOpen"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["shop", "open"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateShopOpen"] != null &&
+                      typeof $steps["updateShopOpen"] === "object" &&
+                      typeof $steps["updateShopOpen"].then === "function"
+                    ) {
+                      $steps["updateShopOpen"] = await $steps["updateShopOpen"];
+                    }
+                  }}
                 >
                   {hasVariant($state, "group11", "saraf")
                     ? "\u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u0631\u0627 \u0645\u06cc\u067e\u0630\u06cc\u0631\u0645!"
