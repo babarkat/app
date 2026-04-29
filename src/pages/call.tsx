@@ -10,6 +10,7 @@ import { PlasmicCall } from "../../components/plasmic/babarkat/PlasmicCall";
 import { useRouter } from "next/router";
 
 function Call() {
+  
   // Use PlasmicCall to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
