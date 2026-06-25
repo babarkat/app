@@ -76,7 +76,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicForgottenPassword.module.css"; // plasmic-import: dyOTtMZDhn7d/css
 
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
@@ -86,6 +85,50 @@ import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSE
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت",
+
+      images: [
+        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png"
+      ]
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title: "بابرکت",
+
+      images: [
+        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png"
+      ]
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -185,49 +228,44 @@ function PlasmicForgottenPassword__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "unnamedVariant",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.unnamedVariant
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.unnamedVariant
       },
       {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "time",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return 60;
@@ -246,37 +284,37 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "loadedbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "code",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "saraf",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           { label: "sjsjd1n", value: 101 },
           { label: "sjs2jdn", value: 102 },
           { label: "sjsj3dn", value: 103 },
@@ -287,7 +325,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "select.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
@@ -320,31 +358,31 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "selectsaraf",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "pass",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "fragmentInput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "contry",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             value: "+98",
             label: "\ud83c\uddee\ud83c\uddf7 +98",
@@ -384,13 +422,13 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "select2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "+98"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "+98"
       },
       {
         path: "selectContry",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.select2.value;
@@ -409,14 +447,14 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "forgottenPassword",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.forgottenPassword
       },
       {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -435,7 +473,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "btnNumber.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -454,7 +492,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -473,7 +511,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -492,7 +530,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "btnSaraf.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -511,7 +549,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         path: "sendcode.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -529,12 +567,25 @@ function PlasmicForgottenPassword__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -542,27 +593,23 @@ function PlasmicForgottenPassword__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary_large_image" />
-        <title key="title">{PlasmicForgottenPassword.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicForgottenPassword.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicForgottenPassword.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
 
         <meta
           key="og:image"
           property="og:image"
-          content={PlasmicForgottenPassword.pageMetadata.ogImageSrc}
+          content={pageMetadata.ogImageSrc}
         />
         <meta
           key="twitter:image"
-          name="twitter:image"
-          content={PlasmicForgottenPassword.pageMetadata.ogImageSrc}
+          property="twitter:image"
+          content={pageMetadata.ogImageSrc}
         />
       </Head>
 
@@ -578,10 +625,10 @@ function PlasmicForgottenPassword__RenderFunc(props: {
         data-plasmic-root={true}
         data-plasmic-for-node={forNode}
         className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "all",
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames,
           sty.root,
           {
@@ -689,7 +736,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
           >
             <div
               className={classNames(
-                projectcss.all,
+                "all",
                 sty.freeBox__fsz1,
                 hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -710,7 +757,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               )}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__lq0Kh, {
+                className={classNames("all", sty.freeBox__lq0Kh, {
                   [sty.freeBoxforgottenPassword__lq0KheMJzM]: hasVariant(
                     $state,
                     "forgottenPassword",
@@ -724,7 +771,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 })}
               >
                 <Icon154Icon
-                  className={classNames(projectcss.all, sty.svg__snpJc, ``, {
+                  className={classNames("all", sty.svg__snpJc, ``, {
                     [sty.svgforgottenPassword__snpJceMJzM]: hasVariant(
                       $state,
                       "forgottenPassword",
@@ -816,7 +863,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__siguy, {
+                className={classNames("all", sty.freeBox__siguy, {
                   [sty.freeBoxforgottenPassword__siguyeMJzM]: hasVariant(
                     $state,
                     "forgottenPassword",
@@ -830,7 +877,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__gmhp5, {
+                  className={classNames("all", sty.freeBox__gmhp5, {
                     [sty.freeBoxforgottenPassword__gmhp5EMJzM]: hasVariant(
                       $state,
                       "forgottenPassword",
@@ -845,8 +892,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___1Bs2L,
                       {
                         [sty.textunnamedVariant___1Bs2Ll6NG6]: hasVariant(
@@ -932,22 +979,17 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   </Button>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__y6Tvd,
-                    {
-                      [sty.textunnamedVariant__y6TvDl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__y6Tvd, {
+                    [sty.textunnamedVariant__y6TvDl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                 >
                   {hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -981,7 +1023,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     "\u0644\u0637\u0641\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f. \u0633\u067e\u0633 \u06cc\u06a9 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f \u0628\u0631\u0627\u06cc \u0627\u062d\u0631\u0627\u0632 \u0647\u0648\u06cc\u062a \u0627\u0631\u0633\u0627\u0644 \u0645\u06cc \u0634\u0648\u062f"
                   )}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__pcbK)}>
+                <div className={classNames("all", sty.freeBox__pcbK)}>
                   <Input
                     data-plasmic-name={"fragmentInput"}
                     data-plasmic-override={overrides.fragmentInput}
@@ -1053,7 +1095,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__cMvfB, {
+                    className={classNames("all", sty.freeBox__cMvfB, {
                       [sty.freeBoxunnamedVariant__cMvfBl6NG6]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -1073,9 +1115,9 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         )
                       })}
                       defaultStylesClassName={classNames(
-                        projectcss.root_reset,
-                        projectcss.plasmic_default_styles,
-                        projectcss.plasmic_mixins,
+                        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                        "plasmic_default_styles",
+                        "plasmic_mixins",
                         styleTokensClassNames
                       )}
                       defaultValue={"+98"}
@@ -1109,18 +1151,13 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cAkDz,
-                    {
-                      [sty.textunnamedVariant__cAkDzl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__cAkDz, {
+                    [sty.textunnamedVariant__cAkDzl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                   onClick={async event => {
                     const $steps = {};
                   }}
@@ -1130,43 +1167,33 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__c4P5,
-                    {
-                      [sty.textunnamedVariant__c4P5L6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__c4P5, {
+                    [sty.textunnamedVariant__c4P5L6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                 >
                   {hasVariant($state, "unnamedVariant", "unnamedVariant")
                     ? "\u06a9\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
                     : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nk22K,
-                    {
-                      [sty.textunnamedVariant__nk22Kl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nk22K, {
+                    [sty.textunnamedVariant__nk22Kl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                   onClick={async event => {
                     const $steps = {};
                   }}
                 >
                   {hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -1201,7 +1228,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   )}
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__eJlP9, {
+                  className={classNames("all", sty.freeBox__eJlP9, {
                     [sty.freeBoxunnamedVariant__eJlP9L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1251,7 +1278,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   />
 
                   <Icon55Icon
-                    className={classNames(projectcss.all, sty.svg__zFbUt)}
+                    className={classNames("all", sty.svg__zFbUt)}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1345,7 +1372,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   />
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__m9Cur, {
+                  className={classNames("all", sty.freeBox__m9Cur, {
                     [sty.freeBoxunnamedVariant__m9CuRl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1432,8 +1459,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 ) ? (
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__rgVrY,
                       {
                         [sty.textunnamedVariant__rgVrYl6NG6]: hasVariant(
@@ -1447,7 +1474,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     {hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                     hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <div
-                        className={projectcss.__wab_expr_html_text}
+                        className={"__wab_expr_html_text"}
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
@@ -1476,7 +1503,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                         "unnamedVariant"
                       ) ? (
                       <div
-                        className={projectcss.__wab_expr_html_text}
+                        className={"__wab_expr_html_text"}
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
@@ -1603,8 +1630,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 ) ? (
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__gGrRx,
                       {
                         [sty.textunnamedVariant__gGrRXl6NG6]: hasVariant(
@@ -1706,9 +1733,9 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     )
                   })}
                   defaultStylesClassName={classNames(
-                    projectcss.root_reset,
-                    projectcss.plasmic_default_styles,
-                    projectcss.plasmic_mixins,
+                    "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                    "plasmic_default_styles",
+                    "plasmic_mixins",
                     styleTokensClassNames
                   )}
                   defaultValue={
@@ -1768,7 +1795,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   size={"large"}
                   suffixIcon={
                     <Icon10Icon
-                      className={classNames(projectcss.all, sty.svg__ndBpo)}
+                      className={classNames("all", sty.svg__ndBpo)}
                       role={"img"}
                     />
                   }
@@ -1776,18 +1803,13 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__tAdfq,
-                  {
-                    [sty.textunnamedVariant__tAdfql6NG6]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__tAdfq, {
+                  [sty.textunnamedVariant__tAdfql6NG6]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
                 onClick={async event => {
                   const $steps = {};
 
@@ -1822,7 +1844,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__pgWAh, {
+                className={classNames("all", sty.freeBox__pgWAh, {
                   [sty.freeBoxforgottenPassword__pgWAheMJzM]: hasVariant(
                     $state,
                     "forgottenPassword",
@@ -1853,7 +1875,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__qVeI7)}
+                      className={classNames("all", sty.svg__qVeI7)}
                       role={"img"}
                     />
                   }
@@ -2161,11 +2183,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xvRsU
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__xvRsU)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -2185,7 +2203,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__dtCoy)}
+                      className={classNames("all", sty.svg__dtCoy)}
                       role={"img"}
                     />
                   }
@@ -2496,11 +2514,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__eePhF
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__eePhF)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -2520,7 +2534,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__lrFv5)}
+                      className={classNames("all", sty.svg__lrFv5)}
                       role={"img"}
                     />
                   }
@@ -2909,11 +2923,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ysswt
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__ysswt)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -2933,7 +2943,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__vjajO)}
+                      className={classNames("all", sty.svg__vjajO)}
                       role={"img"}
                     />
                   }
@@ -3285,11 +3295,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__plN9Y
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__plN9Y)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -3319,7 +3325,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                             ? IconIcon
                             : Icon3Icon
                         }
-                        className={classNames(projectcss.all, sty.svg__zwklv, {
+                        className={classNames("all", sty.svg__zwklv, {
                           [sty.svgunnamedVariant__zwklvl6NG6]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -3714,8 +3720,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__m5E9A,
                         {
                           [sty.textunnamedVariant__m5E9Al6NG6]: hasVariant(
@@ -3739,7 +3745,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 <div
                   data-plasmic-name={"figmaPaste"}
                   data-plasmic-override={overrides.figmaPaste}
-                  className={classNames(projectcss.all, sty.figmaPaste, {
+                  className={classNames("all", sty.figmaPaste, {
                     [sty.figmaPasteunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -3750,7 +3756,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group"}
                     data-plasmic-override={overrides.group}
-                    className={classNames(projectcss.all, sty.group, {
+                    className={classNames("all", sty.group, {
                       [sty.groupunnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -3761,18 +3767,18 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group2"}
                       data-plasmic-override={overrides.group2}
-                      className={classNames(projectcss.all, sty.group2)}
+                      className={classNames("all", sty.group2)}
                     >
                       <div
                         data-plasmic-name={"rectangle35"}
                         data-plasmic-override={overrides.rectangle35}
-                        className={classNames(projectcss.all, sty.rectangle35)}
+                        className={classNames("all", sty.rectangle35)}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__s1Lmd
                         )}
                       >
@@ -3782,7 +3788,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group3"}
                       data-plasmic-override={overrides.group3}
-                      className={classNames(projectcss.all, sty.group3, {
+                      className={classNames("all", sty.group3, {
                         [sty.group3unnamedVariant]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -3793,21 +3799,18 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group4"}
                         data-plasmic-override={overrides.group4}
-                        className={classNames(projectcss.all, sty.group4)}
+                        className={classNames("all", sty.group4)}
                       >
                         <div
                           data-plasmic-name={"rectangle23"}
                           data-plasmic-override={overrides.rectangle23}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle23
-                          )}
+                          className={classNames("all", sty.rectangle23)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___8DwjF
                           )}
                         >
@@ -3817,21 +3820,18 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group5"}
                         data-plasmic-override={overrides.group5}
-                        className={classNames(projectcss.all, sty.group5)}
+                        className={classNames("all", sty.group5)}
                       >
                         <div
                           data-plasmic-name={"rectangle24"}
                           data-plasmic-override={overrides.rectangle24}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle24
-                          )}
+                          className={classNames("all", sty.rectangle24)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__eWTf
                           )}
                         >
@@ -3841,21 +3841,18 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group6"}
                         data-plasmic-override={overrides.group6}
-                        className={classNames(projectcss.all, sty.group6)}
+                        className={classNames("all", sty.group6)}
                       >
                         <div
                           data-plasmic-name={"rectangle25"}
                           data-plasmic-override={overrides.rectangle25}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle25
-                          )}
+                          className={classNames("all", sty.rectangle25)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__otu8B
                           )}
                         >
@@ -3865,12 +3862,12 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group7"}
                         data-plasmic-override={overrides.group7}
-                        className={classNames(projectcss.all, sty.group7)}
+                        className={classNames("all", sty.group7)}
                       >
                         <div
                           data-plasmic-name={"rectangle"}
                           data-plasmic-override={overrides.rectangle}
-                          className={classNames(projectcss.all, sty.rectangle, {
+                          className={classNames("all", sty.rectangle, {
                             [sty.rectangleunnamedVariant]: hasVariant(
                               $state,
                               "unnamedVariant",
@@ -3881,8 +3878,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__prDsB
                           )}
                         >
@@ -3892,8 +3889,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__ef0Ok,
                         {
                           [sty.textunnamedVariant__ef0Okl6NG6]: hasVariant(
@@ -3910,8 +3907,8 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__qhuI,
                         {
                           [sty.textunnamedVariant__qhuIl6NG6]: hasVariant(
@@ -3930,14 +3927,14 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group8"}
                     data-plasmic-override={overrides.group8}
-                    className={classNames(projectcss.all, sty.group8)}
+                    className={classNames("all", sty.group8)}
                   />
                 </div>
               ) : null}
               <div
                 data-plasmic-name={"group9"}
                 data-plasmic-override={overrides.group9}
-                className={classNames(projectcss.all, sty.group9, {
+                className={classNames("all", sty.group9, {
                   [sty.group9unnamedVariant]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -3949,25 +3946,20 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__wLs3X,
-                    {
-                      [sty.textunnamedVariant__wLs3Xl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__wLs3X, {
+                    [sty.textunnamedVariant__wLs3Xl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                 >
                   {
                     "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                   }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
-                  className={classNames(projectcss.all, sty.svg__fMLb0, {
+                  className={classNames("all", sty.svg__fMLb0, {
                     [sty.svgunnamedVariant__fMLb0L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -3980,7 +3972,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               <div
                 data-plasmic-name={"group10"}
                 data-plasmic-override={overrides.group10}
-                className={classNames(projectcss.all, sty.group10, {
+                className={classNames("all", sty.group10, {
                   [sty.group10forgottenPassword]: hasVariant(
                     $state,
                     "forgottenPassword",
@@ -3997,25 +3989,20 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jkcLu,
-                    {
-                      [sty.textunnamedVariant__jkcLUl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__jkcLu, {
+                    [sty.textunnamedVariant__jkcLUl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                 >
                   {
                     "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
                   }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
-                  className={classNames(projectcss.all, sty.svg___5OQ8, {
+                  className={classNames("all", sty.svg___5OQ8, {
                     [sty.svgunnamedVariant___5OQ8L6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -4028,7 +4015,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               <div
                 data-plasmic-name={"group11"}
                 data-plasmic-override={overrides.group11}
-                className={classNames(projectcss.all, sty.group11, {
+                className={classNames("all", sty.group11, {
                   [sty.group11forgottenPassword]: hasVariant(
                     $state,
                     "forgottenPassword",
@@ -4070,30 +4057,25 @@ function PlasmicForgottenPassword__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__khSP,
-                    {
-                      [sty.textforgottenPassword__khSPeMJzM]: hasVariant(
-                        $state,
-                        "forgottenPassword",
-                        "forgottenPassword"
-                      ),
-                      [sty.textunnamedVariant__khSPl6NG6]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__khSP, {
+                    [sty.textforgottenPassword__khSPeMJzM]: hasVariant(
+                      $state,
+                      "forgottenPassword",
+                      "forgottenPassword"
+                    ),
+                    [sty.textunnamedVariant__khSPl6NG6]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                 >
                   {
                     "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0648\u0631\u0648\u062f"
                   }
                 </div>
                 <LeftArrowBackSvgrepoComSvgIcon
-                  className={classNames(projectcss.all, sty.svg__jSMqd, {
+                  className={classNames("all", sty.svg__jSMqd, {
                     [sty.svgunnamedVariant__jSMqdl6NG6]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -4136,7 +4118,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               })()
         ) ? (
           <div
-            className={classNames(projectcss.all, sty.freeBox__hHf9J, {
+            className={classNames("all", sty.freeBox__hHf9J, {
               [sty.freeBoxunnamedVariant__hHf9Jl6NG6]: hasVariant(
                 $state,
                 "unnamedVariant",
@@ -4144,7 +4126,7 @@ function PlasmicForgottenPassword__RenderFunc(props: {
               )
             })}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__jd8Tb)}>
+            <div className={classNames("all", sty.freeBox__jd8Tb)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img__f99Fg)}
@@ -4558,14 +4540,12 @@ export const PlasmicForgottenPassword = Object.assign(
     internalVariantProps: PlasmicForgottenPassword__VariantProps,
     internalArgProps: PlasmicForgottenPassword__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc:
-        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/Forgotten-password",
+      pagePath: "/Forgotten-password",
+      params: {},
+      query: {}
+    })
   }
 );
 

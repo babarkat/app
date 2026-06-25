@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicChoice.module.css"; // plasmic-import: q2bx0G2f_uvE/css
 
 createPlasmicElementProxy;
@@ -132,23 +131,25 @@ function PlasmicChoice__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "amount",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.amount
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.amount
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -161,10 +162,10 @@ function PlasmicChoice__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.choice
       )}
@@ -172,36 +173,19 @@ function PlasmicChoice__RenderFunc(props: {
       <div
         data-plasmic-name={"confirm"}
         data-plasmic-override={overrides.confirm}
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.confirm,
-          {
-            [sty.confirmamount_cahrge4]: hasVariant(
-              $state,
-              "amount",
-              "cahrge4"
-            ),
-            [sty.confirmamount_charge1]: hasVariant(
-              $state,
-              "amount",
-              "charge1"
-            ),
-            [sty.confirmamount_charge2]: hasVariant(
-              $state,
-              "amount",
-              "charge2"
-            ),
-            [sty.confirmamount_charge3]: hasVariant($state, "amount", "charge3")
-          }
-        )}
+        className={classNames("all", "__wab_text", sty.confirm, {
+          [sty.confirmamount_cahrge4]: hasVariant($state, "amount", "cahrge4"),
+          [sty.confirmamount_charge1]: hasVariant($state, "amount", "charge1"),
+          [sty.confirmamount_charge2]: hasVariant($state, "amount", "charge2"),
+          [sty.confirmamount_charge3]: hasVariant($state, "amount", "charge3")
+        })}
       >
         {"\u062a\u0627\u0626\u06cc\u062f \u062e\u0631\u06cc\u062f"}
       </div>
       <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text)}
+        className={classNames("all", "__wab_text", sty.text)}
         onClick={async event => {
           const $steps = {};
 

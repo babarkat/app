@@ -74,7 +74,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicProfile.module.css"; // plasmic-import: aIeSdkpDfzhV/css
 
 import GroupSvgIcon from "./icons/PlasmicIcon__GroupSvg"; // plasmic-import: 51hz8qmjnijI/icon
@@ -84,6 +83,37 @@ import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG
 import Icon9Icon from "./icons/PlasmicIcon__Icon9"; // plasmic-import: ABwvUbBMtZqM/icon
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
 import Icon122Icon from "./icons/PlasmicIcon__Icon122"; // plasmic-import: FlYgkUghZC6o/icon
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary" as const
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -156,19 +186,13 @@ function PlasmicProfile__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -187,7 +211,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -206,19 +230,19 @@ function PlasmicProfile__RenderFunc(props: {
         path: "add.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "valueAdd.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "info.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", TextArea_Helpers)
       },
@@ -226,7 +250,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -245,7 +269,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -264,7 +288,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "customerInfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(window.sessionStorage.getItem("customerinfo"));
@@ -296,19 +320,19 @@ function PlasmicProfile__RenderFunc(props: {
         path: "remove.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "valueAdd2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "info2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", TextArea_Helpers)
       },
@@ -316,7 +340,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "button4.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -335,7 +359,7 @@ function PlasmicProfile__RenderFunc(props: {
         path: "carts",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             id: "toman",
             name: "\u062a\u0648\u0645\u0627\u0646",
@@ -374,35 +398,48 @@ function PlasmicProfile__RenderFunc(props: {
         path: "select.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "toman"
       },
       {
         path: "select2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "toman"
       },
       {
         path: "textNumber",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "textNum2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -416,35 +453,29 @@ function PlasmicProfile__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__syWy2)}>
-            <div className={classNames(projectcss.all, sty.freeBox__pfbLk)}>
+          <div className={classNames("all", sty.freeBox__syWy2)}>
+            <div className={classNames("all", sty.freeBox__pfbLk)}>
               <GroupSvgIcon
-                className={classNames(projectcss.all, sty.svg__mlhA)}
+                className={classNames("all", sty.svg__mlhA)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__z0Sv1
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__z0Sv1)}>
                 <React.Fragment>
                   {(() => {
                     try {
@@ -465,13 +496,9 @@ function PlasmicProfile__RenderFunc(props: {
                   })()}
                 </React.Fragment>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__g5Ms)}>
+              <div className={classNames("all", sty.freeBox__g5Ms)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__qAoP
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__qAoP)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -490,11 +517,7 @@ function PlasmicProfile__RenderFunc(props: {
                   </React.Fragment>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__z84Nz
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__z84Nz)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -513,7 +536,7 @@ function PlasmicProfile__RenderFunc(props: {
                   </React.Fragment>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__x5Xwj)}>
+              <div className={classNames("all", sty.freeBox__x5Xwj)}>
                 {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                   (() => {
                     try {
@@ -533,13 +556,13 @@ function PlasmicProfile__RenderFunc(props: {
                   const currentIndex = __plasmic_idx_0;
                   return (
                     <div
-                      className={classNames(projectcss.all, sty.freeBox___62KC)}
+                      className={classNames("all", sty.freeBox___62KC)}
                       key={currentIndex}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__eaZg
                         )}
                       >
@@ -561,8 +584,8 @@ function PlasmicProfile__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__pbXTe,
                           "dateshow"
                         )}
@@ -603,7 +626,7 @@ function PlasmicProfile__RenderFunc(props: {
                   );
                 })}
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__rWdpk)}>
+              <div className={classNames("all", sty.freeBox__rWdpk)}>
                 <Button
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
@@ -745,12 +768,12 @@ function PlasmicProfile__RenderFunc(props: {
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
+            className={classNames("all", sty.section)}
           >
             <div
               data-plasmic-name={"header"}
               data-plasmic-override={overrides.header}
-              className={classNames(projectcss.all, sty.header)}
+              className={classNames("all", sty.header)}
             >
               <PlasmicIcon__
                 PlasmicIconType={
@@ -758,7 +781,7 @@ function PlasmicProfile__RenderFunc(props: {
                     ? Icon10Icon
                     : Icon3Icon
                 }
-                className={classNames(projectcss.all, sty.svg__mFryk)}
+                className={classNames("all", sty.svg__mFryk)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -785,13 +808,7 @@ function PlasmicProfile__RenderFunc(props: {
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__uLr5Z
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__uLr5Z)}>
                 {"\u067e\u0631\u0648\u0641\u0627\u06cc\u0644"}
               </div>
               <PlasmicIcon__
@@ -800,7 +817,7 @@ function PlasmicProfile__RenderFunc(props: {
                     ? Icon9Icon
                     : Icon9Icon
                 }
-                className={classNames(projectcss.all, sty.svg___9Bc7N)}
+                className={classNames("all", sty.svg___9Bc7N)}
                 role={"img"}
               />
             </div>
@@ -813,20 +830,14 @@ function PlasmicProfile__RenderFunc(props: {
               [sty["pcls_rI1QmY4D1O3i"]]: true
             })}
             closeIcon={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__gPq1R
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__gPq1R)}>
                 {"\n"}
               </div>
             }
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -849,19 +860,13 @@ function PlasmicProfile__RenderFunc(props: {
                 : "700"
             }
           >
-            <div className={classNames(projectcss.all, sty.freeBox__xsLqF)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zojeo
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__xsLqF)}>
+              <div className={classNames("all", "__wab_text", sty.text__zojeo)}>
                 {
                   "\u0627\u0641\u0632\u0648\u062f\u0646 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___6SbvW)}>
+              <div className={classNames("all", sty.freeBox___6SbvW)}>
                 <Input
                   data-plasmic-name={"valueAdd"}
                   data-plasmic-override={overrides.valueAdd}
@@ -1032,9 +1037,9 @@ function PlasmicProfile__RenderFunc(props: {
                   data-plasmic-override={overrides.select}
                   className={classNames("__wab_instance", sty.select)}
                   defaultStylesClassName={classNames(
-                    projectcss.root_reset,
-                    projectcss.plasmic_default_styles,
-                    projectcss.plasmic_mixins,
+                    "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                    "plasmic_default_styles",
+                    "plasmic_mixins",
                     styleTokensClassNames
                   )}
                   defaultValue={"toman"}
@@ -1064,7 +1069,7 @@ function PlasmicProfile__RenderFunc(props: {
                   popupScopeClassName={sty["select__popup"]}
                   suffixIcon={
                     <Icon37Icon
-                      className={classNames(projectcss.all, sty.svg__tYaf9)}
+                      className={classNames("all", sty.svg__tYaf9)}
                       role={"img"}
                     />
                   }
@@ -1072,17 +1077,11 @@ function PlasmicProfile__RenderFunc(props: {
                 />
 
                 <Icon122Icon
-                  className={classNames(projectcss.all, sty.svg__inJy)}
+                  className={classNames("all", sty.svg__inJy)}
                   role={"img"}
                 />
               </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ne4H1
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__ne4H1)}>
                 <React.Fragment>
                   {(() => {
                     try {
@@ -1491,11 +1490,7 @@ function PlasmicProfile__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___0Lmac
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___0Lmac)}
                 >
                   {
                     "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
@@ -1512,20 +1507,14 @@ function PlasmicProfile__RenderFunc(props: {
               [sty["pcls_fsouucJG0umg"]]: true
             })}
             closeIcon={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__whIRq
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__whIRq)}>
                 {"\n"}
               </div>
             }
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -1549,19 +1538,13 @@ function PlasmicProfile__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_nSD-Uq41os4g"]]: true })}
           >
-            <div className={classNames(projectcss.all, sty.freeBox___8MPoO)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__sc5Dr
-                )}
-              >
+            <div className={classNames("all", sty.freeBox___8MPoO)}>
+              <div className={classNames("all", "__wab_text", sty.text__sc5Dr)}>
                 {
                   "\u06a9\u0633\u0631 \u0627\u0632 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__x4UZs)}>
+              <div className={classNames("all", sty.freeBox__x4UZs)}>
                 <Input
                   data-plasmic-name={"valueAdd2"}
                   data-plasmic-override={overrides.valueAdd2}
@@ -1732,9 +1715,9 @@ function PlasmicProfile__RenderFunc(props: {
                   data-plasmic-override={overrides.select2}
                   className={classNames("__wab_instance", sty.select2)}
                   defaultStylesClassName={classNames(
-                    projectcss.root_reset,
-                    projectcss.plasmic_default_styles,
-                    projectcss.plasmic_mixins,
+                    "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                    "plasmic_default_styles",
+                    "plasmic_mixins",
                     styleTokensClassNames
                   )}
                   defaultValue={"toman"}
@@ -1764,7 +1747,7 @@ function PlasmicProfile__RenderFunc(props: {
                   popupScopeClassName={sty["select2__popup"]}
                   suffixIcon={
                     <Icon37Icon
-                      className={classNames(projectcss.all, sty.svg__ajqBd)}
+                      className={classNames("all", sty.svg__ajqBd)}
                       role={"img"}
                     />
                   }
@@ -1772,16 +1755,12 @@ function PlasmicProfile__RenderFunc(props: {
                 />
 
                 <Icon122Icon
-                  className={classNames(projectcss.all, sty.svg__tqdkn)}
+                  className={classNames("all", sty.svg__tqdkn)}
                   role={"img"}
                 />
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___0GQa6
-                )}
+                className={classNames("all", "__wab_text", sty.text___0GQa6)}
               >
                 <React.Fragment>
                   {(() => {
@@ -2194,11 +2173,7 @@ function PlasmicProfile__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__exv6D
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__exv6D)}
                 >
                   {
                     "\u06a9\u0633\u0631 \u0627\u0632 \u0645\u0648\u062c\u0648\u062f\u06cc"
@@ -2417,13 +2392,12 @@ export const PlasmicProfile = Object.assign(
     internalVariantProps: PlasmicProfile__VariantProps,
     internalArgProps: PlasmicProfile__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/profile",
+      pagePath: "/profile",
+      params: {},
+      query: {}
+    })
   }
 );
 

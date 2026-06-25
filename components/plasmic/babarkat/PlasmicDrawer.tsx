@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicDrawer.module.css"; // plasmic-import: 1I6GUqmRCbqW/css
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
@@ -161,8 +160,6 @@ function PlasmicDrawer__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -177,15 +174,19 @@ function PlasmicDrawer__RenderFunc(props: {
         path: "noTrigger",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTrigger
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTrigger
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -199,9 +200,9 @@ function PlasmicDrawer__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         { [sty.dialognoTrigger]: hasVariant($state, "noTrigger", "noTrigger") }
@@ -217,9 +218,9 @@ function PlasmicDrawer__RenderFunc(props: {
       open={generateStateValueProp($state, ["dialog", "open"])}
       overlayClassName={classNames({ [sty["pcls_7rI5znMGseJL"]]: true })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={
@@ -230,11 +231,7 @@ function PlasmicDrawer__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.button__rCeO)}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cxXK
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__cxXK)}
                   >
                     {"Show dialog"}
                   </div>
@@ -250,16 +247,16 @@ function PlasmicDrawer__RenderFunc(props: {
         data-plasmic-override={overrides.drawerContent}
         className={classNames("__wab_instance", sty.drawerContent)}
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
         <div
           data-plasmic-name={"freeBox"}
           data-plasmic-override={overrides.freeBox}
-          className={classNames(projectcss.all, sty.freeBox)}
+          className={classNames("all", sty.freeBox)}
         >
           <DialogTitle
             data-plasmic-name={"dialogTitle"}
@@ -273,13 +270,9 @@ function PlasmicDrawer__RenderFunc(props: {
           </DialogTitle>
           {renderPlasmicSlot({
             defaultContents: (
-              <div className={classNames(projectcss.all, sty.freeBox__g6M8Y)}>
+              <div className={classNames("all", sty.freeBox__g6M8Y)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__b1JoW
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__b1JoW)}
                 >
                   {"You can insert drawer body content here in this slot."}
                 </div>

@@ -72,7 +72,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicCustomer.module.css"; // plasmic-import: zWG0vJfqlRxX/css
 
 import Icon121Icon from "./icons/PlasmicIcon__Icon121"; // plasmic-import: ljBqiClcDFaC/icon
@@ -84,6 +83,37 @@ import Icon110Icon from "./icons/PlasmicIcon__Icon110"; // plasmic-import: aq88M
 import Icon10Icon from "./icons/PlasmicIcon__Icon10"; // plasmic-import: dXgXrJG5lp3Z/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon12Icon from "./icons/PlasmicIcon__Icon12"; // plasmic-import: f1hgArxzFzWU/icon
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary" as const
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -155,19 +185,13 @@ function PlasmicCustomer__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -186,7 +210,7 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "input.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "popover2[].open",
@@ -207,13 +231,13 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "exitModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "button6.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -232,7 +256,7 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "button7.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -251,13 +275,13 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "getCustomer",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
@@ -277,7 +301,7 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "customer",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.getCustomer.list;
@@ -296,31 +320,31 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "hasMore",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "page",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "filter",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.customer;
@@ -339,17 +363,30 @@ function PlasmicCustomer__RenderFunc(props: {
         path: "customerId",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -363,17 +400,17 @@ function PlasmicCustomer__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -482,8 +519,8 @@ function PlasmicCustomer__RenderFunc(props: {
             }}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__auMv)}>
-            <div className={classNames(projectcss.all, sty.freeBox__xllc6)}>
+          <div className={classNames("all", sty.freeBox__auMv)}>
+            <div className={classNames("all", sty.freeBox__xllc6)}>
               <Input
                 data-plasmic-name={"input"}
                 data-plasmic-override={overrides.input}
@@ -546,14 +583,14 @@ function PlasmicCustomer__RenderFunc(props: {
               />
 
               <Icon121Icon
-                className={classNames(projectcss.all, sty.svg__v0Wax)}
+                className={classNames("all", sty.svg__v0Wax)}
                 role={"img"}
               />
             </div>
             <div
               data-plasmic-name={"main"}
               data-plasmic-override={overrides.main}
-              className={classNames(projectcss.all, sty.main)}
+              className={classNames("all", sty.main)}
               onScroll={async event => {
                 const $steps = {};
 
@@ -693,38 +730,26 @@ function PlasmicCustomer__RenderFunc(props: {
                 <div
                   data-plasmic-name={"loading2"}
                   data-plasmic-override={overrides.loading2}
-                  className={classNames(projectcss.all, sty.loading2)}
+                  className={classNames("all", sty.loading2)}
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox___6YcEj,
                       "shimmer"
                     )}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      sty.freeBox__c3Uxh,
-                      "shimmer"
-                    )}
+                    className={classNames("all", sty.freeBox__c3Uxh, "shimmer")}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      sty.freeBox__t5J,
-                      "shimmer"
-                    )}
+                    className={classNames("all", sty.freeBox__t5J, "shimmer")}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      sty.freeBox__cgGeH,
-                      "shimmer"
-                    )}
+                    className={classNames("all", sty.freeBox__cgGeH, "shimmer")}
                   />
                 </div>
               ) : null}
@@ -747,7 +772,7 @@ function PlasmicCustomer__RenderFunc(props: {
                 const currentIndex = __plasmic_idx_0;
                 return (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__ehDnB)}
+                    className={classNames("all", sty.freeBox__ehDnB)}
                     key={currentIndex}
                   >
                     {(
@@ -768,10 +793,7 @@ function PlasmicCustomer__RenderFunc(props: {
                         : true
                     ) ? (
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__y35Jg
-                        )}
+                        className={classNames("all", sty.freeBox__y35Jg)}
                         onClick={async event => {
                           const $steps = {};
 
@@ -825,32 +847,21 @@ function PlasmicCustomer__RenderFunc(props: {
                         }}
                       >
                         <GroupSvgIcon
-                          className={classNames(projectcss.all, sty.svg__uFqa3)}
+                          className={classNames("all", sty.svg__uFqa3)}
                           role={"img"}
                         />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__gjRr
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__gjRr)}>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__filgG
-                            )}
+                            className={classNames("all", sty.freeBox__filgG)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__ic7Li
-                              )}
+                              className={classNames("all", sty.freeBox__ic7Li)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__pB7T
                                 )}
                               >
@@ -873,8 +884,8 @@ function PlasmicCustomer__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__pHva8
                                 )}
                               >
@@ -898,8 +909,8 @@ function PlasmicCustomer__RenderFunc(props: {
                             </div>
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__eyaMx
                               )}
                             >
@@ -923,8 +934,8 @@ function PlasmicCustomer__RenderFunc(props: {
                           </div>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__aNv7,
                               "dateshow"
                             )}
@@ -1002,7 +1013,7 @@ function PlasmicCustomer__RenderFunc(props: {
                                 startIcon: (
                                   <Icon111Icon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg__keKdo
                                     )}
                                     role={"img"}
@@ -1015,7 +1026,12 @@ function PlasmicCustomer__RenderFunc(props: {
                                 [
                                   {
                                     name: "button4[].loadingviow",
-                                    initFunc: ({ $props, $state, $queries }) =>
+                                    initFunc: ({
+                                      $props,
+                                      $state,
+                                      $queries,
+                                      $q
+                                    }) =>
                                       (() => {
                                         try {
                                           return $state.loadingviow;
@@ -1042,8 +1058,8 @@ function PlasmicCustomer__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__lw2X3
                                     )}
                                   >
@@ -1175,7 +1191,7 @@ function PlasmicCustomer__RenderFunc(props: {
                                 startIcon: (
                                   <Icon110Icon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg___0PBKn
                                     )}
                                     role={"img"}
@@ -1188,7 +1204,12 @@ function PlasmicCustomer__RenderFunc(props: {
                                 [
                                   {
                                     name: "button3[].loadingviow",
-                                    initFunc: ({ $props, $state, $queries }) =>
+                                    initFunc: ({
+                                      $props,
+                                      $state,
+                                      $queries,
+                                      $q
+                                    }) =>
                                       (() => {
                                         try {
                                           return $state.loadingviow;
@@ -1215,8 +1236,8 @@ function PlasmicCustomer__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__oiYya
                                     )}
                                   >
@@ -1230,9 +1251,9 @@ function PlasmicCustomer__RenderFunc(props: {
                         contentText: "Popover contents",
                         defaultOpen: false,
                         defaultStylesClassName: classNames(
-                          projectcss.root_reset,
-                          projectcss.plasmic_default_styles,
-                          projectcss.plasmic_mixins,
+                          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                          "plasmic_default_styles",
+                          "plasmic_mixins",
                           styleTokensClassNames
                         ),
                         mouseEnterDelay: 0,
@@ -1271,7 +1292,8 @@ function PlasmicCustomer__RenderFunc(props: {
                         [
                           {
                             name: "popover2[].open",
-                            initFunc: ({ $props, $state, $queries }) => false
+                            initFunc: ({ $props, $state, $queries, $q }) =>
+                              false
                           }
                         ],
                         [__plasmic_idx_0]
@@ -1283,10 +1305,7 @@ function PlasmicCustomer__RenderFunc(props: {
                           {...child$Props}
                         >
                           <Icon109Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__szd55
-                            )}
+                            className={classNames("all", sty.svg__szd55)}
                             role={"img"}
                           />
                         </AntdPopover>
@@ -1308,16 +1327,12 @@ function PlasmicCustomer__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <section
-                  className={classNames(projectcss.all, sty.section___3WLyg)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__gAfWy)}
-                  >
+                <section className={classNames("all", sty.section___3WLyg)}>
+                  <div className={classNames("all", sty.freeBox__gAfWy)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zaCnw
                       )}
                     >
@@ -1327,14 +1342,14 @@ function PlasmicCustomer__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__hAuxe,
                         "line-container"
                       )}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
+                          "all",
                           sty.freeBox___503V,
                           "line line-1"
                         )}
@@ -1342,7 +1357,7 @@ function PlasmicCustomer__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
+                          "all",
                           sty.freeBox__tPKmJ,
                           "line line-2"
                         )}
@@ -1353,11 +1368,11 @@ function PlasmicCustomer__RenderFunc(props: {
               ) : null}
             </div>
           </div>
-          <section className={classNames(projectcss.all, sty.section__wd83I)}>
+          <section className={classNames("all", sty.section__wd83I)}>
             <div
               data-plasmic-name={"header"}
               data-plasmic-override={overrides.header}
-              className={classNames(projectcss.all, sty.header)}
+              className={classNames("all", sty.header)}
             >
               <PlasmicIcon__
                 PlasmicIconType={
@@ -1365,7 +1380,7 @@ function PlasmicCustomer__RenderFunc(props: {
                     ? Icon10Icon
                     : Icon3Icon
                 }
-                className={classNames(projectcss.all, sty.svg__pTyVw)}
+                className={classNames("all", sty.svg__pTyVw)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -1397,18 +1412,12 @@ function PlasmicCustomer__RenderFunc(props: {
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__jUy1I
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__jUy1I)}>
                 {
                   "\u0645\u0634\u062a\u0631\u06cc\u0627\u0646 \u0634\u0645\u0627"
                 }
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__xDrlR)}>
+              <div className={classNames("all", sty.freeBox__xDrlR)}>
                 <Button
                   data-plasmic-name={"button"}
                   data-plasmic-override={overrides.button}
@@ -1416,7 +1425,7 @@ function PlasmicCustomer__RenderFunc(props: {
                   color={"white"}
                   endIcon={
                     <Icon12Icon
-                      className={classNames(projectcss.all, sty.svg__azMzn)}
+                      className={classNames("all", sty.svg__azMzn)}
                       role={"img"}
                     />
                   }
@@ -1470,11 +1479,7 @@ function PlasmicCustomer__RenderFunc(props: {
                   size={"compact"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__p7Z5
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__p7Z5)}
                   >
                     {"\u062c\u062f\u06cc\u062f"}
                   </div>
@@ -1482,7 +1487,7 @@ function PlasmicCustomer__RenderFunc(props: {
               </div>
             </div>
           </section>
-          <div className={classNames(projectcss.all, sty.freeBox__xOtrX)} />
+          <div className={classNames("all", sty.freeBox__xOtrX)} />
 
           {(() => {
             try {
@@ -1500,7 +1505,7 @@ function PlasmicCustomer__RenderFunc(props: {
             <div
               data-plasmic-name={"no"}
               data-plasmic-override={overrides.no}
-              className={classNames(projectcss.all, sty.no)}
+              className={classNames("all", sty.no)}
             >
               <PlasmicImg__
                 data-plasmic-name={"img"}
@@ -1522,24 +1527,12 @@ function PlasmicCustomer__RenderFunc(props: {
                 }}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__pao2P
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__pao2P)}>
                 {
                   "\u0645\u0634\u062a\u0631\u06cc \u0646\u062f\u0627\u0631\u06cc\u062f"
                 }
               </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ru3HR
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__ru3HR)}>
                 {
                   "\u0627\u0648\u0644\u06cc\u0646 \u0645\u0634\u062a\u0631\u06cc \u062e\u0648\u062f \u0631\u0627 \u0627\u0636\u0627\u0641\u0647 \u06a9\u0646\u06cc\u062f."
                 }
@@ -1551,9 +1544,9 @@ function PlasmicCustomer__RenderFunc(props: {
             data-plasmic-override={overrides.exitModal}
             className={classNames("__wab_instance", sty.exitModal)}
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -1573,20 +1566,16 @@ function PlasmicCustomer__RenderFunc(props: {
             trigger={null}
             width={"520"}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__s6TEo)}>
+            <div className={classNames("all", sty.freeBox__s6TEo)}>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___2QEy1
-                )}
+                className={classNames("all", "__wab_text", sty.text___2QEy1)}
               >
                 {
                   "\u0627\u0632 \u062d\u0630\u0641 \u06a9\u0627\u0631\u0628\u0631 \u0627\u0637\u0645\u06cc\u0646\u0627\u0646 \u062f\u0627\u0631\u06cc\u062f\u061f"
                 }
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox___1Xv5G)}>
+            <div className={classNames("all", sty.freeBox___1Xv5G)}>
               <Button
                 data-plasmic-name={"button6"}
                 data-plasmic-override={overrides.button6}
@@ -1950,13 +1939,12 @@ export const PlasmicCustomer = Object.assign(
     internalVariantProps: PlasmicCustomer__VariantProps,
     internalArgProps: PlasmicCustomer__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/customer",
+      pagePath: "/customer",
+      params: {},
+      query: {}
+    })
   }
 );
 

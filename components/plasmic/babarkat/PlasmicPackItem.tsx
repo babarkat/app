@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPackItem.module.css"; // plasmic-import: vbVyLD-uyVh8/css
 
 import SvgRepoIconCarrier3Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier3"; // plasmic-import: VGmGx9vJ5BFt/icon
@@ -155,35 +154,38 @@ function PlasmicPackItem__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "steps2",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.steps2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.steps2
       },
       {
         path: "packageAfgani",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.packageAfgani
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.packageAfgani
       },
       {
         path: "type",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.type
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.type
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -196,10 +198,10 @@ function PlasmicPackItem__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -210,7 +212,7 @@ function PlasmicPackItem__RenderFunc(props: {
       onClick={args.onClick}
     >
       <div
-        className={classNames(projectcss.all, sty.freeBox__z1KFd, {
+        className={classNames("all", sty.freeBox__z1KFd, {
           [sty.freeBoxtype_call__z1KFdjco79]: hasVariant($state, "type", "call")
         })}
       >
@@ -220,15 +222,15 @@ function PlasmicPackItem__RenderFunc(props: {
               ? Icon94Icon
               : SvgRepoIconCarrier3Icon
           }
-          className={classNames(projectcss.all, sty.svg___1Ujcb, {
+          className={classNames("all", sty.svg___1Ujcb, {
             [sty.svgtype_call___1UjcBjco79]: hasVariant($state, "type", "call")
           })}
           role={"img"}
         />
       </div>
-      <div className={classNames(projectcss.all, sty.freeBox__pA0A3)}>
+      <div className={classNames("all", sty.freeBox__pA0A3)}>
         <div
-          className={classNames(projectcss.all, sty.freeBox__btNb3, {
+          className={classNames("all", sty.freeBox__btNb3, {
             [sty.freeBoxpackageAfgani__btNb3WeS8]: hasVariant(
               $state,
               "packageAfgani",
@@ -286,7 +288,7 @@ function PlasmicPackItem__RenderFunc(props: {
           />
 
           <div
-            className={classNames(projectcss.all, sty.freeBox__ldmn7, {
+            className={classNames("all", sty.freeBox__ldmn7, {
               [sty.freeBoxsteps2_step2__ldmn7SDf8]: hasVariant(
                 $state,
                 "steps2",
@@ -297,22 +299,17 @@ function PlasmicPackItem__RenderFunc(props: {
             <div
               data-plasmic-name={"text"}
               data-plasmic-override={overrides.text}
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text,
-                {
-                  [sty.textpackageAfgani]: hasVariant(
-                    $state,
-                    "packageAfgani",
-                    "packageAfgani"
-                  ),
-                  [sty.textpackageAfgani_steps2_step2]:
-                    hasVariant($state, "steps2", "step2") &&
-                    hasVariant($state, "packageAfgani", "packageAfgani"),
-                  [sty.textsteps2_step2]: hasVariant($state, "steps2", "step2")
-                }
-              )}
+              className={classNames("all", "__wab_text", sty.text, {
+                [sty.textpackageAfgani]: hasVariant(
+                  $state,
+                  "packageAfgani",
+                  "packageAfgani"
+                ),
+                [sty.textpackageAfgani_steps2_step2]:
+                  hasVariant($state, "steps2", "step2") &&
+                  hasVariant($state, "packageAfgani", "packageAfgani"),
+                [sty.textsteps2_step2]: hasVariant($state, "steps2", "step2")
+              })}
             >
               {hasVariant($state, "packageAfgani", "packageAfgani") ? (
                 <React.Fragment>
@@ -357,7 +354,7 @@ function PlasmicPackItem__RenderFunc(props: {
         </div>
       </div>
       <Icon165Icon
-        className={classNames(projectcss.all, sty.svg__oyTtb, {
+        className={classNames("all", sty.svg__oyTtb, {
           [sty.svgsteps2_step2__oyTtbsDf8]: hasVariant(
             $state,
             "steps2",

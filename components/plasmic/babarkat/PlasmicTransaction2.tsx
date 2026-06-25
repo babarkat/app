@@ -77,7 +77,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicTransaction2.module.css"; // plasmic-import: mV3ZGhPwKbGA/css
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
@@ -176,43 +175,37 @@ function PlasmicTransaction2__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "no",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.no
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.no
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "userinfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -234,13 +227,13 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "page",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "transaction",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.tabButton || "transaction";
@@ -259,25 +252,25 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "modal2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "radioGroup.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "all"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "all"
       },
       {
         path: "radioGroup2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "month"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "month"
       },
       {
         path: "list",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -332,7 +325,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "fiterlist",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.list;
@@ -351,7 +344,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "transaction2",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "token",
@@ -365,7 +358,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "variable",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return undefined;
@@ -384,7 +377,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -403,7 +396,7 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "button5.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -422,43 +415,43 @@ function PlasmicTransaction2__RenderFunc(props: {
         path: "variable2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "hasMore",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "isLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "scroll",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialog2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialog2.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialog2.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "full",
@@ -472,10 +465,18 @@ function PlasmicTransaction2__RenderFunc(props: {
 
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -488,10 +489,10 @@ function PlasmicTransaction2__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -523,16 +524,10 @@ function PlasmicTransaction2__RenderFunc(props: {
         <div
           data-plasmic-name={"wallet"}
           data-plasmic-override={overrides.wallet}
-          className={classNames(projectcss.all, sty.wallet)}
+          className={classNames("all", sty.wallet)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__bzGXt)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__o4Ai2
-              )}
-            >
+          <div className={classNames("all", sty.freeBox__bzGXt)}>
+            <div className={classNames("all", "__wab_text", sty.text__o4Ai2)}>
               {
                 "\u0647\u0645\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"
               }
@@ -557,7 +552,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                       ? Setting5Icon
                       : Setting5Icon
                   }
-                  className={classNames(projectcss.all, sty.svg)}
+                  className={classNames("all", sty.svg)}
                   role={"img"}
                 />
               }
@@ -623,11 +618,7 @@ function PlasmicTransaction2__RenderFunc(props: {
               }
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___4Rp2G
-                )}
+                className={classNames("all", "__wab_text", sty.text___4Rp2G)}
               >
                 {hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "\u0641\u06cc\u0644\u062a\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627"
@@ -646,10 +637,8 @@ function PlasmicTransaction2__RenderFunc(props: {
           >
             <DataCtxReader__>
               {$ctx => (
-                <div className={classNames(projectcss.all, sty.freeBox__e2Nzi)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___0Vx5M)}
-                  >
+                <div className={classNames("all", sty.freeBox__e2Nzi)}>
+                  <div className={classNames("all", sty.freeBox___0Vx5M)}>
                     <TabButton
                       className={classNames(
                         "__wab_instance",
@@ -658,10 +647,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                       tabKey={"charge"}
                     >
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__kb0Jx
-                        )}
+                        className={classNames("all", sty.freeBox__kb0Jx)}
                         onMouseDown={async event => {
                           const $steps = {};
 
@@ -1019,8 +1005,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                       >
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__lXsqo
                           )}
                         >
@@ -1038,10 +1024,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                       tabKey={"remittance"}
                     >
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__f7KK
-                        )}
+                        className={classNames("all", sty.freeBox__f7KK)}
                         onMouseDown={async event => {
                           const $steps = {};
 
@@ -1399,8 +1382,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                       >
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__t4Fpb
                           )}
                         >
@@ -1416,10 +1399,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                       tabKey={"transaction"}
                     >
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5AulF
-                        )}
+                        className={classNames("all", sty.freeBox___5AulF)}
                         onMouseDown={async event => {
                           const $steps = {};
 
@@ -1777,8 +1757,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                       >
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__fxxLr
                           )}
                         >
@@ -1792,9 +1772,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                       className={classNames("__wab_instance", sty.tabUnderline)}
                     />
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___5BkJk)}
-                  >
+                  <div className={classNames("all", sty.freeBox___5BkJk)}>
                     <TabContent
                       className={classNames(
                         "__wab_instance",
@@ -1804,7 +1782,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
+                          "all",
                           sty.freeBox__mwefs,
                           "your-scroll-box"
                         )}
@@ -2071,21 +2049,19 @@ function PlasmicTransaction2__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__bEuib
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__zzsI
                                       )}
                                     >
                                       <div
-                                        className={
-                                          projectcss.__wab_expr_html_text
-                                        }
+                                        className={"__wab_expr_html_text"}
                                         dangerouslySetInnerHTML={{
                                           __html: (() => {
                                             try {
@@ -2173,8 +2149,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__no7Ew
                                       )}
                                     >
@@ -2220,14 +2196,14 @@ function PlasmicTransaction2__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__wJf94
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__xQsLu,
                                         "dateshow"
                                       )}
@@ -2320,14 +2296,11 @@ function PlasmicTransaction2__RenderFunc(props: {
                           }
                         })() ? (
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___6WlNl
-                            )}
+                            className={classNames("all", sty.freeBox___6WlNl)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__gz08D,
                                 "shimmer"
                               )}
@@ -2335,7 +2308,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__yR2H,
                                 "shimmer"
                               )}
@@ -2343,7 +2316,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__bDqTt,
                                 "shimmer"
                               )}
@@ -2351,7 +2324,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__pYmq,
                                 "shimmer"
                               )}
@@ -2359,7 +2332,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__iFt4J,
                                 "shimmer"
                               )}
@@ -2367,7 +2340,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox___0ZT6U,
                                 "shimmer"
                               )}
@@ -2385,7 +2358,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
+                          "all",
                           sty.freeBox__hhPs9,
                           "your-scroll-box"
                         )}
@@ -2592,21 +2565,19 @@ function PlasmicTransaction2__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__peZy9
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___182UP
                                       )}
                                     >
                                       <div
-                                        className={
-                                          projectcss.__wab_expr_html_text
-                                        }
+                                        className={"__wab_expr_html_text"}
                                         dangerouslySetInnerHTML={{
                                           __html: (() => {
                                             try {
@@ -2630,8 +2601,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__kwgTc
                                       )}
                                     >
@@ -2677,14 +2648,14 @@ function PlasmicTransaction2__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__ihjXb
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__jz697,
                                         "dateshow"
                                       )}
@@ -2761,14 +2732,11 @@ function PlasmicTransaction2__RenderFunc(props: {
                           }
                         })() ? (
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__gkjFq
-                            )}
+                            className={classNames("all", sty.freeBox__gkjFq)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__c2MVv,
                                 "shimmer"
                               )}
@@ -2776,7 +2744,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__ajGmm,
                                 "shimmer"
                               )}
@@ -2784,7 +2752,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__hsfvu,
                                 "shimmer"
                               )}
@@ -2792,7 +2760,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__dviya,
                                 "shimmer"
                               )}
@@ -2800,7 +2768,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__kpbZb,
                                 "shimmer"
                               )}
@@ -2808,7 +2776,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__cEnln,
                                 "shimmer"
                               )}
@@ -2826,7 +2794,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
+                          "all",
                           sty.freeBox__pKlVx,
                           "your-scroll-box"
                         )}
@@ -3033,21 +3001,19 @@ function PlasmicTransaction2__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__tptyf
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__afIj
                                       )}
                                     >
                                       <div
-                                        className={
-                                          projectcss.__wab_expr_html_text
-                                        }
+                                        className={"__wab_expr_html_text"}
                                         dangerouslySetInnerHTML={{
                                           __html: (() => {
                                             try {
@@ -3071,8 +3037,8 @@ function PlasmicTransaction2__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__nXzIi,
                                         "dateshow"
                                       )}
@@ -3146,14 +3112,14 @@ function PlasmicTransaction2__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__xhJxt
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___9CGlg,
                                         "dateshow"
                                       )}
@@ -3229,15 +3195,10 @@ function PlasmicTransaction2__RenderFunc(props: {
                             throw e;
                           }
                         })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__ffhe
-                            )}
-                          >
+                          <div className={classNames("all", sty.freeBox__ffhe)}>
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__gczyy,
                                 "shimmer"
                               )}
@@ -3245,7 +3206,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__bUGl,
                                 "shimmer"
                               )}
@@ -3253,7 +3214,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__gs6Qf,
                                 "shimmer"
                               )}
@@ -3261,7 +3222,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__iabJ,
                                 "shimmer"
                               )}
@@ -3269,7 +3230,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox___49NCi,
                                 "shimmer"
                               )}
@@ -3277,7 +3238,7 @@ function PlasmicTransaction2__RenderFunc(props: {
 
                             <div
                               className={classNames(
-                                projectcss.all,
+                                "all",
                                 sty.freeBox__lMlLo,
                                 "shimmer"
                               )}
@@ -3293,7 +3254,7 @@ function PlasmicTransaction2__RenderFunc(props: {
           </TabsContainer>
         </div>
         <div
-          className={classNames(projectcss.all, sty.freeBox__s2LvQ, {
+          className={classNames("all", sty.freeBox__s2LvQ, {
             [sty.freeBoxno__s2LvQh6MPe]: hasVariant($state, "no", "no")
           })}
         >
@@ -3514,9 +3475,9 @@ function PlasmicTransaction2__RenderFunc(props: {
         data-plasmic-override={overrides.modal2}
         className={classNames("__wab_instance", sty.modal2)}
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         hideFooter={true}
@@ -3533,28 +3494,16 @@ function PlasmicTransaction2__RenderFunc(props: {
         trigger={null}
         wrapClassName={classNames({ [sty["pcls_vSs_eBQTGD2a"]]: true })}
       >
-        <div className={classNames(projectcss.all, sty.freeBox___852Xm)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__r3A6
-            )}
-          >
+        <div className={classNames("all", sty.freeBox___852Xm)}>
+          <div className={classNames("all", "__wab_text", sty.text__r3A6)}>
             {"\u0641\u06cc\u0644\u062a\u0631"}
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__zRihI)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__n3Mic
-            )}
-          >
+        <div className={classNames("all", sty.freeBox__zRihI)}>
+          <div className={classNames("all", "__wab_text", sty.text__n3Mic)}>
             {"\u062a\u0627\u0631\u06cc\u062e "}
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__cx486)}>
+          <div className={classNames("all", sty.freeBox__cx486)}>
             <AntdRadioGroup
               data-plasmic-name={"radioGroup2"}
               data-plasmic-override={overrides.radioGroup2}
@@ -3594,11 +3543,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"month"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__k9HCt
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__k9HCt)}
                 >
                   {"\u0645\u0627\u0647 \u062c\u0627\u0631\u06cc"}
                 </div>
@@ -3608,11 +3553,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"1month"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___9EdFa
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___9EdFa)}
                 >
                   {"\u06cc\u06a9 \u0645\u0627\u0647"}
                 </div>
@@ -3622,11 +3563,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"2month"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__yaa03
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__yaa03)}
                 >
                   {"\u062f\u0648 \u0645\u0627\u0647"}
                 </div>
@@ -3636,11 +3573,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"3month"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__oqH3Z
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__oqH3Z)}
                 >
                   {"\u0633\u0647 \u0645\u0627\u0647"}
                 </div>
@@ -3650,11 +3583,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"6month"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nbZLb
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nbZLb)}
                 >
                   {"\u0634\u0634 \u0645\u0627\u0647"}
                 </div>
@@ -3664,11 +3593,7 @@ function PlasmicTransaction2__RenderFunc(props: {
                 value={"year"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__wonsr
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__wonsr)}
                 >
                   {"\u06cc\u06a9 \u0633\u0627\u0644"}
                 </div>
@@ -3676,14 +3601,8 @@ function PlasmicTransaction2__RenderFunc(props: {
             </AntdRadioGroup>
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox___8Fbvf)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__yNvCu
-            )}
-          >
+        <div className={classNames("all", sty.freeBox___8Fbvf)}>
+          <div className={classNames("all", "__wab_text", sty.text__yNvCu)}>
             {"\u0628\u0631\u0686\u0633\u0628"}
           </div>
           <AntdRadioGroup
@@ -3724,13 +3643,7 @@ function PlasmicTransaction2__RenderFunc(props: {
               className={classNames("__wab_instance", sty.radioButton__tlKM)}
               value={"all"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__nYfWe
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__nYfWe)}>
                 {"\u0647\u0645\u0647"}
               </div>
             </AntdRadioButton>
@@ -3738,13 +3651,7 @@ function PlasmicTransaction2__RenderFunc(props: {
               className={classNames("__wab_instance", sty.radioButton___7SHv8)}
               value={"internet"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__aA5DV
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__aA5DV)}>
                 {"\u0627\u06cc\u0646\u062a\u0631\u0646\u062a"}
               </div>
             </AntdRadioButton>
@@ -3752,13 +3659,7 @@ function PlasmicTransaction2__RenderFunc(props: {
               className={classNames("__wab_instance", sty.radioButton__dj3Bd)}
               value={"charge"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__vZtMz
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__vZtMz)}>
                 {"\u0634\u0627\u0631\u0698"}
               </div>
             </AntdRadioButton>
@@ -3766,19 +3667,13 @@ function PlasmicTransaction2__RenderFunc(props: {
               className={classNames("__wab_instance", sty.radioButton__xUhiw)}
               value={"transaction"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__yIuQg
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__yIuQg)}>
                 {"\u067e\u0646\u0644"}
               </div>
             </AntdRadioButton>
           </AntdRadioGroup>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__u9YDy)}>
+        <div className={classNames("all", sty.freeBox__u9YDy)}>
           <Button
             data-plasmic-name={"button5"}
             data-plasmic-override={overrides.button5}
@@ -3939,13 +3834,7 @@ function PlasmicTransaction2__RenderFunc(props: {
               }
             }}
           >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___5RWyk
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text___5RWyk)}>
               {"\u062a\u0627\u06cc\u06cc\u062f"}
             </div>
           </Button>

@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicInvoice.module.css"; // plasmic-import: U_Qsdj6_40KF/css
 
 createPlasmicElementProxy;
@@ -271,21 +270,19 @@ function PlasmicInvoice__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "steps2",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.steps2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.steps2
       },
       {
         path: "rates.selected",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step3")
             ? "toman"
             : hasVariant($state, "steps2", "step2")
@@ -308,7 +305,7 @@ function PlasmicInvoice__RenderFunc(props: {
         path: "rates.selectedPanel",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step2")
             ? (() => {
                 try {
@@ -339,15 +336,19 @@ function PlasmicInvoice__RenderFunc(props: {
         path: "packageAFg",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.packageAFg
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.packageAFg
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -360,17 +361,17 @@ function PlasmicInvoice__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         { [sty.rootsteps2_step3]: hasVariant($state, "steps2", "step3") }
       )}
     >
       <div
-        className={classNames(projectcss.all, sty.freeBox___6WSqX, {
+        className={classNames("all", sty.freeBox___6WSqX, {
           [sty.freeBoxsteps2_step3___6WSqXtFm5]: hasVariant(
             $state,
             "steps2",
@@ -379,23 +380,18 @@ function PlasmicInvoice__RenderFunc(props: {
         })}
       >
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__lal7E,
-            {
-              [sty.textpackageAFg__lal7Ea1QrF]: hasVariant(
-                $state,
-                "packageAFg",
-                "packageAFg"
-              ),
-              [sty.textsteps2_step3__lal7EtFm5]: hasVariant(
-                $state,
-                "steps2",
-                "step3"
-              )
-            }
-          )}
+          className={classNames("all", "__wab_text", sty.text__lal7E, {
+            [sty.textpackageAFg__lal7Ea1QrF]: hasVariant(
+              $state,
+              "packageAFg",
+              "packageAFg"
+            ),
+            [sty.textsteps2_step3__lal7EtFm5]: hasVariant(
+              $state,
+              "steps2",
+              "step3"
+            )
+          })}
         >
           {hasVariant($state, "packageAFg", "packageAFg") ? (
             <React.Fragment>
@@ -433,7 +429,7 @@ function PlasmicInvoice__RenderFunc(props: {
         </div>
       </div>
       <div
-        className={classNames(projectcss.all, sty.freeBox__gx26I, {
+        className={classNames("all", sty.freeBox__gx26I, {
           [sty.freeBoxpackageAFg__gx26Ia1QrF]: hasVariant(
             $state,
             "packageAFg",
@@ -447,23 +443,18 @@ function PlasmicInvoice__RenderFunc(props: {
         })}
       >
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text___8IxDv,
-            {
-              [sty.textsteps2_step3___8IxDvtFm5]: hasVariant(
-                $state,
-                "steps2",
-                "step3"
-              )
-            }
-          )}
+          className={classNames("all", "__wab_text", sty.text___8IxDv, {
+            [sty.textsteps2_step3___8IxDvtFm5]: hasVariant(
+              $state,
+              "steps2",
+              "step3"
+            )
+          })}
         >
           {"\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
         </div>
         <div
-          className={classNames(projectcss.all, sty.freeBox__icsJ, {
+          className={classNames("all", sty.freeBox__icsJ, {
             [sty.freeBoxpackageAFg__icsJa1QrF]: hasVariant(
               $state,
               "packageAFg",
@@ -477,23 +468,18 @@ function PlasmicInvoice__RenderFunc(props: {
           })}
         >
           <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__mOaQ,
-              {
-                [sty.textpackageAFg__mOaQa1QrF]: hasVariant(
-                  $state,
-                  "packageAFg",
-                  "packageAFg"
-                ),
-                [sty.textsteps2_step3__mOaQtFm5]: hasVariant(
-                  $state,
-                  "steps2",
-                  "step3"
-                )
-              }
-            )}
+            className={classNames("all", "__wab_text", sty.text__mOaQ, {
+              [sty.textpackageAFg__mOaQa1QrF]: hasVariant(
+                $state,
+                "packageAFg",
+                "packageAFg"
+              ),
+              [sty.textsteps2_step3__mOaQtFm5]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
           >
             {hasVariant($state, "packageAFg", "packageAFg") ? (
               <React.Fragment>
@@ -546,18 +532,13 @@ function PlasmicInvoice__RenderFunc(props: {
             )}
           </div>
           <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__g41P6,
-              {
-                [sty.textpackageAFg__g41P6A1QrF]: hasVariant(
-                  $state,
-                  "packageAFg",
-                  "packageAFg"
-                )
-              }
-            )}
+            className={classNames("all", "__wab_text", sty.text__g41P6, {
+              [sty.textpackageAFg__g41P6A1QrF]: hasVariant(
+                $state,
+                "packageAFg",
+                "packageAFg"
+              )
+            })}
           >
             <React.Fragment>
               {(() => {
@@ -634,7 +615,7 @@ function PlasmicInvoice__RenderFunc(props: {
       />
 
       <div
-        className={classNames(projectcss.all, sty.freeBox__jyApI, {
+        className={classNames("all", sty.freeBox__jyApI, {
           [sty.freeBoxsteps2_step3__jyApItFm5]: hasVariant(
             $state,
             "steps2",
@@ -642,20 +623,15 @@ function PlasmicInvoice__RenderFunc(props: {
           )
         })}
       >
-        <div className={classNames(projectcss.all, sty.freeBox__r53M)}>
+        <div className={classNames("all", sty.freeBox__r53M)}>
           <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__fAR7,
-              {
-                [sty.textsteps2_step3__fAR7TFm5]: hasVariant(
-                  $state,
-                  "steps2",
-                  "step3"
-                )
-              }
-            )}
+            className={classNames("all", "__wab_text", sty.text__fAR7, {
+              [sty.textsteps2_step3__fAR7TFm5]: hasVariant(
+                $state,
+                "steps2",
+                "step3"
+              )
+            })}
           >
             {hasVariant($state, "steps2", "step3")
               ? "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc"
@@ -663,18 +639,13 @@ function PlasmicInvoice__RenderFunc(props: {
           </div>
         </div>
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__allf3,
-            {
-              [sty.textsteps2_step3__allf3TFm5]: hasVariant(
-                $state,
-                "steps2",
-                "step3"
-              )
-            }
-          )}
+          className={classNames("all", "__wab_text", sty.text__allf3, {
+            [sty.textsteps2_step3__allf3TFm5]: hasVariant(
+              $state,
+              "steps2",
+              "step3"
+            )
+          })}
         >
           {hasVariant($state, "steps2", "step3") ? (
             <React.Fragment>

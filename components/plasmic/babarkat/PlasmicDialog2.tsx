@@ -70,7 +70,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicDialog2.module.css"; // plasmic-import: hyFNHR4bCLIY/css
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
@@ -222,12 +221,6 @@ function PlasmicDialog2__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -242,25 +235,25 @@ function PlasmicDialog2__RenderFunc(props: {
         path: "noTrigger",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTrigger
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTrigger
       },
       {
         path: "hideHeader",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideHeader
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideHeader
       },
       {
         path: "noSpacing",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noSpacing
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noSpacing
       },
       {
         path: "fullScreen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.fullScreen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.fullScreen
       },
       {
         path: "type",
@@ -282,7 +275,7 @@ function PlasmicDialog2__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -301,7 +294,7 @@ function PlasmicDialog2__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -319,10 +312,18 @@ function PlasmicDialog2__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -336,9 +337,9 @@ function PlasmicDialog2__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         {
@@ -381,9 +382,9 @@ function PlasmicDialog2__RenderFunc(props: {
         [sty["pcls_a-b4iDehAYyt"]]: true
       })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={null}
@@ -430,14 +431,14 @@ function PlasmicDialog2__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly") ? 0.5 : 0.5
         }
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
         <div
-          className={classNames(projectcss.all, sty.freeBox__eaHPu, {
+          className={classNames("all", sty.freeBox__eaHPu, {
             [sty.freeBoxhideHeader__eaHPu99Uby]: hasVariant(
               $state,
               "hideHeader",
@@ -446,11 +447,8 @@ function PlasmicDialog2__RenderFunc(props: {
           })}
           dir={``}
         >
-          <div
-            className={classNames(projectcss.all, sty.freeBox__coQ0Q)}
-            id={"receipt"}
-          >
-            <div className={classNames(projectcss.all, sty.freeBox___0Asc5)}>
+          <div className={classNames("all", sty.freeBox__coQ0Q)} id={"receipt"}>
+            <div className={classNames("all", sty.freeBox___0Asc5)}>
               <Icons
                 data-plasmic-name={"icons"}
                 data-plasmic-override={overrides.icons}
@@ -490,13 +488,7 @@ function PlasmicDialog2__RenderFunc(props: {
                 })()}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__hbQXb
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__hbQXb)}>
                 <React.Fragment>
                   {(() => {
                     try {
@@ -514,16 +506,10 @@ function PlasmicDialog2__RenderFunc(props: {
                 </React.Fragment>
               </div>
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___919S8
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text___919S8)}>
               {""}
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__nhI8Y)}>
+            <div className={classNames("all", sty.freeBox__nhI8Y)}>
               {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
                 (() => {
                   try {
@@ -543,7 +529,7 @@ function PlasmicDialog2__RenderFunc(props: {
                 const currentIndex = __plasmic_idx_0;
                 return (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__iP1I8)}
+                    className={classNames("all", sty.freeBox__iP1I8)}
                     key={currentIndex}
                     style={(() => {
                       try {
@@ -566,8 +552,8 @@ function PlasmicDialog2__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__jHqun
                       )}
                     >
@@ -589,8 +575,8 @@ function PlasmicDialog2__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zvfBc
                       )}
                     >
@@ -613,13 +599,9 @@ function PlasmicDialog2__RenderFunc(props: {
                   </div>
                 );
               })}
-              <div className={classNames(projectcss.all, sty.freeBox__wfgsm)}>
+              <div className={classNames("all", sty.freeBox__wfgsm)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__qzkoe
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__qzkoe)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -638,11 +620,7 @@ function PlasmicDialog2__RenderFunc(props: {
                   </React.Fragment>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lw9Va
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__lw9Va)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -663,7 +641,7 @@ function PlasmicDialog2__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__tMely)}>
+          <div className={classNames("all", sty.freeBox__tMely)}>
             <Button
               data-plasmic-name={"button3"}
               data-plasmic-override={overrides.button3}
@@ -727,13 +705,7 @@ function PlasmicDialog2__RenderFunc(props: {
               }}
               size={"compact"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__p0CPj
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__p0CPj)}>
                 {"\u062a\u0627\u06cc\u06cc\u062f"}
               </div>
             </Button>
@@ -831,13 +803,7 @@ function PlasmicDialog2__RenderFunc(props: {
               }}
               size={"compact"}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zZxSp
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__zZxSp)}>
                 {
                   "\u0627\u0634\u062a\u0631\u0627\u06a9 \u06af\u0630\u0627\u0631\u06cc"
                 }
@@ -864,25 +830,16 @@ function PlasmicDialog2__RenderFunc(props: {
             )
           })}
         >
-          <XIcon
-            className={classNames(projectcss.all, sty.svg__g0Di)}
-            role={"img"}
-          />
+          <XIcon className={classNames("all", sty.svg__g0Di)} role={"img"} />
         </DialogClose>
-        <div className={classNames(projectcss.all, sty.freeBox__sanFb)}>
-          <div className={classNames(projectcss.all, sty.freeBox__mugA5)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__mkphn
-              )}
-            >
+        <div className={classNames("all", sty.freeBox__sanFb)}>
+          <div className={classNames("all", sty.freeBox__mugA5)}>
+            <div className={classNames("all", "__wab_text", sty.text__mkphn)}>
               {"\u0631\u0633\u06cc\u062f \u062a\u0631\u0627\u06a9\u0646\u0634"}
             </div>
           </div>
           <Icon89Icon
-            className={classNames(projectcss.all, sty.svg__hv4Hd)}
+            className={classNames("all", sty.svg__hv4Hd)}
             onClick={async event => {
               const $steps = {};
 
@@ -918,7 +875,7 @@ function PlasmicDialog2__RenderFunc(props: {
             role={"img"}
           />
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__fFcVl)}>
+        <div className={classNames("all", sty.freeBox__fFcVl)}>
           {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
             (() => {
               try {
@@ -938,7 +895,7 @@ function PlasmicDialog2__RenderFunc(props: {
             const currentIndex = __plasmic_idx_0;
             return (
               <div
-                className={classNames(projectcss.all, sty.freeBox__jTBms)}
+                className={classNames("all", sty.freeBox__jTBms)}
                 key={currentIndex}
               />
             );

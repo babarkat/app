@@ -81,7 +81,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicAfgPackage.module.css"; // plasmic-import: B7RWjbP8P1bE/css
 
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
@@ -94,6 +93,42 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsF
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت"
+    },
+    twitter: {
+      card: "summary" as const,
+      title: "بابرکت"
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -196,25 +231,19 @@ function PlasmicAfgPackage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "operators2",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             nameop: "Etisalat",
             description: "\u0627\u062a\u0635\u0627\u0644\u0627\u062a",
@@ -292,7 +321,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "operatorselect",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => -1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => -1
       },
       {
         path: "boxselect[].select",
@@ -308,7 +337,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "typecharge",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "Call"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "Call"
       },
       {
         path: "boxselect[].disable2",
@@ -324,19 +353,19 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "chargeType2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step2") ? `` : ""
       },
       {
@@ -353,19 +382,19 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "stepscharg",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.stepscharg
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.stepscharg
       },
       {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3")
             ? false
             : hasVariant($state, "stepscharg", "step2")
@@ -376,13 +405,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "variable",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "mojody",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userinfo.toman;
@@ -401,13 +430,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "uuid",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "modal2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? false
@@ -421,13 +450,13 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "infopardakt",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "userinfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -449,19 +478,19 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "disable",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "pardakhtid",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
@@ -481,43 +510,43 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "commissionBabarkat.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "commissionBabarkat.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "commissionBabarkat.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "amontAfg",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "selectPack",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "backstep2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -536,7 +565,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "backstep3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -555,7 +584,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "step1Next.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadBtn;
@@ -574,7 +603,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "step2Next.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -593,7 +622,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -612,7 +641,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -631,74 +660,74 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "exchange",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "loadBtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "shopModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "shopModal.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "shopModal.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "dialog.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialog.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "exchange2.totalToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange2.totalAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange2.amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3")
             ? (() => {
                 try {
@@ -731,37 +760,37 @@ function PlasmicAfgPackage__RenderFunc(props: {
         path: "exchange2.afghaniWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange2.tomanWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange2.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "toman"
       },
       {
         path: "exchange2.commissionToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "exchange2.commissionAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "invoice.exchange",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return {
@@ -787,12 +816,25 @@ function PlasmicAfgPackage__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -800,16 +842,12 @@ function PlasmicAfgPackage__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicAfgPackage.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicAfgPackage.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicAfgPackage.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -825,10 +863,10 @@ function PlasmicAfgPackage__RenderFunc(props: {
         data-plasmic-root={true}
         data-plasmic-for-node={forNode}
         className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "all",
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames,
           sty.chargeStep1,
           hasVariant($state, "stepscharg", "step3") &&
@@ -852,7 +890,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
         )}
       >
         <section
-          className={classNames(projectcss.all, sty.section__ihAzx, {
+          className={classNames("all", sty.section__ihAzx, {
             [sty.sectionstepscharg_step2__ihAzxzwaj5]: hasVariant(
               $state,
               "stepscharg",
@@ -866,7 +904,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
           })}
         >
           <div
-            className={classNames(projectcss.all, sty.freeBox__erD9F, {
+            className={classNames("all", sty.freeBox__erD9F, {
               [sty.freeBoxstepscharg_step2__erD9Fzwaj5]: hasVariant(
                 $state,
                 "stepscharg",
@@ -924,7 +962,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               <div
                 data-plasmic-name={"wallet"}
                 data-plasmic-override={overrides.wallet}
-                className={classNames(projectcss.all, sty.wallet, {
+                className={classNames("all", sty.wallet, {
                   [sty.walletstepscharg_step2]: hasVariant(
                     $state,
                     "stepscharg",
@@ -938,7 +976,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 })}
               >
                 <Icon154Icon
-                  className={classNames(projectcss.all, sty.svg__dAVd1, {
+                  className={classNames("all", sty.svg__dAVd1, {
                     [sty.svgstepscharg_step2__dAVd1Zwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -956,7 +994,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 <div
                   data-plasmic-name={"steps"}
                   data-plasmic-override={overrides.steps}
-                  className={classNames(projectcss.all, sty.steps, {
+                  className={classNames("all", sty.steps, {
                     [sty.stepsstepscharg_step2]: hasVariant(
                       $state,
                       "stepscharg",
@@ -972,7 +1010,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"\u0645\u0634\u062e\u0635\u0627\u062a"}
                     data-plasmic-override={overrides.مشخصات}
-                    className={classNames(projectcss.all, sty.مشخصات)}
+                    className={classNames("all", sty.مشخصات)}
                   >
                     <PlasmicIcon__
                       data-plasmic-name={"selected"}
@@ -984,7 +1022,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             ? CheckCircleSvgrepoComSvgIcon
                             : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
-                      className={classNames(projectcss.all, sty.selected, {
+                      className={classNames("all", sty.selected, {
                         [sty.selectedstepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1001,8 +1039,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__koGeY,
                         {
                           [sty.textstepscharg_step2__koGeYzwaj5]: hasVariant(
@@ -1022,7 +1060,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     </div>
                   </div>
                   <LineXlSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__q9W2Z)}
+                    className={classNames("all", sty.svg__q9W2Z)}
                     role={"img"}
                   />
 
@@ -1031,7 +1069,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698"
                     }
                     data-plasmic-override={overrides.مبلغشارژ}
-                    className={classNames(projectcss.all, sty.مبلغشارژ)}
+                    className={classNames("all", sty.مبلغشارژ)}
                   >
                     <PlasmicIcon__
                       data-plasmic-name={"unselected"}
@@ -1041,7 +1079,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                           ? CheckCircleSvgrepoComSvgIcon
                           : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
-                      className={classNames(projectcss.all, sty.unselected, {
+                      className={classNames("all", sty.unselected, {
                         [sty.unselectedstepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1058,8 +1096,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zkzsc,
                         {
                           [sty.textstepscharg_step2__zkzsCzwaj5]: hasVariant(
@@ -1081,7 +1119,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     </div>
                   </div>
                   <LineXlSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__ufZm3)}
+                    className={classNames("all", sty.svg__ufZm3)}
                     role={"img"}
                   />
 
@@ -1090,12 +1128,12 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f"
                     }
                     data-plasmic-override={overrides.تاییدخرید}
-                    className={classNames(projectcss.all, sty.تاییدخرید)}
+                    className={classNames("all", sty.تاییدخرید)}
                   >
                     <RadioButtonCheckedSvgrepoCom2SvgIcon
                       data-plasmic-name={"unselected2"}
                       data-plasmic-override={overrides.unselected2}
-                      className={classNames(projectcss.all, sty.unselected2, {
+                      className={classNames("all", sty.unselected2, {
                         [sty.unselected2stepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1112,8 +1150,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__fhb0T,
                         {
                           [sty.textstepscharg_step2__fhb0Tzwaj5]: hasVariant(
@@ -1136,7 +1174,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__lp924, {
+                  className={classNames("all", sty.freeBox__lp924, {
                     [sty.freeBoxstepscharg_step2__lp924Zwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1151,8 +1189,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__zb1Qy,
                       {
                         [sty.textstepscharg_step2__zb1Qyzwaj5]: hasVariant(
@@ -1174,7 +1212,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__aQf5H, {
+                  className={classNames("all", sty.freeBox__aQf5H, {
                     [sty.freeBoxstepscharg_step2__aQf5Hzwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1325,8 +1363,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
 
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___3Qylc,
                       {
                         [sty.textstepscharg_step2___3Qylczwaj5]: hasVariant(
@@ -1703,7 +1741,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__e50W8, {
+                className={classNames("all", sty.freeBox__e50W8, {
                   [sty.freeBoxstepscharg_step2__e50W8Zwaj5]: hasVariant(
                     $state,
                     "stepscharg",
@@ -1717,23 +1755,18 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jLzz7,
-                    {
-                      [sty.textstepscharg_step2__jLzz7Zwaj5]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
-                      [sty.textstepscharg_step3__jLzz7TDnBg]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__jLzz7, {
+                    [sty.textstepscharg_step2__jLzz7Zwaj5]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
+                    [sty.textstepscharg_step3__jLzz7TDnBg]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
@@ -1742,7 +1775,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 <div
                   data-plasmic-name={"operators"}
                   data-plasmic-override={overrides.operators}
-                  className={classNames(projectcss.all, sty.operators, {
+                  className={classNames("all", sty.operators, {
                     [sty.operatorsstepscharg_step2]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1862,14 +1895,14 @@ function PlasmicAfgPackage__RenderFunc(props: {
                         [
                           {
                             name: "boxselect[].select",
-                            initFunc: ({ $props, $state, $queries }) =>
+                            initFunc: ({ $props, $state, $queries, $q }) =>
                               hasVariant(globalVariants, "screen", "mobileOnly")
                                 ? false
                                 : false
                           },
                           {
                             name: "boxselect[].disable2",
-                            initFunc: ({ $props, $state, $queries }) =>
+                            initFunc: ({ $props, $state, $queries, $q }) =>
                               (() => {
                                 try {
                                   return (
@@ -1938,7 +1971,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               </div>
               {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__nYj1B, {
+                  className={classNames("all", sty.freeBox__nYj1B, {
                     [sty.freeBoxstepscharg_step2__nYj1Bzwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1953,8 +1986,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__saaPq,
                       {
                         [sty.textstepscharg_step2__saaPqzwaj5]: hasVariant(
@@ -1979,7 +2012,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"operators3"}
                     data-plasmic-override={overrides.operators3}
-                    className={classNames(projectcss.all, sty.operators3, {
+                    className={classNames("all", sty.operators3, {
                       [sty.operators3stepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2113,7 +2146,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                           [
                             {
                               name: "boxselect3[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -2124,7 +2157,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             },
                             {
                               name: "boxselect3[].disable2",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 (() => {
                                   try {
                                     return (
@@ -2152,19 +2185,15 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             {...child$Props}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__udtof,
-                                {
-                                  [sty.freeBoxstepscharg_step2__udtofzwaj5]:
-                                    hasVariant($state, "stepscharg", "step2")
-                                }
-                              )}
+                              className={classNames("all", sty.freeBox__udtof, {
+                                [sty.freeBoxstepscharg_step2__udtofzwaj5]:
+                                  hasVariant($state, "stepscharg", "step2")
+                              })}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___3HQ4N,
                                   {
                                     [sty.textstepscharg_step2___3HQ4Nzwaj5]:
@@ -2220,7 +2249,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     })}
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__uemBq, {
+                    className={classNames("all", sty.freeBox__uemBq, {
                       [sty.freeBoxstepscharg_step2__uemBQzwaj5]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2349,7 +2378,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       })()
               ) ? (
                 <div
-                  className={classNames(projectcss.all, sty.freeBox___6ZpW, {
+                  className={classNames("all", sty.freeBox___6ZpW, {
                     [sty.freeBoxstepscharg_step2___6ZpWzwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -2364,8 +2393,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__sjfsh,
                       {
                         [sty.textstepscharg_step3__sjfshTDnBg]: hasVariant(
@@ -2383,7 +2412,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"chargeType"}
                     data-plasmic-override={overrides.chargeType}
-                    className={classNames(projectcss.all, sty.chargeType)}
+                    className={classNames("all", sty.chargeType)}
                   >
                     {(_par =>
                       !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -2500,7 +2529,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                           [
                             {
                               name: "boxselect2[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -2526,7 +2555,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             },
                             {
                               name: "boxselect2[].disable2",
-                              initFunc: ({ $props, $state, $queries }) => false
+                              initFunc: ({ $props, $state, $queries, $q }) =>
+                                false
                             }
                           ],
                           [__plasmic_idx_0]
@@ -2538,19 +2568,15 @@ function PlasmicAfgPackage__RenderFunc(props: {
                             {...child$Props}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__x74Id,
-                                {
-                                  [sty.freeBoxstepscharg_step2__x74IDzwaj5]:
-                                    hasVariant($state, "stepscharg", "step2")
-                                }
-                              )}
+                              className={classNames("all", sty.freeBox__x74Id, {
+                                [sty.freeBoxstepscharg_step2__x74IDzwaj5]:
+                                  hasVariant($state, "stepscharg", "step2")
+                              })}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__uUmCa
                                 )}
                               >
@@ -2580,7 +2606,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 </div>
               ) : null}
               <div
-                className={classNames(projectcss.all, sty.freeBox__fu6GG, {
+                className={classNames("all", sty.freeBox__fu6GG, {
                   [sty.freeBoxstepscharg_step2__fu6GGzwaj5]: hasVariant(
                     $state,
                     "stepscharg",
@@ -2597,7 +2623,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"pay"}
                     data-plasmic-override={overrides.pay}
-                    className={classNames(projectcss.all, sty.pay, {
+                    className={classNames("all", sty.pay, {
                       [sty.paystepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2992,7 +3018,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 ) : null}
                 {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__bEcga, {
+                    className={classNames("all", sty.freeBox__bEcga, {
                       [sty.freeBoxstepscharg_step2__bEcgazwaj5]: hasVariant(
                         $state,
                         "stepscharg",
@@ -3044,7 +3070,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     }}
                   >
                     <Group4SvgIcon
-                      className={classNames(projectcss.all, sty.svg__dTb7B, {
+                      className={classNames("all", sty.svg__dTb7B, {
                         [sty.svgstepscharg_step3__dTb7BTDnBg]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3079,22 +3105,18 @@ function PlasmicAfgPackage__RenderFunc(props: {
                     />
 
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__vXtou,
-                        {
-                          [sty.freeBoxstepscharg_step3__vXtouTDnBg]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__vXtou, {
+                        [sty.freeBoxstepscharg_step3__vXtouTDnBg]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__sdfHd,
                           {
                             [sty.textstepscharg_step3__sdfHdTDnBg]: hasVariant(
@@ -3111,8 +3133,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__iupfT,
                           {
                             [sty.textstepscharg_step2__iupfTzwaj5]: hasVariant(
@@ -3134,7 +3156,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                       </div>
                     </div>
                     <Group7SvgIcon
-                      className={classNames(projectcss.all, sty.svg___718Vw, {
+                      className={classNames("all", sty.svg___718Vw, {
                         [sty.svgstepscharg_step3___718VwTDnBg]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3148,7 +3170,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               </div>
             </Reveal>
             <section
-              className={classNames(projectcss.all, sty.section__llb2T, {
+              className={classNames("all", sty.section__llb2T, {
                 [sty.sectionstepscharg_step2__llb2Tzwaj5]: hasVariant(
                   $state,
                   "stepscharg",
@@ -3162,7 +3184,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__zomfH, {
+                className={classNames("all", sty.freeBox__zomfH, {
                   [sty.freeBoxstepscharg_step2__zomfHzwaj5]: hasVariant(
                     $state,
                     "stepscharg",
@@ -3254,8 +3276,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zOCeO,
                         {
                           [sty.textstepscharg_step2__zOCeOzwaj5]: hasVariant(
@@ -3354,8 +3376,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__g6Ch,
                         {
                           [sty.textstepscharg_step2__g6Chzwaj5]: hasVariant(
@@ -3674,11 +3696,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cvlh7
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__cvlh7)}
                   >
                     {"\u0627\u062f\u0627\u0645\u0647"}
                   </div>
@@ -3808,8 +3826,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__jdBj9
                       )}
                     >
@@ -3826,8 +3844,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 ) ? (
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__eyEq8,
                       {
                         [sty.textstepscharg_step2__eyEq8Zwaj5]: hasVariant(
@@ -3893,9 +3911,9 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 )
               })}
               defaultStylesClassName={classNames(
-                projectcss.root_reset,
-                projectcss.plasmic_default_styles,
-                projectcss.plasmic_mixins,
+                "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                "plasmic_default_styles",
+                "plasmic_mixins",
                 styleTokensClassNames
               )}
               hideFooter={true}
@@ -3919,7 +3937,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               trigger={null}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__h2BXd, {
+                className={classNames("all", sty.freeBox__h2BXd, {
                   [sty.freeBoxstepscharg_step3__h2BXdtDnBg]: hasVariant(
                     $state,
                     "stepscharg",
@@ -3928,41 +3946,31 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cj7Cz,
-                    {
-                      [sty.textstepscharg_step3__cj7CzTDnBg]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__cj7Cz, {
+                    [sty.textstepscharg_step3__cj7CzTDnBg]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                 >
                   {hasVariant($state, "stepscharg", "step3")
                     ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
                     : "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__rbYEb,
-                    {
-                      [sty.textstepscharg_step2__rbYEbzwaj5]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      ),
-                      [sty.textstepscharg_step3__rbYEbTDnBg]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__rbYEb, {
+                    [sty.textstepscharg_step2__rbYEbzwaj5]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    ),
+                    [sty.textstepscharg_step3__rbYEbTDnBg]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                 >
                   {hasVariant($state, "stepscharg", "step3") &&
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -4066,9 +4074,9 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 )
               })}
               defaultStylesClassName={classNames(
-                projectcss.root_reset,
-                projectcss.plasmic_default_styles,
-                projectcss.plasmic_mixins,
+                "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                "plasmic_default_styles",
+                "plasmic_mixins",
                 styleTokensClassNames
               )}
               hideFooter={true}
@@ -4116,7 +4124,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__y1XiD, {
+                className={classNames("all", sty.freeBox__y1XiD, {
                   [sty.freeBoxstepscharg_step3__y1XiDtDnBg]: hasVariant(
                     $state,
                     "stepscharg",
@@ -4561,25 +4569,20 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__f4Ycz,
-                    {
-                      [sty.textstepscharg_step3__f4YczTDnBg]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__f4Ycz, {
+                    [sty.textstepscharg_step3__f4YczTDnBg]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                 >
                   {
                     "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
                   }
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__p0Ma2, {
+                  className={classNames("all", sty.freeBox__p0Ma2, {
                     [sty.freeBoxstepscharg_step2__p0Ma2Zwaj5]: hasVariant(
                       $state,
                       "stepscharg",
@@ -4594,8 +4597,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___0T3AQ,
                       {
                         [sty.textstepscharg_step2___0T3AQzwaj5]: hasVariant(
@@ -4617,8 +4620,8 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__y9232,
                       {
                         [sty.textstepscharg_step2__y9232Zwaj5]: hasVariant(
@@ -4751,11 +4754,7 @@ function PlasmicAfgPackage__RenderFunc(props: {
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__azsAw
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__azsAw)}
                   >
                     {"\u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
@@ -5682,13 +5681,12 @@ export const PlasmicAfgPackage = Object.assign(
     internalVariantProps: PlasmicAfgPackage__VariantProps,
     internalArgProps: PlasmicAfgPackage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/package-AFG",
+      pagePath: "/package-AFG",
+      params: {},
+      query: {}
+    })
   }
 );
 

@@ -68,7 +68,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicEditpass.module.css"; // plasmic-import: uj9U0aRqhjqk/css
 
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
@@ -175,55 +174,49 @@ function PlasmicEditpass__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "reoeatNewPass.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "newPass.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass3",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "p1",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "saraflist",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -250,13 +243,13 @@ function PlasmicEditpass__RenderFunc(props: {
         path: "loadedbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -274,10 +267,18 @@ function PlasmicEditpass__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -290,43 +291,31 @@ function PlasmicEditpass__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.header
       )}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__yBtfW)}>
-        <div className={classNames(projectcss.all, sty.freeBox___79Rdp)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__zCx2F
-            )}
-          >
+      <div className={classNames("all", sty.freeBox__yBtfW)}>
+        <div className={classNames("all", sty.freeBox___79Rdp)}>
+          <div className={classNames("all", "__wab_text", sty.text__zCx2F)}>
             {
               "\u062a\u063a\u06cc\u06cc\u0631  \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
             }
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__igCoj)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__tn6A2
-            )}
-          >
+        <div className={classNames("all", sty.freeBox__igCoj)}>
+          <div className={classNames("all", "__wab_text", sty.text__tn6A2)}>
             {
               "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 6 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631 \u0628\u0627\u0634\u062f."
             }
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__qAefv)}>
+          <div className={classNames("all", sty.freeBox__qAefv)}>
             <Icon44Icon
-              className={classNames(projectcss.all, sty.svg__dNWeF)}
+              className={classNames("all", sty.svg__dNWeF)}
               role={"img"}
             />
 
@@ -404,7 +393,7 @@ function PlasmicEditpass__RenderFunc(props: {
             />
 
             <Icon55Icon
-              className={classNames(projectcss.all, sty.svg___0Uww0)}
+              className={classNames("all", sty.svg___0Uww0)}
               onClick={async event => {
                 const $steps = {};
 
@@ -548,9 +537,9 @@ function PlasmicEditpass__RenderFunc(props: {
             })()}
           />
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__fwl0R)}>
+        <div className={classNames("all", sty.freeBox__fwl0R)}>
           <Icon45Icon
-            className={classNames(projectcss.all, sty.svg___2Xb3)}
+            className={classNames("all", sty.svg___2Xb3)}
             role={"img"}
           />
 
@@ -584,7 +573,7 @@ function PlasmicEditpass__RenderFunc(props: {
           />
 
           <Icon55Icon
-            className={classNames(projectcss.all, sty.svg__wsxTc)}
+            className={classNames("all", sty.svg__wsxTc)}
             onClick={async event => {
               const $steps = {};
 
@@ -682,13 +671,7 @@ function PlasmicEditpass__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__isjAx
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__isjAx)}>
               {
                 "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0628\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f."
               }
@@ -710,13 +693,7 @@ function PlasmicEditpass__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__ozHvx
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__ozHvx)}>
               {
                 "\u062a\u0637\u0627\u0628\u0642 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062a\u0623\u06cc\u06cc\u062f \u0634\u062f."
               }
@@ -739,7 +716,7 @@ function PlasmicEditpass__RenderFunc(props: {
                   ? IconIcon
                   : Icon3Icon
               }
-              className={classNames(projectcss.all, sty.svg__t7NMt)}
+              className={classNames("all", sty.svg__t7NMt)}
               role={"img"}
             />
           }
@@ -990,13 +967,7 @@ function PlasmicEditpass__RenderFunc(props: {
               : undefined
           }
         >
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__qmuTn
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__qmuTn)}>
             {"\u062a\u0627\u06cc\u06cc\u062f"}
           </div>
         </Button>

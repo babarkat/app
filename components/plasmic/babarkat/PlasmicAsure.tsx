@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicAsure.module.css"; // plasmic-import: 9fjf9pOh_9qT/css
 
 createPlasmicElementProxy;
@@ -132,23 +131,25 @@ function PlasmicAsure__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "successful",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.successful
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.successful
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -161,63 +162,33 @@ function PlasmicAsure__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         { [sty.rootsuccessful]: hasVariant($state, "successful", "successful") }
       )}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__tzGmc)}>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text___5GZsp
-          )}
-        >
+      <div className={classNames("all", sty.freeBox__tzGmc)}>
+        <div className={classNames("all", "__wab_text", sty.text___5GZsp)}>
           {"09123456789"}
         </div>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__fURu
-          )}
-        >
+        <div className={classNames("all", "__wab_text", sty.text__fURu)}>
           {
             ":\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644"
           }
         </div>
       </div>
-      <div className={classNames(projectcss.all, sty.freeBox___36PEz)}>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text___0DZ1
-          )}
-        >
+      <div className={classNames("all", sty.freeBox___36PEz)}>
+        <div className={classNames("all", "__wab_text", sty.text___0DZ1)}>
           {"\u062a\u0648\u0645\u0627\u0646"}
         </div>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__uaI3E
-          )}
-        >
+        <div className={classNames("all", "__wab_text", sty.text__uaI3E)}>
           {"10,000"}
         </div>
-        <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__hCeU
-          )}
-        >
+        <div className={classNames("all", "__wab_text", sty.text__hCeU)}>
           {":\u0647\u0632\u06cc\u0646\u0647"}
         </div>
       </div>

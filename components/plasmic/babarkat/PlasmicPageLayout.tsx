@@ -66,7 +66,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPageLayout.module.css"; // plasmic-import: VIx710CCadyX/css
 
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
@@ -144,17 +143,14 @@ function PlasmicPageLayout__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
       logoElement={
-        <Icon2Icon
-          className={classNames(projectcss.all, sty.svg__fmD6F)}
-          role={"img"}
-        />
+        <Icon2Icon className={classNames("all", sty.svg__fmD6F)} role={"img"} />
       }
       navMenuItems={(() => {
         const __composite = [{ path: null, name: null }];
@@ -175,9 +171,9 @@ function PlasmicPageLayout__RenderFunc(props: {
         loadingState={
           <DataCtxReader__>
             {$ctx => (
-              <div className={classNames(projectcss.all, sty.freeBox__hpr3X)}>
+              <div className={classNames("all", sty.freeBox__hpr3X)}>
                 <IconIcon
-                  className={classNames(projectcss.all, sty.svg__tjebF)}
+                  className={classNames("all", sty.svg__tjebF)}
                   role={"img"}
                 />
               </div>
@@ -187,17 +183,16 @@ function PlasmicPageLayout__RenderFunc(props: {
       >
         <DataCtxReader__>
           {$ctx => (
-            <div className={classNames(projectcss.all, sty.freeBox__j507O)}>
+            <div className={classNames("all", sty.freeBox__j507O)}>
               {renderPlasmicSlot({
                 defaultContents: (
-                  <section
-                    className={classNames(projectcss.all, sty.section__oGosf)}
-                  >
+                  <section className={classNames("all", sty.section__oGosf)}>
                     <h1
                       className={classNames(
-                        projectcss.all,
-                        projectcss.h1,
-                        projectcss.__wab_text,
+                        "all",
+                        "h1",
+                        "h1__sZQMb",
+                        "__wab_text",
                         sty.h1__nRshE
                       )}
                     >
@@ -205,8 +200,8 @@ function PlasmicPageLayout__RenderFunc(props: {
                     </h1>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__oeOlR
                       )}
                     >

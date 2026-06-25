@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLabel.module.css"; // plasmic-import: JIBGSgatSww7/css
 
 createPlasmicElementProxy;
@@ -140,30 +139,32 @@ function PlasmicLabel__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "size",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.size
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.size
       },
       {
         path: "requirementIndicator",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.requirementIndicator
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -177,9 +178,9 @@ function PlasmicLabel__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -201,7 +202,7 @@ function PlasmicLabel__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox, {
+        className={classNames("all", sty.freeBox, {
           [sty.freeBoxrequirementIndicator_optional]: hasVariant(
             $state,
             "requirementIndicator",
@@ -232,23 +233,18 @@ function PlasmicLabel__RenderFunc(props: {
         <div
           data-plasmic-name={"text"}
           data-plasmic-override={overrides.text}
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text,
-            {
-              [sty.textrequirementIndicator_optional]: hasVariant(
-                $state,
-                "requirementIndicator",
-                "optional"
-              ),
-              [sty.textrequirementIndicator_required]: hasVariant(
-                $state,
-                "requirementIndicator",
-                "required"
-              )
-            }
-          )}
+          className={classNames("all", "__wab_text", sty.text, {
+            [sty.textrequirementIndicator_optional]: hasVariant(
+              $state,
+              "requirementIndicator",
+              "optional"
+            ),
+            [sty.textrequirementIndicator_required]: hasVariant(
+              $state,
+              "requirementIndicator",
+              "required"
+            )
+          })}
         >
           {hasVariant($state, "requirementIndicator", "required")
             ? "*"

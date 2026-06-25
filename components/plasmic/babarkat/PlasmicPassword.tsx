@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPassword.module.css"; // plasmic-import: NplQo51f3X7d/css
 
 import Icon162Icon from "./icons/PlasmicIcon__Icon162"; // plasmic-import: 1H7C8RS5wNv-/icon
@@ -231,10 +230,6 @@ function PlasmicPassword__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -249,25 +244,25 @@ function PlasmicPassword__RenderFunc(props: {
         path: "noTrigger",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTrigger
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTrigger
       },
       {
         path: "hideHeader",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideHeader
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideHeader
       },
       {
         path: "noSpacing",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noSpacing
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noSpacing
       },
       {
         path: "fullScreen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.fullScreen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.fullScreen
       },
       {
         path: "type",
@@ -289,7 +284,7 @@ function PlasmicPassword__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -308,7 +303,7 @@ function PlasmicPassword__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -334,10 +329,16 @@ function PlasmicPassword__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -351,9 +352,9 @@ function PlasmicPassword__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         {
@@ -396,9 +397,9 @@ function PlasmicPassword__RenderFunc(props: {
         [sty["pcls_u4-hWaOdsBl_"]]: true
       })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={null}
@@ -445,14 +446,14 @@ function PlasmicPassword__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly") ? 0.5 : 0.5
         }
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
         <div
-          className={classNames(projectcss.all, sty.freeBox__ryjSs, {
+          className={classNames("all", sty.freeBox__ryjSs, {
             [sty.freeBoxhideHeader__ryjSs8PX0]: hasVariant(
               $state,
               "hideHeader",
@@ -461,30 +462,18 @@ function PlasmicPassword__RenderFunc(props: {
           })}
           dir={``}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__xfhpu)}>
+          <div className={classNames("all", sty.freeBox__xfhpu)}>
             <Icon162Icon
-              className={classNames(projectcss.all, sty.svg__klMvv)}
+              className={classNames("all", sty.svg__klMvv)}
               role={"img"}
             />
 
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__qsWyV
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__qsWyV)}>
               {
                 "\u0631\u0645\u0632 \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f"
               }
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__q64Hh
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__q64Hh)}>
               {
                 "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0631\u0645\u0632\u060c \u0627\u06cc\u0646 \u0639\u0645\u0644\u06cc\u0627\u062a \u062a\u0623\u06cc\u06cc\u062f \u0645\u06cc\u200c\u0634\u0648\u062f"
               }
@@ -499,9 +488,9 @@ function PlasmicPassword__RenderFunc(props: {
             }
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox___3Bgva)}>
+          <div className={classNames("all", sty.freeBox___3Bgva)}>
             <div
-              className={classNames(projectcss.all, sty.freeBox__sXxnY)}
+              className={classNames("all", sty.freeBox__sXxnY)}
               id={"codeButten"}
             >
               <Button
@@ -630,11 +619,7 @@ function PlasmicPassword__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lVwdb
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__lVwdb)}
                 >
                   {"\u062a\u0627\u06cc\u06cc\u062f"}
                 </div>
@@ -705,11 +690,7 @@ function PlasmicPassword__RenderFunc(props: {
               }}
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___0JP5R
-                )}
+                className={classNames("all", "__wab_text", sty.text___0JP5R)}
               >
                 {"\u0627\u0646\u0635\u0631\u0627\u0641"}
               </div>
@@ -727,10 +708,7 @@ function PlasmicPassword__RenderFunc(props: {
             )
           })}
         >
-          <XIcon
-            className={classNames(projectcss.all, sty.svg__gEpQu)}
-            role={"img"}
-          />
+          <XIcon className={classNames("all", sty.svg__gEpQu)} role={"img"} />
         </DialogClose>
       </DialogContent>
     </Dialog>

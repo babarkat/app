@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicShopModal.module.css"; // plasmic-import: pU2JisUur_AL/css
 
 import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
@@ -196,10 +195,6 @@ function PlasmicShopModal__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -214,25 +209,25 @@ function PlasmicShopModal__RenderFunc(props: {
         path: "noTrigger",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTrigger
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTrigger
       },
       {
         path: "hideHeader",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideHeader
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideHeader
       },
       {
         path: "noSpacing",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noSpacing
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noSpacing
       },
       {
         path: "fullScreen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.fullScreen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.fullScreen
       },
       {
         path: "type",
@@ -253,10 +248,16 @@ function PlasmicShopModal__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -270,9 +271,9 @@ function PlasmicShopModal__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         {
@@ -317,9 +318,9 @@ function PlasmicShopModal__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
       })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={null}
@@ -360,14 +361,14 @@ function PlasmicShopModal__RenderFunc(props: {
             : undefined
         }
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
         <div
-          className={classNames(projectcss.all, sty.freeBox___3W7Z0, {
+          className={classNames("all", sty.freeBox___3W7Z0, {
             [sty.freeBoxhideHeader___3W7Z0RZNva]: hasVariant(
               $state,
               "hideHeader",
@@ -381,19 +382,13 @@ function PlasmicShopModal__RenderFunc(props: {
             data-plasmic-override={overrides.dialogTitle}
             className={classNames("__wab_instance", sty.dialogTitle)}
           >
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__wTad1
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__wTad1)}>
               {"\u0634\u06cc\u0648\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"}
             </div>
           </DialogTitle>
         </div>
         <div
-          className={classNames(projectcss.all, sty.freeBox___4BdTs, {
+          className={classNames("all", sty.freeBox___4BdTs, {
             [sty.freeBoxhideHeader___4BdTSrZNva]: hasVariant(
               $state,
               "hideHeader",
@@ -401,9 +396,9 @@ function PlasmicShopModal__RenderFunc(props: {
             )
           })}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__bg4HH)}>
+          <div className={classNames("all", sty.freeBox__bg4HH)}>
             <div
-              className={classNames(projectcss.all, sty.freeBox__ve8Nm)}
+              className={classNames("all", sty.freeBox__ve8Nm)}
               onClick={async event => {
                 const $steps = {};
 
@@ -493,20 +488,15 @@ function PlasmicShopModal__RenderFunc(props: {
                 }
               }}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__bOsn)}>
+              <div className={classNames("all", sty.freeBox__bOsn)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__hbemq,
-                    {
-                      [sty.textfullScreen__hbemqbBkOs]: hasVariant(
-                        $state,
-                        "fullScreen",
-                        "fullScreen"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__hbemq, {
+                    [sty.textfullScreen__hbemqbBkOs]: hasVariant(
+                      $state,
+                      "fullScreen",
+                      "fullScreen"
+                    )
+                  })}
                 >
                   {hasVariant($state, "fullScreen", "fullScreen") ? (
                     <React.Fragment>
@@ -543,18 +533,13 @@ function PlasmicShopModal__RenderFunc(props: {
                   )}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__bQaXo,
-                    {
-                      [sty.textfullScreen__bQaXobBkOs]: hasVariant(
-                        $state,
-                        "fullScreen",
-                        "fullScreen"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__bQaXo, {
+                    [sty.textfullScreen__bQaXobBkOs]: hasVariant(
+                      $state,
+                      "fullScreen",
+                      "fullScreen"
+                    )
+                  })}
                   onClick={async event => {
                     const $steps = {};
                   }}
@@ -8609,7 +8594,7 @@ function PlasmicShopModal__RenderFunc(props: {
               />
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__xeb)}
+              className={classNames("all", sty.freeBox__xeb)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8698,20 +8683,15 @@ function PlasmicShopModal__RenderFunc(props: {
                 }
               }}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__lR26)}>
+              <div className={classNames("all", sty.freeBox__lR26)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___679V7,
-                    {
-                      [sty.textfullScreen___679V7BBkOs]: hasVariant(
-                        $state,
-                        "fullScreen",
-                        "fullScreen"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___679V7, {
+                    [sty.textfullScreen___679V7BBkOs]: hasVariant(
+                      $state,
+                      "fullScreen",
+                      "fullScreen"
+                    )
+                  })}
                 >
                   <React.Fragment>
                     {(() => {
@@ -8730,11 +8710,7 @@ function PlasmicShopModal__RenderFunc(props: {
                   </React.Fragment>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__syAd
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__syAd)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -16781,9 +16757,9 @@ function PlasmicShopModal__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div className={classNames(projectcss.all, sty.freeBox__bDKvJ)}>
+            <div className={classNames("all", sty.freeBox__bDKvJ)}>
               <IconIcon
-                className={classNames(projectcss.all, sty.svg__qfRb)}
+                className={classNames("all", sty.svg__qfRb)}
                 role={"img"}
               />
             </div>
@@ -16800,10 +16776,7 @@ function PlasmicShopModal__RenderFunc(props: {
             )
           })}
         >
-          <XIcon
-            className={classNames(projectcss.all, sty.svg__pyBj6)}
-            role={"img"}
-          />
+          <XIcon className={classNames("all", sty.svg__pyBj6)} role={"img"} />
         </DialogClose>
       </DialogContent>
     </Dialog>

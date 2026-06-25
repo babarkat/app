@@ -67,8 +67,38 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicNewPage.module.css"; // plasmic-import: LXo9RUqhmVGZ/css
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary" as const
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -127,21 +157,19 @@ function PlasmicNewPage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "startY",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "cards",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             name: "Card 1",
             color: "#FF5733",
@@ -176,17 +204,26 @@ function PlasmicNewPage__RenderFunc(props: {
         path: "variable",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -200,27 +237,23 @@ function PlasmicNewPage__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
         >
           <div
-            className={classNames(
-              projectcss.all,
-              sty.freeBox__nukH,
-              "container"
-            )}
+            className={classNames("all", sty.freeBox__nukH, "container")}
             onDragEnd={async event => {
               const $steps = {};
 
@@ -318,11 +351,7 @@ function PlasmicNewPage__RenderFunc(props: {
               return (
                 <div
                   {...{ "Animation Duration": "0.5s" }}
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox__zFRi0,
-                    "card"
-                  )}
+                  className={classNames("all", sty.freeBox__zFRi0, "card")}
                   draggable={"true"}
                   id={"card4"}
                   key={currentIndex}
@@ -348,11 +377,7 @@ function PlasmicNewPage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"text"}
                     data-plasmic-override={overrides.text}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text
-                    )}
+                    className={classNames("all", "__wab_text", sty.text)}
                   >
                     <React.Fragment>
                       {(() => {
@@ -485,13 +510,12 @@ export const PlasmicNewPage = Object.assign(
     internalVariantProps: PlasmicNewPage__VariantProps,
     internalArgProps: PlasmicNewPage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/new-page",
+      pagePath: "/new-page",
+      params: {},
+      query: {}
+    })
   }
 );
 

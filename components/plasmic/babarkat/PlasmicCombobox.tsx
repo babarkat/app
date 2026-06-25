@@ -73,7 +73,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicCombobox.module.css"; // plasmic-import: rtaShRIP86u9/css
 
 import ChevronDownIcon from "./icons/PlasmicIcon__ChevronDown"; // plasmic-import: ZVXDcND35NZY/icon
@@ -192,21 +191,19 @@ function PlasmicCombobox__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "ariaComboBox.isOpen",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "ariaComboBox.selectedValue",
         type: "readonly",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props["initialSelectedKey"],
 
         onChangeProp: "onChange"
@@ -215,23 +212,27 @@ function PlasmicCombobox__RenderFunc(props: {
         path: "type",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.type
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.type
       },
       {
         path: "ariaInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         onMutate: generateOnMutateForSpec("value", BaseInput_Helpers)
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -263,9 +264,9 @@ function PlasmicCombobox__RenderFunc(props: {
       aria-label={args.ariaLabel}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.ariaComboBox,
         {
@@ -306,7 +307,7 @@ function PlasmicCombobox__RenderFunc(props: {
           })}
         </Label>
       ) : null}
-      <div className={classNames(projectcss.all, sty.freeBox__txzDn)}>
+      <div className={classNames("all", sty.freeBox__txzDn)}>
         {(() => {
           const child$Props = {
             className: classNames("__wab_instance", sty.ariaInput),
@@ -347,11 +348,11 @@ function PlasmicCombobox__RenderFunc(props: {
           data-plasmic-override={overrides.ariaButton}
           className={classNames("__wab_instance", sty.ariaButton)}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__vsnNi)}>
+          <div className={classNames("all", sty.freeBox__vsnNi)}>
             <ChevronDownIcon
               data-plasmic-name={"svg"}
               data-plasmic-override={overrides.svg}
-              className={classNames(projectcss.all, sty.svg)}
+              className={classNames("all", sty.svg)}
               role={"img"}
             />
           </div>
@@ -384,11 +385,7 @@ function PlasmicCombobox__RenderFunc(props: {
               <MenuSection
                 header={
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hfMin
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__hfMin)}
                   >
                     {"Section"}
                   </div>

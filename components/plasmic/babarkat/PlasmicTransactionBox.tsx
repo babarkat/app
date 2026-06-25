@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicTransactionBox.module.css"; // plasmic-import: 9xs0oaOWmddY/css
 
 createPlasmicElementProxy;
@@ -177,38 +176,40 @@ function PlasmicTransactionBox__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "filed",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.filed
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.filed
       },
       {
         path: "unnamedGroupOfVariants",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.unnamedGroupOfVariants
       },
       {
         path: "wait",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.wait
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.wait
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -221,10 +222,10 @@ function PlasmicTransactionBox__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -367,40 +368,28 @@ function PlasmicTransactionBox__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
+        className={classNames("all", sty.freeBox)}
       >
         {renderPlasmicSlot({
           defaultContents: (
             <React.Fragment>
-              <div className={classNames(projectcss.all, sty.freeBox__rjm5W)}>
+              <div className={classNames("all", sty.freeBox__rjm5W)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__h6LBa
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__h6LBa)}
                 >
                   {
                     "\u0634\u0627\u0631\u0698 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a "
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__zr1Im
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__zr1Im)}
                 >
                   {"5000000 \u062a\u0648\u0645\u0627\u0646"}
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__nynGc)}>
+              <div className={classNames("all", sty.freeBox__nynGc)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___6HX8
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___6HX8)}
                 >
                   {"1403/05/07 10:20"}
                 </div>

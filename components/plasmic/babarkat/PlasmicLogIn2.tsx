@@ -67,7 +67,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLogIn2.module.css"; // plasmic-import: TplLKZCFlHXj/css
 
 import Icon37Icon from "./icons/PlasmicIcon__Icon37"; // plasmic-import: T5qnRYhm3_iD/icon
@@ -145,17 +144,13 @@ function PlasmicLogIn2__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "number",
@@ -169,13 +164,13 @@ function PlasmicLogIn2__RenderFunc(props: {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "time",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return 60;
@@ -194,19 +189,19 @@ function PlasmicLogIn2__RenderFunc(props: {
         path: "loadedbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "code",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "saraf",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           { label: "sjsjd1n", value: 101 },
           { label: "sjs2jdn", value: 102 },
           { label: "sjsj3dn", value: 103 },
@@ -217,25 +212,25 @@ function PlasmicLogIn2__RenderFunc(props: {
         path: "selectsaraf",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "pass",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "contry",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             value: "+98",
             label: "\ud83c\uddee\ud83c\uddf7 +98",
@@ -275,13 +270,13 @@ function PlasmicLogIn2__RenderFunc(props: {
         path: "select2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "+98"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "+98"
       },
       {
         path: "selectContry",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.select2.value;
@@ -299,10 +294,16 @@ function PlasmicLogIn2__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -315,10 +316,10 @@ function PlasmicLogIn2__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
@@ -439,7 +440,7 @@ function PlasmicLogIn2__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
+        className={classNames("all", sty.freeBox)}
       >
         <AntdSelect
           data-plasmic-name={"select2"}
@@ -447,9 +448,9 @@ function PlasmicLogIn2__RenderFunc(props: {
           bordered={false}
           className={classNames("__wab_instance", sty.select2)}
           defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames
           )}
           defaultValue={"+98"}
@@ -479,7 +480,7 @@ function PlasmicLogIn2__RenderFunc(props: {
             <Icon37Icon
               data-plasmic-name={"svg"}
               data-plasmic-override={overrides.svg}
-              className={classNames(projectcss.all, sty.svg)}
+              className={classNames("all", sty.svg)}
               role={"img"}
             />
           }

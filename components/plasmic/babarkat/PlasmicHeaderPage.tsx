@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicHeaderPage.module.css"; // plasmic-import: mcUMtOs2L3cw/css
 
 import Icon163Icon from "./icons/PlasmicIcon__Icon163"; // plasmic-import: 0_Fk2PfIpoWR/icon
@@ -144,25 +143,27 @@ function PlasmicHeaderPage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "stepscharg",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.stepscharg
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.stepscharg
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -175,10 +176,10 @@ function PlasmicHeaderPage__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.header,
         {
@@ -203,7 +204,7 @@ function PlasmicHeaderPage__RenderFunc(props: {
             ? Icon10Icon
             : Icon163Icon
         }
-        className={classNames(projectcss.all, sty.svg)}
+        className={classNames("all", sty.svg)}
         onClick={async event => {
           const $steps = {};
 
@@ -235,14 +236,14 @@ function PlasmicHeaderPage__RenderFunc(props: {
         role={"img"}
       />
 
-      <div className={classNames(projectcss.all, sty.freeBox__tk0La)}>
+      <div className={classNames("all", sty.freeBox__tk0La)}>
         {renderPlasmicSlot({
           defaultContents: "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698",
           value: args.children,
           className: classNames(sty.slotTargetChildren)
         })}
       </div>
-      <div className={classNames(projectcss.all, sty.freeBox__cjG3Q)}>
+      <div className={classNames("all", sty.freeBox__cjG3Q)}>
         {renderPlasmicSlot({
           defaultContents: null,
           value: args.slot

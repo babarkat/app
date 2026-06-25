@@ -68,7 +68,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicShop.module.css"; // plasmic-import: zOsuRTq3iEqd/css
 
 import XIcon from "./icons/PlasmicIcon__X"; // plasmic-import: XoiNjWGyNWHX/icon
@@ -169,10 +168,6 @@ function PlasmicShop__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -187,33 +182,39 @@ function PlasmicShop__RenderFunc(props: {
         path: "noTrigger",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noTrigger
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noTrigger
       },
       {
         path: "hideHeader",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.hideHeader
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.hideHeader
       },
       {
         path: "noSpacing",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.noSpacing
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.noSpacing
       },
       {
         path: "fullScreen",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.fullScreen
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.fullScreen
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -227,9 +228,9 @@ function PlasmicShop__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         {
@@ -274,9 +275,9 @@ function PlasmicShop__RenderFunc(props: {
         [sty["pcls_xKjQ7UOXRuFb"]]: true
       })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={null}
@@ -317,14 +318,14 @@ function PlasmicShop__RenderFunc(props: {
             : undefined
         }
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
         <div
-          className={classNames(projectcss.all, sty.freeBox___78V62, {
+          className={classNames("all", sty.freeBox___78V62, {
             [sty.freeBoxhideHeader___78V62VvKzO]: hasVariant(
               $state,
               "hideHeader",
@@ -341,7 +342,7 @@ function PlasmicShop__RenderFunc(props: {
             <h5
               data-plasmic-name={"h5"}
               data-plasmic-override={overrides.h5}
-              className={classNames(projectcss.all, projectcss.h5, sty.h5)}
+              className={classNames("all", "h5", "h5__sZQMb", sty.h5)}
             >
               {renderPlasmicSlot({
                 defaultContents: "Title",
@@ -352,7 +353,7 @@ function PlasmicShop__RenderFunc(props: {
           </DialogTitle>
         </div>
         <div
-          className={classNames(projectcss.all, sty.freeBox__hphCi, {
+          className={classNames("all", sty.freeBox__hphCi, {
             [sty.freeBoxhideHeader__hphCiVvKzO]: hasVariant(
               $state,
               "hideHeader",
@@ -363,11 +364,7 @@ function PlasmicShop__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___85Xl7
-                )}
+                className={classNames("all", "__wab_text", sty.text___85Xl7)}
               >
                 {"You can insert body content here in this slot."}
               </div>
@@ -389,7 +386,7 @@ function PlasmicShop__RenderFunc(props: {
           <XIcon
             data-plasmic-name={"svg"}
             data-plasmic-override={overrides.svg}
-            className={classNames(projectcss.all, sty.svg)}
+            className={classNames("all", sty.svg)}
             role={"img"}
           />
         </DialogClose>

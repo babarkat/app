@@ -85,7 +85,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicInternet3.module.css"; // plasmic-import: sK9gh25-ApmB/css
 
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
@@ -98,6 +97,42 @@ import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8
 import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت"
+    },
+    twitter: {
+      card: "summary" as const,
+      title: "بابرکت"
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -205,19 +240,13 @@ function PlasmicInternet3__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "operators2",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             name: "MTN",
             nameop: "Irancell",
@@ -324,7 +353,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "boxselect[].select",
@@ -350,43 +379,43 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "operatorselect",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => -1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => -1
       },
       {
         path: "typecharge",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "steps2",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.steps2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.steps2
       },
       {
         path: "apiRequest.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "apiRequest.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "internetPack",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -417,7 +446,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "variable",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -472,19 +501,19 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "mojodi",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userinfo.toman;
@@ -503,25 +532,25 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "uuid",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "selectpack",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "infopardakt",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "modal3.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step2") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? false
@@ -535,7 +564,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "userinfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -557,19 +586,19 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "disable",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "pardakhtid",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
@@ -589,7 +618,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "button[].loadingviow",
@@ -600,7 +629,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "step1Next.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -619,7 +648,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "step1Next2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -638,7 +667,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "step1Next3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -657,7 +686,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -676,7 +705,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "button4.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -695,43 +724,43 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "shopModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "shopModal.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "shopModal.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "rate",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "exchange.totalToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.totalAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.selectpack.amount;
@@ -750,43 +779,43 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "exchange.afghaniWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.tomanWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "toman"
       },
       {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialog.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialog.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "items.selectedPanel",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step2")
             ? (() => {
                 try {
@@ -809,7 +838,7 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "items.selected",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step2")
             ? (() => {
                 try {
@@ -830,19 +859,19 @@ function PlasmicInternet3__RenderFunc(props: {
         path: "exchange.commissionToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "exchange.commissionAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "invoice.exchange",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "steps2", "step3")
             ? (() => {
                 try {
@@ -883,12 +912,25 @@ function PlasmicInternet3__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -896,16 +938,12 @@ function PlasmicInternet3__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicInternet3.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicInternet3.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicInternet3.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -915,17 +953,17 @@ function PlasmicInternet3__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
@@ -938,7 +976,7 @@ function PlasmicInternet3__RenderFunc(props: {
           )}
         >
           <section
-            className={classNames(projectcss.all, sty.section___8YWeq, {
+            className={classNames("all", sty.section___8YWeq, {
               [sty.sectionsteps2_step2___8YWeqoGK8]: hasVariant(
                 $state,
                 "steps2",
@@ -952,7 +990,7 @@ function PlasmicInternet3__RenderFunc(props: {
             })}
           >
             <div
-              className={classNames(projectcss.all, sty.freeBox__dZ0U, {
+              className={classNames("all", sty.freeBox__dZ0U, {
                 [sty.freeBoxsteps2_step3__dZ0UYl49R]: hasVariant(
                   $state,
                   "steps2",
@@ -988,7 +1026,7 @@ function PlasmicInternet3__RenderFunc(props: {
                 <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  className={classNames(projectcss.all, sty.wallet, {
+                  className={classNames("all", sty.wallet, {
                     [sty.walletsteps2_step2]: hasVariant(
                       $state,
                       "steps2",
@@ -1002,7 +1040,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   })}
                 >
                   <Icon154Icon
-                    className={classNames(projectcss.all, sty.svg__ztYdh, {
+                    className={classNames("all", sty.svg__ztYdh, {
                       [sty.svgsteps2_step2__ztYdhoGK8]: hasVariant(
                         $state,
                         "steps2",
@@ -1020,7 +1058,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   <div
                     data-plasmic-name={"steps"}
                     data-plasmic-override={overrides.steps}
-                    className={classNames(projectcss.all, sty.steps, {
+                    className={classNames("all", sty.steps, {
                       [sty.stepssteps2_step2]: hasVariant(
                         $state,
                         "steps2",
@@ -1036,7 +1074,7 @@ function PlasmicInternet3__RenderFunc(props: {
                     <div
                       data-plasmic-name={"\u0645\u0634\u062e\u0635\u0627\u062a"}
                       data-plasmic-override={overrides.مشخصات}
-                      className={classNames(projectcss.all, sty.مشخصات)}
+                      className={classNames("all", sty.مشخصات)}
                     >
                       <PlasmicIcon__
                         data-plasmic-name={"selected"}
@@ -1048,7 +1086,7 @@ function PlasmicInternet3__RenderFunc(props: {
                               ? CheckCircleSvgrepoComSvgIcon
                               : RadioButtonCheckedSvgrepoCom2SvgIcon
                         }
-                        className={classNames(projectcss.all, sty.selected, {
+                        className={classNames("all", sty.selected, {
                           [sty.selectedsteps2_step2]: hasVariant(
                             $state,
                             "steps2",
@@ -1065,8 +1103,8 @@ function PlasmicInternet3__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___2MZo2,
                           {
                             [sty.textsteps2_step2___2MZo2OGK8]: hasVariant(
@@ -1086,7 +1124,7 @@ function PlasmicInternet3__RenderFunc(props: {
                       </div>
                     </div>
                     <LineXlSvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg__ve9R7)}
+                      className={classNames("all", sty.svg__ve9R7)}
                       role={"img"}
                     />
 
@@ -1095,7 +1133,7 @@ function PlasmicInternet3__RenderFunc(props: {
                         "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698"
                       }
                       data-plasmic-override={overrides.مبلغشارژ}
-                      className={classNames(projectcss.all, sty.مبلغشارژ)}
+                      className={classNames("all", sty.مبلغشارژ)}
                     >
                       <PlasmicIcon__
                         data-plasmic-name={"unselected"}
@@ -1105,7 +1143,7 @@ function PlasmicInternet3__RenderFunc(props: {
                             ? CheckCircleSvgrepoComSvgIcon
                             : RadioButtonCheckedSvgrepoCom2SvgIcon
                         }
-                        className={classNames(projectcss.all, sty.unselected, {
+                        className={classNames("all", sty.unselected, {
                           [sty.unselectedsteps2_step2]: hasVariant(
                             $state,
                             "steps2",
@@ -1122,8 +1160,8 @@ function PlasmicInternet3__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___3Xb4Q,
                           {
                             [sty.textsteps2_step2___3Xb4QoGK8]: hasVariant(
@@ -1145,7 +1183,7 @@ function PlasmicInternet3__RenderFunc(props: {
                       </div>
                     </div>
                     <LineXlSvgrepoComSvgIcon
-                      className={classNames(projectcss.all, sty.svg__n2TT8)}
+                      className={classNames("all", sty.svg__n2TT8)}
                       role={"img"}
                     />
 
@@ -1154,12 +1192,12 @@ function PlasmicInternet3__RenderFunc(props: {
                         "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f"
                       }
                       data-plasmic-override={overrides.تاییدخرید}
-                      className={classNames(projectcss.all, sty.تاییدخرید)}
+                      className={classNames("all", sty.تاییدخرید)}
                     >
                       <RadioButtonCheckedSvgrepoCom2SvgIcon
                         data-plasmic-name={"unselected2"}
                         data-plasmic-override={overrides.unselected2}
-                        className={classNames(projectcss.all, sty.unselected2, {
+                        className={classNames("all", sty.unselected2, {
                           [sty.unselected2steps2_step3]: hasVariant(
                             $state,
                             "steps2",
@@ -1171,8 +1209,8 @@ function PlasmicInternet3__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kwKjx,
                           {
                             [sty.textsteps2_step3__kwKjxYl49R]: hasVariant(
@@ -1241,7 +1279,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(projectcss.all, sty.freeBox___8MKoj, {
+                    className={classNames("all", sty.freeBox___8MKoj, {
                       [sty.freeBoxsteps2_step2___8MKojoGK8]: hasVariant(
                         $state,
                         "steps2",
@@ -1256,8 +1294,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__cBh9R,
                         {
                           [sty.textsteps2_step2__cBh9RoGK8]: hasVariant(
@@ -1277,14 +1315,12 @@ function PlasmicInternet3__RenderFunc(props: {
                         "\u0634\u0645\u0627\u0631\u0647 \u062a\u0644\u0641\u0646 \u0647\u0645\u0631\u0627\u0647 \u06af\u06cc\u0631\u0646\u062f\u0647 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f."
                       }
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ztalg)}
-                    >
+                    <div className={classNames("all", sty.freeBox__ztalg)}>
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__pRzEo
                           )}
                         >
@@ -1296,8 +1332,8 @@ function PlasmicInternet3__RenderFunc(props: {
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__yBlfz
                           )}
                         >
@@ -1307,14 +1343,12 @@ function PlasmicInternet3__RenderFunc(props: {
                         </div>
                       ) : null}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zu8U)}
-                    >
+                    <div className={classNames("all", sty.freeBox__zu8U)}>
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__urh2Y
                           )}
                         >
@@ -1326,8 +1360,8 @@ function PlasmicInternet3__RenderFunc(props: {
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__vz1Yb
                           )}
                         >
@@ -1337,14 +1371,12 @@ function PlasmicInternet3__RenderFunc(props: {
                         </div>
                       ) : null}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__k0XeT)}
-                    >
+                    <div className={classNames("all", sty.freeBox__k0XeT)}>
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__n744G
                           )}
                         >
@@ -1356,8 +1388,8 @@ function PlasmicInternet3__RenderFunc(props: {
                       {false ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__bJcDf
                           )}
                         >
@@ -1369,7 +1401,7 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__totPe, {
+                    className={classNames("all", sty.freeBox__totPe, {
                       [sty.freeBoxsteps2_step2__totPeoGK8]: hasVariant(
                         $state,
                         "steps2",
@@ -1618,7 +1650,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   />
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox___3FOjd, {
+                  className={classNames("all", sty.freeBox___3FOjd, {
                     [sty.freeBoxsteps2_step2___3FOjdoGK8]: hasVariant(
                       $state,
                       "steps2",
@@ -1632,11 +1664,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   })}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__rTmJ
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__rTmJ)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
@@ -1645,7 +1673,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   <div
                     data-plasmic-name={"operators"}
                     data-plasmic-override={overrides.operators}
-                    className={classNames(projectcss.all, sty.operators)}
+                    className={classNames("all", sty.operators)}
                   >
                     {(_par =>
                       !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -1769,7 +1797,7 @@ function PlasmicInternet3__RenderFunc(props: {
                           [
                             {
                               name: "boxselect[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -1780,7 +1808,7 @@ function PlasmicInternet3__RenderFunc(props: {
                             },
                             {
                               name: "boxselect[].disable2",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 (() => {
                                   try {
                                     return (
@@ -1872,7 +1900,7 @@ function PlasmicInternet3__RenderFunc(props: {
                         })()
                 ) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__v2Pqp, {
+                    className={classNames("all", sty.freeBox__v2Pqp, {
                       [sty.freeBoxsteps2_step2__v2PqpoGK8]: hasVariant(
                         $state,
                         "steps2",
@@ -1887,8 +1915,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___7CEa,
                         {
                           [sty.textsteps2_step3___7CEaYl49R]: hasVariant(
@@ -1906,7 +1934,7 @@ function PlasmicInternet3__RenderFunc(props: {
                     <div
                       data-plasmic-name={"chargeType"}
                       data-plasmic-override={overrides.chargeType}
-                      className={classNames(projectcss.all, sty.chargeType, {
+                      className={classNames("all", sty.chargeType, {
                         [sty.chargeTypesteps2_step2]: hasVariant(
                           $state,
                           "steps2",
@@ -2022,12 +2050,12 @@ function PlasmicInternet3__RenderFunc(props: {
                             [
                               {
                                 name: "boxselect2[].select",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   false
                               },
                               {
                                 name: "boxselect2[].disable2",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   (() => {
                                     try {
                                       return (
@@ -2056,7 +2084,7 @@ function PlasmicInternet3__RenderFunc(props: {
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__oomg5,
                                   {
                                     [sty.freeBoxsteps2_step2__oomg5OGK8]:
@@ -2066,8 +2094,8 @@ function PlasmicInternet3__RenderFunc(props: {
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__uo5U9
                                   )}
                                 >
@@ -2146,37 +2174,28 @@ function PlasmicInternet3__RenderFunc(props: {
                     <DataCtxReader__>
                       {$ctx => (
                         <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___0I08B,
-                            {
-                              [sty.freeBoxsteps2_step2___0I08BoGK8]: hasVariant(
+                          className={classNames("all", sty.freeBox___0I08B, {
+                            [sty.freeBoxsteps2_step2___0I08BoGK8]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step2"
+                            )
+                          })}
+                        >
+                          <div
+                            className={classNames("all", sty.freeBox__fazHu, {
+                              [sty.freeBoxsteps2_step2__fazHuoGK8]: hasVariant(
                                 $state,
                                 "steps2",
                                 "step2"
                               )
-                            }
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__fazHu,
-                              {
-                                [sty.freeBoxsteps2_step2__fazHuoGK8]:
-                                  hasVariant($state, "steps2", "step2")
-                              }
-                            )}
+                            })}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__rsWu3,
-                                {
-                                  [sty.freeBoxsteps2_step2__rsWu3OGK8]:
-                                    hasVariant($state, "steps2", "step2")
-                                }
-                              )}
+                              className={classNames("all", sty.freeBox__rsWu3, {
+                                [sty.freeBoxsteps2_step2__rsWu3OGK8]:
+                                  hasVariant($state, "steps2", "step2")
+                              })}
                             >
                               {(_par =>
                                 !_par
@@ -2305,7 +2324,8 @@ function PlasmicInternet3__RenderFunc(props: {
                                             initFunc: ({
                                               $props,
                                               $state,
-                                              $queries
+                                              $queries,
+                                              $q
                                             }) =>
                                               (() => {
                                                 try {
@@ -2335,8 +2355,8 @@ function PlasmicInternet3__RenderFunc(props: {
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__mTt16,
                                               {
                                                 [sty.textsteps2_step2__mTt16OGK8]:
@@ -2374,14 +2394,13 @@ function PlasmicInternet3__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__sgAlW,
-                              {
-                                [sty.freeBoxsteps2_step2__sgAlWoGK8]:
-                                  hasVariant($state, "steps2", "step2")
-                              }
-                            )}
+                            className={classNames("all", sty.freeBox__sgAlW, {
+                              [sty.freeBoxsteps2_step2__sgAlWoGK8]: hasVariant(
+                                $state,
+                                "steps2",
+                                "step2"
+                              )
+                            })}
                           >
                             {(_par =>
                               !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -2435,7 +2454,7 @@ function PlasmicInternet3__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__j3NPa,
                                       {
                                         [sty.freeBoxsteps2_step2__j3NPAoGK8]:
@@ -2651,14 +2670,10 @@ function PlasmicInternet3__RenderFunc(props: {
                               );
                             })}
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__bAlLj,
-                                {
-                                  [sty.freeBoxsteps2_step2__bAlLjoGK8]:
-                                    hasVariant($state, "steps2", "step2")
-                                }
-                              )}
+                              className={classNames("all", sty.freeBox__bAlLj, {
+                                [sty.freeBoxsteps2_step2__bAlLjoGK8]:
+                                  hasVariant($state, "steps2", "step2")
+                              })}
                             />
                           </div>
                         </div>
@@ -2745,11 +2760,9 @@ function PlasmicInternet3__RenderFunc(props: {
                 url={"https://n8n.staas.ir/webhook/babarkat/service"}
               />
 
-              <section
-                className={classNames(projectcss.all, sty.section___6Nopo)}
-              >
+              <section className={classNames("all", sty.section___6Nopo)}>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__ahFCl, {
+                  className={classNames("all", sty.freeBox__ahFCl, {
                     [sty.freeBoxsteps2_step2__ahFCloGK8]: hasVariant(
                       $state,
                       "steps2",
@@ -2906,8 +2919,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__r8PxN,
                         {
                           [sty.textsteps2_step2__r8PxNoGK8]: hasVariant(
@@ -3001,8 +3014,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__sQki0,
                         {
                           [sty.textsteps2_step2__sQki0OGK8]: hasVariant(
@@ -3096,8 +3109,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__saeoD,
                         {
                           [sty.textsteps2_step2__saeoDoGK8]: hasVariant(
@@ -3120,9 +3133,9 @@ function PlasmicInternet3__RenderFunc(props: {
                   [sty.modalsteps2_step3]: hasVariant($state, "steps2", "step3")
                 })}
                 defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
+                  "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                  "plasmic_default_styles",
+                  "plasmic_mixins",
                   styleTokensClassNames
                 )}
                 hideFooter={true}
@@ -3140,24 +3153,16 @@ function PlasmicInternet3__RenderFunc(props: {
                 title={null}
                 trigger={null}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__vKydl)}>
+                <div className={classNames("all", sty.freeBox__vKydl)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hwbyC
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__hwbyC)}
                   >
                     {
                       "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647"
                     }
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__t9GIv
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__t9GIv)}
                   >
                     {
                       "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0628\u0633\u062a\u0647:"
@@ -3166,29 +3171,21 @@ function PlasmicInternet3__RenderFunc(props: {
                   <ul
                     data-plasmic-name={"ul"}
                     data-plasmic-override={overrides.ul}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.ul,
-                      sty.ul
-                    )}
+                    className={classNames("all", "ul", "ul__sZQMb", sty.ul)}
                   >
                     <li
                       className={classNames(
-                        projectcss.all,
-                        projectcss.li,
+                        "all",
+                        "li",
+                        "li__sZQMb",
                         sty.li__dlthv
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__swBam
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__swBam)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__sw54A
                           )}
                         >
@@ -3200,25 +3197,21 @@ function PlasmicInternet3__RenderFunc(props: {
                     </li>
                     <li
                       className={classNames(
-                        projectcss.all,
-                        projectcss.li,
+                        "all",
+                        "li",
+                        "li__sZQMb",
                         sty.li__xRkX
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__xvShr
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__xvShr)}>
                         <div
                           data-plasmic-name={
                             "\u0627\u067e\u0631\u0627\u062a\u0648\u0631"
                           }
                           data-plasmic-override={overrides.اپراتور}
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.اپراتور
                           )}
                         >
@@ -3230,25 +3223,21 @@ function PlasmicInternet3__RenderFunc(props: {
                     </li>
                     <li
                       className={classNames(
-                        projectcss.all,
-                        projectcss.li,
+                        "all",
+                        "li",
+                        "li__sZQMb",
                         sty.li__k0QOy
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__bBPxS
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__bBPxS)}>
                         <div
                           data-plasmic-name={
                             "\u0627\u067e\u0631\u0627\u062a\u0648\u06312"
                           }
                           data-plasmic-override={overrides.اپراتور2}
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.اپراتور2
                           )}
                         >
@@ -3260,25 +3249,21 @@ function PlasmicInternet3__RenderFunc(props: {
                     </li>
                     <li
                       className={classNames(
-                        projectcss.all,
-                        projectcss.li,
+                        "all",
+                        "li",
+                        "li__sZQMb",
                         sty.li__hZjIi
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hSBto
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__hSBto)}>
                         <div
                           data-plasmic-name={
                             "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
                           }
                           data-plasmic-override={overrides.اپراتور3}
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.اپراتور3
                           )}
                         >
@@ -3359,7 +3344,7 @@ function PlasmicInternet3__RenderFunc(props: {
               </AntdModal>
               {(hasVariant($state, "steps2", "step3") ? true : false) ? (
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__bai8Y, {
+                  className={classNames("all", sty.freeBox__bai8Y, {
                     [sty.freeBoxsteps2_step3__bai8YYl49R]: hasVariant(
                       $state,
                       "steps2",
@@ -3370,7 +3355,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   <div
                     data-plasmic-name={"pay"}
                     data-plasmic-override={overrides.pay}
-                    className={classNames(projectcss.all, sty.pay, {
+                    className={classNames("all", sty.pay, {
                       [sty.paysteps2_step2]: hasVariant(
                         $state,
                         "steps2",
@@ -3744,7 +3729,7 @@ function PlasmicInternet3__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__tOVwG, {
+                    className={classNames("all", sty.freeBox__tOVwG, {
                       [sty.freeBoxsteps2_step2__tOVwGoGK8]: hasVariant(
                         $state,
                         "steps2",
@@ -3797,17 +3782,15 @@ function PlasmicInternet3__RenderFunc(props: {
                     }}
                   >
                     <Group4SvgIcon
-                      className={classNames(projectcss.all, sty.svg__l1Kfc)}
+                      className={classNames("all", sty.svg__l1Kfc)}
                       role={"img"}
                     />
 
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zzq0H)}
-                    >
+                    <div className={classNames("all", sty.freeBox__zzq0H)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__swIbe,
                           {
                             [sty.textsteps2_step3__swIbeYl49R]: hasVariant(
@@ -3824,8 +3807,8 @@ function PlasmicInternet3__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__iwv10,
                           hasVariant($state, "steps2", "step3")
                             ? "dateshow"
@@ -3861,7 +3844,7 @@ function PlasmicInternet3__RenderFunc(props: {
                       </div>
                     </div>
                     <Group7SvgIcon
-                      className={classNames(projectcss.all, sty.svg__qYpD, {
+                      className={classNames("all", sty.svg__qYpD, {
                         [sty.svgsteps2_step3__qYpDYl49R]: hasVariant(
                           $state,
                           "steps2",
@@ -3889,9 +3872,9 @@ function PlasmicInternet3__RenderFunc(props: {
                   )
                 })}
                 defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
+                  "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                  "plasmic_default_styles",
+                  "plasmic_mixins",
                   styleTokensClassNames
                 )}
                 hideFooter={true}
@@ -3920,7 +3903,7 @@ function PlasmicInternet3__RenderFunc(props: {
                 }
                 wrapClassName={classNames({ [sty["pcls_KeVlB4A7r1P9"]]: true })}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__lzLs9)}>
+                <div className={classNames("all", sty.freeBox__lzLs9)}>
                   <LottieWrapper
                     data-plasmic-name={"lottie"}
                     data-plasmic-override={overrides.lottie}
@@ -4353,23 +4336,17 @@ function PlasmicInternet3__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__v15JG
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__v15JG)}
                   >
                     {
                       "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
                     }
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__cvWut)}
-                  >
+                  <div className={classNames("all", sty.freeBox__cvWut)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__gmcwC
                       )}
                     >
@@ -4379,8 +4356,8 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__tEpC7
                       )}
                     >
@@ -4401,13 +4378,11 @@ function PlasmicInternet3__RenderFunc(props: {
                       </React.Fragment>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__zIykk)}
-                  >
+                  <div className={classNames("all", sty.freeBox__zIykk)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__igKzD
                       )}
                     >
@@ -4417,8 +4392,8 @@ function PlasmicInternet3__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__blY2S
                       )}
                     >
@@ -4495,8 +4470,8 @@ function PlasmicInternet3__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zhZqZ
                       )}
                     >
@@ -5342,13 +5317,12 @@ export const PlasmicInternet3 = Object.assign(
     internalVariantProps: PlasmicInternet3__VariantProps,
     internalArgProps: PlasmicInternet3__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/intenet",
+      pagePath: "/intenet",
+      params: {},
+      query: {}
+    })
   }
 );
 

@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicExchange.module.css"; // plasmic-import: o18FzkeW7v5y/css
 
 createPlasmicElementProxy;
@@ -165,15 +164,13 @@ function PlasmicExchange__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "exchange",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(localStorage.getItem("exchange"));
@@ -192,7 +189,7 @@ function PlasmicExchange__RenderFunc(props: {
         path: "commission",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(localStorage.getItem("comson"));
@@ -211,7 +208,7 @@ function PlasmicExchange__RenderFunc(props: {
         path: "totalToman",
         type: "readonly",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         onChangeProp: "onTotalTomanChange"
       },
@@ -219,7 +216,7 @@ function PlasmicExchange__RenderFunc(props: {
         path: "totalAfghani",
         type: "readonly",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         onChangeProp: "onTotalAfghaniChange"
       },
@@ -235,7 +232,7 @@ function PlasmicExchange__RenderFunc(props: {
         path: "afghaniWithoutCommission",
         type: "readonly",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         onChangeProp: "onAfghaniWithoutCommissionChange"
       },
@@ -243,7 +240,7 @@ function PlasmicExchange__RenderFunc(props: {
         path: "tomanWithoutCommission",
         type: "readonly",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0,
 
         onChangeProp: "onTomanWithoutCommissionChange"
       },
@@ -274,10 +271,14 @@ function PlasmicExchange__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -290,10 +291,10 @@ function PlasmicExchange__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}

@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicInternet.module.css"; // plasmic-import: P11Qgi5w3RYj/css
 
 import WifiSvgrepoCom1SvgIcon from "./icons/PlasmicIcon__WifiSvgrepoCom1Svg"; // plasmic-import: a_nZSrhqGoET/icon
@@ -140,10 +139,10 @@ function PlasmicInternet__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.internetPackage
       )}
@@ -151,14 +150,14 @@ function PlasmicInternet__RenderFunc(props: {
       <WifiSvgrepoCom1SvgIcon
         data-plasmic-name={"wiFiIcon"}
         data-plasmic-override={overrides.wiFiIcon}
-        className={classNames(projectcss.all, sty.wiFiIcon)}
+        className={classNames("all", sty.wiFiIcon)}
         role={"img"}
       />
 
       <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text)}
+        className={classNames("all", "__wab_text", sty.text)}
       >
         {"\u0628\u0633\u062a\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a"}
       </div>

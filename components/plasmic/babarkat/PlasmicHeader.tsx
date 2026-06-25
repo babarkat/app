@@ -80,7 +80,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicHeader.module.css"; // plasmic-import: guZRqy1VG4VR/css
 
 import Icon131Icon from "./icons/PlasmicIcon__Icon131"; // plasmic-import: mk8KWA0sV7w5/icon
@@ -258,106 +257,100 @@ function PlasmicHeader__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "drawer.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "exitModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "editPassword.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "nowPass.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "reoeatNewPass.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "newPass.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass3",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "p1",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "editSaraf.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "fragmentInput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "select.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $props.userbabarcat._saraf;
@@ -376,7 +369,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "saraflist",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -403,20 +396,20 @@ function PlasmicHeader__RenderFunc(props: {
         path: "loadedbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "support.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "btnNumber.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -435,7 +428,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -454,7 +447,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -473,7 +466,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "btnSaraf.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -492,7 +485,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "sendcode.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -511,7 +504,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "button4.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -530,7 +523,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "button5.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -549,7 +542,7 @@ function PlasmicHeader__RenderFunc(props: {
         path: "button6.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -567,10 +560,18 @@ function PlasmicHeader__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
   const dataSourcesCtx = usePlasmicDataSourceContext();
@@ -585,10 +586,10 @@ function PlasmicHeader__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.header,
         {
@@ -600,10 +601,10 @@ function PlasmicHeader__RenderFunc(props: {
         }
       )}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__nBoJs)}>
-        <div className={classNames(projectcss.all, sty.freeBox__h41B6)}>
+      <div className={classNames("all", sty.freeBox__nBoJs)}>
+        <div className={classNames("all", sty.freeBox__h41B6)}>
           <Icon131Icon
-            className={classNames(projectcss.all, sty.svg__bVNe)}
+            className={classNames("all", sty.svg__bVNe)}
             onClick={async event => {
               const $steps = {};
 
@@ -667,11 +668,7 @@ function PlasmicHeader__RenderFunc(props: {
           })()}
         >
           <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__rumSg
-            )}
+            className={classNames("all", "__wab_text", sty.text__rumSg)}
             onClick={async event => {
               const $steps = {};
             }}
@@ -702,7 +699,7 @@ function PlasmicHeader__RenderFunc(props: {
           </div>
         </PercentageBox>
       </div>
-      <div className={classNames(projectcss.all, sty.freeBox__zrghs)}>
+      <div className={classNames("all", sty.freeBox__zrghs)}>
         <PlasmicImg__
           alt={""}
           className={classNames(sty.img__utyQr)}
@@ -722,7 +719,7 @@ function PlasmicHeader__RenderFunc(props: {
         />
       </div>
       <Icon4Icon
-        className={classNames(projectcss.all, sty.svg___4Y1Ns)}
+        className={classNames("all", sty.svg___4Y1Ns)}
         onClick={async event => {
           const $steps = {};
 
@@ -782,15 +779,15 @@ function PlasmicHeader__RenderFunc(props: {
             }
           })() ? (
             <Icon60Icon
-              className={classNames(projectcss.all, sty.svg__dkfx7)}
+              className={classNames("all", sty.svg__dkfx7)}
               role={"img"}
             />
           ) : null
         }
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         hideFooter={true}
@@ -817,29 +814,23 @@ function PlasmicHeader__RenderFunc(props: {
         }
         wrapClassName={classNames({ [sty["pcls_ECy8sTZpS0H1"]]: true })}
       >
-        <div className={classNames(projectcss.all, sty.freeBox__xbkO)}>
+        <div className={classNames("all", sty.freeBox__xbkO)}>
           <div
             data-plasmic-name={"wallet6"}
             data-plasmic-override={overrides.wallet6}
-            className={classNames(projectcss.all, sty.wallet6)}
+            className={classNames("all", sty.wallet6)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox___0E0Sh)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__kplWd
-                )}
-              >
+            <div className={classNames("all", sty.freeBox___0E0Sh)}>
+              <div className={classNames("all", "__wab_text", sty.text__kplWd)}>
                 {
                   "\u062a\u063a\u06cc\u06cc\u0631 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631"
                 }
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___0PVr0)}>
-            <div className={classNames(projectcss.all, sty.freeBox__uOCyg)}>
-              <div className={classNames(projectcss.all, sty.freeBox__wLrkG)}>
+          <div className={classNames("all", sty.freeBox___0PVr0)}>
+            <div className={classNames("all", sty.freeBox__uOCyg)}>
+              <div className={classNames("all", sty.freeBox__wLrkG)}>
                 {false ? (
                   <PlasmicImg__
                     alt={""}
@@ -860,24 +851,16 @@ function PlasmicHeader__RenderFunc(props: {
                   />
                 ) : null}
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__zu7Pk)}>
+              <div className={classNames("all", sty.freeBox__zu7Pk)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___62RaG
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___62RaG)}
                 >
                   {
                     "\u0627\u0646\u062a\u062e\u0627\u0628 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc"
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__dhrRs
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__dhrRs)}
                 >
                   {
                     "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
@@ -911,39 +894,25 @@ function PlasmicHeader__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__veRk
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__veRk)}
                 >
                   {
                     "\u0648\u0631\u0648\u062f \u0628\u0627 \u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc \u0648 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 >"
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uyF4O
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__uyF4O)}
                 >
                   {
                     "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
                   }
                 </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nwZ
-                  )}
-                >
+                <div className={classNames("all", "__wab_text", sty.text__nwZ)}>
                   {
                     "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__cvZrj)}>
+                <div className={classNames("all", sty.freeBox__cvZrj)}>
                   <Input
                     data-plasmic-name={"fragmentInput3"}
                     data-plasmic-override={overrides.fragmentInput3}
@@ -972,11 +941,11 @@ function PlasmicHeader__RenderFunc(props: {
                   />
 
                   <Icon55Icon
-                    className={classNames(projectcss.all, sty.svg__tRtl9)}
+                    className={classNames("all", sty.svg__tRtl9)}
                     role={"img"}
                   />
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ozlBn)}>
+                <div className={classNames("all", sty.freeBox__ozlBn)}>
                   <Input
                     data-plasmic-name={"fragmentInput2"}
                     data-plasmic-override={overrides.fragmentInput2}
@@ -1005,11 +974,7 @@ function PlasmicHeader__RenderFunc(props: {
                   />
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___4Euqw
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___4Euqw)}
                 >
                   {
                     "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"
@@ -1025,11 +990,7 @@ function PlasmicHeader__RenderFunc(props: {
 
                 {false ? (
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__zAzMt
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__zAzMt)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u067e\u06cc\u0627\u0645\u06a9 (38)"
@@ -1042,9 +1003,9 @@ function PlasmicHeader__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.select)}
                   defaultOpen={false}
                   defaultStylesClassName={classNames(
-                    projectcss.root_reset,
-                    projectcss.plasmic_default_styles,
-                    projectcss.plasmic_mixins,
+                    "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                    "plasmic_default_styles",
+                    "plasmic_mixins",
                     styleTokensClassNames
                   )}
                   defaultValue={(() => {
@@ -1089,32 +1050,26 @@ function PlasmicHeader__RenderFunc(props: {
                           ? Icon37Icon
                           : Icon10Icon
                       }
-                      className={classNames(projectcss.all, sty.svg__q783Z)}
+                      className={classNames("all", sty.svg__q783Z)}
                       role={"img"}
                     />
                   }
                   value={generateStateValueProp($state, ["select", "value"])}
                 />
               </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__bpaf0
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__bpaf0)}>
                 {
                   "\u0627\u0646\u062a\u062e\u0627\u0628 \u0635\u0631\u0627\u0641\u06cc"
                 }
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__wq4F)}>
+              <div className={classNames("all", sty.freeBox__wq4F)}>
                 <Button
                   data-plasmic-name={"btnNumber"}
                   data-plasmic-override={overrides.btnNumber}
                   className={classNames("__wab_instance", sty.btnNumber)}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__klha)}
+                      className={classNames("all", sty.svg__klha)}
                       role={"img"}
                     />
                   }
@@ -1140,11 +1095,7 @@ function PlasmicHeader__RenderFunc(props: {
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__izSt
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__izSt)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -1157,7 +1108,7 @@ function PlasmicHeader__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.button)}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg___9MBcw)}
+                      className={classNames("all", sty.svg___9MBcw)}
                       role={"img"}
                     />
                   }
@@ -1183,11 +1134,7 @@ function PlasmicHeader__RenderFunc(props: {
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vRf7X
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vRf7X)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -1200,7 +1147,7 @@ function PlasmicHeader__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.button2)}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg___6B9Mm)}
+                      className={classNames("all", sty.svg___6B9Mm)}
                       role={"img"}
                     />
                   }
@@ -1226,11 +1173,7 @@ function PlasmicHeader__RenderFunc(props: {
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__iwiI
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__iwiI)}
                   >
                     {
                       "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -1244,7 +1187,7 @@ function PlasmicHeader__RenderFunc(props: {
                   color={"green"}
                   endIcon={
                     <IconIcon
-                      className={classNames(projectcss.all, sty.svg__mzGtD)}
+                      className={classNames("all", sty.svg__mzGtD)}
                       role={"img"}
                     />
                   }
@@ -1585,11 +1528,7 @@ function PlasmicHeader__RenderFunc(props: {
                   })()}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vh8Cv
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vh8Cv)}
                   >
                     {"\u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
@@ -1601,7 +1540,7 @@ function PlasmicHeader__RenderFunc(props: {
                     className={classNames("__wab_instance", sty.sendcode)}
                     endIcon={
                       <Icon3Icon
-                        className={classNames(projectcss.all, sty.svg___1KoDi)}
+                        className={classNames("all", sty.svg___1KoDi)}
                         role={"img"}
                       />
                     }
@@ -1628,8 +1567,8 @@ function PlasmicHeader__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___5U4Jm
                       )}
                     >
@@ -1642,28 +1581,28 @@ function PlasmicHeader__RenderFunc(props: {
                 <div
                   data-plasmic-name={"figmaPaste"}
                   data-plasmic-override={overrides.figmaPaste}
-                  className={classNames(projectcss.all, sty.figmaPaste)}
+                  className={classNames("all", sty.figmaPaste)}
                 >
                   <div
                     data-plasmic-name={"group"}
                     data-plasmic-override={overrides.group}
-                    className={classNames(projectcss.all, sty.group)}
+                    className={classNames("all", sty.group)}
                   >
                     <div
                       data-plasmic-name={"group2"}
                       data-plasmic-override={overrides.group2}
-                      className={classNames(projectcss.all, sty.group2)}
+                      className={classNames("all", sty.group2)}
                     >
                       <div
                         data-plasmic-name={"rectangle35"}
                         data-plasmic-override={overrides.rectangle35}
-                        className={classNames(projectcss.all, sty.rectangle35)}
+                        className={classNames("all", sty.rectangle35)}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___4Ikul
                         )}
                       >
@@ -1673,26 +1612,23 @@ function PlasmicHeader__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group3"}
                       data-plasmic-override={overrides.group3}
-                      className={classNames(projectcss.all, sty.group3)}
+                      className={classNames("all", sty.group3)}
                     >
                       <div
                         data-plasmic-name={"group4"}
                         data-plasmic-override={overrides.group4}
-                        className={classNames(projectcss.all, sty.group4)}
+                        className={classNames("all", sty.group4)}
                       >
                         <div
                           data-plasmic-name={"rectangle23"}
                           data-plasmic-override={overrides.rectangle23}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle23
-                          )}
+                          className={classNames("all", sty.rectangle23)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___8Fk2E
                           )}
                         >
@@ -1702,21 +1638,18 @@ function PlasmicHeader__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group5"}
                         data-plasmic-override={overrides.group5}
-                        className={classNames(projectcss.all, sty.group5)}
+                        className={classNames("all", sty.group5)}
                       >
                         <div
                           data-plasmic-name={"rectangle24"}
                           data-plasmic-override={overrides.rectangle24}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle24
-                          )}
+                          className={classNames("all", sty.rectangle24)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__b1Dbp
                           )}
                         >
@@ -1726,21 +1659,18 @@ function PlasmicHeader__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group6"}
                         data-plasmic-override={overrides.group6}
-                        className={classNames(projectcss.all, sty.group6)}
+                        className={classNames("all", sty.group6)}
                       >
                         <div
                           data-plasmic-name={"rectangle25"}
                           data-plasmic-override={overrides.rectangle25}
-                          className={classNames(
-                            projectcss.all,
-                            sty.rectangle25
-                          )}
+                          className={classNames("all", sty.rectangle25)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___5LoVc
                           )}
                         >
@@ -1750,18 +1680,18 @@ function PlasmicHeader__RenderFunc(props: {
                       <div
                         data-plasmic-name={"group7"}
                         data-plasmic-override={overrides.group7}
-                        className={classNames(projectcss.all, sty.group7)}
+                        className={classNames("all", sty.group7)}
                       >
                         <div
                           data-plasmic-name={"rectangle"}
                           data-plasmic-override={overrides.rectangle}
-                          className={classNames(projectcss.all, sty.rectangle)}
+                          className={classNames("all", sty.rectangle)}
                         />
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__dWdJs
                           )}
                         >
@@ -1771,8 +1701,8 @@ function PlasmicHeader__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__nszs
                       )}
                     >
@@ -1782,8 +1712,8 @@ function PlasmicHeader__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__ge6Py
                       )}
                     >
@@ -1795,13 +1725,13 @@ function PlasmicHeader__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group8"}
                     data-plasmic-override={overrides.group8}
-                    className={classNames(projectcss.all, sty.group8)}
+                    className={classNames("all", sty.group8)}
                   />
                 </div>
               ) : null}
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__g4CXs)} />
+          <div className={classNames("all", sty.freeBox__g4CXs)} />
         </div>
       </AntdModal>
       <AntdModal
@@ -1811,14 +1741,14 @@ function PlasmicHeader__RenderFunc(props: {
         closeButtonClassName={classNames({ [sty["pcls_I3V8uXLAhMOG"]]: true })}
         closeIcon={
           <Icon60Icon
-            className={classNames(projectcss.all, sty.svg__psSw1)}
+            className={classNames("all", sty.svg__psSw1)}
             role={"img"}
           />
         }
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         hideFooter={true}
@@ -1845,45 +1775,33 @@ function PlasmicHeader__RenderFunc(props: {
         }
         wrapClassName={classNames({ [sty["pcls_jCHCzh-MESJT"]]: true })}
       >
-        <div className={classNames(projectcss.all, sty.freeBox__zzWtD)}>
+        <div className={classNames("all", sty.freeBox__zzWtD)}>
           <div
             data-plasmic-name={"wallet7"}
             data-plasmic-override={overrides.wallet7}
-            className={classNames(projectcss.all, sty.wallet7)}
+            className={classNames("all", sty.wallet7)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__ovnj)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__d6YO
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__ovnj)}>
+              <div className={classNames("all", "__wab_text", sty.text__d6YO)}>
                 {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__d1WQ)}>
+          <div className={classNames("all", sty.freeBox__d1WQ)}>
             <Icon63Icon
-              className={classNames(projectcss.all, sty.svg__lnJa8)}
+              className={classNames("all", sty.svg__lnJa8)}
               role={"img"}
             />
 
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__bkd8
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__bkd8)}>
               {
                 "\u0631\u0627\u0647 \u0647\u0627\u06cc \u0627\u0631\u062a\u0628\u0627\u0637\u06cc \u0628\u0627 \u0645\u0627"
               }
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___5BhwW)}>
+          <div className={classNames("all", sty.freeBox___5BhwW)}>
             <div
-              className={classNames(projectcss.all, sty.freeBox__uxnBp)}
+              className={classNames("all", sty.freeBox__uxnBp)}
               onClick={async event => {
                 const $steps = {};
 
@@ -1940,30 +1858,22 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               }}
             >
-              <div className={classNames(projectcss.all, sty.freeBox__ge920)}>
+              <div className={classNames("all", sty.freeBox__ge920)}>
                 <Icon22Icon
-                  className={classNames(projectcss.all, sty.svg__l2WDh)}
+                  className={classNames("all", sty.svg__l2WDh)}
                   role={"img"}
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__rPqdo)}>
+              <div className={classNames("all", sty.freeBox__rPqdo)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__piaKq
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__piaKq)}
                 >
                   {
                     "\u0627\u0631\u062a\u0628\u0627\u0637 \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u062a\u0633\u0627\u067e"
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jbkcX
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__jbkcX)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -1986,7 +1896,7 @@ function PlasmicHeader__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__uJ4K)} />
+          <div className={classNames("all", sty.freeBox__uJ4K)} />
         </div>
       </AntdModal>
       <AntdModal
@@ -1995,9 +1905,9 @@ function PlasmicHeader__RenderFunc(props: {
         className={classNames("__wab_instance", sty.editPassword)}
         closeButtonClassName={classNames({ [sty["pcls_sqOdS_lf2FiV"]]: true })}
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         hideFooter={true}
@@ -2024,44 +1934,32 @@ function PlasmicHeader__RenderFunc(props: {
         }
         wrapClassName={classNames({ [sty["pcls_TkC6kSjbcg6h"]]: true })}
       >
-        <div className={classNames(projectcss.all, sty.freeBox__hTf31)}>
+        <div className={classNames("all", sty.freeBox__hTf31)}>
           <div
             data-plasmic-name={"wallet5"}
             data-plasmic-override={overrides.wallet5}
-            className={classNames(projectcss.all, sty.wallet5)}
+            className={classNames("all", sty.wallet5)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__mJy2C)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__uiwci
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__mJy2C)}>
+              <div className={classNames("all", "__wab_text", sty.text__uiwci)}>
                 {
                   "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                 }
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__fklle)}>
-            <div className={classNames(projectcss.all, sty.freeBox__nzhPd)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__wt6XN
-                )}
-              >
+          <div className={classNames("all", sty.freeBox__fklle)}>
+            <div className={classNames("all", sty.freeBox__nzhPd)}>
+              <div className={classNames("all", "__wab_text", sty.text__wt6XN)}>
                 {
                   "\u062a\u063a\u06cc\u06cc\u0631  \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
                 }
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__eKrXk)}>
-              <div className={classNames(projectcss.all, sty.freeBox__lvYIt)}>
+            <div className={classNames("all", sty.freeBox__eKrXk)}>
+              <div className={classNames("all", sty.freeBox__lvYIt)}>
                 <Icon46Icon
-                  className={classNames(projectcss.all, sty.svg__a9Ffs)}
+                  className={classNames("all", sty.svg__a9Ffs)}
                   role={"img"}
                 />
 
@@ -2095,7 +1993,7 @@ function PlasmicHeader__RenderFunc(props: {
                 />
 
                 <Icon55Icon
-                  className={classNames(projectcss.all, sty.svg__kd9Gl)}
+                  className={classNames("all", sty.svg__kd9Gl)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2188,11 +2086,7 @@ function PlasmicHeader__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__kVsXz
-                )}
+                className={classNames("all", "__wab_text", sty.text__kVsXz)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2229,21 +2123,15 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__h35Lx)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__uJMv
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__h35Lx)}>
+              <div className={classNames("all", "__wab_text", sty.text__uJMv)}>
                 {
                   "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 6 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631 \u0628\u0627\u0634\u062f."
                 }
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__wiZht)}>
+              <div className={classNames("all", sty.freeBox__wiZht)}>
                 <Icon44Icon
-                  className={classNames(projectcss.all, sty.svg__djXWx)}
+                  className={classNames("all", sty.svg__djXWx)}
                   role={"img"}
                 />
 
@@ -2324,7 +2212,7 @@ function PlasmicHeader__RenderFunc(props: {
                 />
 
                 <Icon55Icon
-                  className={classNames(projectcss.all, sty.svg__odKuU)}
+                  className={classNames("all", sty.svg__odKuU)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2468,9 +2356,9 @@ function PlasmicHeader__RenderFunc(props: {
                 })()}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__hFgb)}>
+            <div className={classNames("all", sty.freeBox__hFgb)}>
               <Icon45Icon
-                className={classNames(projectcss.all, sty.svg__jT2Ll)}
+                className={classNames("all", sty.svg__jT2Ll)}
                 role={"img"}
               />
 
@@ -2507,7 +2395,7 @@ function PlasmicHeader__RenderFunc(props: {
               />
 
               <Icon55Icon
-                className={classNames(projectcss.all, sty.svg__rjZpj)}
+                className={classNames("all", sty.svg__rjZpj)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2616,11 +2504,7 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               })() ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__vKr5O
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__vKr5O)}
                 >
                   {
                     "\u062a\u06a9\u0631\u0627\u0631 \u0631\u0645\u0632 \u0628\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0645\u0637\u0627\u0628\u0642\u062a \u0646\u062f\u0627\u0631\u062f."
@@ -2644,11 +2528,7 @@ function PlasmicHeader__RenderFunc(props: {
                 }
               })() ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__n1DKp
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__n1DKp)}
                 >
                   {
                     "\u062a\u0637\u0627\u0628\u0642 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u062a\u0623\u06cc\u06cc\u062f \u0634\u062f."
@@ -2672,7 +2552,7 @@ function PlasmicHeader__RenderFunc(props: {
                       ? IconIcon
                       : Icon3Icon
                   }
-                  className={classNames(projectcss.all, sty.svg__ekcIi)}
+                  className={classNames("all", sty.svg__ekcIi)}
                   role={"img"}
                 />
               }
@@ -3013,17 +2893,13 @@ function PlasmicHeader__RenderFunc(props: {
               }
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___61LyC
-                )}
+                className={classNames("all", "__wab_text", sty.text___61LyC)}
               >
                 {"\u062a\u0627\u06cc\u06cc\u062f"}
               </div>
             </Button>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__kNRh0)} />
+          <div className={classNames("all", sty.freeBox__kNRh0)} />
         </div>
       </AntdModal>
       <AntdDrawer
@@ -3031,9 +2907,9 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-override={overrides.drawer}
         className={classNames("__wab_instance", sty.drawer)}
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         drawerBodyClassName={classNames({ [sty["pcls_gEPSKEVXpylB"]]: true })}
@@ -3051,23 +2927,19 @@ function PlasmicHeader__RenderFunc(props: {
         title={
           <React.Fragment>
             <BabarkatlogoCopy2SvgIcon
-              className={classNames(projectcss.all, sty.svg___3V0Zd)}
+              className={classNames("all", sty.svg___3V0Zd)}
               role={"img"}
             />
 
-            <div className={classNames(projectcss.all, sty.freeBox__nlHLk)}>
+            <div className={classNames("all", sty.freeBox__nlHLk)}>
               <GroupSvgIcon
-                className={classNames(projectcss.all, sty.svg__rApRx)}
+                className={classNames("all", sty.svg__rApRx)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__bT6Yh)}>
+              <div className={classNames("all", sty.freeBox__bT6Yh)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__tiUdR
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__tiUdR)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -3094,11 +2966,7 @@ function PlasmicHeader__RenderFunc(props: {
                   </React.Fragment>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__z8Sns
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__z8Sns)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -3124,7 +2992,7 @@ function PlasmicHeader__RenderFunc(props: {
                     : Icon36Icon
                 }
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.svg___4Qp9,
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "go"
@@ -3136,10 +3004,10 @@ function PlasmicHeader__RenderFunc(props: {
           </React.Fragment>
         }
       >
-        <div className={classNames(projectcss.all, sty.freeBox__wtMld)}>
-          <div className={classNames(projectcss.all, sty.freeBox__wlCoF)}>
+        <div className={classNames("all", sty.freeBox__wtMld)}>
+          <div className={classNames("all", sty.freeBox__wlCoF)}>
             <div
-              className={classNames(projectcss.all, sty.freeBox__ka5OS)}
+              className={classNames("all", sty.freeBox__ka5OS)}
               onClick={async event => {
                 const $steps = {};
 
@@ -3214,17 +3082,13 @@ function PlasmicHeader__RenderFunc(props: {
               }}
             >
               <Icon43Icon
-                className={classNames(projectcss.all, sty.svg__qlF3U)}
+                className={classNames("all", sty.svg__qlF3U)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__a6Bmx)}>
+              <div className={classNames("all", sty.freeBox__a6Bmx)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__hjppR
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__hjppR)}
                 >
                   {
                     "\u062a\u0646\u0638\u06cc\u0645\u0627\u062a \u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
@@ -3237,12 +3101,12 @@ function PlasmicHeader__RenderFunc(props: {
                     ? Icon36Icon
                     : Icon36Icon
                 }
-                className={classNames(projectcss.all, sty.svg__k7Yjj)}
+                className={classNames("all", sty.svg__k7Yjj)}
                 role={"img"}
               />
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox___4BKvU)}
+              className={classNames("all", sty.freeBox___4BKvU)}
               onClick={async event => {
                 const $steps = {};
 
@@ -3317,17 +3181,13 @@ function PlasmicHeader__RenderFunc(props: {
               }}
             >
               <Icon57Icon
-                className={classNames(projectcss.all, sty.svg__idyNs)}
+                className={classNames("all", sty.svg__idyNs)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__jHxP)}>
+              <div className={classNames("all", sty.freeBox__jHxP)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__vifz0
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__vifz0)}
                 >
                   {
                     "\u062a\u063a\u06cc\u06cc\u0631 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631"
@@ -3340,12 +3200,12 @@ function PlasmicHeader__RenderFunc(props: {
                     ? Icon36Icon
                     : Icon36Icon
                 }
-                className={classNames(projectcss.all, sty.svg__nfSzB)}
+                className={classNames("all", sty.svg__nfSzB)}
                 role={"img"}
               />
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__aDXqQ)}
+              className={classNames("all", sty.freeBox__aDXqQ)}
               onClick={async event => {
                 const $steps = {};
 
@@ -3420,17 +3280,13 @@ function PlasmicHeader__RenderFunc(props: {
               }}
             >
               <Icon69Icon
-                className={classNames(projectcss.all, sty.svg__dDeLg)}
+                className={classNames("all", sty.svg__dDeLg)}
                 role={"img"}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox___0Rt0N)}>
+              <div className={classNames("all", sty.freeBox___0Rt0N)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__oxgZ0
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__oxgZ0)}
                 >
                   {"\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"}
                 </div>
@@ -3441,13 +3297,13 @@ function PlasmicHeader__RenderFunc(props: {
                     ? Icon36Icon
                     : Icon36Icon
                 }
-                className={classNames(projectcss.all, sty.svg___06LD1)}
+                className={classNames("all", sty.svg___06LD1)}
                 role={"img"}
               />
             </div>
           </div>
           <div
-            className={classNames(projectcss.all, sty.freeBox__ulcP1)}
+            className={classNames("all", sty.freeBox__ulcP1)}
             onClick={async event => {
               const $steps = {};
 
@@ -3511,18 +3367,12 @@ function PlasmicHeader__RenderFunc(props: {
             }}
           >
             <Icon24Icon
-              className={classNames(projectcss.all, sty.svg__xiPvr)}
+              className={classNames("all", sty.svg__xiPvr)}
               role={"img"}
             />
 
-            <div className={classNames(projectcss.all, sty.freeBox__h9Ejh)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ecm9S
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__h9Ejh)}>
+              <div className={classNames("all", "__wab_text", sty.text__ecm9S)}>
                 {
                   "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
                 }
@@ -3534,7 +3384,7 @@ function PlasmicHeader__RenderFunc(props: {
                   ? Icon36Icon
                   : Icon36Icon
               }
-              className={classNames(projectcss.all, sty.svg__nOHu)}
+              className={classNames("all", sty.svg__nOHu)}
               role={"img"}
             />
           </div>
@@ -3545,9 +3395,9 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-override={overrides.exitModal}
         className={classNames("__wab_instance", sty.exitModal)}
         defaultStylesClassName={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
         hideFooter={true}
@@ -3565,31 +3415,19 @@ function PlasmicHeader__RenderFunc(props: {
         trigger={null}
         width={"520"}
       >
-        <div className={classNames(projectcss.all, sty.freeBox__vv4DC)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__v28Jk
-            )}
-          >
+        <div className={classNames("all", sty.freeBox__vv4DC)}>
+          <div className={classNames("all", "__wab_text", sty.text__v28Jk)}>
             {
               "\u062e\u0631\u0648\u062c \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc"
             }
           </div>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__xqcny
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__xqcny)}>
             {
               "\u0622\u06cc\u0627 \u0645\u06cc \u062e\u0648\u0627\u0647\u06cc\u062f \u0627\u0632 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc \u062e\u0648\u062f \u062e\u0627\u0631\u062c \u0634\u0648\u06cc\u062f\u061f"
             }
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__rolc8)}>
+        <div className={classNames("all", sty.freeBox__rolc8)}>
           <Button
             data-plasmic-name={"button5"}
             data-plasmic-override={overrides.button5}

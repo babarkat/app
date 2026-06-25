@@ -76,7 +76,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLoginPanel.module.css"; // plasmic-import: UmTKQn0WdwT-/css
 
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
@@ -89,6 +88,50 @@ import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQ
 import Icon153Icon from "./icons/PlasmicIcon__Icon153"; // plasmic-import: 0QI_dVUCt1kX/icon
 import LeftArrowBackSvgrepoComSvgIcon from "./icons/PlasmicIcon__LeftArrowBackSvgrepoComSvg"; // plasmic-import: LNmML4UO8Edb/icon
 import Icon82Icon from "./icons/PlasmicIcon__Icon82"; // plasmic-import: 9IvX4CneDX4f/icon
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت",
+
+      images: [
+        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png"
+      ]
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      title: "بابرکت",
+
+      images: [
+        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png"
+      ]
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -200,49 +243,44 @@ function PlasmicLoginPanel__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "fragmentInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "unnamedVariant",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.unnamedVariant
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.unnamedVariant
       },
       {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "time",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return 60;
@@ -261,19 +299,19 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "loadedbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "code",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "saraf",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           { label: "sjsjd1n", value: 101 },
           { label: "sjs2jdn", value: 102 },
           { label: "sjsj3dn", value: 103 },
@@ -284,13 +322,14 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "unnamedVariant2",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.unnamedVariant2
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.unnamedVariant2
       },
       {
         path: "select.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
@@ -338,43 +377,44 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "selectsaraf",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "password",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.password
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.password
       },
       {
         path: "pass",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "loginByPassword",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.loginByPassword
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.loginByPassword
       },
       {
         path: "fragmentInput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "contry",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             value: "+98",
             label: "\ud83c\uddee\ud83c\uddf7 +98",
@@ -411,13 +451,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "select2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "+98"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "+98"
       },
       {
         path: "selectContry",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.select2.value;
@@ -436,7 +476,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -455,7 +495,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "btnNumber.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -474,7 +514,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -493,7 +533,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -512,7 +552,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "btnSaraf.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -531,7 +571,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "sendcode.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -550,7 +590,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "button4.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -569,19 +609,19 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "fragmentInput4.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "select3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "+98"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "+98"
       },
       {
         path: "fragmentInput5.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "loginByPassword", "loginByPassword")
             ? (() => {
                 try {
@@ -602,13 +642,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "fragmentInput6.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "select4.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
@@ -656,7 +696,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "username2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(localStorage.getItem("userbabarcat"))?.username;
@@ -675,7 +715,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "button5.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -694,23 +734,36 @@ function PlasmicLoginPanel__RenderFunc(props: {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -718,27 +771,23 @@ function PlasmicLoginPanel__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary_large_image" />
-        <title key="title">{PlasmicLoginPanel.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicLoginPanel.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicLoginPanel.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
 
         <meta
           key="og:image"
           property="og:image"
-          content={PlasmicLoginPanel.pageMetadata.ogImageSrc}
+          content={pageMetadata.ogImageSrc}
         />
         <meta
           key="twitter:image"
-          name="twitter:image"
-          content={PlasmicLoginPanel.pageMetadata.ogImageSrc}
+          property="twitter:image"
+          content={pageMetadata.ogImageSrc}
         />
       </Head>
 
@@ -754,10 +803,10 @@ function PlasmicLoginPanel__RenderFunc(props: {
         data-plasmic-root={true}
         data-plasmic-for-node={forNode}
         className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "all",
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames,
           sty.root,
           {
@@ -1031,7 +1080,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
         >
           <div
             className={classNames(
-              projectcss.all,
+              "all",
               sty.freeBox___6HvRd,
               hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                 hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1071,7 +1120,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             )}
           >
             <div
-              className={classNames(projectcss.all, sty.freeBox___5PujS, {
+              className={classNames("all", sty.freeBox___5PujS, {
                 [sty.freeBoxloginByPassword___5PujSgqb7]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -1112,7 +1161,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     ? Icon154Icon
                     : Icon154Icon
                 }
-                className={classNames(projectcss.all, sty.svg__o73GI, ``, {
+                className={classNames("all", sty.svg__o73GI, ``, {
                   [sty.svgloginByPassword__o73GIgqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -1160,18 +1209,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
               />
 
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__iAtsS,
-                  {
-                    [sty.textloginByPassword__iAtsSgqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__iAtsS, {
+                  [sty.textloginByPassword__iAtsSgqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  )
+                })}
               >
                 {
                   " \u0627\u067e\u0644\u06cc\u06a9\u0634\u0646 \u0645\u062e\u0635\u0648\u0635 \u0627\u0645\u0627\u0646\u062a\u200c\u062f\u0627\u0631"
@@ -1181,7 +1225,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             <div
               data-plasmic-name={"username"}
               data-plasmic-override={overrides.username}
-              className={classNames(projectcss.all, sty.username, {
+              className={classNames("all", sty.username, {
                 [sty.usernameloginByPassword]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -1214,7 +1258,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__ijwgb, {
+                className={classNames("all", sty.freeBox__ijwgb, {
                   [sty.freeBoxloginByPassword__ijwgbGqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -1228,40 +1272,35 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__kxa2A,
-                    {
-                      [sty.textloginByPassword__kxa2AGqb7]: hasVariant(
+                  className={classNames("all", "__wab_text", sty.text__kxa2A, {
+                    [sty.textloginByPassword__kxa2AGqb7]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.textpassword__kxa2AVrixq]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.textunnamedVariant2__kxa2AtCajl]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.textunnamedVariant__kxa2ABNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.textunnamedVariant_loginByPassword__kxa2ABNaryGqb7]:
+                      hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
-                      ),
-                      [sty.textpassword__kxa2AVrixq]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textunnamedVariant2__kxa2AtCajl]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant__kxa2ABNary]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.textunnamedVariant_loginByPassword__kxa2ABNaryGqb7]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    }
-                  )}
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
                 >
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
@@ -1370,39 +1409,34 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 </Button>
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zi0Wx,
-                  {
-                    [sty.textloginByPassword__zi0WxGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__zi0WxVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2__zi0WxtCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant__zi0WxBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__zi0Wx, {
+                  [sty.textloginByPassword__zi0WxGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword__zi0WxVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2__zi0WxtCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant__zi0WxBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
               >
                 {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
                   "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                 ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                   <div
-                    className={projectcss.__wab_expr_html_text}
+                    className={"__wab_expr_html_text"}
                     dangerouslySetInnerHTML={{
                       __html: (() => {
                         try {
@@ -1437,7 +1471,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 )}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__xCgro, {
+                className={classNames("all", sty.freeBox__xCgro, {
                   [sty.freeBoxloginByPassword__xCgroGqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -1531,7 +1565,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__p4PD, {
+                  className={classNames("all", sty.freeBox__p4PD, {
                     [sty.freeBoxunnamedVariant__p4PDbNary]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -1582,9 +1616,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       )
                     })}
                     defaultStylesClassName={classNames(
-                      projectcss.root_reset,
-                      projectcss.plasmic_default_styles,
-                      projectcss.plasmic_mixins,
+                      "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                      "plasmic_default_styles",
+                      "plasmic_mixins",
                       styleTokensClassNames
                     )}
                     defaultValue={"+98"}
@@ -1615,36 +1649,31 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 </div>
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___1IDqV,
-                  {
-                    [sty.textloginByPassword___1IDqVgqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword___1IDqVvrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2___1IDqVtCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant___1IDqVbNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_unnamedVariant2___1IDqVbNaryTCajl]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text___1IDqV, {
+                  [sty.textloginByPassword___1IDqVgqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword___1IDqVvrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2___1IDqVtCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant___1IDqVbNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_unnamedVariant2___1IDqVbNaryTCajl]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                })}
                 onClick={async event => {
                   const $steps = {};
 
@@ -1679,40 +1708,31 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__icaL,
-                  {
-                    [sty.textloginByPassword__icaLGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__icaLVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2__icaLTCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant__icaLBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_loginByPassword__icaLBNaryGqb7]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__icaL, {
+                  [sty.textloginByPassword__icaLGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword__icaLVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2__icaLTCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant__icaLBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_loginByPassword__icaLBNaryGqb7]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                })}
               >
                 {hasVariant($state, "loginByPassword", "loginByPassword")
                   ? "\u0646\u0627\u0645 \u06a9\u0627\u0631\u0628\u0631\u06cc"
@@ -1725,33 +1745,28 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__mA6Rs,
-                  {
-                    [sty.textloginByPassword__mA6RsGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__mA6RsVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2__mA6RstCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant__mA6RsBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__mA6Rs, {
+                  [sty.textloginByPassword__mA6RsGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword__mA6RsVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2__mA6RstCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant__mA6RsBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
                 onClick={async event => {
                   const $steps = {};
 
@@ -1785,7 +1800,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                 ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                   <div
-                    className={projectcss.__wab_expr_html_text}
+                    className={"__wab_expr_html_text"}
                     dangerouslySetInnerHTML={{
                       __html: (() => {
                         try {
@@ -1820,7 +1835,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 )}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__n4EL, {
+                className={classNames("all", sty.freeBox__n4EL, {
                   [sty.freeBoxloginByPassword__n4ELgqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -1924,7 +1939,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__ldlJj, {
+                className={classNames("all", sty.freeBox__ldlJj, {
                   [sty.freeBoxunnamedVariant__ldlJjBNary]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -2014,30 +2029,25 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : true
               ) ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__xcDsY,
-                    {
-                      [sty.textunnamedVariant__xcDsYbNary]: hasVariant(
+                  className={classNames("all", "__wab_text", sty.text__xcDsY, {
+                    [sty.textunnamedVariant__xcDsYbNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.textunnamedVariant_unnamedVariant2__xcDsYbNaryTCajl]:
+                      hasVariant(
                         $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.textunnamedVariant_unnamedVariant2__xcDsYbNaryTCajl]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    }
-                  )}
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
                 >
                   {hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -2062,7 +2072,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     />
                   ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -2191,18 +2201,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : false
               ) ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__b8VzG,
-                    {
-                      [sty.textunnamedVariant__b8VzGbNary]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__b8VzG, {
+                    [sty.textunnamedVariant__b8VzGbNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                   onClick={async event => {
                     const $steps = {};
 
@@ -2303,9 +2308,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     hasVariant($state, "unnamedVariant", "unnamedVariant")
                 })}
                 defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
+                  "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                  "plasmic_default_styles",
+                  "plasmic_mixins",
                   styleTokensClassNames
                 )}
                 defaultValue={
@@ -2389,7 +2394,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         ? Icon37Icon
                         : Icon10Icon
                     }
-                    className={classNames(projectcss.all, sty.svg__uXxua, {
+                    className={classNames("all", sty.svg__uXxua, {
                       [sty.svgunnamedVariant2__uXxuAtCajl]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -2403,7 +2408,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               />
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__jcgz, {
+              className={classNames("all", sty.freeBox__jcgz, {
                 [sty.freeBoxloginByPassword__jcgzGqb7]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -2436,7 +2441,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__dyRl, {
+                className={classNames("all", sty.freeBox__dyRl, {
                   [sty.freeBoxloginByPassword__dyRlGqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -2450,40 +2455,35 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__leJ8V,
-                    {
-                      [sty.textloginByPassword__leJ8Vgqb7]: hasVariant(
+                  className={classNames("all", "__wab_text", sty.text__leJ8V, {
+                    [sty.textloginByPassword__leJ8Vgqb7]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.textpassword__leJ8Vvrixq]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    ),
+                    [sty.textunnamedVariant2__leJ8VtCajl]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    ),
+                    [sty.textunnamedVariant__leJ8VbNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.textunnamedVariant_loginByPassword__leJ8VbNaryGqb7]:
+                      hasVariant(
                         $state,
                         "loginByPassword",
                         "loginByPassword"
-                      ),
-                      [sty.textpassword__leJ8Vvrixq]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      ),
-                      [sty.textunnamedVariant2__leJ8VtCajl]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ),
-                      [sty.textunnamedVariant__leJ8VbNary]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.textunnamedVariant_loginByPassword__leJ8VbNaryGqb7]:
-                        hasVariant(
-                          $state,
-                          "loginByPassword",
-                          "loginByPassword"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    }
-                  )}
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
                 >
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
@@ -2592,39 +2592,34 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 </Button>
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__uvJgc,
-                  {
-                    [sty.textloginByPassword__uvJgcGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__uvJgcVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2__uvJgctCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant__uvJgcBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__uvJgc, {
+                  [sty.textloginByPassword__uvJgcGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword__uvJgcVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2__uvJgctCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant__uvJgcBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
               >
                 {hasVariant($state, "unnamedVariant2", "unnamedVariant2") ? (
                   "\u06cc\u06a9\u06cc \u0627\u0632 \u0627\u0645\u0627\u0646\u062a\u062f\u0627\u0631\u06cc \u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                 ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                   <div
-                    className={projectcss.__wab_expr_html_text}
+                    className={"__wab_expr_html_text"}
                     dangerouslySetInnerHTML={{
                       __html: (() => {
                         try {
@@ -2659,7 +2654,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 )}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__yNwp, {
+                className={classNames("all", sty.freeBox__yNwp, {
                   [sty.freeBoxloginByPassword__yNwpGqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -2753,7 +2748,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__pqRl9, {
+                  className={classNames("all", sty.freeBox__pqRl9, {
                     [sty.freeBoxunnamedVariant__pqRl9BNary]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -2804,9 +2799,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       )
                     })}
                     defaultStylesClassName={classNames(
-                      projectcss.root_reset,
-                      projectcss.plasmic_default_styles,
-                      projectcss.plasmic_mixins,
+                      "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                      "plasmic_default_styles",
+                      "plasmic_mixins",
                       styleTokensClassNames
                     )}
                     defaultValue={"+98"}
@@ -2837,40 +2832,31 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 </div>
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___0Fcc8,
-                  {
-                    [sty.textloginByPassword___0Fcc8Gqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword___0Fcc8Vrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2___0Fcc8TCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant___0Fcc8BNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_loginByPassword___0Fcc8BNaryGqb7]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text___0Fcc8, {
+                  [sty.textloginByPassword___0Fcc8Gqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword___0Fcc8Vrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2___0Fcc8TCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant___0Fcc8BNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_loginByPassword___0Fcc8BNaryGqb7]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                })}
               >
                 {hasVariant($state, "loginByPassword", "loginByPassword")
                   ? "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631"
@@ -2883,33 +2869,28 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__z02RT,
-                  {
-                    [sty.textloginByPassword__z02RTgqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textpassword__z02RTvrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2__z02RTtCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant__z02RTbNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    )
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text__z02RT, {
+                  [sty.textloginByPassword__z02RTgqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textpassword__z02RTvrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2__z02RTtCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant__z02RTbNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  )
+                })}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2943,7 +2924,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   "\u06cc\u06a9\u06cc \u0627\u0632 \u0635\u0631\u0627\u0641\u06cc\u200c\u0647\u0627\u06cc\u06cc \u06a9\u0647 \u0628\u0647 \u0622\u0646\u0647\u0627 \u0645\u062a\u0635\u0644 \u0647\u0633\u062a\u06cc\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644\u062a\u0627\u0646 \u0628\u0647 \u0622\u0646 \u0645\u062a\u0635\u0644 \u0634\u0648\u062f."
                 ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                   <div
-                    className={projectcss.__wab_expr_html_text}
+                    className={"__wab_expr_html_text"}
                     dangerouslySetInnerHTML={{
                       __html: (() => {
                         try {
@@ -2978,7 +2959,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 )}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__mboYc, {
+                className={classNames("all", sty.freeBox__mboYc, {
                   [sty.freeBoxloginByPassword__mboYcGqb7]: hasVariant(
                     $state,
                     "loginByPassword",
@@ -3100,7 +3081,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 />
 
                 <Icon55Icon
-                  className={classNames(projectcss.all, sty.svg__iyHlq, {
+                  className={classNames("all", sty.svg__iyHlq, {
                     [sty.svgloginByPassword__iyHlqgqb7]: hasVariant(
                       $state,
                       "loginByPassword",
@@ -3204,7 +3185,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__pVpJw, {
+                className={classNames("all", sty.freeBox__pVpJw, {
                   [sty.freeBoxunnamedVariant__pVpJwBNary]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -3294,30 +3275,25 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : true
               ) ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ihsp9,
-                    {
-                      [sty.textunnamedVariant__ihsp9BNary]: hasVariant(
+                  className={classNames("all", "__wab_text", sty.text__ihsp9, {
+                    [sty.textunnamedVariant__ihsp9BNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    ),
+                    [sty.textunnamedVariant_unnamedVariant2__ihsp9BNaryTCajl]:
+                      hasVariant(
                         $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      ),
-                      [sty.textunnamedVariant_unnamedVariant2__ihsp9BNaryTCajl]:
-                        hasVariant(
-                          $state,
-                          "unnamedVariant2",
-                          "unnamedVariant2"
-                        ) &&
-                        hasVariant($state, "unnamedVariant", "unnamedVariant")
-                    }
-                  )}
+                        "unnamedVariant2",
+                        "unnamedVariant2"
+                      ) &&
+                      hasVariant($state, "unnamedVariant", "unnamedVariant")
+                  })}
                 >
                   {hasVariant($state, "unnamedVariant", "unnamedVariant") &&
                   hasVariant(globalVariants, "screen", "mobileOnly") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -3342,7 +3318,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     />
                   ) : hasVariant($state, "unnamedVariant", "unnamedVariant") ? (
                     <div
-                      className={projectcss.__wab_expr_html_text}
+                      className={"__wab_expr_html_text"}
                       dangerouslySetInnerHTML={{
                         __html: (() => {
                           try {
@@ -3471,18 +3447,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : false
               ) ? (
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__i05Zj,
-                    {
-                      [sty.textunnamedVariant__i05ZjBNary]: hasVariant(
-                        $state,
-                        "unnamedVariant",
-                        "unnamedVariant"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__i05Zj, {
+                    [sty.textunnamedVariant__i05ZjBNary]: hasVariant(
+                      $state,
+                      "unnamedVariant",
+                      "unnamedVariant"
+                    )
+                  })}
                   onClick={async event => {
                     const $steps = {};
 
@@ -3599,9 +3570,9 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     hasVariant($state, "unnamedVariant", "unnamedVariant")
                 })}
                 defaultStylesClassName={classNames(
-                  projectcss.root_reset,
-                  projectcss.plasmic_default_styles,
-                  projectcss.plasmic_mixins,
+                  "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                  "plasmic_default_styles",
+                  "plasmic_mixins",
                   styleTokensClassNames
                 )}
                 defaultValue={
@@ -3685,7 +3656,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                         ? Icon37Icon
                         : Icon10Icon
                     }
-                    className={classNames(projectcss.all, sty.svg__dA4Jb, {
+                    className={classNames("all", sty.svg__dA4Jb, {
                       [sty.svgunnamedVariant2__dA4JBtCajl]: hasVariant(
                         $state,
                         "unnamedVariant2",
@@ -3699,36 +3670,31 @@ function PlasmicLoginPanel__RenderFunc(props: {
               />
             </div>
             <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__i4UMq,
-                {
-                  [sty.textloginByPassword__i4UMqGqb7]: hasVariant(
-                    $state,
-                    "loginByPassword",
-                    "loginByPassword"
-                  ),
-                  [sty.textloginByPassword_password__i4UMqGqb7Vrixq]:
-                    hasVariant($state, "password", "password") &&
-                    hasVariant($state, "loginByPassword", "loginByPassword"),
-                  [sty.textpassword__i4UMqVrixq]: hasVariant(
-                    $state,
-                    "password",
-                    "password"
-                  ),
-                  [sty.textunnamedVariant2__i4UMqtCajl]: hasVariant(
-                    $state,
-                    "unnamedVariant2",
-                    "unnamedVariant2"
-                  ),
-                  [sty.textunnamedVariant__i4UMqBNary]: hasVariant(
-                    $state,
-                    "unnamedVariant",
-                    "unnamedVariant"
-                  )
-                }
-              )}
+              className={classNames("all", "__wab_text", sty.text__i4UMq, {
+                [sty.textloginByPassword__i4UMqGqb7]: hasVariant(
+                  $state,
+                  "loginByPassword",
+                  "loginByPassword"
+                ),
+                [sty.textloginByPassword_password__i4UMqGqb7Vrixq]:
+                  hasVariant($state, "password", "password") &&
+                  hasVariant($state, "loginByPassword", "loginByPassword"),
+                [sty.textpassword__i4UMqVrixq]: hasVariant(
+                  $state,
+                  "password",
+                  "password"
+                ),
+                [sty.textunnamedVariant2__i4UMqtCajl]: hasVariant(
+                  $state,
+                  "unnamedVariant2",
+                  "unnamedVariant2"
+                ),
+                [sty.textunnamedVariant__i4UMqBNary]: hasVariant(
+                  $state,
+                  "unnamedVariant",
+                  "unnamedVariant"
+                )
+              })}
               onClick={async event => {
                 const $steps = {};
 
@@ -3769,7 +3735,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                       : "\u062a\u0627\u06cc\u06cc\u062f \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__kpVY, {
+              className={classNames("all", sty.freeBox__kpVY, {
                 [sty.freeBoxloginByPassword__kpVYgqb7]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -3826,7 +3792,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 color={"green"}
                 endIcon={
                   <IconIcon
-                    className={classNames(projectcss.all, sty.svg__cwi9J)}
+                    className={classNames("all", sty.svg__cwi9J)}
                     role={"img"}
                   />
                 }
@@ -4121,11 +4087,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })()}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__iNwcz
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__iNwcz)}
                 >
                   {
                     "\u0627\u0631\u0633\u0627\u0644 \u06a9\u062f \u062a\u0627\u06cc\u06cc\u062f"
@@ -4176,7 +4138,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 color={"green"}
                 endIcon={
                   <IconIcon
-                    className={classNames(projectcss.all, sty.svg__tCskn)}
+                    className={classNames("all", sty.svg__tCskn)}
                     role={"img"}
                   />
                 }
@@ -4522,23 +4484,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })()}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__tdSlS,
-                    {
-                      [sty.textloginByPassword__tdSlSgqb7]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword__tdSlSvrixq]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__tdSlS, {
+                    [sty.textloginByPassword__tdSlSgqb7]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.textpassword__tdSlSvrixq]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    )
+                  })}
                 >
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0648\u0631\u0648\u062f"
@@ -4591,7 +4548,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 color={"green"}
                 endIcon={
                   <IconIcon
-                    className={classNames(projectcss.all, sty.svg__vqn0M)}
+                    className={classNames("all", sty.svg__vqn0M)}
                     role={"img"}
                   />
                 }
@@ -5010,23 +4967,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 })()}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___2BN7U,
-                    {
-                      [sty.textloginByPassword___2BN7Ugqb7]: hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ),
-                      [sty.textpassword___2BN7Uvrixq]: hasVariant(
-                        $state,
-                        "password",
-                        "password"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___2BN7U, {
+                    [sty.textloginByPassword___2BN7Ugqb7]: hasVariant(
+                      $state,
+                      "loginByPassword",
+                      "loginByPassword"
+                    ),
+                    [sty.textpassword___2BN7Uvrixq]: hasVariant(
+                      $state,
+                      "password",
+                      "password"
+                    )
+                  })}
                 >
                   {hasVariant($state, "loginByPassword", "loginByPassword")
                     ? "\u0648\u0631\u0648\u062f"
@@ -5072,7 +5024,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 color={"green"}
                 endIcon={
                   <IconIcon
-                    className={classNames(projectcss.all, sty.svg__tYw3F)}
+                    className={classNames("all", sty.svg__tYw3F)}
                     role={"img"}
                   />
                 }
@@ -5482,18 +5434,13 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 }
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__mbtaR,
-                    {
-                      [sty.textunnamedVariant2__mbtaRtCajl]: hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__mbtaR, {
+                    [sty.textunnamedVariant2__mbtaRtCajl]: hasVariant(
+                      $state,
+                      "unnamedVariant2",
+                      "unnamedVariant2"
+                    )
+                  })}
                 >
                   {hasVariant($state, "unnamedVariant2", "unnamedVariant2")
                     ? "\u062a\u0627\u06cc\u06cc\u062f"
@@ -5561,7 +5508,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                           ? IconIcon
                           : Icon3Icon
                       }
-                      className={classNames(projectcss.all, sty.svg___8Tpx, {
+                      className={classNames("all", sty.svg___8Tpx, {
                         [sty.svgunnamedVariant___8TpxBNary]: hasVariant(
                           $state,
                           "unnamedVariant",
@@ -5963,8 +5910,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__jdnEx,
                       {
                         [sty.textunnamedVariant__jdnExBNary]: hasVariant(
@@ -5981,7 +5928,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               ) : null}
             </div>
             <div
-              className={classNames(projectcss.all, sty.freeBox__yJ1Ps, {
+              className={classNames("all", sty.freeBox__yJ1Ps, {
                 [sty.freeBoxloginByPassword__yJ1PsGqb7]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -6012,13 +5959,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 code={"<hr></hr>"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__xHt3Y
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__xHt3Y)}>
                 {
                   "\u0648\u0631\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642"
                 }
@@ -6059,7 +6000,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               color={"softGreen"}
               endIcon={
                 <Icon153Icon
-                  className={classNames(projectcss.all, sty.svg__qhxFs)}
+                  className={classNames("all", sty.svg__qhxFs)}
                   role={"img"}
                 />
               }
@@ -6113,43 +6054,34 @@ function PlasmicLoginPanel__RenderFunc(props: {
               showEndIcon={true}
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___5MFkv,
-                  {
-                    [sty.textloginByPassword___5MFkvGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_unnamedVariant2___5MFkvGqb7TCajl]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "loginByPassword", "loginByPassword"),
-                    [sty.textpassword___5MFkvVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textunnamedVariant2___5MFkvtCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant___5MFkvBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_unnamedVariant2___5MFkvBNaryTCajl]:
-                      hasVariant($state, "unnamedVariant", "unnamedVariant") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text___5MFkv, {
+                  [sty.textloginByPassword___5MFkvGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textloginByPassword_unnamedVariant2___5MFkvGqb7TCajl]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "loginByPassword", "loginByPassword"),
+                  [sty.textpassword___5MFkvVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textunnamedVariant2___5MFkvtCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant___5MFkvBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_unnamedVariant2___5MFkvBNaryTCajl]:
+                    hasVariant($state, "unnamedVariant", "unnamedVariant") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2")
+                })}
               >
                 {
                   "\u0648\u0631\u0648\u062f \u0628\u0627 \u0631\u0645\u0632 \u0639\u0628\u0648\u0631 "
@@ -6164,7 +6096,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"figmaPaste"}
                 data-plasmic-override={overrides.figmaPaste}
-                className={classNames(projectcss.all, sty.figmaPaste, {
+                className={classNames("all", sty.figmaPaste, {
                   [sty.figmaPasteunnamedVariant]: hasVariant(
                     $state,
                     "unnamedVariant",
@@ -6175,7 +6107,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 <div
                   data-plasmic-name={"group"}
                   data-plasmic-override={overrides.group}
-                  className={classNames(projectcss.all, sty.group, {
+                  className={classNames("all", sty.group, {
                     [sty.groupunnamedVariant]: hasVariant(
                       $state,
                       "unnamedVariant",
@@ -6186,18 +6118,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group2"}
                     data-plasmic-override={overrides.group2}
-                    className={classNames(projectcss.all, sty.group2)}
+                    className={classNames("all", sty.group2)}
                   >
                     <div
                       data-plasmic-name={"rectangle35"}
                       data-plasmic-override={overrides.rectangle35}
-                      className={classNames(projectcss.all, sty.rectangle35)}
+                      className={classNames("all", sty.rectangle35)}
                     />
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__niF6H
                       )}
                     >
@@ -6207,7 +6139,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   <div
                     data-plasmic-name={"group3"}
                     data-plasmic-override={overrides.group3}
-                    className={classNames(projectcss.all, sty.group3, {
+                    className={classNames("all", sty.group3, {
                       [sty.group3unnamedVariant]: hasVariant(
                         $state,
                         "unnamedVariant",
@@ -6218,18 +6150,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group4"}
                       data-plasmic-override={overrides.group4}
-                      className={classNames(projectcss.all, sty.group4)}
+                      className={classNames("all", sty.group4)}
                     >
                       <div
                         data-plasmic-name={"rectangle23"}
                         data-plasmic-override={overrides.rectangle23}
-                        className={classNames(projectcss.all, sty.rectangle23)}
+                        className={classNames("all", sty.rectangle23)}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kiSee
                         )}
                       >
@@ -6239,18 +6171,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group5"}
                       data-plasmic-override={overrides.group5}
-                      className={classNames(projectcss.all, sty.group5)}
+                      className={classNames("all", sty.group5)}
                     >
                       <div
                         data-plasmic-name={"rectangle24"}
                         data-plasmic-override={overrides.rectangle24}
-                        className={classNames(projectcss.all, sty.rectangle24)}
+                        className={classNames("all", sty.rectangle24)}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__fnbEi
                         )}
                       >
@@ -6260,18 +6192,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group6"}
                       data-plasmic-override={overrides.group6}
-                      className={classNames(projectcss.all, sty.group6)}
+                      className={classNames("all", sty.group6)}
                     >
                       <div
                         data-plasmic-name={"rectangle25"}
                         data-plasmic-override={overrides.rectangle25}
-                        className={classNames(projectcss.all, sty.rectangle25)}
+                        className={classNames("all", sty.rectangle25)}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ynDPb
                         )}
                       >
@@ -6281,12 +6213,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     <div
                       data-plasmic-name={"group7"}
                       data-plasmic-override={overrides.group7}
-                      className={classNames(projectcss.all, sty.group7)}
+                      className={classNames("all", sty.group7)}
                     >
                       <div
                         data-plasmic-name={"rectangle"}
                         data-plasmic-override={overrides.rectangle}
-                        className={classNames(projectcss.all, sty.rectangle, {
+                        className={classNames("all", sty.rectangle, {
                           [sty.rectangleunnamedVariant]: hasVariant(
                             $state,
                             "unnamedVariant",
@@ -6297,8 +6229,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__gN10O
                         )}
                       >
@@ -6308,8 +6240,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___3UHa,
                       {
                         [sty.textunnamedVariant___3UHaBNary]: hasVariant(
@@ -6326,8 +6258,8 @@ function PlasmicLoginPanel__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__eUoBl,
                       {
                         [sty.textunnamedVariant__eUoBlBNary]: hasVariant(
@@ -6346,14 +6278,14 @@ function PlasmicLoginPanel__RenderFunc(props: {
                 <div
                   data-plasmic-name={"group8"}
                   data-plasmic-override={overrides.group8}
-                  className={classNames(projectcss.all, sty.group8)}
+                  className={classNames("all", sty.group8)}
                 />
               </div>
             ) : null}
             <div
               data-plasmic-name={"group9"}
               data-plasmic-override={overrides.group9}
-              className={classNames(projectcss.all, sty.group9, {
+              className={classNames("all", sty.group9, {
                 [sty.group9loginByPassword]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -6463,50 +6395,37 @@ function PlasmicLoginPanel__RenderFunc(props: {
               }}
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___3ZvMi,
-                  {
-                    [sty.textloginByPassword___3ZvMiGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_unnamedVariant2___3ZvMiGqb7TCajl]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.textpassword___3ZvMiVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textpassword_unnamedVariant2___3ZvMiVrixqTCajl]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.textunnamedVariant2___3ZvMitCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant___3ZvMiBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_unnamedVariant2___3ZvMiBNaryTCajl]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text___3ZvMi, {
+                  [sty.textloginByPassword___3ZvMiGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textloginByPassword_unnamedVariant2___3ZvMiGqb7TCajl]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.textpassword___3ZvMiVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textpassword_unnamedVariant2___3ZvMiVrixqTCajl]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.textunnamedVariant2___3ZvMitCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant___3ZvMiBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_unnamedVariant2___3ZvMiBNaryTCajl]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                })}
               >
                 {hasVariant($state, "loginByPassword", "loginByPassword")
                   ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
@@ -6515,7 +6434,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <LeftArrowBackSvgrepoComSvgIcon
-                className={classNames(projectcss.all, sty.svg___61TN0, {
+                className={classNames("all", sty.svg___61TN0, {
                   [sty.svgloginByPassword_unnamedVariant2___61TN0Gqb7TCajl]:
                     hasVariant($state, "loginByPassword", "loginByPassword") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
@@ -6534,7 +6453,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             <div
               data-plasmic-name={"group10"}
               data-plasmic-override={overrides.group10}
-              className={classNames(projectcss.all, sty.group10, {
+              className={classNames("all", sty.group10, {
                 [sty.group10loginByPassword]: hasVariant(
                   $state,
                   "loginByPassword",
@@ -6622,50 +6541,37 @@ function PlasmicLoginPanel__RenderFunc(props: {
               }}
             >
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___8IvKi,
-                  {
-                    [sty.textloginByPassword___8IvKiGqb7]: hasVariant(
-                      $state,
-                      "loginByPassword",
-                      "loginByPassword"
-                    ),
-                    [sty.textloginByPassword_unnamedVariant2___8IvKiGqb7TCajl]:
-                      hasVariant(
-                        $state,
-                        "loginByPassword",
-                        "loginByPassword"
-                      ) &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.textpassword___8IvKiVrixq]: hasVariant(
-                      $state,
-                      "password",
-                      "password"
-                    ),
-                    [sty.textpassword_unnamedVariant2___8IvKiVrixqTCajl]:
-                      hasVariant($state, "password", "password") &&
-                      hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
-                    [sty.textunnamedVariant2___8IvKitCajl]: hasVariant(
-                      $state,
-                      "unnamedVariant2",
-                      "unnamedVariant2"
-                    ),
-                    [sty.textunnamedVariant___8IvKiBNary]: hasVariant(
-                      $state,
-                      "unnamedVariant",
-                      "unnamedVariant"
-                    ),
-                    [sty.textunnamedVariant_unnamedVariant2___8IvKiBNaryTCajl]:
-                      hasVariant(
-                        $state,
-                        "unnamedVariant2",
-                        "unnamedVariant2"
-                      ) &&
-                      hasVariant($state, "unnamedVariant", "unnamedVariant")
-                  }
-                )}
+                className={classNames("all", "__wab_text", sty.text___8IvKi, {
+                  [sty.textloginByPassword___8IvKiGqb7]: hasVariant(
+                    $state,
+                    "loginByPassword",
+                    "loginByPassword"
+                  ),
+                  [sty.textloginByPassword_unnamedVariant2___8IvKiGqb7TCajl]:
+                    hasVariant($state, "loginByPassword", "loginByPassword") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.textpassword___8IvKiVrixq]: hasVariant(
+                    $state,
+                    "password",
+                    "password"
+                  ),
+                  [sty.textpassword_unnamedVariant2___8IvKiVrixqTCajl]:
+                    hasVariant($state, "password", "password") &&
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
+                  [sty.textunnamedVariant2___8IvKitCajl]: hasVariant(
+                    $state,
+                    "unnamedVariant2",
+                    "unnamedVariant2"
+                  ),
+                  [sty.textunnamedVariant___8IvKiBNary]: hasVariant(
+                    $state,
+                    "unnamedVariant",
+                    "unnamedVariant"
+                  ),
+                  [sty.textunnamedVariant_unnamedVariant2___8IvKiBNaryTCajl]:
+                    hasVariant($state, "unnamedVariant2", "unnamedVariant2") &&
+                    hasVariant($state, "unnamedVariant", "unnamedVariant")
+                })}
               >
                 {hasVariant($state, "loginByPassword", "loginByPassword")
                   ? "\u0648\u0631\u0648\u062f \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"
@@ -6674,7 +6580,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
                     : "\u0627\u0635\u0644\u0627\u062d \u0634\u0645\u0627\u0631\u0647 \u0647\u0645\u0631\u0627\u0647"}
               </div>
               <LeftArrowBackSvgrepoComSvgIcon
-                className={classNames(projectcss.all, sty.svg__c4I0W, {
+                className={classNames("all", sty.svg__c4I0W, {
                   [sty.svgloginByPassword_unnamedVariant2__c4I0Wgqb7TCajl]:
                     hasVariant($state, "loginByPassword", "loginByPassword") &&
                     hasVariant($state, "unnamedVariant2", "unnamedVariant2"),
@@ -6693,7 +6599,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
           </div>
         </Reveal>
         <div
-          className={classNames(projectcss.all, sty.freeBox___1W0Nw, {
+          className={classNames("all", sty.freeBox___1W0Nw, {
             [sty.freeBoxunnamedVariant___1W0NwBNary]: hasVariant(
               $state,
               "unnamedVariant",
@@ -6701,7 +6607,7 @@ function PlasmicLoginPanel__RenderFunc(props: {
             )
           })}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__uNtC)}>
+          <div className={classNames("all", sty.freeBox__uNtC)}>
             <PlasmicImg__
               data-plasmic-name={"img"}
               data-plasmic-override={overrides.img}
@@ -6757,15 +6663,12 @@ function PlasmicLoginPanel__RenderFunc(props: {
             [sty["pcls_lGMWKXVVEk5J"]]: true
           })}
           closeIcon={
-            <svg
-              className={classNames(projectcss.all, sty.svg___2LKii)}
-              role={"img"}
-            />
+            <svg className={classNames("all", sty.svg___2LKii)} role={"img"} />
           }
           defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames
           )}
           hideFooter={true}
@@ -6786,30 +6689,18 @@ function PlasmicLoginPanel__RenderFunc(props: {
           width={"100vw"}
           wrapClassName={classNames({ [sty["pcls_RTMk0rX9Eqms"]]: true })}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__vQv7Q)}>
+          <div className={classNames("all", sty.freeBox__vQv7Q)}>
             <Icon82Icon
-              className={classNames(projectcss.all, sty.svg__t630C)}
+              className={classNames("all", sty.svg__t630C)}
               role={"img"}
             />
 
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__wKEu
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__wKEu)}>
               {
                 "\u062f\u0631 \u062d\u0627\u0644 \u0628\u0631\u0648\u0632 \u0631\u0633\u0627\u0646\u06cc..."
               }
             </div>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__hWvGc
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__hWvGc)}>
               {
                 "\u0628\u0647 \u0632\u0648\u062f\u06cc \u0642\u0627\u0628\u0644 \u062f\u0633\u062a\u0631\u0633 \u0645\u06cc \u0628\u0627\u0634\u062f."
               }
@@ -7164,14 +7055,12 @@ export const PlasmicLoginPanel = Object.assign(
     internalVariantProps: PlasmicLoginPanel__VariantProps,
     internalArgProps: PlasmicLoginPanel__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc:
-        "https://site-assets.plasmic.app/cdcc22ba73cb1607cdeb736202b178e2.png",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/login-panel",
+      pagePath: "/login-panel",
+      params: {},
+      query: {}
+    })
   }
 );
 

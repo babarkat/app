@@ -66,7 +66,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: gLnoj82AzKVVT7qXiqAbHD/projectcss
 import sty from "./PlasmicButton.module.css"; // plasmic-import: lBHNzts6tFyj/css
 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: zq2s7N0xWucT/icon
@@ -219,45 +218,48 @@ function PlasmicButton__RenderFunc(props: {
         path: "showStartIcon",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showStartIcon
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          $props.showStartIcon
       },
       {
         path: "showEndIcon",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.showEndIcon
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.showEndIcon
       },
       {
         path: "isDisabled",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isDisabled
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.isDisabled
       },
       {
         path: "shape",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.shape
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.shape
       },
       {
         path: "size",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.size
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.size
       },
       {
         path: "color",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.color
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.color
       }
     ],
     [$props, $ctx, $refs]
   );
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -278,11 +280,12 @@ function PlasmicButton__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.button,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "button",
+        "button__gLnoj",
+        "root_reset_gLnoj82AzKVVT7qXiqAbHD",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -349,7 +352,7 @@ function PlasmicButton__RenderFunc(props: {
         <div
           data-plasmic-name={"startIconContainer"}
           data-plasmic-override={overrides.startIconContainer}
-          className={classNames(projectcss.all, sty.startIconContainer, {
+          className={classNames("all", sty.startIconContainer, {
             [sty.startIconContainercolor_blue]: hasVariant(
               $state,
               "color",
@@ -368,7 +371,7 @@ function PlasmicButton__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <CheckSvgIcon
-                className={classNames(projectcss.all, sty.svg__xf1Wy)}
+                className={classNames("all", sty.svg__xf1Wy)}
                 role={"img"}
               />
             ),
@@ -437,7 +440,7 @@ function PlasmicButton__RenderFunc(props: {
       <div
         data-plasmic-name={"contentContainer"}
         data-plasmic-override={overrides.contentContainer}
-        className={classNames(projectcss.all, sty.contentContainer, {
+        className={classNames("all", sty.contentContainer, {
           [sty.contentContainer___focusVisibleWithin]:
             triggers.focusVisibleWithin_root,
           [sty.contentContainerisDisabled]: hasVariant(
@@ -563,7 +566,7 @@ function PlasmicButton__RenderFunc(props: {
         <div
           data-plasmic-name={"endIconContainer"}
           data-plasmic-override={overrides.endIconContainer}
-          className={classNames(projectcss.all, sty.endIconContainer, {
+          className={classNames("all", sty.endIconContainer, {
             [sty.endIconContainercolor_white]: hasVariant(
               $state,
               "color",
@@ -584,7 +587,7 @@ function PlasmicButton__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <IconIcon
-                className={classNames(projectcss.all, sty.svg__uV9M)}
+                className={classNames("all", sty.svg__uV9M)}
                 role={"img"}
               />
             ),

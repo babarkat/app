@@ -80,7 +80,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicPanel.module.css"; // plasmic-import: zKFKE8oLJjW9/css
 
 import Icon168Icon from "./icons/PlasmicIcon__Icon168"; // plasmic-import: aWggx95MZ_3j/icon
@@ -105,6 +104,42 @@ import Icon116Icon from "./icons/PlasmicIcon__Icon116"; // plasmic-import: 7m6l-
 import Icon69Icon from "./icons/PlasmicIcon__Icon69"; // plasmic-import: 0IzoCqJISrHt/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت"
+    },
+    twitter: {
+      card: "summary" as const,
+      title: "بابرکت"
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -213,19 +248,13 @@ function PlasmicPanel__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "userbabarcat",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -247,20 +276,20 @@ function PlasmicPanel__RenderFunc(props: {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "input.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "payUri",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "boxselect4[].select",
@@ -276,51 +305,51 @@ function PlasmicPanel__RenderFunc(props: {
         path: "modal2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "shaba",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           "IR880570025680011868728101"
       },
       {
         path: "card",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "5022291045351606"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "5022291045351606"
       },
       {
         path: "inventoryIncrease.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "p1",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "lodingbtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "modal6.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
@@ -359,37 +388,37 @@ function PlasmicPanel__RenderFunc(props: {
         path: "newPass2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "reoeatNewPass2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pass1",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "pass3",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "password"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "password"
       },
       {
         path: "cards",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             id: "toman",
             name: "\u062a\u0648\u0645\u0627\u0646",
@@ -436,44 +465,44 @@ function PlasmicPanel__RenderFunc(props: {
         path: "startY",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "drag",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "modal7.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "game.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "call.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "v",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "button3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -492,7 +521,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "button4.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -511,7 +540,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -530,19 +559,19 @@ function PlasmicPanel__RenderFunc(props: {
         path: "profile",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "loading2",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "page",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $ctx.params.pages;
@@ -561,7 +590,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "addUser",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $ctx.params.pages == "addUser";
@@ -580,13 +609,13 @@ function PlasmicPanel__RenderFunc(props: {
         path: "page2",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "transaction2.token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.token;
@@ -605,13 +634,13 @@ function PlasmicPanel__RenderFunc(props: {
         path: "transaction2.full",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "full",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.transaction2.full;
@@ -630,7 +659,7 @@ function PlasmicPanel__RenderFunc(props: {
         path: "customerAddComponnet.token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.token;
@@ -649,17 +678,30 @@ function PlasmicPanel__RenderFunc(props: {
         path: "customerAddComponnet.active2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -667,16 +709,12 @@ function PlasmicPanel__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicPanel.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicPanel.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicPanel.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -686,17 +724,17 @@ function PlasmicPanel__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root,
             hasVariant(globalVariants, "screen", "mobileOnly")
@@ -902,7 +940,7 @@ function PlasmicPanel__RenderFunc(props: {
           />
 
           <section
-            className={classNames(projectcss.all, sty.section__sLlng, {
+            className={classNames("all", sty.section__sLlng, {
               [sty.sectionaddUser__sLlngnV6If]: hasVariant(
                 $state,
                 "addUser",
@@ -931,7 +969,7 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"main"}
                 data-plasmic-override={overrides.main}
-                className={classNames(projectcss.all, sty.main, {
+                className={classNames("all", sty.main, {
                   [sty.mainaddUser]: hasVariant($state, "addUser", "addUser"),
                   [sty.mainfull]: hasVariant($state, "full", "full"),
                   [sty.mainpage_users]: hasVariant($state, "page", "users")
@@ -940,13 +978,13 @@ function PlasmicPanel__RenderFunc(props: {
                 <div
                   data-plasmic-name={"wallet"}
                   data-plasmic-override={overrides.wallet}
-                  className={classNames(projectcss.all, sty.wallet, ``, {
+                  className={classNames("all", sty.wallet, ``, {
                     [sty.walletfull]: hasVariant($state, "full", "full")
                   })}
                   draggable={"true"}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__ytVl6, {
+                    className={classNames("all", sty.freeBox__ytVl6, {
                       [sty.freeBoxfull__ytVl6NdTOl]: hasVariant(
                         $state,
                         "full",
@@ -954,13 +992,11 @@ function PlasmicPanel__RenderFunc(props: {
                       )
                     })}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ap4Cl)}
-                    >
+                    <div className={classNames("all", sty.freeBox__ap4Cl)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kciLi
                         )}
                       >
@@ -968,8 +1004,8 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___5Ndpx
                         )}
                       >
@@ -990,13 +1026,11 @@ function PlasmicPanel__RenderFunc(props: {
                         </React.Fragment>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mnZmX)}
-                    >
+                    <div className={classNames("all", sty.freeBox__mnZmX)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__iSmbN
                         )}
                       >
@@ -1017,13 +1051,11 @@ function PlasmicPanel__RenderFunc(props: {
                         </React.Fragment>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pdj2P)}
-                    >
+                    <div className={classNames("all", sty.freeBox__pdj2P)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__aCuPr
                         )}
                       >
@@ -1044,15 +1076,8 @@ function PlasmicPanel__RenderFunc(props: {
                         </React.Fragment>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__h7SLs)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ojvjD
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__h7SLs)}>
+                      <div className={classNames("all", sty.freeBox__ojvjD)}>
                         {(_par =>
                           !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                           (() => {
@@ -1073,16 +1098,13 @@ function PlasmicPanel__RenderFunc(props: {
                           const currentIndex = __plasmic_idx_0;
                           return (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__b8N07
-                              )}
+                              className={classNames("all", sty.freeBox__b8N07)}
                               key={currentIndex}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__hsUgW
                                 )}
                               >
@@ -1105,8 +1127,8 @@ function PlasmicPanel__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__zgMXh
                                 )}
                                 style={(() => {
@@ -1159,7 +1181,7 @@ function PlasmicPanel__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__texY, {
+                    className={classNames("all", sty.freeBox__texY, {
                       [sty.freeBoxfull__texYNdTOl]: hasVariant(
                         $state,
                         "full",
@@ -1168,7 +1190,7 @@ function PlasmicPanel__RenderFunc(props: {
                     })}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__cOohO)}
+                      className={classNames("all", sty.freeBox__cOohO)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1201,14 +1223,14 @@ function PlasmicPanel__RenderFunc(props: {
                       }}
                     >
                       <Icon168Icon
-                        className={classNames(projectcss.all, sty.svg__ppEZw)}
+                        className={classNames("all", sty.svg__ppEZw)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__n89MO,
                           {
                             [sty.textpage_users__n89MOGxQj4]: hasVariant(
@@ -1225,7 +1247,7 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__kV3Yc)}
+                      className={classNames("all", sty.freeBox__kV3Yc)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1264,14 +1286,14 @@ function PlasmicPanel__RenderFunc(props: {
                       }}
                     >
                       <Icon169Icon
-                        className={classNames(projectcss.all, sty.svg__bKoS)}
+                        className={classNames("all", sty.svg__bKoS)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__eQAij
                         )}
                       >
@@ -1279,7 +1301,7 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__wowrz)}
+                      className={classNames("all", sty.freeBox__wowrz)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1320,14 +1342,14 @@ function PlasmicPanel__RenderFunc(props: {
                       }}
                     >
                       <Icon167Icon
-                        className={classNames(projectcss.all, sty.svg__nWfgj)}
+                        className={classNames("all", sty.svg__nWfgj)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__uw2L3
                         )}
                       >
@@ -1337,9 +1359,7 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__w43Rh)}
-                  />
+                  <div className={classNames("all", sty.freeBox__w43Rh)} />
                 </div>
                 <Button
                   data-plasmic-name={"button"}
@@ -1408,24 +1428,20 @@ function PlasmicPanel__RenderFunc(props: {
                   showStartIcon={true}
                   startIcon={
                     <Icon161Icon
-                      className={classNames(projectcss.all, sty.svg__ieaEr)}
+                      className={classNames("all", sty.svg__ieaEr)}
                       role={"img"}
                     />
                   }
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__i0Edp
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__i0Edp)}
                   >
                     {
                       "\u0645\u0634\u062a\u0631\u06cc \u0647\u0627\u06cc \u0634\u0645\u0627"
                     }
                   </div>
                 </Button>
-                <div className={classNames(projectcss.all, sty.freeBox__nqw7O)}>
+                <div className={classNames("all", sty.freeBox__nqw7O)}>
                   <Transaction2
                     data-plasmic-name={"transaction2"}
                     data-plasmic-override={overrides.transaction2}
@@ -1488,38 +1504,27 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"loading"}
                 data-plasmic-override={overrides.loading}
-                className={classNames(projectcss.all, sty.loading)}
+                className={classNames("all", sty.loading)}
               >
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__xaWa, ``)}
-                >
+                <div className={classNames("all", sty.freeBox__xaWa, ``)}>
                   <div
                     data-plasmic-name={"wallet4"}
                     data-plasmic-override={overrides.wallet4}
-                    className={classNames(
-                      projectcss.all,
-                      sty.wallet4,
-                      "shimmer",
-                      { [sty.wallet4full]: hasVariant($state, "full", "full") }
-                    )}
+                    className={classNames("all", sty.wallet4, "shimmer", {
+                      [sty.wallet4full]: hasVariant($state, "full", "full")
+                    })}
                   />
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___3D54U)}
-                >
+                <div className={classNames("all", sty.freeBox___3D54U)}>
                   <div
                     data-plasmic-name={"services5"}
                     data-plasmic-override={overrides.services5}
-                    className={classNames(projectcss.all, sty.services5)}
+                    className={classNames("all", sty.services5)}
                   >
                     <div
                       data-plasmic-name={"internet2"}
                       data-plasmic-override={overrides.internet2}
-                      className={classNames(
-                        projectcss.all,
-                        sty.internet2,
-                        "shimmer"
-                      )}
+                      className={classNames("all", sty.internet2, "shimmer")}
                     />
                   </div>
                 </div>
@@ -1534,9 +1539,9 @@ function PlasmicPanel__RenderFunc(props: {
               [sty["pcls_cJ4CKNyDfWu2"]]: true
             })}
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -1568,42 +1573,26 @@ function PlasmicPanel__RenderFunc(props: {
             <div
               data-plasmic-name={"wallet2"}
               data-plasmic-override={overrides.wallet2}
-              className={classNames(projectcss.all, sty.wallet2)}
+              className={classNames("all", sty.wallet2)}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__nNk0L
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__nNk0L)}>
                 {
                   "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
               <BabarkatlogoCopy2SvgIcon
-                className={classNames(projectcss.all, sty.svg__m472X)}
+                className={classNames("all", sty.svg__m472X)}
                 role={"img"}
               />
 
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___8M3Ao
-                )}
+                className={classNames("all", "__wab_text", sty.text___8M3Ao)}
               >
                 {hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                   : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
               </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__zL1Tu
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__zL1Tu)}>
                 {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                   <React.Fragment>
                     {(() => {
@@ -1642,13 +1631,9 @@ function PlasmicPanel__RenderFunc(props: {
                   </React.Fragment>
                 )}
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ptWjQ)}>
+              <div className={classNames("all", sty.freeBox__ptWjQ)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ssy89
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__ssy89)}
                 >
                   {"\u0645\u0628\u0644\u063a (\u062a\u0648\u0645\u0627\u0646)"}
                 </div>
@@ -1673,15 +1658,11 @@ function PlasmicPanel__RenderFunc(props: {
                 />
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__omSNk)}>
-              <div className={classNames(projectcss.all, sty.freeBox__slNfm)}>
-                <div className={classNames(projectcss.all, sty.freeBox__a2N0V)}>
+            <div className={classNames("all", sty.freeBox__omSNk)}>
+              <div className={classNames("all", sty.freeBox__slNfm)}>
+                <div className={classNames("all", sty.freeBox__a2N0V)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fl9GP
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__fl9GP)}
                   >
                     {
                       "\u0645\u0628\u0644\u063a \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u06cc (\u062a\u0648\u0645\u0627\u0646)"
@@ -1690,7 +1671,7 @@ function PlasmicPanel__RenderFunc(props: {
                   <div
                     data-plasmic-name={"operators4"}
                     data-plasmic-override={overrides.operators4}
-                    className={classNames(projectcss.all, sty.operators4)}
+                    className={classNames("all", sty.operators4)}
                   >
                     {(_par =>
                       !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -1805,7 +1786,7 @@ function PlasmicPanel__RenderFunc(props: {
                           [
                             {
                               name: "boxselect4[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -1816,7 +1797,8 @@ function PlasmicPanel__RenderFunc(props: {
                             },
                             {
                               name: "boxselect4[].disable2",
-                              initFunc: ({ $props, $state, $queries }) => false
+                              initFunc: ({ $props, $state, $queries, $q }) =>
+                                false
                             }
                           ],
                           [__plasmic_idx_0]
@@ -1828,15 +1810,12 @@ function PlasmicPanel__RenderFunc(props: {
                             {...child$Props}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__vgof1
-                              )}
+                              className={classNames("all", sty.freeBox__vgof1)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__vpSEm
                                 )}
                               >
@@ -1868,31 +1847,25 @@ function PlasmicPanel__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___0JObw
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___0JObw)}
                 >
                   {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__meVi)}>
+                <div className={classNames("all", sty.freeBox__meVi)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___5Zy9V
                     )}
                   >
                     {"\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"}
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ih6Ra)}
-                  >
+                  <div className={classNames("all", sty.freeBox__ih6Ra)}>
                     <Icon38Icon
-                      className={classNames(projectcss.all, sty.svg__wefVt)}
+                      className={classNames("all", sty.svg__wefVt)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1948,7 +1921,7 @@ function PlasmicPanel__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__sAz9)}>
+              <div className={classNames("all", sty.freeBox__sAz9)}>
                 <Button
                   data-plasmic-name={"button3"}
                   data-plasmic-override={overrides.button3}
@@ -2013,11 +1986,7 @@ function PlasmicPanel__RenderFunc(props: {
                   submitsForm={false}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__cm8Kn
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__cm8Kn)}
                   >
                     {"\u067e\u0631\u062f\u0627\u062e\u062a"}
                   </div>
@@ -2033,9 +2002,9 @@ function PlasmicPanel__RenderFunc(props: {
               [sty["pcls_wNYzBjPum4LG"]]: true
             })}
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -2069,14 +2038,8 @@ function PlasmicPanel__RenderFunc(props: {
             }
             wrapClassName={classNames({ [sty["pcls_AYCzuegFNdLn"]]: true })}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__oxevc)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ngOdm
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__oxevc)}>
+              <div className={classNames("all", "__wab_text", sty.text__ngOdm)}>
                 {
                   "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
@@ -2084,30 +2047,22 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"wallet3"}
                 data-plasmic-override={overrides.wallet3}
-                className={classNames(projectcss.all, sty.wallet3)}
+                className={classNames("all", sty.wallet3)}
               >
                 <BabarkatlogoCopy2SvgIcon
-                  className={classNames(projectcss.all, sty.svg__lwMp4)}
+                  className={classNames("all", sty.svg__lwMp4)}
                   role={"img"}
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__zz2Pu
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__zz2Pu)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
                     : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__n9Lc3
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__n9Lc3)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                     <React.Fragment>
@@ -2147,11 +2102,9 @@ function PlasmicPanel__RenderFunc(props: {
                   )}
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__rq7Yx)}>
-                <div className={classNames(projectcss.all, sty.freeBox__patvQ)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mAaj0)}
-                  >
+              <div className={classNames("all", sty.freeBox__rq7Yx)}>
+                <div className={classNames("all", sty.freeBox__patvQ)}>
+                  <div className={classNames("all", sty.freeBox__mAaj0)}>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__iqj11)}
@@ -2172,8 +2125,8 @@ function PlasmicPanel__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__noly
                       )}
                     >
@@ -2182,13 +2135,11 @@ function PlasmicPanel__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xD8GH)}
-                  >
+                  <div className={classNames("all", sty.freeBox__xD8GH)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__sTuia
                       )}
                     >
@@ -2197,7 +2148,7 @@ function PlasmicPanel__RenderFunc(props: {
                       }
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__xvvrZ)}
+                      className={classNames("all", sty.freeBox__xvvrZ)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -2248,14 +2199,14 @@ function PlasmicPanel__RenderFunc(props: {
                       }}
                     >
                       <Icon20Icon
-                        className={classNames(projectcss.all, sty.svg__oIgwG)}
+                        className={classNames("all", sty.svg__oIgwG)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__qqC6E
                         )}
                       >
@@ -2263,7 +2214,7 @@ function PlasmicPanel__RenderFunc(props: {
                       </div>
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__yzrgS)}
+                      className={classNames("all", sty.freeBox__yzrgS)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -2314,14 +2265,14 @@ function PlasmicPanel__RenderFunc(props: {
                       }}
                     >
                       <Icon20Icon
-                        className={classNames(projectcss.all, sty.svg__rrs8)}
+                        className={classNames("all", sty.svg__rrs8)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__b5J6A
                         )}
                       >
@@ -2331,31 +2282,25 @@ function PlasmicPanel__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__yU4S5
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__yU4S5)}
                 >
                   {
                     "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__hUfaq)}>
+                <div className={classNames("all", sty.freeBox__hUfaq)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___8Kzt2
                     )}
                   >
                     {"\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"}
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__q1FlE)}
-                  >
+                  <div className={classNames("all", sty.freeBox__q1FlE)}>
                     <Icon22Icon
-                      className={classNames(projectcss.all, sty.svg__nno0J)}
+                      className={classNames("all", sty.svg__nno0J)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -2415,9 +2360,7 @@ function PlasmicPanel__RenderFunc(props: {
                     ? true
                     : false
                 ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__csOiM)}
-                  />
+                  <div className={classNames("all", sty.freeBox__csOiM)} />
                 ) : null}
               </div>
             </div>
@@ -2427,9 +2370,9 @@ function PlasmicPanel__RenderFunc(props: {
             data-plasmic-override={overrides.inventoryIncrease}
             className={classNames("__wab_instance", sty.inventoryIncrease)}
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -2453,20 +2396,14 @@ function PlasmicPanel__RenderFunc(props: {
                 : undefined
             }
           >
-            <div className={classNames(projectcss.all, sty.freeBox__umva5)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__osXi
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__umva5)}>
+              <div className={classNames("all", "__wab_text", sty.text__osXi)}>
                 {
                   "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
                 }
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__yuzw)}
+                className={classNames("all", sty.freeBox__yuzw)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -2541,13 +2478,9 @@ function PlasmicPanel__RenderFunc(props: {
                   }
                 }}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__huZc1)}>
+                <div className={classNames("all", sty.freeBox__huZc1)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__aKRbA
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__aKRbA)}
                   >
                     {
                       "\u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
@@ -2555,8 +2488,8 @@ function PlasmicPanel__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___7Axqo
                     )}
                   >
@@ -3752,7 +3685,7 @@ function PlasmicPanel__RenderFunc(props: {
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__fiBK)}
+                className={classNames("all", sty.freeBox__fiBK)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -3826,22 +3759,14 @@ function PlasmicPanel__RenderFunc(props: {
                   }
                 }}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__dBgqL)}>
+                <div className={classNames("all", sty.freeBox__dBgqL)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__z8MSz
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__z8MSz)}
                   >
                     {"\u0627\u0641\u0632\u0627\u06cc\u0634 \u0648\u062c\u0647"}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vtG6Y
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vtG6Y)}
                   >
                     {
                       "\u0627\u0632 \u06a9\u0627\u0631\u062a \u0628\u0627\u0646\u06a9\u06cc \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
@@ -11896,9 +11821,9 @@ function PlasmicPanel__RenderFunc(props: {
             const child$Props = {
               className: classNames("__wab_instance", sty.modal6),
               defaultStylesClassName: classNames(
-                projectcss.root_reset,
-                projectcss.plasmic_default_styles,
-                projectcss.plasmic_mixins,
+                "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                "plasmic_default_styles",
+                "plasmic_mixins",
                 styleTokensClassNames
               ),
               hideFooter: true,
@@ -11948,7 +11873,7 @@ function PlasmicPanel__RenderFunc(props: {
               [
                 {
                   name: "modal6.open",
-                  initFunc: ({ $props, $state, $queries }) =>
+                  initFunc: ({ $props, $state, $queries, $q }) =>
                     hasVariant(globalVariants, "screen", "mobileOnly")
                       ? (() => {
                           try {
@@ -11994,17 +11919,13 @@ function PlasmicPanel__RenderFunc(props: {
                 data-plasmic-override={overrides.modal6}
                 {...child$Props}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__olj4W)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__dVHxT)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dLdWg)}
-                    >
+                <div className={classNames("all", sty.freeBox__olj4W)}>
+                  <div className={classNames("all", sty.freeBox__dVHxT)}>
+                    <div className={classNames("all", sty.freeBox__dLdWg)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__cy7OR
                         )}
                       >
@@ -12013,13 +11934,11 @@ function PlasmicPanel__RenderFunc(props: {
                         }
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___9117)}
-                    >
+                    <div className={classNames("all", sty.freeBox___9117)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__cNh5Y
                         )}
                       >
@@ -12027,17 +11946,9 @@ function PlasmicPanel__RenderFunc(props: {
                           "\u0631\u0645\u0632 \u0639\u0628\u0648\u0631 \u0628\u0627\u06cc\u062f \u062d\u062f\u0627\u0642\u0644 6 \u06a9\u0627\u0631\u0627\u06a9\u062a\u0631 \u0628\u0627\u0634\u062f."
                         }
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wzdMn
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__wzdMn)}>
                         <Icon44Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___6QEha
-                          )}
+                          className={classNames("all", sty.svg___6QEha)}
                           role={"img"}
                         />
 
@@ -12122,7 +12033,7 @@ function PlasmicPanel__RenderFunc(props: {
                         />
 
                         <Icon55Icon
-                          className={classNames(projectcss.all, sty.svg__kkfe1)}
+                          className={classNames("all", sty.svg__kkfe1)}
                           onClick={async event => {
                             const $steps = {};
 
@@ -12272,11 +12183,9 @@ function PlasmicPanel__RenderFunc(props: {
                         })()}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wYkzT)}
-                    >
+                    <div className={classNames("all", sty.freeBox__wYkzT)}>
                       <Icon45Icon
-                        className={classNames(projectcss.all, sty.svg__tSlSr)}
+                        className={classNames("all", sty.svg__tSlSr)}
                         role={"img"}
                       />
 
@@ -12316,7 +12225,7 @@ function PlasmicPanel__RenderFunc(props: {
                       />
 
                       <Icon55Icon
-                        className={classNames(projectcss.all, sty.svg__lFFd)}
+                        className={classNames("all", sty.svg__lFFd)}
                         onClick={async event => {
                           const $steps = {};
 
@@ -12428,8 +12337,8 @@ function PlasmicPanel__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__jsVb
                           )}
                         >
@@ -12456,8 +12365,8 @@ function PlasmicPanel__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__eSDxj
                           )}
                         >
@@ -12483,10 +12392,7 @@ function PlasmicPanel__RenderFunc(props: {
                               ? IconIcon
                               : Icon3Icon
                           }
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___2HnVx
-                          )}
+                          className={classNames("all", sty.svg___2HnVx)}
                           role={"img"}
                         />
                       }
@@ -12792,8 +12698,8 @@ function PlasmicPanel__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ss1L5
                         )}
                       >
@@ -12810,9 +12716,9 @@ function PlasmicPanel__RenderFunc(props: {
             data-plasmic-override={overrides.modal7}
             className={classNames("__wab_instance", sty.modal7)}
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -12874,8 +12780,8 @@ function PlasmicPanel__RenderFunc(props: {
               )
             })}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__laoac)}>
-              <div className={classNames(projectcss.all, sty.freeBox__gqDMe)}>
+            <div className={classNames("all", sty.freeBox__laoac)}>
+              <div className={classNames("all", sty.freeBox__gqDMe)}>
                 <PlasmicImg__
                   alt={""}
                   className={classNames(sty.img__vYqvl)}
@@ -12894,13 +12800,9 @@ function PlasmicPanel__RenderFunc(props: {
                   }}
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__al5Hb)}>
+              <div className={classNames("all", sty.freeBox__al5Hb)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lgGwi
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__lgGwi)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0628\u0627 \u0628\u0627\u0644\u0627 \u06a9\u0634\u06cc\u062f\u0646 \u06a9\u0627\u0631\u062a\u060c \u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628 \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u0627\u0631\u0632\u0647\u0627\u06cc \u062f\u06cc\u06af\u0631 \u0645\u0634\u0627\u0647\u062f\u0647 \u06a9\u0646\u06cc\u062f."
@@ -12910,7 +12812,7 @@ function PlasmicPanel__RenderFunc(props: {
             </div>
           </AntdModal>
           <section
-            className={classNames(projectcss.all, sty.section__cwGyG, {
+            className={classNames("all", sty.section__cwGyG, {
               [sty.sectionaddUser__cwGyGnV6If]: hasVariant(
                 $state,
                 "addUser",
@@ -12929,34 +12831,30 @@ function PlasmicPanel__RenderFunc(props: {
               className={classNames("__wab_instance", sty.header2)}
             />
           </section>
-          <section className={classNames(projectcss.all, sty.section__dSDfV)}>
-            <div className={classNames(projectcss.all, sty.freeBox___359CL)}>
+          <section className={classNames("all", sty.section__dSDfV)}>
+            <div className={classNames("all", sty.freeBox___359CL)}>
               <div
                 data-plasmic-name={"footer"}
                 data-plasmic-override={overrides.footer}
-                className={classNames(projectcss.all, sty.footer)}
+                className={classNames("all", sty.footer)}
               >
                 <div
                   data-plasmic-name={"snapp2"}
                   data-plasmic-override={overrides.snapp2}
-                  className={classNames(projectcss.all, sty.snapp2)}
+                  className={classNames("all", sty.snapp2)}
                 >
                   <div
                     data-plasmic-name={"vuesaxBoldHome"}
                     data-plasmic-override={overrides.vuesaxBoldHome}
-                    className={classNames(projectcss.all, sty.vuesaxBoldHome)}
+                    className={classNames("all", sty.vuesaxBoldHome)}
                   >
                     <HomeIcon
-                      className={classNames(projectcss.all, sty.svg__lQe5F)}
+                      className={classNames("all", sty.svg__lQe5F)}
                       role={"img"}
                     />
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jgAmj
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__jgAmj)}
                   >
                     {"\u062e\u0627\u0646\u0647"}
                   </div>
@@ -12964,7 +12862,7 @@ function PlasmicPanel__RenderFunc(props: {
                 <div
                   data-plasmic-name={"charge2"}
                   data-plasmic-override={overrides.charge2}
-                  className={classNames(projectcss.all, sty.charge2)}
+                  className={classNames("all", sty.charge2)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -12998,22 +12896,15 @@ function PlasmicPanel__RenderFunc(props: {
                   <div
                     data-plasmic-name={"vuesaxBoldReceipt"}
                     data-plasmic-override={overrides.vuesaxBoldReceipt}
-                    className={classNames(
-                      projectcss.all,
-                      sty.vuesaxBoldReceipt
-                    )}
+                    className={classNames("all", sty.vuesaxBoldReceipt)}
                   >
                     <ReceiptIcon
-                      className={classNames(projectcss.all, sty.svg___02Rw6)}
+                      className={classNames("all", sty.svg___02Rw6)}
                       role={"img"}
                     />
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dwTD
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__dwTD)}
                   >
                     {"\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627"}
                   </div>
@@ -13029,20 +12920,14 @@ function PlasmicPanel__RenderFunc(props: {
               [sty["pcls_ATdPPo9obbPY"]]: true
             })}
             closeIcon={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__yN2A
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__yN2A)}>
                 {"\n"}
               </div>
             }
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -13065,19 +12950,15 @@ function PlasmicPanel__RenderFunc(props: {
                 : "700"
             }
           >
-            <div className={classNames(projectcss.all, sty.freeBox___5G21T)}>
-              <div className={classNames(projectcss.all, sty.freeBox__yg6YJ)}>
+            <div className={classNames("all", sty.freeBox___5G21T)}>
+              <div className={classNames("all", sty.freeBox__yg6YJ)}>
                 <Icon78Icon
-                  className={classNames(projectcss.all, sty.svg__q0FBp)}
+                  className={classNames("all", sty.svg__q0FBp)}
                   role={"img"}
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jnc5W
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__jnc5W)}
                 >
                   {
                     "\u062c\u0632\u0626\u06cc\u0627\u062a \u06a9\u0627\u0631\u0645\u0632\u062f "
@@ -13085,7 +12966,7 @@ function PlasmicPanel__RenderFunc(props: {
                 </div>
               </div>
               <Icon89Icon
-                className={classNames(projectcss.all, sty.svg__ruOJz)}
+                className={classNames("all", sty.svg__ruOJz)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13127,20 +13008,16 @@ function PlasmicPanel__RenderFunc(props: {
                 role={"img"}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__dfwvu)}>
-              <div className={classNames(projectcss.all, sty.freeBox___5YpL)}>
-                <div className={classNames(projectcss.all, sty.freeBox__gWmoU)}>
+            <div className={classNames("all", sty.freeBox__dfwvu)}>
+              <div className={classNames("all", sty.freeBox___5YpL)}>
+                <div className={classNames("all", sty.freeBox__gWmoU)}>
                   <Icon116Icon
-                    className={classNames(projectcss.all, sty.svg__pDxq)}
+                    className={classNames("all", sty.svg__pDxq)}
                     role={"img"}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vq1Q
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vq1Q)}
                   >
                     <React.Fragment>
                       {(() => {
@@ -13160,14 +13037,10 @@ function PlasmicPanel__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__p6Xos
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__p6Xos)}
                 >
                   <div
-                    className={projectcss.__wab_expr_html_text}
+                    className={"__wab_expr_html_text"}
                     dangerouslySetInnerHTML={{
                       __html: (() => {
                         try {
@@ -13205,18 +13078,18 @@ function PlasmicPanel__RenderFunc(props: {
                 const currentIndex = __plasmic_idx_0;
                 return (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__fgH2V)}
+                    className={classNames("all", sty.freeBox__fgH2V)}
                     key={currentIndex}
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__zy4V
                       )}
                     >
                       <div
-                        className={projectcss.__wab_expr_html_text}
+                        className={"__wab_expr_html_text"}
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
@@ -13236,13 +13109,13 @@ function PlasmicPanel__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___0G49D
                       )}
                     >
                       <div
-                        className={projectcss.__wab_expr_html_text}
+                        className={"__wab_expr_html_text"}
                         dangerouslySetInnerHTML={{
                           __html: (() => {
                             try {
@@ -13274,19 +13147,15 @@ function PlasmicPanel__RenderFunc(props: {
             })}
             closeIcon={
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___2LiWq
-                )}
+                className={classNames("all", "__wab_text", sty.text___2LiWq)}
               >
                 {"\n"}
               </div>
             }
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -13309,25 +13178,21 @@ function PlasmicPanel__RenderFunc(props: {
                 : "700"
             }
           >
-            <div className={classNames(projectcss.all, sty.freeBox___7O6DS)}>
-              <div className={classNames(projectcss.all, sty.freeBox__dnFdg)}>
+            <div className={classNames("all", sty.freeBox___7O6DS)}>
+              <div className={classNames("all", sty.freeBox__dnFdg)}>
                 <Icon78Icon
-                  className={classNames(projectcss.all, sty.svg__dvBHu)}
+                  className={classNames("all", sty.svg__dvBHu)}
                   role={"img"}
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___9KrAw
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___9KrAw)}
                 >
                   {"\u062e\u062f\u0645\u0627\u062a \u062a\u0645\u0627\u0633"}
                 </div>
               </div>
               <Icon89Icon
-                className={classNames(projectcss.all, sty.svg__zVvic)}
+                className={classNames("all", sty.svg__zVvic)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13369,11 +13234,11 @@ function PlasmicPanel__RenderFunc(props: {
                 role={"img"}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__kpBcP)}>
+            <div className={classNames("all", sty.freeBox__kpBcP)}>
               <div
                 data-plasmic-name={"comingSoon12"}
                 data-plasmic-override={overrides.comingSoon12}
-                className={classNames(projectcss.all, sty.comingSoon12)}
+                className={classNames("all", sty.comingSoon12)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13439,11 +13304,7 @@ function PlasmicPanel__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__n28J7
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__n28J7)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0645\u06cc\u0632\u0628\u0627\u0646"
@@ -13453,7 +13314,7 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"comingSoon15"}
                 data-plasmic-override={overrides.comingSoon15}
-                className={classNames(projectcss.all, sty.comingSoon15)}
+                className={classNames("all", sty.comingSoon15)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13519,11 +13380,7 @@ function PlasmicPanel__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uz1S1
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__uz1S1)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0633\u06cc\u0633\u062a\u0645 \u0631\u062e"
@@ -13533,7 +13390,7 @@ function PlasmicPanel__RenderFunc(props: {
               <div
                 data-plasmic-name={"comingSoon13"}
                 data-plasmic-override={overrides.comingSoon13}
-                className={classNames(projectcss.all, sty.comingSoon13)}
+                className={classNames("all", sty.comingSoon13)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13599,11 +13456,7 @@ function PlasmicPanel__RenderFunc(props: {
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__veqga
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__veqga)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0627\u0631\u062a\u0628\u0627\u0637"
@@ -13611,10 +13464,10 @@ function PlasmicPanel__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__gSwD5)} />
+            <div className={classNames("all", sty.freeBox__gSwD5)} />
           </AntdModal>
           <section
-            className={classNames(projectcss.all, sty.section__cZeqE, {
+            className={classNames("all", sty.section__cZeqE, {
               [sty.sectionaddUser__cZeqEnV6If]: hasVariant(
                 $state,
                 "addUser",
@@ -13628,7 +13481,7 @@ function PlasmicPanel__RenderFunc(props: {
             })}
           >
             <div
-              className={classNames(projectcss.all, sty.freeBox__hd8Kc, {
+              className={classNames("all", sty.freeBox__hd8Kc, {
                 [sty.freeBoxaddUser__hd8KCnV6If]: hasVariant(
                   $state,
                   "addUser",
@@ -13642,7 +13495,7 @@ function PlasmicPanel__RenderFunc(props: {
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__r0QU8)}
+                className={classNames("all", sty.freeBox__r0QU8)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13678,12 +13531,12 @@ function PlasmicPanel__RenderFunc(props: {
                 }}
               >
                 <Icon69Icon
-                  className={classNames(projectcss.all, sty.svg__cp5Jj)}
+                  className={classNames("all", sty.svg__cp5Jj)}
                   role={"img"}
                 />
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__vh8L)}
+                className={classNames("all", sty.freeBox__vh8L)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -13719,11 +13572,7 @@ function PlasmicPanel__RenderFunc(props: {
                 }}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__bJm9H
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__bJm9H)}
                 >
                   {
                     "\u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u0627 \u0645\u0627 \u060c \u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 ..."
@@ -14278,13 +14127,12 @@ export const PlasmicPanel = Object.assign(
     internalVariantProps: PlasmicPanel__VariantProps,
     internalArgProps: PlasmicPanel__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/panel/[pages]",
+      pagePath: "/panel/[pages]",
+      params: {},
+      query: {}
+    })
   }
 );
 

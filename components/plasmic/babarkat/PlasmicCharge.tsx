@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicCharge.module.css"; // plasmic-import: S_18qgrBezWv/css
 
 import SimcardAltSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__SimcardAltSvgrepoCom2Svg"; // plasmic-import: i4UpNybEy7gt/icon
@@ -140,10 +139,10 @@ function PlasmicCharge__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.simcardCharge
       )}
@@ -179,14 +178,14 @@ function PlasmicCharge__RenderFunc(props: {
       <SimcardAltSvgrepoCom2SvgIcon
         data-plasmic-name={"simcardIcon"}
         data-plasmic-override={overrides.simcardIcon}
-        className={classNames(projectcss.all, sty.simcardIcon)}
+        className={classNames("all", sty.simcardIcon)}
         role={"img"}
       />
 
       <div
         data-plasmic-name={"text"}
         data-plasmic-override={overrides.text}
-        className={classNames(projectcss.all, projectcss.__wab_text, sty.text)}
+        className={classNames("all", "__wab_text", sty.text)}
       >
         {"\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"}
       </div>

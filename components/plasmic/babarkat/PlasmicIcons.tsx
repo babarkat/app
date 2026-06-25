@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicIcons.module.css"; // plasmic-import: y9SwG9bN8mmR/css
 
 import SvgRepoIconCarrier2Icon from "./icons/PlasmicIcon__SvgRepoIconCarrier2"; // plasmic-import: aoPueH94YLGd/icon
@@ -182,44 +181,46 @@ function PlasmicIcons__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "filed",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.filed
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.filed
       },
       {
         path: "unnamedGroupOfVariants",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           $props.unnamedGroupOfVariants
       },
       {
         path: "dialog",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.dialog
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.dialog
       },
       {
         path: "wite",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.wite
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.wite
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -232,10 +233,10 @@ function PlasmicIcons__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.frame,
         {
@@ -271,7 +272,7 @@ function PlasmicIcons__RenderFunc(props: {
                       ? Icon14Icon
                       : SvgRepoIconCarrier2Icon
         }
-        className={classNames(projectcss.all, sty.svg__cRwxw, {
+        className={classNames("all", sty.svg__cRwxw, {
           [sty.svgfiled__cRwxwZvsHy]: hasVariant($state, "filed", "filed"),
           [sty.svgunnamedGroupOfVariants_bill__cRwxwjPrn8]: hasVariant(
             $state,
@@ -314,7 +315,7 @@ function PlasmicIcons__RenderFunc(props: {
       />
 
       <SvgRepoIconCarrier3Icon
-        className={classNames(projectcss.all, sty.svg__bzwy5, {
+        className={classNames("all", sty.svg__bzwy5, {
           [sty.svgfiled_unnamedGroupOfVariants_intenet__bzwy5ZvsHyMMJ6]:
             hasVariant($state, "unnamedGroupOfVariants", "intenet") &&
             hasVariant($state, "filed", "filed"),
@@ -337,7 +338,7 @@ function PlasmicIcons__RenderFunc(props: {
       />
 
       <SvgRepoIconCarrier4Icon
-        className={classNames(projectcss.all, sty.svg__oOal, {
+        className={classNames("all", sty.svg__oOal, {
           [sty.svgfiled_unnamedGroupOfVariants_walet__oOalZvsHyWSVt]:
             hasVariant($state, "filed", "filed") &&
             hasVariant($state, "unnamedGroupOfVariants", "walet"),

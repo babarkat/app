@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicLineClomp.module.css"; // plasmic-import: _sMX4BykvcLd/css
 
 createPlasmicElementProxy;
@@ -144,31 +143,33 @@ function PlasmicLineClomp__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "more",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.more
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.more
       },
       {
         path: "line",
         type: "readonly",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true,
 
         onChangeProp: "onLineChange"
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 
@@ -181,10 +182,10 @@ function PlasmicLineClomp__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         { [sty.rootmore]: hasVariant($state, "more", "more") }
@@ -193,7 +194,7 @@ function PlasmicLineClomp__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox, {
+        className={classNames("all", sty.freeBox, {
           [sty.freeBoxmore]: hasVariant($state, "more", "more")
         })}
         id={``}
@@ -263,12 +264,9 @@ function PlasmicLineClomp__RenderFunc(props: {
           : true
       ) ? (
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__weAqf,
-            { [sty.textmore__weAqfOk6Rt]: hasVariant($state, "more", "more") }
-          )}
+          className={classNames("all", "__wab_text", sty.text__weAqf, {
+            [sty.textmore__weAqfOk6Rt]: hasVariant($state, "more", "more")
+          })}
           onClick={async event => {
             const $steps = {};
 
@@ -325,12 +323,9 @@ function PlasmicLineClomp__RenderFunc(props: {
           : false
       ) ? (
         <div
-          className={classNames(
-            projectcss.all,
-            projectcss.__wab_text,
-            sty.text__xHj5N,
-            { [sty.textmore__xHj5NOk6Rt]: hasVariant($state, "more", "more") }
-          )}
+          className={classNames("all", "__wab_text", sty.text__xHj5N, {
+            [sty.textmore__xHj5NOk6Rt]: hasVariant($state, "more", "more")
+          })}
           onClick={async event => {
             const $steps = {};
 

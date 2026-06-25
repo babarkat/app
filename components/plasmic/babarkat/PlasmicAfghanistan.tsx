@@ -64,7 +64,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicAfghanistan.module.css"; // plasmic-import: IAxGKM4_bu7-/css
 
 import FlagForFlagAfghanistanSvgrepoComSvgIcon from "./icons/PlasmicIcon__FlagForFlagAfghanistanSvgrepoComSvg"; // plasmic-import: GXaBnyf-6uke/icon
@@ -139,37 +138,25 @@ function PlasmicAfghanistan__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_sZQMbqXz9utLNaTnNb3uss",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.soon
       )}
     >
-      <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text___3H7Hv
-        )}
-      >
+      <div className={classNames("all", "__wab_text", sty.text___3H7Hv)}>
         {"\u0628\u0647 \u0632\u0648\u062f\u06cc"}
       </div>
       <FlagForFlagAfghanistanSvgrepoComSvgIcon
         data-plasmic-name={"afghanistanFlag"}
         data-plasmic-override={overrides.afghanistanFlag}
-        className={classNames(projectcss.all, sty.afghanistanFlag)}
+        className={classNames("all", sty.afghanistanFlag)}
         role={"img"}
       />
 
-      <div
-        className={classNames(
-          projectcss.all,
-          projectcss.__wab_text,
-          sty.text__copNq
-        )}
-      >
+      <div className={classNames("all", "__wab_text", sty.text__copNq)}>
         {
           "\u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698 \u0627\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646"
         }

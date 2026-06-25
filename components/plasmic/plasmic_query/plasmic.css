@@ -1,3 +1,7 @@
+.plasmic_default_styles {
+  --mixin-mQdTSVoit_mw_white-space: pre-wrap;
+}
+
 :where(.all) {
   display: block;
   white-space: inherit;
@@ -186,6 +190,58 @@
   text-transform: inherit;
 }
 
+:where(.i) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+:where(.__wab_expr_html_text i) {
+  white-space: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+
+:where(.em) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+:where(.__wab_expr_html_text em) {
+  white-space: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+
+:where(.strong) {
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+:where(.__wab_expr_html_text strong) {
+  white-space: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  font-size: inherit;
+  color: inherit;
+  text-transform: inherit;
+}
+
 :where(.h1) {
   font-size: inherit;
   font-weight: inherit;
@@ -309,5 +365,6 @@
 .__wab_expr_html_text {
   white-space: normal;
 }
-:where(.root_reset) {
+:where(.root_reset_YUiM7yqBWAqsh8KSnrdj7) {
+  white-space: var(--mixin-mQdTSVoit_mw_white-space);
 }

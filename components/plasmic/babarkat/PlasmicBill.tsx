@@ -83,7 +83,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: sZQMbqXz9utLNaTnNb3uss/projectcss
 import sty from "./PlasmicBill.module.css"; // plasmic-import: b-NdD4-urlc5/css
 
 import Icon154Icon from "./icons/PlasmicIcon__Icon154"; // plasmic-import: vEkGA7arj2Yg/icon
@@ -110,6 +109,42 @@ import Icon102Icon from "./icons/PlasmicIcon__Icon102"; // plasmic-import: 98U05
 import Icon104Icon from "./icons/PlasmicIcon__Icon104"; // plasmic-import: 3o5IGmXy7oW3/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
+
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
+  return {
+    title: "بابرکت",
+
+    openGraph: {
+      title: "بابرکت"
+    },
+    twitter: {
+      card: "summary" as const,
+      title: "بابرکت"
+    }
+  };
+}
 
 createPlasmicElementProxy;
 
@@ -248,19 +283,13 @@ function PlasmicBill__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
-  const currentUser = useCurrentUser?.() || {};
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
         path: "idinput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step1")
             ? (() => {
                 try {
@@ -293,7 +322,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "operators2",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             name: "MTN",
             nameop: "Irancell",
@@ -416,7 +445,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "operatorselect",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => -1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => -1
       },
       {
         path: "boxselect[].select",
@@ -427,7 +456,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "typecharge",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "boxselect[].disable2",
@@ -438,19 +467,19 @@ function PlasmicBill__RenderFunc(props: {
         path: "number",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "chargeType2",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "fragmentInput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step2") ? `` : ""
       },
       {
@@ -467,31 +496,31 @@ function PlasmicBill__RenderFunc(props: {
         path: "amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "stepscharg",
         type: "private",
         variableType: "variant",
-        initFunc: ({ $props, $state, $queries, $ctx }) => $props.stepscharg
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => $props.stepscharg
       },
       {
         path: "modal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "variable",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "mojody",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userinfo.toman;
@@ -510,26 +539,26 @@ function PlasmicBill__RenderFunc(props: {
         path: "uuid",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "modal2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3") ? false : false
       },
       {
         path: "infopardakt",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "userinfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -551,19 +580,19 @@ function PlasmicBill__RenderFunc(props: {
         path: "disable",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "pardakhtid",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "token",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(sessionStorage.getItem("userbabarcatToken"))
@@ -583,44 +612,44 @@ function PlasmicBill__RenderFunc(props: {
         path: "commissionBabarkat.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "commissionBabarkat.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "commissionBabarkat.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "error",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "type2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "fragmentInput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.name;
@@ -639,7 +668,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "fragmentInput4.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.phone;
@@ -658,20 +687,20 @@ function PlasmicBill__RenderFunc(props: {
         path: "loading.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step1") ? false : false
       },
       {
         path: "id",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "info.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant($state, "stepscharg", "step3")
             ? false
             : hasVariant(globalVariants, "screen", "mobileOnly")
@@ -682,13 +711,13 @@ function PlasmicBill__RenderFunc(props: {
         path: "idORcode",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "bill_id"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "bill_id"
       },
       {
         path: "idinput2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.code;
@@ -707,7 +736,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "fragmentInput5.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.mobile;
@@ -726,7 +755,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "idinput3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.pardakhtid == ""
@@ -747,19 +776,19 @@ function PlasmicBill__RenderFunc(props: {
         path: "buttonHasError",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "mobile",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.userinfo.mobile;
@@ -778,25 +807,25 @@ function PlasmicBill__RenderFunc(props: {
         path: "phone",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "name",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "code",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "types",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             type: "water",
             name: "\u0642\u0628\u0636 \u0622\u0628",
@@ -843,7 +872,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "backstep3.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -862,7 +891,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "step1Next2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -881,7 +910,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "backstep2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -900,7 +929,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "step1Next.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -919,7 +948,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "addBill.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -938,7 +967,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "step2Next.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -957,7 +986,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "button.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -976,7 +1005,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "button2.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -995,7 +1024,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "billsdata",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return JSON.parse(window.localStorage.getItem("bills") || "[]");
@@ -1029,20 +1058,20 @@ function PlasmicBill__RenderFunc(props: {
         path: "edit.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "exitModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "button5.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -1061,7 +1090,7 @@ function PlasmicBill__RenderFunc(props: {
         path: "button6.loadingviow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.loadingviow;
@@ -1080,67 +1109,67 @@ function PlasmicBill__RenderFunc(props: {
         path: "selectBill",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "shopModal.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "shopModal.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "shopModal.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "exchangeRate.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchangeRate.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchangeRate.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "rate",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "exchange.totalToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.totalAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.amont",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.data.amount;
@@ -1159,59 +1188,72 @@ function PlasmicBill__RenderFunc(props: {
         path: "exchange.afghaniWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.tomanWithoutCommission",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "exchange.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "toman"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "toman"
       },
       {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialog.type",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialog.load",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "exchange.commissionToman",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "exchange.commissionAfghani",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
+  const currentUser = useCurrentUser?.() || {};
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx as PageCtx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -1219,16 +1261,12 @@ function PlasmicBill__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicBill.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicBill.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
-          name="twitter:title"
-          content={PlasmicBill.pageMetadata.title}
+          property="twitter:title"
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -1244,10 +1282,10 @@ function PlasmicBill__RenderFunc(props: {
         data-plasmic-root={true}
         data-plasmic-for-node={forNode}
         className={classNames(
-          projectcss.all,
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "all",
+          "root_reset_sZQMbqXz9utLNaTnNb3uss",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames,
           sty.chargeStep1,
           hasVariant($state, "stepscharg", "step3") &&
@@ -1276,7 +1314,7 @@ function PlasmicBill__RenderFunc(props: {
         )}
       >
         <section
-          className={classNames(projectcss.all, sty.section___1Mdb, {
+          className={classNames("all", sty.section___1Mdb, {
             [sty.sectionstepscharg_step1___1MdbqKzi3]: hasVariant(
               $state,
               "stepscharg",
@@ -1290,7 +1328,7 @@ function PlasmicBill__RenderFunc(props: {
           })}
         >
           <div
-            className={classNames(projectcss.all, sty.freeBox__mpDk, {
+            className={classNames("all", sty.freeBox__mpDk, {
               [sty.freeBoxstepscharg_step2__mpDkAvykh]: hasVariant(
                 $state,
                 "stepscharg",
@@ -1304,7 +1342,7 @@ function PlasmicBill__RenderFunc(props: {
             })}
           >
             <section
-              className={classNames(projectcss.all, sty.section__xU2Oq, {
+              className={classNames("all", sty.section__xU2Oq, {
                 [sty.sectionstepscharg_step3__xU2OqTqZTv]: hasVariant(
                   $state,
                   "stepscharg",
@@ -1359,7 +1397,7 @@ function PlasmicBill__RenderFunc(props: {
               <div
                 data-plasmic-name={"wallet"}
                 data-plasmic-override={overrides.wallet}
-                className={classNames(projectcss.all, sty.wallet, {
+                className={classNames("all", sty.wallet, {
                   [sty.walletstepscharg_step1]: hasVariant(
                     $state,
                     "stepscharg",
@@ -1378,7 +1416,7 @@ function PlasmicBill__RenderFunc(props: {
                 })}
               >
                 <Icon154Icon
-                  className={classNames(projectcss.all, sty.svg__upyI, {
+                  className={classNames("all", sty.svg__upyI, {
                     [sty.svgstepscharg_step1__upyIqKzi3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1396,7 +1434,7 @@ function PlasmicBill__RenderFunc(props: {
                 <div
                   data-plasmic-name={"steps"}
                   data-plasmic-override={overrides.steps}
-                  className={classNames(projectcss.all, sty.steps, {
+                  className={classNames("all", sty.steps, {
                     [sty.stepsstepscharg_step1]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1417,7 +1455,7 @@ function PlasmicBill__RenderFunc(props: {
                   <div
                     data-plasmic-name={"\u0645\u0634\u062e\u0635\u0627\u062a"}
                     data-plasmic-override={overrides.مشخصات}
-                    className={classNames(projectcss.all, sty.مشخصات, {
+                    className={classNames("all", sty.مشخصات, {
                       [sty.مشخصاتstepscharg_step1]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1440,7 +1478,7 @@ function PlasmicBill__RenderFunc(props: {
                             ? CheckCircleSvgrepoComSvgIcon
                             : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
-                      className={classNames(projectcss.all, sty.selected, {
+                      className={classNames("all", sty.selected, {
                         [sty.selectedstepscharg_step1]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1462,8 +1500,8 @@ function PlasmicBill__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__dr5Sp,
                         {
                           [sty.textstepscharg_step2__dr5SpAvykh]: hasVariant(
@@ -1483,7 +1521,7 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   </div>
                   <LineXlSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__wWiHf)}
+                    className={classNames("all", sty.svg__wWiHf)}
                     role={"img"}
                   />
 
@@ -1492,7 +1530,7 @@ function PlasmicBill__RenderFunc(props: {
                       "\u0645\u0628\u0644\u063a\u0634\u0627\u0631\u0698"
                     }
                     data-plasmic-override={overrides.مبلغشارژ}
-                    className={classNames(projectcss.all, sty.مبلغشارژ)}
+                    className={classNames("all", sty.مبلغشارژ)}
                   >
                     <PlasmicIcon__
                       data-plasmic-name={"unselected"}
@@ -1502,7 +1540,7 @@ function PlasmicBill__RenderFunc(props: {
                           ? CheckCircleSvgrepoComSvgIcon
                           : RadioButtonCheckedSvgrepoCom2SvgIcon
                       }
-                      className={classNames(projectcss.all, sty.unselected, {
+                      className={classNames("all", sty.unselected, {
                         [sty.unselectedstepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1519,8 +1557,8 @@ function PlasmicBill__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___7Mhfp,
                         {
                           [sty.textstepscharg_step2___7MhfpAvykh]: hasVariant(
@@ -1540,7 +1578,7 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   </div>
                   <LineXlSvgrepoComSvgIcon
-                    className={classNames(projectcss.all, sty.svg__sNzY)}
+                    className={classNames("all", sty.svg__sNzY)}
                     role={"img"}
                   />
 
@@ -1549,7 +1587,7 @@ function PlasmicBill__RenderFunc(props: {
                       "\u062a\u0627\u06cc\u06cc\u062f\u062e\u0631\u06cc\u062f"
                     }
                     data-plasmic-override={overrides.تاییدخرید}
-                    className={classNames(projectcss.all, sty.تاییدخرید, {
+                    className={classNames("all", sty.تاییدخرید, {
                       [sty.تاییدخریدstepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1560,7 +1598,7 @@ function PlasmicBill__RenderFunc(props: {
                     <RadioButtonCheckedSvgrepoCom2SvgIcon
                       data-plasmic-name={"unselected2"}
                       data-plasmic-override={overrides.unselected2}
-                      className={classNames(projectcss.all, sty.unselected2, {
+                      className={classNames("all", sty.unselected2, {
                         [sty.unselected2stepscharg_step2]: hasVariant(
                           $state,
                           "stepscharg",
@@ -1577,8 +1615,8 @@ function PlasmicBill__RenderFunc(props: {
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__dPYdD,
                         {
                           [sty.textstepscharg_step2__dPYdDAvykh]: hasVariant(
@@ -1601,7 +1639,7 @@ function PlasmicBill__RenderFunc(props: {
                   </div>
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__c6PsJ, {
+                  className={classNames("all", sty.freeBox__c6PsJ, {
                     [sty.freeBoxstepscharg_step2__c6PsJAvykh]: hasVariant(
                       $state,
                       "stepscharg",
@@ -1615,7 +1653,7 @@ function PlasmicBill__RenderFunc(props: {
                   })}
                 >
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__gPzHz, {
+                    className={classNames("all", sty.freeBox__gPzHz, {
                       [sty.freeBoxstepscharg_step1__gPzHzqKzi3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -1678,8 +1716,8 @@ function PlasmicBill__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__ovHho,
                       {
                         [sty.textstepscharg_step1__ovHhoqKzi3]: hasVariant(
@@ -1754,30 +1792,26 @@ function PlasmicBill__RenderFunc(props: {
                         : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__z1Dcz,
-                        {
-                          [sty.freeBoxstepscharg_step2__z1DczAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
-                          [sty.freeBoxstepscharg_step3__z1DczTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__z1Dcz, {
+                        [sty.freeBoxstepscharg_step2__z1DczAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.freeBoxstepscharg_step3__z1DczTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       {(
                         hasVariant($state, "stepscharg", "step3") ? true : false
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__a161,
                             {
                               [sty.textstepscharg_step2__a161Avykh]: hasVariant(
@@ -1801,19 +1835,15 @@ function PlasmicBill__RenderFunc(props: {
                         </div>
                       ) : null}
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___3EJpq,
-                          {
-                            [sty.freeBoxstepscharg_step3___3EJpqTqZTv]:
-                              hasVariant($state, "stepscharg", "step3")
-                          }
-                        )}
+                        className={classNames("all", sty.freeBox___3EJpq, {
+                          [sty.freeBoxstepscharg_step3___3EJpqTqZTv]:
+                            hasVariant($state, "stepscharg", "step3")
+                        })}
                       >
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___4YO1,
                             {
                               [sty.textstepscharg_step1___4YO1QKzi3]:
@@ -1886,30 +1916,26 @@ function PlasmicBill__RenderFunc(props: {
                         : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__okEke,
-                        {
-                          [sty.freeBoxstepscharg_step2__okEkeAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
-                          [sty.freeBoxstepscharg_step3__okEkeTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__okEke, {
+                        [sty.freeBoxstepscharg_step2__okEkeAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.freeBoxstepscharg_step3__okEkeTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       {(
                         hasVariant($state, "stepscharg", "step3") ? true : false
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__my9Y4,
                             {
                               [sty.textstepscharg_step2__my9Y4Avykh]:
@@ -1931,8 +1957,8 @@ function PlasmicBill__RenderFunc(props: {
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___0JTo9,
                             {
                               [sty.textstepscharg_step2___0JTo9Avykh]:
@@ -1990,26 +2016,31 @@ function PlasmicBill__RenderFunc(props: {
                           : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___6HMtq,
-                        {
-                          [sty.freeBoxstepscharg_step1___6HMtqqKzi3]:
-                            hasVariant($state, "stepscharg", "step1"),
-                          [sty.freeBoxstepscharg_step2___6HMtqAvykh]:
-                            hasVariant($state, "stepscharg", "step2"),
-                          [sty.freeBoxstepscharg_step3___6HMtqTqZTv]:
-                            hasVariant($state, "stepscharg", "step3")
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox___6HMtq, {
+                        [sty.freeBoxstepscharg_step1___6HMtqqKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        ),
+                        [sty.freeBoxstepscharg_step2___6HMtqAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.freeBoxstepscharg_step3___6HMtqTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       {(
                         hasVariant($state, "stepscharg", "step3") ? true : false
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__h7Myd,
                             {
                               [sty.textstepscharg_step2__h7MydAvykh]:
@@ -2031,8 +2062,8 @@ function PlasmicBill__RenderFunc(props: {
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__ooVa,
                             {
                               [sty.textstepscharg_step2__ooVaAvykh]: hasVariant(
@@ -2096,35 +2127,31 @@ function PlasmicBill__RenderFunc(props: {
                           : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__vjiyC,
-                        {
-                          [sty.freeBoxstepscharg_step1__vjiyCqKzi3]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step1"
-                          ),
-                          [sty.freeBoxstepscharg_step2__vjiyCAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
-                          [sty.freeBoxstepscharg_step3__vjiyCTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__vjiyC, {
+                        [sty.freeBoxstepscharg_step1__vjiyCqKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        ),
+                        [sty.freeBoxstepscharg_step2__vjiyCAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.freeBoxstepscharg_step3__vjiyCTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       {(
                         hasVariant($state, "stepscharg", "step3") ? true : false
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__dm9Sb,
                             {
                               [sty.textstepscharg_step2__dm9SbAvykh]:
@@ -2146,8 +2173,8 @@ function PlasmicBill__RenderFunc(props: {
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__iiWt2,
                             {
                               [sty.textstepscharg_step2__iiWt2Avykh]:
@@ -2205,35 +2232,31 @@ function PlasmicBill__RenderFunc(props: {
                           : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__yl38R,
-                        {
-                          [sty.freeBoxstepscharg_step1__yl38RQKzi3]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step1"
-                          ),
-                          [sty.freeBoxstepscharg_step2__yl38RAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          ),
-                          [sty.freeBoxstepscharg_step3__yl38RTqZTv]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__yl38R, {
+                        [sty.freeBoxstepscharg_step1__yl38RQKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        ),
+                        [sty.freeBoxstepscharg_step2__yl38RAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.freeBoxstepscharg_step3__yl38RTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       {(
                         hasVariant($state, "stepscharg", "step3") ? true : false
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__zkO5I,
                             {
                               [sty.textstepscharg_step2__zkO5IAvykh]:
@@ -2255,8 +2278,8 @@ function PlasmicBill__RenderFunc(props: {
                       ) ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__tF2ZB,
                             {
                               [sty.textstepscharg_step2__tF2ZBAvykh]:
@@ -2293,7 +2316,7 @@ function PlasmicBill__RenderFunc(props: {
                     </div>
                   ) : null}
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__eJoqq, {
+                    className={classNames("all", sty.freeBox__eJoqq, {
                       [sty.freeBoxstepscharg_step2__eJoqqAvykh]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2311,8 +2334,8 @@ function PlasmicBill__RenderFunc(props: {
                     ) ? (
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__r4Xam,
                           {
                             [sty.textstepscharg_step2__r4XamAvykh]: hasVariant(
@@ -2340,8 +2363,8 @@ function PlasmicBill__RenderFunc(props: {
                     ) ? (
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___5AQQ,
                           {
                             [sty.textstepscharg_step1___5AQQqKzi3]: hasVariant(
@@ -2390,7 +2413,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </div>
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__lP6JV, {
+                  className={classNames("all", sty.freeBox__lP6JV, {
                     [sty.freeBoxstepscharg_step1__lP6JVqKzi3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -2426,17 +2449,13 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__vcZxB,
-                        {
-                          [sty.freeBoxstepscharg_step1__vcZxBqKzi3]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step1"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__vcZxB, {
+                        [sty.freeBoxstepscharg_step1__vcZxBqKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        )
+                      })}
                     >
                       {(_par =>
                         !_par ? [] : Array.isArray(_par) ? _par : [_par])(
@@ -2564,7 +2583,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     </div>
                   ) : null}
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__aci6W, {
+                    className={classNames("all", sty.freeBox__aci6W, {
                       [sty.freeBoxstepscharg_step1__aci6WqKzi3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -2574,8 +2593,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__tz4Bs,
                         {
                           [sty.textstepscharg_step1__tz4BsqKzi3]: hasVariant(
@@ -2710,22 +2729,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         })()
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__kAcN3,
-                        {
-                          [sty.freeBoxstepscharg_step1__kAcN3QKzi3]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step1"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__kAcN3, {
+                        [sty.freeBoxstepscharg_step1__kAcN3QKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        )
+                      })}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__o8Bft,
                           {
                             [sty.textstepscharg_step1__o8BftQKzi3]: hasVariant(
@@ -2854,27 +2869,23 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       : true
                   ) ? (
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox__riwOa,
-                        {
-                          [sty.freeBoxstepscharg_step1__riwOaqKzi3]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step1"
-                          ),
-                          [sty.freeBoxstepscharg_step2__riwOaAvykh]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step2"
-                          )
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox__riwOa, {
+                        [sty.freeBoxstepscharg_step1__riwOaqKzi3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step1"
+                        ),
+                        [sty.freeBoxstepscharg_step2__riwOaAvykh]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        )
+                      })}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___36VHu,
                           {
                             [sty.textstepscharg_step1___36VHuqKzi3]: hasVariant(
@@ -3129,7 +3140,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     <div
                       data-plasmic-name={"billId"}
                       data-plasmic-override={overrides.billId}
-                      className={classNames(projectcss.all, sty.billId, {
+                      className={classNames("all", sty.billId, {
                         [sty.billIdstepscharg_step1]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3144,8 +3155,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__wuKnw,
                           {
                             [sty.textstepscharg_step1__wuKnwQKzi3]: hasVariant(
@@ -3278,7 +3289,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     <div
                       data-plasmic-name={"billId3"}
                       data-plasmic-override={overrides.billId3}
-                      className={classNames(projectcss.all, sty.billId3, {
+                      className={classNames("all", sty.billId3, {
                         [sty.billId3stepscharg_step1]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3293,8 +3304,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___5DeUq,
                           {
                             [sty.textstepscharg_step1___5DeUqQKzi3]: hasVariant(
@@ -3436,7 +3447,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     <div
                       data-plasmic-name={"billId2"}
                       data-plasmic-override={overrides.billId2}
-                      className={classNames(projectcss.all, sty.billId2, {
+                      className={classNames("all", sty.billId2, {
                         [sty.billId2stepscharg_step1]: hasVariant(
                           $state,
                           "stepscharg",
@@ -3451,8 +3462,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ecMmD,
                           {
                             [sty.textstepscharg_step1__ecMmDqKzi3]: hasVariant(
@@ -3672,7 +3683,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 ) : null}
               </div>
               <div
-                className={classNames(projectcss.all, sty.freeBox__i7Zny, {
+                className={classNames("all", sty.freeBox__i7Zny, {
                   [sty.freeBoxstepscharg_step2__i7ZnyAvykh]: hasVariant(
                     $state,
                     "stepscharg",
@@ -3686,18 +3697,13 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 })}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__rrNu,
-                    {
-                      [sty.textstepscharg_step2__rrNuAvykh]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step2"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__rrNu, {
+                    [sty.textstepscharg_step2__rrNuAvykh]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step2"
+                    )
+                  })}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
@@ -3706,7 +3712,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 <div
                   data-plasmic-name={"operators"}
                   data-plasmic-override={overrides.operators}
-                  className={classNames(projectcss.all, sty.operators, {
+                  className={classNames("all", sty.operators, {
                     [sty.operatorsstepscharg_step2]: hasVariant(
                       $state,
                       "stepscharg",
@@ -3826,14 +3832,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         [
                           {
                             name: "boxselect[].select",
-                            initFunc: ({ $props, $state, $queries }) =>
+                            initFunc: ({ $props, $state, $queries, $q }) =>
                               hasVariant(globalVariants, "screen", "mobileOnly")
                                 ? false
                                 : false
                           },
                           {
                             name: "boxselect[].disable2",
-                            initFunc: ({ $props, $state, $queries }) =>
+                            initFunc: ({ $props, $state, $queries, $q }) =>
                               (() => {
                                 try {
                                   return $state.idinput.value.length != 11;
@@ -3900,7 +3906,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               </div>
               {(hasVariant($state, "stepscharg", "step2") ? true : false) ? (
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__e9MOi, {
+                  className={classNames("all", sty.freeBox__e9MOi, {
                     [sty.freeBoxstepscharg_step2__e9MOiAvykh]: hasVariant(
                       $state,
                       "stepscharg",
@@ -3915,8 +3921,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__riyhU,
                       {
                         [sty.textstepscharg_step2__riyhUAvykh]: hasVariant(
@@ -3941,7 +3947,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   <div
                     data-plasmic-name={"operators3"}
                     data-plasmic-override={overrides.operators3}
-                    className={classNames(projectcss.all, sty.operators3, {
+                    className={classNames("all", sty.operators3, {
                       [sty.operators3stepscharg_step2]: hasVariant(
                         $state,
                         "stepscharg",
@@ -4075,7 +4081,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           [
                             {
                               name: "boxselect3[].select",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -4086,7 +4092,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             },
                             {
                               name: "boxselect3[].disable2",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 (() => {
                                   try {
                                     return $state.idinput.value.length != 11;
@@ -4112,19 +4118,15 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             {...child$Props}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__pw8Om,
-                                {
-                                  [sty.freeBoxstepscharg_step2__pw8OmAvykh]:
-                                    hasVariant($state, "stepscharg", "step2")
-                                }
-                              )}
+                              className={classNames("all", sty.freeBox__pw8Om, {
+                                [sty.freeBoxstepscharg_step2__pw8OmAvykh]:
+                                  hasVariant($state, "stepscharg", "step2")
+                              })}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___05Xh4,
                                   {
                                     [sty.textstepscharg_step2___05Xh4Avykh]:
@@ -4180,7 +4182,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 </div>
               ) : null}
               <div
-                className={classNames(projectcss.all, sty.freeBox__jipZs, {
+                className={classNames("all", sty.freeBox__jipZs, {
                   [sty.freeBoxstepscharg_step1__jipZsqKzi3]: hasVariant(
                     $state,
                     "stepscharg",
@@ -4201,7 +4203,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 <div
                   data-plasmic-name={"pay"}
                   data-plasmic-override={overrides.pay}
-                  className={classNames(projectcss.all, sty.pay, {
+                  className={classNames("all", sty.pay, {
                     [sty.paystepscharg_step3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -4564,7 +4566,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 
                 {(hasVariant($state, "stepscharg", "step3") ? true : false) ? (
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__r5Ot9, {
+                    className={classNames("all", sty.freeBox__r5Ot9, {
                       [sty.freeBoxstepscharg_step3__r5Ot9TqZTv]: hasVariant(
                         $state,
                         "stepscharg",
@@ -4611,7 +4613,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     }}
                   >
                     <Group4SvgIcon
-                      className={classNames(projectcss.all, sty.svg__hrbUd, {
+                      className={classNames("all", sty.svg__hrbUd, {
                         [sty.svgstepscharg_step3__hrbUdTqZTv]: hasVariant(
                           $state,
                           "stepscharg",
@@ -4646,19 +4648,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     />
 
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___9IClx,
-                        {
-                          [sty.freeBoxstepscharg_step3___9IClxTqZTv]:
-                            hasVariant($state, "stepscharg", "step3")
-                        }
-                      )}
+                      className={classNames("all", sty.freeBox___9IClx, {
+                        [sty.freeBoxstepscharg_step3___9IClxTqZTv]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__dhL8C,
                           {
                             [sty.textstepscharg_step3__dhL8CTqZTv]: hasVariant(
@@ -4675,8 +4676,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__g4DR,
                           {
                             [sty.textstepscharg_step2__g4DRAvykh]: hasVariant(
@@ -4698,7 +4699,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       </div>
                     </div>
                     <Group7SvgIcon
-                      className={classNames(projectcss.all, sty.svg__kVeo5, {
+                      className={classNames("all", sty.svg__kVeo5, {
                         [sty.svgstepscharg_step3__kVeo5TqZTv]: hasVariant(
                           $state,
                           "stepscharg",
@@ -4734,7 +4735,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 <div
                   data-plasmic-name={"nobill"}
                   data-plasmic-override={overrides.nobill}
-                  className={classNames(projectcss.all, sty.nobill, {
+                  className={classNames("all", sty.nobill, {
                     [sty.nobillstepscharg_step1]: hasVariant(
                       $state,
                       "stepscharg",
@@ -4778,8 +4779,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__eDrsD,
                       {
                         [sty.textstepscharg_step1__eDrsDqKzi3]: hasVariant(
@@ -4795,11 +4796,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     }
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__rkOf7
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__rkOf7)}
                   >
                     {
                       "\u0627\u0648\u0644\u06cc\u0646 \u0642\u0628\u0636 \u062e\u0648\u062f \u0631\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u06cc\u062f"
@@ -4831,7 +4828,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 <div
                   data-plasmic-name={"bills"}
                   data-plasmic-override={overrides.bills}
-                  className={classNames(projectcss.all, sty.bills, {
+                  className={classNames("all", sty.bills, {
                     [sty.billsstepscharg_step1]: hasVariant(
                       $state,
                       "stepscharg",
@@ -4850,11 +4847,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   })}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___2FL0
-                    )}
+                    className={classNames("all", "__wab_text", sty.text___2FL0)}
                   >
                     {
                       "\u0642\u0628\u0636 \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
@@ -4879,18 +4872,23 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     const currentIndex = __plasmic_idx_0;
                     return (
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__nQaQ,
-                          {
-                            [sty.freeBoxstepscharg_step1__nQaQqKzi3]:
-                              hasVariant($state, "stepscharg", "step1"),
-                            [sty.freeBoxstepscharg_step2__nQaQAvykh]:
-                              hasVariant($state, "stepscharg", "step2"),
-                            [sty.freeBoxstepscharg_step3__nQaQTqZTv]:
-                              hasVariant($state, "stepscharg", "step3")
-                          }
-                        )}
+                        className={classNames("all", sty.freeBox__nQaQ, {
+                          [sty.freeBoxstepscharg_step1__nQaQqKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          ),
+                          [sty.freeBoxstepscharg_step2__nQaQAvykh]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step2"
+                          ),
+                          [sty.freeBoxstepscharg_step3__nQaQTqZTv]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step3"
+                          )
+                        })}
                         key={currentIndex}
                         onClick={async event => {
                           const $steps = {};
@@ -4934,10 +4932,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         />
 
                         <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___2IEOv
-                          )}
+                          className={classNames("all", sty.freeBox___2IEOv)}
                           onClick={async event => {
                             const $steps = {};
 
@@ -5002,8 +4997,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                         >
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text___9ZOyA
                             )}
                           >
@@ -5049,8 +5044,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                           </div>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__ke3Ex
                             )}
                           >
@@ -5253,7 +5248,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     startIcon: (
                                       <Icon110Icon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg__g3X3Q
                                         )}
                                         role={"img"}
@@ -5269,7 +5264,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                         initFunc: ({
                                           $props,
                                           $state,
-                                          $queries
+                                          $queries,
+                                          $q
                                         }) =>
                                           (() => {
                                             try {
@@ -5297,8 +5293,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__lMfJh
                                         )}
                                       >
@@ -5346,7 +5342,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     startIcon: (
                                       <Icon111Icon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg__tRuSm
                                         )}
                                         role={"img"}
@@ -5362,7 +5358,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                         initFunc: ({
                                           $props,
                                           $state,
-                                          $queries
+                                          $queries,
+                                          $q
                                         }) =>
                                           (() => {
                                             try {
@@ -5390,8 +5387,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text___9QhJb
                                         )}
                                       >
@@ -5405,9 +5402,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             contentText: "Popover contents",
                             defaultOpen: false,
                             defaultStylesClassName: classNames(
-                              projectcss.root_reset,
-                              projectcss.plasmic_default_styles,
-                              projectcss.plasmic_mixins,
+                              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                              "plasmic_default_styles",
+                              "plasmic_mixins",
                               styleTokensClassNames
                             ),
                             mouseEnterDelay: 0,
@@ -5446,7 +5443,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                             [
                               {
                                 name: "popover[].open",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   false
                               }
                             ],
@@ -5459,17 +5456,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                               {...child$Props}
                             >
                               <Icon109Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__a7Rhy
-                                )}
+                                className={classNames("all", sty.svg__a7Rhy)}
                                 role={"img"}
                               />
                             </AntdPopover>
                           );
                         })()}
                         <Icon108Icon
-                          className={classNames(projectcss.all, sty.svg__i1Sz)}
+                          className={classNames("all", sty.svg__i1Sz)}
                           role={"img"}
                         />
                       </div>
@@ -5478,9 +5472,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 </div>
               ) : null}
             </Reveal>
-            <section className={classNames(projectcss.all, sty.section__bZv3S)}>
+            <section className={classNames("all", sty.section__bZv3S)}>
               <div
-                className={classNames(projectcss.all, sty.freeBox___0UoW, {
+                className={classNames("all", sty.freeBox___0UoW, {
                   [sty.freeBoxstepscharg_step1___0UoWQKzi3]: hasVariant(
                     $state,
                     "stepscharg",
@@ -5585,8 +5579,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__ujQjf,
                         {
                           [sty.textstepscharg_step2__ujQjfAvykh]: hasVariant(
@@ -5604,7 +5598,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </Button>
                 ) : null}
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__hztXs, {
+                  className={classNames("all", sty.freeBox__hztXs, {
                     [sty.freeBoxstepscharg_step1__hztXsQKzi3]: hasVariant(
                       $state,
                       "stepscharg",
@@ -5731,17 +5725,16 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                       startIcon={null}
                     >
                       <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__oJz02,
-                          {
-                            [sty.freeBoxstepscharg_step1__oJz02QKzi3]:
-                              hasVariant($state, "stepscharg", "step1")
-                          }
-                        )}
+                        className={classNames("all", sty.freeBox__oJz02, {
+                          [sty.freeBoxstepscharg_step1__oJz02QKzi3]: hasVariant(
+                            $state,
+                            "stepscharg",
+                            "step1"
+                          )
+                        })}
                       >
                         <Icon95Icon
-                          className={classNames(projectcss.all, sty.svg__zOhx, {
+                          className={classNames("all", sty.svg__zOhx, {
                             [sty.svgstepscharg_step1__zOhxQKzi3]: hasVariant(
                               $state,
                               "stepscharg",
@@ -5753,8 +5746,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___5OyPr,
                             {
                               [sty.textstepscharg_step1___5OyPrQKzi3]:
@@ -5771,8 +5764,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   ) : null}
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__jBkqJ,
                       {
                         [sty.textstepscharg_step1__jBkqJqKzi3]: hasVariant(
@@ -5820,8 +5813,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   ) ? (
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__bE0T7,
                         {
                           [sty.textstepscharg_step1__bE0T7QKzi3]: hasVariant(
@@ -5879,7 +5872,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     </div>
                   ) : null}
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__e9RnO, {
+                    className={classNames("all", sty.freeBox__e9RnO, {
                       [sty.freeBoxstepscharg_step1__e9RnOqKzi3]: hasVariant(
                         $state,
                         "stepscharg",
@@ -6576,8 +6569,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___34Uvn,
                           {
                             [sty.textstepscharg_step1___34UvnQKzi3]: hasVariant(
@@ -6670,8 +6663,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__bcqup,
                           {
                             [sty.textstepscharg_step1__bcqupQKzi3]: hasVariant(
@@ -6739,7 +6732,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   color={"green"}
                   endIcon={
                     <Icon3Icon
-                      className={classNames(projectcss.all, sty.svg___7Ya0M)}
+                      className={classNames("all", sty.svg___7Ya0M)}
                       role={"img"}
                     />
                   }
@@ -6817,24 +6810,19 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   showStartIcon={true}
                   startIcon={
                     <Icon92Icon
-                      className={classNames(projectcss.all, sty.svg__yqHmc)}
+                      className={classNames("all", sty.svg__yqHmc)}
                       role={"img"}
                     />
                   }
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__m4QM,
-                      {
-                        [sty.textstepscharg_step1__m4QMQKzi3]: hasVariant(
-                          $state,
-                          "stepscharg",
-                          "step1"
-                        )
-                      }
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__m4QM, {
+                      [sty.textstepscharg_step1__m4QMQKzi3]: hasVariant(
+                        $state,
+                        "stepscharg",
+                        "step1"
+                      )
+                    })}
                   >
                     {"\u0642\u0628\u0636 \u062c\u062f\u06cc\u062f"}
                   </div>
@@ -7060,8 +7048,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__kiHcI
                       )}
                     >
@@ -7078,8 +7066,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 ) ? (
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__w1QNb,
                       {
                         [sty.textstepscharg_step1__w1QNbqKzi3]: hasVariant(
@@ -7145,9 +7133,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 )
               })}
               defaultStylesClassName={classNames(
-                projectcss.root_reset,
-                projectcss.plasmic_default_styles,
-                projectcss.plasmic_mixins,
+                "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                "plasmic_default_styles",
+                "plasmic_mixins",
                 styleTokensClassNames
               )}
               hideFooter={true}
@@ -7170,24 +7158,16 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               title={null}
               trigger={null}
             >
-              <div className={classNames(projectcss.all, sty.freeBox___4JLbG)}>
+              <div className={classNames("all", sty.freeBox___4JLbG)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__vj7Hx
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__vj7Hx)}
                 >
                   {
                     "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698"
                   }
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__lxAiN
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__lxAiN)}
                 >
                   {
                     "\u06af\u0627\u0645 \u0647\u0627\u06cc \u062e\u0631\u06cc\u062f \u0634\u0627\u0631\u0698:"
@@ -7196,22 +7176,21 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 <ul
                   data-plasmic-name={"ul"}
                   data-plasmic-override={overrides.ul}
-                  className={classNames(projectcss.all, projectcss.ul, sty.ul)}
+                  className={classNames("all", "ul", "ul__sZQMb", sty.ul)}
                 >
                   <li
                     className={classNames(
-                      projectcss.all,
-                      projectcss.li,
+                      "all",
+                      "li",
+                      "li__sZQMb",
                       sty.li___1IMaD
                     )}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zBbMa)}
-                    >
+                    <div className={classNames("all", sty.freeBox__zBbMa)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__bK9Xs
                         )}
                       >
@@ -7223,24 +7202,19 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </li>
                   <li
                     className={classNames(
-                      projectcss.all,
-                      projectcss.li,
+                      "all",
+                      "li",
+                      "li__sZQMb",
                       sty.li__xmp5S
                     )}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ckCby)}
-                    >
+                    <div className={classNames("all", sty.freeBox__ckCby)}>
                       <div
                         data-plasmic-name={
                           "\u0627\u067e\u0631\u0627\u062a\u0648\u0631"
                         }
                         data-plasmic-override={overrides.اپراتور}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.اپراتور
-                        )}
+                        className={classNames("all", "__wab_text", sty.اپراتور)}
                       >
                         {
                           "\u0627\u067e\u0631\u0627\u062a\u0648\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
@@ -7250,22 +7224,21 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </li>
                   <li
                     className={classNames(
-                      projectcss.all,
-                      projectcss.li,
+                      "all",
+                      "li",
+                      "li__sZQMb",
                       sty.li__tcg2R
                     )}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__k2MpI)}
-                    >
+                    <div className={classNames("all", sty.freeBox__k2MpI)}>
                       <div
                         data-plasmic-name={
                           "\u0627\u067e\u0631\u0627\u062a\u0648\u06312"
                         }
                         data-plasmic-override={overrides.اپراتور2}
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.اپراتور2
                         )}
                       >
@@ -7277,22 +7250,21 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </li>
                   <li
                     className={classNames(
-                      projectcss.all,
-                      projectcss.li,
+                      "all",
+                      "li",
+                      "li__sZQMb",
                       sty.li__lVZc
                     )}
                   >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rXXgZ)}
-                    >
+                    <div className={classNames("all", sty.freeBox__rXXgZ)}>
                       <div
                         data-plasmic-name={
                           "\u0627\u067e\u0631\u0627\u062a\u0648\u06313"
                         }
                         data-plasmic-override={overrides.اپراتور3}
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.اپراتور3
                         )}
                       >
@@ -7382,9 +7354,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 )
               })}
               defaultStylesClassName={classNames(
-                projectcss.root_reset,
-                projectcss.plasmic_default_styles,
-                projectcss.plasmic_mixins,
+                "root_reset_sZQMbqXz9utLNaTnNb3uss",
+                "plasmic_default_styles",
+                "plasmic_mixins",
                 styleTokensClassNames
               )}
               hideFooter={true}
@@ -7434,7 +7406,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               })}
             >
               <div
-                className={classNames(projectcss.all, sty.freeBox__mSuI, {
+                className={classNames("all", sty.freeBox__mSuI, {
                   [sty.freeBoxstepscharg_step3__mSuITqZTv]: hasVariant(
                     $state,
                     "stepscharg",
@@ -7879,25 +7851,20 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__rdyig,
-                    {
-                      [sty.textstepscharg_step3__rdyigTqZTv]: hasVariant(
-                        $state,
-                        "stepscharg",
-                        "step3"
-                      )
-                    }
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__rdyig, {
+                    [sty.textstepscharg_step3__rdyigTqZTv]: hasVariant(
+                      $state,
+                      "stepscharg",
+                      "step3"
+                    )
+                  })}
                 >
                   {
                     "\u062e\u0631\u06cc\u062f \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
                   }
                 </div>
                 <div
-                  className={classNames(projectcss.all, sty.freeBox__b3PlE, {
+                  className={classNames("all", sty.freeBox__b3PlE, {
                     [sty.freeBoxstepscharg_step3__b3PlETqZTv]: hasVariant(
                       $state,
                       "stepscharg",
@@ -7906,11 +7873,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   })}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jy5E
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__jy5E)}
                   >
                     {
                       "\u0634\u0645\u0627\u0631\u0647 \u067e\u06cc\u06af\u06cc\u0631\u06cc"
@@ -7918,8 +7881,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__lwChV,
                       {
                         [sty.textstepscharg_step3__lwChVTqZTv]: hasVariant(
@@ -7951,13 +7914,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                     )}
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__bdsVf)}>
+                <div className={classNames("all", sty.freeBox__bdsVf)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__t7EKw
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__t7EKw)}
                   >
                     {
                       "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634"
@@ -7965,8 +7924,8 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text__re4RM,
                       {
                         [sty.textstepscharg_step3__re4RMTqZTv]: hasVariant(
@@ -8094,11 +8053,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                   }}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__oybpF
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__oybpF)}
                   >
                     {"\u062a\u0627\u06cc\u06cc\u062f"}
                   </div>
@@ -8112,24 +8067,12 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
           data-plasmic-override={overrides.commissionBabarkat}
           className={classNames("__wab_instance", sty.commissionBabarkat)}
           errorDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__lziw4
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__lziw4)}>
               {"Error fetching data"}
             </div>
           }
           loadingDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__cdzoN
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__cdzoN)}>
               {"Loading..."}
             </div>
           }
@@ -8180,20 +8123,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             [sty["pcls_tLh61HApRqL2"]]: true
           })}
           closeIcon={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___3Rci
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text___3Rci)}>
               {"\n"}
             </div>
           }
           defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames
           )}
           hideFooter={true}
@@ -8214,25 +8151,19 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             hasVariant(globalVariants, "screen", "mobileOnly") ? "100%" : "700"
           }
         >
-          <div className={classNames(projectcss.all, sty.freeBox__t1LUa)}>
-            <div className={classNames(projectcss.all, sty.freeBox__ed21)}>
+          <div className={classNames("all", sty.freeBox__t1LUa)}>
+            <div className={classNames("all", sty.freeBox__ed21)}>
               <Icon78Icon
-                className={classNames(projectcss.all, sty.svg__sa9Dm)}
+                className={classNames("all", sty.svg__sa9Dm)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__negJw
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__negJw)}>
                 {"\u0642\u0628\u0636 \u062c\u062f\u06cc\u062f"}
               </div>
             </div>
             <Icon89Icon
-              className={classNames(projectcss.all, sty.svg__ga3J)}
+              className={classNames("all", sty.svg__ga3J)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8273,11 +8204,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               role={"img"}
             />
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___5Y91O)}>
+          <div className={classNames("all", sty.freeBox___5Y91O)}>
             <div
               data-plasmic-name={"comingSoon13"}
               data-plasmic-override={overrides.comingSoon13}
-              className={classNames(projectcss.all, sty.comingSoon13)}
+              className={classNames("all", sty.comingSoon13)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8376,24 +8307,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon98Icon
-                className={classNames(projectcss.all, sty.svg__m6Gu)}
+                className={classNames("all", sty.svg__m6Gu)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__jUaG
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__jUaG)}>
                 {"\u0642\u0628\u0636 \u0628\u0631\u0642"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon14"}
               data-plasmic-override={overrides.comingSoon14}
-              className={classNames(projectcss.all, sty.comingSoon14)}
+              className={classNames("all", sty.comingSoon14)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8492,24 +8417,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon99Icon
-                className={classNames(projectcss.all, sty.svg__e7Uyj)}
+                className={classNames("all", sty.svg__e7Uyj)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__qrGph
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__qrGph)}>
                 {"\u0642\u0628\u0636 \u06af\u0627\u0632"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon15"}
               data-plasmic-override={overrides.comingSoon15}
-              className={classNames(projectcss.all, sty.comingSoon15)}
+              className={classNames("all", sty.comingSoon15)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8608,24 +8527,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon100Icon
-                className={classNames(projectcss.all, sty.svg__cinl7)}
+                className={classNames("all", sty.svg__cinl7)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__p06Xn
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__p06Xn)}>
                 {"\u0642\u0628\u0636 \u0622\u0628"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon16"}
               data-plasmic-override={overrides.comingSoon16}
-              className={classNames(projectcss.all, sty.comingSoon16, {
+              className={classNames("all", sty.comingSoon16, {
                 [sty.comingSoon16stepscharg_step1]: hasVariant(
                   $state,
                   "stepscharg",
@@ -8730,17 +8643,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon101Icon
-                className={classNames(projectcss.all, sty.svg__bspv6)}
+                className={classNames("all", sty.svg__bspv6)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__eNoYa
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__eNoYa)}>
                 {
                   "\u0642\u0628\u0636 \u062a\u0644\u0641\u0646 \u062b\u0627\u0628\u062a"
                 }
@@ -8749,7 +8656,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             <div
               data-plasmic-name={"comingSoon17"}
               data-plasmic-override={overrides.comingSoon17}
-              className={classNames(projectcss.all, sty.comingSoon17)}
+              className={classNames("all", sty.comingSoon17)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8848,17 +8755,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon102Icon
-                className={classNames(projectcss.all, sty.svg__mfcag)}
+                className={classNames("all", sty.svg__mfcag)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__poCsS
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__poCsS)}>
                 {
                   "\u0642\u0628\u0636 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a \u062f\u0627\u0626\u0645\u06cc"
                 }
@@ -8867,7 +8768,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             <div
               data-plasmic-name={"comingSoon18"}
               data-plasmic-override={overrides.comingSoon18}
-              className={classNames(projectcss.all, sty.comingSoon18)}
+              className={classNames("all", sty.comingSoon18)}
               onClick={async event => {
                 const $steps = {};
 
@@ -8966,17 +8867,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon104Icon
-                className={classNames(projectcss.all, sty.svg__lh4Av)}
+                className={classNames("all", sty.svg__lh4Av)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__rQrWl
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__rQrWl)}>
                 {"\u0633\u0627\u06cc\u0631 \u0642\u0628\u0636 \u0647\u0627"}
               </div>
             </div>
@@ -9006,20 +8901,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             [sty["pcls_wITa0eALGpmY"]]: true
           })}
           closeIcon={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__jwCo
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__jwCo)}>
               {"\n"}
             </div>
           }
           defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames
           )}
           hideFooter={true}
@@ -9040,25 +8929,21 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             hasVariant(globalVariants, "screen", "mobileOnly") ? "100%" : "700"
           }
         >
-          <div className={classNames(projectcss.all, sty.freeBox__x7Zc)}>
-            <div className={classNames(projectcss.all, sty.freeBox__qIl1O)}>
+          <div className={classNames("all", sty.freeBox__x7Zc)}>
+            <div className={classNames("all", sty.freeBox__qIl1O)}>
               <Icon78Icon
-                className={classNames(projectcss.all, sty.svg__pIJcv)}
+                className={classNames("all", sty.svg__pIJcv)}
                 role={"img"}
               />
 
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___48JFk
-                )}
+                className={classNames("all", "__wab_text", sty.text___48JFk)}
               >
                 {"\u0642\u0628\u0636 \u062c\u062f\u06cc\u062f"}
               </div>
             </div>
             <Icon89Icon
-              className={classNames(projectcss.all, sty.svg__aInt1)}
+              className={classNames("all", sty.svg__aInt1)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9099,11 +8984,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               role={"img"}
             />
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__hbYsR)}>
+          <div className={classNames("all", sty.freeBox__hbYsR)}>
             <div
               data-plasmic-name={"comingSoon19"}
               data-plasmic-override={overrides.comingSoon19}
-              className={classNames(projectcss.all, sty.comingSoon19)}
+              className={classNames("all", sty.comingSoon19)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9202,24 +9087,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon98Icon
-                className={classNames(projectcss.all, sty.svg__m66Ty)}
+                className={classNames("all", sty.svg__m66Ty)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__ffXXd
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__ffXXd)}>
                 {"\u0642\u0628\u0636 \u0628\u0631\u0642"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon20"}
               data-plasmic-override={overrides.comingSoon20}
-              className={classNames(projectcss.all, sty.comingSoon20)}
+              className={classNames("all", sty.comingSoon20)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9318,24 +9197,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon99Icon
-                className={classNames(projectcss.all, sty.svg__ukAsz)}
+                className={classNames("all", sty.svg__ukAsz)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__hf0IK
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__hf0IK)}>
                 {"\u0642\u0628\u0636 \u06af\u0627\u0632"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon21"}
               data-plasmic-override={overrides.comingSoon21}
-              className={classNames(projectcss.all, sty.comingSoon21)}
+              className={classNames("all", sty.comingSoon21)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9434,24 +9307,18 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon100Icon
-                className={classNames(projectcss.all, sty.svg__cgbB0)}
+                className={classNames("all", sty.svg__cgbB0)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__vwiSs
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__vwiSs)}>
                 {"\u0642\u0628\u0636 \u0622\u0628"}
               </div>
             </div>
             <div
               data-plasmic-name={"comingSoon22"}
               data-plasmic-override={overrides.comingSoon22}
-              className={classNames(projectcss.all, sty.comingSoon22, {
+              className={classNames("all", sty.comingSoon22, {
                 [sty.comingSoon22stepscharg_step1]: hasVariant(
                   $state,
                   "stepscharg",
@@ -9556,17 +9423,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon101Icon
-                className={classNames(projectcss.all, sty.svg__zyWbs)}
+                className={classNames("all", sty.svg__zyWbs)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__e7Vl2
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__e7Vl2)}>
                 {
                   "\u0642\u0628\u0636 \u062a\u0644\u0641\u0646 \u062b\u0627\u0628\u062a"
                 }
@@ -9575,7 +9436,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             <div
               data-plasmic-name={"comingSoon23"}
               data-plasmic-override={overrides.comingSoon23}
-              className={classNames(projectcss.all, sty.comingSoon23)}
+              className={classNames("all", sty.comingSoon23)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9674,17 +9535,11 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon102Icon
-                className={classNames(projectcss.all, sty.svg__opwjB)}
+                className={classNames("all", sty.svg__opwjB)}
                 role={"img"}
               />
 
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__aLahs
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__aLahs)}>
                 {
                   "\u0642\u0628\u0636 \u0633\u06cc\u0645 \u06a9\u0627\u0631\u062a \u062f\u0627\u0626\u0645\u06cc"
                 }
@@ -9693,7 +9548,7 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             <div
               data-plasmic-name={"comingSoon24"}
               data-plasmic-override={overrides.comingSoon24}
-              className={classNames(projectcss.all, sty.comingSoon24)}
+              className={classNames("all", sty.comingSoon24)}
               onClick={async event => {
                 const $steps = {};
 
@@ -9792,16 +9647,12 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               }}
             >
               <Icon104Icon
-                className={classNames(projectcss.all, sty.svg__wg5)}
+                className={classNames("all", sty.svg__wg5)}
                 role={"img"}
               />
 
               <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text___9CPCw
-                )}
+                className={classNames("all", "__wab_text", sty.text___9CPCw)}
               >
                 {"\u0633\u0627\u06cc\u0631 \u0642\u0628\u0636 \u0647\u0627"}
               </div>
@@ -9833,20 +9684,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
               [sty["pcls_akIea5mb1GCq"]]: true
             })}
             closeIcon={
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__xmBrc
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__xmBrc)}>
                 {"\n"}
               </div>
             }
             defaultStylesClassName={classNames(
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "root_reset_sZQMbqXz9utLNaTnNb3uss",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames
             )}
             hideFooter={true}
@@ -9869,25 +9714,21 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 : "700"
             }
           >
-            <div className={classNames(projectcss.all, sty.freeBox__dVyng)}>
-              <div className={classNames(projectcss.all, sty.freeBox__ktIJh)}>
+            <div className={classNames("all", sty.freeBox__dVyng)}>
+              <div className={classNames("all", sty.freeBox__ktIJh)}>
                 <Icon78Icon
-                  className={classNames(projectcss.all, sty.svg__tbeWj)}
+                  className={classNames("all", sty.svg__tbeWj)}
                   role={"img"}
                 />
 
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___5Fzdx
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___5Fzdx)}
                 >
                   {"\u062c\u0632\u06cc\u06cc\u0627\u062a \u0642\u0628\u0636 "}
                 </div>
               </div>
               <Icon89Icon
-                className={classNames(projectcss.all, sty.svg__dHnji)}
+                className={classNames("all", sty.svg__dHnji)}
                 onClick={async event => {
                   const $steps = {};
 
@@ -9929,155 +9770,97 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
                 role={"img"}
               />
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__cbBbD)}>
-              <div className={classNames(projectcss.all, sty.freeBox__sLIwM)}>
+            <div className={classNames("all", sty.freeBox__cbBbD)}>
+              <div className={classNames("all", sty.freeBox__sLIwM)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___3RGYi
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___3RGYi)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__yft0R
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__yft0R)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
                   }
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__akfwM)}>
+              <div className={classNames("all", sty.freeBox__akfwM)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__oYPkj
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__oYPkj)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__hZfA
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__hZfA)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
                   }
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__eh2T)}>
+              <div className={classNames("all", sty.freeBox__eh2T)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__waO4H
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__waO4H)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cqbqL
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__cqbqL)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
                   }
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___4YSc)}>
+              <div className={classNames("all", sty.freeBox___4YSc)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___5AZ1I
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___5AZ1I)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__l6Ied
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__l6Ied)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
                   }
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__hDPtx)}>
+              <div className={classNames("all", sty.freeBox__hDPtx)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__rUr63
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__rUr63)}
+                >
+                  {"\u0646\u0627\u0645"}
+                </div>
+                <div className={classNames("all", "__wab_text", sty.text__tzV)}>
+                  {
+                    "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
+                  }
+                </div>
+              </div>
+              <div className={classNames("all", sty.freeBox__wTtD)}>
+                <div
+                  className={classNames("all", "__wab_text", sty.text__pJryb)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__tzV
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__b6Cev)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
                   }
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__wTtD)}>
+              <div className={classNames("all", sty.freeBox__t7MCp)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__pJryb
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__ujnaY)}
                 >
                   {"\u0646\u0627\u0645"}
                 </div>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__b6Cev
-                  )}
-                >
-                  {
-                    "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
-                  }
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__t7MCp)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ujnaY
-                  )}
-                >
-                  {"\u0646\u0627\u0645"}
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__n0JgA
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__n0JgA)}
                 >
                   {
                     "\u0627\u0644\u0647\u0647 \u0627\u0645\u06cc\u0631 \u0639\u0628\u0627\u0633\u06cc"
@@ -10119,9 +9902,9 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
           data-plasmic-override={overrides.exitModal}
           className={classNames("__wab_instance", sty.exitModal)}
           defaultStylesClassName={classNames(
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "root_reset_sZQMbqXz9utLNaTnNb3uss",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames
           )}
           hideFooter={true}
@@ -10141,20 +9924,14 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
           trigger={null}
           width={"520"}
         >
-          <div className={classNames(projectcss.all, sty.freeBox__jn4WF)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__ok7Yk
-              )}
-            >
+          <div className={classNames("all", sty.freeBox__jn4WF)}>
+            <div className={classNames("all", "__wab_text", sty.text__ok7Yk)}>
               {
                 "\u0627\u0632 \u062d\u0630\u0641 \u0642\u0628\u0636 \u0627\u0637\u0645\u06cc\u0646\u0627\u0646 \u062f\u0627\u0631\u06cc\u062f\u061f"
               }
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox___1GZtL)}>
+          <div className={classNames("all", sty.freeBox___1GZtL)}>
             <Button
               data-plasmic-name={"button5"}
               data-plasmic-override={overrides.button5}
@@ -10523,24 +10300,12 @@ ${$state.exchange.totalAfghani.toLocaleString()} افغانی
             )
           })}
           errorDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xwTw
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__xwTw)}>
               {"Error fetching data"}
             </div>
           }
           loadingDisplay={
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__pXu3
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__pXu3)}>
               {"Loading..."}
             </div>
           }
@@ -11345,13 +11110,12 @@ export const PlasmicBill = Object.assign(
     internalVariantProps: PlasmicBill__VariantProps,
     internalArgProps: PlasmicBill__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "بابرکت",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/Bill",
+      pagePath: "/Bill",
+      params: {},
+      query: {}
+    })
   }
 );
 
