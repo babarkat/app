@@ -267,17 +267,17 @@ function PlasmicCharging__RenderFunc(props: {
               "0939",
               "0941"
             ],
-            chargeRange: { min: 25000, max: 1000000, customAmounts: true },
+            chargeRange: { min: 30000, max: 1000000, customAmounts: true },
             services: [
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [25000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
               },
               {
                 type: "amazing",
                 text: "\u0634\u06af\u0641\u062a\u200c\u0627\u0646\u06af\u06cc\u0632",
-                chargeAmounts: [25000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
               }
             ],
             infoText:
@@ -309,7 +309,7 @@ function PlasmicCharging__RenderFunc(props: {
               "0996"
             ],
             chargeRange: {
-              min: 20000,
+              min: 30000,
               max: 500000,
               customAmounts: false,
               amountStep: 1000
@@ -318,7 +318,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [25000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
               }
             ],
             infoText:
@@ -332,17 +332,17 @@ function PlasmicCharging__RenderFunc(props: {
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
             codes: ["0920", "0921", "0922", "0923"],
-            chargeRange: { min: 20000, max: 1000000, customAmounts: true },
+            chargeRange: { min: 30000, max: 1000000, customAmounts: true },
             services: [
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [25000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
               },
               {
                 type: "amazing",
                 text: "\u0634\u06af\u0641\u062a\u200c\u0627\u0646\u06af\u06cc\u0632",
-                chargeAmounts: [25000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
               }
             ],
             infoText:
