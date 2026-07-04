@@ -272,12 +272,12 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 100000, 500000, 1000000]
               },
               {
                 type: "amazing",
                 text: "\u0634\u06af\u0641\u062a\u200c\u0627\u0646\u06af\u06cc\u0632",
-                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 100000, 500000, 1000000]
               }
             ],
             infoText:
@@ -318,7 +318,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 100000, 200000, 400000]
               }
             ],
             infoText:
@@ -332,12 +332,12 @@ function PlasmicCharging__RenderFunc(props: {
             logoUrl:
               "https://app.babarkat.com/plasmic/babarkat/images/image22.svg",
             codes: ["0920", "0921", "0922", "0923"],
-            chargeRange: { min: 30000, max: 1000000, customAmounts: true },
+            chargeRange: { min: 30000, max: 500000, customAmounts: true },
             services: [
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [30000, 50000, 200000, 500000, 1000000]
+                chargeAmounts: [30000, 50000, 100000, 200000, 500000]
               },
               {
                 type: "amazing",
@@ -346,7 +346,7 @@ function PlasmicCharging__RenderFunc(props: {
               }
             ],
             infoText:
-              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 30,\u06f0\u06f0\u06f0 \u062a\u0627 10\u06f0\u06f0,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
+              "\u0645\u0628\u0644\u063a \u062f\u0644\u062e\u0648\u0627\u0647 \u062e\u0648\u062f \u0631\u0627 \u0628\u06cc\u0646 30,\u06f0\u06f0\u06f0 \u062a\u0627 500,\u06f0\u06f0\u06f0 \u062a\u0648\u0645\u0627\u0646 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
           },
           {
             name: "SHT",
