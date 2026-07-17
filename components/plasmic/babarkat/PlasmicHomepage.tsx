@@ -98,8 +98,12 @@ import Icon87Icon from "./icons/PlasmicIcon__Icon87"; // plasmic-import: rc1_mga
 import BabarkatlogoCopy2SvgIcon from "./icons/PlasmicIcon__BabarkatlogoCopy2Svg"; // plasmic-import: T8YZBqDbfTTx/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: JYguj3uS6NKx/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
+import Icon60Icon from "./icons/PlasmicIcon__Icon60"; // plasmic-import: P52THJblgWka/icon
+import Icon170Icon from "./icons/PlasmicIcon__Icon170"; // plasmic-import: 520iVhJ7X3JW/icon
 import Icon20Icon from "./icons/PlasmicIcon__Icon20"; // plasmic-import: C6JXzIwoE8dX/icon
+import Icon164Icon from "./icons/PlasmicIcon__Icon164"; // plasmic-import: zwoIPH1X8BCA/icon
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: FrIpHYscyQGN/icon
+import Icon171Icon from "./icons/PlasmicIcon__Icon171"; // plasmic-import: C84JOG4DvCVS/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: nmRZKCTHFfFp/icon
 import Icon55Icon from "./icons/PlasmicIcon__Icon55"; // plasmic-import: pYVCSSEZE7RE/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: rPH6lstZmeFB/icon
@@ -334,20 +338,20 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+          hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
       },
       {
         path: "shaba",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          "IR880570025680011868728101"
+          "IR470570028780014203504101"
       },
       {
         path: "card",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "5022291045351606"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "5022291311188468"
       },
       {
         path: "inventoryIncrease.open",
@@ -3646,70 +3650,122 @@ function PlasmicHomepage__RenderFunc(props: {
             wrapClassName={classNames({ [sty["pcls_QV0oVpIPrdVA"]]: true })}
           >
             <div className={classNames("all", sty.freeBox___3DHh6)}>
-              <div className={classNames("all", "__wab_text", sty.text__k1XBx)}>
-                {
-                  "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
-                }
-              </div>
-              <div
-                data-plasmic-name={"wallet3"}
-                data-plasmic-override={overrides.wallet3}
-                className={classNames("all", sty.wallet3)}
-              >
-                <BabarkatlogoCopy2SvgIcon
-                  className={classNames("all", sty.svg___8KCuY)}
+              <div className={classNames("all", sty.freeBox__iplXn)}>
+                <div
+                  className={classNames("all", "__wab_text", sty.text__k1XBx)}
+                >
+                  {
+                    "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
+                  }
+                </div>
+                <Icon60Icon
+                  className={classNames("all", sty.svg__iSics)}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["updateModal2Open"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["modal2", "open"]
+                            },
+                            operation: 4
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            const oldValue = $stateGet(objRoot, variablePath);
+                            $stateSet(objRoot, variablePath, !oldValue);
+                            return !oldValue;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateModal2Open"] != null &&
+                      typeof $steps["updateModal2Open"] === "object" &&
+                      typeof $steps["updateModal2Open"].then === "function"
+                    ) {
+                      $steps["updateModal2Open"] =
+                        await $steps["updateModal2Open"];
+                    }
+                  }}
                   role={"img"}
                 />
-
-                <div
-                  className={classNames("all", "__wab_text", sty.text__bjOw1)}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
-                    : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
-                </div>
-                <div
-                  className={classNames("all", "__wab_text", sty.text__azWoo)}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.userbabarcat.toman.toLocaleString();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "0";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  ) : (
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return (
-                            $state.userbabarcat.toman.toLocaleString() +
-                            " تومان "
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "0";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  )}
-                </div>
               </div>
               <div className={classNames("all", sty.freeBox___6McQj)}>
+                <div
+                  data-plasmic-name={"wallet3"}
+                  data-plasmic-override={overrides.wallet3}
+                  className={classNames("all", sty.wallet3)}
+                >
+                  <div
+                    className={classNames("all", "__wab_text", sty.text__bjOw1)}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc (\u062a\u0648\u0645\u0627\u0646)"
+                      : "\u0645\u0648\u062c\u0648\u062f\u06cc \u0641\u0639\u0644\u06cc"}
+                  </div>
+                  <div
+                    className={classNames("all", "__wab_text", sty.text__azWoo)}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return $state.userbabarcat.toman.toLocaleString();
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "0";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return (
+                              $state.userbabarcat.toman.toLocaleString() +
+                              " تومان "
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "0";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    )}
+                  </div>
+                  <Icon170Icon
+                    className={classNames("all", sty.svg___0Z3B)}
+                    role={"img"}
+                  />
+                </div>
+                <div
+                  className={classNames("all", "__wab_text", sty.text___6LiU)}
+                >
+                  {
+                    "\u06af\u0632\u06cc\u0646\u0647 \u0647\u0627\u06cc \u0648\u0627\u0631\u06cc\u0632"
+                  }
+                </div>
                 <div className={classNames("all", sty.freeBox__bfJ7G)}>
                   <div className={classNames("all", sty.freeBox__jsAv)}>
                     <PlasmicImg__
@@ -3750,9 +3806,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         sty.text__yH9Ym
                       )}
                     >
-                      {
-                        "\u0628\u0647\u0646\u0627\u0645 \u0645\u062d\u0645\u062f \u062d\u0633\u06cc\u0646 \u0632\u0627\u062f\u0647"
-                      }
+                      {"\u062d\u0633\u0646\u06cc \u0648\u0641\u0627"}
                     </div>
                     <div
                       className={classNames("all", sty.freeBox__bm2OU)}
@@ -3817,7 +3871,23 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.text__lMiZj
                         )}
                       >
-                        {"IR88  0570  0256  8001  1868  7281  01"}
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.shaba
+                                .replace(/(.{4})/g, "$1 ")
+                                .trim();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "IR88  0570  0256  8001  1868  7281  01";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                     <div
@@ -3880,26 +3950,61 @@ function PlasmicHomepage__RenderFunc(props: {
                         className={classNames(
                           "all",
                           "__wab_text",
-                          sty.text__pSsGi
+                          sty.text__pSsGi,
+                          ""
                         )}
+                        style={{
+                          direction: "ltr"
+                        }}
                       >
-                        {"6748  0685  2910  5022"}
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.card
+                                .replace(/(\d{4})/g, "-$1")
+                                .trim();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "6748  0685  2910  5022";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div
-                  className={classNames("all", "__wab_text", sty.text__lGa66)}
-                >
-                  {
-                    "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
-                  }
+                <div className={classNames("all", sty.freeBox__jDohq)}>
+                  <Icon164Icon
+                    className={classNames("all", sty.svg__duwoX)}
+                    role={"img"}
+                  />
+
+                  <div
+                    className={classNames("all", "__wab_text", sty.text__lGa66)}
+                  >
+                    {
+                      "\u0628\u0631\u0627\u06cc \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062e\u0648\u062f \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u0631\u06cc\u0632 \u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc\u062f. \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0648\u0627\u0631\u06cc\u0632\u060c \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0648\u0627\u0631\u06cc\u0632\u06cc \u062e\u0648\u062f \u0631\u0627 \u062c\u0647\u062a \u062a\u0623\u06cc\u06cc\u062f \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f \u062a\u0627 \u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0647\u200c\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u0634\u0648\u062f."
+                    }
+                  </div>
                 </div>
                 <div className={classNames("all", sty.freeBox__xUpdV)}>
-                  <div
-                    className={classNames("all", "__wab_text", sty.text__t8Kj7)}
-                  >
-                    {"\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"}
+                  <div className={classNames("all", sty.freeBox__y61Fw)}>
+                    <div
+                      className={classNames(
+                        "all",
+                        "__wab_text",
+                        sty.text__t8Kj7
+                      )}
+                    >
+                      {
+                        "\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f"
+                      }
+                    </div>
                   </div>
                   <div className={classNames("all", sty.freeBox__gIanf)}>
                     <Icon22Icon
@@ -3912,7 +4017,63 @@ function PlasmicHomepage__RenderFunc(props: {
                               const actionArgs = {
                                 customFunction: async () => {
                                   return Android.onElementClicked(
-                                    "https://wa.me/+989202116750"
+                                    "https://wa.me/+989964807129"
+                                  );
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  "\u062f\u0631 \u062d\u0627\u0644 \u0627\u0646\u062a\u0642\u0627\u0644 \u0628\u0647 \u0648\u0627\u062a\u0633\u0627\u067e ...",
+                                  "top-left",
+                                  5000
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
+                        }
+                      }}
+                      role={"img"}
+                    />
+                  </div>
+                  <div className={classNames("all", sty.freeBox__vF8Gu)}>
+                    <Icon171Icon
+                      className={classNames("all", sty.svg__o4RF)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return Android.onElementClicked(
+                                    "https://wa.me/+989964807129"
                                   );
                                 }
                               };

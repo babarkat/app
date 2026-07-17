@@ -3546,6 +3546,16 @@
           "id": "5Z7gtsPEEKQ4",
           "name": "Icon169Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon169.tsx"
+        },
+        {
+          "id": "520iVhJ7X3JW",
+          "name": "Icon170Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon170.tsx"
+        },
+        {
+          "id": "C84JOG4DvCVS",
+          "name": "Icon171Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon171.tsx"
         }
       ],
       "images": [
@@ -4073,6 +4083,16 @@
           "id": "vx4nn8eDEaMn",
           "name": "این تصویر که فرستادم.png 2",
           "filePath": "../public/plasmic/babarkat/images/اینتصویرکهفرستادمPng2.png"
+        },
+        {
+          "id": "UVgLWeKTf18x",
+          "name": "image 85",
+          "filePath": "../public/plasmic/babarkat/images/image85.png"
+        },
+        {
+          "id": "pJZrPh0pnPoh",
+          "name": "image 86",
+          "filePath": "../public/plasmic/babarkat/images/image86.png"
         }
       ],
       "indirect": false,
