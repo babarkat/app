@@ -4073,7 +4073,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               const actionArgs = {
                                 customFunction: async () => {
                                   return Android.onElementClicked(
-                                    "https://wa.me/+989964807129"
+                                    "https://rubika.ir/babarkat_wallet"
                                   );
                                 }
                               };
