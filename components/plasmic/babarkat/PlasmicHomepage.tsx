@@ -338,7 +338,7 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
       },
       {
         path: "shaba",
