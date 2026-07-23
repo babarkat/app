@@ -4905,6 +4905,7 @@ function PlasmicTransaction__RenderFunc(props: {
                       });
                     } else if (
                       input.type?.includes("afghanistan_internet") &&
+                      other &&
                       other.operators &&
                       other.namePack
                     ) {
