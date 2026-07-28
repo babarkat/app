@@ -94,7 +94,6 @@ import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; 
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
-import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 
 import { v4 as __lib_uuid__v4 } from "uuid";
 
@@ -179,6 +178,7 @@ export type PlasmicInternet3__OverridesType = {
   step1Next?: Flex__<typeof Button>;
   step1Next2?: Flex__<typeof Button>;
   step1Next3?: Flex__<typeof Button>;
+  step1Next4?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
   ul?: Flex__<"ul">;
   اپراتور?: Flex__<"div">;
@@ -908,6 +908,25 @@ function PlasmicInternet3__RenderFunc(props: {
                   throw e;
                 }
               })()
+      },
+      {
+        path: "step1Next4.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -3044,7 +3063,11 @@ function PlasmicInternet3__RenderFunc(props: {
                         "step3"
                       )
                     })}
-                    color={"softGreen"}
+                    color={
+                      hasVariant($state, "steps2", "step3")
+                        ? "clear"
+                        : "softGreen"
+                    }
                     isDisabled={(() => {
                       try {
                         return $state.fragmentInput.value.length != 11;
@@ -3117,13 +3140,150 @@ function PlasmicInternet3__RenderFunc(props: {
                             $state,
                             "steps2",
                             "step2"
+                          ),
+                          [sty.textsteps2_step3__saeoDYl49R]: hasVariant(
+                            $state,
+                            "steps2",
+                            "step3"
                           )
                         }
                       )}
                     >
-                      {"\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+                      {hasVariant($state, "steps2", "step3")
+                        ? "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644 >"
+                        : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
                     </div>
                   </Button>
+                  {(
+                    hasVariant($state, "steps2", "step3")
+                      ? true
+                      : hasVariant($state, "steps2", "step2")
+                        ? true
+                        : hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? true
+                          : false
+                  ) ? (
+                    <Button
+                      data-plasmic-name={"step1Next4"}
+                      data-plasmic-override={overrides.step1Next4}
+                      className={classNames("__wab_instance", sty.step1Next4, {
+                        [sty.step1Next4steps2_step2]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step2"
+                        ),
+                        [sty.step1Next4steps2_step3]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step3"
+                        )
+                      })}
+                      color={
+                        hasVariant($state, "steps2", "step3")
+                          ? "green"
+                          : "softGreen"
+                      }
+                      isDisabled={(() => {
+                        try {
+                          return $state.fragmentInput.value.length != 11;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      loadingviow={generateStateValueProp($state, [
+                        "step1Next4",
+                        "loadingviow"
+                      ])}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateShopModalOpen"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["shopModal", "open"]
+                                },
+                                operation: 4
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                const oldValue = $stateGet(
+                                  objRoot,
+                                  variablePath
+                                );
+                                $stateSet(objRoot, variablePath, !oldValue);
+                                return !oldValue;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateShopModalOpen"] != null &&
+                          typeof $steps["updateShopModalOpen"] === "object" &&
+                          typeof $steps["updateShopModalOpen"].then ===
+                            "function"
+                        ) {
+                          $steps["updateShopModalOpen"] =
+                            await $steps["updateShopModalOpen"];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "step1Next4",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          "all",
+                          "__wab_text",
+                          sty.text__oxNpN,
+                          {
+                            [sty.textsteps2_step2__oxNpNoGK8]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step2"
+                            ),
+                            [sty.textsteps2_step3__oxNpNYl49R]: hasVariant(
+                              $state,
+                              "steps2",
+                              "step3"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "steps2", "step3")
+                          ? "\u062a\u0627\u06cc\u06cc\u062f \u0648 \u067e\u0631\u062f\u0627\u062e\u062a"
+                          : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+                      </div>
+                    </Button>
+                  ) : null}
                 </div>
               </section>
               <AntdModal
@@ -3786,7 +3946,15 @@ function PlasmicInternet3__RenderFunc(props: {
                       role={"img"}
                     />
 
-                    <div className={classNames("all", sty.freeBox__zzq0H)}>
+                    <div
+                      className={classNames("all", sty.freeBox__zzq0H, {
+                        [sty.freeBoxsteps2_step3__zzq0HYl49R]: hasVariant(
+                          $state,
+                          "steps2",
+                          "step3"
+                        )
+                      })}
+                    >
                       <div
                         className={classNames(
                           "all",
@@ -3843,16 +4011,6 @@ function PlasmicInternet3__RenderFunc(props: {
                         )}
                       </div>
                     </div>
-                    <Group7SvgIcon
-                      className={classNames("all", sty.svg__qYpD, {
-                        [sty.svgsteps2_step3__qYpDYl49R]: hasVariant(
-                          $state,
-                          "steps2",
-                          "step3"
-                        )
-                      })}
-                      role={"img"}
-                    />
                   </div>
                 </div>
               ) : null}
@@ -5015,6 +5173,7 @@ const PlasmicDescendants = {
     "step1Next",
     "step1Next2",
     "step1Next3",
+    "step1Next4",
     "modal",
     "ul",
     "\u0627\u067e\u0631\u0627\u062a\u0648\u0631",
@@ -5107,6 +5266,7 @@ const PlasmicDescendants = {
   step1Next: ["step1Next"],
   step1Next2: ["step1Next2"],
   step1Next3: ["step1Next3"],
+  step1Next4: ["step1Next4"],
   modal: [
     "modal",
     "ul",
@@ -5165,6 +5325,7 @@ type NodeDefaultElementType = {
   step1Next: typeof Button;
   step1Next2: typeof Button;
   step1Next3: typeof Button;
+  step1Next4: typeof Button;
   modal: typeof AntdModal;
   ul: "ul";
   اپراتور: "div";
@@ -5298,6 +5459,7 @@ export const PlasmicInternet3 = Object.assign(
     step1Next: makeNodeComponent("step1Next"),
     step1Next2: makeNodeComponent("step1Next2"),
     step1Next3: makeNodeComponent("step1Next3"),
+    step1Next4: makeNodeComponent("step1Next4"),
     modal: makeNodeComponent("modal"),
     ul: makeNodeComponent("ul"),
     اپراتور: makeNodeComponent("\u0627\u067e\u0631\u0627\u062a\u0648\u0631"),

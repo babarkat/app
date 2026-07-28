@@ -87,7 +87,6 @@ import RadioButtonCheckedSvgrepoCom2SvgIcon from "./icons/PlasmicIcon__RadioButt
 import CheckCircleSvgrepoComSvgIcon from "./icons/PlasmicIcon__CheckCircleSvgrepoComSvg"; // plasmic-import: 3lQ_sc0p8wap/icon
 import LineXlSvgrepoComSvgIcon from "./icons/PlasmicIcon__LineXlSvgrepoComSvg"; // plasmic-import: PKDhRR5tO_9t/icon
 import Group4SvgIcon from "./icons/PlasmicIcon__Group4Svg"; // plasmic-import: 8w6sGTNqgCIT/icon
-import Group7SvgIcon from "./icons/PlasmicIcon__Group7Svg"; // plasmic-import: o5fEPeaAf9nA/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 
@@ -169,6 +168,7 @@ export type PlasmicCharging__OverridesType = {
   pay?: Flex__<"div">;
   backstep2?: Flex__<typeof Button>;
   backstep3?: Flex__<typeof Button>;
+  backstep32?: Flex__<typeof Button>;
   step1Next?: Flex__<typeof Button>;
   step2Next?: Flex__<typeof Button>;
   modal?: Flex__<typeof AntdModal>;
@@ -816,6 +816,25 @@ function PlasmicCharging__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
+      },
+      {
+        path: "backstep32.loadingviow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
+          (() => {
+            try {
+              return $state.loadingviow;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -3276,16 +3295,6 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                             : "\u0645\u0648\u062c\u0648\u062f\u06cc : 150000 \u062a\u0648\u0645\u0627\u0646"}
                         </div>
                       </div>
-                      <Group7SvgIcon
-                        className={classNames("all", sty.svg__muhrB, {
-                          [sty.svgstepscharg_step3__muhrBWug5H]: hasVariant(
-                            $state,
-                            "stepscharg",
-                            "step3"
-                          )
-                        })}
-                        role={"img"}
-                      />
                     </div>
                   ) : null}
                 </div>
@@ -3429,7 +3438,7 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       color={
                         hasVariant($state, "stepscharg", "step2")
                           ? "softGreen"
-                          : "softGreen"
+                          : "clear"
                       }
                       loadingviow={generateStateValueProp($state, [
                         "backstep3",
@@ -3498,7 +3507,119 @@ ${$state.exchange2.totalAfghani.toLocaleString()} افغانی
                       >
                         {hasVariant($state, "stepscharg", "step2")
                           ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
-                          : "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"}
+                          : "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644 >"}
+                      </div>
+                    </Button>
+                  ) : null}
+                  {(
+                    hasVariant($state, "stepscharg", "step3")
+                      ? true
+                      : hasVariant($state, "stepscharg", "step2")
+                        ? true
+                        : hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? true
+                          : false
+                  ) ? (
+                    <Button
+                      data-plasmic-name={"backstep32"}
+                      data-plasmic-override={overrides.backstep32}
+                      className={classNames("__wab_instance", sty.backstep32, {
+                        [sty.backstep32stepscharg_step2]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step2"
+                        ),
+                        [sty.backstep32stepscharg_step3]: hasVariant(
+                          $state,
+                          "stepscharg",
+                          "step3"
+                        )
+                      })}
+                      color={
+                        hasVariant($state, "stepscharg", "step2")
+                          ? "softGreen"
+                          : "green"
+                      }
+                      loadingviow={generateStateValueProp($state, [
+                        "backstep32",
+                        "loadingviow"
+                      ])}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateUnnamedVariant2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["shopModal", "open"]
+                                },
+                                operation: 4
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                const oldValue = $stateGet(
+                                  objRoot,
+                                  variablePath
+                                );
+                                $stateSet(objRoot, variablePath, !oldValue);
+                                return !oldValue;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateUnnamedVariant2"] != null &&
+                          typeof $steps["updateUnnamedVariant2"] === "object" &&
+                          typeof $steps["updateUnnamedVariant2"].then ===
+                            "function"
+                        ) {
+                          $steps["updateUnnamedVariant2"] =
+                            await $steps["updateUnnamedVariant2"];
+                        }
+                      }}
+                      onLoadingviowChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "backstep32",
+                            "loadingviow"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                    >
+                      <div
+                        className={classNames(
+                          "all",
+                          "__wab_text",
+                          sty.text__kEsIn,
+                          {
+                            [sty.textstepscharg_step2__kEsInTtIk]: hasVariant(
+                              $state,
+                              "stepscharg",
+                              "step2"
+                            )
+                          }
+                        )}
+                      >
+                        {hasVariant($state, "stepscharg", "step2")
+                          ? "\u0645\u0631\u062d\u0644\u0647 \u0642\u0628\u0644"
+                          : "\u062a\u0627\u06cc\u06cc\u062f \u0648 \u067e\u0631\u062f\u0627\u062e\u062a"}
                       </div>
                     </Button>
                   ) : null}
@@ -5540,6 +5661,7 @@ const PlasmicDescendants = {
     "pay",
     "backstep2",
     "backstep3",
+    "backstep32",
     "step1Next",
     "step2Next",
     "modal",
@@ -5618,6 +5740,7 @@ const PlasmicDescendants = {
   pay: ["pay"],
   backstep2: ["backstep2"],
   backstep3: ["backstep3"],
+  backstep32: ["backstep32"],
   step1Next: ["step1Next"],
   step2Next: ["step2Next"],
   modal: [
@@ -5672,6 +5795,7 @@ type NodeDefaultElementType = {
   pay: "div";
   backstep2: typeof Button;
   backstep3: typeof Button;
+  backstep32: typeof Button;
   step1Next: typeof Button;
   step2Next: typeof Button;
   modal: typeof AntdModal;
@@ -5801,6 +5925,7 @@ export const PlasmicCharging = Object.assign(
     pay: makeNodeComponent("pay"),
     backstep2: makeNodeComponent("backstep2"),
     backstep3: makeNodeComponent("backstep3"),
+    backstep32: makeNodeComponent("backstep32"),
     step1Next: makeNodeComponent("step1Next"),
     step2Next: makeNodeComponent("step2Next"),
     modal: makeNodeComponent("modal"),
