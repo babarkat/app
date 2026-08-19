@@ -14,10 +14,6 @@
     "publicDir": "../public",
     "publicUrlPrefix": "/"
   },
-  "tokens": {
-    "scheme": "theo",
-    "tokensFilePath": "plasmic-tokens.theo.json"
-  },
   "srcDir": "components",
   "defaultPlasmicDir": "./plasmic",
   "projects": [
@@ -2399,6 +2395,20 @@
           "cssFilePath": "plasmic/babarkat/PlasmicLogIn2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "SX6Vls6PSNQD",
+          "name": "ShoppingList",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicShoppingList.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/shopping-list.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicShoppingList.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/shopping-list"
         }
       ],
       "icons": [
@@ -4244,9 +4254,13 @@
   },
   "wrapPagesWithGlobalContexts": true,
   "preserveJsImportExtensions": false,
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.367",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.367/dist/plasmic.schema.json"
+  "cliVersion": "0.1.373",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.373/dist/plasmic.schema.json"
 }
