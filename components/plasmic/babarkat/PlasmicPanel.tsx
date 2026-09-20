@@ -742,6 +742,7 @@ function PlasmicPanel__RenderFunc(props: {
               : "page",
             {
               [sty.rootaddUser]: hasVariant($state, "addUser", "addUser"),
+              [sty.rootfull]: hasVariant($state, "full", "full"),
               [sty.rootglobal_experiment_override]: hasVariant(
                 globalVariants,
                 "experiment",

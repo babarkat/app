@@ -292,10 +292,7 @@ function PlasmicLogIn__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
-          { label: "sjsjd1n", value: 101 },
-          { label: "sjs2jdn", value: 102 },
-          { label: "sjsj3dn", value: 103 },
-          { label: "sjs4jdn", value: 104 }
+          { label: "\u0628\u0627\u0628\u0631\u06a9\u062a", value: 1110 }
         ]
       },
       {
@@ -348,13 +345,13 @@ function PlasmicLogIn__RenderFunc(props: {
                   })()
                 : (() => {
                     try {
-                      return $state.saraf[0].value;
+                      return $state.saraf.filter(i => i.value != 1110)[0].value;
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
                         e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        return 100;
+                        return 101;
                       }
                       throw e;
                     }
@@ -2133,13 +2130,15 @@ function PlasmicLogIn__RenderFunc(props: {
                           })()
                         : (() => {
                             try {
-                              return $state.saraf[0].value;
+                              return $state.saraf.filter(
+                                i => i.value != 1110
+                              )[0].value;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
                                 e?.plasmicType === "PlasmicUndefinedDataError"
                               ) {
-                                return 100;
+                                return 101;
                               }
                               throw e;
                             }
