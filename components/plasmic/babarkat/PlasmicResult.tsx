@@ -396,7 +396,9 @@ function PlasmicResult__RenderFunc(props: {
                 hasVariant($state, "success", "_false") &&
                 hasVariant(globalVariants, "screen", "mobileOnly")
                   ? "baBarkat://"
-                  : "baBarkat://"
+                  : hasVariant($state, "success", "_false")
+                    ? "baBarkat://"
+                    : "baBarkat://"
               }
               loadingviow={generateStateValueProp($state, [
                 "button",
@@ -479,7 +481,7 @@ function PlasmicResult__RenderFunc(props: {
                 PlasmicIconType={
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? Icon172Icon
-                    : TickCircleIcon
+                    : Icon172Icon
                 }
                 className={classNames("all", sty.svg__f3KjB)}
                 role={"img"}
@@ -488,17 +490,39 @@ function PlasmicResult__RenderFunc(props: {
             <div className={classNames("all", "__wab_text", sty.text__suElF)}>
               {hasVariant(globalVariants, "screen", "mobileOnly")
                 ? "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f"
-                : "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f"}
+                : "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f"}
             </div>
             <div className={classNames("all", "__wab_text", sty.text__ur5C)}>
               {
                 "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0634\u0645\u0627 \u0628\u0627 \u0645\u0634\u06a9\u0644 \u0645\u0648\u062c\u0647 \u0634\u062f."
               }
             </div>
-            <div className={classNames("all", sty.freeBox__ke0Q2)}>
-              <div className={classNames("all", sty.freeBox__deBeL)}>
+            <div
+              className={classNames("all", sty.freeBox__ke0Q2, {
+                [sty.freeBoxsuccess__false__ke0Q2Dibh2]: hasVariant(
+                  $state,
+                  "success",
+                  "_false"
+                )
+              })}
+            >
+              <div
+                className={classNames("all", sty.freeBox__deBeL, {
+                  [sty.freeBoxsuccess__false__deBeLdibh2]: hasVariant(
+                    $state,
+                    "success",
+                    "_false"
+                  )
+                })}
+              >
                 <div
-                  className={classNames("all", "__wab_text", sty.text__yWNe5)}
+                  className={classNames("all", "__wab_text", sty.text__yWNe5, {
+                    [sty.textsuccess__false__yWNe5Dibh2]: hasVariant(
+                      $state,
+                      "success",
+                      "_false"
+                    )
+                  })}
                 >
                   {
                     "\u0634\u0645\u0627\u0631\u0647 \u067e\u06cc\u06af\u06cc\u0631\u06cc:"
@@ -557,6 +581,11 @@ function PlasmicResult__RenderFunc(props: {
               data-plasmic-name={"button2"}
               data-plasmic-override={overrides.button2}
               className={classNames("__wab_instance", sty.button2, {
+                [sty.button2success__false]: hasVariant(
+                  $state,
+                  "success",
+                  "_false"
+                ),
                 [sty.button2success__true]: hasVariant(
                   $state,
                   "success",
