@@ -386,6 +386,7 @@ function PlasmicButton__RenderFunc(props: {
       disabled={
         hasVariant($state, "isDisabled", "isDisabled") ? false : undefined
       }
+      type={"button"}
       data-plasmic-trigger-props={[triggerRootFocusVisibleWithinProps]}
     >
       {(hasVariant($state, "showStartIcon", "showStartIcon") ? true : false) ? (

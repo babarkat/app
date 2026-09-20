@@ -2409,6 +2409,48 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/shopping-list"
+        },
+        {
+          "id": "oL3KAEkkwqXW",
+          "name": "IncreaseInInventory",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicIncreaseInInventory.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/Increase-in-inventory.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicIncreaseInInventory.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/Increase-in-inventory"
+        },
+        {
+          "id": "LEsr_SRahaKx",
+          "name": "Charging2",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicCharging2.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/charging-3.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicCharging2.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/charging-3"
+        },
+        {
+          "id": "VmoOciQ82xNG",
+          "name": "Result",
+          "type": "managed",
+          "projectId": "sZQMbqXz9utLNaTnNb3uss",
+          "renderModuleFilePath": "plasmic/babarkat/PlasmicResult.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/payResult.tsx"
+          },
+          "cssFilePath": "plasmic/babarkat/PlasmicResult.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/payResult"
         }
       ],
       "icons": [
@@ -3566,6 +3608,11 @@
           "id": "C84JOG4DvCVS",
           "name": "Icon171Icon",
           "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon171.tsx"
+        },
+        {
+          "id": "VlGyiY8DbZtu",
+          "name": "Icon172Icon",
+          "moduleFilePath": "plasmic/babarkat/icons/PlasmicIcon__Icon172.tsx"
         }
       ],
       "images": [
@@ -4103,6 +4150,11 @@
           "id": "pJZrPh0pnPoh",
           "name": "image 86",
           "filePath": "../public/plasmic/babarkat/images/image86.png"
+        },
+        {
+          "id": "hC-RVkmifWj3",
+          "name": "image 87",
+          "filePath": "../public/plasmic/babarkat/images/image87.png"
         }
       ],
       "indirect": false,
@@ -4261,6 +4313,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.373",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.373/dist/plasmic.schema.json"
+  "cliVersion": "0.1.379",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.379/dist/plasmic.schema.json"
 }

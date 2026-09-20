@@ -452,8 +452,8 @@
 .freeBox__z7W8B {
   display: flex;
   position: relative;
-  width: 35px;
-  height: 35px;
+  width: 50px;
+  height: 50px;
   max-width: 100%;
   left: auto;
   top: auto;
@@ -467,8 +467,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__z7W8B {
-    width: 30px;
-    height: 30px;
+    width: 45px;
+    height: 45px;
     box-shadow: 0px 0px 0px 4px #ffffff66;
   }
 }
@@ -494,6 +494,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  margin-top: 20px;
   min-width: 0;
   padding: 0px;
 }
@@ -2821,12 +2822,13 @@
   position: fixed;
   margin-top: 0px;
   right: 0;
-  bottom: 0px;
+  bottom: 0;
   margin-bottom: 0px;
   flex-shrink: 0;
 }
 .inventoryIncrease__modal :global(.ant-modal-content) {
   background: #1e2c39;
+  padding-bottom: 100px;
   outline: none;
   border-radius: 24px 24px 0px 0px;
 }
@@ -2842,6 +2844,7 @@
   row-gap: 20px;
   min-width: 0;
   padding: 0px;
+  margin: 0px;
 }
 .text__o3BPs {
   position: relative;
@@ -2910,10 +2913,10 @@
   justify-content: space-between;
   align-items: center;
   background: none;
-  margin-bottom: 100px;
   min-width: 0;
   border-radius: 12px;
   padding: 15px 8px;
+  margin: 0px;
   border: 1px solid #2dc57b;
 }
 .freeBox__nQu3K {

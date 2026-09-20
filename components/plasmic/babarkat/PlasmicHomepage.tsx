@@ -1689,22 +1689,10 @@ function PlasmicHomepage__RenderFunc(props: {
                     })}
                     {(
                       hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? (() => {
-                            try {
-                              return $state.userbabarcat.canEdit;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })()
+                        ? true
                         : (() => {
                             try {
-                              return $state.userbabarcat.canEdit !== undefined;
+                              return $state.userbabarcat._saraf == 1110;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -4159,6 +4147,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 ? "100%"
                 : undefined
             }
+            wrapClassName={classNames({ [sty["pcls_ESsqCr0SRDqv"]]: true })}
           >
             <div className={classNames("all", sty.freeBox__lJ22O)}>
               <div className={classNames("all", "__wab_text", sty.text__o3BPs)}>
@@ -5488,38 +5477,29 @@ function PlasmicHomepage__RenderFunc(props: {
                       await $steps["updateModal5Open"];
                   }
 
-                  $steps["updateModalOpen"] = true
+                  $steps["goToCharging2"] = true
                     ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["modal", "open"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
+                        const actionArgs = { destination: `/charging-3` };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
                   if (
-                    $steps["updateModalOpen"] != null &&
-                    typeof $steps["updateModalOpen"] === "object" &&
-                    typeof $steps["updateModalOpen"].then === "function"
+                    $steps["goToCharging2"] != null &&
+                    typeof $steps["goToCharging2"] === "object" &&
+                    typeof $steps["goToCharging2"].then === "function"
                   ) {
-                    $steps["updateModalOpen"] = await $steps["updateModalOpen"];
+                    $steps["goToCharging2"] = await $steps["goToCharging2"];
                   }
                 }}
               >
