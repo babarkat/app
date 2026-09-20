@@ -74,6 +74,7 @@ import TickCircleIcon from "./icons/PlasmicIcon__TickCircle"; // plasmic-import:
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: GsFYrYWA9bY1/icon
 import Icon3Icon from "./icons/PlasmicIcon__Icon3"; // plasmic-import: DuoBqJ29N7bW/icon
 import Icon172Icon from "./icons/PlasmicIcon__Icon172"; // plasmic-import: VlGyiY8DbZtu/icon
+import IconIcon from "./icons/PlasmicIcon__Icon"; // plasmic-import: jg6gpiNRWEQd/icon
 
 const emptyProxy: any = new Proxy(() => "", {
   get(_, prop) {
@@ -378,12 +379,66 @@ function PlasmicResult__RenderFunc(props: {
             <Button
               data-plasmic-name={"button"}
               data-plasmic-override={overrides.button}
-              className={classNames("__wab_instance", sty.button)}
+              className={classNames("__wab_instance", sty.button, {
+                [sty.buttonsuccess__false]: hasVariant(
+                  $state,
+                  "success",
+                  "_false"
+                ),
+                [sty.buttonsuccess__true]: hasVariant(
+                  $state,
+                  "success",
+                  "_true"
+                )
+              })}
               color={"green"}
+              link={
+                hasVariant($state, "success", "_false") &&
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? "baBarkat://"
+                  : "baBarkat://"
+              }
               loadingviow={generateStateValueProp($state, [
                 "button",
                 "loadingviow"
               ])}
+              onClick={async event => {
+                const $steps = {};
+
+                $steps["updateButtonLoadingviow"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["button", "loadingviow"]
+                        },
+                        operation: 0
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateButtonLoadingviow"] != null &&
+                  typeof $steps["updateButtonLoadingviow"] === "object" &&
+                  typeof $steps["updateButtonLoadingviow"].then === "function"
+                ) {
+                  $steps["updateButtonLoadingviow"] =
+                    await $steps["updateButtonLoadingviow"];
+                }
+              }}
               onLoadingviowChange={async (...eventArgs: any) => {
                 ((...eventArgs) => {
                   generateStateOnChangeProp($state, ["button", "loadingviow"])(
@@ -501,8 +556,15 @@ function PlasmicResult__RenderFunc(props: {
             <Button
               data-plasmic-name={"button2"}
               data-plasmic-override={overrides.button2}
-              className={classNames("__wab_instance", sty.button2)}
+              className={classNames("__wab_instance", sty.button2, {
+                [sty.button2success__true]: hasVariant(
+                  $state,
+                  "success",
+                  "_true"
+                )
+              })}
               color={"black"}
+              link={"baBarkat://"}
               loadingviow={generateStateValueProp($state, [
                 "button2",
                 "loadingviow"
@@ -528,6 +590,21 @@ function PlasmicResult__RenderFunc(props: {
               }
             </Button>
           </div>
+          <IconIcon
+            className={classNames("all", sty.svg__p57MA, {
+              [sty.svgsuccess__false__p57MAdibh2]: hasVariant(
+                $state,
+                "success",
+                "_false"
+              ),
+              [sty.svgsuccess__true__p57MAXxTpl]: hasVariant(
+                $state,
+                "success",
+                "_true"
+              )
+            })}
+            role={"img"}
+          />
         </div>
       </div>
     </React.Fragment>

@@ -246,12 +246,14 @@
   max-width: 100%;
   width: 100%;
   min-width: 0;
-  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .button:global(.__wab_instance) {
     display: flex;
   }
+}
+.buttonsuccess__false:global(.__wab_instance) {
+  display: none;
 }
 .svg___6LI4F {
   position: relative;
@@ -483,4 +485,17 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.svg__p57MA {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-rrSDs4ZUYTcU);
+  width: 4rem;
+  height: 4rem;
+}
+.svgsuccess__true__p57MAXxTpl {
+  display: none;
+}
+.svgsuccess__false__p57MAdibh2 {
+  display: none;
 }
