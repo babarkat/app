@@ -318,7 +318,7 @@ function PlasmicCharging__RenderFunc(props: {
               {
                 type: "normal",
                 text: "\u0645\u0639\u0645\u0648\u0644\u06cc",
-                chargeAmounts: [30000, 50000, 100000, 200000, 400000]
+                chargeAmounts: [30000, 50000, 100000, 150000, 200000]
               }
             ],
             infoText:
