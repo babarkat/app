@@ -442,11 +442,12 @@
   z-index: 50;
   right: auto;
   bottom: 0;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .tooltip:global(.__wab_instance) {
     top: 168px;
-    display: flex;
+    display: none;
   }
 }
 .freeBox__z7W8B {
