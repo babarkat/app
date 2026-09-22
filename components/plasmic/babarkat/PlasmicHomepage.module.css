@@ -207,7 +207,7 @@
   justify-content: flex-start;
   align-items: center;
   margin-top: 100px;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
   transition-property: all;
   transition-duration: 0.3s;
   z-index: 20;
@@ -440,14 +440,12 @@
   top: 227px;
   align-self: center;
   z-index: 50;
-  right: auto;
   bottom: 0;
-  display: none;
+  right: auto;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .tooltip:global(.__wab_instance) {
     top: 168px;
-    display: none;
   }
 }
 .freeBox__z7W8B {
@@ -486,6 +484,19 @@
   min-width: 0;
   min-height: 0;
 }
+.freeBox__h84Cp {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: 24px;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  flex-shrink: 0;
+  padding: 0px;
+}
 .freeBox__foOol {
   display: flex;
   flex-direction: row;
@@ -498,6 +509,11 @@
   margin-top: 20px;
   min-width: 0;
   padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__foOol {
+    margin-top: 0px;
+  }
 }
 .freeBox__obqSj {
   display: flex;
